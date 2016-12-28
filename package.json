@@ -1,0 +1,45 @@
+{
+  "name": "nownews-api",
+  "version": "0.0.1",
+  "description": "nownews api service",
+  "main": "index.js",
+  "scripts": {
+    "api": "npm install && DEBUG=NOWnews-api* NODE_ENV=develop ./node_modules/nodemon/bin/nodemon.js ./bin/api.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NOWnews/NOWnews-api.git"
+  },
+  "author": "Simon Sun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NOWnews/NOWnews-api/issues"
+  },
+  "homepage": "https://github.com/NOWnews/NOWnews-api#readme",
+  "dependencies": {
+    "babel-core": "^6.21.0",
+    "babel-polyfill": "^6.20.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "bluebird": "^3.4.7",
+    "body-parser": "^1.15.2",
+    "chalk": "^1.1.3",
+    "compression": "^1.6.2",
+    "config": "^1.24.0",
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-alpha.2",
+    "cors": "^2.8.1",
+    "debug": "^2.5.2",
+    "express": "^4.14.0",
+    "lodash": "^4.17.3",
+    "method-override": "^2.3.7",
+    "moment-timezone": "^0.5.11",
+    "mongoose": "^4.7.5",
+    "morgan": "^1.7.0",
+    "multer": "^1.2.1",
+    "nodemon": "^1.11.0",
+    "nunjucks": "^3.0.0",
+    "pretty-error": "^2.0.2"
+  }
+}
