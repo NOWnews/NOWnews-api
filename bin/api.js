@@ -1,6 +1,7 @@
 require('babel-core/register');
 require('babel-polyfill');
 // require('../global');
+const chalk = require('chalk');
 const http = require('http');
 
 const api = require('../api/app.js');
@@ -12,8 +13,8 @@ api.set('port', port);
 const server = http.createServer(api);
 
 server.listen(port);
-console.log(`-------------------------------`);
-console.log(`Start NOWott api`);
-console.log(`Listen Port ${port}`);
-console.log(`${env} mode`);
-console.log(`-------------------------------`);
+console.log(chalk.red(`-------------------------------`));
+console.log(chalk.red(`Start NOWott api`));
+console.log(chalk.red(`Listen Port ${port}`));
+console.log(chalk.red(`${env} mode`));
+console.log(chalk.red(`-------------------------------`));
