@@ -10,11 +10,13 @@ Promise.promisifyAll(mongoose);
 mongoose.Promise = Promise;
 
 /*
- * 
+ * mongodb 連線資訊
  */
-mongoose.connectAsync(`${config.get('mongodb.host')}/${config.get('mongodb.db')}`);
+const host = config.get('mongodb.host');
+const db = config.get('mongodb.db');
+mongoose.connectAsync(`${host}/${db}`);
 const connection = mongoose.connection;
-console.log(chalk.blue(`mongodb connect to: ${config.get('mongodb.host')}/${config.get('mongodb.db')}`));
+console.log(chalk.blue(`mongodb connect to: ${host}/${db}`));
 
 module.exports = {
 
