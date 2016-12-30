@@ -16,8 +16,18 @@ const host = config.get('mongodb.host');
 const db = config.get('mongodb.db');
 mongoose.connectAsync(`${host}/${db}`);
 const connection = mongoose.connection;
-console.log(chalk.blue(`mongodb connect to: ${host}/${db}`));
+console.log(chalk.red(`mongodb connect to: ${host}/${db}`));
+
+import Member from './Member';
+import News from './News';
+import MainMenu from './MainMenu';
+import SubMenu from './SubMenu';
+import Test from './Test';
 
 module.exports = {
-
+    Member: Member,
+    News: News,
+    MainMenu: MainMenu,
+    SubMenu: SubMenu,
+    Test: Test
 };
