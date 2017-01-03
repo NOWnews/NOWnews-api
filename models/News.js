@@ -63,15 +63,32 @@ let schema = new Schema({
         required: true
     },
 
-    // 新聞內容
+    // 如果 type=NEWS，這邊為新聞內容
     content: {
-        type: String,
-        required: true
+        type: String
     },
+
+    // 如果 type=PHOTO，這邊為圖片集合
+    photos: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Photo'
+    }],
+
+    // 如果 type=VIDEO，這邊為影片集合
+    videos: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Video'
+    }],
 
     // 自由內容
     freeContent: {
         type: String,
+    },
+
+    // 新聞開始時間
+    startedAt: {
+        type: Date,
+        default: Date.now
     },
 
     // 新聞類別
@@ -84,7 +101,7 @@ let schema = new Schema({
     // 新聞狀態
     status: {
         type: String,
-        enum: ['DRAFT', 'REVIEW', 'RELEASE'], // 草稿, 審核中, 發布
+        enum: ['DRAFT', 'REVIEW', 'RELEASE', 'CLOSE'], // 草稿, 審核中, 發布, 關閉
         default: 'DRAFT'
     },
 
@@ -94,13 +111,13 @@ let schema = new Schema({
     },
 
     // 是否為成人
-    adult: {
+    isAdult: {
         type: Boolean,
         default: false
     },
 
     // 是否可外送
-    delivery: {
+    isDeliver: {
         type: Boolean,
         default: true
     },
@@ -117,7 +134,25 @@ let schema = new Schema({
 
     // 編輯紀錄
     logs: [{
-        type: Schema.Types.Mixed
+        old: {
+            type: Schema.Types.Mixed
+        },
+        adjust: {
+            type: Schema.Types.Mixed
+        }
+    }],
+
+    // 備忘錄
+    memo: [{
+        name: {
+            type: String
+        },
+        createdAt: {
+            type: Date
+        },
+        content: {
+            type: String
+        }
     }],
 
     // 作者，同 CreatedBy
