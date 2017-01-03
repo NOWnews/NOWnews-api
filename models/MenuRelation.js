@@ -28,14 +28,14 @@ let schema = new Schema({
     // 建立者
     CreatedBy: {
         type: Schema.Types.ObjectId,
-        ref: 'Member',
+        ref: 'User',
         required: true
     },
 
     // 更新者
     UpdatedBy: {
         type: Schema.Types.ObjectId,
-        ref: 'Member',
+        ref: 'User',
         required: true
     },
 

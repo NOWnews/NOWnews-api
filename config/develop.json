@@ -3,5 +3,10 @@
     "mongodb": {
         "host": "mongodb://localhost:27017",
         "db": "NOWnews_Develop"
+    },
+    "redis": {
+        "host": "localhost",
+        "port": 6379,
+        "expireSeconds": 3600
     }
 }

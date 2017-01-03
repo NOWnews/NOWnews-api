@@ -18,14 +18,14 @@ mongoose.connectAsync(`${host}/${db}`);
 const connection = mongoose.connection;
 console.log(chalk.red(`mongodb connect to: ${host}/${db}`));
 
-import Member from './Member';
+import User from './User';
 import News from './News';
 import MainMenu from './MainMenu';
 import SubMenu from './SubMenu';
 import Test from './Test';
 
 module.exports = {
-    Member: Member,
+    User: User,
     News: News,
     MainMenu: MainMenu,
     SubMenu: SubMenu,
