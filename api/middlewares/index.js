@@ -4,7 +4,11 @@ import logger from 'morgan';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 
+import parseHeader from './parseHeader';
+
 module.exports = (app) => {
+
+    app.use(parseHeader());
 
     app.use(compression());
     app.use(bodyParser.json());

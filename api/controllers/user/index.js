@@ -8,5 +8,6 @@ import create from './create';
 
 router.route('/users')
     .post(validators.user.create, create);
+    // .post(create);
 
 module.exports = router;

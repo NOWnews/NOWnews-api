@@ -4,6 +4,11 @@ module.exports = {
         statusCode: 400
     },
 
+    10001: {
+        message: 'API Header Key 不正確',
+        statusCode: 400
+    },
+
     // User Create Validate
     11001: {
         message: 'User Create 缺少 name 這個欄位',
