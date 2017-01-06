@@ -5,6 +5,13 @@ let Schema = mongoose.Schema;
 
 let schema = new Schema({
 
+    // 編號
+    sn: {
+        type: Number,
+        required: true,
+        unique: true
+    },
+
     // 姓名
     name: {
         type: String,
@@ -17,6 +24,27 @@ let schema = new Schema({
         type: String,
         required: true,
         trim: true
+    },
+
+    // 員工編號
+    staffId: {
+        type: String,
+        required: true,
+        trim: true
+    },
+
+    // 管理員的狀態
+    status: {
+        type: String,
+        enum: ['NEWBIE', 'REGULAR', 'SUSPENDED', 'LEAVING'],
+        default: 'NEWBIE'
+    },
+
+    // 角色
+    Role: {
+        type: Schema.Types.ObjectId,
+        ref: 'Role',
+        required: true
     },
 
     // email, 用來登入用的
@@ -34,31 +62,10 @@ let schema = new Schema({
         required: true,
     },
 
-    // 員工編號
-    staffId: {
-        type: String,
-        required: true,
-        trim: true
-    },
-
     // 電話
     phone: {
         type: String,
         trim: true
-    },
-
-    // 管理員的狀態
-    status: {
-        type: String,
-        enum: ['NEWBIE', 'FORMAL', 'SUSPENDED', 'LEAVING'],
-        default: 'NEWBIE'
-    },
-
-    // 角色
-    Role: {
-        type: Schema.Types.ObjectId,
-        ref: 'Role',
-        required: true
     },
 
     // 中心
@@ -95,7 +102,7 @@ let schema = new Schema({
     },
 
     // 是否被刪除
-    trashed: {
+    isTrashed: {
         type: Boolean,
         default: false
     },
@@ -129,6 +136,13 @@ let schema = new Schema({
     timestamps: {
         updatedAt: 'updatedAt'
     }
+});
+
+schema.plugin(increment, {
+    modelName: 'User',
+    fieldName: 'sn',
+    start: 1,
+    increment: 1,
 });
 
 module.exports = mongoose.model('User', schema);

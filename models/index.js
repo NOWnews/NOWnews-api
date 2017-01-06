@@ -20,6 +20,10 @@ console.log(chalk.red(`mongodb connect to: ${host}/${db}`));
 
 import User from './User';
 import News from './News';
+import Role from './Role';
+import Policy from './Policy';
+import Center from './Center';
+import Department from './Department';
 import MainMenu from './MainMenu';
 import SubMenu from './SubMenu';
 import Test from './Test';
@@ -27,6 +31,10 @@ import Test from './Test';
 module.exports = {
     User: User,
     News: News,
+    Role: Role,
+    Policy: Policy,
+    Center: Center,
+    Department: Department,
     MainMenu: MainMenu,
     SubMenu: SubMenu,
     Test: Test

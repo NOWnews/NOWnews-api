@@ -1,6 +1,6 @@
 
 import prettyError from 'pretty-error';
-import errorMapping from '../errorCode';
+import errorMapping from './errorCode';
 
 let pe = new prettyError();
 
