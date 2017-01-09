@@ -1,16 +1,9 @@
 
-import increment from 'mongoose-increment';
+import autoIncrement from 'mongoose-sequence';
 import mongoose from 'mongoose';
 let Schema = mongoose.Schema;
 
 let schema = new Schema({
-
-    // 新聞序號
-    sn: {
-        type: Number,
-        required: true,
-        unique: true
-    },
 
     // 新聞標題
     title: {
@@ -199,11 +192,10 @@ let schema = new Schema({
     }
 });
 
-schema.plugin(increment, {
-    modelName: 'News',
-    fieldName: 'sn',
-    start: 1,
-    increment: 1,
+schema.plugin(autoIncrement, {
+    collection_name: 'SerialNumberCounter',
+    inc_field: 'sn',
+    id: 'news_sn'
 });
 
 module.exports = mongoose.model('News', schema);

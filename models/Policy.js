@@ -1,23 +1,16 @@
 
-import increment from 'mongoose-increment';
+import autoIncrement from 'mongoose-sequence';
 import mongoose from 'mongoose';
 let Schema = mongoose.Schema;
 
 let schema = new Schema({
 
-    // 編號
-    sn: {
-        type: Number,
-        required: true,
-        unique: true
-    },
-
-    name: {
+    group: {
         type: String,
         required: true
     },
 
-    description: {
+    desc: {
         type: String,
         default: ''
     },
@@ -29,38 +22,22 @@ let schema = new Schema({
         default: 'ADMIN'
     },
 
+    method: {
+        type: String,
+        enum: ['get', 'post', 'put', 'delete']
+    },
+
     // 路徑
     path: {
         type: String,
         required: true
-    },
-
-    canView: {
-        type: Boolean,
-        default: true
-    },
-
-    canCreate: {
-        type: Boolean,
-        default: true
-    },
-
-    canEdit: {
-        type: Boolean,
-        default: true
-    },
-
-    canDelete: {
-        type: Boolean,
-        default: true
     }
 });
 
-schema.plugin(increment, {
-    modelName: 'Policy',
-    fieldName: 'sn',
-    start: 1,
-    increment: 1,
+schema.plugin(autoIncrement, {
+    collection_name: 'SerialNumberCounter',
+    inc_field: 'sn',
+    id: 'policy_sn'
 });
 
 module.exports = mongoose.model('Policy', schema);

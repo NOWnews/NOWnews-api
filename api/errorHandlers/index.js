@@ -9,8 +9,8 @@ module.exports = (app) => {
     app.use(function(err, req, res, next) {
 
         console.log('-------------- ERROR --------------');
-        console.log(errorMapping[err.message]);
         console.log(pe.render(err));
+        console.log(errorMapping[err.message]);
         console.log('-------------- ERROR --------------');
 
         res.status(errorMapping[err.message].statusCode);

@@ -1,16 +1,9 @@
 
-import increment from 'mongoose-increment';
+import autoIncrement from 'mongoose-sequence';
 import mongoose from 'mongoose';
 let Schema = mongoose.Schema;
 
 let schema = new Schema({
-
-    // 編號
-    sn: {
-        type: Number,
-        required: true,
-        unique: true
-    },
 
     name: {
         type: String,
@@ -53,11 +46,10 @@ let schema = new Schema({
     }
 });
 
-schema.plugin(increment, {
-    modelName: 'Department',
-    fieldName: 'sn',
-    start: 1,
-    increment: 1,
+schema.plugin(autoIncrement, {
+    collection_name: 'SerialNumberCounter',
+    inc_field: 'sn',
+    id: 'department_sn'
 });
 
 module.exports = mongoose.model('Department', schema);

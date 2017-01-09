@@ -1,4 +1,6 @@
 
-module.exports = {
+import hashPwd from './hashPwd';
 
+module.exports = {
+    hashPwd
 };

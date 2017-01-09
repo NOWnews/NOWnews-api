@@ -3,6 +3,7 @@ import Promise from 'bluebird';
 import chalk from 'chalk';
 
 import { User, Policy, Role, Center, Department } from '../models';
+import { hashPwd } from '../libs';
 
 import policyData from './policy';
 import roleData from './role';
@@ -20,6 +21,7 @@ module.exports = async () => {
         }
         await Policy.createAsync(data);
     });
+    // await Policy.createAsync(policyData);
     // let policies = Promise.each(policyData, async (data) => {
     //     let doc = await
     // });
@@ -46,6 +48,7 @@ module.exports = async () => {
     // 處理 User 資料
     let superuser = await User.findById('530000000000000000000001').execAsync();
     if(!superuser) {
+        superuserData.password = hashPwd(superuserData.password);
         await User.createAsync(superuserData);
     }
 

@@ -20,7 +20,9 @@ module.exports = (req, res, next) => {
         Department,
         jobTitle,
         profileLink,
-        avatar
+        avatar,
+        CreatedBy,
+        UpdatedBy
     } = req.body;
 
     if (!name || name === '') {
@@ -53,6 +55,14 @@ module.exports = (req, res, next) => {
 
     if (!jobTitle) {
         throw new Error('11008');
+    }
+
+    if (!CreatedBy) {
+        throw new Error('11009');
+    }
+
+    if (!UpdatedBy) {
+        throw new Error('11010');
     }
 
     return next();

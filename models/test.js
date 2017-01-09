@@ -1,6 +1,6 @@
 
 // import autoIncrement from 'mongoose-auto-increment';
-import increment from 'mongoose-increment';
+// import increment from 'mongoose-increment';
 import mongoose from 'mongoose';
 let Schema = mongoose.Schema;
 
@@ -27,11 +27,11 @@ let schema = new Schema({
 //     incrementBy: 1
 // });
 
-schema.plugin(increment, {
-    modelName: 'Test',
-    fieldName: 'id',
-    start: 1,
-    increment: 1,
-});
+// schema.plugin(increment, {
+//     modelName: 'Test',
+//     fieldName: 'id',
+//     start: 1,
+//     increment: 1,
+// });
 
 module.exports = mongoose.model('Test', schema);
