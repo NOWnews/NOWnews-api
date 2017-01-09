@@ -54,8 +54,6 @@ module.exports = {
         message: '[User Create] email 已經註冊過了',
         statusCode: 400
     },
-
-    // Role Create Validate
     12001: {
         message: '[Role Create] 缺少 name 這個欄位',
         statusCode: 400
@@ -79,28 +77,5 @@ module.exports = {
     12006: {
         message: '[Role Create] polocies 裡面的 item 必須為 String',
         statusCode: 400
-    },
-
-    // Center Create Validate
-    13001: {
-        message: '[Center Create] 這個中心名稱已經被使用過了',
-        statusCode: 400
-    },
-
-    13002: {
-        message: '[Center Create] 找不到這個中心',
-        statusCode: 404
-    },
-
-    // Department Create Validate
-    14001: {
-        message: '[Department Create] 這個部門名稱已經被使用過了',
-        statusCode: 400
-    },
-
-    // Department FindOne Validate
-    14002: {
-        message: '[Department FindOne] 找不到這個部門',
-        statusCode: 404
     }
 };
