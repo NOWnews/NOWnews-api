@@ -9,7 +9,7 @@ import { Center } from '../../../models';
 module.exports = async (req, res, next) => {
 
     let options = _.pick(req.body, ['name', 'CreatedBy', 'UpdatedBy']);
-    options.Departments = JSON.parse(req.body.Departments);
+
     debug('options = %j', options);
 
     try {
