@@ -25,10 +25,12 @@ module.exports = async (req, res, next) => {
             'jobTitle',
             'profileLink',
             'avatar',
-            'CreatedBy',
-            'UpdatedBy'
+            'CreatedBy'
         ]);
+
+        options.UpdatedBy = req.body.CreatedBy;
         debug('options = %j', options);
+
 
         // 驗證這個 email 是否註冊過
         let user = await User.findOne()

@@ -15,7 +15,7 @@ module.exports = async (req, res, next) => {
     try {
 
         let center = await Center.findOne()
-            .where('name').equals(req.body.name)
+            .where('name').equals(options.name)
             .where('isTrashed').equals(false)
             .execAsync();
         debug('center = %j', center);

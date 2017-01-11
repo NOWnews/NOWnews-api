@@ -37,7 +37,7 @@ let schema = new Schema({
     Role: {
         type: Schema.Types.ObjectId,
         ref: 'Role',
-        required: true
+        // required: true
     },
 
     // email, 用來登入用的
@@ -65,14 +65,14 @@ let schema = new Schema({
     Center: {
         type: Schema.Types.ObjectId,
         ref: 'Center',
-        required: true
+        // required: true
     },
 
     // 部門
     Department: {
         type: Schema.Types.ObjectId,
         ref: 'Department',
-        required: true
+        // required: true
     },
 
     // 職稱
