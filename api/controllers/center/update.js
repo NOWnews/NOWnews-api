@@ -9,7 +9,6 @@ import { Center } from '../../../models';
 module.exports = async (req, res, next) => {
     let { id } = req.params;
     let { name, Departments, UpdatedBy } = req.body;
-    Departments = JSON.parse(Departments);
 
     try {
 

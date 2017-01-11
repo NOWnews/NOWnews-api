@@ -2,7 +2,7 @@
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api:controllers:center:remove');
 
-import { Center } from '../../../models';
+import { Center, Department } from '../../../models';
 
 module.exports = async (req, res, next) => {
 
@@ -19,6 +19,21 @@ module.exports = async (req, res, next) => {
         if(!center) {
             throw new Error('13002');
         }
+
+        // 找出所有 departments 並且改成刪除
+        let trashedDepartments = await Department.updateAsync(
+            {
+                _id: { $in: center.Departments },
+                isTrashed: false
+            }, {
+                $set: { isTrashed: true }
+            },
+            {
+                new: true
+            }
+        );
+
+        debug('trashedDepartments = %j', trashedDepartments);
 
         center.set('isTrashed', true);
 
