@@ -9,15 +9,13 @@ import is from 'is_js';
 
 module.exports = (req, res, next) => {
 
-    let { name, policies, CreatedBy, UpdatedBy } = req.body;
-
-    policies = JSON.parse(policies);
+    let { name, Policies, CreatedBy, UpdatedBy } = req.body;
 
     if(!name || name === '') {
         throw new Error('12001');
     }
 
-    if(is.not.array(policies) || policies.length === 0) {
+    if(is.not.array(Policies) || Policies.length === 0) {
         throw new Error('12002');
     }
 
@@ -29,7 +27,7 @@ module.exports = (req, res, next) => {
         throw new Error('12005');
     }
 
-    policies.forEach((policy) => {
+    Policies.forEach((policy) => {
         if(is.not.string(policy)) {
             throw new Error('12006');
         }

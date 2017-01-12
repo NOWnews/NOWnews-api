@@ -32,6 +32,8 @@ let schema = new Schema({
         type: String,
         required: true
     }
+}, {
+    versionKey: false,
 });
 
 schema.plugin(autoIncrement, {

@@ -51,6 +51,7 @@ let schema = new Schema({
         default: Date.now
     }
 }, {
+    versionKey: false,
     timestamps: {
         updatedAt: 'updatedAt'
     }

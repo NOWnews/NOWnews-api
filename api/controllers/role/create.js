@@ -10,8 +10,6 @@ module.exports = async (req, res, next) => {
 
     let { name, desc, Policies, CreatedBy, UpdatedBy } = req.body;
 
-    Policies = JSON.parse(Policies);
-
     try {
 
         let role = await Role.findOne()

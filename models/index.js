@@ -24,6 +24,7 @@ import Role from './Role';
 import Policy from './Policy';
 import Center from './Center';
 import Department from './Department';
+import Image from './Image';
 // import MainMenu from './MainMenu';
 // import SubMenu from './SubMenu';
 // import Test from './Test';
@@ -35,6 +36,7 @@ module.exports = {
     Policy,
     Center,
     Department,
+    Image,
     // MainMenu,
     // SubMenu,
     // Test

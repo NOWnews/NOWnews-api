@@ -5,21 +5,60 @@ let Schema = mongoose.Schema;
 
 let schema = new Schema({
 
-    name: {
+    // 圖片關鍵字
+    keyword: {
         type: String,
-        required: true,
-        unique: true
+        default: ''
     },
 
+    // 圖片的標題
+    title: {
+        type: String,
+        default: ''
+    },
+
+    // 圖片的描述(圖說)
     desc: {
         type: String,
         default: ''
     },
 
-    Policies: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Policy'
-    }],
+    // 原始的檔案名稱
+    originName: {
+        type: String,
+        required: true
+    },
+
+    // 圖片的類別(jpg, png)
+    type: {
+        type: String,
+        required: true
+    },
+
+    // 圖片的寬
+    width: {
+        type: Number,
+        required: true
+    },
+
+    // 圖片的高
+    height: {
+        type: Number,
+        required: true
+    },
+
+    // 是否可外送
+    isDeliver: {
+        type: Boolean,
+        default: true
+    },
+
+    // 圖片的連結
+    url: {
+        type: String,
+        required: true,
+        unique: true
+    },
 
     isTrashed: {
         type: Boolean,
@@ -61,7 +100,7 @@ let schema = new Schema({
 schema.plugin(autoIncrement, {
     collection_name: 'SerialNumberCounter',
     inc_field: 'sn',
-    id: 'role_sn'
+    id: 'image_sn'
 });
 
-module.exports = mongoose.model('Role', schema);
+module.exports = mongoose.model('Image', schema);

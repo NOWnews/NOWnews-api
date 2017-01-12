@@ -62,13 +62,13 @@ let schema = new Schema({
     },
 
     // 如果 type=PHOTO，這邊為圖片集合
-    photos: [{
+    Photos: [{
         type: Schema.Types.ObjectId,
-        ref: 'Photo'
+        ref: 'Image'
     }],
 
     // 如果 type=VIDEO，這邊為影片集合
-    videos: [{
+    Videos: [{
         type: Schema.Types.ObjectId,
         ref: 'Video'
     }],
@@ -155,8 +155,14 @@ let schema = new Schema({
         required: true
     },
 
+    // 此新聞的標籤(關鍵字)
+    Tags: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Tag',
+    }],
+
     // 是否被刪除
-    trashed: {
+    isTrashed: {
         type: Boolean,
         default: false
     },
@@ -187,6 +193,7 @@ let schema = new Schema({
         default: Date.now
     }
 }, {
+    versionKey: false,
     timestamps: {
         updatedAt: 'updatedAt'
     }
