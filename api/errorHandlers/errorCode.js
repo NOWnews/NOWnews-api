@@ -82,8 +82,8 @@ module.exports = {
     },
 
     12007: {
-        message: '[Role Delete] 這個角色不存在',
-        statusCode: 400
+        message: '[Role] 找不到這個角色',
+        statusCode: 404
     },
 
     // Center Create Validate

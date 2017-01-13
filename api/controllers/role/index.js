@@ -6,6 +6,7 @@ import validators from '../../validators';
 
 import create from './create';
 import list from './list';
+import one from './one';
 import remove from './remove';
 
 router.route('/roles')
@@ -13,6 +14,7 @@ router.route('/roles')
     .post(validators.role.create, create);
 
 router.route('/roles/:id')
+    .get(one)
     .delete(remove);
 
 module.exports = router;
