@@ -15,7 +15,7 @@ module.exports = async (req, res, next) => {
                     .where('isTrashed').equals(false)
                     .execAsync(),
                 Role.findOne()
-                    .where('id').ne(name)
+                    .where('_id').ne(id)
                     .where('name').equals(name)
                     .where('isTrashed').equals(false)
                     .execAsync(),
@@ -25,11 +25,11 @@ module.exports = async (req, res, next) => {
         debug('checkRoleByName = %j', checkRoleByName);
 
         if (!role) {
-            throw new Error('13002');
+            throw new Error('12007');
         }
 
         if (checkRoleByName) {
-            throw new Error('13001');
+            throw new Error('12003');
         }
 
         role.set('name', name);

@@ -18,6 +18,7 @@ module.exports = async (req, res, next) => {
                     .where('isTrashed').equals(false)
                     .execAsync(),
                 Department.findOne()
+                    .where('_id').ne(id)
                     .where('name').equals(name)
                     .where('isTrashed').equals(false)
                     .execAsync()
