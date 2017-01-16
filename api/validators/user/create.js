@@ -13,7 +13,7 @@ module.exports = (req, res, next) => {
         email,
         password,
         CreatedBy,
-        UpdatedBy
+        // UpdatedBy
     } = req.body;
 
     if (!name || name === '') {
@@ -31,8 +31,8 @@ module.exports = (req, res, next) => {
     // if (!Role) {
     //     throw new Error('11003');
     // }
-
-    if (is.email(email)) {
+    debug('email = %s', email);
+    if (is.not.email(email)) {
         throw new Error('11004');
     }
 
@@ -56,9 +56,9 @@ module.exports = (req, res, next) => {
         throw new Error('11009');
     }
 
-    if (!UpdatedBy) {
-        throw new Error('11010');
-    }
+    // if (!UpdatedBy) {
+    //     throw new Error('11010');
+    // }
 
     return next();
 };

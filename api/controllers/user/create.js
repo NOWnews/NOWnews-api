@@ -39,7 +39,7 @@ module.exports = async (req, res, next) => {
         debug('已經存在的 user = %j', user);
 
         if(user) {
-            throw new Error('110011');
+            throw new Error('11010');
         }
 
         // 處理 password 編碼問題

@@ -15,15 +15,17 @@ let schema = new Schema({
     // 暱稱
     nickname: {
         type: String,
-        // required: true,
-        trim: true
+        trim: true,
+        sparse: true,
+        default: null
     },
 
     // 員工編號
     staffId: {
         type: String,
-        // required: true,
-        trim: true
+        trim: true,
+        sparse: true,
+        default: null
     },
 
     // 管理員的狀態
@@ -37,7 +39,8 @@ let schema = new Schema({
     Role: {
         type: Schema.Types.ObjectId,
         ref: 'Role',
-        // required: true
+        sparse: true,
+        default: null
     },
 
     // email, 用來登入用的
@@ -58,40 +61,49 @@ let schema = new Schema({
     // 電話
     phone: {
         type: String,
-        trim: true
+        trim: true,
+        sparse: true,
+        default: null
     },
 
     // 中心
     Center: {
         type: Schema.Types.ObjectId,
         ref: 'Center',
-        // required: true
+        sparse: true,
+        default: null
     },
 
     // 部門
     Department: {
         type: Schema.Types.ObjectId,
         ref: 'Department',
-        // required: true
+        sparse: true,
+        default: null
     },
 
     // 職稱
     jobTitle: {
         type: String,
-        required: true,
-        trim: true
+        trim: true,
+        sparse: true,
+        default: null
     },
 
     // 個人連結
     profileLink: {
         type: String,
-        trim: true
+        trim: true,
+        sparse: true,
+        default: null
     },
 
     // 個人大頭照
     avatar: {
         type: String,
-        trim: true
+        trim: true,
+        sparse: true,
+        default: null
     },
 
     // 是否被刪除
