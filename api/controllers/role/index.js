@@ -2,7 +2,7 @@
 import express from 'express';
 let router = express.Router();
 
-import { role as validatorRole } from '../../validators';
+import validators from '../../validators';
 
 import create from './create';
 import list from './list';
@@ -12,11 +12,11 @@ import update from './update';
 
 router.route('/roles')
     .get(list)
-    .post(validatorRole.create, create);
+    .post(validators.role.create, create);
 
 router.route('/roles/:id')
     .get(one)
     .delete(remove)
-    .put(validatorRole.update, update);
+    .put(validators.role.update, update);
 
 module.exports = router;
