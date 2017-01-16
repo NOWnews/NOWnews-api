@@ -99,7 +99,7 @@ let schema = new Schema({
     },
 
     // 個人大頭照
-    avatar: {
+    Avatar: {
         type: String,
         trim: true,
         sparse: true,

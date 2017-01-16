@@ -9,6 +9,12 @@ module.exports = {
         statusCode: 400
     },
 
+    10002: {
+        message: '你沒有權限對超級管理者做此操作',
+        statusCode: 403
+    },
+
+
     // User Create Validate
     11001: {
         message: '[User Create] 缺少 name 這個欄位',
@@ -52,6 +58,21 @@ module.exports = {
     // },
     11010: {
         message: '[User Create] email 已經註冊過了',
+        statusCode: 400
+    },
+
+    11011: {
+        message: '[User findOne] 找不到這個 User',
+        statusCode: 404
+    },
+
+    11012: {
+        message: '[User Update] url 格式不正確',
+        statusCode: 400
+    },
+
+    11013: {
+        message: '[User Update] 缺少 UpdatedBy 這個欄位',
         statusCode: 400
     },
 

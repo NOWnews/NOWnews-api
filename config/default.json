@@ -11,5 +11,10 @@
     },
     "header": {
         "X-NOWnews-API": ["NOWnewsIsFeature"]
+    },
+    "baseQuery": {
+        "limit": 20,
+        "skip": 0,
+        "page": 1
     }
 }
