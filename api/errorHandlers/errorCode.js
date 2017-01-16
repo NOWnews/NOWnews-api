@@ -81,6 +81,11 @@ module.exports = {
         statusCode: 400
     },
 
+    12007: {
+        message: '[Role FindOne] 找不到這個角色',
+        statusCode: 404
+    },
+
     // Center Create Validate
     13001: {
         message: '[Center Create] 這個中心名稱已經被使用過了',

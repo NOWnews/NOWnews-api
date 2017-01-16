@@ -1,6 +1,7 @@
-
 import create from './create';
+import update from './update';
 
 module.exports = {
-    create
+    create,
+    update,
 };
