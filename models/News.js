@@ -161,6 +161,18 @@ let schema = new Schema({
         ref: 'Tag',
     }],
 
+    // 是否為 RSS 內送
+    isFeed: {
+        type: Boolean,
+        default: false
+    },
+
+    // RSS 內送的單位
+    feedFrom: {
+        type: String,
+        default: 'OWN'
+    },
+
     // 是否被刪除
     isTrashed: {
         type: Boolean,
