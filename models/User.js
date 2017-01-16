@@ -15,14 +15,14 @@ let schema = new Schema({
     // 暱稱
     nickname: {
         type: String,
-        required: true,
+        // required: true,
         trim: true
     },
 
     // 員工編號
     staffId: {
         type: String,
-        required: true,
+        // required: true,
         trim: true
     },
 

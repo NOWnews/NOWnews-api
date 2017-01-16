@@ -5,22 +5,13 @@ import Debug from 'debug';
 const debug = Debug('NOWnews-api:api:validators:user:create');
 
 import _ from 'lodash';
+import is from 'is_js';
 
 module.exports = (req, res, next) => {
     let { 
         name,
-        nickname,
-        staffId,
-        status,
-        Role,
         email,
         password,
-        phone,
-        Center,
-        Department,
-        jobTitle,
-        profileLink,
-        avatar,
         CreatedBy,
         UpdatedBy
     } = req.body;
@@ -29,15 +20,19 @@ module.exports = (req, res, next) => {
         throw new Error('11001');
     }
 
-    if (!staffId || staffId === '') {
-        throw new Error('11002');
-    }
+    // if (!nickname || nickname === '') {
+    //     throw new Error('11002');
+    // }
 
-    if (!Role) {
-        throw new Error('11003');
-    }
+    // if (!staffId || staffId === '') {
+    //     throw new Error('11002');
+    // }
 
-    if (!email || email === '') {
+    // if (!Role) {
+    //     throw new Error('11003');
+    // }
+
+    if (is.email(email)) {
         throw new Error('11004');
     }
 
@@ -45,17 +40,17 @@ module.exports = (req, res, next) => {
         throw new Error('11005');
     }
 
-    if (!Center) {
-        throw new Error('11006');
-    }
+    // if (!Center) {
+    //     throw new Error('11006');
+    // }
 
-    if (!Department) {
-        throw new Error('11007');
-    }
+    // if (!Department) {
+    //     throw new Error('11007');
+    // }
 
-    if (!jobTitle) {
-        throw new Error('11008');
-    }
+    // if (!jobTitle) {
+    //     throw new Error('11008');
+    // }
 
     if (!CreatedBy) {
         throw new Error('11009');
