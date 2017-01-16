@@ -82,7 +82,7 @@ module.exports = {
     },
 
     12007: {
-        message: '[Role] 找不到這個角色',
+        message: '[Role FindOne] 找不到這個角色',
         statusCode: 404
     },
 

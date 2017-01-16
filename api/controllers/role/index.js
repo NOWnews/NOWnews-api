@@ -17,6 +17,6 @@ router.route('/roles')
 router.route('/roles/:id')
     .get(one)
     .delete(remove)
-    .put(update);
+    .put(validatorRole.update, update);
 
 module.exports = router;
