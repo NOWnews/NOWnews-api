@@ -31,7 +31,7 @@ module.exports = (req, res, next) => {
     // if (!Role) {
     //     throw new Error('11003');
     // }
-    debug('email = %s', email);
+
     if (is.not.email(email)) {
         throw new Error('11004');
     }
