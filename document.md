@@ -268,3 +268,100 @@ None
 
 #### Query Parameters
 None
+
+## IMAGE API DOCUMENTS
+
+### [POST] `/images/upload`
+
+上傳一張圖片
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| image | 要上傳的圖片 | File | √ | |
+| keyword | 這張圖片的關鍵字 | String |  | `測試` |
+| title | 這張圖片的標題 | String |  | `測試圖片` |
+| desc | 這張圖片的圖說 | String |  | `這是測試圖片` |
+| type | 圖片的分類 | `['NEWS','AVATAR']` |  | `NEWS` |
+| CreatedBy | 最後更新者 | String | √ | `530000000000000000000001` |
+
+#### Query Parameters
+None
+
+### [GET] `/images/{:id}`
+
+讀取一張圖片
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | 圖片 ObjectId | String | √ | `560000000000000000000001` |
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+None
+
+### [DELETE] `/images/{:id}`
+
+刪除一張圖片
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | 圖片 ObjectId | String | √ | `560000000000000000000001` |
+
+#### Body Parameters
+None
+
+#### Query Parameters
+None
+
+### [DELETE] `/images/{:id}/realRemove`
+
+刪除一張圖片(真實)
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | 圖片 ObjectId | String | √ | `560000000000000000000001` |
+
+#### Body Parameters
+None
+
+#### Query Parameters
+None

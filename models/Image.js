@@ -9,31 +9,51 @@ let schema = new Schema({
     // 圖片關鍵字
     keyword: {
         type: String,
-        default: ''
+        default: '',
+        trim: true,
+        lowercase: true
     },
 
     // 圖片的標題
     title: {
         type: String,
-        default: ''
+        default: '',
+        trim: true
     },
 
     // 圖片的描述(圖說)
     desc: {
         type: String,
-        default: ''
+        default: '',
+        trim: true
     },
 
     // 原始的檔案名稱
-    originName: {
+    originalname: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
 
     // 圖片的類別(jpg, png)
+    format: {
+        type: String,
+        required: true,
+        trim: true,
+        lowercase: true
+    },
+
+    // 圖片的分類
     type: {
         type: String,
-        required: true
+        enum: ['NEWS','AVATAR'],
+        default: 'NEWS'
+    },
+
+    mimetype: {
+        type: String,
+        required: true,
+        trim: true
     },
 
     // 圖片的寬
