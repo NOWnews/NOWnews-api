@@ -2,8 +2,6 @@
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api:controllers:user:list');
 
-import Promise from 'bluebird';
-
 import { User } from '../../../models';
 import { pagination } from '../../../libs';
 
@@ -28,6 +26,7 @@ module.exports = async (req, res, next) => {
         // 處理分頁
         let total = await User.find()
             .where('isTrashed').equals(false)
+            .where('isInitUser').equals(false)
             .countAsync();
         debug('total = %d', total);
         let pageData = pagination(total, limit, page, skip);
