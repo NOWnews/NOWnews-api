@@ -1,6 +1,7 @@
 
 import autoIncrement from 'mongoose-sequence';
 import mongoose from 'mongoose';
+import moment from 'moment-timezone';
 let Schema = mongoose.Schema;
 
 let schema = new Schema({
@@ -45,6 +46,14 @@ let schema = new Schema({
     timestamps: {
         updatedAt: 'updatedAt'
     }
+});
+
+schema.virtual('formatCreatedAt').get(function () {
+    return moment(this.createdAt).tz('Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
+});
+
+schema.virtual('formatUpdatedAt').get(function () {
+    return moment(this.updatedAt).tz('Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });
 
 schema.plugin(autoIncrement, {

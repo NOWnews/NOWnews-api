@@ -10,10 +10,6 @@ module.exports = async (req, res, next) => {
 
     try{
 
-        if (id === '530000000000000000000001') {
-            throw new Error('10002');
-        }
-
         let user = await User.findById(id)
             .where('isTrashed').equals(false)
             .execAsync();

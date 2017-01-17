@@ -16,6 +16,7 @@ module.exports = async (req, res, next) => {
 
         let users = await User.find()
             .where('isTrashed').equals(false)
+            .where('isInitUser').equals(false)
             .populate('Role Center Department')
             .limit(limit)
             .skip(skip)

@@ -14,5 +14,6 @@ module.exports = {
         jobTitle: '超級管理者',
         profileLink: '',
         CreatedBy: '530000000000000000000001',
-        UpdatedBy: '530000000000000000000001'
+        UpdatedBy: '530000000000000000000001',
+        isInitUser: true
 };
