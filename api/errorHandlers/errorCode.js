@@ -128,5 +128,11 @@ module.exports = {
     14002: {
         message: '[Department FindOne] 找不到這個部門',
         statusCode: 404
+    },
+
+    // Image
+    15001: {
+        message: '[Image findOne] 找不到這個圖片資料',
+        statusCode: 404
     }
 };

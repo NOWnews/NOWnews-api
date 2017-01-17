@@ -4,6 +4,7 @@ import policy from './policy';
 import role from './role';
 import center from './center';
 import department from './department';
+import image from './image';
 
 module.exports = (app) => {
 
@@ -12,6 +13,7 @@ module.exports = (app) => {
     app.use('/', policy);
     app.use('/', role);
     app.use('/', center);
+    app.use('/', image);
     app.use('/', department);
 
     return (req, res, next) => {
