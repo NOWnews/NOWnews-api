@@ -6,6 +6,7 @@ const debug = Debug('NOWnews-api:api:validators:user:create');
 
 import _ from 'lodash';
 import is from 'is_js';
+import mongoose from 'mongoose';
 
 module.exports = (req, res, next) => {
     let { 
@@ -52,7 +53,7 @@ module.exports = (req, res, next) => {
     //     throw new Error('11008');
     // }
 
-    if (!CreatedBy) {
+    if(!mongoose.Types.ObjectId.isValid(CreatedBy)) {
         throw new Error('11009');
     }
 

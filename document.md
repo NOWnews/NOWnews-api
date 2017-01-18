@@ -365,3 +365,110 @@ None
 
 #### Query Parameters
 None
+
+## USER API DOCUMENTS
+
+### [POST] `/news`
+
+新增一則新聞
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| title | 新聞的標題 | String | √ | `台北最 high 跨年夜` |
+| shortTitle | 新聞的短標題 | String | | `跨年夜` |
+| summary | 新聞的摘要 | String | | `台北跨年` |
+| MainPhoto | 主圖 | ObjectId | | |
+| MainVideo | 主影音 | ObjectId | | |
+| content | 如果 type 為 NEWS，則此欄位為主要內容，由 ckeditor 提供 | String | | `<p>跨年夜天氣好</p>` |
+| Photos | 如果 type 為 PHOTO，則會有圖片集合 | [ObjectId] | | |
+| Videos | 如果 type 為 VIDEO，則會有影片集合 | [ObjectId] | | |
+| freeContent | 自由欄位，由 ckeditor 提供 | String | | `<p>跨年夜天氣好</p>` |
+| startedAt | 新聞開始時間，為預發稿使用 | Date | | |
+| type | 新聞的類型 | `['NEWS', 'VIDEO', 'PHOTO']` | | |
+| status | 新聞的狀態 | `['DRAFT', 'REVIEW', 'RELEASE', 'CLOSE']` | | |
+| traceCode | 追蹤碼，由 ckeditor 提供 | String | | |
+| isAdult | 成人新聞 | Boolean | | |
+| isDeliver | 可否外送 | Boolean | | |
+| location | 這則新聞的做標 | Object | | `[124, 12]` |
+| memo | 備忘錄 | Object | | |
+| Author | 作者，若沒傳入則帶入建立者 | ObjectId | | |
+| Tags | 標籤(關鍵字) | [ObjectId] | | |
+| CreatedBy | 建立者 | ObjectId | √ | |
+
+#### Query Parameters
+None
+
+### [GET] `/news`
+
+新聞列表
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+None
+
+#### Body Parameters
+None
+
+#### Query Parameters
+None
+
+### [GET] `/news/{:id}`
+
+單一新聞
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | 新聞 ObjectId | String | √ | |
+
+#### Body Parameters
+None
+
+#### Query Parameters
+None
+
+### [DELETE] `/news/{:id}`
+
+刪除新聞
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | 新聞 ObjectId | String | √ | |
+
+#### Body Parameters
+None
+
+#### Query Parameters
+None

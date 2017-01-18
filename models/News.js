@@ -17,49 +17,50 @@ let schema = new Schema({
     // 新聞短標題
     shortTitle: {
         type: String,
-        required: true,
         trim: true,
-        maxlength: 16
+        maxlength: 16,
+        default: null
     },
 
     // 新聞摘要
     summary: {
         type: String,
-        required: true,
         trim: true,
+        default: null
     },
 
     // 主選單分類
     MainMenu: {
         type: Schema.Types.ObjectId,
         ref: 'MainMenu',
-        required: true
+        default: null
     },
 
     // 子選單分類
     SubMenu: {
         type: Schema.Types.ObjectId,
         ref: 'SubMenu',
-        required: true
+        default: null
     },
 
     // 新聞主圖
     MainPhoto: {
         type: Schema.Types.ObjectId,
-        ref: 'Photo',
-        required: true
+        ref: 'Image',
+        default: null
     },
 
     // 新聞主影音
     MainVideo: {
         type: Schema.Types.ObjectId,
         ref: 'Video',
-        required: true
+        default: null
     },
 
     // 如果 type=NEWS，這邊為新聞內容
     content: {
-        type: String
+        type: String,
+        default: null
     },
 
     // 如果 type=PHOTO，這邊為圖片集合
@@ -77,6 +78,7 @@ let schema = new Schema({
     // 自由內容
     freeContent: {
         type: String,
+        default: null
     },
 
     // 新聞開始時間
@@ -101,7 +103,8 @@ let schema = new Schema({
 
     // 新聞追蹤碼
     traceCode: {
-        type: String
+        type: String,
+        default: null
     },
 
     // 是否為成人
@@ -117,13 +120,8 @@ let schema = new Schema({
     },
 
     // 新聞的位置，做 LBS 用
-    location: {
-        lat: {
-            type: Number
-        },
-        long: {
-            type: Number
-        }
+    location : {
+        type: [Number]
     },
 
     // 編輯紀錄
@@ -149,7 +147,7 @@ let schema = new Schema({
         }
     }],
 
-    // 作者，同 CreatedBy
+    // 作者，如果沒有選擇，就會與 CreatedBy 相同
     Author: {
         type: Schema.Types.ObjectId,
         ref: 'User',
@@ -210,6 +208,10 @@ let schema = new Schema({
     timestamps: {
         updatedAt: 'updatedAt'
     }
+});
+
+schema.index({
+    location: '2dsphere'
 });
 
 schema.virtual('formatCreatedAt').get(function () {

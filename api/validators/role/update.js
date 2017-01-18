@@ -6,6 +6,7 @@ const debug = Debug('NOWnews-api:api:validators:role:update');
 
 import _ from 'lodash';
 import is from 'is_js';
+import mongoose from 'mongoose';
 
 module.exports = (req, res, next) => {
 
@@ -19,7 +20,7 @@ module.exports = (req, res, next) => {
         throw new Error('12002');
     }
 
-    if (!UpdatedBy) {
+    if(!mongoose.Types.ObjectId.isValid(UpdatedBy)) {
         throw new Error('12005');
     }
 
