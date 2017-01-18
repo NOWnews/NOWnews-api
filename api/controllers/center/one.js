@@ -12,8 +12,11 @@ module.exports = async (req, res, next) => {
 
         let center = await Center.findById(id)
             .where('isTrashed').equals(false)
-            .populate('Departments')
+            .populate('Departments CreatedBy UpdatedBy')
             .execAsync();
+
+        center = center.toObject({ virtuals: true });
+
         debug('center = %j', center);
 
         if(!center) {
