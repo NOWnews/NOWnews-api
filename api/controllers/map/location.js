@@ -12,7 +12,6 @@ module.exports = async (req, res, next) => {
     let { address, latlng } = req.query;
     let geoKey = config.get('apiKeys.geocode');
     let geoUrl = config.get('apiUrls.geocode');
-    let result;
 
     try {
 
@@ -39,12 +38,9 @@ module.exports = async (req, res, next) => {
 
         let location = geoData.results[0];
 
-        if(address) {
-            result = [location.geometry.location.lat, location.geometry.location.lng];
-        }
-
-        if(latlng) {
-            result = location.address_components;
+        let result = {
+            address: location.formatted_address,
+            location: [location.geometry.location.lat, location.geometry.location.lng]
         }
 
         return res.json(result);
