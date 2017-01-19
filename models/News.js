@@ -207,6 +207,9 @@ let schema = new Schema({
     versionKey: false,
     timestamps: {
         updatedAt: 'updatedAt'
+    },
+    toJSON:{
+        virtuals: true,
     }
 });
 

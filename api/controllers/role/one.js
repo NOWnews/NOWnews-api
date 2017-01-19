@@ -12,6 +12,7 @@ module.exports = async (req, res, next) => {
 
         let role = await Role.findById(id)
             .where('isTrashed').equals(false)
+            .populate('CreatedBy UpdatedBy')
             .execAsync();
 
         debug('role = %j', role);

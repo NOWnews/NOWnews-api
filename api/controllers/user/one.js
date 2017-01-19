@@ -15,6 +15,7 @@ module.exports = async (req, res, next) => {
             .populate('Role Center Department CreatedBy UpdatedBy')
             .select('-password')
             .execAsync();
+
         debug('user = %j', user);
 
         if(!user) {
