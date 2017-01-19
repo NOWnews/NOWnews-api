@@ -1,5 +1,6 @@
-
 import Debug from 'debug';
+import is from 'is_js';
+
 const debug = Debug('NOWnews-api:api:controllers:center:update');
 
 import Promise from 'bluebird';
@@ -37,8 +38,14 @@ module.exports = async (req, res, next) => {
             center.set('name', name);
         }
 
-        if(Departments && Departments.length !== 0) {
+
+        if(Departments && is.string(Departments)) {
+            center.Departments.push(Departments);
+        }
+
+        if(Departments && is.Array(Departments)) {
             center.set('Departments', Departments);
+            return;
         }
 
         center.set('UpdatedBy', UpdatedBy);
