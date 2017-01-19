@@ -15,8 +15,6 @@ module.exports = async (req, res, next) => {
             .populate('CreatedBy UpdatedBy')
             .execAsync();
 
-        role = role.toObject({ virtuals: true });
-
         debug('role = %j', role);
 
         if(!role) {

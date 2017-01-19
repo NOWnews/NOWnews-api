@@ -77,7 +77,7 @@ let schema = new Schema({
     updatedAt: {
         type: Date,
         default: Date.now
-    }
+    },
 }, {
     versionKey: false,
     timestamps: {

@@ -16,8 +16,6 @@ module.exports = async (req, res, next) => {
             .select('-password')
             .execAsync();
 
-        user = user.toObject({ virtuals: true });
-
         debug('user = %j', user);
 
         if(!user) {

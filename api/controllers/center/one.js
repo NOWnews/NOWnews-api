@@ -15,8 +15,6 @@ module.exports = async (req, res, next) => {
             .populate('Departments CreatedBy UpdatedBy')
             .execAsync();
 
-        center = center.toObject({ virtuals: true });
-
         debug('center = %j', center);
 
         if(!center) {
