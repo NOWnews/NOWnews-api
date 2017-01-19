@@ -49,7 +49,7 @@ module.exports = {
     //     statusCode: 400
     // },
     11009: {
-        message: '[User Create] 缺少 CreatedBy 這個欄位',
+        message: '[User Create] 缺少 CreatedBy 這個欄位或是格式不正確',
         statusCode: 400
     },
     // 110010: {
@@ -72,7 +72,7 @@ module.exports = {
     },
 
     11013: {
-        message: '[User Update] 缺少 UpdatedBy 這個欄位',
+        message: '[User Update] 缺少 UpdatedBy 這個欄位或是格式不正確',
         statusCode: 400
     },
 
@@ -90,11 +90,11 @@ module.exports = {
         statusCode: 400
     },
     12004: {
-        message: '[Role Create] 缺少 CreatedBy 這個欄位',
+        message: '[Role Create] 缺少 CreatedBy 這個欄位或是格式不正確',
         statusCode: 400
     },
     12005: {
-        message: '[Role Create] 缺少 UpdatedBy 這個欄位',
+        message: '[Role Create] 缺少 UpdatedBy 這個欄位或是格式不正確',
         statusCode: 400
     },
     12006: {
@@ -133,6 +133,22 @@ module.exports = {
     // Image
     15001: {
         message: '[Image findOne] 找不到這個圖片資料',
+        statusCode: 404
+    },
+
+    // User
+    16001: {
+        message: '[News Create] 缺少 title 這個欄位',
+        statusCode: 400
+    },
+
+    16002: {
+        message: '[News Create] 缺少 CreatedBy 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    16003: {
+        message: '[News findOne] 找不到新聞',
         statusCode: 404
     }
 };

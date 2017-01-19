@@ -5,6 +5,7 @@ import role from './role';
 import center from './center';
 import department from './department';
 import image from './image';
+import news from './news';
 
 module.exports = (app) => {
 
@@ -15,6 +16,7 @@ module.exports = (app) => {
     app.use('/', center);
     app.use('/', image);
     app.use('/', department);
+    app.use('/', news);
 
     return (req, res, next) => {
         return next();
