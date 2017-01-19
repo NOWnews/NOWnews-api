@@ -38,13 +38,14 @@ module.exports = async (req, res, next) => {
             center.set('name', name);
         }
 
-        if(Departments) {
-            if(is.string(Departments)) {
-                center.Departments.push(Departments);
-            } else if(Departments.length !== 0) {
-                center.set('Departments', Departments);
-                return
-            }
+
+        if(Departments && is.string(Departments)) {
+            center.Departments.push(Departments);
+        }
+
+        if(Departments && is.Array(Departments)) {
+            center.set('Departments', Departments);
+            return
         }
 
         center.set('UpdatedBy', UpdatedBy);
