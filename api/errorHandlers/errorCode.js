@@ -17,7 +17,7 @@ module.exports = {
 
     // User Create Validate
     11001: {
-        message: '[User Create] 缺少 name 這個欄位',
+        message: '[User] 缺少 name 這個欄位',
         statusCode: 400
     },
     // 11002: {
@@ -29,11 +29,11 @@ module.exports = {
     //     statusCode: 400
     // },
     11004: {
-        message: '[User Create] 缺少 email 這個欄位',
+        message: '[User] 缺少 email 這個欄位',
         statusCode: 400
     },
     11005: {
-        message: '[User Create] 缺少 password 這個欄位',
+        message: '[User] 缺少 password 這個欄位',
         statusCode: 400
     },
     // 11006: {
@@ -49,7 +49,7 @@ module.exports = {
     //     statusCode: 400
     // },
     11009: {
-        message: '[User Create] 缺少 CreatedBy 這個欄位或是格式不正確',
+        message: '[User] 缺少 CreatedBy 這個欄位或是格式不正確',
         statusCode: 400
     },
     // 110010: {
@@ -57,23 +57,28 @@ module.exports = {
     //     statusCode: 400
     // },
     11010: {
-        message: '[User Create] email 已經註冊過了',
+        message: '[User] email 已經註冊過了',
         statusCode: 400
     },
 
     11011: {
-        message: '[User findOne] 找不到這個 User',
+        message: '[User] 找不到這個 User',
         statusCode: 404
     },
 
     11012: {
-        message: '[User Update] url 格式不正確',
+        message: '[User] url 格式不正確',
         statusCode: 400
     },
 
     11013: {
-        message: '[User Update] 缺少 UpdatedBy 這個欄位或是格式不正確',
+        message: '[User] 缺少 UpdatedBy 這個欄位或是格式不正確',
         statusCode: 400
+    },
+
+    11014: {
+        message: '[User] 找不到使用者或是帳號已經停權，建議檢查帳號密碼或是聯絡管理員',
+        statusCode: 404
     },
 
     // Role Create Validate

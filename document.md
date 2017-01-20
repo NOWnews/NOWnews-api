@@ -44,12 +44,7 @@ None
 | CreatedBy | 建立者 ObjectId | ObjectId  | √ | `530000000000000000000001` |
 
 #### Query Parameters
-
-| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
-|---|---|---|---|---|
-| page | 第幾頁 | Number |  | `page=1` |
-| limit | 一次幾筆資料 | Number |  | `limit=10` |
-| skip | 跳過幾筆資料 | Number |  | `skip=10` |
+None
 
 ### [GET] `/users`
 
@@ -78,6 +73,29 @@ None
 | page | 第幾頁 | Number |  | `page=1` |
 | limit | 一次幾筆資料 | Number |  | `limit=10` |
 | skip | 跳過幾筆資料 | Number |  | `skip=10` |
+
+### [POST] `/users/login`
+
+登入端點
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| email | email | String | √ | `simon.sun@nownews.com` |
+| password | 密碼 | String | √  | `19880118` |
+
+#### Query Parameters
+None
 
 ### [GET] `/users/{:id}`
 
