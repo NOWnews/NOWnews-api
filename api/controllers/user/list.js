@@ -7,24 +7,45 @@ import { pagination } from '../../../libs';
 
 module.exports = async (req, res, next) => {
 
-    let { limit, page, skip } = req.query;
+    let { limit, page, skip, name, status, Role, sort } = req.query;
     debug('req.query = %j', req.query);
 
     try{
 
-        let users = await User.find()
+        let cursor = User.find();
+        let totalCursor = User.find(); // 處理分頁用的
+
+        if(name) {
+            cursor.where('name').equals(new RegExp(name, 'i'));
+            totalCursor.where('name').equals(new RegExp(name, 'i'));
+        }
+
+        if(status) {
+            cursor.where('status').equals(status);
+            totalCursor.where('status').equals(status);
+        }
+
+        if(Role) {
+            cursor.where('Role').equals(Role);
+            totalCursor.where('Role').equals(Role);
+        }
+
+        if(sort) {
+            cursor.sort(sort);
+        }
+
+        let users = await cursor
             .where('isTrashed').equals(false)
             .where('isInitUser').equals(false)
             .populate('Role Center Department')
             .limit(limit)
             .skip(skip)
             .select('-password')
-            .sort('createdAt')
             .execAsync();
         debug('users = %j', users);
 
         // 處理分頁
-        let total = await User.find()
+        let total = await totalCursor
             .where('isTrashed').equals(false)
             .where('isInitUser').equals(false)
             .countAsync();

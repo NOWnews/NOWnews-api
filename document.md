@@ -71,6 +71,10 @@ None
 
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
+| name | 姓名(模糊搜尋) | String |  | `name=wa` |
+| status | 狀態(完全比對) | String |  | `status=NEWBIE` |
+| Role | 角色(完全比對) | String |  | `Role=520000000000000000000001` |
+| sort | 排序 | String |  | `sort=-createdAt`, `sort=name` |
 | page | 第幾頁 | Number |  | `page=1` |
 | limit | 一次幾筆資料 | Number |  | `limit=10` |
 | skip | 跳過幾筆資料 | Number |  | `skip=10` |
