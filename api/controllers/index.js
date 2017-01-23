@@ -6,6 +6,7 @@ import center from './center';
 import department from './department';
 import image from './image';
 import news from './news';
+import newsMemo from './newsMemo';
 import map from './map';
 
 module.exports = (app) => {
@@ -18,6 +19,7 @@ module.exports = (app) => {
     app.use('/', image);
     app.use('/', department);
     app.use('/', news);
+    app.use('/', newsMemo);
     app.use('/', map);
 
     return (req, res, next) => {

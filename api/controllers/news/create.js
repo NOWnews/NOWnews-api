@@ -27,7 +27,6 @@ module.exports = async (req, res, next) => {
             'isAdult',
             'isDeliver',
             'location',
-            'memo',
             'Author',
             'Tags',
             'CreatedBy'
@@ -38,6 +37,7 @@ module.exports = async (req, res, next) => {
         if(!options.Author) {
             options.Author = options.CreatedBy;
         }
+
         debug('options = %j', options);
 
         let newNews = await News.createAsync(options);
