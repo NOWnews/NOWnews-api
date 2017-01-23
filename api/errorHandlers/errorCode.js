@@ -141,7 +141,7 @@ module.exports = {
         statusCode: 404
     },
 
-    // User
+    // News
     16001: {
         message: '[News Create] 缺少 title 這個欄位',
         statusCode: 400
@@ -155,5 +155,21 @@ module.exports = {
     16003: {
         message: '[News findOne] 找不到新聞',
         statusCode: 404
+    },
+
+    // NewsMemo
+    17001: {
+        message: '[NewsMemo] 缺少 News 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    17002: {
+        message: '[NewsMemo] 缺少 content 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    17003: {
+        message: '[NewsMemo] 缺少 CreatedBy 這個欄位或是格式不正確',
+        statusCode: 400
     }
 };

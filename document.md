@@ -388,7 +388,7 @@ None
 #### Query Parameters
 None
 
-## USER API DOCUMENTS
+## NEWS API DOCUMENTS
 
 ### [POST] `/news`
 
@@ -518,3 +518,52 @@ None
 |---|---|---|---|---|
 | address | 地址 | String |  | `台北市內湖區` |
 | latlng | 座標 | String | | `25.0261583,121.5427093` |
+
+## NEWS MEMO API DOCUMENTS
+
+### [POST] `/newsmemo`
+
+為一則新聞加入一筆備忘錄
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| News | 新聞的ObjectId | ObjectId  | √ | |
+| content | memo 的內容 | String | √ | `這篇新聞送審中` |
+| CreatedBy | 建立者 | ObjectId | √ | |
+
+#### Query Parameters
+None
+
+### [GET] `/newsmemo`
+
+找尋某則新聞的所有備忘錄
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+None
+
+#### Body Parameters
+None
+
+#### Query Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| news | 新聞的 ObjectId | ObjectId | | |

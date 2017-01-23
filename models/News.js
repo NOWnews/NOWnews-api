@@ -134,19 +134,6 @@ let schema = new Schema({
         }
     }],
 
-    // 備忘錄
-    memo: [{
-        name: {
-            type: String
-        },
-        createdAt: {
-            type: Date
-        },
-        content: {
-            type: String
-        }
-    }],
-
     // 作者，如果沒有選擇，就會與 CreatedBy 相同
     Author: {
         type: Schema.Types.ObjectId,
