@@ -566,3 +566,4 @@ None
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
 | news | 新聞的 ObjectId | ObjectId | | |
+| sort | 排序的方式 | String | | `createdAt`, `-updatedAt` |
