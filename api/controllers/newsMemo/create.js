@@ -9,6 +9,7 @@ import { NewsMemo } from '../../../models';
 module.exports = async (req, res, next) => {
 
     let options = _.pick(req.body, 'News', 'content', 'CreatedBy');
+    options.UpdatedBy = options.CreatedBy;
 
     try {
 
@@ -17,6 +18,6 @@ module.exports = async (req, res, next) => {
 
         return res.json(newMemo);
     }catch(err) {
-        return next();
+        return next(err);
     }
 };

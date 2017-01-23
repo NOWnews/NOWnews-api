@@ -9,6 +9,7 @@ import is from 'is_js';
 import mongoose from 'mongoose';
 
 module.exports = (req, res, next) => {
+
     let { 
         News,
         content,

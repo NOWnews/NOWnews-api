@@ -24,6 +24,6 @@ module.exports = async (req, res, next) => {
 
         return res.json(memoList);
     }catch(err) {
-        return next();
+        return next(err);
     }
 };

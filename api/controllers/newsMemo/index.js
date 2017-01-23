@@ -7,7 +7,7 @@ import validators from '../../validators';
 import create from './create';
 import list from './list';
 
-router.route('/newsmemo/')
+router.route('/newsmemo')
     .post(validators.newsMemo.create, create)
     .get(list);
 
