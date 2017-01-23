@@ -6,12 +6,15 @@ import { NewsMemo } from '../../../models';
 
 module.exports = async (req, res, next) => {
 
-    let { News } = req.query;
+    let { News, sort } = req.query;
 
     try {
 
+        sort = sort ? sort : '-createdAt';
+
         let cursor = NewsMemo.find()
-            .where('isTrashed').equals(false);
+            .where('isTrashed').equals(false)
+            .sort(sort);
 
         if(News) {
             cursor.where('News').equals(News);

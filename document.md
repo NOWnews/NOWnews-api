@@ -424,7 +424,6 @@ None
 | isAdult | 成人新聞 | Boolean | | |
 | isDeliver | 可否外送 | Boolean | | |
 | location | 這則新聞的做標 | Object | | `[124, 12]` |
-| memo | 備忘錄 | Object | | |
 | Author | 作者，若沒傳入則帶入建立者 | ObjectId | | |
 | Tags | 標籤(關鍵字) | [ObjectId] | | |
 | CreatedBy | 建立者 | ObjectId | √ | |
