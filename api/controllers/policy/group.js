@@ -29,6 +29,6 @@ module.exports = async (req, res, next) => {
         debug('groups = %j', groups);
         return res.json(groups);
     }catch(err) {
-        return next();
+        return next(err);
     }
 };
