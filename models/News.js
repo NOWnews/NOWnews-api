@@ -124,16 +124,6 @@ let schema = new Schema({
         type: [Number]
     },
 
-    // 編輯紀錄
-    logs: [{
-        old: {
-            type: Schema.Types.Mixed
-        },
-        adjust: {
-            type: Schema.Types.Mixed
-        }
-    }],
-
     // 作者，如果沒有選擇，就會與 CreatedBy 相同
     Author: {
         type: Schema.Types.ObjectId,
