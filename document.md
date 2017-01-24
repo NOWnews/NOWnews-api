@@ -567,3 +567,51 @@ None
 |---|---|---|---|---|
 | news | 新聞的 ObjectId | ObjectId | | |
 | sort | 排序的方式 | String | | `createdAt`, `-updatedAt` |
+
+## NEWS LOG API DOCUMENTS
+
+### [GET] `/newslog`
+
+找尋新聞編輯紀錄列表
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+None
+
+#### Body Parameters
+None
+
+#### Query Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| newsId | 新聞的 ObjectId | ObjectId | | |
+| sort | 排序的方式 | String | | `createdAt`, `-updatedAt` |
+
+### [GET] `/newslog/compare`
+
+抓兩筆 log 出來做比較
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+None
+
+#### Body Parameters
+None
+
+#### Query Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| beforeLogId | log ObjectId | ObjectId | | |
+| afterLogId | log ObjectId | ObjectId | | |

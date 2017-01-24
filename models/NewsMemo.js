@@ -66,7 +66,7 @@ schema.virtual('formatUpdatedAt').get(function () {
 });
 
 schema.plugin(autoIncrement, {
-    collection_name: 'NewsMemoCounter',
+    collection_name: 'SerialNumberCounter',
     inc_field: 'sn',
     id: 'newsMemo_sn'
 });
