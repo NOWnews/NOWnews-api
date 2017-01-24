@@ -5,6 +5,7 @@ const debug = Debug('NOWnews-api:api:controllers:news:create');
 import _ from 'lodash';
 
 import { News } from '../../../models';
+import { newsLog } from '../../../libs';
 
 module.exports = async (req, res, next) => {
 
@@ -42,6 +43,9 @@ module.exports = async (req, res, next) => {
 
         let newNews = await News.createAsync(options);
         debug('new news = %j', newNews);
+
+        // 處理 log
+        await newsLog(newNews);
 
         return res.json(newNews);
     }catch(err) {

@@ -7,6 +7,7 @@ import department from './department';
 import image from './image';
 import news from './news';
 import newsMemo from './newsMemo';
+import newsLog from './newsLog';
 import map from './map';
 
 module.exports = (app) => {
@@ -20,6 +21,7 @@ module.exports = (app) => {
     app.use('/', department);
     app.use('/', news);
     app.use('/', newsMemo);
+    app.use('/', newsLog);
     app.use('/', map);
 
     return (req, res, next) => {
