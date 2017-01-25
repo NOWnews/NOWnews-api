@@ -43,7 +43,7 @@ module.exports = async (req, res, next) => {
             center.Departments.push(Departments);
         }
 
-        if(Departments && is.Array(Departments)) {
+        if(Departments && is.array(Departments)) {
             center.set('Departments', Departments);
             return;
         }
