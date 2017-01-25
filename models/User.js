@@ -101,8 +101,8 @@ let schema = new Schema({
 
     // 個人大頭照
     Avatar: {
-        type: String,
-        trim: true,
+        type: Schema.Types.ObjectId,
+        ref: 'Image',
         sparse: true,
         default: null
     },
