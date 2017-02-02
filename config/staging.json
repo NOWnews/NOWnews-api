@@ -22,5 +22,13 @@
     },
     "apiUrls": {
         "geocode": "https://maps.googleapis.com/maps/api/geocode/json"
+    },
+    "imageServer": {
+        "username": "imgscp",
+        "password": "zAQ!@#EDCXSW",
+        "host": "61.67.121.168",
+        "port": 50022,
+        "url": "http://img.nownews.com/nownews_staging",
+        "folder": "/var/www/images/nownews_staging"
     }
 }
