@@ -472,6 +472,141 @@ None
 #### Query Parameters
 None
 
+### [PUT] `/news/{:id}/review`
+
+送審一篇新聞
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | 新聞 ObjectId | String | √ | |
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| title | 新聞長標題 | String | √ | |
+| shortTitle | 新聞短標題 | String | | |
+| summary | 新聞摘要 | String | | |
+| MainPhoto | 新聞首圖 | ObjectId | | |
+| MainVideo | 新聞主影片 | ObjectId | | |
+| content | 新聞內容 | String | √ | |
+| Photos | 新聞圖片集合 | ObjectIds | | |
+| Videos | 新聞影片集合 | ObjectIds | | |
+| freeContent | 自由欄位 | String | | |
+| startedAt | 新聞開始時間 | Date | | |
+| type | 新聞的類別 | `['NEWS','VIDEO','PHOTO']` | | |
+| traceCode | 新聞的追蹤碼 | String | | |
+| isAdult | 是否為成人 | Boolean | | |
+| isDeliver | 是否可外送 | Boolean | | |
+| location | 這則新聞的做標 | Object | | `[124, 12]` |
+| LastReviewer | 欲將新聞送審的人 | ObjectId | √ | |
+| Author | 作者，若沒傳入則帶入建立者 | ObjectId | √ | |
+| Tags | 標籤(關鍵字) | [ObjectId] | | |
+| UpdatedBy | 更新者 | ObjectId | √ | |
+
+#### Query Parameters
+None
+
+### [PUT] `/news/{:id}/release`
+
+發布一篇新聞
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | 新聞 ObjectId | String | √ | |
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| title | 新聞長標題 | String | √ | |
+| shortTitle | 新聞短標題 | String | | |
+| summary | 新聞摘要 | String | | |
+| MainPhoto | 新聞首圖 | ObjectId | | |
+| MainVideo | 新聞主影片 | ObjectId | | |
+| content | 新聞內容 | String | √ | |
+| Photos | 新聞圖片集合 | ObjectIds | | |
+| Videos | 新聞影片集合 | ObjectIds | | |
+| freeContent | 自由欄位 | String | | |
+| startedAt | 新聞開始時間 | Date | | |
+| type | 新聞的類別 | `['NEWS','VIDEO','PHOTO']` | | |
+| traceCode | 新聞的追蹤碼 | String | | |
+| isAdult | 是否為成人 | Boolean | | |
+| isDeliver | 是否可外送 | Boolean | | |
+| location | 這則新聞的做標 | Object | | `[124, 12]` |
+| Author | 作者，若沒傳入則帶入建立者 | ObjectId | √ | |
+| Tags | 標籤(關鍵字) | [ObjectId] | | |
+| UpdatedBy | 更新者 | ObjectId | √ | |
+
+#### Query Parameters
+None
+
+### [PUT] `/news/{:id}/draft`
+
+將一篇新聞變回草稿
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | 新聞 ObjectId | String | √ | |
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| UpdatedBy | 更新者 | ObjectId | √ | |
+
+#### Query Parameters
+None
+
+### [PUT] `/news/{:id}/close`
+
+將一篇新聞關閉
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | 新聞 ObjectId | String | √ | |
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| UpdatedBy | 更新者 | ObjectId | √ | |
+
+#### Query Parameters
+None
+
 ### [DELETE] `/news/{:id}`
 
 刪除新聞

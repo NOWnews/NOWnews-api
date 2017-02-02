@@ -25,15 +25,15 @@ router.route('/news/:id')
     .put(update);
 
 router.route('/news/:id/draft')
-    .put(draft);
+    .put(validators.news.draft, draft);
 
 router.route('/news/:id/review')
-    .put(review);
+    .put(validators.news.review, review);
 
 router.route('/news/:id/release')
-    .put(release);
+    .put(validators.news.release, release);
 
 router.route('/news/:id/close')
-    .put(close);
+    .put(validators.news.close, close);
 
 module.exports = router;

@@ -149,6 +149,13 @@ let schema = new Schema({
         default: 'OWN'
     },
 
+    // 最後的新聞審稿者
+    LastReviewer: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        default: null
+    },
+
     // 是否被刪除
     isTrashed: {
         type: Boolean,
