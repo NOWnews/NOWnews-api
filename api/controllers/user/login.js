@@ -16,7 +16,7 @@ module.exports = async (req, res, next) => {
             .where('password').equals(hashPwd(password))
             .where('isTrashed').equals(false)
             .where('status').nin(['SUSPENDED','LEAVING'])
-            .populate('Role Center Department CreatedBy UpdatedBy')
+            .populate('Avatar Role Center Department CreatedBy UpdatedBy')
             .select('-password')
             .execAsync();
 
