@@ -30,6 +30,7 @@ module.exports = async (news, action = 'CREATE') => {
             Tags: news.Tags,
             isFeed: news.isFeed,
             feedFrom: news.feedFrom,
+            LastReviewer: news.LastReviewer,
             CreatedBy: news.UpdatedBy,
             UpdatedBy: news.UpdatedBy,
             action

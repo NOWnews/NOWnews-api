@@ -129,7 +129,8 @@ let schema = new Schema({
 
     // 新聞作者物件
     Author: {
-        type: Schema.Types.Mixed
+        type: Schema.Types.Mixed,
+        default: null
     },
 
     // 此新聞的標籤(關鍵字)
@@ -146,6 +147,12 @@ let schema = new Schema({
     // 新聞RSS內送的單位
     feedFrom: {
         type: String,
+        default: null
+    },
+
+    // 最後的新聞審稿者
+    LastReviewer: {
+        type: Schema.Types.Mixed,
         default: null
     },
 

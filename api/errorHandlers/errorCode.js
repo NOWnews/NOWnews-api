@@ -143,18 +143,53 @@ module.exports = {
 
     // News
     16001: {
-        message: '[News Create] 缺少 title 這個欄位',
+        message: '[News] 缺少 title 這個欄位',
         statusCode: 400
     },
 
     16002: {
-        message: '[News Create] 缺少 CreatedBy 這個欄位或是格式不正確',
+        message: '[News] 缺少 CreatedBy 這個欄位或是格式不正確',
         statusCode: 400
     },
 
     16003: {
-        message: '[News findOne] 找不到新聞',
+        message: '[News] 找不到新聞',
         statusCode: 404
+    },
+
+    16004: {
+        message: '[News] 缺少 content 這個欄位',
+        statusCode: 400
+    },
+
+    16005: {
+        message: '[News] 缺少 UpdatedBy 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    16006: {
+        message: '[News] 缺少 Author 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    16007: {
+        message: '[News] 缺少 LastReviewer 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    16008: {
+        message: '[News] 審核者與送審者不能為同一個人',
+        statusCode: 403
+    },
+
+    16009: {
+        message: '[News] 此新聞現在的狀態無法送審，請回復至草稿',
+        statusCode: 403
+    },
+
+    16010: {
+        message: '[News] 自己無法發布自己的新聞，請審核者協助發佈',
+        statusCode: 403
     },
 
     // NewsMemo
