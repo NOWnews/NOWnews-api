@@ -448,7 +448,18 @@ None
 None
 
 #### Query Parameters
-None
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| title | 標題(模糊搜尋) | String |  | `title=今天` |
+| status | 狀態 | String |  | `status=DRAFT` |
+| Author | 作者 | String |  | `Author=520000000000000000000001` |
+| CreatedBy | 建立者 | String |  | `CreatedBy=520000000000000000000001` |
+| UpdatedBy | 更新者 | String |  | `UpdatedBy=520000000000000000000001` |
+| page | 第幾頁 | Number |  | `page=1` |
+| limit | 一次幾筆資料 | Number |  | `limit=10` |
+| skip | 跳過幾筆資料 | Number |  | `skip=10` |
+| sort | 排序(預設為最新在最前面) | String | | `sort=createdAt`, `sort=-title` |
 
 ### [GET] `/news/{:id}`
 

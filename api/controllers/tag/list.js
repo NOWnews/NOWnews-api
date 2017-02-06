@@ -17,7 +17,7 @@ module.exports = async (req, res, next) => {
         let totalCursor = Tag.find(); // 處理分頁用的
 
         if(name) {
-            cursor.where('name', new RegExp(name, 'i'));
+            cursor.where('name').equals(new RegExp(name, 'i'));
             totalCursor.where('name').equals(new RegExp(name, 'i'));
         }
 
