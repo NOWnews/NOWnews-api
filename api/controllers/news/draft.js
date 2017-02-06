@@ -87,6 +87,10 @@ module.exports = async (req, res, next) => {
             news.set('Author', req.body.Author);
         }
 
+        if(req.body.LastReviewer) {
+            news.set('LastReviewer', req.body.LastReviewer);
+        }
+
         if(req.body.Tags) {
             news.set('Tags', req.body.Tags);
         }
