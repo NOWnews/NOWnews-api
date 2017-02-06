@@ -750,3 +750,106 @@ None
 |---|---|---|---|---|
 | beforeLogId | log ObjectId | ObjectId | | |
 | afterLogId | log ObjectId | ObjectId | | |
+
+## TAG API DOCUMENT
+
+### [GET] `/tags`
+
+取得 tag 列表
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| name | 姓名(模糊搜尋) | String |  | `name=wa` |
+| page | 第幾頁 | Number |  | `page=1` |
+| limit | 一次幾筆資料 | Number |  | `limit=10` |
+| skip | 跳過幾筆資料 | Number |  | `skip=10` |
+
+### [POST] `/tags`
+
+創建一個 tag
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| name | 名稱 | String | √ | `分析師` |
+| type | 類別 | String | | `分析後台資料` |
+| CreatedBy | 建立者 | String | √ | `530000000000000000000001` |
+
+#### Query Parameters
+
+None
+
+### [GET] `/tags/{:id}`
+
+取得單一 tag 資訊
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | tag 的 ObjectId | ObjectId |  | |
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None
+
+### [DELETE] `/tags/{:id}`
+
+刪除單一 tag
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | tag 的 ObjectId | ObjectId |  |  |
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None

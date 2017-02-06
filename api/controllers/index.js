@@ -9,6 +9,7 @@ import news from './news';
 import newsMemo from './newsMemo';
 import newsLog from './newsLog';
 import map from './map';
+import tag from './tag';
 
 module.exports = (app) => {
 
@@ -23,6 +24,7 @@ module.exports = (app) => {
     app.use('/', newsMemo);
     app.use('/', newsLog);
     app.use('/', map);
+    app.use('/', tag);
 
     return (req, res, next) => {
         return next();
