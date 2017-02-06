@@ -206,5 +206,26 @@ module.exports = {
     17003: {
         message: '[NewsMemo] 缺少 CreatedBy 這個欄位或是格式不正確',
         statusCode: 400
+    },
+
+    // Tag
+    18001: {
+        message: '[Tag] Tag 名稱重複，請輸入其他名稱',
+        statusCode: 400
+    },
+
+    18002: {
+        message: '[Tag] 缺少 name 這個欄位',
+        statusCode: 400
+    },
+
+    18003: {
+        message: '[Tag] 缺少 CreatedBy 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    18004: {
+        message: '[Tag] 找不到 Tag',
+        statusCode: 404
     }
 };

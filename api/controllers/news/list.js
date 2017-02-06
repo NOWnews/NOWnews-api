@@ -14,6 +14,8 @@ module.exports = async (req, res, next) => {
 
         let newsList = await News.find()
             .where('isTrashed').equals(false)
+            .limit(limit)
+            .skip(skip)
             .execAsync();
         debug('news list = %j', newsList);
 
