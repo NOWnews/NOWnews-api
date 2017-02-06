@@ -23,6 +23,74 @@ module.exports = async (req, res, next) => {
         news.set('status', 'DRAFT');
         news.set('UpdatedBy', UpdatedBy);
 
+        if(req.body.title) {
+            news.set('title', req.body.title);
+        }
+
+        if(req.body.shortTitle) {
+            news.set('shortTitle', req.body.shortTitle);
+        }
+
+        if(req.body.summary) {
+            news.set('summary', req.body.summary);
+        }
+
+        if(req.body.MainPhoto) {
+            news.set('MainPhoto', req.body.MainPhoto);
+        }
+
+        if(req.body.MainVideo) {
+            news.set('MainVideo', req.body.MainVideo);
+        }
+
+        if(req.body.content) {
+            news.set('content', req.body.content);
+        }
+
+        if(req.body.Photos) {
+            news.set('Photos', req.body.Photos);
+        }
+
+        if(req.body.Videos) {
+            news.set('Videos', req.body.Videos);
+        }
+
+        if(req.body.freeContent) {
+            news.set('freeContent', req.body.freeContent);
+        }
+
+        if(req.body.startedAt) {
+            news.set('startedAt', req.body.startedAt);
+        }
+
+        if(req.body.type) {
+            news.set('type', req.body.type);
+        }
+
+        if(req.body.traceCode) {
+            news.set('traceCode', req.body.traceCode);
+        }
+
+        if(req.body.isAdult) {
+            news.set('isAdult', req.body.isAdult);
+        }
+
+        if(req.body.isDeliver) {
+            news.set('isDeliver', req.body.isDeliver);
+        }
+
+        if(req.body.location) {
+            news.set('location', req.body.location);
+        }
+
+        if(req.body.Author) {
+            news.set('Author', req.body.Author);
+        }
+
+        if(req.body.Tags) {
+            news.set('Tags', req.body.Tags);
+        }
+
         let updatedNews = await news.saveAsync();
         debug('update news = %j', updatedNews);
 
