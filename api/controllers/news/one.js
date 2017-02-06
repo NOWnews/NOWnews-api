@@ -11,6 +11,7 @@ module.exports = async (req, res, next) => {
 
         let news = await News.findById(id)
             .where('isTrashed').equals(false)
+            .populate('Author LastReviewer CreatedBy UpdatedBy')
             .execAsync();
 
         if(!news) {
