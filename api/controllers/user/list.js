@@ -16,6 +16,7 @@ module.exports = async (req, res, next) => {
 
         let cursor = User.find();
         let totalCursor = User.find(); // 處理分頁用的
+        sort = sort ? sort : 'createdAt'
 
         if(name) {
             cursor.where('name').equals(new RegExp(name, 'i'));
@@ -32,10 +33,6 @@ module.exports = async (req, res, next) => {
             totalCursor.where('Role').equals(Role);
         }
 
-        if(sort) {
-            cursor.sort(sort);
-        }
-
         let [ users, total ] = await Promise.all([
             cursor
                 .where('isTrashed').equals(false)
@@ -43,6 +40,7 @@ module.exports = async (req, res, next) => {
                 .populate('Role Center Department')
                 .limit(limit)
                 .skip(skip)
+                .sort(sort)
                 .select('-password')
                 .execAsync(),
             totalCursor
