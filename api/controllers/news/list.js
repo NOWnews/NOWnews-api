@@ -16,6 +16,7 @@ module.exports = async (req, res, next) => {
             .where('isTrashed').equals(false)
             .limit(limit)
             .skip(skip)
+            .populate('Author LastReviewer CreatedBy UpdatedBy')
             .execAsync();
         debug('news list = %j', newsList);
 
