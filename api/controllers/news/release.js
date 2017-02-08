@@ -33,6 +33,10 @@ module.exports = async (req, res, next) => {
         news.set('UpdatedBy', UpdatedBy);
         news.set('status', 'RELEASE');
 
+        // 處理發布時間問題
+        let startedAt = req.body.startedAt ? req.body.startedAt : Date.now();
+        news.set('startedAt', startedAt);
+
         if(req.body.shortTitle) {
             news.set('shortTitle', req.body.shortTitle);
         }
@@ -61,10 +65,6 @@ module.exports = async (req, res, next) => {
             news.set('freeContent', req.body.freeContent);
         }
 
-        if(req.body.startedAt) {
-            news.set('startedAt', req.body.startedAt);
-        }
-
         if(req.body.type) {
             news.set('type', req.body.type);
         }
@@ -74,11 +74,13 @@ module.exports = async (req, res, next) => {
         }
 
         if(req.body.isAdult) {
-            news.set('isAdult', req.body.isAdult);
+            let isAdult = req.body.isAdult === 'true' ? true : false;
+            news.set('isAdult', isAdult);
         }
 
         if(req.body.isDeliver) {
-            news.set('isDeliver', req.body.isDeliver);
+            let isDeliver = req.body.isDeliver === 'true' ? true : false;
+            news.set('isDeliver', isDeliver);
         }
 
         if(req.body.location) {
