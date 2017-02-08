@@ -74,13 +74,11 @@ module.exports = async (req, res, next) => {
             news.set('traceCode', req.body.traceCode);
         }
 
-        if(req.body.isAdult) {
-            news.set('isAdult', req.body.isAdult);
-        }
+        let isAdult = req.body.isAdult === true ? true : false;
+        news.set('isAdult', isAdult);
 
-        if(req.body.isDeliver) {
-            news.set('isDeliver', req.body.isDeliver);
-        }
+        let isDeliver = req.body.isDeliver === true ? true : false;
+        news.set('isDeliver', isDeliver);
 
         if(req.body.location) {
             news.set('location', req.body.location);

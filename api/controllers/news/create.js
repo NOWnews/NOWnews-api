@@ -33,6 +33,12 @@ module.exports = async (req, res, next) => {
             'CreatedBy'
         ]);
 
+        let isAdult = options.isAdult === true ? true : false;
+        news.set('isAdult', isAdult);
+
+        let isDeliver = options.isDeliver === true ? true : false;
+        news.set('isDeliver', isDeliver);
+
         options.UpdatedBy = options.CreatedBy;
 
         if(!options.Author) {
