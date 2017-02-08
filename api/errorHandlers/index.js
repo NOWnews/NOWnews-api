@@ -8,15 +8,31 @@ module.exports = (app) => {
 
     app.use(function(err, req, res, next) {
 
+        let errorFormat = errorMapping[err.message];
+
+        // 預期外的錯誤
+        if (!errorFormat) {
+            console.log('-------------- ERROR --------------');
+            console.log(err.errors)
+            console.log(err.message)
+            console.log('-------------- ERROR --------------');
+            res.status(503);
+            return res.json({
+                message: err.message,
+                errorObj: err.errors,
+                status: 503
+            });
+        }
+
         console.log('-------------- ERROR --------------');
         console.log(pe.render(err));
-        console.log(errorMapping[err.message]);
+        console.log(errorFormat);
         console.log('-------------- ERROR --------------');
 
-        res.status(errorMapping[err.message].statusCode);
+        res.status(errorFormat.statusCode);
         return res.json({
-            message: errorMapping[err.message].message,
-            status: errorMapping[err.message].statusCode
+            message: errorFormat.message,
+            status: errorFormat.statusCode
         });
     });
 
