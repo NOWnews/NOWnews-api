@@ -34,10 +34,10 @@ module.exports = async (req, res, next) => {
         ]);
 
         let isAdult = options.isAdult === true ? true : false;
-        news.set('isAdult', isAdult);
+        options.isAdult = isAdult;
 
         let isDeliver = options.isDeliver === true ? true : false;
-        news.set('isDeliver', isDeliver);
+        options.isDeliver = isDeliver;
 
         options.UpdatedBy = options.CreatedBy;
 
