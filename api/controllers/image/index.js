@@ -5,10 +5,16 @@ import multer from 'multer';
 let router = express.Router();
 let imageUpload = multer({ dest: 'uploads/' });
 
+import baseQuery from '../../middlewares/baseQuery';
+
+import list from './list';
 import upload from './upload';
 import one from './one';
 import remove from './remove';
 import realRemove from './realRemove';
+
+router.route('/images')
+    .get(baseQuery, list);
 
 router.route('/images/upload')
     .post(imageUpload.single('image'), upload);
