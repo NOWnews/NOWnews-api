@@ -28,6 +28,7 @@ import Center from './Center';
 import Department from './Department';
 import Image from './Image';
 import Tag from './Tag';
+import Menu from './Menu';
 // import MainMenu from './MainMenu';
 // import SubMenu from './SubMenu';
 // import Test from './Test';
@@ -42,7 +43,8 @@ module.exports = {
     Center,
     Department,
     Image,
-    Tag
+    Tag,
+    Menu
     // MainMenu,
     // SubMenu,
     // Test
