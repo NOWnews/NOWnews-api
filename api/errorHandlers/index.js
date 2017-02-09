@@ -13,13 +13,24 @@ module.exports = (app) => {
         // 處理 error 訊息
         let options = {};
 
+        // 自定義的 error 處理
         if(errorFormat) {
             options.statusCode = errorFormat.statusCode;
             options.message = errorFormat.message;
-        }else {
+        }
+
+        // mongoose error 處理
+        if(!errorFormat && err && err.errors) {
             options.statusCode = 503;
             options.message = err.message;
-            options.stack = err.errors ? err.errors : err.stack.split('\n');
+            options.stack = err.errors;
+        }
+
+        // 其他底層錯誤處理
+        if(!errorFormat && err && !err.errors) {
+            options.statusCode = 503;
+            options.message = err.message;
+            options.stack = err.stack.split('\n');
         }
 
         // 在後台的 log 顯示
@@ -34,7 +45,8 @@ module.exports = (app) => {
         }
 
         return res.json({
-            status: options.statusCode
+            status: options.statusCode,
+            message: options.message
         });
     });
 
