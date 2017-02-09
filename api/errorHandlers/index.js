@@ -1,9 +1,7 @@
 
-import prettyError from 'pretty-error';
 import errorMapping from './errorCode';
 import config from 'config';
 
-let pe = new prettyError();
 let showError = config.get('showError');
 
 module.exports = (app) => {
