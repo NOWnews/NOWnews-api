@@ -1,5 +1,6 @@
 {
     "mode": "production",
+    "showError": false,
     "mongodb": {
         "host": "mongodb://localhost:27017",
         "db": "NOWnews_Production"

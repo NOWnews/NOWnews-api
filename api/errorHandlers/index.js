@@ -1,8 +1,10 @@
 
 import prettyError from 'pretty-error';
 import errorMapping from './errorCode';
+import config from 'config';
 
 let pe = new prettyError();
+let showError = config.get('showError');
 
 module.exports = (app) => {
 
@@ -10,29 +12,31 @@ module.exports = (app) => {
 
         let errorFormat = errorMapping[err.message];
 
-        // 預期外的錯誤
-        if (!errorFormat) {
-            console.log('-------------- ERROR --------------');
-            console.log(err.errors)
-            console.log(err.message)
-            console.log('-------------- ERROR --------------');
-            res.status(503);
-            return res.json({
-                message: err.message,
-                errorObj: err.errors,
-                status: 503
-            });
+        // 處理 error 訊息
+        let options = {};
+
+        if(errorFormat) {
+            options.statusCode = errorFormat.statusCode;
+            options.message = errorFormat.message;
+        }else {
+            options.statusCode = 503;
+            options.message = err.message;
+            options.stack = err.errors ? err.errors : err.stack.split('\n');
         }
 
-        console.log('-------------- ERROR --------------');
-        console.log(pe.render(err));
-        console.log(errorFormat);
-        console.log('-------------- ERROR --------------');
+        // 在後台的 log 顯示
+        console.error('-------------- ERROR --------------');
+        console.error(options);
+        console.error('-------------- ERROR --------------');
 
-        res.status(errorFormat.statusCode);
+        // response
+        res.status(options.statusCode);
+        if(showError) {
+            return res.json(options);
+        }
+
         return res.json({
-            message: errorFormat.message,
-            status: errorFormat.statusCode
+            status: options.statusCode
         });
     });
 
