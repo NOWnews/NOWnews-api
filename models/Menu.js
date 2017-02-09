@@ -11,14 +11,16 @@ let schema = new Schema({
         type: String,
         required: true,
         trim: true,
-        maxlength: 4
+        maxlength: 6,
+        unique: true
     },
 
     // 選單連結
     url: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
+        unique: true
     },
 
     // 是否為外部連結
@@ -36,7 +38,8 @@ let schema = new Schema({
     // 父層的 id
     ParentId: {
         type: Schema.Types.ObjectId,
-        ref: 'Menu'
+        ref: 'Menu',
+        default: null
     },
 
     // 層數
@@ -53,12 +56,14 @@ let schema = new Schema({
 
     // 開始時間
     startedAt: {
-        type: Date
+        type: Date,
+        default: null
     },
 
     // 結束時間
     endedAt: {
-        type: Date
+        type: Date,
+        default: null
     },
 
     // 沒有走期的連結
