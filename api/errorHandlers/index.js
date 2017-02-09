@@ -1,8 +1,8 @@
 
-import prettyError from 'pretty-error';
 import errorMapping from './errorCode';
+import config from 'config';
 
-let pe = new prettyError();
+let showError = config.get('showError');
 
 module.exports = (app) => {
 
@@ -10,29 +10,43 @@ module.exports = (app) => {
 
         let errorFormat = errorMapping[err.message];
 
-        // 預期外的錯誤
-        if (!errorFormat) {
-            console.log('-------------- ERROR --------------');
-            console.log(err.errors)
-            console.log(err.message)
-            console.log('-------------- ERROR --------------');
-            res.status(503);
-            return res.json({
-                message: err.message,
-                errorObj: err.errors,
-                status: 503
-            });
+        // 處理 error 訊息
+        let options = {};
+
+        // 自定義的 error 處理
+        if(errorFormat) {
+            options.statusCode = errorFormat.statusCode;
+            options.message = errorFormat.message;
         }
 
-        console.log('-------------- ERROR --------------');
-        console.log(pe.render(err));
-        console.log(errorFormat);
-        console.log('-------------- ERROR --------------');
+        // mongoose error 處理
+        if(!errorFormat && err && err.errors) {
+            options.statusCode = 503;
+            options.message = err.message;
+            options.stack = err.errors;
+        }
 
-        res.status(errorFormat.statusCode);
+        // 其他底層錯誤處理
+        if(!errorFormat && err && !err.errors) {
+            options.statusCode = 503;
+            options.message = err.message;
+            options.stack = err.stack.split('\n');
+        }
+
+        // 在後台的 log 顯示
+        console.error('-------------- ERROR --------------');
+        console.error(options);
+        console.error('-------------- ERROR --------------');
+
+        // response
+        res.status(options.statusCode);
+        if(showError) {
+            return res.json(options);
+        }
+
         return res.json({
-            message: errorFormat.message,
-            status: errorFormat.statusCode
+            status: options.statusCode,
+            message: options.message
         });
     });
 

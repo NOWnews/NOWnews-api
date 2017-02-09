@@ -1,5 +1,6 @@
 {
     "mode": "default",
+    "showError": true,
     "mongodb": {
         "host": "mongodb://localhost:27017",
         "db": "NOWnews_Default"
