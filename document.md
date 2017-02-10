@@ -947,3 +947,27 @@ None
 #### Query Parameters
 
 None
+
+### [POST] `/menus/sort`
+
+排序 menu 的端點
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| menus | 要更新的 menu 物件 | Object | √ | |
+
+#### Query Parameters
+
+None
