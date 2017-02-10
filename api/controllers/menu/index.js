@@ -19,6 +19,6 @@ router.route('/menus/sort')
     .put(sort);
 
 router.route('/menus/:id')
-    .put(one);
+    .get(one);
 
 module.exports = router;
