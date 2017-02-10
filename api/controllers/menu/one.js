@@ -7,7 +7,7 @@ import { Menu } from '../../../models';
 module.exports = async (req, res, next) => {
     try {
 
-        let { id } = req.params.id;
+        let { id } = req.params;
 
         let menu = await Menu.findById(id)
             .where('isTrashed').equals(false)
