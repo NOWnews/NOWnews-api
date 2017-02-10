@@ -293,6 +293,37 @@ None
 
 ## IMAGE API DOCUMENTS
 
+### [GET] `/images`
+
+圖片資訊列表
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| title | 標題(模糊搜尋) | String |  | |
+| desc | 描述(模糊搜尋) | String |  | |
+| startedAt | 開始時間 | Date | | |
+| endedAt | 結束時間 | Date | | |
+| page | 第幾頁 | Number |  | `page=1` |
+| limit | 一次幾筆資料 | Number |  | `limit=10` |
+| skip | 跳過幾筆資料 | Number |  | `skip=10` |
+| sort | 排序(預設為最新在最前面) | String | | `sort=createdAt`, `sort=-title` |
+
 ### [POST] `/images/upload`
 
 上傳一張圖片
@@ -860,6 +891,82 @@ None
 #### Body Parameters
 
 None
+
+#### Query Parameters
+
+None
+
+## MENU API DOCUMENT
+
+### [GET] `/menus`
+
+取得 menu 列表
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None
+
+### [POST] `/menus`
+
+創建一個 menu 項目
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| name | 名稱 | String | √ | `分析師` |
+| url | 網址 | String | | `分析後台資料` |
+| isExternal | 是否為外部連結 | Boolean | | |
+| status | 類別 | String | | `分析後台資料` |
+| CreatedBy | 建立者 | String | √ | `530000000000000000000001` |
+
+#### Query Parameters
+
+None
+
+### [POST] `/menus/sort`
+
+排序 menu 的端點
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| menus | 要更新的 menu 物件 | Object | √ | |
 
 #### Query Parameters
 

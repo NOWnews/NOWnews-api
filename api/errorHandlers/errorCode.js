@@ -227,5 +227,31 @@ module.exports = {
     18004: {
         message: '[Tag] 找不到 Tag',
         statusCode: 404
-    }
+    },
+
+    // Menu
+    19001: {
+        message: '[Menu] 缺少 name 這個欄位',
+        statusCode: 400
+    },
+
+    19002: {
+        message: '[Menu] 缺少 url 這個欄位',
+        statusCode: 400
+    },
+
+    19003: {
+        message: '[Menu] 缺少 CreatedBy 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    19004: {
+        message: '[Menu] 已經有相同名稱的選單',
+        statusCode: 400
+    },
+
+    19005: {
+        message: '[Menu] 已經有相同連結的選單',
+        statusCode: 400
+    },
 };
