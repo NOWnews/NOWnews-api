@@ -11,16 +11,14 @@ let schema = new Schema({
         type: String,
         required: true,
         trim: true,
-        maxlength: 6,
-        unique: true
+        maxlength: 6
     },
 
     // 選單連結
     url: {
         type: String,
         required: true,
-        trim: true,
-        unique: true
+        trim: true
     },
 
     // 是否為外部連結
