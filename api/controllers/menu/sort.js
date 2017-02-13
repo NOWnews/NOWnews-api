@@ -39,9 +39,7 @@ module.exports = async (req, res, next) => {
                         doc.set('ParentId', menu.parent_id);
                     }
 
-                    if(menu.depth) {
-                        doc.set('level', menu.depth);
-                    }
+                    doc.set('level', menu.depth);
 
                     return doc.saveAsync();
                 });
