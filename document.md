@@ -993,3 +993,53 @@ None
 #### Query Parameters
 
 None
+
+### [PUT] `/menus/{:id}`
+
+更新一個 menu 項目
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| name | 名稱 | String | √ | `分析師` |
+| url | 網址 | String | | `分析後台資料` |
+| isExternal | 是否為外部連結 | Boolean | | |
+| status | 類別 | String | | `分析後台資料` |
+| UpdatedBy | 更新者 | String | √ | `530000000000000000000001` |
+
+#### Query Parameters
+
+None
+
+### [DELETE] `/menus/{:id}`
+
+刪除一個 menu 項目
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None
