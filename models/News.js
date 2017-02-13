@@ -32,14 +32,14 @@ let schema = new Schema({
     // 主要分類(只能選一個)
     MainMenu: {
         type: Schema.Types.ObjectId,
-        ref: 'MainMenu',
+        ref: 'Menu',
         default: null
     },
 
-    // 其他分類(最多三個)
+    // 其他分類(無限)
     Menus: [{
         type: Schema.Types.ObjectId,
-        ref: 'SubMenu'
+        ref: 'Menu'
     }],
 
     // 新聞主圖
