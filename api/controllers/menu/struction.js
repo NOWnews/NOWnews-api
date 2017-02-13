@@ -16,7 +16,7 @@ module.exports = async (req, res, next) => {
         let mainMenus = await Menu.find()
             .where('isTrashed').equals(false)
             .where('level').equals(0)
-            .sort('-weight')
+            .sort('weight')
             .lean()
             .execAsync();
         debug('main menus = %j', mainMenus);
@@ -27,7 +27,7 @@ module.exports = async (req, res, next) => {
                 .where('ParentId').equals(mainMenu._id)
                 .where('level').equals(1)
                 .where('isTrashed').equals(false)
-                .sort('-weight')
+                .sort('weight')
                 .lean()
                 .execAsync()
                 .then((docs) => {

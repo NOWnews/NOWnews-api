@@ -38,7 +38,7 @@ module.exports = async (req, res, next) => {
                     menuData.push({
                         _id: child.id,
                         weight: k,
-                        level: 0,
+                        level: 1,
                         hasChild: false,
                         ParentId: mainMenu.id
                     });
