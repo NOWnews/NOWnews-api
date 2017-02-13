@@ -540,7 +540,7 @@ None
 | shortTitle | 新聞短標題 | String | | |
 | summary | 新聞摘要 | String | | |
 | MainMenu | 主分類 | ObjectId | √ | |
-| Menus | 次分類 | ObjectId | | |
+| Menus | 次分類 | ObjectIds | | |
 | MainPhoto | 新聞首圖 | ObjectId | | |
 | MainVideo | 新聞主影片 | ObjectId | | |
 | content | 新聞內容 | String | √ | |
@@ -585,7 +585,7 @@ None
 | shortTitle | 新聞短標題 | String | | |
 | summary | 新聞摘要 | String | | |
 | MainMenus | 主分類 | ObjectId | √ | |
-| Menus | 次分類 | ObjectId | | |
+| Menus | 次分類 | ObjectIds | | |
 | MainPhoto | 新聞首圖 | ObjectId | | |
 | MainVideo | 新聞主影片 | ObjectId | | |
 | content | 新聞內容 | String | √ | |
@@ -631,7 +631,7 @@ None
 | shortTitle | 新聞短標題 | String | | |
 | summary | 新聞摘要 | String | | |
 | MainMenus | 主分類 | ObjectId | √ | |
-| Menus | 次分類 | ObjectId | | |
+| Menus | 次分類 | ObjectIds | | |
 | MainPhoto | 新聞首圖 | ObjectId | | |
 | MainVideo | 新聞主影片 | ObjectId | | |
 | content | 新聞內容 | String | √ | |
