@@ -35,6 +35,14 @@ module.exports = async (req, res, next) => {
             news.set('summary', req.body.summary);
         }
 
+        if(req.body.MainMenu) {
+            news.set('MainMenu', req.body.MainMenu);
+        }
+
+        if(req.body.Menus) {
+            news.set('Menus', req.body.Menus);
+        }
+
         if(req.body.MainPhoto) {
             news.set('MainPhoto', req.body.MainPhoto);
         }

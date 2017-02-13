@@ -15,6 +15,8 @@ module.exports = async (req, res, next) => {
             'title',
             'shortTitle',
             'summary',
+            'MainMenu',
+            'Menus',
             'MainPhoto',
             'MainVideo',
             'content',
