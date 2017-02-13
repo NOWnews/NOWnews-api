@@ -45,7 +45,7 @@ let schema = new Schema({
     // 層數
     level: {
         type: Number,
-        default: 1
+        default: 0
     },
 
     // 權重

@@ -28,7 +28,8 @@ import { Menu } from '../../../models';
 module.exports = async (req, res, next) => {
     try {
 
-        let menus = req.body.menus;
+        // 因為前端套件問題，要先去除掉第一個 item
+        let menus  = req.body.menus.splice(1, req.body.menus.length);
 
         let updateAllMenus = await Promise.map(menus, (menu) => {
             return Menu.findById(menu.id)

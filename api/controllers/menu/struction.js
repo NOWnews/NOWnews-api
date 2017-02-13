@@ -15,7 +15,7 @@ module.exports = async (req, res, next) => {
         // 第一層選單
         let mainMenus = await Menu.find()
             .where('isTrashed').equals(false)
-            .where('level').equals(1)
+            .where('level').equals(0)
             .sort('-weight')
             .lean()
             .execAsync();
@@ -25,7 +25,7 @@ module.exports = async (req, res, next) => {
         let menuData = await Promise.mapSeries(mainMenus, (mainMenu) => {
             return Menu.find()
                 .where('ParentId').equals(mainMenu._id)
-                .where('level').equals(2)
+                .where('level').equals(1)
                 .where('isTrashed').equals(false)
                 .sort('-weight')
                 .lean()
