@@ -38,6 +38,11 @@ module.exports = async (req, res, next) => {
                     doc.set('ParentId', menu.parent_id);
                     doc.set('level', menu.depth);
 
+                    // 以目前來說，第二層不會有 child
+                    if(menu.depth > 0) {
+                        doc.set('hasChild', false);
+                    }
+
                     return doc.saveAsync();
                 });
         });
