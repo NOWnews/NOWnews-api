@@ -29,19 +29,18 @@ let schema = new Schema({
         default: null
     },
 
-    // 主選單分類
+    // 主要分類(只能選一個)
     MainMenu: {
         type: Schema.Types.ObjectId,
         ref: 'MainMenu',
         default: null
     },
 
-    // 子選單分類
-    SubMenu: {
+    // 其他分類(最多三個)
+    Menus: [{
         type: Schema.Types.ObjectId,
-        ref: 'SubMenu',
-        default: null
-    },
+        ref: 'SubMenu'
+    }],
 
     // 新聞主圖
     MainPhoto: {

@@ -192,6 +192,11 @@ module.exports = {
         statusCode: 403
     },
 
+    16011: {
+        message: '[News] 缺少 MainMenu 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
     // NewsMemo
     17001: {
         message: '[NewsMemo] 缺少 News 這個欄位或是格式不正確',

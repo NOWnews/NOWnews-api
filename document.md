@@ -442,6 +442,8 @@ None
 | title | 新聞的標題 | String | √ | `台北最 high 跨年夜` |
 | shortTitle | 新聞的短標題 | String | | `跨年夜` |
 | summary | 新聞的摘要 | String | | `台北跨年` |
+| MainMenu | 主要分類 | ObjectId | | |
+| Menus | 次分類 | ObjectIds | | |
 | MainPhoto | 主圖 | ObjectId | | |
 | MainVideo | 主影音 | ObjectId | | |
 | content | 如果 type 為 NEWS，則此欄位為主要內容，由 ckeditor 提供 | String | | `<p>跨年夜天氣好</p>` |
@@ -537,6 +539,8 @@ None
 | title | 新聞長標題 | String | √ | |
 | shortTitle | 新聞短標題 | String | | |
 | summary | 新聞摘要 | String | | |
+| MainMenu | 主分類 | ObjectId | √ | |
+| Menus | 次分類 | ObjectId | | |
 | MainPhoto | 新聞首圖 | ObjectId | | |
 | MainVideo | 新聞主影片 | ObjectId | | |
 | content | 新聞內容 | String | √ | |
@@ -580,6 +584,8 @@ None
 | title | 新聞長標題 | String | √ | |
 | shortTitle | 新聞短標題 | String | | |
 | summary | 新聞摘要 | String | | |
+| MainMenus | 主分類 | ObjectId | √ | |
+| Menus | 次分類 | ObjectId | | |
 | MainPhoto | 新聞首圖 | ObjectId | | |
 | MainVideo | 新聞主影片 | ObjectId | | |
 | content | 新聞內容 | String | √ | |
@@ -601,7 +607,7 @@ None
 
 ### [PUT] `/news/{:id}/draft`
 
-將一篇新聞變回草稿
+將一篇新聞存成草稿
 
 #### Header Parameters
 
@@ -619,6 +625,27 @@ None
 
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| title | 新聞長標題 | String | √ | |
+| shortTitle | 新聞短標題 | String | | |
+| summary | 新聞摘要 | String | | |
+| MainMenus | 主分類 | ObjectId | √ | |
+| Menus | 次分類 | ObjectId | | |
+| MainPhoto | 新聞首圖 | ObjectId | | |
+| MainVideo | 新聞主影片 | ObjectId | | |
+| content | 新聞內容 | String | √ | |
+| Photos | 新聞圖片集合 | ObjectIds | | |
+| Videos | 新聞影片集合 | ObjectIds | | |
+| freeContent | 自由欄位 | String | | |
+| startedAt | 新聞開始時間 | Date | | |
+| type | 新聞的類別 | `['NEWS','VIDEO','PHOTO']` | | |
+| traceCode | 新聞的追蹤碼 | String | | |
+| isAdult | 是否為成人 | Boolean | | |
+| isDeliver | 是否可外送 | Boolean | | |
+| location | 這則新聞的做標 | Object | | `[124, 12]` |
+| Author | 作者，若沒傳入則帶入建立者 | ObjectId | √ | |
+| Tags | 標籤(關鍵字) | [ObjectId] | | |
 | UpdatedBy | 更新者 | ObjectId | √ | |
 
 #### Query Parameters

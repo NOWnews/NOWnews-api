@@ -16,6 +16,7 @@ module.exports = (req, res, next) => {
         content,
         LastReviewer,
         Author,
+        MainMenu,
         UpdatedBy
     } = req.body;
 
@@ -41,6 +42,10 @@ module.exports = (req, res, next) => {
 
     if(LastReviewer === UpdatedBy) {
         throw new Error('16008');
+    }
+
+    if(!mongoose.Types.ObjectId.isValid(MainMenu)) {
+        throw new Error('16011');
     }
 
     return next();
