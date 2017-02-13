@@ -254,4 +254,9 @@ module.exports = {
         message: '[Menu] 已經有相同連結的選單',
         statusCode: 400
     },
+
+    19006: {
+        message: '[Menu] 找不到這個 menu',
+        statusCode: 404
+    },
 };
