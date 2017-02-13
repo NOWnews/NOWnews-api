@@ -35,10 +35,7 @@ module.exports = async (req, res, next) => {
             return Menu.findById(menu.id)
                 .then((doc) => {
 
-                    if(menu.parent_id) {
-                        doc.set('ParentId', menu.parent_id);
-                    }
-
+                    doc.set('ParentId', menu.parent_id);
                     doc.set('level', menu.depth);
 
                     return doc.saveAsync();
