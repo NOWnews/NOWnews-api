@@ -948,7 +948,29 @@ None
 
 None
 
-### [POST] `/menus/sort`
+### [GET] `/menus/struction`
+
+取得 menu 階層結構化資料
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None
+
+### [PUT] `/menus/sort`
 
 排序 menu 的端點
 
