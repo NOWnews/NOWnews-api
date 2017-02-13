@@ -3,6 +3,7 @@ import Debug from 'debug';
 const debug = Debug('NOWnews-api:api:controllers:image:list');
 
 import Promise from 'bluebird';
+import moment from 'moment-timezone';
 
 import { Image } from '../../../models';
 import { pagination } from '../../../libs';
@@ -29,10 +30,10 @@ module.exports = async(req, res, next) => {
         }
 
         if(startedAt && endedAt) {
-            cursor.where('createdAt').gte(startedAt);
-            cursor.where('createdAt').lte(endedAt);
-            totalCursor.where('createdAt').gte(startedAt);
-            totalCursor.where('createdAt').lte(endedAt);
+            cursor.where('createdAt').gte(moment(startedAt).tz('Asia/Taipei'));
+            cursor.where('createdAt').lte(moment(endedAt).tz('Asia/Taipei'));
+            totalCursor.where('createdAt').gte(moment(startedAt).tz('Asia/Taipei'));
+            totalCursor.where('createdAt').lte(moment(endedAt).tz('Asia/Taipei'));
         }
 
         let [ images, total ] = await Promise.all([
