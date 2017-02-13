@@ -1,4 +1,3 @@
-
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api:controllers:menu:list');
 
