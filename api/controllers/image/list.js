@@ -30,10 +30,10 @@ module.exports = async(req, res, next) => {
         }
 
         if(startedAt && endedAt) {
-            cursor.where('createdAt').gte(moment(startedAt).tz('Asia/Taipei'));
-            cursor.where('createdAt').lte(moment(endedAt).tz('Asia/Taipei'));
-            totalCursor.where('createdAt').gte(moment(startedAt).tz('Asia/Taipei'));
-            totalCursor.where('createdAt').lte(moment(endedAt).tz('Asia/Taipei'));
+            cursor.where('createdAt').gte(moment(`${startedAt} 00:00`).tz('Asia/Taipei'));
+            cursor.where('createdAt').lte(moment(`${endedAt} 23:59`).tz('Asia/Taipei'));
+            totalCursor.where('createdAt').gte(moment(`${startedAt} 00:00`).tz('Asia/Taipei'));
+            totalCursor.where('createdAt').lte(moment(`${endedAt} 23:59`).tz('Asia/Taipei'));
         }
 
         let [ images, total ] = await Promise.all([
