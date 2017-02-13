@@ -3,7 +3,6 @@ import Debug from 'debug';
 const debug = Debug('NOWnews-api:api:controllers:menu:list');
 
 import Promise from 'bluebird';
-import _ from 'lodash';
 import is from 'is_js';
 
 import { Menu } from '../../../models';
@@ -13,8 +12,6 @@ module.exports = async (req, res, next) => {
         /*
          * 因為目前只有兩層選單，所以用這種比較簡單的方式去做，萬一有到第三層，應該就要改變寫法
          */
-
-        let menuData = [];
 
         // 第一層選單
         let mainMenus = await Menu.find()
@@ -26,7 +23,7 @@ module.exports = async (req, res, next) => {
         debug('main menus = %j', mainMenus);
 
         // 第二層選單
-        await Promise.each(mainMenus, (mainMenu) => {
+        let menuData = await Promise.mapSeries(mainMenus, (mainMenu) => {
             return Menu.find()
                 .where('ParentId').equals(mainMenu._id)
                 .where('level').equals(2)
@@ -36,7 +33,7 @@ module.exports = async (req, res, next) => {
                 .execAsync()
                 .then((docs) => {
                     mainMenu.child = docs;
-                    menuData.push(mainMenu);
+                    return Promise.resolve(mainMenu);
                 });
         });
         debug('menuData = %j', menuData);
