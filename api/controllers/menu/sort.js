@@ -29,7 +29,7 @@ module.exports = async (req, res, next) => {
     try {
 
         // 因為前端套件問題，要先去除掉第一個 item
-        let menus  = req.body.menus.splice(1, req.body.menus.length);
+        let menus = req.body.menus.splice(1, req.body.menus.length);
 
         let updateAllMenus = await Promise.map(menus, (menu) => {
             return Menu.findById(menu.id)
@@ -41,6 +41,19 @@ module.exports = async (req, res, next) => {
 
                     doc.set('level', menu.depth);
 
+                    return doc.saveAsync();
+                });
+        });
+
+        // 更新 parentId 的資料欄位
+        let updateParents = await Promise.map(menus, (menu) => {
+            if(!menu.parent_id) {
+                return Promise.resolve(null);
+            }
+
+            return Menu.findById(menu.parent_id)
+                .then((doc) => {
+                    doc.set('hasChild', true);
                     return doc.saveAsync();
                 });
         });
