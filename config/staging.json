@@ -27,7 +27,7 @@
     "imageServer": {
         "username": "imgscp",
         "password": "zAQ!@#EDCXSW",
-        "host": "59.124.93.47",
+        "host": "img.nownews.com", //59.124.93.47
         "port": 50022,
         "url": "http://img.nownews.com/nownews_staging",
         "folder": "/var/www/images/nownews_staging"
