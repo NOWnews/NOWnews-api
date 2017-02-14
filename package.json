@@ -4,7 +4,8 @@
   "description": "nownews api service",
   "main": "index.js",
   "scripts": {
-    "api": "npm install && DEBUG=NOWnews-api* NODE_ENV=develop ./node_modules/nodemon/bin/nodemon.js ./bin/api.js",
+    "api-web": "npm install && DEBUG=NOWnews-api* NODE_ENV=develop ./node_modules/nodemon/bin/nodemon.js ./bin/api-web.js",
+    "api-admin": "npm install && DEBUG=NOWnews-api* NODE_ENV=develop ./node_modules/nodemon/bin/nodemon.js ./bin/api-admin.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
