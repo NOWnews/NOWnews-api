@@ -9,12 +9,12 @@ import is from 'is_js';
 import mongoose from 'mongoose';
 
 module.exports = (req, res, next) => {
-    let { 
-        name,
+    let {
+        tags,
         CreatedBy
     } = req.body;
 
-    if (!name || name === '') {
+    if (is.not.array(tags) || is.empty(tags) || tags.length > 7) {
         throw new Error('18002');
     }
 
