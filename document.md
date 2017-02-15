@@ -41,6 +41,7 @@ None
 | jobTitle | 職稱 | String  |  | `工程師` |
 | profileLink | 個人資料連結 | String  |  | |
 | Avatar | 大頭照 | String  |  | |
+| defaultMenu | 使用者建立新聞時的預設主選單 | ObjectId  |  | |
 | CreatedBy | 建立者 ObjectId | ObjectId  | √ | `530000000000000000000001` |
 
 #### Query Parameters
@@ -150,6 +151,7 @@ None
 | jobTitle | 職稱 | String  |  | `工程師` |
 | profileLink | 個人資料連結 | String  |  | |
 | Avatar | 大頭照 | String  |  | |
+| defaultMenu | 使用者建立新聞時的預設主選單 | ObjectId  |  | |
 | UpdatedBy | 建立者 ObjectId | ObjectId  | √ | `530000000000000000000001` |
 
 None

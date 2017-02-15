@@ -3,6 +3,7 @@ import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:user:create');
 
 import _ from 'lodash';
+import mongoose from 'mongoose';
 
 import { User } from '../../../models';
 import { hashPwd } from '../../../libs'
@@ -24,10 +25,12 @@ module.exports = async (req, res, next) => {
             'Department',
             'jobTitle',
             'profileLink',
-            'avatar',
             'CreatedBy'
         ]);
 
+        if (req.body.defaultMenu && mongoose.Types.ObjectId.isValid(req.body.defaultMenu)) {
+            options.defaultSettings = { Menu: req.body.defaultMenu };
+        }
         options.UpdatedBy = req.body.CreatedBy;
         debug('options = %j', options);
 
