@@ -951,7 +951,9 @@ None
 
 #### Query Parameters
 
-None
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| level | 選單的層級 | Number |  |  |
 
 ### [POST] `/menus`
 
