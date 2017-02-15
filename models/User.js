@@ -107,6 +107,17 @@ let schema = new Schema({
         default: null
     },
 
+    // 一些使用者基本設定的地方
+    defaultSettings: {
+
+        // 使用者預設主選單
+        Menu: {
+            type: Schema.Types.ObjectId,
+            ref: 'Menu',
+            default: null
+        }
+    },
+
     // 是否被刪除
     isTrashed: {
         type: Boolean,

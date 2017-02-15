@@ -118,6 +118,12 @@ let schema = new Schema({
         default: true
     },
 
+    // 使否為業配文
+    isSponsored: {
+        type: Boolean,
+        default: false
+    },
+
     // 新聞的位置，做 LBS 用
     location : {
         type: [Number]

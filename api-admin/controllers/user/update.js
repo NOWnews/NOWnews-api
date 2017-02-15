@@ -2,6 +2,8 @@
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:user:update');
 
+import mongoose from 'mongoose';
+
 import { User } from '../../../models';
 
 module.exports = async (req, res, next) => {
@@ -19,6 +21,7 @@ module.exports = async (req, res, next) => {
         jobTitle,
         profileLink,
         Avatar,
+        defaultMenu,
         UpdatedBy
     } = req.body;
 
@@ -79,6 +82,10 @@ module.exports = async (req, res, next) => {
 
         if(Avatar) {
             user.set('Avatar', Avatar);
+        }
+
+        if(defaultMenu && mongoose.Types.ObjectId.isValid(defaultMenu)) {
+            user.set('defaultSettings.Menu', defaultMenu);
         }
 
         user.UpdatedBy = UpdatedBy;

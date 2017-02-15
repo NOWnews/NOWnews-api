@@ -29,6 +29,7 @@ module.exports = async (req, res, next) => {
             'traceCode',
             'isAdult',
             'isDeliver',
+            'isSponsored',
             'location',
             'Author',
             'Tags',
