@@ -867,8 +867,8 @@ None
 
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
-| name | 名稱 | String | √ | `分析師` |
-| type | 類別 | String | | `分析後台資料` |
+| tags | 名稱 | Array | √ | `["政治", "金正恩"]` 不能大於 7 個 item |
+| type | 類別 | `['NEWS', 'IMAGE']` | | `IMAGE` |
 | CreatedBy | 建立者 | String | √ | `530000000000000000000001` |
 
 #### Query Parameters

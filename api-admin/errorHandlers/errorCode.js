@@ -220,7 +220,7 @@ module.exports = {
     },
 
     18002: {
-        message: '[Tag] 缺少 name 這個欄位',
+        message: '[Tag] Tags 不為陣列的格式，或是陣列為空，或是陣列多於 7 個 item',
         statusCode: 400
     },
 
