@@ -2,6 +2,7 @@
 import autoIncrement from 'mongoose-sequence';
 import mongoose from 'mongoose';
 import moment from 'moment-timezone';
+
 let Schema = mongoose.Schema;
 
 let schema = new Schema({
@@ -200,6 +201,14 @@ let schema = new Schema({
     toJSON:{
         virtuals: true,
     }
+});
+
+schema.statics.findBySn = function(sn) {
+    return this.where('sn').equals(sn);
+};
+
+schema.index({
+    sn: 1
 });
 
 schema.index({
