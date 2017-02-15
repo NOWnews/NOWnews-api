@@ -14,7 +14,7 @@ const server = http.createServer(api);
 
 server.listen(port);
 console.log(chalk.red(`-------------------------------`));
-console.log(chalk.red(`Start NOWott api`));
+console.log(chalk.red(`Start NOWnews Admin Api`));
 console.log(chalk.red(`Listen Port ${port}`));
 console.log(chalk.red(`${env} mode`));
 console.log(chalk.red(`-------------------------------`));
