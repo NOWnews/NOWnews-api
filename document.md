@@ -458,6 +458,7 @@ None
 | traceCode | 追蹤碼，由 ckeditor 提供 | String | | |
 | isAdult | 成人新聞 | Boolean | | |
 | isDeliver | 可否外送 | Boolean | | |
+| isSponsored | 可否為業配文 | Boolean | | |
 | location | 這則新聞的做標 | Object | | `[124, 12]` |
 | Author | 作者，若沒傳入則帶入建立者 | ObjectId | | |
 | Tags | 標籤(關鍵字) | [ObjectId] | | |
@@ -554,6 +555,7 @@ None
 | traceCode | 新聞的追蹤碼 | String | | |
 | isAdult | 是否為成人 | Boolean | | |
 | isDeliver | 是否可外送 | Boolean | | |
+| isSponsored | 可否為業配文 | Boolean | | |
 | location | 這則新聞的做標 | Object | | `[124, 12]` |
 | LastReviewer | 欲將新聞送審的人 | ObjectId | √ | |
 | Author | 作者，若沒傳入則帶入建立者 | ObjectId | √ | |
@@ -599,6 +601,7 @@ None
 | traceCode | 新聞的追蹤碼 | String | | |
 | isAdult | 是否為成人 | Boolean | | |
 | isDeliver | 是否可外送 | Boolean | | |
+| isSponsored | 可否為業配文 | Boolean | | |
 | location | 這則新聞的做標 | Object | | `[124, 12]` |
 | Author | 作者，若沒傳入則帶入建立者 | ObjectId | √ | |
 | Tags | 標籤(關鍵字) | [ObjectId] | | |
@@ -645,6 +648,7 @@ None
 | traceCode | 新聞的追蹤碼 | String | | |
 | isAdult | 是否為成人 | Boolean | | |
 | isDeliver | 是否可外送 | Boolean | | |
+| isSponsored | 可否為業配文 | Boolean | | |
 | location | 這則新聞的做標 | Object | | `[124, 12]` |
 | Author | 作者，若沒傳入則帶入建立者 | ObjectId | √ | |
 | Tags | 標籤(關鍵字) | [ObjectId] | | |

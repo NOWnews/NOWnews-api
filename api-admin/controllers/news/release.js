@@ -84,6 +84,9 @@ module.exports = async (req, res, next) => {
         let isDeliver = req.body.isDeliver === true ? true : false;
         news.set('isDeliver', isDeliver);
 
+        let isSponsored = req.body.isSponsored === true ? true : false;
+        news.set('isSponsored', isSponsored);
+
         if(req.body.location) {
             news.set('location', req.body.location);
         }
