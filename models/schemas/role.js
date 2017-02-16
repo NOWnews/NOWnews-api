@@ -1,21 +1,27 @@
 
-import autoIncrement from 'mongoose-sequence';
 import mongoose from 'mongoose';
 import moment from 'moment-timezone';
+import autoIncrement from 'mongoose-auto-increment';
+
 let Schema = mongoose.Schema;
 
 let schema = new Schema({
 
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
 
-    type: {
+    desc: {
         type: String,
-        default: 'NEWS',
-        enum: ['NEWS', 'IMAGE']
+        default: ''
     },
+
+    Policies: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Policy'
+    }],
 
     isTrashed: {
         type: Boolean,
@@ -57,8 +63,6 @@ let schema = new Schema({
     }
 });
 
-schema.index({ name: 1 });
-
 schema.virtual('formatCreatedAt').get(function () {
     return moment(this.createdAt).tz('Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });
@@ -67,10 +71,11 @@ schema.virtual('formatUpdatedAt').get(function () {
     return moment(this.updatedAt).tz('Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });
 
-schema.plugin(autoIncrement, {
-    collection_name: 'SerialNumberCounter',
-    inc_field: 'sn',
-    id: 'tag_sn'
+schema.plugin(autoIncrement.plugin, {
+    model: 'Role',
+    field: 'sn',
+    startAt: 1,
+    incrementBy: 1
 });
 
-module.exports = mongoose.model('Tag', schema);
+module.exports = schema;

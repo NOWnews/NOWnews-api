@@ -1,7 +1,8 @@
 
-import autoIncrement from 'mongoose-sequence';
 import mongoose from 'mongoose';
 import moment from 'moment-timezone';
+import autoIncrement from 'mongoose-auto-increment';
+
 let Schema = mongoose.Schema;
 
 let schema = new Schema({
@@ -9,6 +10,12 @@ let schema = new Schema({
     name: {
         type: String,
         required: true
+    },
+
+    type: {
+        type: String,
+        default: 'NEWS',
+        enum: ['NEWS', 'IMAGE']
     },
 
     isTrashed: {
@@ -51,6 +58,8 @@ let schema = new Schema({
     }
 });
 
+schema.index({ name: 1 });
+
 schema.virtual('formatCreatedAt').get(function () {
     return moment(this.createdAt).tz('Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });
@@ -59,10 +68,11 @@ schema.virtual('formatUpdatedAt').get(function () {
     return moment(this.updatedAt).tz('Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });
 
-schema.plugin(autoIncrement, {
-    collection_name: 'SerialNumberCounter',
-    inc_field: 'sn',
-    id: 'department_sn'
+schema.plugin(autoIncrement.plugin, {
+    model: 'NewsLog',
+    field: 'sn',
+    startAt: 1,
+    incrementBy: 1
 });
 
-module.exports = mongoose.model('Department', schema);
+module.exports = schema;

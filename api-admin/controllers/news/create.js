@@ -5,6 +5,7 @@ const debug = Debug('NOWnews-api:api-admin:controllers:news:create');
 import _ from 'lodash';
 
 import { News } from '../../../models';
+import { Total } from '../../../pvModels';
 import { newsLog } from '../../../libs';
 
 module.exports = async (req, res, next) => {
@@ -52,6 +53,11 @@ module.exports = async (req, res, next) => {
 
         let newNews = await News.createAsync(options);
         debug('new news = %j', newNews);
+
+        let foo = await Total.createAsync({
+            newsId: newNews._id
+        });
+        debug('foo = %j', foo);
 
         // 處理 log
         await newsLog(newNews);
