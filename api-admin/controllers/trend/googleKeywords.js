@@ -1,6 +1,6 @@
 
 import Debug from 'debug';
-const debug = Debug('NOWnews-api:api-admin:controllers:trending:googleKeywords');
+const debug = Debug('NOWnews-api:api-admin:controllers:trend:googleKeywords');
 
 import Promise from 'bluebird';
 import axios from 'axios';
