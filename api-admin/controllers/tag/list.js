@@ -26,6 +26,7 @@ module.exports = async (req, res, next) => {
                 .limit(limit)
                 .skip(skip)
                 .where('isTrashed').equals(false)
+                .populate('CreatedBy UpdatedBy')
                 .execAsync(),
             totalCursor
                 .where('isTrashed').equals(false)
