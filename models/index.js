@@ -10,28 +10,36 @@ Promise.promisifyAll(mongoose);
 mongoose.Promise = Promise;
 
 /*
- * mongodb 連線資訊
+ * mongodb 連線
  */
 const host = config.get('mongodb.host');
 const db = config.get('mongodb.db');
-mongoose.connectAsync(`${host}/${db}`);
-const connection = mongoose.connection;
+let connection = mongoose.createConnection(`${host}/${db}`);
 console.log(chalk.red(`mongodb connect to: ${host}/${db}`));
 
-import User from './User';
-import News from './News';
-import NewsMemo from './NewsMemo';
-import NewsLog from './NewsLog';
-import Role from './Role';
-import Policy from './Policy';
-import Center from './Center';
-import Department from './Department';
-import Image from './Image';
-import Tag from './Tag';
-import Menu from './Menu';
-// import MainMenu from './MainMenu';
-// import SubMenu from './SubMenu';
-// import Test from './Test';
+import userSchema from './schemas/user';
+import newsSchema from './schemas/news';
+import newsMemoSchema from './schemas/newsMemo';
+import newsLogSchema from './schemas/newsLog';
+import roleSchema from './schemas/role';
+import policySchema from './schemas/policy';
+import centerSchema from './schemas/center';
+import departmentSchema from './schemas/department';
+import imageSchema from './schemas/image';
+import tagSchema from './schemas/tag';
+import menuSchema from './schemas/menu';
+
+let User = connection.model('User', userSchema);
+let News = connection.model('News', newsSchema);
+let NewsMemo = connection.model('NewsMemo', newsMemoSchema);
+let NewsLog = connection.model('NewsLog', newsLogSchema);
+let Role = connection.model('Role', roleSchema);
+let Policy = connection.model('Policy', policySchema);
+let Center = connection.model('Center', centerSchema);
+let Department = connection.model('Department', departmentSchema);
+let Image = connection.model('Image', imageSchema);
+let Tag = connection.model('Tag', tagSchema);
+let Menu = connection.model('Menu', menuSchema);
 
 module.exports = {
     User,
@@ -45,7 +53,4 @@ module.exports = {
     Image,
     Tag,
     Menu
-    // MainMenu,
-    // SubMenu,
-    // Test
 };
