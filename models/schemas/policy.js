@@ -1,5 +1,5 @@
 
-import autoIncrement from 'mongoose-sequence';
+import autoIncrement from 'simple-mongoose-autoincrement';
 import mongoose from 'mongoose';
 let Schema = mongoose.Schema;
 
@@ -36,10 +36,6 @@ let schema = new Schema({
     versionKey: false,
 });
 
-schema.plugin(autoIncrement, {
-    collection_name: 'SerialNumberCounter',
-    inc_field: 'sn',
-    id: 'policy_sn'
-});
+schema.plugin(autoIncrement, { field: 'sn' });
 
-module.exports = mongoose.model('Policy', schema);
+module.exports = schema;

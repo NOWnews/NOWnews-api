@@ -5,6 +5,10 @@
         "host": "mongodb://localhost:27017",
         "db": "NOWnews_Develop"
     },
+    "pvMongodb": {
+        "host": "mongodb://localhost:27017",
+        "db": "NOWnewsAnalytics_Default"
+    },
     "redis": {
         "host": "localhost",
         "port": 6379,
