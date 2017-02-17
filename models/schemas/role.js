@@ -1,5 +1,5 @@
 
-import autoIncrement from 'mongoose-sequence';
+import autoIncrement from 'simple-mongoose-autoincrement';
 import mongoose from 'mongoose';
 import moment from 'moment-timezone';
 let Schema = mongoose.Schema;
@@ -8,8 +8,19 @@ let schema = new Schema({
 
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
+
+    desc: {
+        type: String,
+        default: ''
+    },
+
+    Policies: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Policy'
+    }],
 
     isTrashed: {
         type: Boolean,
@@ -59,10 +70,6 @@ schema.virtual('formatUpdatedAt').get(function () {
     return moment(this.updatedAt).tz('Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });
 
-schema.plugin(autoIncrement, {
-    collection_name: 'SerialNumberCounter',
-    inc_field: 'sn',
-    id: 'department_sn'
-});
+schema.plugin(autoIncrement, { field: 'sn' });
 
-module.exports = mongoose.model('Department', schema);
+module.exports = schema;
