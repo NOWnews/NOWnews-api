@@ -2,15 +2,15 @@
     "mode": "staging",
     "showError": true,
     "mongodb": {
-        "host": "mongodb://localhost:27017",
+        "host": "mongodb://192.168.40.185:27017",
         "db": "NOWnews_Staging"
     },
     "pvMongodb": {
-        "host": "mongodb://localhost:27017",
-        "db": "NOWnewsAnalytics_Default"
+        "host": "mongodb://192.168.40.185:27017",
+        "db": "NOWnewsAnalytics_Staging"
     },
     "redis": {
-        "host": "localhost",
+        "host": "192.168.40.140",
         "port": 6379,
         "expireSeconds": 3600
     },

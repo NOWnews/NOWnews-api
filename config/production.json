@@ -7,7 +7,7 @@
     },
     "pvMongodb": {
         "host": "mongodb://localhost:27017",
-        "db": "NOWnewsAnalytics_Default"
+        "db": "NOWnewsAnalytics_Production"
     },
     "redis": {
         "host": "localhost",
