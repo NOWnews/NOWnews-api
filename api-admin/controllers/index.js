@@ -11,6 +11,7 @@ import newsLog from './newsLog';
 import map from './map';
 import tag from './tag';
 import menu from './menu';
+import trend from './trend';
 
 module.exports = (app) => {
 
@@ -27,6 +28,7 @@ module.exports = (app) => {
     app.use('/', map);
     app.use('/', tag);
     app.use('/', menu);
+    app.use('/', trend);
 
     return (req, res, next) => {
         return next();
