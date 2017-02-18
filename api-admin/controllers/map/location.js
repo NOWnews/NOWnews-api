@@ -40,7 +40,7 @@ module.exports = async (req, res, next) => {
 
         let result = {
             address: location.formatted_address,
-            location: [location.geometry.location.lat, location.geometry.location.lng]
+            location: [location.geometry.location.lng, location.geometry.location.lat]
         }
 
         return res.json(result);
