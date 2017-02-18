@@ -77,7 +77,7 @@ module.exports = async(req, res, next) => {
             originalname,
             mimetype,
             type,
-            isDeliver: isDeliver === true ? true : false,
+            isDeliver: isDeliver === 'true' ? true : false,
             width: size.width,
             height: size.height,
             url: `${config.get('imageServer.url')}/${newName}`,
