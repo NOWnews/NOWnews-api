@@ -15,6 +15,7 @@ module.exports = async (req, res, next) => {
             'name',
             'url',
             'isExternal',
+            'isAdult',
             'status',
             'CreatedBy'
         ]);

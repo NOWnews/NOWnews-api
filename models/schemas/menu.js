@@ -27,6 +27,12 @@ let schema = new Schema({
         default: false
     },
 
+    // 是否為成人
+    isAdult: {
+        type: Boolean,
+        default: false
+    },
+
     // 是否有子層
     hasChild: {
         type: Boolean,
