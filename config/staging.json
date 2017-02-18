@@ -2,15 +2,15 @@
     "mode": "staging",
     "showError": true,
     "mongodb": {
-        "host": "mongodb://192.168.40.185:27017",
+        "host": "mongodb://mongo185.nownews.pri:27017", // (no / 192.168.40.185)
         "db": "NOWnews_Staging"
     },
     "pvMongodb": {
-        "host": "mongodb://192.168.40.185:27017",
+        "host": "mongodb://mongo185.nownews.pri:27017", // (no / 192.168.40.185)
         "db": "NOWnewsAnalytics_Staging"
     },
     "redis": {
-        "host": "192.168.40.140",
+        "host": "memcache.nownews.pri", // (61.67.121.140 / 192.168.40.140)
         "port": 6379,
         "expireSeconds": 3600
     },
@@ -31,7 +31,7 @@
     "imageServer": {
         "username": "imgscp",
         "password": "zAQ!@#EDCXSW",
-        "host": "192.168.40.168", //59.124.93.47
+        "host": "img.nownews.pri", // (59.124.93.47 / 192.168.40.168)
         "port": 50022,
         "url": "http://img.nownews.com/nownews_staging",
         "folder": "/var/www/images/nownews_staging"
