@@ -4,6 +4,8 @@ const debug = Debug('NOWnews-api:api-admin:controllers:user:update');
 
 import mongoose from 'mongoose';
 
+import { hashPwd } from '../../../libs';
+
 import { User } from '../../../models';
 
 module.exports = async (req, res, next) => {
