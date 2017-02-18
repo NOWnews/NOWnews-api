@@ -4,6 +4,8 @@ const debug = Debug('NOWnews-api:api-admin:controllers:user:update');
 
 import mongoose from 'mongoose';
 
+import { hashPwd } from '../../../libs';
+
 import { User } from '../../../models';
 
 module.exports = async (req, res, next) => {
@@ -15,6 +17,7 @@ module.exports = async (req, res, next) => {
         staffId,
         status,
         Role,
+        password,
         phone,
         Center,
         Department,
@@ -38,6 +41,10 @@ module.exports = async (req, res, next) => {
 
         if(!user) {
             throw new Error('11011');
+        }
+
+        if(password && password !== '') {
+            user.set('password', hashPwd(password));
         }
 
         if(name) {
