@@ -11,6 +11,14 @@ Install dependences:
 
 `$ sudo apt-get install build-essential g++ make python2.7 git graphicsmagick`
 
+Install locale:
+
+`$ sudo locale-gen "zh_TW.UTF-8"`
+
+Setting locales:
+
+`$ sudo dpkg-reconfigure locales`
+
 Get **NVM**:
 
 `$ wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash`
@@ -47,7 +55,7 @@ Start server by cluster mode:
 
 `$ NODE_ENV=staging pm2 start bin/api-admin.js -i max --name 'api-admin-staging'`
 
-*note: if you start server at first time. you should flowing these steps:*
+*note: if you start server at first time. you should following these steps:*
 
 `$ NODE_ENV=staging pm2 start bin/api-admin.js -i 1 --name 'api-admin-staging'`
 
