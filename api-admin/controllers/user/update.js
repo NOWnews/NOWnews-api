@@ -84,6 +84,10 @@ module.exports = async (req, res, next) => {
             user.set('Avatar', Avatar);
         }
 
+        if(defaultMenu === null) {
+            user.set('defaultSettings.Menu', null);
+        }
+
         if(defaultMenu && mongoose.Types.ObjectId.isValid(defaultMenu)) {
             user.set('defaultSettings.Menu', defaultMenu);
         }
