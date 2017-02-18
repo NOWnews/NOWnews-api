@@ -50,8 +50,6 @@ module.exports = async (req, res, next) => {
         }
 
         isExternal = isExternal === true ? true : false;
-        console.log(isAdult,'L53')
-        console.log(typeof isAdult)
         isAdult = isAdult === true ? true : false;
         menu.set('isExternal', isExternal);
         menu.set('isAdult', isAdult);
