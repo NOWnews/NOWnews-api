@@ -119,7 +119,7 @@ let schema = new Schema({
         default: true
     },
 
-    // 使否為業配文
+    // 是否為業配文
     isSponsored: {
         type: Boolean,
         default: false

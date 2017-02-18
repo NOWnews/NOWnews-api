@@ -14,7 +14,7 @@ import { Image } from '../../../models';
 
 module.exports = async(req, res, next) => {
 
-    let { keyword, title, desc, type, CreatedBy } = req.body;
+    let { keyword, title, desc, type, isDeliver, CreatedBy } = req.body;
     let { path, mimetype, originalname } = req.file;
 
     try{
@@ -77,6 +77,7 @@ module.exports = async(req, res, next) => {
             originalname,
             mimetype,
             type,
+            isDeliver: isDeliver === 'true' ? true : false,
             width: size.width,
             height: size.height,
             url: `${config.get('imageServer.url')}/${newName}`,
