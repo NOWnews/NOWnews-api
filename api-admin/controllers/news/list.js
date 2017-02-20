@@ -9,7 +9,7 @@ import { pagination } from '../../../libs';
 
 module.exports = async (req, res, next) => {
 
-    let { limit, page, skip, title, status, Author, CreatedBy, UpdatedBy, sort } = req.query;
+    let { limit, page, skip, title, status, Author, CreatedBy, UpdatedBy, LastReviewer, sort } = req.query;
     debug('req.query = %j', req.query);
 
     try {
@@ -41,6 +41,11 @@ module.exports = async (req, res, next) => {
         if(UpdatedBy) {
             cursor.where('UpdatedBy').equals(UpdatedBy);
             totalCursor.where('UpdatedBy').equals(UpdatedBy);
+        }
+
+        if(LastReviewer) {
+            cursor.where('LastReviewer').equals(LastReviewer);
+            totalCursor.where('LastReviewer').equals(LastReviewer);
         }
 
         let [ newsList, total ] = await Promise.all([
