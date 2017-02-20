@@ -14,13 +14,13 @@ import superuserData from './superuser';
 module.exports = async () => {
 
     // 處理 Policy 資料
-    policyData.forEach(async (data) => {
-        let doc = await Policy.findById(data._id).execAsync();
-        if(doc) {
-            return;
-        }
-        await Policy.createAsync(data);
-    });
+    // policyData.forEach(async (data) => {
+    //     let doc = await Policy.findById(data._id).execAsync();
+    //     if(doc) {
+    //         return;
+    //     }
+    //     await Policy.createAsync(data);
+    // });
     // await Policy.createAsync(policyData);
     // let policies = Promise.each(policyData, async (data) => {
     //     let doc = await
@@ -34,16 +34,16 @@ module.exports = async () => {
     }
 
     // 處理 Department 資料
-    let adminDepartment = await Department.findById('540000000000000000000001').execAsync();
-    if(!adminDepartment) {
-        await Department.createAsync(departmentData);
-    }
+    // let adminDepartment = await Department.findById('540000000000000000000001').execAsync();
+    // if(!adminDepartment) {
+    //     await Department.createAsync(departmentData);
+    // }
 
     // 處理 Center 資料
-    let adminCenter = await Center.findById('550000000000000000000001').execAsync();
-    if(!adminCenter) {
-        await Center.createAsync(centerData);
-    }
+    // let adminCenter = await Center.findById('550000000000000000000001').execAsync();
+    // if(!adminCenter) {
+    //     await Center.createAsync(centerData);
+    // }
 
     // 處理 User 資料
     let superuser = await User.findById('530000000000000000000001').execAsync();
