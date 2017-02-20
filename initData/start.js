@@ -14,13 +14,13 @@ import superuserData from './superuser';
 module.exports = async () => {
 
     // 處理 Policy 資料
-    // policyData.forEach(async (data) => {
-    //     let doc = await Policy.findById(data._id).execAsync();
-    //     if(doc) {
-    //         return;
-    //     }
-    //     await Policy.createAsync(data);
-    // });
+    policyData.forEach(async (data) => {
+        let doc = await Policy.findById(data._id).execAsync();
+        if(doc) {
+            return;
+        }
+        await Policy.createAsync(data);
+    });
     // await Policy.createAsync(policyData);
     // let policies = Promise.each(policyData, async (data) => {
     //     let doc = await
