@@ -49,6 +49,8 @@ module.exports = (schema, options) => {
                     return next();
                 }
             );
+        } else {
+            return next();
         }
     });
 };
