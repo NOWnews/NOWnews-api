@@ -67,6 +67,6 @@ schema.virtual('formatUpdatedAt').get(function () {
     return moment(this.updatedAt).tz('Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });
 
-schema.plugin(autoIncrement, { field: 'sn' });
+schema.plugin(autoIncrement);
 
 module.exports = schema;

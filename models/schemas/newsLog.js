@@ -195,6 +195,6 @@ schema.virtual('formatCreatedAt').get(function () {
     return moment(this.createdAt).tz('Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });
 
-schema.plugin(autoIncrement, { field: 'sn' });
+schema.plugin(autoIncrement);
 
 module.exports = schema;

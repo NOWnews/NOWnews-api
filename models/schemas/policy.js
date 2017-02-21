@@ -36,6 +36,6 @@ let schema = new Schema({
     versionKey: false,
 });
 
-schema.plugin(autoIncrement, { field: 'sn' });
+schema.plugin(autoIncrement);
 
 module.exports = schema;

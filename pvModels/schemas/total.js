@@ -7,6 +7,6 @@ let schema = new Schema({
     name: String
 });
 
-schema.plugin(autoIncrement, { field: 'sn' });
+schema.plugin(autoIncrement);
 
 module.exports = schema;
