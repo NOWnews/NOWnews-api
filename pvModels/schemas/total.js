@@ -1,5 +1,5 @@
 
-import autoIncrement from 'simple-mongoose-autoincrement';
+import { autoIncrement } from '../../libs';
 import mongoose from 'mongoose';
 let Schema = mongoose.Schema;
 
