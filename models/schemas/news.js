@@ -1,5 +1,5 @@
 
-import autoIncrement  from 'mongoose-easy-auto-increment';
+import autoIncrement from 'mongoose-easy-auto-increment';
 import mongoose from 'mongoose';
 import moment from 'moment-timezone';
 
