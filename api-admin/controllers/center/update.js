@@ -45,7 +45,6 @@ module.exports = async (req, res, next) => {
 
         if(Departments && is.array(Departments)) {
             center.set('Departments', Departments);
-            return;
         }
 
         center.set('UpdatedBy', UpdatedBy);
