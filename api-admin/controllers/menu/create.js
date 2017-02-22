@@ -34,7 +34,10 @@ module.exports = async (req, res, next) => {
                 .where('isTrashed').equals(false)
                 .execAsync(),
             Menu.findOne()
-                .where('categoryName').equals(options.categoryName)
+                .and([
+                    { categoryName: options.categoryName },
+                    { categoryName: { $ne: null } }
+                ])
                 .where('isTrashed').equals(false)
                 .execAsync(),
         ]);
