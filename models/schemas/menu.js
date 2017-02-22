@@ -14,6 +14,12 @@ let schema = new Schema({
         maxlength: 6
     },
 
+    // 分類名稱
+    categoryName: {
+        type: String,
+        trim: true,
+    },
+
     // 選單連結
     url: {
         type: String,

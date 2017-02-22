@@ -974,6 +974,7 @@ None
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
 | name | 名稱 | String | √ | `分析師` |
+| categoryName | 分類名稱 | String | | `policy` |
 | url | 網址 | String | | `分析後台資料` |
 | isExternal | 是否為外部連結 | Boolean | | |
 | status | 類別 | String | | `分析後台資料` |
@@ -1048,6 +1049,7 @@ None
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
 | name | 名稱 | String | √ | `分析師` |
+| categoryName | 名稱 | String | √ | `policy` |
 | url | 網址 | String | | `分析後台資料` |
 | isExternal | 是否為外部連結 | Boolean | | |
 | status | 類別 | String | | `分析後台資料` |

@@ -264,4 +264,9 @@ module.exports = {
         message: '[Menu] 找不到這個 menu',
         statusCode: 404
     },
+
+    19007: {
+        message: '[Menu] 已經有相同的 category name',
+        statusCode: 400
+    },
 };
