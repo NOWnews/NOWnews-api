@@ -100,6 +100,7 @@ module.exports = async (req, res, next) => {
         debug('update news = %j', updatedNews);
 
         // 處理 log
+        updatedNews = await updatedNews.populate('MainMenu Menus MainPhoto MainVideo Photos Videos Author Tags LastReviewer CreatedBy UpdatedBy').execPopulate();
         await newsLog(updatedNews, 'UPDATE');
 
         return res.json(updatedNews);

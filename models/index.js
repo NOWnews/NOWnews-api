@@ -26,6 +26,7 @@ import policySchema from './schemas/policy';
 import centerSchema from './schemas/center';
 import departmentSchema from './schemas/department';
 import imageSchema from './schemas/image';
+import videoSchema from './schemas/video';
 import tagSchema from './schemas/tag';
 import menuSchema from './schemas/menu';
 
@@ -38,6 +39,7 @@ let Policy = connection.model('Policy', policySchema);
 let Center = connection.model('Center', centerSchema);
 let Department = connection.model('Department', departmentSchema);
 let Image = connection.model('Image', imageSchema);
+let Video = connection.model('Video', videoSchema);
 let Tag = connection.model('Tag', tagSchema);
 let Menu = connection.model('Menu', menuSchema);
 
@@ -51,6 +53,7 @@ module.exports = {
     Center,
     Department,
     Image,
+    Video,
     Tag,
     Menu
 };

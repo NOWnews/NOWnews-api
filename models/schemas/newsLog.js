@@ -2,6 +2,7 @@
 import autoIncrement from 'mongoose-easy-auto-increment';
 import mongoose from 'mongoose';
 import moment from 'moment-timezone';
+
 let Schema = mongoose.Schema;
 
 let schema = new Schema({
@@ -39,18 +40,15 @@ let schema = new Schema({
     },
 
     // 主選單分類
-    // MainMenu: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'MainMenu',
-    //     default: null
-    // },
+    MainMenu: {
+        type: Schema.Types.Mixed,
+        default: null
+    },
 
-    // 子選單分類
-    // SubMenu: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'SubMenu',
-    //     default: null
-    // },
+    // 其他分類(無限)
+    Menus: [{
+        type: Schema.Types.Mixed
+    }],
 
     // 新聞主圖物件
     MainPhoto: {
@@ -88,7 +86,7 @@ let schema = new Schema({
 
     // 新聞開始時間
     startedAt: {
-        type: Date
+        type: Schema.Types.Mixed
     },
 
     // 新聞類別
