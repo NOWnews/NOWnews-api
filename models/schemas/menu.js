@@ -18,6 +18,7 @@ let schema = new Schema({
     categoryName: {
         type: String,
         trim: true,
+        default: null
     },
 
     // 選單連結
