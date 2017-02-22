@@ -13,6 +13,7 @@ module.exports = async (req, res, next) => {
         sort = sort ? sort : '-createdAt';
 
         let causor = NewsLog.find()
+            .populate('CreatedBy')
             .where('isTrashed').equals(false)
             .sort(sort);
 
