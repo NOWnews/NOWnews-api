@@ -6,6 +6,26 @@ let Schema = mongoose.Schema;
 let schema = new Schema({
 
     newsId: {
+
+    }
+
+    queryString: {
+
+    },
+
+    menuId: {
+
+    },
+
+    title: {
+
+    },
+
+    
+
+
+
+    newsId: {
         type: Schema.Types.ObjectId,
         required: true
     },
