@@ -26,7 +26,7 @@ module.exports = async (news, action = 'CREATE') => {
             Photos: news.Photos,
             Videos: news.Videos,
             freeContent: news.freeContent,
-            startedAt: moment(news.startedAt).tz('Asia/Taipei').format('YYYY-MM-DD HH:mm:ss'),
+            startedAt: moment(news.startedAt).tz('Asia/Taipei').format('YYYY/MM/DD HH:mm'),
             type: news.type,
             status: news.status,
             traceCode: news.traceCode,

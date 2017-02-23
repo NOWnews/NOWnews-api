@@ -172,8 +172,7 @@ let schema = new Schema({
 
     // 建立者
     CreatedBy: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
+        type: Schema.Types.Mixed,
         required: true
     },
 
