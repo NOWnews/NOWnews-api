@@ -35,5 +35,10 @@
         "port": 50022,
         "url": "http://img.nownews.com/nownews_develop",
         "folder": "/var/www/images/nownews_develop"
+    },
+    "weightRatio": {
+        "pageviews": 0.3,
+        "temperatures": 0.5,
+        "weightedScore": 0.2,
     }
 }

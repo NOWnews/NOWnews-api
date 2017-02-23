@@ -3,6 +3,8 @@ import autoIncrement from 'mongoose-easy-auto-increment';
 import mongoose from 'mongoose';
 let Schema = mongoose.Schema;
 
+let config = require('config');
+
 let schema = new Schema({
 
     newsId: {
@@ -10,16 +12,19 @@ let schema = new Schema({
         required: true
     },
 
+    // 瀏覽數
     pageviews: {
         type: Number,
         default: 0
     },
 
+    // 溫度計
     temperatures: {
         type: Number,
         default: 0
     },
 
+    // 後台加權分數
     weightedScore: {
         type: Number,
         default: 0
@@ -47,7 +52,7 @@ let schema = new Schema({
 });
 
 schema.virtual('totalScore').get(function () {
-    return (this.pageviews * 0.3) + (this.temperatures * 0.5) + (this.weightedScore * 0.2);
+    return (this.pageviews * config.get('weightRatio.pageviews')) + (this.temperatures * config.get('weightRatio.temperatures')) + (this.weightedScore * config.get('weightRatio.weightedScore'));
 });
 
 schema.plugin(autoIncrement);
