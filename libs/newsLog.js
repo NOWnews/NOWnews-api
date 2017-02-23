@@ -1,5 +1,6 @@
 
 import { NewsLog } from '../models'
+import moment from 'moment-timezone';
 
 module.exports = async (news, action = 'CREATE') => {
     try {
@@ -8,19 +9,24 @@ module.exports = async (news, action = 'CREATE') => {
             throw new Error('');
         }
 
+        // 強制轉換成 Objectt
+        news = news.toObject();
+
         let options = {
             newsId: news._id,
             newsSn: news.sn,
             title: news.title,
             shortTitle: news.shortTitle,
             summary: news.summary,
+            MainMenu: news.MainMenu,
+            Menus: news.Menus,
             MainPhoto: news.MainPhoto,
             MainVideo: news.MainVideo,
             content: news.content,
             Photos: news.Photos,
             Videos: news.Videos,
             freeContent: news.freeContent,
-            startedAt: news.startedAt,
+            startedAt: moment(news.startedAt).tz('Asia/Taipei').format('YYYY/MM/DD HH:mm'),
             type: news.type,
             status: news.status,
             traceCode: news.traceCode,
@@ -32,7 +38,7 @@ module.exports = async (news, action = 'CREATE') => {
             feedFrom: news.feedFrom,
             LastReviewer: news.LastReviewer,
             CreatedBy: news.UpdatedBy,
-            UpdatedBy: news.UpdatedBy,
+            // UpdatedBy: news.UpdatedBy,
             action
         };
 

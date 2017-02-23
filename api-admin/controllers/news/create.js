@@ -59,6 +59,7 @@ module.exports = async (req, res, next) => {
         });
 
         // 處理 log
+        newNews = await newNews.populate('MainMenu Menus MainPhoto MainVideo Photos Videos Author Tags LastReviewer CreatedBy UpdatedBy').execPopulate();
         await newsLog(newNews);
 
         return res.json(newNews);
