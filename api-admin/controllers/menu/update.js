@@ -61,6 +61,10 @@ module.exports = async (req, res, next) => {
             menu.set('status', status);
         }
 
+        if(categoryName) {
+            menu.set('categoryName', categoryName);
+        }
+
         isExternal = isExternal === true ? true : false;
         isAdult = isAdult === true ? true : false;
         menu.set('isExternal', isExternal);
