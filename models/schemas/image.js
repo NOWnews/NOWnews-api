@@ -9,30 +9,37 @@ let schema = new Schema({
     // 圖片的標題
     title: {
         type: String,
-        default: '',
+        default: null,
         trim: true
     },
 
     // 圖片的描述(圖說)
     desc: {
         type: String,
-        default: '',
+        default: null,
         trim: true
+    },
+
+    // 圖片來源
+    imageFrom: {
+        type: String,
+        default: 'INTERNAL',
+        enum: ['INTERNAL', 'EXTERNAL']
     },
 
     // 原始的檔案名稱
     originalname: {
         type: String,
-        required: true,
+        default: null,
         trim: true
     },
 
     // 圖片的類別(jpg, png)
     format: {
         type: String,
-        required: true,
         trim: true,
-        lowercase: true
+        lowercase: true,
+        default: null
     },
 
     // 圖片的分類
@@ -44,20 +51,20 @@ let schema = new Schema({
 
     mimetype: {
         type: String,
-        required: true,
-        trim: true
+        trim: true,
+        default: null
     },
 
     // 圖片的寬
     width: {
         type: Number,
-        required: true
+        default: null
     },
 
     // 圖片的高
     height: {
         type: Number,
-        required: true
+        default: null
     },
 
     // 是否可外送

@@ -326,9 +326,38 @@ None
 | skip | 跳過幾筆資料 | Number |  | `skip=10` |
 | sort | 排序(預設為最新在最前面) | String | | `sort=createdAt`, `sort=-title` |
 
+### [POST] `/images/`
+
+上傳一張圖片(外部連結)
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| url | 要上傳的圖片 | String | √ | |
+| title | 這張圖片的標題 | String |  | `測試圖片` |
+| desc | 這張圖片的圖說 | String |  | `這是測試圖片` |
+| type | 圖片的分類 | `['NEWS','AVATAR']` |  | `NEWS` |
+| isDeliver | 是否可以上傳 | String |  | `true` |
+| Tag | 圖片的標籤(關鍵字) | ObjectId |  | |
+| CreatedBy | 最後更新者 | String | √ | `530000000000000000000001` |
+
+#### Query Parameters
+None
+
 ### [POST] `/images/upload`
 
-上傳一張圖片
+上傳一張圖片(圖片上傳)
 
 #### Header Parameters
 
@@ -345,7 +374,6 @@ None
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
 | image | 要上傳的圖片 | File | √ | |
-| keyword | 這張圖片的關鍵字 | String |  | `測試` |
 | title | 這張圖片的標題 | String |  | `測試圖片` |
 | desc | 這張圖片的圖說 | String |  | `這是測試圖片` |
 | type | 圖片的分類 | `['NEWS','AVATAR']` |  | `NEWS` |
