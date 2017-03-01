@@ -16,7 +16,7 @@ import { Image } from '../../../models';
 
 module.exports = async(req, res, next) => {
 
-    let { keyword, title, desc, type, isDeliver, Tag, CreatedBy } = req.body;
+    let { title, desc, type, isDeliver, Tag, CreatedBy } = req.body;
     let { path, mimetype, originalname } = req.file;
 
     try{
@@ -67,9 +67,9 @@ module.exports = async(req, res, next) => {
         // 組成要儲存的資料
         let options = {
             _id: objectId,
-            keyword,
             title,
             desc,
+            imageFrom: 'INTERNAL',
             format: ext,
             originalname,
             mimetype,
