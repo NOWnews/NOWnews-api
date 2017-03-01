@@ -5,6 +5,7 @@ import role from './role';
 import center from './center';
 import department from './department';
 import image from './image';
+import video from './video';
 import news from './news';
 import newsMemo from './newsMemo';
 import newsLog from './newsLog';
@@ -21,6 +22,7 @@ module.exports = (app) => {
     app.use('/', role);
     app.use('/', center);
     app.use('/', image);
+    app.use('/', video);
     app.use('/', department);
     app.use('/', news);
     app.use('/', newsMemo);

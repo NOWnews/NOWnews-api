@@ -33,7 +33,15 @@
         "password": "zAQ!@#EDCXSW",
         "host": "img.nownews.pri", // (59.124.93.47 / 192.168.40.168)
         "port": 50022,
-        "url": "http://img.nownews.com/nownews_staging",
+        "url": "http://img.nownews.com/images/nownews_staging",
         "folder": "/var/www/images/nownews_staging"
+    },
+    "videoServer": {
+        "username": "imgscp",
+        "password": "zAQ!@#EDCXSW",
+        "host": "img.nownews.com", //59.124.93.47
+        "port": 50022,
+        "url": "http://img.nownews.com/videos/nownews_staging",
+        "folder": "/var/www/videos/nownews_staging"
     }
 }

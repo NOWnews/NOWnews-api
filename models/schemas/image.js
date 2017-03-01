@@ -6,14 +6,6 @@ let Schema = mongoose.Schema;
 
 let schema = new Schema({
 
-    // 圖片關鍵字
-    keyword: {
-        type: String,
-        default: '',
-        trim: true,
-        lowercase: true
-    },
-
     // 圖片的標題
     title: {
         type: String,
@@ -72,6 +64,13 @@ let schema = new Schema({
     isDeliver: {
         type: Boolean,
         default: true
+    },
+
+    // 此圖片標籤(關鍵字只會有一個)
+    Tag: {
+        type: Schema.Types.ObjectId,
+        ref: 'Tag',
+        default: null
     },
 
     // 圖片的連結

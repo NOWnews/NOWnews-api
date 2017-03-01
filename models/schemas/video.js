@@ -7,8 +7,74 @@ let Schema = mongoose.Schema;
 let schema = new Schema({
 
     // 影片名稱
-    name: {
+    title: {
         type: String,
+        default: null
+    },
+
+    // 影片描述
+    desc: {
+        type: String,
+        default: null
+    },
+
+    // 影音來源
+    videoFrom: {
+        type: String,
+        default: 'INTERNAL',
+        enum: ['INTERNAL', 'EXTERNAL']
+    },
+
+    // 原始的檔案名稱
+    originalname: {
+        type: String,
+        trim: true,
+        default: null
+    },
+
+    // 影片的類別(mp4, avi)
+    format: {
+        type: String,
+        trim: true,
+        lowercase: true,
+        default: null
+    },
+
+    // 影片的分類
+    type: {
+        type: String,
+        enum: ['NEWS'],
+        default: 'NEWS'
+    },
+
+    mimetype: {
+        type: String,
+        trim: true,
+        default: null
+    },
+
+    // 是否可外送
+    isDeliver: {
+        type: Boolean,
+        default: true
+    },
+
+    // 此影片標籤(關鍵字)
+    Tags: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Tag',
+    }],
+
+    // 影片的連結
+    url: {
+        type: String,
+        required: true
+    },
+
+    // 影片的大小
+    size: {
+        type: Number,
+        default: null
     },
 
     // 是否被刪除
