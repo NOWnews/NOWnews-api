@@ -18,6 +18,13 @@ let schema = new Schema({
         default: null
     },
 
+    // 影音來源
+    videoFrom: {
+        type: String,
+        default: 'INTERNAL',
+        enum: ['INTERNAL', 'EXTERNAL']
+    },
+
     // 原始的檔案名稱
     originalname: {
         type: String,

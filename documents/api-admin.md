@@ -425,9 +425,34 @@ None
 
 ## VIDEO API DOCUMENTS
 
+### [POST] `/videos`
+
+上傳一則影片(外部連結)
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| url | 影片的連結 | String | √ | |
+| title | 這張圖片的標題 | String |  | `測試圖片` |
+| desc | 這張圖片的圖說 | String |  | `這是測試圖片` |
+| type | 圖片的分類 | `['NEWS']` |  | `NEWS` |
+| Tags | 標籤(關鍵字) | [ObjectId] |  | |
+| CreatedBy | 最後更新者 | String | √ | `530000000000000000000001` |
+
 ### [POST] `/videos/upload`
 
-上傳一則影片
+上傳一則影片(由本機上傳)
 
 #### Header Parameters
 

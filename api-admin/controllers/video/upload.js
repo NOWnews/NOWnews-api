@@ -1,3 +1,7 @@
+/*
+ * [POST] /videos/upload 是有影片要從本機上傳
+ * [POST] /videos/ 是外部影片連結直接使用
+ */
 
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:video:upload');
@@ -14,11 +18,10 @@ import server from 'scp2';
 import { Video } from '../../../models';
 
 module.exports = async(req, res, next) => {
-
-    let { Tags, title, desc, type, isDeliver, CreatedBy } = req.body;
-    let { size, path, mimetype, originalname } = req.file;
-
     try{
+
+        let { Tags, title, desc, type, isDeliver, CreatedBy } = req.body;
+        let { size, path, mimetype, originalname } = req.file;
 
         // 讀取檔案的前 4100 bytes 存成 buffer
         let buffer = readChunk.sync(path, 0, 4100);
@@ -56,6 +59,7 @@ module.exports = async(req, res, next) => {
             _id: objectId,
             title,
             desc,
+            videoFrom: 'INTERNAL',
             originalname,
             format: ext,
             type,
@@ -69,7 +73,7 @@ module.exports = async(req, res, next) => {
         };
         debug('options = %j', options);
 
-        // 儲存新檔案
+        // 儲存新的影片資料
         let newVideo = await Video.createAsync(options);
         debug('newVideo = %j', newVideo);
 
