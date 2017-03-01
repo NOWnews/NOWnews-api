@@ -25,7 +25,7 @@ let schema = new Schema({
         default: null
     },
 
-    // 圖片的類別(jpg, png)
+    // 影片的類別(mp4, avi)
     format: {
         type: String,
         trim: true,
