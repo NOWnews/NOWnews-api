@@ -49,6 +49,13 @@ let schema = new Schema({
         default: 'NEWS'
     },
 
+    // 圖片的模式
+    mode: {
+        type: String,
+        enum: ['NORMAl', '360VIEW'],
+        default: 'NORMAl'
+    },
+
     mimetype: {
         type: String,
         trim: true,
