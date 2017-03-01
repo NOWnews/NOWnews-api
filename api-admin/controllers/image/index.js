@@ -9,11 +9,13 @@ import baseQuery from '../../middlewares/baseQuery';
 
 import list from './list';
 import upload from './upload';
+import create from './create';
 import one from './one';
 import remove from './remove';
 import realRemove from './realRemove';
 
 router.route('/images')
+    .post(create)
     .get(baseQuery, list);
 
 router.route('/images/upload')
