@@ -97,7 +97,7 @@ let schema = new Schema({
     // 新聞狀態
     status: {
         type: String,
-        enum: ['DRAFT', 'REVIEW', 'RELEASE', 'CLOSE'], // 草稿, 審核中, 發布, 關閉
+        enum: ['DRAFT', 'REVIEW', 'RELEASE', 'TEMP', 'CLOSE'], // 草稿, 審核中, 發布, 暫存, 關閉
         default: 'DRAFT'
     },
 

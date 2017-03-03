@@ -12,6 +12,7 @@ import upload from './upload';
 import clone from './clone';
 import create from './create';
 import one from './one';
+import update from './update';
 import remove from './remove';
 import realRemove from './realRemove';
 
@@ -26,6 +27,7 @@ router.route('/images/clone')
     .post(clone);
 
 router.route('/images/:id')
+    .put(update)
     .get(one)
     .delete(remove);
 
