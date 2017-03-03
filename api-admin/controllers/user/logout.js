@@ -27,7 +27,7 @@ module.exports = async (req, res, next) => {
             User: userId,
             action: 'LOGOUT',
             createdAt: Date.now(),
-            ip: ip
+            ip
         });
 
         return res.status(200).send();

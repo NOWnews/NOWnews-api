@@ -42,7 +42,7 @@ module.exports = async (req, res, next) => {
                 User: user._id,
                 action: 'LOGIN',
                 createdAt: now,
-                ip: ip
+                ip
             })
         ]);
 
