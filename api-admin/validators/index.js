@@ -5,6 +5,7 @@ import news from './news';
 import newsMemo from './newsMemo';
 import tag from './tag';
 import menu from './menu';
+import image from './image';
 
 module.exports = {
     user,
@@ -12,5 +13,6 @@ module.exports = {
     news,
     newsMemo,
     tag,
-    menu
+    menu,
+    image
 };

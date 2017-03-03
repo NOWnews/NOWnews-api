@@ -8,7 +8,7 @@ module.exports = async(req, res, next) => {
 
     try{
 
-        let { id, desc } = req.body;
+        let { id, desc, CreatedBy } = req.body;
 
         let image = await Image.findById(id)
             .execAsync();
@@ -33,8 +33,8 @@ module.exports = async(req, res, next) => {
             Tag: image.Tag,
             url: image.url,
             isTrashed: image.isTrashed,
-            CreatedBy: image.CreatedBy,
-            UpdatedBy: image.UpdatedBy
+            CreatedBy: CreatedBy,
+            UpdatedBy: CreatedBy
         };
 
         let clonedImage = await Image.createAsync(options);

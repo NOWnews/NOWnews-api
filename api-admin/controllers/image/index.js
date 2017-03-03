@@ -5,6 +5,7 @@ import multer from 'multer';
 let router = express.Router();
 let imageUpload = multer({ dest: 'uploads/' });
 
+import validators from '../../validators';
 import baseQuery from '../../middlewares/baseQuery';
 
 import list from './list';
@@ -24,10 +25,10 @@ router.route('/images/upload')
     .post(imageUpload.single('image'), upload);
 
 router.route('/images/clone')
-    .post(clone);
+    .post(validators.image.clone, clone);
 
 router.route('/images/:id')
-    .put(update)
+    .put(validators.image.update, update)
     .get(one)
     .delete(remove);
 

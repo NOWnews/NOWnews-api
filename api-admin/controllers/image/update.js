@@ -8,7 +8,7 @@ module.exports = async(req, res, next) => {
 
     try{
 
-        let { desc } = req.body;
+        let { desc, UpdatedBy } = req.body;
         let { id } = req.params;
 
         // 更新圖片只允許外部圖片，內部圖片都應該是 clone 一份新的
@@ -23,6 +23,7 @@ module.exports = async(req, res, next) => {
         }
 
         image.set('desc', desc);
+        image.set('UpdatedBy', UpdatedBy);
 
         let updatedImage = await image.saveAsync();
 
