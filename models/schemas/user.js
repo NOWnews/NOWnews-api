@@ -118,6 +118,12 @@ let schema = new Schema({
         }
     },
 
+    // 最後登入時間
+    lastLogin: {
+        type: Date,
+        default: Date.now
+    },
+
     // 是否被刪除
     isTrashed: {
         type: Boolean,
@@ -171,6 +177,10 @@ schema.virtual('formatCreatedAt').get(function () {
 
 schema.virtual('formatUpdatedAt').get(function () {
     return moment(this.updatedAt).tz('Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
+});
+
+schema.virtual('formatLastLogin').get(function () {
+    return moment(this.lastLogin).tz('Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });
 
 schema.plugin(autoIncrement);
