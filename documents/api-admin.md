@@ -384,6 +384,30 @@ None
 #### Query Parameters
 None
 
+### [POST] `/images/clone`
+
+複製一份 Image 物件(更新圖說時)
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | 圖片的 ObjectId | String | √ | `530000000000000000000001` |
+| desc | 這張圖片的圖說 | String |  | `更新圖說` |
+
+#### Query Parameters
+None
+
 ### [GET] `/images/{:id}`
 
 讀取一張圖片

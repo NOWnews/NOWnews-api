@@ -9,6 +9,7 @@ import baseQuery from '../../middlewares/baseQuery';
 
 import list from './list';
 import upload from './upload';
+import clone from './clone';
 import create from './create';
 import one from './one';
 import remove from './remove';
@@ -20,6 +21,9 @@ router.route('/images')
 
 router.route('/images/upload')
     .post(imageUpload.single('image'), upload);
+
+router.route('/images/clone')
+    .post(clone);
 
 router.route('/images/:id')
     .get(one)
