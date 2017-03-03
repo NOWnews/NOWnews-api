@@ -29,6 +29,7 @@ import imageSchema from './schemas/image';
 import videoSchema from './schemas/video';
 import tagSchema from './schemas/tag';
 import menuSchema from './schemas/menu';
+import loginTrackSchema from './schemas/loginTrack';
 
 let User = connection.model('User', userSchema);
 let News = connection.model('News', newsSchema);
@@ -42,6 +43,7 @@ let Image = connection.model('Image', imageSchema);
 let Video = connection.model('Video', videoSchema);
 let Tag = connection.model('Tag', tagSchema);
 let Menu = connection.model('Menu', menuSchema);
+let LoginTrack = connection.model('LoginTrack', loginTrackSchema);
 
 module.exports = {
     User,
@@ -55,5 +57,6 @@ module.exports = {
     Image,
     Video,
     Tag,
-    Menu
+    Menu,
+    LoginTrack
 };

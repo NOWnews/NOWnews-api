@@ -11,6 +11,7 @@ import one from './one';
 import update from './update';
 import remove from './remove';
 import login from './login';
+import logout from './logout';
 
 router.route('/users')
     .post(validators.user.create, create)
@@ -18,6 +19,9 @@ router.route('/users')
 
 router.route('/users/login')
     .post(validators.user.login, login);
+
+router.route('/users/logout')
+    .post(logout);
 
 router.route('/users/:id')
     .get(one)
