@@ -16,7 +16,7 @@ module.exports = async (req, res, next) => {
 
     try {
 
-        let { id } = req.body;
+        let { userId } = req.body;
 
         let ip = await publicIp.v4()
             .then((ip) => {
@@ -24,7 +24,7 @@ module.exports = async (req, res, next) => {
             });
 
         await LoginTrack.createAsync({
-            User: id,
+            User: userId,
             action: 'LOGOUT',
             createdAt: Date.now(),
             ip: ip
