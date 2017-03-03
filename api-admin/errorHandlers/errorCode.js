@@ -137,8 +137,28 @@ module.exports = {
 
     // Image
     15001: {
-        message: '[Image findOne] 找不到這個圖片資料',
+        message: '[Image] 找不到這個圖片資料',
         statusCode: 404
+    },
+
+    15002: {
+        message: '[Image] 缺少 desc 這個欄位',
+        statusCode: 400
+    },
+
+    15003: {
+        message: '[Image] 缺少 id 這個欄位',
+        statusCode: 400
+    },
+
+    15004: {
+        message: '[Image] 缺少 CreatedBy 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    15005: {
+        message: '[Image] 缺少 UpdatedBy 這個欄位或是格式不正確',
+        statusCode: 400
     },
 
     // News
