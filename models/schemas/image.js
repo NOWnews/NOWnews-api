@@ -90,8 +90,7 @@ let schema = new Schema({
     // 圖片的連結
     url: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
 
     isTrashed: {

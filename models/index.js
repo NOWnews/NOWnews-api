@@ -31,6 +31,8 @@ import tagSchema from './schemas/tag';
 import menuSchema from './schemas/menu';
 import loginTrackSchema from './schemas/loginTrack';
 import indexpageSchema from './schemas/indexpage';
+import specialTopicSchema from './schemas/specialTopic';
+import specialChannelSchema from './schemas/specialChannel';
 
 let User = connection.model('User', userSchema);
 let News = connection.model('News', newsSchema);
@@ -46,6 +48,8 @@ let Tag = connection.model('Tag', tagSchema);
 let Menu = connection.model('Menu', menuSchema);
 let LoginTrack = connection.model('LoginTrack', loginTrackSchema);
 let IndexPage = connection.model('IndexPage', indexpageSchema);
+let SpecialTopic = connection.model('SpecialTopic', specialTopicSchema);
+let SpecialChannel = connection.model('SpecialChannel', specialChannelSchema);
 
 module.exports = {
     User,
