@@ -115,6 +115,12 @@ let schema = new Schema({
             type: Schema.Types.ObjectId,
             ref: 'Menu',
             default: null
+        },
+
+        // 使用者預設訊頭
+        newsBy: {
+            type: String,
+            default: null
         }
     },
 

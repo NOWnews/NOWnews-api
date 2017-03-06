@@ -137,6 +137,12 @@ let schema = new Schema({
         required: true
     },
 
+    // 訊頭
+    newsBy: {
+        type: String,
+        default: null
+    },
+
     // 此新聞的標籤(關鍵字)
     Tags: [{
         type: Schema.Types.ObjectId,
