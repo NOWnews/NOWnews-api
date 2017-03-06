@@ -72,6 +72,8 @@ None
 | name | 姓名(模糊搜尋) | String |  | `name=wa` |
 | status | 狀態(完全比對) | String |  | `status=NEWBIE` |
 | Role | 角色(完全比對) | String |  | `Role=520000000000000000000001` |
+| Department | 部門(完全比對) | String |  | `Department=520000000000000000000001` |
+| Center | 中心(完全比對) | String |  | `Center=520000000000000000000001` |
 | sort | 排序 | String |  | `sort=-createdAt`, `sort=name` |
 | page | 第幾頁 | Number |  | `page=1` |
 | limit | 一次幾筆資料 | Number |  | `limit=10` |

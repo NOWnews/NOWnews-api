@@ -9,7 +9,7 @@ import { pagination } from '../../../libs';
 
 module.exports = async (req, res, next) => {
 
-    let { limit, page, skip, name, status, Role, sort } = req.query;
+    let { limit, page, skip, name, status, Role, sort, Center, Department } = req.query;
     debug('req.query = %j', req.query);
 
     try{
@@ -31,6 +31,16 @@ module.exports = async (req, res, next) => {
         if(Role) {
             cursor.where('Role').equals(Role);
             totalCursor.where('Role').equals(Role);
+        }
+
+        if(Center) {
+            cursor.where('Center').equals(Center);
+            totalCursor.where('Center').equals(Center);
+        }
+
+        if(Department) {
+            cursor.where('Department').equals(Department);
+            totalCursor.where('Department').equals(Department);
         }
 
         let [ users, total ] = await Promise.all([
