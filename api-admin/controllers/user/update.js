@@ -24,7 +24,9 @@ module.exports = async (req, res, next) => {
         jobTitle,
         profileLink,
         Avatar,
+        defaultAuthor,
         defaultMenu,
+        defaultNewsBy,
         UpdatedBy
     } = req.body;
 
@@ -91,12 +93,24 @@ module.exports = async (req, res, next) => {
             user.set('Avatar', Avatar);
         }
 
+        if(defaultAuthor === null) {
+            user.set('defaultSettings.Author', null);
+        }
+
+        if(defaultAuthor && mongoose.Types.ObjectId.isValid(defaultAuthor)) {
+            user.set('defaultSettings.Author', defaultAuthor);
+        }
+
         if(defaultMenu === null) {
             user.set('defaultSettings.Menu', null);
         }
 
         if(defaultMenu && mongoose.Types.ObjectId.isValid(defaultMenu)) {
             user.set('defaultSettings.Menu', defaultMenu);
+        }
+
+        if(defaultNewsBy) {
+            user.set('defaultSettings.newsBy', defaultNewsBy);
         }
 
         user.UpdatedBy = UpdatedBy;
