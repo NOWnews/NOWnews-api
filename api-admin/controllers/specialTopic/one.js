@@ -15,6 +15,10 @@ module.exports = async (req, res, next) => {
             .execAsync();
         debug('specialTopic = %j', specialTopic);
 
+        if(!specialTopic) {
+            throw new Error('20001');
+        }
+
         return res.json(specialTopic);
     } catch (err) {
         return next(err);
