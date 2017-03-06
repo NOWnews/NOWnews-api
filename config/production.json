@@ -43,5 +43,11 @@
         "port": 50022,
         "url": "http://img.nownews.com/videos/nownews",
         "folder": "/var/www/videos/nownews"
+    },
+    "indexpage": {
+        "carousels": 10,
+        "specialTopics": 4,
+        "specialChannels": 8,
+        "videos": 20
     }
 }
