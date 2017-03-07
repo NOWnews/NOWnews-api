@@ -22,12 +22,13 @@ module.exports = async (req, res, next) => {
 
         // 刪除 department.Centers 的資料
         let department = await Department.findOne()
-            .where('Centers').equals(center.id)
+            .where('Centers').equals(center._id)
             .execAsync();
+
         debug('department = %j', department);
 
         if(department) {
-            department.Centers.pull(center.id);
+            department.Centers.pull(center._id);
             await department.saveAsync();
         }
 
