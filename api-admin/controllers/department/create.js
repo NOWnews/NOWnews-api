@@ -9,18 +9,19 @@ import { Department } from '../../../models';
 module.exports = async (req, res, next) => {
 
     let options = _.pick(req.body, ['name', 'CreatedBy', 'UpdatedBy']);
+
     debug('options = %j', options);
 
     try {
 
         let department = await Department.findOne()
-            .where('name').equals(req.body.name)
+            .where('name').equals(options.name)
             .where('isTrashed').equals(false)
             .execAsync();
         debug('department = %j', department);
 
         if(department) {
-            throw new Error('14001');
+            throw new Error('13001');
         }
 
         let newDepartment = await Department.createAsync(options);

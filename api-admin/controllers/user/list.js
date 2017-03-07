@@ -47,7 +47,7 @@ module.exports = async (req, res, next) => {
             cursor
                 .where('isTrashed').equals(false)
                 .where('isInitUser').equals(false)
-                .populate('Role Center Department')
+                .populate('Role Department Center')
                 .limit(limit)
                 .skip(skip)
                 .sort(sort)

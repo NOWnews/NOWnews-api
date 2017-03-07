@@ -12,11 +12,13 @@ module.exports = async (req, res, next) => {
 
         let department = await Department.findById(id)
             .where('isTrashed').equals(false)
+            .populate('Centers CreatedBy UpdatedBy')
             .execAsync();
+
         debug('department = %j', department);
 
         if(!department) {
-            throw new Error('14002');
+            throw new Error('13002');
         }
 
         return res.json(department);
