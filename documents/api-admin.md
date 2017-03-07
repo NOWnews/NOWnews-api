@@ -552,9 +552,9 @@ None
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
 | url | 影片的連結 | String | √ | |
-| title | 這張圖片的標題 | String |  | `測試圖片` |
-| desc | 這張圖片的圖說 | String |  | `這是測試圖片` |
-| type | 圖片的分類 | `['NEWS']` |  | `NEWS` |
+| title | 影片的標題 | String |  | `測試影片` |
+| desc | 影片的說明 | String |  | `這是測試影片` |
+| type | 影片的分類 | `['NEWS']` |  | `NEWS` |
 | Tags | 標籤(關鍵字) | [ObjectId] |  | |
 | CreatedBy | 最後更新者 | String | √ | `530000000000000000000001` |
 
@@ -577,9 +577,9 @@ None
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
 | video | 要上傳的圖片 | File | √ | |
-| title | 這張圖片的標題 | String |  | `測試圖片` |
-| desc | 這張圖片的圖說 | String |  | `這是測試圖片` |
-| type | 圖片的分類 | `['NEWS']` |  | `NEWS` |
+| title | 影片的標題 | String |  | `測試影片` |
+| desc | 影片的說明 | String |  | `這是測試影片` |
+| type | 影片的分類 | `['NEWS']` |  | `NEWS` |
 | Tags | 標籤(關鍵字) | [ObjectId] |  | |
 | CreatedBy | 最後更新者 | String | √ | `530000000000000000000001` |
 
@@ -1377,6 +1377,130 @@ None
 ### [DELETE] `/specialtopics/{:id}`
 
 刪除單一專題
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| UpdatedBy | 更新者 | ObjectId | √ | |
+
+#### Query Parameters
+
+None
+
+## SPECIALCHANNEL API DOCUMENT
+
+### [POST] `/specialchannels`
+
+創建一個特輯
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| title | 特輯的標題 | String | √ | |
+| MainPhoto | 特輯的主圖(Image) | ObjectId | √ | |
+| newsList | 新聞 ObjectId 陣列 | [ObjectId]  | √ | |
+| CreatedBy | 建立者 | ObjectId | √ | |
+
+#### Query Parameters
+
+None
+
+### [GET] `/specialchannels`
+
+特輯列表
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None
+
+### [GET] `/specialchannels/{:id}`
+
+單一特輯資訊
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None
+
+### [PUT] `/specialchannels/{:id}`
+
+更新單一特輯
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| title | 特輯的標題 | String | | |
+| MainPhoto | 特輯的主圖(Image) | ObjectId | | |
+| newsList | 新聞 ObjectId 陣列 | [ObjectId]  | √ | |
+| UpdatedBy | 更新者 | ObjectId | √ | |
+
+#### Query Parameters
+
+None
+
+### [DELETE] `/specialchannels/{:id}`
+
+刪除單一特輯
 
 #### Header Parameters
 

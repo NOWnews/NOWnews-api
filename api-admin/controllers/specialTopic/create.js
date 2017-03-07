@@ -9,8 +9,6 @@ import { SpecialTopic } from '../../../models';
 module.exports = async (req, res, next) => {
     try{
 
-        let { title, Image, url } = req.body;
-
         let options = _.pick(req.body, ['title', 'MainPhoto', 'url', 'CreatedBy']);
         debug('options = %j', options);
 

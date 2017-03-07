@@ -20,12 +20,15 @@ module.exports = async(req, res, next) => {
             title,
             desc,
             videoFrom: 'EXTERNAL',
-            // isDeliver: isDeliver === 'true' ? true : false,
-            Tags: Tags,
+            isDeliver: isDeliver === 'true' ? true : false,
             url: url,
             CreatedBy,
             UpdatedBy: CreatedBy
         };
+
+        if(Tags) {
+            options.Tags = JSON.parse(Tags);
+        }
         debug('options = %j', options);
 
         // 儲存新的影片資料

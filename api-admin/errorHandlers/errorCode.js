@@ -299,5 +299,61 @@ module.exports = {
     20001: {
         message: '[SpecialTopic] 找不到此專題',
         statusCode: 404
-    }
+    },
+
+    20002: {
+        message: '[SpecialTopic] 缺少 title 這個欄位',
+        statusCode: 400
+    },
+
+    20003: {
+        message: '[SpecialTopic] 缺少 url 這個欄位',
+        statusCode: 400
+    },
+
+    20004: {
+        message: '[SpecialTopic] 缺少 MainPhoto 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    20005: {
+        message: '[SpecialTopic] 缺少 CreatedBy 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    20006: {
+        message: '[SpecialTopic] 缺少 UpdatedBy 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    // SpecialChannel
+    21001: {
+        message: '[SpecialChannel] 找不到此特輯',
+        statusCode: 404
+    },
+
+    21002: {
+        message: '[SpecialChannel] 缺少 title 這個欄位',
+        statusCode: 400
+    },
+
+    21003: {
+        message: '[SpecialChannel] 缺少 MainPhoto 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    21004: {
+        message: '[SpecialChannel] newsList 必須為 Array',
+        statusCode: 400
+    },
+
+    21005: {
+        message: '[SpecialChannel] 缺少 CreatedBy 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    21006: {
+        message: '[SpecialChannel] 缺少 UpdatedBy 這個欄位或是格式不正確',
+        statusCode: 400
+    },
 };
