@@ -41,7 +41,9 @@ None
 | jobTitle | 職稱 | String  |  | `工程師` |
 | profileLink | 個人資料連結 | String  |  | |
 | Avatar | 大頭照 | String  |  | |
-| defaultMenu | 使用者建立新聞時的預設主選單 | ObjectId  |  | |
+| defaultAuthor | 使用者建立新聞時的預設作者 | ObjectId  |  | `520000000000000000000001` |
+| defaultMenu | 使用者建立新聞時的預設主選單 | ObjectId  |  | `520000000000000000000001` |
+| defaultNewsBy | 使用者建立新聞時的預設訊頭 | Stringg  |  | |
 | CreatedBy | 建立者 ObjectId | ObjectId  | √ | `530000000000000000000001` |
 
 #### Query Parameters
@@ -70,6 +72,8 @@ None
 | name | 姓名(模糊搜尋) | String |  | `name=wa` |
 | status | 狀態(完全比對) | String |  | `status=NEWBIE` |
 | Role | 角色(完全比對) | String |  | `Role=520000000000000000000001` |
+| Department | 部門(完全比對) | String |  | `Department=520000000000000000000001` |
+| Center | 中心(完全比對) | String |  | `Center=520000000000000000000001` |
 | sort | 排序 | String |  | `sort=-createdAt`, `sort=name` |
 | page | 第幾頁 | Number |  | `page=1` |
 | limit | 一次幾筆資料 | Number |  | `limit=10` |
@@ -174,7 +178,9 @@ None
 | jobTitle | 職稱 | String  |  | `工程師` |
 | profileLink | 個人資料連結 | String  |  | |
 | Avatar | 大頭照 | String  |  | |
-| defaultMenu | 使用者建立新聞時的預設主選單 | ObjectId  |  | |
+| defaultAuthor | 使用者建立新聞時的預設作者 | ObjectId  |  | `520000000000000000000001` |
+| defaultMenu | 使用者建立新聞時的預設主選單 | ObjectId  |  | `520000000000000000000001` |
+| defaultNewsBy | 使用者建立新聞時的預設訊頭 | Stringg  |  | |
 | UpdatedBy | 建立者 ObjectId | ObjectId  | √ | `530000000000000000000001` |
 
 None
@@ -619,6 +625,7 @@ None
 | isDeliver | 可否外送 | Boolean | | |
 | isSponsored | 可否為業配文 | Boolean | | |
 | location | 這則新聞的做標 | Object | | `[124, 12]` |
+| newsBy | 訊頭 | String | | |
 | Author | 作者，若沒傳入則帶入建立者 | ObjectId | | |
 | Tags | 標籤(關鍵字) | [ObjectId] | | |
 | CreatedBy | 建立者 | ObjectId | √ | |
@@ -716,6 +723,7 @@ None
 | isDeliver | 是否可外送 | Boolean | | |
 | isSponsored | 可否為業配文 | Boolean | | |
 | location | 這則新聞的做標 | Object | | `[124, 12]` |
+| newsBy | 訊頭 | String | √ | |
 | LastReviewer | 欲將新聞送審的人 | ObjectId | √ | |
 | Author | 作者，若沒傳入則帶入建立者 | ObjectId | √ | |
 | Tags | 標籤(關鍵字) | [ObjectId] | | |
@@ -762,6 +770,7 @@ None
 | isDeliver | 是否可外送 | Boolean | | |
 | isSponsored | 可否為業配文 | Boolean | | |
 | location | 這則新聞的做標 | Object | | `[124, 12]` |
+| newsBy | 訊頭 | String | √ | |
 | Author | 作者，若沒傳入則帶入建立者 | ObjectId | √ | |
 | Tags | 標籤(關鍵字) | [ObjectId] | | |
 | UpdatedBy | 更新者 | ObjectId | √ | |
@@ -809,6 +818,7 @@ None
 | isDeliver | 是否可外送 | Boolean | | |
 | isSponsored | 可否為業配文 | Boolean | | |
 | location | 這則新聞的做標 | Object | | `[124, 12]` |
+| newsBy | 訊頭 | String | | |
 | Author | 作者，若沒傳入則帶入建立者 | ObjectId | √ | |
 | Tags | 標籤(關鍵字) | [ObjectId] | | |
 | UpdatedBy | 更新者 | ObjectId | √ | |
@@ -1262,6 +1272,7 @@ None
 #### Query Parameters
 
 None
+
 
 ## SPECIALTOPIC API DOCUMENT
 

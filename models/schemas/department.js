@@ -11,6 +11,11 @@ let schema = new Schema({
         required: true
     },
 
+    Centers: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Center'
+    }],
+
     isTrashed: {
         type: Boolean,
         default: false

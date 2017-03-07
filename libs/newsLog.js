@@ -33,6 +33,7 @@ module.exports = async (news, action = 'CREATE') => {
             isAdult: news.isAdult,
             isDeliver: news.isDeliver,
             Author: news.Author,
+            newsBy: news.newsBy,
             Tags: news.Tags,
             isFeed: news.isFeed,
             feedFrom: news.feedFrom,

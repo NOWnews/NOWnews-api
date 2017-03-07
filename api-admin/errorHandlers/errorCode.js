@@ -37,11 +37,11 @@ module.exports = {
         statusCode: 400
     },
     // 11006: {
-    //     message: '[User Create] 缺少 Center 這個欄位',
+    //     message: '[User Create] 缺少 Department 這個欄位',
     //     statusCode: 400
     // },
     // 11007: {
-    //     message: '[User Create] 缺少 Department 這個欄位',
+    //     message: '[User Create] 缺少 Center 這個欄位',
     //     statusCode: 400
     // },
     // 11008: {
@@ -112,26 +112,26 @@ module.exports = {
         statusCode: 404
     },
 
-    // Center Create Validate
-    13001: {
-        message: '[Center Create] 這個中心名稱已經被使用過了',
-        statusCode: 400
-    },
-
-    13002: {
-        message: '[Center Create] 找不到這個中心',
-        statusCode: 404
-    },
-
     // Department Create Validate
-    14001: {
+    13001: {
         message: '[Department Create] 這個部門名稱已經被使用過了',
         statusCode: 400
     },
 
-    // Department FindOne Validate
+    13002: {
+        message: '[Department Create] 找不到這個部門',
+        statusCode: 404
+    },
+
+    // Center Create Validate
+    14001: {
+        message: '[Center Create] 這個中心名稱已經被使用過了',
+        statusCode: 400
+    },
+
+    // Center FindOne Validate
     14002: {
-        message: '[Department FindOne] 找不到這個部門',
+        message: '[Center FindOne] 找不到這個中心',
         statusCode: 404
     },
 
@@ -214,6 +214,11 @@ module.exports = {
 
     16011: {
         message: '[News] 缺少 MainMenu 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    16012: {
+        message: '[News] 缺少 newsBy 這個欄位',
         statusCode: 400
     },
 

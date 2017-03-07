@@ -8,7 +8,7 @@ import { newsLog } from '../../../libs';
 module.exports = async (req, res, next) => {
     try {
 
-        let { title, content, Author, MainMenu, UpdatedBy } = req.body;
+        let { title, content, newsBy, Author, MainMenu, UpdatedBy } = req.body;
         let { id } = req.params;
         debug('req.body = %j', req.body);
         debug('req.params = %j', req.params);
@@ -30,6 +30,7 @@ module.exports = async (req, res, next) => {
         news.set('MainMenu', MainMenu);
         news.set('title', title);
         news.set('content', content);
+        news.set('newsBy', newsBy);
         news.set('Author', Author);
         news.set('UpdatedBy', UpdatedBy);
         news.set('status', 'RELEASE');

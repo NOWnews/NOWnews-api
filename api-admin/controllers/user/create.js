@@ -11,7 +11,7 @@ import { hashPwd } from '../../../libs'
 module.exports = async (req, res, next) => {
     try{
 
-        // 從 req.body 選出需要的欄位   
+        // 從 req.body 選出需要的欄位
         let options = _.pick(req.body, [
             'name',
             'nickname',
@@ -27,11 +27,24 @@ module.exports = async (req, res, next) => {
             'profileLink',
             'CreatedBy'
         ]);
+        options.defaultSettings = {};
 
-        if (req.body.defaultMenu && mongoose.Types.ObjectId.isValid(req.body.defaultMenu)) {
-            options.defaultSettings = { Menu: req.body.defaultMenu };
+        let { defaultAuthor, defaultMenu, defaultNewsBy } = req.body;
+
+        if (defaultAuthor && mongoose.Types.ObjectId.isValid(defaultAuthor)) {
+            options.defaultSettings.Author = defaultAuthor;
         }
+
+        if (defaultNewsBy) {
+            options.defaultSettings.newsBy = defaultNewsBy;
+        }
+
+        if (defaultMenu && mongoose.Types.ObjectId.isValid(defaultMenu)) {
+            options.defaultSettings.Menu = defaultMenu;
+        }
+
         options.UpdatedBy = req.body.CreatedBy;
+
         debug('options = %j', options);
 
 

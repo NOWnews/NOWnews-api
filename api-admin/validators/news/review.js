@@ -1,6 +1,6 @@
 /*
  * 驗證 News review 的資料與相關欄位
- * 
+ *
  */
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:validators:news:review');
@@ -14,6 +14,7 @@ module.exports = (req, res, next) => {
     let {
         title,
         content,
+        newsBy,
         LastReviewer,
         Author,
         MainMenu,
@@ -47,6 +48,11 @@ module.exports = (req, res, next) => {
     if(!mongoose.Types.ObjectId.isValid(MainMenu)) {
         throw new Error('16011');
     }
+
+    if(!newsBy || newsBy === '') {
+        throw new Error('16012');
+    }
+
 
     return next();
 };

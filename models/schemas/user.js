@@ -110,6 +110,13 @@ let schema = new Schema({
     // 一些使用者基本設定的地方
     defaultSettings: {
 
+        // 使用者預設作者
+        Author: {
+            type: Schema.Types.ObjectId,
+            ref: 'Author',
+            default: null
+        },
+
         // 使用者預設主選單
         Menu: {
             type: Schema.Types.ObjectId,
@@ -122,6 +129,7 @@ let schema = new Schema({
             type: String,
             default: null
         }
+
     },
 
     // 最後登入時間

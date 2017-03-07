@@ -13,6 +13,7 @@ module.exports = (req, res, next) => {
     let {
         title,
         content,
+        newsBy,
         Author,
         MainMenu,
         UpdatedBy
@@ -36,6 +37,10 @@ module.exports = (req, res, next) => {
 
     if(!mongoose.Types.ObjectId.isValid(MainMenu)) {
         throw new Error('16011');
+    }
+
+    if(!newsBy || newsBy === '') {
+        throw new Error('16012');
     }
 
     return next();
