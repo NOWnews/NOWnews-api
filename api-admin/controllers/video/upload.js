@@ -64,7 +64,7 @@ module.exports = async(req, res, next) => {
             format: ext,
             type,
             mimetype,
-            // isDeliver: isDeliver === 'true' ? true : false,
+            isDeliver: isDeliver === 'true' ? true : false,
             url: `${config.get('videoServer.url')}/${newName}`,
             size,
             CreatedBy,
