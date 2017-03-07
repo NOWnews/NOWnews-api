@@ -33,6 +33,7 @@ module.exports = async (req, res, next) => {
             'isSponsored',
             'location',
             'Author',
+            'newsBy',
             'Tags',
             'CreatedBy'
         ]);

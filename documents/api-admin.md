@@ -625,6 +625,7 @@ None
 | isDeliver | 可否外送 | Boolean | | |
 | isSponsored | 可否為業配文 | Boolean | | |
 | location | 這則新聞的做標 | Object | | `[124, 12]` |
+| newsBy | 訊頭 | String | | |
 | Author | 作者，若沒傳入則帶入建立者 | ObjectId | | |
 | Tags | 標籤(關鍵字) | [ObjectId] | | |
 | CreatedBy | 建立者 | ObjectId | √ | |
@@ -722,6 +723,7 @@ None
 | isDeliver | 是否可外送 | Boolean | | |
 | isSponsored | 可否為業配文 | Boolean | | |
 | location | 這則新聞的做標 | Object | | `[124, 12]` |
+| newsBy | 訊頭 | String | √ | |
 | LastReviewer | 欲將新聞送審的人 | ObjectId | √ | |
 | Author | 作者，若沒傳入則帶入建立者 | ObjectId | √ | |
 | Tags | 標籤(關鍵字) | [ObjectId] | | |
@@ -768,6 +770,7 @@ None
 | isDeliver | 是否可外送 | Boolean | | |
 | isSponsored | 可否為業配文 | Boolean | | |
 | location | 這則新聞的做標 | Object | | `[124, 12]` |
+| newsBy | 訊頭 | String | √ | |
 | Author | 作者，若沒傳入則帶入建立者 | ObjectId | √ | |
 | Tags | 標籤(關鍵字) | [ObjectId] | | |
 | UpdatedBy | 更新者 | ObjectId | √ | |
@@ -815,6 +818,7 @@ None
 | isDeliver | 是否可外送 | Boolean | | |
 | isSponsored | 可否為業配文 | Boolean | | |
 | location | 這則新聞的做標 | Object | | `[124, 12]` |
+| newsBy | 訊頭 | String | | |
 | Author | 作者，若沒傳入則帶入建立者 | ObjectId | √ | |
 | Tags | 標籤(關鍵字) | [ObjectId] | | |
 | UpdatedBy | 更新者 | ObjectId | √ | |
