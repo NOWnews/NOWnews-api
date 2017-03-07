@@ -1272,3 +1272,128 @@ None
 #### Query Parameters
 
 None
+
+
+## SPECIALTOPIC API DOCUMENT
+
+### [POST] `/specialtopics`
+
+創建一個專題
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| title | 專題的標題 | String | √ | |
+| MainPhoto | 專題的主圖(Image) | ObjectId | √ | |
+| url | 專題的連結 | String | √ | |
+| CreatedBy | 建立者 | ObjectId | √ | |
+
+#### Query Parameters
+
+None
+
+### [GET] `/specialtopics`
+
+專題列表
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None
+
+### [GET] `/specialtopics/{:id}`
+
+單一專題資訊
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None
+
+### [PUT] `/specialtopics/{:id}`
+
+更新單一專題
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| title | 專題的標題 | String | | |
+| MainPhoto | 專題的主圖(Image) | ObjectId | | |
+| url | 專題的連結 | String | | |
+| UpdatedBy | 更新者 | ObjectId | √ | |
+
+#### Query Parameters
+
+None
+
+### [DELETE] `/specialtopics/{:id}`
+
+刪除單一專題
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| UpdatedBy | 更新者 | ObjectId | √ | |
+
+#### Query Parameters
+
+None

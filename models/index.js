@@ -64,5 +64,8 @@ module.exports = {
     Video,
     Tag,
     Menu,
-    LoginTrack
+    LoginTrack,
+    IndexPage,
+    SpecialTopic,
+    SpecialChannel
 };

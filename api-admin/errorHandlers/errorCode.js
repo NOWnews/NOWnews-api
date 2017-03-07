@@ -294,4 +294,10 @@ module.exports = {
         message: '[Menu] 已經有相同的 category name',
         statusCode: 400
     },
+
+    // SpecialTopic
+    20001: {
+        message: '[SpecialTopic] 找不到此專題',
+        statusCode: 404
+    }
 };

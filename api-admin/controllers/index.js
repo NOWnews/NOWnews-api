@@ -13,6 +13,7 @@ import map from './map';
 import tag from './tag';
 import menu from './menu';
 import trend from './trend';
+import specialTopic from './specialTopic';
 
 module.exports = (app) => {
 
@@ -31,6 +32,7 @@ module.exports = (app) => {
     app.use('/', tag);
     app.use('/', menu);
     app.use('/', trend);
+    app.use('/', specialTopic);
 
     return (req, res, next) => {
         return next();
