@@ -65,12 +65,15 @@ module.exports = async(req, res, next) => {
             type,
             mimetype,
             // isDeliver: isDeliver === 'true' ? true : false,
-            Tags: JSON.parse(Tags),
             url: `${config.get('videoServer.url')}/${newName}`,
             size,
             CreatedBy,
             UpdatedBy: CreatedBy
         };
+
+        if(Tags) {
+            options.Tags = JSON.parse(Tags);
+        }
         debug('options = %j', options);
 
         // 儲存新的影片資料

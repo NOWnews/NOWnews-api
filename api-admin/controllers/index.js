@@ -14,6 +14,7 @@ import tag from './tag';
 import menu from './menu';
 import trend from './trend';
 import specialTopic from './specialTopic';
+import specialChannel from './specialChannel';
 
 module.exports = (app) => {
 
@@ -33,6 +34,7 @@ module.exports = (app) => {
     app.use('/', menu);
     app.use('/', trend);
     app.use('/', specialTopic);
+    app.use('/', specialChannel);
 
     return (req, res, next) => {
         return next();

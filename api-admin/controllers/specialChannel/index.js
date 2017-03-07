@@ -10,11 +10,11 @@ import one from './one';
 import update from './update';
 import remove from './remove';
 
-router.route('/specialtopics')
+router.route('/specialchannels')
     .get(list)
-    .post(validators.specialTopic.create, create);
+    .post(validators.specialChannel.create ,create);
 
-router.route('/specialtopics/:id')
+router.route('/specialchannels/:id')
     .get(one)
     .put(update)
     .delete(remove);

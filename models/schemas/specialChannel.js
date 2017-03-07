@@ -27,6 +27,13 @@ let schema = new Schema({
         }],
     },
 
+    // 特輯的 Tag
+    Tag: {
+        type: Schema.Types.ObjectId,
+        ref: 'Tag',
+        default: null
+    },
+
     isTrashed: {
         type: Boolean,
         default: false
