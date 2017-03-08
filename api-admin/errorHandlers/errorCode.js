@@ -382,4 +382,9 @@ module.exports = {
         message: '[IndexPage] 缺少 UpdatedBy 這個欄位或是格式不正確',
         statusCode: 400
     },
+
+    22006: {
+        message: '[IndexPage] Array Length 大於限制',
+        statusCode: 400
+    },
 };

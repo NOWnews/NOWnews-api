@@ -4,6 +4,7 @@
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:validators:indexPage:carousels');
 
+import config from 'config';
 import is from 'is_js';
 import mongoose from 'mongoose';
 
@@ -15,6 +16,10 @@ module.exports = (req, res, next) => {
 
     if (is.not.array(carousels)) {
         throw new Error('22001');
+    }
+
+    if (carousels.length > config.get('indexpage.carousels')) {
+        throw new Error('22006');
     }
 
     if(!mongoose.Types.ObjectId.isValid(UpdatedBy)) {
