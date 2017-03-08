@@ -21,6 +21,7 @@ module.exports = async(req, res, next) => {
         let options = {
             title: image.title,
             desc,
+            keyword: image.keyword,
             imageFrom: image.imageFrom,
             originalname: image.originalname,
             format: image.format,

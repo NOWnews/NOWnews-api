@@ -8,12 +8,13 @@ module.exports = async(req, res, next) => {
 
     try{
 
-        let { title, desc, type, isDeliver, Tag, url, CreatedBy } = req.body;
+        let { title, desc, keyword, type, isDeliver, Tag, url, CreatedBy } = req.body;
 
         // 組成要儲存的資料
         let options = {
             title,
             desc,
+            keyword,
             imageFrom: 'EXTERNAL',
             type,
             isDeliver: isDeliver === true ? true : false,

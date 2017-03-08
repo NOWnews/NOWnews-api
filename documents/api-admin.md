@@ -346,8 +346,8 @@ None
 
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
-| title | 標題(模糊搜尋) | String |  | |
-| desc | 描述(模糊搜尋) | String |  | |
+| keywords | 會針對 title, desc, keyword 欄位做模糊搜尋 | String |  | `張學友,演唱會` |
+| imageFrom | 圖片的來源 | String |  | |
 | startedAt | 開始時間 | Date | | |
 | endedAt | 結束時間 | Date | | |
 | page | 第幾頁 | Number |  | `page=1` |
@@ -376,6 +376,7 @@ None
 | url | 要上傳的圖片 | String | √ | |
 | title | 這張圖片的標題 | String |  | `測試圖片` |
 | desc | 這張圖片的圖說 | String |  | `這是測試圖片` |
+| keyword | 圖片的關鍵字(攝影大哥自己內部控管) | String |  | `這是測試圖片` |
 | type | 圖片的分類 | `['NEWS','AVATAR']` |  | `NEWS` |
 | isDeliver | 是否可以上傳 | String |  | `true` |
 | Tag | 圖片的標籤(關鍵字) | ObjectId |  | |
@@ -405,6 +406,7 @@ None
 | image | 要上傳的圖片 | File | √ | |
 | title | 這張圖片的標題 | String |  | `測試圖片` |
 | desc | 這張圖片的圖說 | String |  | `這是測試圖片` |
+| keyword | 圖片的關鍵字(攝影大哥自己內部控管) | String |  | `這是測試圖片` |
 | type | 圖片的分類 | `['NEWS','AVATAR']` |  | `NEWS` |
 | isDeliver | 是否可以上傳 | String |  | `true` |
 | Tag | 圖片的標籤(關鍵字) | ObjectId |  | |
