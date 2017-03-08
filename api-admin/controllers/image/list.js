@@ -34,6 +34,7 @@ module.exports = async(req, res, next) => {
 
         if(imageFrom) {
             cursor.where('imageFrom').equals(imageFrom);
+            totalCursor.where('imageFrom').equals(imageFrom);
         }
 
         if(startedAt && endedAt) {
