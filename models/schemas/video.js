@@ -18,6 +18,12 @@ let schema = new Schema({
         default: null
     },
 
+    // 影片關鍵字
+    keyword: {
+        type: String,
+        default: null
+    },
+
     // 影音來源
     videoFrom: {
         type: String,

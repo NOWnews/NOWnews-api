@@ -356,4 +356,35 @@ module.exports = {
         message: '[SpecialChannel] 缺少 UpdatedBy 這個欄位或是格式不正確',
         statusCode: 400
     },
+
+    // IndexPage
+    22001: {
+        message: '[IndexPage] carousels 必須為 Array',
+        statusCode: 400
+    },
+
+    22002: {
+        message: '[IndexPage] specialChannels 必須為 Array',
+        statusCode: 400
+    },
+
+    22003: {
+        message: '[IndexPage] specialTopics 必須為 Array',
+        statusCode: 400
+    },
+
+    22004: {
+        message: '[IndexPage] videos 必須為 Array',
+        statusCode: 400
+    },
+
+    22005: {
+        message: '[IndexPage] 缺少 UpdatedBy 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    22006: {
+        message: '[IndexPage] Array Length 大於限制',
+        statusCode: 400
+    },
 };

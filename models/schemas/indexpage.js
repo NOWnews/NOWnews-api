@@ -5,6 +5,7 @@
 import mongoose from 'mongoose';
 import moment from 'moment-timezone';
 import config from 'config';
+import Promise from 'bluebird';
 let Schema = mongoose.Schema;
 
 let schema = new Schema({
@@ -45,7 +46,7 @@ let schema = new Schema({
     UpdatedBy: {
         type: Schema.Types.ObjectId,
         ref: 'User',
-        required: true
+        default: null
     },
 
     // 更新時間
@@ -62,6 +63,29 @@ let schema = new Schema({
         virtuals: true,
     }
 });
+
+schema.statics.findIndexPageAsync = function findIndexPageAsync (cb) {
+    let self = this;
+
+    return new Promise((resolve, reject) => {
+        self.findOne((err, aliveDoc) => {
+            if(err) {
+                return reject(err);
+            }
+
+            if(aliveDoc) {
+                return resolve(aliveDoc);
+            }
+
+            self.create({}, (err, newDoc) => {
+                if(err) {
+                    return reject(err);
+                }
+                return resolve(newDoc);
+            });
+        });
+    });
+};
 
 schema.virtual('formatUpdatedAt').get(function () {
     return moment(this.updatedAt).tz('Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');

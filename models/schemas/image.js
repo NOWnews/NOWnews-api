@@ -20,6 +20,12 @@ let schema = new Schema({
         trim: true
     },
 
+    // 影片關鍵字
+    keyword: {
+        type: String,
+        default: null
+    },
+
     // 圖片來源
     imageFrom: {
         type: String,
