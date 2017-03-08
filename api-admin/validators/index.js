@@ -8,6 +8,7 @@ import menu from './menu';
 import image from './image';
 import specialTopic from './specialTopic';
 import specialChannel from './specialChannel';
+import indexpage from './indexpage';
 
 module.exports = {
     user,
@@ -18,5 +19,6 @@ module.exports = {
     menu,
     image,
     specialTopic,
-    specialChannel
+    specialChannel,
+    indexpage
 };

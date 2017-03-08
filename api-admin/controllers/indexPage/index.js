@@ -2,21 +2,23 @@
 import express from 'express';
 let router = express.Router();
 
+import validators from '../../validators';
+
 import carousels from './carousels';
 import specialTopics from './specialTopics';
 import specialChannels from './specialChannels';
 import videos from './videos';
 
 router.route('/indexpage/carousels')
-    .put(carousels);
+    .put(validators.indexpage.carousels, carousels);
 
 router.route('/indexpage/specialtopics')
-    .put(specialTopics);
+    .put(validators.indexpage.specialTopics, specialTopics);
 
 router.route('/indexpage/specialchannels')
-    .put(specialChannels);
+    .put(validators.indexpage.specialChannels, specialChannels);
 
 router.route('/indexpage/videos')
-    .put(videos);
+    .put(validators.indexpage.videos, videos);
 
 module.exports = router;
