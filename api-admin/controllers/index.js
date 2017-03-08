@@ -15,6 +15,7 @@ import menu from './menu';
 import trend from './trend';
 import specialTopic from './specialTopic';
 import specialChannel from './specialChannel';
+import indexPage from './indexPage';
 
 module.exports = (app) => {
 
@@ -35,6 +36,7 @@ module.exports = (app) => {
     app.use('/', trend);
     app.use('/', specialTopic);
     app.use('/', specialChannel);
+    app.use('/', indexPage);
 
     return (req, res, next) => {
         return next();
