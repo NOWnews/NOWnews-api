@@ -1521,3 +1521,105 @@ None
 #### Query Parameters
 
 None
+
+## INDEXPAGE API DOCUMENT
+
+### [PUT] `/indexpage/carousels`
+
+更新首頁輪播圖
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| carousels | 新聞 ObjectId 陣列 | [ObjectId] | √ | |
+| UpdatedBy | 更新者 | ObjectId | √ | |
+
+#### Query Parameters
+
+None
+
+### [PUT] `/indexpage/specialtopics`
+
+更新首頁專題
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| specialTopics | 專題 ObjectId 陣列 | [ObjectId] | √ | |
+| UpdatedBy | 更新者 | ObjectId | √ | |
+
+#### Query Parameters
+
+None
+
+### [PUT] `/indexpage/specialchannels`
+
+更新首頁特輯
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| specialchannels | 特輯 ObjectId 陣列 | [ObjectId] | √ | |
+| UpdatedBy | 更新者 | ObjectId | √ | |
+
+#### Query Parameters
+
+None
+
+### [PUT] `/indexpage/videos`
+
+更新首頁影片
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| videos | 影片 ObjectId 陣列 | [ObjectId] | √ | |
+| UpdatedBy | 更新者 | ObjectId | √ | |
+
+#### Query Parameters
+
+None
