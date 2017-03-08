@@ -4,13 +4,14 @@ const debug = Debug('NOWnews-api:api-admin:controllers:image:list');
 
 import Promise from 'bluebird';
 import moment from 'moment-timezone';
+import _ from 'lodash';
 
 import { Image } from '../../../models';
 import { pagination } from '../../../libs';
 
 module.exports = async(req, res, next) => {
 
-    let { limit, page, skip, keyword, imageFrom, startedAt, endedAt, sort } = req.query;
+    let { limit, page, skip, keywords, imageFrom, startedAt, endedAt, sort } = req.query;
     debug('req.query = %j', req.query);
 
     try{
@@ -19,16 +20,30 @@ module.exports = async(req, res, next) => {
         let totalCursor = Image.find().where('type').equals('NEWS'); // 處理分頁用的
         sort = sort ? sort : '-createdAt';
 
-        if(keyword) {
+        // 這個條件很複雜，就是要鍵入不同的關鍵字，還可以模糊搜尋
+        if(keywords && keywords !== '') {
+
+            keywords = _.split(keywords, ',');
+
+            let titleCondition = [];
+            let descCondition = [];
+            let keywordCondition = [];
+
+            _.forEach(keywords, (keyword) => {
+                titleCondition.push({ title: new RegExp(keyword, 'i')});
+                descCondition.push({ desc: new RegExp(keyword, 'i')});
+                keywordCondition.push({ keyword: new RegExp(keyword, 'i')});
+            });
+
             cursor.or([
-                { title: new RegExp(keyword, 'i') },
-                { keyword: new RegExp(keyword, 'i') },
-                { desc: new RegExp(keyword, 'i') },
+                { $and: titleCondition },
+                { $and: descCondition },
+                { $and: keywordCondition },
             ]);
             totalCursor.or([
-                { title: new RegExp(keyword, 'i') },
-                { keyword: new RegExp(keyword, 'i') },
-                { desc: new RegExp(keyword, 'i') },
+                { $and: titleCondition },
+                { $and: descCondition },
+                { $and: keywordCondition },
             ]);
         }
 

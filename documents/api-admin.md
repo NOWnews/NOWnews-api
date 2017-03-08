@@ -346,7 +346,7 @@ None
 
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
-| keyword | 會針對 title, desc, keyword 欄位做模糊搜尋 | String |  | |
+| keywords | 會針對 title, desc, keyword 欄位做模糊搜尋 | String |  | `張學友,演唱會` |
 | imageFrom | 圖片的來源 | String |  | |
 | startedAt | 開始時間 | Date | | |
 | endedAt | 結束時間 | Date | | |
