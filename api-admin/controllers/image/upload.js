@@ -16,7 +16,7 @@ import { Image } from '../../../models';
 
 module.exports = async(req, res, next) => {
 
-    let { title, desc, type, isDeliver, Tag, CreatedBy } = req.body;
+    let { title, desc, keyword, type, isDeliver, Tag, CreatedBy } = req.body;
     let { path, mimetype, originalname } = req.file;
 
     try{
@@ -69,6 +69,7 @@ module.exports = async(req, res, next) => {
             _id: objectId,
             title,
             desc,
+            keyword,
             imageFrom: 'INTERNAL',
             format: ext,
             originalname,

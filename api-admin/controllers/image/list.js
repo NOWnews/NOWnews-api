@@ -10,7 +10,7 @@ import { pagination } from '../../../libs';
 
 module.exports = async(req, res, next) => {
 
-    let { limit, page, skip, title, desc, startedAt, endedAt, sort } = req.query;
+    let { limit, page, skip, keyword, imageFrom, startedAt, endedAt, sort } = req.query;
     debug('req.query = %j', req.query);
 
     try{
@@ -19,14 +19,21 @@ module.exports = async(req, res, next) => {
         let totalCursor = Image.find().where('type').equals('NEWS'); // 處理分頁用的
         sort = sort ? sort : '-createdAt';
 
-        if(title) {
-            cursor.where('title').equals(new RegExp(title, 'i'));
-            totalCursor.where('title').equals(new RegExp(title, 'i'));
+        if(keyword) {
+            cursor.or([
+                { title: new RegExp(keyword, 'i') },
+                { keyword: new RegExp(keyword, 'i') },
+                { desc: new RegExp(keyword, 'i') },
+            ]);
+            totalCursor.or([
+                { title: new RegExp(keyword, 'i') },
+                { keyword: new RegExp(keyword, 'i') },
+                { desc: new RegExp(keyword, 'i') },
+            ]);
         }
 
-        if(desc) {
-            cursor.where('desc').equals(new RegExp(desc, 'i'));
-            totalCursor.where('desc').equals(new RegExp(desc, 'i'));
+        if(imageFrom) {
+            cursor.where('imageFrom').equals(imageFrom);
         }
 
         if(startedAt && endedAt) {
