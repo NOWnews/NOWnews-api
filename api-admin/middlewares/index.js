@@ -17,6 +17,7 @@ module.exports = (app) => {
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(cors());
     app.use(logger('dev'));
+    // app.use(logger('(REQUEST LOG)- [method] :method [url] :url  [status] :status  [response-time] :response-time ms'));
 
     return (req, res, next) => {
         return next();

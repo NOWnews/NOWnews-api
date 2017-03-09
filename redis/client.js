@@ -7,10 +7,12 @@ Promise.promisifyAll(redis.Multi.prototype);
 
 const host = config.get('admin.redis.host');
 const port = config.get('admin.redis.port');
+const db = config.get('admin.redis.db');
 
 const client = redis.createClient({
     host: host,
-    port: port
+    port: port,
+    db: db
 });
 
 module.exports =  client;
