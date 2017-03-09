@@ -18,7 +18,7 @@ module.exports = (req, res, next) => {
         throw new Error('22004');
     }
 
-    if (videos.length > config.get('indexpage.videos')) {
+    if (videos.length > config.get('admin.indexpage.videos')) {
         throw new Error('22006');
     }
 

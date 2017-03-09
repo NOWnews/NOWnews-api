@@ -18,7 +18,7 @@ module.exports = (req, res, next) => {
         throw new Error('22003');
     }
 
-    if (specialTopics.length > config.get('indexpage.specialTopics')) {
+    if (specialTopics.length > config.get('admin.indexpage.specialTopics')) {
         throw new Error('22006');
     }
 

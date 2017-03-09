@@ -12,8 +12,8 @@ mongoose.Promise = Promise;
 /*
  * mongodb 連線
  */
-const host = config.get('mongodb.host');
-const db = config.get('mongodb.db');
+const host = config.get('admin.mongodb.host');
+const db = config.get('admin.mongodb.db');
 let connection = mongoose.createConnection(`${host}/${db}`);
 console.log(chalk.red(`mongodb connect to: ${host}/${db}`));
 
