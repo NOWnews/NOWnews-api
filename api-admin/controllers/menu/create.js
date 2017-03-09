@@ -5,6 +5,7 @@ const debug = Debug('NOWnews-api:api-admin:controllers:menu:create');
 import Promise from 'bluebird';
 import _ from 'lodash';
 
+import redis from '../../../redis';
 import { Menu } from '../../../models';
 
 module.exports = async (req, res, next) => {
@@ -56,6 +57,11 @@ module.exports = async (req, res, next) => {
 
         let newMenu = await Menu.createAsync(options);
         debug('new menu = %j', newMenu);
+
+        // 將前台要用的 Menu 存在 redis
+        let webMenu = await Menu.findWebStructionAsync();
+        let cacheData = await redis.setValue(`menu`, webMenu);
+        debug('cacheData = %j', cacheData);
 
         return res.json(newMenu);
     } catch (err) {

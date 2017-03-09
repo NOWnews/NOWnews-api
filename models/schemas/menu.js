@@ -2,6 +2,8 @@
 import autoIncrement from 'mongoose-easy-auto-increment';
 import mongoose from 'mongoose';
 import moment from 'moment-timezone';
+import Promise from 'bluebird';
+
 let Schema = mongoose.Schema;
 
 let schema = new Schema({
@@ -130,6 +132,80 @@ let schema = new Schema({
         virtuals: true,
     }
 });
+
+// 給 Admin 用的 Menu 結構化資料
+schema.statics.findAdminStructionAsync = async function (){
+    let self = this;
+
+    let mainMenus = await self.find()
+        .where('isTrashed').equals(false)
+        .where('level').equals(0)
+        .sort('weight')
+        .lean()
+        .execAsync();
+
+    // 第二層選單
+    let menuData = await Promise.mapSeries(mainMenus, (mainMenu) => {
+        return self.find()
+            .where('ParentId').equals(mainMenu._id)
+            .where('level').equals(1)
+            .where('isTrashed').equals(false)
+            .sort('weight')
+            .lean()
+            .execAsync()
+            .then((docs) => {
+                mainMenu.child = docs;
+                return Promise.resolve(mainMenu);
+            });
+    });
+
+    return Promise.resolve(menuData);
+};
+
+// 給 Web 用的 Menu 結構化資料
+schema.statics.findWebStructionAsync = async function (){
+    let self = this;
+
+    let mainMenus = await self.find()
+        .where('isTrashed').equals(false)
+        .where('level').equals(0)
+        .where('status').equals('OPEN')
+        .or([
+            { isPermanented: true },
+            { $and: [
+                { startedAt: { $lte: Date.now() }},
+                { endedAt: { $gte: Date.now() }}
+            ]}
+        ])
+        .sort('weight')
+        .lean()
+        .execAsync();
+
+    // 第二層選單
+    let menuData = await Promise.mapSeries(mainMenus, (mainMenu) => {
+        return self.find()
+            .where('ParentId').equals(mainMenu._id)
+            .where('level').equals(1)
+            .where('isTrashed').equals(false)
+            .where('status').equals('OPEN')
+            .or([
+                { isPermanented: true },
+                { $and: [
+                    { startedAt: { $lte: Date.now() }},
+                    { endedAt: { $gte: Date.now() }}
+                ]}
+            ])
+            .sort('weight')
+            .lean()
+            .execAsync()
+            .then((docs) => {
+                mainMenu.child = docs;
+                return Promise.resolve(mainMenu);
+            });
+    });
+
+    return Promise.resolve(menuData);
+};
 
 schema.virtual('formatCreatedAt').get(function () {
     return moment(this.createdAt).tz('Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
