@@ -38,11 +38,11 @@ module.exports = async(req, res, next) => {
         // scp 到 img.nownews.com 圖床
         await new Promise((resolve, reject) => {
 
-            let username = config.get('videoServer.username');
-            let password = config.get('videoServer.password');
-            let host = config.get('videoServer.host');
-            let folder = config.get('videoServer.folder');
-            let port = config.get('videoServer.port');
+            let username = config.get('admin.videoServer.username');
+            let password = config.get('admin.videoServer.password');
+            let host = config.get('admin.videoServer.host');
+            let folder = config.get('admin.videoServer.folder');
+            let port = config.get('admin.videoServer.port');
             let scpCommand = `${username}:${password}@${host}:${port}:${folder}`;
 
             server.scp(newPath, scpCommand, (err) => {
@@ -65,7 +65,7 @@ module.exports = async(req, res, next) => {
             type,
             mimetype,
             isDeliver: isDeliver === 'true' ? true : false,
-            url: `${config.get('videoServer.url')}/${newName}`,
+            url: `${config.get('admin.videoServer.url')}/${newName}`,
             size,
             CreatedBy,
             UpdatedBy: CreatedBy

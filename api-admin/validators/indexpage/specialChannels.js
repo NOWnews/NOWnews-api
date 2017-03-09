@@ -18,7 +18,7 @@ module.exports = (req, res, next) => {
         throw new Error('22002');
     }
 
-    if (specialChannels.length > config.get('indexpage.specialChannels')) {
+    if (specialChannels.length > config.get('admin.indexpage.specialChannels')) {
         throw new Error('22006');
     }
 

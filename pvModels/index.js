@@ -12,8 +12,8 @@ mongoose.Promise = Promise;
 /*
  * mongodb 連線
  */
-const host = config.get('pvMongodb.host');
-const db = config.get('pvMongodb.db');
+const host = config.get('admin.pvMongodb.host');
+const db = config.get('admin.pvMongodb.db');
 let connection = mongoose.createConnection(`${host}/${db}`);
 console.log(chalk.red(`mongodb connect to: ${host}/${db}`));
 

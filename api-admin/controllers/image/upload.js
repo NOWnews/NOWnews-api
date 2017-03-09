@@ -48,11 +48,11 @@ module.exports = async(req, res, next) => {
         // scp 到 img.nownews.com 圖床
         await new Promise((resolve, reject) => {
 
-            let username = config.get('imageServer.username');
-            let password = config.get('imageServer.password');
-            let host = config.get('imageServer.host');
-            let folder = config.get('imageServer.folder');
-            let port = config.get('imageServer.port');
+            let username = config.get('admin.imageServer.username');
+            let password = config.get('admin.imageServer.password');
+            let host = config.get('admin.imageServer.host');
+            let folder = config.get('admin.imageServer.folder');
+            let port = config.get('admin.imageServer.port');
             let scpCommand = `${username}:${password}@${host}:${port}:${folder}`;
 
             imageServer.scp(newPath, scpCommand, (err) => {
@@ -79,7 +79,7 @@ module.exports = async(req, res, next) => {
             Tag,
             width: width,
             height: height,
-            url: `${config.get('imageServer.url')}/${newName}`,
+            url: `${config.get('admin.imageServer.url')}/${newName}`,
             CreatedBy,
             UpdatedBy: CreatedBy
         };
