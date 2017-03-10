@@ -1725,3 +1725,29 @@ None
 #### Query Parameters
 
 None
+
+## PREIVEW API DOCUMENT
+
+### [POST] `/previews`
+
+將預覽資料存入 redis
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | 新聞 ObjectId | ObjectId | √ | |
+
+#### Query Parameters
+
+None

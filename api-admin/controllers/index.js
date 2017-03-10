@@ -16,6 +16,7 @@ import trend from './trend';
 import specialTopic from './specialTopic';
 import specialChannel from './specialChannel';
 import indexPage from './indexPage';
+import preview from './preview';
 
 module.exports = (app) => {
 
@@ -37,6 +38,7 @@ module.exports = (app) => {
     app.use('/', specialTopic);
     app.use('/', specialChannel);
     app.use('/', indexPage);
+    app.use('/', preview);
 
     return (req, res, next) => {
         return next();
