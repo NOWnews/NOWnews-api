@@ -387,4 +387,25 @@ module.exports = {
         message: '[IndexPage] Array Length 大於限制',
         statusCode: 400
     },
+
+    // Video
+    23001: {
+        message: '[Video] 找不到此影片',
+        statusCode: 404
+    },
+
+    23002: {
+        message: '[Video] 缺少 CreatedBy 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    23003: {
+        message: '[Video] 缺少 UpdatedBy 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    23004: {
+        message: '[Video] 缺少 url 這個欄位',
+        statusCode: 400
+    },
 };
