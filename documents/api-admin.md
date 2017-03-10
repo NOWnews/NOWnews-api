@@ -560,6 +560,33 @@ None
 | Tags | 標籤(關鍵字) | [ObjectId] |  | |
 | CreatedBy | 最後更新者 | String | √ | `530000000000000000000001` |
 
+### [GET] `/videos`
+
+影片列表
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| page | 第幾頁 | Number |  | `page=1` |
+| limit | 一次幾筆資料 | Number |  | `limit=10` |
+| skip | 跳過幾筆資料 | Number |  | `skip=10` |
+| sort | 排序(預設為最新在最前面) | String | | `sort=createdAt`, `sort=-title` |
+
 ### [POST] `/videos/upload`
 
 上傳一則影片(由本機上傳)
@@ -586,6 +613,79 @@ None
 | CreatedBy | 最後更新者 | String | √ | `530000000000000000000001` |
 
 #### Query Parameters
+
+None
+
+### [GET] `/videos/{:id}`
+
+影片單一資訊
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None
+
+### [PUT] `/videos/{:id}`
+
+更新影片資訊
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| title | 影片的標題 | String |  | `測試影片` |
+| desc | 影片的說明 | String |  | `這是測試影片` |
+| UpdatedBy | 最後更新者 | Object | √ | `530000000000000000000001` |
+
+#### Query Parameters
+
+None
+
+### [DELETE] `/videos/{:id}`
+
+刪除影片
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| UpdatedBy | 最後更新者 | Object | √ | `530000000000000000000001` |
+
+#### Query Parameters
+
 None
 
 ## NEWS API DOCUMENTS

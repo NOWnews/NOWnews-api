@@ -21,7 +21,7 @@ module.exports = async(req, res, next) => {
             desc,
             videoFrom: 'EXTERNAL',
             isDeliver: isDeliver === 'true' ? true : false,
-            url: url,
+            url,
             CreatedBy,
             UpdatedBy: CreatedBy
         };
