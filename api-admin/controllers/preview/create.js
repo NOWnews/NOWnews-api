@@ -11,13 +11,12 @@ module.exports = async (req, res, next) => {
     try {
 
         let { id } = req.body;
-        console.log(id);
 
         let news = await News.findById(id)
             .populate('Author LastReviewer CreatedBy UpdatedBy MainMenu Menus Tags MainPhoto MainVideo')
             .lean()
             .execAsync();
-        debug(news)
+        debug('news = %j', news);
 
         if(!news) {
             throw new Error('16003');
