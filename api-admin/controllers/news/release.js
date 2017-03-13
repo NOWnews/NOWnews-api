@@ -4,6 +4,7 @@ const debug = Debug('NOWnews-api:api-admin:controllers:news:release');
 
 import { News } from '../../../models';
 import { newsLog } from '../../../libs';
+import redis from '../../../redis';
 
 module.exports = async (req, res, next) => {
     try {
@@ -23,9 +24,9 @@ module.exports = async (req, res, next) => {
         }
 
         // 發布的人不應該是自己，應該會是其他人
-        if(UpdatedBy === news.CreatedBy + '') {
-            throw new Error('16010');
-        }
+        // if(UpdatedBy === news.CreatedBy + '') {
+        //     throw new Error('16010');
+        // }
 
         news.set('MainMenu', MainMenu);
         news.set('title', title);
@@ -102,6 +103,10 @@ module.exports = async (req, res, next) => {
         // 處理 log
         updatedNews = await updatedNews.populate('MainMenu Menus MainPhoto MainVideo Photos Videos Author Tags LastReviewer CreatedBy UpdatedBy').execPopulate();
         await newsLog(updatedNews, 'UPDATE');
+
+        // 將這篇已發佈新聞存在 redis
+        let cacheData = await redis.setValue(`news${updatedNews.sn}`, updatedNews, 3600 * 6);
+        debug('cacheData = %j', cacheData);
 
         return res.json(updatedNews);
     }catch(err) {
