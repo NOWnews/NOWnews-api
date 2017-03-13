@@ -210,7 +210,7 @@ let schema = new Schema({
 });
 
 schema.statics.findBySn = function(sn) {
-    return this.where('sn').equals(sn);
+    return this.findOne().where('sn').equals(sn);
 };
 
 schema.index({
