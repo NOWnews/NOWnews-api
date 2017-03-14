@@ -16,7 +16,6 @@ module.exports = async (sn) => {
             .where('isTrashed').equals(false)
             .where('status').equals('RELEASE')
             .populate('MainMenu Menus MainPhoto MainVideo Photos Videos Author Tags CreatedBy UpdatedBy')
-            .lean()
             .execAsync();
         debug('news = %j', news);
 
