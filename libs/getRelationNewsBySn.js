@@ -20,6 +20,8 @@ module.exports = async (sn) => {
         let relationNews = await News.find()
             .where('isTrashed').equals(false)
             .where('status').equals('RELEASE')
+            .where('Tags').in(Tags)
+            .where('sn').ne(sn)
             .populate('MainMenu MainPhoto')
             .select('title shortTitle MainMenu MainPhoto')
             .execAsync();
