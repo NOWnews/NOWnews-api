@@ -5,6 +5,7 @@ const debug = Debug('NOWnews-api:api-admin:controllers:news:release');
 import { News } from '../../../models';
 import { newsLog } from '../../../libs';
 import redis from '../../../redis';
+import libs from '../../../libs';
 
 module.exports = async (req, res, next) => {
     try {
@@ -104,9 +105,17 @@ module.exports = async (req, res, next) => {
         updatedNews = await updatedNews.populate('MainMenu Menus MainPhoto MainVideo Photos Videos Author Tags LastReviewer CreatedBy UpdatedBy').execPopulate();
         await newsLog(updatedNews, 'UPDATE');
 
-        // 將這篇已發佈新聞存在 redis
-        let cacheData = await redis.setValue(`news${updatedNews.sn}`, updatedNews, 3600 * 6);
-        debug('cacheData = %j', cacheData);
+        // 要給 api web 使用的資料
+        let [ newsData, relationNewsData ] = await Promise.all([
+            libs.getNewsBySn(updatedNews.sn),
+            libs.getRelationNewsBySn(updatedNews.sn)
+        ]);
+
+        // 將發佈的新聞與此新聞的相關新聞存入 redis
+        let [ cacheNews, cacheRelationNews ] = await Promise.all([
+            redis.setValue(`news${updatedNews.sn}`, newsData, 3600 * 6),
+            redis.setValue(`relationNewsByNews${updatedNews.sn}`, relationNewsData, 300)
+        ]);
 
         return res.json(updatedNews);
     }catch(err) {

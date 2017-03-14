@@ -2,6 +2,7 @@ import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-web:controllers:news:one');
 
 import redis from '../../../redis';
+import libs from '../../../libs';
 import { News } from '../../../models';
 
 module.exports = async (req, res, next) => {
@@ -16,19 +17,12 @@ module.exports = async (req, res, next) => {
             return res.json(cacheNews);
         }
 
-        let news = await News.findBySn(sn)
-            .where('isTrashed').equals(false)
-            .where('status').equals('RELEASE')
-            .populate('MainMenu Menus MainPhoto MainVideo Photos Videos Author Tags LastReviewer CreatedBy UpdatedBy')
-            .execAsync();
-        debug('news = %j', news);
-
-        if(!news) {
-            throw new Error('16003');
-        }
+        // 要給 api web 使用的 news 資料
+        let news = await libs.getNewsBySn(sn);
+        debug('news data = %j', news);
 
         // 將這篇新聞存入 redis
-        let cacheData = await redis.setValue(`news${news.sn}`, news, 3600 * 6);
+        let cacheData = await redis.setValue(`news${sn}`, news, 3600 * 6);
         debug('cacheData = %j', cacheData);
 
         return res.json(news);
