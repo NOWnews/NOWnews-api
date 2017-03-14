@@ -225,6 +225,10 @@ schema.virtual('formatUpdatedAt').get(function () {
     return moment(this.updatedAt).tz('Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });
 
+schema.virtual('formatStartedAt').get(function () {
+    return moment(this.startedAt).tz('Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
+});
+
 schema.plugin(autoIncrement);
 
 module.exports = schema;
