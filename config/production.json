@@ -84,28 +84,6 @@
         },
         "apiUrls": {
             "geocode": "https://maps.googleapis.com/maps/api/geocode/json"
-        },
-        "imageServer": {
-            "username": "imgscp",
-            "password": "zAQ!@#EDCXSW",
-            "host": "img.nownews.com", //59.124.93.47
-            "port": 50022,
-            "url": "http://img.nownews.com/images/nownews",
-            "folder": "/var/www/images/nownews"
-        },
-        "videoServer": {
-            "username": "imgscp",
-            "password": "zAQ!@#EDCXSW",
-            "host": "img.nownews.com", //59.124.93.47
-            "port": 50022,
-            "url": "http://img.nownews.com/videos/nownews",
-            "folder": "/var/www/videos/nownews"
-        },
-        "indexpage": {
-            "carousels": 10,
-            "specialTopics": 4,
-            "specialChannels": 8,
-            "videos": 20
         }
     }
 }
