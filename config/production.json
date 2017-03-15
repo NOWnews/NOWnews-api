@@ -55,6 +55,35 @@
     },
 
     "web": {
-
+        "mode": "production",
+        "showError": false,
+        "mongodb": {
+            "host": "mongodb://localhost:27017",
+            "db": "NOWnews_Production"
+        },
+        "pvMongodb": {
+            "host": "mongodb://localhost:27017",
+            "db": "NOWnewsAnalytics_Production"
+        },
+        "redis": {
+            "host": "memcache.nownews.pri", // (61.67.121.141 / 192.168.40.141)
+            "port": 6379,
+            "db": 0,
+            "expireSeconds": 3600
+        },
+        "header": {
+            "X-NOWnews-API": ["YouCanSeeMeJohnCena"]
+        },
+        "baseQuery": {
+            "limit": 20,
+            "skip": 0,
+            "page": 1
+        },
+        "apiKeys": {
+            "geocode": "AIzaSyBMndk_T5tmXq8GE_dbvZjINOPS0zHbEgs"
+        },
+        "apiUrls": {
+            "geocode": "https://maps.googleapis.com/maps/api/geocode/json"
+        }
     }
 }
