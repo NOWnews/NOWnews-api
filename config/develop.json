@@ -55,6 +55,57 @@
     },
 
     "web": {
-
+        "mode": "develop",
+        "showError": true,
+        "mongodb": {
+            "host": "mongodb://localhost:27017",
+            "db": "NOWnews_Develop"
+        },
+        "pvMongodb": {
+            "host": "mongodb://localhost:27017",
+            "db": "NOWnewsAnalytics_Develop"
+        },
+        "redis": {
+            "host": "localhost",
+            "port": 6379,
+            "db": 2,
+            "expireSeconds": 120
+        },
+        "header": {
+            "X-NOWnews-API": ["YouCanSeeMeJohnCena"]
+        },
+        "baseQuery": {
+            "limit": 20,
+            "skip": 0,
+            "page": 1
+        },
+        "apiKeys": {
+            "geocode": "AIzaSyBMndk_T5tmXq8GE_dbvZjINOPS0zHbEgs"
+        },
+        "apiUrls": {
+            "geocode": "https://maps.googleapis.com/maps/api/geocode/json"
+        },
+        "imageServer": {
+            "username": "imgscp",
+            "password": "zAQ!@#EDCXSW",
+            "host": "img.nownews.com", //59.124.93.47
+            "port": 50022,
+            "url": "http://img.nownews.com/images/nownews_develop",
+            "folder": "/var/www/images/nownews_develop"
+        },
+        "videoServer": {
+            "username": "imgscp",
+            "password": "zAQ!@#EDCXSW",
+            "host": "img.nownews.com", //59.124.93.47
+            "port": 50022,
+            "url": "http://img.nownews.com/videos/nownews_develop",
+            "folder": "/var/www/videos/nownews_develop"
+        },
+        "indexpage": {
+            "carousels": 10,
+            "specialTopics": 4,
+            "specialChannels": 8,
+            "videos": 20
+        }
     }
 }
