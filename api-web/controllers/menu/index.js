@@ -4,7 +4,7 @@ let router = express.Router();
 
 import struction from './struction';
 
-router.route('/menu')
+router.route('/menus')
     .get(struction);
 
 module.exports = router;
