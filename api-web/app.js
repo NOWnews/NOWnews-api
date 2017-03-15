@@ -3,7 +3,7 @@ let app = express();
 
 import middlewares from './middlewares';
 import controllers from './controllers';
-// import errorHandlers from './errorHandlers';
+import errorHandlers from './errorHandlers';
 
 // middlewares
 app.use(middlewares(app));
@@ -11,7 +11,7 @@ app.use(middlewares(app));
 // controllers
 app.use(controllers(app));
 
-// // errorHandles
-// app.use(errorHandlers(app));
+// errorHandles
+app.use(errorHandlers(app));
 
 module.exports = app;
