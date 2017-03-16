@@ -4,10 +4,14 @@ let router = express.Router();
 
 import validators from '../../validators';
 
+import list from './list';
 import carousels from './carousels';
 import specialTopics from './specialTopics';
 import specialChannels from './specialChannels';
 import videos from './videos';
+
+router.route('/indexpage')
+    .get(list);
 
 router.route('/indexpage/carousels')
     .put(validators.indexpage.carousels, carousels);
