@@ -11,7 +11,7 @@ module.exports = async (req, res, next) => {
 
         let news = await News.findById(id)
             .where('isTrashed').equals(false)
-            .populate('Author LastReviewer CreatedBy UpdatedBy MainMenu Menus Tags MainPhoto MainVideo')
+            .populate('Author LastReviewer CreatedBy UpdatedBy MainMenu Menus Tags Photos MainPhoto MainVideo')
             .execAsync();
 
         if(!news) {
