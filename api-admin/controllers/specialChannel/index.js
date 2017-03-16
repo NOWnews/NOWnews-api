@@ -3,6 +3,7 @@ import express from 'express';
 let router = express.Router();
 
 import validators from '../../validators';
+import baseQuery from '../../middlewares/baseQuery';
 
 import create from './create';
 import list from './list';
@@ -11,7 +12,7 @@ import update from './update';
 import remove from './remove';
 
 router.route('/specialchannels')
-    .get(list)
+    .get(baseQuery, list)
     .post(validators.specialChannel.create ,create);
 
 router.route('/specialchannels/:id')
