@@ -6,8 +6,6 @@ import { IndexPage } from '../../../models';
 module.exports = async (req, res, next) => {
     try {
 
-        let { carousels, UpdatedBy } = req.body;
-
         let indexPage = await IndexPage.findOne()
             .populate('carousels specialTopics specialChannels videos UpdatedBy')
             .execAsync();
