@@ -9,12 +9,17 @@ module.exports = async(req, res, next) => {
 
     try{
 
-        let { limit, page, skip, sort} = req.query;
+        let { title, limit, page, skip, sort} = req.query;
         debug('req.query = %j', req.query);
 
         let cursor = Video.find();
         let totalCursor = Video.find(); // 處理分頁用的
         sort = sort ? sort : '-createdAt';
+
+        if (title) {
+            cursor.where('title').equals(new RegExp(title, 'i'));
+            totalCursor.where('title').equals(new RegExp(title, 'i'));
+        }
 
         let [ videos, total ] = await Promise.all([
             cursor

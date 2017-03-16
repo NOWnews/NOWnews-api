@@ -582,6 +582,7 @@ None
 
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
+| title | 用標題做模糊搜尋 | String | | |
 | page | 第幾頁 | Number |  | `page=1` |
 | limit | 一次幾筆資料 | Number |  | `limit=10` |
 | skip | 跳過幾筆資料 | Number |  | `skip=10` |
@@ -1425,7 +1426,9 @@ None
 
 #### Query Parameters
 
-None
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| title | 用標題做模糊搜尋 | String | | |
 
 ### [GET] `/specialtopics/{:id}`
 
@@ -1549,7 +1552,9 @@ None
 
 #### Query Parameters
 
-None
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| title | 用標題做模糊搜尋 | String | | |
 
 ### [GET] `/specialchannels/{:id}`
 
