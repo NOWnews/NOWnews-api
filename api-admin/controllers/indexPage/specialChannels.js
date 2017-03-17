@@ -1,6 +1,8 @@
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:indexpage:specialChannels');
 
+import redis from '../../../redis';
+import libs from '../../../libs';
 import { IndexPage } from '../../../models';
 
 module.exports = async (req, res, next) => {
