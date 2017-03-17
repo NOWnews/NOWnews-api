@@ -757,6 +757,7 @@ None
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
 | title | 標題(模糊搜尋) | String |  | `title=今天` |
+| type | 新聞的分類 | String |  | `type=NEWS` |
 | status | 狀態 | String |  | `status=DRAFT` |
 | Author | 作者 | String |  | `Author=520000000000000000000001` |
 | CreatedBy | 建立者 | String |  | `CreatedBy=520000000000000000000001` |
