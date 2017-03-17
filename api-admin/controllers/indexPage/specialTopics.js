@@ -1,6 +1,8 @@
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:indexpage:specialTopics');
 
+import redis from '../../../redis';
+import libs from '../../../libs';
 import { IndexPage } from '../../../models';
 
 module.exports = async (req, res, next) => {
@@ -16,6 +18,10 @@ module.exports = async (req, res, next) => {
 
         let updatedIndexPage = await indexPage.saveAsync();
         debug('update indexPage = %j', updatedIndexPage);
+
+        // 將首頁資訊存入 redis
+        let cacheData = await libs.getIndexPage();
+        let cacheIndexPage = await redis.setValue('indexPage', cacheData);
 
         return res.json(updatedIndexPage);
     } catch (err) {

@@ -2,11 +2,14 @@
  * 首頁控版管理
  */
 
+import DeepPopulate from 'mongoose-deep-populate';
 import mongoose from 'mongoose';
 import moment from 'moment-timezone';
 import config from 'config';
 import Promise from 'bluebird';
+
 let Schema = mongoose.Schema;
+let deepPopulate = DeepPopulate(mongoose);
 
 let schema = new Schema({
 
@@ -90,5 +93,7 @@ schema.statics.findIndexPageAsync = function findIndexPageAsync (cb) {
 schema.virtual('formatUpdatedAt').get(function () {
     return moment(this.updatedAt).tz('Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });
+
+schema.plugin(deepPopulate);
 
 module.exports = schema;
