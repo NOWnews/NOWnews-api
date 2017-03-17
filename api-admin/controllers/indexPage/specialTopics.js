@@ -19,6 +19,10 @@ module.exports = async (req, res, next) => {
         let updatedIndexPage = await indexPage.saveAsync();
         debug('update indexPage = %j', updatedIndexPage);
 
+        // 將首頁資訊存入 redis
+        let cacheData = await libs.getIndexPage();
+        let cacheIndexPage = await redis.setValue('indexPage', cacheData);
+
         return res.json(updatedIndexPage);
     } catch (err) {
         return next(err);
