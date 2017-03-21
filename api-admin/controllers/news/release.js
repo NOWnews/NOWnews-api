@@ -112,10 +112,12 @@ module.exports = async (req, res, next) => {
         ]);
 
         // 將發佈的新聞與此新聞的相關新聞存入 redis
-        let [ cacheNews, cacheRelationNews ] = await Promise.all([
-            redis.setValue(`news${updatedNews.sn}`, newsData, 3600 * 6),
-            redis.setValue(`relationNewsByNews${updatedNews.sn}`, relationNewsData, 300)
-        ]);
+        if(newsData) {
+            await Promise.all([
+                redis.setValue(`news${updatedNews.sn}`, newsData, 3600 * 6),
+                redis.setValue(`relationNewsByNews${updatedNews.sn}`, relationNewsData, 300)
+            ]);
+        }
 
         return res.json(updatedNews);
     }catch(err) {

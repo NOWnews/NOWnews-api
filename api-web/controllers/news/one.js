@@ -21,6 +21,10 @@ module.exports = async (req, res, next) => {
         let news = await libs.getNewsBySn(sn);
         debug('news data = %j', news);
 
+        if(!news) {
+            throw new Error('16003');
+        }
+
         // 將這篇新聞存入 redis
         let cacheData = await redis.setValue(`news${sn}`, news, 3600 * 6);
         debug('cacheData = %j', cacheData);

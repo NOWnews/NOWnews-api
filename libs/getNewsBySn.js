@@ -15,13 +15,10 @@ module.exports = async (sn) => {
         let news = await News.findBySn(sn)
             .where('isTrashed').equals(false)
             .where('status').equals('RELEASE')
+            .where('startedAt').lte(Date.now())
             .populate('MainMenu Menus MainPhoto MainVideo Photos Videos Author Tags CreatedBy UpdatedBy')
             .execAsync();
         debug('news = %j', news);
-
-        if(!news) {
-            throw new Error('16003');
-        }
 
         return Promise.resolve(news);
     } catch (err) {
