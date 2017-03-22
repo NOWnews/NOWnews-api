@@ -3,7 +3,6 @@ import Debug from 'debug';
 const debug = Debug('NOWnews-api:redis:setValue');
 
 import Promise from 'bluebird';
-import config from 'config';
 
 import client from './client';
 

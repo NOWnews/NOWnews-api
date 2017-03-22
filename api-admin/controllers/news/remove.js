@@ -17,6 +17,12 @@ module.exports = async (req, res, next) => {
             throw new Error('16003');
         }
 
+        // 檢查 redis 是否有資料，將之下架
+        await Promise.all([
+            redis.removeValue(`news${news.sn}`),
+            redis.removeValue(`relationNewsByNews${news.sn}`)
+        ]);
+
         news.set('isTrashed', true);
 
         let removedNews = await news.saveAsync();
