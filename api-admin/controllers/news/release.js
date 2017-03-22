@@ -2,6 +2,8 @@
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:news:release');
 
+import _ from 'lodash';
+
 import { News } from '../../../models';
 import { newsLog } from '../../../libs';
 import redis from '../../../redis';
@@ -106,16 +108,22 @@ module.exports = async (req, res, next) => {
         await newsLog(updatedNews, 'UPDATE');
 
         // 要給 api web 使用的資料
-        let [ newsData, relationNewsData ] = await Promise.all([
+        let [ newsData, relationNewsData, prevNews, nextNews ] = await Promise.all([
             libs.getNewsBySn(updatedNews.sn),
-            libs.getRelationNewsBySn(updatedNews.sn)
+            libs.getRelationNewsBySn(updatedNews.sn),
+            libs.getPrevNewsBySn(updatedNews.sn),
+            libs.getNextNewsBySn(updatedNews.sn)
         ]);
 
-        // 將發佈的新聞與此新聞的相關新聞存入 redis
+        // 將發佈的新聞，此新聞的相關新聞，上下篇新聞存入 redis
         if(newsData) {
             await Promise.all([
                 redis.setValue(`news${updatedNews.sn}`, newsData, 3600 * 6),
-                redis.setValue(`relationNewsByNews${updatedNews.sn}`, relationNewsData, 300)
+                redis.setValue(`relationNewsByNews${updatedNews.sn}`, relationNewsData, 300),
+                redis.setValue(`news${updatedNews.sn}NextAndPrev`, {
+                    next: _.pick(nextNews, 'sn', 'title', 'shortTitle'),
+                    prev: _.pick(prevNews, 'sn', 'title', 'shortTitle')
+                }, 3600 * 6)
             ]);
         }
 

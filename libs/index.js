@@ -5,6 +5,8 @@ import newsLog from './newsLog';
 import getIndexPage from './getIndexPage';
 import getNewsBySn from './getNewsBySn';
 import getRelationNewsBySn from './getRelationNewsBySn';
+import getNextNewsBySn from './getNextNewsBySn';
+import getPrevNewsBySn from './getPrevNewsBySn';
 
 module.exports = {
     hashPwd,
@@ -12,5 +14,7 @@ module.exports = {
     newsLog,
     getIndexPage,
     getNewsBySn,
-    getRelationNewsBySn
+    getRelationNewsBySn,
+    getNextNewsBySn,
+    getPrevNewsBySn
 };

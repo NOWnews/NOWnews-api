@@ -24,6 +24,60 @@ None
 
 None
 
+## CATEGORY API DOCUMENTS
+
+- 取得某分類的所有新聞
+- 取得某分類的某種類的所有新聞
+
+### [GET] `/cat/{:categoryName}`
+
+取得某分類的所有新聞
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'YouCanSeeMeJohnCena' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| categoryName | 分類的名稱 | String | √ | `/category/life` |
+
+### [GET] `/cat/{:categoryName}/{:type}`
+
+取得某分類的某種類的所有新聞
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'YouCanSeeMeJohnCena' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| categoryName | 分類的名稱 | String | √ | `/category/life/NEWS` |
+| type | 某個種類 | String | √ | `/category/life/VIDEOS` |
+
 ## MENU API DOCUMENTS
 
 - 選單結構化資料
@@ -55,6 +109,7 @@ None
 - 新聞列表
 - 單則新聞
 - 單則新聞的相關新聞
+- 某則新聞的上一則下一則新聞
 
 ### [GET] `/news`
 
@@ -128,3 +183,55 @@ None
 #### Query Parameters
 
 None
+
+### [GET] `/news/{:sn}/nextandprev`
+
+某則新聞的上一則下一則新聞
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'YouCanSeeMeJohnCena' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| sn | 新聞的序號 | Number | √ | `/news/28` |
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None
+
+## PREVIEW API DOCUMENTS
+
+- 前台預覽資料
+
+### [GET] `/previews/{:redisKey}`
+
+前台預覽資料
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'YouCanSeeMeJohnCena' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| redisKey | redis 的 key | String | √ | |
