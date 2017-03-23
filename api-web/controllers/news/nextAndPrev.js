@@ -13,7 +13,7 @@ module.exports = async (req, res, next) => {
 
         let { sn } = req.params;
 
-        let aliveCache = await redis.getValue(`nnews${sn}NextAndPrev`);
+        let aliveCache = await redis.getValue(`news${sn}NextAndPrev`);
 
         if(aliveCache) {
             return res.json(aliveCache);
