@@ -7,10 +7,6 @@ import Promise from 'bluebird';
 module.exports = async (sn) => {
     try {
 
-        if(!sn) {
-            throw new Error('');
-        }
-
         let [ prevNews ] = await News.find()
             .where('sn').lt(sn)
             .where('isTrashed').equals(false)

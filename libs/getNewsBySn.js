@@ -7,10 +7,6 @@ import Promise from 'bluebird';
 module.exports = async (sn) => {
     try {
 
-        if(!sn) {
-            throw new Error('');
-        }
-
         // 找出主要新聞
         let news = await News.findBySn(sn)
             .where('isTrashed').equals(false)
