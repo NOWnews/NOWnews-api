@@ -1,5 +1,5 @@
 import Debug from 'debug';
-const debug = Debug('NOWnews-api:libs:getNewsDataBySn');
+const debug = Debug('NOWnews-api:libs:getNextNewsBySn');
 
 import { News } from '../models';
 import Promise from 'bluebird';
@@ -7,16 +7,18 @@ import Promise from 'bluebird';
 module.exports = async (sn) => {
     try {
 
-        // 找出主要新聞
-        let news = await News.findBySn(sn)
+        let [ nextNews ] = await News.find()
+            .where('sn').gt(sn)
             .where('isTrashed').equals(false)
             .where('status').equals('RELEASE')
             .where('startedAt').lte(Date.now())
-            .populate('MainMenu Menus MainPhoto MainVideo Photos Videos Author Tags CreatedBy UpdatedBy')
+            .sort('sn')
+            .limit(1)
             .execAsync();
-        debug('news = %j', news);
+        debug('next news = %j', nextNews);
 
-        return Promise.resolve(news);
+        return Promise.resolve(nextNews);
+
     } catch (err) {
         return Promise.reject(err);
     }

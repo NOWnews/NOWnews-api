@@ -7,10 +7,6 @@ import Promise from 'bluebird';
 module.exports = async (sn) => {
     try {
 
-        if(!sn) {
-            throw new Error('');
-        }
-
         // 找出新聞的 Tags
         let { Tags } = await News.findBySn(sn)
             .select('Tags')
