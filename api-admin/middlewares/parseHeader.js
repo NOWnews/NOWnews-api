@@ -1,8 +1,8 @@
 
 import config from 'config';
 
-let mode = config.get('mode');
-let keys = config.get('header.X-NOWnews-API');
+let mode = config.get('admin.mode');
+let keys = config.get('admin.header.X-NOWnews-API');
 
 module.exports = (app) => {
 

@@ -10,8 +10,7 @@ import { Tag } from '../../../models';
 module.exports = async (req, res, next) => {
     try{
 
-        let options = _.pick(req.body, 'tags', 'type', 'CreatedBy');
-        options.type = options.type ? options.type : 'NEWS';
+        let options = _.pick(req.body, 'tags', 'CreatedBy');
 
         let tagList = await Promise.mapSeries(options.tags, (tag) => {
 
@@ -20,7 +19,6 @@ module.exports = async (req, res, next) => {
 
             return Tag.findOne()
                 .where('name').equals(tag)
-                .where('type').equals(options.type)
                 .where('isTrashed').equals(false)
                 .execAsync()
                 .then((aliveTag) => {
@@ -33,7 +31,6 @@ module.exports = async (req, res, next) => {
                     // 沒有這個 tag 就幫他建立
                     return Tag.createAsync({
                         name: tag,
-                        type: options.type,
                         CreatedBy: options.CreatedBy,
                         UpdatedBy: options.CreatedBy
                     });

@@ -33,8 +33,10 @@ module.exports = async (req, res, next) => {
             'isSponsored',
             'location',
             'Author',
+            'newsBy',
             'Tags',
-            'CreatedBy'
+            'CreatedBy',
+            'LastReviewer'
         ]);
 
         let isAdult = options.isAdult === true ? true : false;

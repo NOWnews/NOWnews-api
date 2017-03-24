@@ -97,7 +97,7 @@ let schema = new Schema({
     // 新聞狀態
     status: {
         type: String,
-        enum: ['DRAFT', 'REVIEW', 'RELEASE', 'CLOSE'], // 草稿, 審核中, 發布, 關閉
+        enum: ['DRAFT', 'REVIEW', 'RELEASE', 'TEMP', 'CLOSE'], // 草稿, 審核中, 發布, 暫存, 關閉
         default: 'DRAFT'
     },
 
@@ -135,6 +135,12 @@ let schema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
+    },
+
+    // 訊頭
+    newsBy: {
+        type: String,
+        default: null
     },
 
     // 此新聞的標籤(關鍵字)
@@ -204,7 +210,7 @@ let schema = new Schema({
 });
 
 schema.statics.findBySn = function(sn) {
-    return this.where('sn').equals(sn);
+    return this.findOne().where('sn').equals(sn);
 };
 
 schema.index({
@@ -217,6 +223,10 @@ schema.virtual('formatCreatedAt').get(function () {
 
 schema.virtual('formatUpdatedAt').get(function () {
     return moment(this.updatedAt).tz('Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
+});
+
+schema.virtual('formatStartedAt').get(function () {
+    return moment(this.startedAt).tz('Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });
 
 schema.plugin(autoIncrement);

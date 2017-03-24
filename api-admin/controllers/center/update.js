@@ -1,6 +1,5 @@
-import Debug from 'debug';
-import is from 'is_js';
 
+import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:center:update');
 
 import Promise from 'bluebird';
@@ -8,8 +7,9 @@ import Promise from 'bluebird';
 import { Center } from '../../../models';
 
 module.exports = async (req, res, next) => {
+
+    let { name, UpdatedBy } = req.body;
     let { id } = req.params;
-    let { name, Departments, UpdatedBy } = req.body;
 
     try {
 
@@ -21,30 +21,21 @@ module.exports = async (req, res, next) => {
                     .where('_id').ne(id)
                     .where('name').equals(name)
                     .where('isTrashed').equals(false)
-                    .execAsync(),
+                    .execAsync()
             ]);
         debug('center = %j', center);
         debug('checkCenterByName = %j', checkCenterByName);
 
         if(!center) {
-            throw new Error('13002');
+            throw new Error('14002');
         }
 
         if(checkCenterByName) {
-            throw new Error('13001');
+            throw new Error('14001');
         }
 
         if(name) {
             center.set('name', name);
-        }
-
-
-        if(Departments && is.string(Departments)) {
-            center.Departments.push(Departments);
-        }
-
-        if(Departments && is.array(Departments)) {
-            center.set('Departments', Departments);
         }
 
         center.set('UpdatedBy', UpdatedBy);

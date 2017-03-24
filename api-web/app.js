@@ -1,21 +1,17 @@
 import express from 'express';
 let app = express();
 
-// import initDataStart from '../initData/start';
-// import middlewares from './middlewares';
+import middlewares from './middlewares';
 import controllers from './controllers';
-// import errorHandlers from './errorHandlers';
+import errorHandlers from './errorHandlers';
 
-// // 初始化資料
-// initDataStart();
-
-// // middlewares
-// app.use(middlewares(app));
+// middlewares
+app.use(middlewares(app));
 
 // controllers
 app.use(controllers(app));
 
-// // errorHandles
-// app.use(errorHandlers(app));
+// errorHandles
+app.use(errorHandlers(app));
 
 module.exports = app;

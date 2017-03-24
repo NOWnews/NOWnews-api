@@ -4,13 +4,14 @@ const debug = Debug('NOWnews-api:api-admin:controllers:image:list');
 
 import Promise from 'bluebird';
 import moment from 'moment-timezone';
+import _ from 'lodash';
 
 import { Image } from '../../../models';
 import { pagination } from '../../../libs';
 
 module.exports = async(req, res, next) => {
 
-    let { limit, page, skip, title, desc, startedAt, endedAt, sort } = req.query;
+    let { limit, page, skip, keywords, imageFrom, startedAt, endedAt, sort } = req.query;
     debug('req.query = %j', req.query);
 
     try{
@@ -19,14 +20,36 @@ module.exports = async(req, res, next) => {
         let totalCursor = Image.find().where('type').equals('NEWS'); // 處理分頁用的
         sort = sort ? sort : '-createdAt';
 
-        if(title) {
-            cursor.where('title').equals(new RegExp(title, 'i'));
-            totalCursor.where('title').equals(new RegExp(title, 'i'));
+        // 這個條件很複雜，就是要鍵入不同的關鍵字，還可以模糊搜尋
+        if(keywords && keywords !== '') {
+
+            keywords = _.split(keywords, ',');
+
+            let titleCondition = [];
+            let descCondition = [];
+            let keywordCondition = [];
+
+            _.forEach(keywords, (keyword) => {
+                titleCondition.push({ title: new RegExp(keyword, 'i')});
+                descCondition.push({ desc: new RegExp(keyword, 'i')});
+                keywordCondition.push({ keyword: new RegExp(keyword, 'i')});
+            });
+
+            cursor.or([
+                { $and: titleCondition },
+                { $and: descCondition },
+                { $and: keywordCondition },
+            ]);
+            totalCursor.or([
+                { $and: titleCondition },
+                { $and: descCondition },
+                { $and: keywordCondition },
+            ]);
         }
 
-        if(desc) {
-            cursor.where('desc').equals(new RegExp(desc, 'i'));
-            totalCursor.where('desc').equals(new RegExp(desc, 'i'));
+        if(imageFrom) {
+            cursor.where('imageFrom').equals(imageFrom);
+            totalCursor.where('imageFrom').equals(imageFrom);
         }
 
         if(startedAt && endedAt) {

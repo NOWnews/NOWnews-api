@@ -9,7 +9,7 @@ import { pagination } from '../../../libs';
 
 module.exports = async (req, res, next) => {
 
-    let { limit, page, skip, title, status, Author, CreatedBy, UpdatedBy, LastReviewer, sort } = req.query;
+    let { limit, page, skip, title, type, status, Author, CreatedBy, UpdatedBy, LastReviewer, sort } = req.query;
     debug('req.query = %j', req.query);
 
     try {
@@ -21,6 +21,11 @@ module.exports = async (req, res, next) => {
         if(title) {
             cursor.where('title').equals(new RegExp(title, 'i'));
             totalCursor.where('title').equals(new RegExp(title, 'i'));
+        }
+
+        if(type) {
+            cursor.where('type').equals(type);
+            totalCursor.where('type').equals(type);
         }
 
         if(status) {

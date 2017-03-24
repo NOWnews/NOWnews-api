@@ -6,41 +6,46 @@ let Schema = mongoose.Schema;
 
 let schema = new Schema({
 
-    // 圖片關鍵字
-    keyword: {
-        type: String,
-        default: '',
-        trim: true,
-        lowercase: true
-    },
-
     // 圖片的標題
     title: {
         type: String,
-        default: '',
+        default: null,
         trim: true
     },
 
     // 圖片的描述(圖說)
     desc: {
         type: String,
-        default: '',
+        default: null,
         trim: true
+    },
+
+    // 影片關鍵字
+    keyword: {
+        type: String,
+        default: null
+    },
+
+    // 圖片來源
+    imageFrom: {
+        type: String,
+        default: 'INTERNAL',
+        enum: ['INTERNAL', 'EXTERNAL', 'CNA'] // 內部, 外部, 中央社
     },
 
     // 原始的檔案名稱
     originalname: {
         type: String,
-        required: true,
+        default: null,
         trim: true
     },
 
     // 圖片的類別(jpg, png)
     format: {
         type: String,
-        required: true,
         trim: true,
-        lowercase: true
+        lowercase: true,
+        default: null
     },
 
     // 圖片的分類
@@ -50,22 +55,29 @@ let schema = new Schema({
         default: 'NEWS'
     },
 
+    // 圖片的模式
+    mode: {
+        type: String,
+        enum: ['NORMAl', '360VIEW'],
+        default: 'NORMAl'
+    },
+
     mimetype: {
         type: String,
-        required: true,
-        trim: true
+        trim: true,
+        default: null
     },
 
     // 圖片的寬
     width: {
         type: Number,
-        required: true
+        default: null
     },
 
     // 圖片的高
     height: {
         type: Number,
-        required: true
+        default: null
     },
 
     // 是否可外送
@@ -74,11 +86,17 @@ let schema = new Schema({
         default: true
     },
 
+    // 此圖片標籤(關鍵字只會有一個)
+    Tag: {
+        type: Schema.Types.ObjectId,
+        ref: 'Tag',
+        default: null
+    },
+
     // 圖片的連結
     url: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
 
     isTrashed: {

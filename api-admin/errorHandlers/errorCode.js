@@ -37,11 +37,11 @@ module.exports = {
         statusCode: 400
     },
     // 11006: {
-    //     message: '[User Create] 缺少 Center 這個欄位',
+    //     message: '[User Create] 缺少 Department 這個欄位',
     //     statusCode: 400
     // },
     // 11007: {
-    //     message: '[User Create] 缺少 Department 這個欄位',
+    //     message: '[User Create] 缺少 Center 這個欄位',
     //     statusCode: 400
     // },
     // 11008: {
@@ -112,33 +112,53 @@ module.exports = {
         statusCode: 404
     },
 
-    // Center Create Validate
-    13001: {
-        message: '[Center Create] 這個中心名稱已經被使用過了',
-        statusCode: 400
-    },
-
-    13002: {
-        message: '[Center Create] 找不到這個中心',
-        statusCode: 404
-    },
-
     // Department Create Validate
-    14001: {
+    13001: {
         message: '[Department Create] 這個部門名稱已經被使用過了',
         statusCode: 400
     },
 
-    // Department FindOne Validate
+    13002: {
+        message: '[Department Create] 找不到這個部門',
+        statusCode: 404
+    },
+
+    // Center Create Validate
+    14001: {
+        message: '[Center Create] 這個中心名稱已經被使用過了',
+        statusCode: 400
+    },
+
+    // Center FindOne Validate
     14002: {
-        message: '[Department FindOne] 找不到這個部門',
+        message: '[Center FindOne] 找不到這個中心',
         statusCode: 404
     },
 
     // Image
     15001: {
-        message: '[Image findOne] 找不到這個圖片資料',
+        message: '[Image] 找不到這個圖片資料',
         statusCode: 404
+    },
+
+    15002: {
+        message: '[Image] 缺少 desc 這個欄位',
+        statusCode: 400
+    },
+
+    15003: {
+        message: '[Image] 缺少 id 這個欄位',
+        statusCode: 400
+    },
+
+    15004: {
+        message: '[Image] 缺少 CreatedBy 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    15005: {
+        message: '[Image] 缺少 UpdatedBy 這個欄位或是格式不正確',
+        statusCode: 400
     },
 
     // News
@@ -194,6 +214,11 @@ module.exports = {
 
     16011: {
         message: '[News] 缺少 MainMenu 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    16012: {
+        message: '[News] 缺少 newsBy 這個欄位',
         statusCode: 400
     },
 
@@ -267,6 +292,120 @@ module.exports = {
 
     19007: {
         message: '[Menu] 已經有相同的 category name',
+        statusCode: 400
+    },
+
+    // SpecialTopic
+    20001: {
+        message: '[SpecialTopic] 找不到此專題',
+        statusCode: 404
+    },
+
+    20002: {
+        message: '[SpecialTopic] 缺少 title 這個欄位',
+        statusCode: 400
+    },
+
+    20003: {
+        message: '[SpecialTopic] 缺少 url 這個欄位',
+        statusCode: 400
+    },
+
+    20004: {
+        message: '[SpecialTopic] 缺少 MainPhoto 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    20005: {
+        message: '[SpecialTopic] 缺少 CreatedBy 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    20006: {
+        message: '[SpecialTopic] 缺少 UpdatedBy 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    // SpecialChannel
+    21001: {
+        message: '[SpecialChannel] 找不到此特輯',
+        statusCode: 404
+    },
+
+    21002: {
+        message: '[SpecialChannel] 缺少 title 這個欄位',
+        statusCode: 400
+    },
+
+    21003: {
+        message: '[SpecialChannel] 缺少 MainPhoto 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    21004: {
+        message: '[SpecialChannel] newsList 必須為 Array',
+        statusCode: 400
+    },
+
+    21005: {
+        message: '[SpecialChannel] 缺少 CreatedBy 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    21006: {
+        message: '[SpecialChannel] 缺少 UpdatedBy 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    // IndexPage
+    22001: {
+        message: '[IndexPage] carousels 必須為 Array',
+        statusCode: 400
+    },
+
+    22002: {
+        message: '[IndexPage] specialChannels 必須為 Array',
+        statusCode: 400
+    },
+
+    22003: {
+        message: '[IndexPage] specialTopics 必須為 Array',
+        statusCode: 400
+    },
+
+    22004: {
+        message: '[IndexPage] videos 必須為 Array',
+        statusCode: 400
+    },
+
+    22005: {
+        message: '[IndexPage] 缺少 UpdatedBy 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    22006: {
+        message: '[IndexPage] Array Length 大於限制',
+        statusCode: 400
+    },
+
+    // Video
+    23001: {
+        message: '[Video] 找不到此影片',
+        statusCode: 404
+    },
+
+    23002: {
+        message: '[Video] 缺少 CreatedBy 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    23003: {
+        message: '[Video] 缺少 UpdatedBy 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    23004: {
+        message: '[Video] 缺少 url 這個欄位',
         statusCode: 400
     },
 };

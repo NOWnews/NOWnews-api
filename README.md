@@ -63,4 +63,6 @@ Start server by cluster mode:
 
 ## Api Documents
 
-[admin-api](documents/api-admin.md)
+[Admin APIS](documents/api-admin.md)
+
+[Web APIS](documents/api-web.md)

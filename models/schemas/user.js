@@ -110,12 +110,32 @@ let schema = new Schema({
     // 一些使用者基本設定的地方
     defaultSettings: {
 
+        // 使用者預設作者
+        Author: {
+            type: Schema.Types.ObjectId,
+            ref: 'Author',
+            default: null
+        },
+
         // 使用者預設主選單
         Menu: {
             type: Schema.Types.ObjectId,
             ref: 'Menu',
             default: null
+        },
+
+        // 使用者預設訊頭
+        newsBy: {
+            type: String,
+            default: null
         }
+
+    },
+
+    // 最後登入時間
+    lastLogin: {
+        type: Date,
+        default: Date.now
     },
 
     // 是否被刪除
@@ -171,6 +191,10 @@ schema.virtual('formatCreatedAt').get(function () {
 
 schema.virtual('formatUpdatedAt').get(function () {
     return moment(this.updatedAt).tz('Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
+});
+
+schema.virtual('formatLastLogin').get(function () {
+    return moment(this.lastLogin).tz('Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });
 
 schema.plugin(autoIncrement);

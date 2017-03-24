@@ -41,7 +41,9 @@ None
 | jobTitle | 職稱 | String  |  | `工程師` |
 | profileLink | 個人資料連結 | String  |  | |
 | Avatar | 大頭照 | String  |  | |
-| defaultMenu | 使用者建立新聞時的預設主選單 | ObjectId  |  | |
+| defaultAuthor | 使用者建立新聞時的預設作者 | ObjectId  |  | `520000000000000000000001` |
+| defaultMenu | 使用者建立新聞時的預設主選單 | ObjectId  |  | `520000000000000000000001` |
+| defaultNewsBy | 使用者建立新聞時的預設訊頭 | Stringg  |  | |
 | CreatedBy | 建立者 ObjectId | ObjectId  | √ | `530000000000000000000001` |
 
 #### Query Parameters
@@ -70,6 +72,8 @@ None
 | name | 姓名(模糊搜尋) | String |  | `name=wa` |
 | status | 狀態(完全比對) | String |  | `status=NEWBIE` |
 | Role | 角色(完全比對) | String |  | `Role=520000000000000000000001` |
+| Department | 部門(完全比對) | String |  | `Department=520000000000000000000001` |
+| Center | 中心(完全比對) | String |  | `Center=520000000000000000000001` |
 | sort | 排序 | String |  | `sort=-createdAt`, `sort=name` |
 | page | 第幾頁 | Number |  | `page=1` |
 | limit | 一次幾筆資料 | Number |  | `limit=10` |
@@ -96,6 +100,29 @@ None
 | password | 密碼 | String | √  | `19880118` |
 
 #### Query Parameters
+None
+
+### [POST] `/users/logout`
+
+登出端點(目前只有留下登出紀錄，沒有任何實質登出功能)
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| userId | User 的 ObjectId | ObjectId | √ | `530000000000000000000001` |
+
+#### Query Parameters
+
 None
 
 ### [GET] `/users/{:id}`
@@ -151,7 +178,9 @@ None
 | jobTitle | 職稱 | String  |  | `工程師` |
 | profileLink | 個人資料連結 | String  |  | |
 | Avatar | 大頭照 | String  |  | |
-| defaultMenu | 使用者建立新聞時的預設主選單 | ObjectId  |  | |
+| defaultAuthor | 使用者建立新聞時的預設作者 | ObjectId  |  | `520000000000000000000001` |
+| defaultMenu | 使用者建立新聞時的預設主選單 | ObjectId  |  | `520000000000000000000001` |
+| defaultNewsBy | 使用者建立新聞時的預設訊頭 | Stringg  |  | |
 | UpdatedBy | 建立者 ObjectId | ObjectId  | √ | `530000000000000000000001` |
 
 None
@@ -317,8 +346,8 @@ None
 
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
-| title | 標題(模糊搜尋) | String |  | |
-| desc | 描述(模糊搜尋) | String |  | |
+| keywords | 會針對 title, desc, keyword 欄位做模糊搜尋 | String |  | `張學友,演唱會` |
+| imageFrom | 圖片的來源 | String |  | |
 | startedAt | 開始時間 | Date | | |
 | endedAt | 結束時間 | Date | | |
 | page | 第幾頁 | Number |  | `page=1` |
@@ -326,9 +355,39 @@ None
 | skip | 跳過幾筆資料 | Number |  | `skip=10` |
 | sort | 排序(預設為最新在最前面) | String | | `sort=createdAt`, `sort=-title` |
 
+### [POST] `/images/`
+
+上傳一張圖片(外部連結)
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| url | 要上傳的圖片 | String | √ | |
+| title | 這張圖片的標題 | String |  | `測試圖片` |
+| desc | 這張圖片的圖說 | String |  | `這是測試圖片` |
+| keyword | 圖片的關鍵字(攝影大哥自己內部控管) | String |  | `這是測試圖片` |
+| type | 圖片的分類 | `['NEWS','AVATAR']` |  | `NEWS` |
+| isDeliver | 是否可以上傳 | String |  | `true` |
+| Tag | 圖片的標籤(關鍵字) | ObjectId |  | |
+| CreatedBy | 最後更新者 | String | √ | `530000000000000000000001` |
+
+#### Query Parameters
+None
+
 ### [POST] `/images/upload`
 
-上傳一張圖片
+上傳一張圖片(圖片上傳)
 
 #### Header Parameters
 
@@ -345,11 +404,38 @@ None
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
 | image | 要上傳的圖片 | File | √ | |
-| keyword | 這張圖片的關鍵字 | String |  | `測試` |
 | title | 這張圖片的標題 | String |  | `測試圖片` |
 | desc | 這張圖片的圖說 | String |  | `這是測試圖片` |
+| keyword | 圖片的關鍵字(攝影大哥自己內部控管) | String |  | `這是測試圖片` |
 | type | 圖片的分類 | `['NEWS','AVATAR']` |  | `NEWS` |
+| isDeliver | 是否可以上傳 | String |  | `true` |
+| Tag | 圖片的標籤(關鍵字) | ObjectId |  | |
 | CreatedBy | 最後更新者 | String | √ | `530000000000000000000001` |
+
+#### Query Parameters
+None
+
+### [POST] `/images/clone`
+
+複製一份 Image 物件(更新圖說時)
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | 圖片的 ObjectId | String | √ | `530000000000000000000001` |
+| desc | 這張圖片的圖說 | String | √ | `更新圖說` |
+| CreatedBy | 建立者 | String | √ | `530000000000000000000001` |
 
 #### Query Parameters
 None
@@ -373,6 +459,32 @@ None
 #### Body Parameters
 
 None
+
+#### Query Parameters
+None
+
+### [PUT] `/images/{:id}`
+
+更新圖片(目前只能更新圖說，而且圖片必須是由外站傳進來的圖片)
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | 圖片 ObjectId | String | √ | `560000000000000000000001` |
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| desc | 這張圖片的圖說 | String | √ | `更新圖說` |
+| UpdatedBy | 更新者 | String | √ | `530000000000000000000001` |
 
 #### Query Parameters
 None
@@ -421,6 +533,162 @@ None
 #### Query Parameters
 None
 
+## VIDEO API DOCUMENTS
+
+### [POST] `/videos`
+
+上傳一則影片(外部連結)
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| url | 影片的連結 | String | √ | |
+| title | 影片的標題 | String |  | `測試影片` |
+| desc | 影片的說明 | String |  | `這是測試影片` |
+| type | 影片的分類 | `['NEWS']` |  | `NEWS` |
+| Tags | 標籤(關鍵字) | [ObjectId] |  | |
+| CreatedBy | 最後更新者 | String | √ | `530000000000000000000001` |
+
+### [GET] `/videos`
+
+影片列表
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| title | 用標題做模糊搜尋 | String | | |
+| page | 第幾頁 | Number |  | `page=1` |
+| limit | 一次幾筆資料 | Number |  | `limit=10` |
+| skip | 跳過幾筆資料 | Number |  | `skip=10` |
+| sort | 排序(預設為最新在最前面) | String | | `sort=createdAt`, `sort=-title` |
+
+### [POST] `/videos/upload`
+
+上傳一則影片(由本機上傳)
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| video | 要上傳的圖片 | File | √ | |
+| title | 影片的標題 | String |  | `測試影片` |
+| desc | 影片的說明 | String |  | `這是測試影片` |
+| type | 影片的分類 | `['NEWS']` |  | `NEWS` |
+| Tags | 標籤(關鍵字) | [ObjectId] |  | |
+| CreatedBy | 最後更新者 | String | √ | `530000000000000000000001` |
+
+#### Query Parameters
+
+None
+
+### [GET] `/videos/{:id}`
+
+影片單一資訊
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None
+
+### [PUT] `/videos/{:id}`
+
+更新影片資訊
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| title | 影片的標題 | String |  | `測試影片` |
+| desc | 影片的說明 | String |  | `這是測試影片` |
+| UpdatedBy | 最後更新者 | Object | √ | `530000000000000000000001` |
+
+#### Query Parameters
+
+None
+
+### [DELETE] `/videos/{:id}`
+
+刪除影片
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| UpdatedBy | 最後更新者 | Object | √ | `530000000000000000000001` |
+
+#### Query Parameters
+
+None
+
 ## NEWS API DOCUMENTS
 
 ### [POST] `/news`
@@ -460,6 +728,7 @@ None
 | isDeliver | 可否外送 | Boolean | | |
 | isSponsored | 可否為業配文 | Boolean | | |
 | location | 這則新聞的做標 | Object | | `[124, 12]` |
+| newsBy | 訊頭 | String | | |
 | Author | 作者，若沒傳入則帶入建立者 | ObjectId | | |
 | Tags | 標籤(關鍵字) | [ObjectId] | | |
 | CreatedBy | 建立者 | ObjectId | √ | |
@@ -488,6 +757,7 @@ None
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
 | title | 標題(模糊搜尋) | String |  | `title=今天` |
+| type | 新聞的分類 | String |  | `type=NEWS` |
 | status | 狀態 | String |  | `status=DRAFT` |
 | Author | 作者 | String |  | `Author=520000000000000000000001` |
 | CreatedBy | 建立者 | String |  | `CreatedBy=520000000000000000000001` |
@@ -557,6 +827,7 @@ None
 | isDeliver | 是否可外送 | Boolean | | |
 | isSponsored | 可否為業配文 | Boolean | | |
 | location | 這則新聞的做標 | Object | | `[124, 12]` |
+| newsBy | 訊頭 | String | √ | |
 | LastReviewer | 欲將新聞送審的人 | ObjectId | √ | |
 | Author | 作者，若沒傳入則帶入建立者 | ObjectId | √ | |
 | Tags | 標籤(關鍵字) | [ObjectId] | | |
@@ -603,6 +874,7 @@ None
 | isDeliver | 是否可外送 | Boolean | | |
 | isSponsored | 可否為業配文 | Boolean | | |
 | location | 這則新聞的做標 | Object | | `[124, 12]` |
+| newsBy | 訊頭 | String | √ | |
 | Author | 作者，若沒傳入則帶入建立者 | ObjectId | √ | |
 | Tags | 標籤(關鍵字) | [ObjectId] | | |
 | UpdatedBy | 更新者 | ObjectId | √ | |
@@ -650,6 +922,7 @@ None
 | isDeliver | 是否可外送 | Boolean | | |
 | isSponsored | 可否為業配文 | Boolean | | |
 | location | 這則新聞的做標 | Object | | `[124, 12]` |
+| newsBy | 訊頭 | String | | |
 | Author | 作者，若沒傳入則帶入建立者 | ObjectId | √ | |
 | Tags | 標籤(關鍵字) | [ObjectId] | | |
 | UpdatedBy | 更新者 | ObjectId | √ | |
@@ -874,7 +1147,6 @@ None
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
 | tags | 名稱 | Array | √ | `["政治", "金正恩"]` 不能大於 7 個 item |
-| type | 類別 | `['NEWS', 'IMAGE']` | | `IMAGE` |
 | CreatedBy | 建立者 | String | √ | `530000000000000000000001` |
 
 #### Query Parameters
@@ -1100,6 +1372,409 @@ None
 #### Body Parameters
 
 None
+
+#### Query Parameters
+
+None
+
+
+## SPECIALTOPIC API DOCUMENT
+
+### [POST] `/specialtopics`
+
+創建一個專題
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| title | 專題的標題 | String | √ | |
+| MainPhoto | 專題的主圖(Image) | ObjectId | √ | |
+| url | 專題的連結 | String | √ | |
+| CreatedBy | 建立者 | ObjectId | √ | |
+
+#### Query Parameters
+
+None
+
+### [GET] `/specialtopics`
+
+專題列表
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| title | 用標題做模糊搜尋 | String | | |
+
+### [GET] `/specialtopics/{:id}`
+
+單一專題資訊
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None
+
+### [PUT] `/specialtopics/{:id}`
+
+更新單一專題
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| title | 專題的標題 | String | | |
+| MainPhoto | 專題的主圖(Image) | ObjectId | | |
+| url | 專題的連結 | String | | |
+| UpdatedBy | 更新者 | ObjectId | √ | |
+
+#### Query Parameters
+
+None
+
+### [DELETE] `/specialtopics/{:id}`
+
+刪除單一專題
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| UpdatedBy | 更新者 | ObjectId | √ | |
+
+#### Query Parameters
+
+None
+
+## SPECIALCHANNEL API DOCUMENT
+
+### [POST] `/specialchannels`
+
+創建一個特輯
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| title | 特輯的標題 | String | √ | |
+| MainPhoto | 特輯的主圖(Image) | ObjectId | √ | |
+| newsList | 新聞 ObjectId 陣列 | [ObjectId]  | √ | |
+| CreatedBy | 建立者 | ObjectId | √ | |
+
+#### Query Parameters
+
+None
+
+### [GET] `/specialchannels`
+
+特輯列表
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| title | 用標題做模糊搜尋 | String | | |
+
+### [GET] `/specialchannels/{:id}`
+
+單一特輯資訊
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None
+
+### [PUT] `/specialchannels/{:id}`
+
+更新單一特輯
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| title | 特輯的標題 | String | | |
+| MainPhoto | 特輯的主圖(Image) | ObjectId | | |
+| newsList | 新聞 ObjectId 陣列 | [ObjectId]  | √ | |
+| UpdatedBy | 更新者 | ObjectId | √ | |
+
+#### Query Parameters
+
+None
+
+### [DELETE] `/specialchannels/{:id}`
+
+刪除單一特輯
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| UpdatedBy | 更新者 | ObjectId | √ | |
+
+#### Query Parameters
+
+None
+
+## INDEXPAGE API DOCUMENT
+
+### [GET] `/indexpage`
+
+取得首頁管理相關資訊
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None
+
+### [PUT] `/indexpage/carousels`
+
+更新首頁輪播圖
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| carousels | 新聞 ObjectId 陣列 | [ObjectId] | √ | |
+| UpdatedBy | 更新者 | ObjectId | √ | |
+
+#### Query Parameters
+
+None
+
+### [PUT] `/indexpage/specialtopics`
+
+更新首頁專題
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| specialTopics | 專題 ObjectId 陣列 | [ObjectId] | √ | |
+| UpdatedBy | 更新者 | ObjectId | √ | |
+
+#### Query Parameters
+
+None
+
+### [PUT] `/indexpage/specialchannels`
+
+更新首頁特輯
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| specialchannels | 特輯 ObjectId 陣列 | [ObjectId] | √ | |
+| UpdatedBy | 更新者 | ObjectId | √ | |
+
+#### Query Parameters
+
+None
+
+### [PUT] `/indexpage/videos`
+
+更新首頁影片
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| videos | 影片 ObjectId 陣列 | [ObjectId] | √ | |
+| UpdatedBy | 更新者 | ObjectId | √ | |
+
+#### Query Parameters
+
+None
+
+## PREIVEW API DOCUMENT
+
+### [POST] `/previews`
+
+將預覽資料存入 redis
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | 新聞 ObjectId | ObjectId | √ | |
 
 #### Query Parameters
 

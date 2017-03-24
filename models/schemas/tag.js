@@ -11,11 +11,12 @@ let schema = new Schema({
         required: true
     },
 
-    type: {
-        type: String,
-        default: 'NEWS',
-        enum: ['NEWS', 'IMAGE']
-    },
+    // 上次經過決議後，發現 type 有跟沒有一樣XD
+    // type: {
+    //     type: String,
+    //     default: 'NEWS',
+    //     enum: ['NEWS', 'IMAGE', 'VIDEO']
+    // },
 
     isTrashed: {
         type: Boolean,

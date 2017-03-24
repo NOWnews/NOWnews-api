@@ -1,39 +1,89 @@
 {
-    "mode": "staging",
-    "showError": true,
-    "mongodb": {
-        "host": "mongodb://mongo185.nownews.pri:27017", // (no / 192.168.40.185)
-        "db": "NOWnews_Staging"
+    "admin": {
+        "mode": "staging",
+        "showError": true,
+        "mongodb": {
+            "host": "mongodb://mongo185.nownews.pri:27017", // (no / 192.168.40.185)
+            "db": "NOWnews_Staging"
+        },
+        "pvMongodb": {
+            "host": "mongodb://mongo185.nownews.pri:27017", // (no / 192.168.40.185)
+            "db": "NOWnewsAnalytics_Staging"
+        },
+        "redis": {
+            "host": "memcache.nownews.pri", // (61.67.121.141 / 192.168.40.141)
+            "port": 6379,
+            "db": 1,
+            "expireSeconds": 3600
+        },
+        "header": {
+            "X-NOWnews-API": ["NOWnewsIsFeature"]
+        },
+        "baseQuery": {
+            "limit": 20,
+            "skip": 0,
+            "page": 1
+        },
+        "apiKeys": {
+            "geocode": "AIzaSyBMndk_T5tmXq8GE_dbvZjINOPS0zHbEgs"
+        },
+        "apiUrls": {
+            "geocode": "https://maps.googleapis.com/maps/api/geocode/json"
+        },
+        "imageServer": {
+            "username": "imgscp",
+            "password": "zAQ!@#EDCXSW",
+            "host": "img.nownews.pri", // (59.124.93.47 / 192.168.40.168)
+            "port": 50022,
+            "url": "http://img.nownews.com/images/nownews_staging",
+            "folder": "/var/www/images/nownews_staging"
+        },
+        "videoServer": {
+            "username": "imgscp",
+            "password": "zAQ!@#EDCXSW",
+            "host": "img.nownews.com", //59.124.93.47
+            "port": 50022,
+            "url": "http://img.nownews.com/videos/nownews_staging",
+            "folder": "/var/www/videos/nownews_staging"
+        },
+        "indexpage": {
+            "carousels": 10,
+            "specialTopics": 4,
+            "specialChannels": 8,
+            "videos": 20
+        }
     },
-    "pvMongodb": {
-        "host": "mongodb://mongo185.nownews.pri:27017", // (no / 192.168.40.185)
-        "db": "NOWnewsAnalytics_Staging"
-    },
-    "redis": {
-        "host": "memcache.nownews.pri", // (61.67.121.140 / 192.168.40.140)
-        "port": 6379,
-        "expireSeconds": 3600
-    },
-    "header": {
-        "X-NOWnews-API": ["NOWnewsIsFeature"]
-    },
-    "baseQuery": {
-        "limit": 20,
-        "skip": 0,
-        "page": 1
-    },
-    "apiKeys": {
-        "geocode": "AIzaSyBMndk_T5tmXq8GE_dbvZjINOPS0zHbEgs"
-    },
-    "apiUrls": {
-        "geocode": "https://maps.googleapis.com/maps/api/geocode/json"
-    },
-    "imageServer": {
-        "username": "imgscp",
-        "password": "zAQ!@#EDCXSW",
-        "host": "img.nownews.pri", // (59.124.93.47 / 192.168.40.168)
-        "port": 50022,
-        "url": "http://img.nownews.com/nownews_staging",
-        "folder": "/var/www/images/nownews_staging"
+
+    "web": {
+        "mode": "staging",
+        "showError": true,
+        "mongodb": {
+            "host": "mongodb://mongo185.nownews.pri:27017", // (no / 192.168.40.185)
+            "db": "NOWnews_Staging"
+        },
+        "pvMongodb": {
+            "host": "mongodb://mongo185.nownews.pri:27017", // (no / 192.168.40.185)
+            "db": "NOWnewsAnalytics_Staging"
+        },
+        "redis": {
+            "host": "memcache.nownews.pri", // (61.67.121.141 / 192.168.40.141)
+            "port": 6379,
+            "db": 1,
+            "expireSeconds": 3600
+        },
+        "header": {
+            "X-NOWnews-API": ["YouCanSeeMeJohnCena"]
+        },
+        "baseQuery": {
+            "limit": 20,
+            "skip": 0,
+            "page": 1
+        },
+        "apiKeys": {
+            "geocode": "AIzaSyBMndk_T5tmXq8GE_dbvZjINOPS0zHbEgs"
+        },
+        "apiUrls": {
+            "geocode": "https://maps.googleapis.com/maps/api/geocode/json"
+        }
     }
 }

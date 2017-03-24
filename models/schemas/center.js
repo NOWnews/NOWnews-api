@@ -11,11 +11,6 @@ let schema = new Schema({
         required: true
     },
 
-    Departments: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Department'
-    }],
-
     isTrashed: {
         type: Boolean,
         default: false

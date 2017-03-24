@@ -5,6 +5,7 @@ import role from './role';
 import center from './center';
 import department from './department';
 import image from './image';
+import video from './video';
 import news from './news';
 import newsMemo from './newsMemo';
 import newsLog from './newsLog';
@@ -12,6 +13,10 @@ import map from './map';
 import tag from './tag';
 import menu from './menu';
 import trend from './trend';
+import specialTopic from './specialTopic';
+import specialChannel from './specialChannel';
+import indexPage from './indexPage';
+import preview from './preview';
 
 module.exports = (app) => {
 
@@ -21,6 +26,7 @@ module.exports = (app) => {
     app.use('/', role);
     app.use('/', center);
     app.use('/', image);
+    app.use('/', video);
     app.use('/', department);
     app.use('/', news);
     app.use('/', newsMemo);
@@ -29,6 +35,10 @@ module.exports = (app) => {
     app.use('/', tag);
     app.use('/', menu);
     app.use('/', trend);
+    app.use('/', specialTopic);
+    app.use('/', specialChannel);
+    app.use('/', indexPage);
+    app.use('/', preview);
 
     return (req, res, next) => {
         return next();

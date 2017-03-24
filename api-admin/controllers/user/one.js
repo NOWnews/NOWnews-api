@@ -12,7 +12,7 @@ module.exports = async (req, res, next) => {
 
         let user = await User.findById(id)
             .where('isTrashed').equals(false)
-            .populate('Avatar Role Center Department CreatedBy UpdatedBy')
+            .populate('Avatar Role Department Center CreatedBy UpdatedBy')
             .select('-password')
             .execAsync();
 

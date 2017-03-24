@@ -2,6 +2,8 @@
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:image:upload');
 
+import readChunk from 'read-chunk';
+import fileType from 'file-type';
 import gm from 'gm';
 import fs from 'fs';
 import Promise from 'bluebird';
@@ -14,35 +16,30 @@ import { Image } from '../../../models';
 
 module.exports = async(req, res, next) => {
 
-    let { keyword, title, desc, type, isDeliver, CreatedBy } = req.body;
+    let { title, desc, keyword, type, isDeliver, Tag, CreatedBy } = req.body;
     let { path, mimetype, originalname } = req.file;
 
     try{
 
-        // 用 gm 去讀取圖片的基本資訊
-        let [ format, size ] = await Promise.all([
-            new Promise((resolve, reject) => {
-                    gm(path).format((err, type) => {
-                        if(err) {
-                            return reject(err);
-                        }
-                        return resolve(type);
-                    });
-                }),
-            new Promise((resolve, reject) => {
-                    gm(path).size((err, size) => {
-                        if(err) {
-                            return reject(err);
-                        }
-                        return resolve(size);
-                    });
-                })
-        ]);
+        // 讀取檔案的前 4100 bytes 存成 buffer
+        let buffer = readChunk.sync(path, 0, 4100);
+
+        let { ext } = fileType(buffer);
+
+        // 用 gm 去讀取圖片的長寬
+        let { width, height } = await new Promise((resolve, reject) => {
+                gm(path).size((err, size) => {
+                    if(err) {
+                        return reject(err);
+                    }
+                    return resolve(size);
+                });
+            });
 
         // 編輯新的名字與 ObjectId
         let objectId = mongoose.Types.ObjectId();
         let now = moment(Date.now()).tz('Asia/Taipei').format('YYYYMMDDHHmm');
-        let newName = `${objectId}-${now}.${format.toLowerCase()}`;
+        let newName = `${objectId}-${now}.${ext}`;
         let newPath = `uploads/${newName}`;
 
         // 將圖片名稱換掉
@@ -51,11 +48,11 @@ module.exports = async(req, res, next) => {
         // scp 到 img.nownews.com 圖床
         await new Promise((resolve, reject) => {
 
-            let username = config.get('imageServer.username');
-            let password = config.get('imageServer.password');
-            let host = config.get('imageServer.host');
-            let folder = config.get('imageServer.folder');
-            let port = config.get('imageServer.port');
+            let username = config.get('admin.imageServer.username');
+            let password = config.get('admin.imageServer.password');
+            let host = config.get('admin.imageServer.host');
+            let folder = config.get('admin.imageServer.folder');
+            let port = config.get('admin.imageServer.port');
             let scpCommand = `${username}:${password}@${host}:${port}:${folder}`;
 
             imageServer.scp(newPath, scpCommand, (err) => {
@@ -70,17 +67,19 @@ module.exports = async(req, res, next) => {
         // 組成要儲存的資料
         let options = {
             _id: objectId,
-            keyword,
             title,
             desc,
-            format,
+            keyword,
+            imageFrom: 'INTERNAL',
+            format: ext,
             originalname,
             mimetype,
             type,
             isDeliver: isDeliver === 'true' ? true : false,
-            width: size.width,
-            height: size.height,
-            url: `${config.get('imageServer.url')}/${newName}`,
+            Tag,
+            width: width,
+            height: height,
+            url: `${config.get('admin.imageServer.url')}/${newName}`,
             CreatedBy,
             UpdatedBy: CreatedBy
         };

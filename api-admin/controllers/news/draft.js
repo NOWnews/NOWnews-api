@@ -20,6 +20,24 @@ module.exports = async (req, res, next) => {
             throw new Error('16003');
         }
 
+        // 取得原本上一則下一則新聞的資料，並移除 cache
+        let nextAndPrev = await redis.getValue(`news${news.sn}NextAndPrev`);
+
+        if(nextAndPrev && nextAndPrev.next) {
+            redis.removeValue(`news${nextAndPrev.next.sn}NextAndPrev`);
+        }
+
+        if(nextAndPrev && nextAndPrev.prev) {
+            redis.removeValue(`news${nextAndPrev.prev.sn}NextAndPrev`);
+        }
+
+        // 檢查 redis 是否有資料，將之下架
+        await Promise.all([
+            redis.removeValue(`news${news.sn}`),
+            redis.removeValue(`relationNewsByNews${news.sn}`),
+            redis.removeValue(`news${news.sn}NextAndPrev`)
+        ]);
+
         news.set('status', 'DRAFT');
         news.set('UpdatedBy', UpdatedBy);
 
@@ -94,6 +112,10 @@ module.exports = async (req, res, next) => {
 
         if(req.body.Author) {
             news.set('Author', req.body.Author);
+        }
+
+        if(req.body.newsBy) {
+            news.set('newsBy', req.body.newsBy);
         }
 
         if(req.body.LastReviewer) {

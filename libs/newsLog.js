@@ -1,6 +1,7 @@
 
-import { NewsLog } from '../models'
+import { NewsLog } from '../models';
 import moment from 'moment-timezone';
+import Promise from 'bluebird';
 
 module.exports = async (news, action = 'CREATE') => {
     try {
@@ -9,7 +10,7 @@ module.exports = async (news, action = 'CREATE') => {
             throw new Error('');
         }
 
-        // 強制轉換成 Objectt
+        // 強制轉換成 Object
         news = news.toObject();
 
         let options = {
@@ -33,6 +34,7 @@ module.exports = async (news, action = 'CREATE') => {
             isAdult: news.isAdult,
             isDeliver: news.isDeliver,
             Author: news.Author,
+            newsBy: news.newsBy,
             Tags: news.Tags,
             isFeed: news.isFeed,
             feedFrom: news.feedFrom,

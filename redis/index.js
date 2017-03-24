@@ -1,6 +1,12 @@
 
-import clinet from 'client';
+import client from './client';
+import getValue from './getValue';
+import setValue from './setValue';
+import removeValue from './removeValue';
 
 module.exports = {
-    clinet
+    client,
+    getValue,
+    setValue,
+    removeValue
 };
