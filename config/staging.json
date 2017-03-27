@@ -85,5 +85,10 @@
         "apiUrls": {
             "geocode": "https://maps.googleapis.com/maps/api/geocode/json"
         }
+    },
+    "pageviewWeight": {
+        "pageviews": 1,
+        "temperatures": 3,
+        "weightedScore": 0.3
     }
 }

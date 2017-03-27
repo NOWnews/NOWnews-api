@@ -4,6 +4,7 @@ import category from './category';
 import news from './news';
 import menu from './menu';
 import preview from './preview';
+import pageview from './pageview';
 
 module.exports = (app) => {
 
@@ -12,6 +13,7 @@ module.exports = (app) => {
     app.use('/', news);
     app.use('/', menu);
     app.use('/', preview);
+    app.use('/', pageview);
 
     return (req, res, next) => {
         return next();
