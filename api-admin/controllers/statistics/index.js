@@ -9,7 +9,7 @@ import user from './user';
 router.route('/statistics/departments')
     .get(departments);
 
-router.route('/statistics/users')
+router.route('/statistics/departments/:id')
     .get(users);
 
 router.route('/statistics/users/:id')

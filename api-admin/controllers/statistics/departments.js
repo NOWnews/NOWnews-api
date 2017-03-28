@@ -12,9 +12,10 @@ module.exports = async (req, res, next) => {
     try {
 
         let { startedAt, endedAt } = req.query;
-        let today = moment(Date.now()).format('YYYY-MM-DD');
-        startedAt = startedAt || moment(`${today} 00:00`);
-        endedAt = endedAt || moment(`${today} 23:59`);
+
+        // 重新組成時間字串
+        startedAt = startedAt ? moment(startedAt).format('YYYY-MM-DD') : moment(Date.now()).format('YYYY-MM-DD');
+        endedAt = endedAt ? moment(endedAt).format('YYYY-MM-DD') : moment(Date.now()).format('YYYY-MM-DD');
 
         let departments = await Department.find()
             .where('isTrashed').equals(false)
@@ -41,8 +42,8 @@ module.exports = async (req, res, next) => {
                     return News.find()
                         .where('isTrashed').equals(false)
                         .where('CreatedBy').in(userIds)
-                        .where('startedAt').gte(startedAt)
-                        .where('startedAt').lte(endedAt)
+                        .where('startedAt').gte(moment(`${startedAt} 00:00`))
+                        .where('startedAt').lte(`${endedAt} 23:59`)
                         .select('_id')
                         .execAsync();
                 })
@@ -52,11 +53,15 @@ module.exports = async (req, res, next) => {
                     data.name = department.name;
                     data.newstotal = newsList.length;
 
-                    // 用 news 去 pv db 裡面撈 pv 資料
+                    // 組成某部門所有新聞的 ids
                     let newsIds = _.map(newsList, (news) => { return news._id; });
-
+                    return Promise.resolve(newsIds);
+                })
+                .then((newsIds) => {
+                    // 用 news 去 pv db 裡面撈 pv 資料
                     return Pageview.find()
                         .where('newsId').in(newsIds)
+                        .select('pageviews')
                         .execAsync();
                 })
                 .then((pageviews) => {
