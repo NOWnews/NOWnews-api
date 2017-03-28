@@ -235,3 +235,36 @@ None
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
 | redisKey | redis 的 key | String | √ | |
+
+## PAGEVIEW API DOCUMENTS
+
+- 紀錄 pageview 與使用者紀錄
+
+### [PUT] `/pageviews`
+
+紀錄 pageview 與使用者紀錄
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'YouCanSeeMeJohnCena' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| url | 當前的 url(不包含 queryString) | String | √ | |
+| newsId | 新聞的 ObjectId | String | | |
+| menuId | 此新聞的 MainMenu ObjectId | String | | |
+| queryString | url 後面的 query string | String | | |
+| appPlatform | 如果是從 APP 來的話再帶入這個欄位 |  [`IOS`, `ANDROID`] | | |
+| appView | 如果是從 APP 來的話再帶入這個欄位 | [`IN_APP`] | | |
+
+#### Query Parameters
+
+None
