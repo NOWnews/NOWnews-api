@@ -21,6 +21,7 @@ module.exports = async (sn) => {
             .where('sn').ne(sn)
             .populate('MainMenu MainPhoto')
             .select('title shortTitle MainMenu MainPhoto')
+            .limit(3)
             .execAsync();
         debug('relation News = %j', relationNews);
 
