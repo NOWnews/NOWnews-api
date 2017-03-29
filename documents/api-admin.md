@@ -1779,3 +1779,84 @@ None
 #### Query Parameters
 
 None
+
+## STATISTICS API DOCUMENT
+
+### [GET] `/statistics/departments`
+
+取得所有部門的發稿總數與總 pv
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| startedAt | 開始時間(預設為當天 00:00) | Date | | |
+| endedAt | 結束時間(預設為當天 23:59) | Date | | |
+
+### [GET] `statistics/departments/{:id}`
+
+取得某部門所有成員，與其成員的發稿總數與總 pv
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | 某個 department objectId | ObjectId | √ | |
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| startedAt | 開始時間(預設為當天 00:00) | Date | | |
+| endedAt | 結束時間(預設為當天 23:59) | Date | | |
+
+### [GET] `statistics/users/{:id}`
+
+取得某人員發稿新聞列表與新聞的 pv
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | 某個 user objectId | ObjectId | √ | |
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| startedAt | 開始時間(預設為當天 00:00) | Date | | |
+| endedAt | 結束時間(預設為當天 23:59) | Date | | |
