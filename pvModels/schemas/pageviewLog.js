@@ -1,5 +1,4 @@
 
-import autoIncrement from 'mongoose-easy-auto-increment';
 import mongoose from 'mongoose';
 let Schema = mongoose.Schema;
 
@@ -61,12 +60,7 @@ let schema = new Schema({
         default: Date.now
     }
 }, {
-    versionKey: false,
-    toJSON:{
-        virtuals: true,
-    }
+    versionKey: false
 });
-
-schema.plugin(autoIncrement);
 
 module.exports = schema;
