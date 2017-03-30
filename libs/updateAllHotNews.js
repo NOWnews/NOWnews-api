@@ -12,7 +12,7 @@ import redis from '../redis';
 module.exports = async () => {
     try {
 
-        let now = moment(Date.now()).format('YYYY-MM-DD HH:mm');
+        let now = moment().format('YYYY-MM-DD HH:mm');
 
         let mainMenus = await Menu.find()
             .where('isTrashed').equals(false)
@@ -28,14 +28,7 @@ module.exports = async () => {
             .select('_id sn')
             .execAsync();
 
-        let menus = _.map(mainMenus, (menu) => {
-            return {
-                _id: menu._id,
-                sn: menu.sn
-            };
-        });
-
-        await Promise.map(menus, (menu) => {
+        await Promise.map(mainMenus, (menu) => {
             return News.find()
                 .where('isTrashed').equals(false)
                 .where('MainMenu').equals(menu._id)
