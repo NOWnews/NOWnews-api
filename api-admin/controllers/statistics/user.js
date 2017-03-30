@@ -31,7 +31,6 @@ module.exports = async (req, res, next) => {
 
         // 取得 user 新聞資料與 pageview
         let userNewsList = await Promise.map(newsList, (news) => {
-            console.log(news);
             let data = {
                 newsId: news._id,
                 title: news.title,
