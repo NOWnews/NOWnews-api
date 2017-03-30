@@ -48,6 +48,8 @@ module.exports = async (req, res, next) => {
             newsListCursor
                 .populate('MainMenu MainPhoto MainVideo')
                 .select('sn title shortTitle MainMenu MainPhoto MainVideo')
+                .limit(limit)
+                .skip(skip)
                 .sort('-startedAt')
                 .execAsync(),
             newsTotalCursor.countAsync()

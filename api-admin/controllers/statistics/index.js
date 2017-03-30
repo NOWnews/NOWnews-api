@@ -2,14 +2,14 @@
 import express from 'express';
 let router = express.Router();
 
-import departments from './departments';
+import centers from './centers';
 import users from './users';
 import user from './user';
 
-router.route('/statistics/departments')
-    .get(departments);
+router.route('/statistics/centers')
+    .get(centers);
 
-router.route('/statistics/departments/:id')
+router.route('/statistics/centers/:id')
     .get(users);
 
 router.route('/statistics/users/:id')

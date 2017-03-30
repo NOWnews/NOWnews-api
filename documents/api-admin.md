@@ -1782,9 +1782,13 @@ None
 
 ## STATISTICS API DOCUMENT
 
-### [GET] `/statistics/departments`
+- 取得所有中心與其發稿新聞總數與 pageview
+- 取得中心所有成員與其發稿新聞總數與 pageview
+- 取得某成員與其發稿新聞列表與 pageview
 
-取得所有部門的發稿總數與總 pv
+### [GET] `/statistics/centers`
+
+取得所有中心與其發稿新聞總數與 pageview
 
 #### Header Parameters
 
@@ -1807,9 +1811,9 @@ None
 | startedAt | 開始時間(預設為當天 00:00) | Date | | |
 | endedAt | 結束時間(預設為當天 23:59) | Date | | |
 
-### [GET] `statistics/departments/{:id}`
+### [GET] `statistics/centers/{:id}`
 
-取得某部門所有成員，與其成員的發稿總數與總 pv
+取得中心所有成員與其發稿新聞總數與 pageview
 
 #### Header Parameters
 
@@ -1821,7 +1825,7 @@ None
 
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
-| id | 某個 department objectId | ObjectId | √ | |
+| id | 某個 center objectId | ObjectId | √ | |
 
 #### Body Parameters
 
@@ -1836,7 +1840,7 @@ None
 
 ### [GET] `statistics/users/{:id}`
 
-取得某人員發稿新聞列表與新聞的 pv
+取得某成員與其發稿新聞列表與 pageview
 
 #### Header Parameters
 
