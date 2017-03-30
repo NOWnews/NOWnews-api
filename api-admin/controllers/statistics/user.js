@@ -30,7 +30,7 @@ module.exports = async (req, res, next) => {
         ]);
 
         // 取得 user 新聞資料與 pageview
-        let userInfo = await Promise.map(newsList, (news) => {
+        let userNewsList = await Promise.map(newsList, (news) => {
             let data = {
                 newsId: news._id,
                 title: news.title,
@@ -43,12 +43,12 @@ module.exports = async (req, res, next) => {
                     return Promise.resolve(data);
                 });
         });
-        debug('userInfo = %j', userInfo);
+        debug('userNewsList = %j', userNewsList);
 
         return res.json({
             userId: user._id,
             user: user.name,
-            newsList: userInfo
+            userNewsList
         });
     } catch(err) {
         return next(err);
