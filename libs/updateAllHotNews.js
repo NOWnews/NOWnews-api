@@ -23,7 +23,7 @@ module.exports = async () => {
                     { endedAt: { $gte: Date.now() }}
                 ]}
             ])
-            .select('_id sn')
+            .select('_id categoryName')
             .execAsync();
 
         await Promise.map(mainMenus, (menu) => {
@@ -59,8 +59,8 @@ module.exports = async () => {
                         .execAsync();
                 })
                 .then((hotNewsInMenu) => {
-                    debug(`hotNewsInMenu${menu.sn} = %j`, hotNewsInMenu);
-                    return redis.setValue(`hotNewsInMenu${menu.sn}`, hotNewsInMenu, 3600);
+                    debug(`hotNews-${menu.categoryName} = %j`, hotNewsInMenu);
+                    return redis.setValue(`hotNews-${menu.categoryName}`, hotNewsInMenu, 3600);
                 });
         });
 
