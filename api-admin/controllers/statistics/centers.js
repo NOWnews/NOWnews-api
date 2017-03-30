@@ -1,11 +1,11 @@
 import Debug from 'debug';
-const debug = Debug('NOWnews-api:api-admin:controllers:statistics:departments');
+const debug = Debug('NOWnews-api:api-admin:controllers:statistics:centers');
 
 import _ from 'lodash';
 import Promise from 'bluebird';
 import moment from 'moment-timezone';
 
-import { Department, User, News } from '../../../models';
+import { Center, User, News } from '../../../models';
 import { Pageview } from '../../../pvModels';
 
 module.exports = async (req, res, next) => {
@@ -17,20 +17,20 @@ module.exports = async (req, res, next) => {
         startedAt = startedAt ? moment(startedAt).format('YYYY-MM-DD') : moment(Date.now()).format('YYYY-MM-DD');
         endedAt = endedAt ? moment(endedAt).format('YYYY-MM-DD') : moment(Date.now()).format('YYYY-MM-DD');
 
-        let departments = await Department.find()
+        let centers = await Center.find()
             .where('isTrashed').equals(false)
             .select('_id name')
             .execAsync();
-        debug('departments = %j', departments);
+        debug('centers = %j', centers);
 
-        let departmentsInfo = await Promise.map(departments, (department) => {
+        let centersInfo = await Promise.map(centers, (center) => {
 
             let data = {};
 
-            // 用 department 找出 user
+            // 用 center 找出 user
             return User.find()
                 .where('isTrashed').equals(false)
-                .where('Department').equals(department._id)
+                .where('Center').equals(center._id)
                 .select('_id')
                 .execAsync()
                 .then((docs) => {
@@ -38,7 +38,7 @@ module.exports = async (req, res, next) => {
                     return Promise.resolve(userIds);
                 })
                 .then((userIds) => {
-                    // 用 user 找出某部門所有的 news
+                    // 用 user 找出某中心所有的 news
                     return News.find()
                         .where('isTrashed').equals(false)
                         .where('CreatedBy').in(userIds)
@@ -49,8 +49,8 @@ module.exports = async (req, res, next) => {
                 })
                 .then((newsList) => {
                     // 將資料儲存進 data
-                    data.departmentId = department._id;
-                    data.name = department.name;
+                    data.centerId = center._id;
+                    data.name = center.name;
                     data.newstotal = newsList.length;
 
                     // 組成某部門所有新聞的 ids
@@ -76,9 +76,13 @@ module.exports = async (req, res, next) => {
                 });
         });
 
-        debug('departmentsInfo = %j', departmentsInfo);
+        debug('centersInfo = %j', centersInfo);
 
-        return res.json(departmentsInfo);
+        return res.json({
+            centersInfo,
+            startedAt,
+            endedAt
+        });
     } catch(err) {
         return next(err);
     }

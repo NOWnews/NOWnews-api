@@ -5,7 +5,7 @@ import _ from 'lodash';
 import Promise from 'bluebird';
 import moment from 'moment-timezone';
 
-import { User, News, Department } from '../../../models';
+import { User, News, Center } from '../../../models';
 import { Pageview } from '../../../pvModels';
 
 module.exports = async (req, res, next) => {
@@ -18,11 +18,11 @@ module.exports = async (req, res, next) => {
         startedAt = startedAt ? moment(startedAt).format('YYYY-MM-DD') : moment(Date.now()).format('YYYY-MM-DD');
         endedAt = endedAt ? moment(endedAt).format('YYYY-MM-DD') : moment(Date.now()).format('YYYY-MM-DD');
 
-        let [ department, users ] = await Promise.all([
-            Department.findById(id).execAsync(),
+        let [ center, users ] = await Promise.all([
+            Center.findById(id).execAsync(),
             User.find()
                 .where('isTrashed').equals(false)
-                .where('Department').equals(id)
+                .where('Center').equals(id)
                 .select('_id name')
                 .execAsync()
         ]);
@@ -67,9 +67,11 @@ module.exports = async (req, res, next) => {
         debug('usersInfo = %j', usersInfo);
 
         return res.json({
-            departmentId: department._id,
-            department: department.name,
-            users: usersInfo
+            centerId: center._id,
+            center: center.name,
+            users: usersInfo,
+            startedAt,
+            endedAt
         });
 
     } catch(err) {
