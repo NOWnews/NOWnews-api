@@ -12,8 +12,6 @@ import redis from '../redis';
 module.exports = async () => {
     try {
 
-        let now = moment().format('YYYY-MM-DD HH:mm');
-
         let mainMenus = await Menu.find()
             .where('isTrashed').equals(false)
             .where('level').equals(0)
@@ -34,7 +32,7 @@ module.exports = async () => {
                 .where('MainMenu').equals(menu._id)
                 .where('status').equals('RELEASE')
                 .where('startedAt').lte(Date.now())
-                .where('startedAt').gte(moment(now).add(-1, 'hours'))
+                .where('startedAt').gte(moment().add(-1, 'hours'))
                 .limit(10)
                 .select('_id')
                 .execAsync()
