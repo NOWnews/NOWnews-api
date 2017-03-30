@@ -332,7 +332,7 @@ None
 
 - 某一個選單的熱門新聞
 
-### [GET] `/hot/{:menuSn}`
+### [GET] `/hot/{:categoryName}`
 
 某一個選單的熱門新聞
 
@@ -346,7 +346,7 @@ None
 
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
-| menuSn | 某一個選單的 sn | String | √ | |
+| categoryName | 某一個選單的 categoryName | String | √ | |
 
 #### Body Parameters
 
