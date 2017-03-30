@@ -15,6 +15,7 @@ import menu from './menu';
 import trend from './trend';
 import specialTopic from './specialTopic';
 import specialChannel from './specialChannel';
+import statistics from './statistics';
 import indexPage from './indexPage';
 import preview from './preview';
 
@@ -37,6 +38,7 @@ module.exports = (app) => {
     app.use('/', trend);
     app.use('/', specialTopic);
     app.use('/', specialChannel);
+    app.use('/', statistics);
     app.use('/', indexPage);
     app.use('/', preview);
 
