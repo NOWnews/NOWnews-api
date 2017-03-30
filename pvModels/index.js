@@ -17,16 +17,16 @@ const db = config.get('admin.pvMongodb.db');
 let connection = mongoose.createConnection(`${host}/${db}`);
 console.log(chalk.red(`mongodb connect to: ${host}/${db}`));
 
-import totalSchema from './schemas/total';
 import pageviewSchema from './schemas/pageview';
 import pageviewLogSchema from './schemas/pageviewLog';
+import temperatureLogSchema from './schemas/temperatureLog';
 
-// let Total = connection.model('Total', totalSchema);
 let Pageview = connection.model('Pageview', pageviewSchema);
 let PageviewLog = connection.model('PageviewLog', pageviewLogSchema);
+let TemperatureLog = connection.model('TemperatureLog', temperatureLogSchema);
 
 module.exports = {
-    // Total,
     Pageview,
-    PageviewLog
+    PageviewLog,
+    TemperatureLog
 };

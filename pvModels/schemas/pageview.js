@@ -45,10 +45,7 @@ let schema = new Schema({
         default: Date.now
     }
 }, {
-    versionKey: false,
-    toJSON:{
-        virtuals: true,
-    }
+    versionKey: false
 });
 
 module.exports = schema;

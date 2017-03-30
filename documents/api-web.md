@@ -268,3 +268,62 @@ None
 #### Query Parameters
 
 None
+
+## TEMPERATURES API DOCUMENTS
+
+- 喜歡某一篇新聞
+- 取消喜歡某一篇新聞
+
+### [PUT] `/temperatures`
+
+喜歡某一篇新聞
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'YouCanSeeMeJohnCena' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| url | 當前的 url(不包含 queryString) | String | √ | |
+| newsId | 新聞的 ObjectId | String | √ | |
+| menuId | 此新聞的 MainMenu ObjectId | String | √ | |
+| userId | 此新聞的 MainMenu ObjectId | String | √ | |
+
+#### Query Parameters
+
+None
+
+### [DELETE] `/temperatures`
+
+取消喜歡某一篇新聞
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'YouCanSeeMeJohnCena' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| url | 當前的 url(不包含 queryString) | String | √ | |
+| newsId | 新聞的 ObjectId | String | √ | |
+| menuId | 此新聞的 MainMenu ObjectId | String | √ | |
+| userId | 此新聞的 MainMenu ObjectId | String | √ | |
+
+#### Query Parameters
+
+None

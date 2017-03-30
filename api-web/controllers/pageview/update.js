@@ -48,7 +48,6 @@ module.exports = async (req, res, next) => {
 
         // 加權後重新計算總分數
         pageview.set('totalScore', pageview.pageviews * config.get('pageviewWeight.pageviews') + pageview.temperatures * config.get('pageviewWeight.temperatures') + pageview.weightedScore * config.get('pageviewWeight.weightedScore'));
-
         await pageview.saveAsync();
 
         return next();
