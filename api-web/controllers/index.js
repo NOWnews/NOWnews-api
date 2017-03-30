@@ -6,6 +6,7 @@ import menu from './menu';
 import preview from './preview';
 import pageview from './pageview';
 import temperature from './temperature';
+import hot from './hot';
 
 module.exports = (app) => {
 
@@ -16,6 +17,7 @@ module.exports = (app) => {
     app.use('/', preview);
     app.use('/', pageview);
     app.use('/', temperature);
+    app.use('/', hot);
 
     return (req, res, next) => {
         return next();

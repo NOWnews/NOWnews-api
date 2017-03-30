@@ -6,6 +6,7 @@
   "scripts": {
     "api-web": "npm install && DEBUG=NOWnews-api* NODE_ENV=develop ./node_modules/nodemon/bin/nodemon.js ./bin/api-web.js",
     "api-admin": "npm install && DEBUG=NOWnews-api* NODE_ENV=develop ./node_modules/nodemon/bin/nodemon.js ./bin/api-admin.js",
+    "cron": "npm install && DEBUG=NOWnews-api* NODE_ENV=develop ./node_modules/nodemon/bin/nodemon.js ./bin/cron.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -32,6 +33,7 @@
     "cookie-parser": "^1.4.3",
     "cookie-session": "^2.0.0-alpha.3",
     "cors": "^2.8.1",
+    "cron": "^1.2.1",
     "crypto-random-string": "^1.0.0",
     "debug": "^2.6.1",
     "device": "^0.3.8",
