@@ -3,9 +3,11 @@ import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:news:release');
 
 import _ from 'lodash';
+import moment from 'moment-timezone';
 
 import { News } from '../../../models';
 import { newsLog } from '../../../libs';
+import { Pageview } from '../../../pvModels';
 import redis from '../../../redis';
 import libs from '../../../libs';
 
@@ -126,6 +128,17 @@ module.exports = async (req, res, next) => {
                 }, 3600 * 6)
             ]);
         }
+
+        // 初始化 pageview 資訊
+        await Pageview.findOneAndUpdateAsync({
+                url: `/news/${moment(updatedNews.startedAt).format('YYYYMMDD')}/${updatedNews.sn}`
+            }, {
+                $set: { newsId: updatedNews._id, menuId: updatedNews.MainMenu._id }
+            }, {
+                upsert: true,
+                new: true,
+                setDefaultsOnInsert: true
+            });
 
         return res.json(updatedNews);
     }catch(err) {
