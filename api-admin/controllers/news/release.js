@@ -130,11 +130,15 @@ module.exports = async (req, res, next) => {
         }
 
         // 初始化 pageview 資訊
-        await Pageview.createAsync({
-            url: `/news/${moment(updatedNews.startedAt).format('YYYYMMDD')}/${updatedNews.sn}`,
-            newsId: updatedNews._id,
-            menuId: updatedNews.MainMenu._id,
-        });
+        await Pageview.findOneAndUpdateAsync({
+                url: `/news/${moment(updatedNews.startedAt).format('YYYYMMDD')}/${updatedNews.sn}`
+            }, {
+                $set: { newsId: updatedNews._id, menuId: updatedNews.MainMenu._id }
+            }, {
+                upsert: true,
+                new: true,
+                setDefaultsOnInsert: true
+            });
 
         return res.json(updatedNews);
     }catch(err) {
