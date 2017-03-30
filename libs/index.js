@@ -7,6 +7,7 @@ import getNewsBySn from './getNewsBySn';
 import getRelationNewsBySn from './getRelationNewsBySn';
 import getNextNewsBySn from './getNextNewsBySn';
 import getPrevNewsBySn from './getPrevNewsBySn';
+import updateAllHotNews from './updateAllHotNews';
 
 module.exports = {
     hashPwd,
@@ -16,5 +17,6 @@ module.exports = {
     getNewsBySn,
     getRelationNewsBySn,
     getNextNewsBySn,
-    getPrevNewsBySn
+    getPrevNewsBySn,
+    updateAllHotNews
 };
