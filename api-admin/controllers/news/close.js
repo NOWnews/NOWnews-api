@@ -3,7 +3,7 @@ import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:news:close');
 
 import { News } from '../../../models';
-import { newsLog } from '../../../libs';
+import { newsLog, refreshIndexPage, getIndexPage } from '../../../libs';
 import redis from '../../../redis';
 
 module.exports = async (req, res, next) => {
@@ -44,6 +44,11 @@ module.exports = async (req, res, next) => {
 
         let updatedNews = await news.saveAsync();
         debug('update news = %j', updatedNews);
+
+        // 處理首頁
+        await refreshIndexPage();
+        let cacheData = await getIndexPage();
+        await redis.setValue('indexPage', cacheData);
 
         // 處理 log
         updatedNews = await updatedNews.populate('MainMenu Menus MainPhoto MainVideo Photos Videos Author Tags LastReviewer CreatedBy UpdatedBy').execPopulate();
