@@ -4,6 +4,7 @@ const debug = Debug('NOWnews-api:api-admin:controllers:news:review');
 
 import { News } from '../../../models';
 import { newsLog } from '../../../libs';
+import redis from '../../../redis';
 
 module.exports = async (req, res, next) => {
     try {
