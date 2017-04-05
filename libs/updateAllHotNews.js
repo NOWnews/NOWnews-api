@@ -12,6 +12,7 @@ import redis from '../redis';
 module.exports = async () => {
     try {
 
+        console.log(`start update all hot news`);
         let mainMenus = await Menu.find()
             .where('isTrashed').equals(false)
             .where('level').equals(0)
@@ -32,7 +33,7 @@ module.exports = async () => {
                 .where('MainMenu').equals(menu._id)
                 .where('status').equals('RELEASE')
                 .where('startedAt').lte(Date.now())
-                .where('startedAt').gte(moment().add(-1, 'hours'))
+                .where('startedAt').gte(moment().add(-6, 'hours'))
                 .limit(10)
                 .select('_id')
                 .execAsync()
@@ -63,6 +64,7 @@ module.exports = async () => {
                     return redis.setValue(`hotNews-${menu.categoryName}`, hotNewsInMenu, 3600);
                 });
         });
+        console.log(`finished update all hot news`);
 
         return Promise.resolve({});
     } catch (err) {

@@ -67,7 +67,7 @@ module.exports = async (req, res, next) => {
                 .then((pageviews) => {
                     // 計算總 pv 並存入資料
                     let pv = 0;
-                    for(pageview of pageviews) {
+                    for( let pageview of pageviews ) {
                         if(pageview && pageview.pageviews) { pv += 1; }
                     }
 
