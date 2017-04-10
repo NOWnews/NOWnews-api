@@ -7,6 +7,7 @@ import preview from './preview';
 import pageview from './pageview';
 import temperature from './temperature';
 import hot from './hot';
+import search from './search';
 
 module.exports = (app) => {
 
@@ -18,6 +19,7 @@ module.exports = (app) => {
     app.use('/', pageview);
     app.use('/', temperature);
     app.use('/', hot);
+    app.use('/', search);
 
     return (req, res, next) => {
         return next();
