@@ -1,21 +1,19 @@
 /*
- * 驗證 User create 的資料與相關欄位
+ * 驗證 postBoard create 的資料與相關欄位
  */
 import Debug from 'debug';
-const debug = Debug('NOWnews-api:api-admin:validators:graffitiWall:create');
+const debug = Debug('NOWnews-api:api-admin:validators:postBoard:create');
 
-import _ from 'lodash';
-import is from 'is_js';
 import mongoose from 'mongoose';
 
 module.exports = (req, res, next) => {
 
     let {
-        graffiti,
+        content,
         CreatedBy
     } = req.body;
 
-    if(!graffiti || graffiti === '') {
+    if(!content || content === '') {
         throw new Error('24001');
     }
 

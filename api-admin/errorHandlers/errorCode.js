@@ -409,19 +409,19 @@ module.exports = {
         statusCode: 400
     },
 
-    // Graffiti
+    // PostBoard
     24001: {
-        message: '[GraffitiWall] 缺少 Graffiti 這個欄位或是格式不正確',
+        message: '[PostBoard] 缺少 content 這個欄位或是格式不正確',
         statusCode: 400
     },
 
     24002: {
-        message: '[GraffitiWall] 缺少 CreatedBy 這個欄位或是格式不正確',
+        message: '[PostBoard] 缺少 CreatedBy 這個欄位或是格式不正確',
         statusCode: 400
     },
 
     24003: {
-        message: '[GraffitiWall] 找不到這個 Graffiti',
+        message: '[PostBoard] 找不到這則 post',
         statusCode: 404
     },
 };

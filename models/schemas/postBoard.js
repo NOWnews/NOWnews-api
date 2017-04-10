@@ -9,8 +9,8 @@ let deepPopulate = DeepPopulate(mongoose);
 
 let schema = new Schema({
 
-    // 塗鴉
-    graffiti: {
+    // 貼文內容
+    content: {
         type: String,
         required: true
     },

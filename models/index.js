@@ -25,7 +25,7 @@ import roleSchema from './schemas/role';
 import policySchema from './schemas/policy';
 import centerSchema from './schemas/center';
 import departmentSchema from './schemas/department';
-import graffitiWallSchema from './schemas/graffitiWall';
+import postBoardSchema from './schemas/postBoard';
 import imageSchema from './schemas/image';
 import videoSchema from './schemas/video';
 import tagSchema from './schemas/tag';
@@ -43,7 +43,7 @@ let Role = connection.model('Role', roleSchema);
 let Policy = connection.model('Policy', policySchema);
 let Center = connection.model('Center', centerSchema);
 let Department = connection.model('Department', departmentSchema);
-let GraffitiWall = connection.model('GraffitiWall', graffitiWallSchema);
+let PostBoard = connection.model('PostBoard', postBoardSchema);
 let Image = connection.model('Image', imageSchema);
 let Video = connection.model('Video', videoSchema);
 let Tag = connection.model('Tag', tagSchema);
@@ -62,7 +62,7 @@ module.exports = {
     Policy,
     Center,
     Department,
-    GraffitiWall,
+    PostBoard,
     Image,
     Video,
     Tag,

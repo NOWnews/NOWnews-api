@@ -18,7 +18,7 @@ import specialChannel from './specialChannel';
 import statistics from './statistics';
 import indexPage from './indexPage';
 import preview from './preview';
-import graffitiWall from './graffitiWall';
+import postBoard from './postBoard';
 
 module.exports = (app) => {
 
@@ -42,7 +42,7 @@ module.exports = (app) => {
     app.use('/', statistics);
     app.use('/', indexPage);
     app.use('/', preview);
-    app.use('/', graffitiWall);
+    app.use('/', postBoard);
 
     return (req, res, next) => {
         return next();
