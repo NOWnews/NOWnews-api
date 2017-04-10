@@ -21,7 +21,7 @@ module.exports = async (req, res, next) => {
         // }
 
         let memoList = await cursor
-            .deepPopulate('CreatedBy.Avatar')
+            // .deepPopulate('CreatedBy.Avatar')
             .execAsync();
         debug('news memo list = %j', memoList);
 

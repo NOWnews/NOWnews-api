@@ -1,8 +1,9 @@
 
 import Debug from 'debug';
+import _ from 'lodash';
 const debug = Debug('NOWnews-api:api-admin:controllers:graffitiWall:list');
 
-import { NewsMemo } from '../../../models';
+import { GraffitiWall } from '../../../models';
 
 module.exports = async (req, res, next) => {
 
@@ -10,22 +11,37 @@ module.exports = async (req, res, next) => {
 
     try {
 
-        sort = sort ? sort : '-createdAt';
+        let { id } = req.params;
+        let { user, message, graffiti, UpdatedBy } = req.body;
 
-        let cursor = NewsMemo.find()
+        let menu = await GraffitiWall.findById(id)
             .where('isTrashed').equals(false)
-            .sort(sort);
+            .execAsync();
 
-        if(News) {
-            cursor.where('News').equals(News);
+        let updateGraffiti = menu.graffiti;
+
+        let updateMessages = menu.messages;
+
+
+        if (message && message !== ''){
+            message = {
+                user: user,
+                message: message
+            }
+            updateMessages = _.concat(menu.messages, message);
         }
 
-        let memoList = await cursor
-            .deepPopulate('CreatedBy.Avatar')
-            .execAsync();
-        debug('news memo list = %j', memoList);
+        if (graffiti && graffiti !== ''){
+            updateGraffiti = graffiti;
+        }
 
-        return res.json(memoList);
+        menu.set('messages', updateMessages);
+        menu.set('graffiti', updateGraffiti);
+        menu.set('UpdatedBy', UpdatedBy);
+
+        let updatedMenu = await menu.saveAsync();
+
+        return res.json(updatedMenu);
     }catch(err) {
         return next(err);
     }

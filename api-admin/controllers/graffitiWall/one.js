@@ -2,27 +2,25 @@
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:graffitiWall:list');
 
-import { NewsMemo } from '../../../models';
+import { GraffitiWall } from '../../../models';
 
 module.exports = async (req, res, next) => {
 
-    let { News, sort } = req.query;
-
     try {
 
-        sort = sort ? sort : '-createdAt';
+        let { id } = req.params;
 
-        let cursor = NewsMemo.find()
-            .where('isTrashed').equals(false)
-            .sort(sort);
-
-        if(News) {
-            cursor.where('News').equals(News);
-        }
+        let cursor = GraffitiWall.findById(id)
+            .where('isTrashed').equals(false);
 
         let memoList = await cursor
-            .deepPopulate('CreatedBy.Avatar')
+            // .deepPopulate('CreatedBy.Avatar')
             .execAsync();
+
+        if(!memoList) {
+            throw new Error('24003');
+        }
+
         debug('news memo list = %j', memoList);
 
         return res.json(memoList);

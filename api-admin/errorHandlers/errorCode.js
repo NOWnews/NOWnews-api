@@ -419,4 +419,9 @@ module.exports = {
         message: '[GraffitiWall] 缺少 CreatedBy 這個欄位或是格式不正確',
         statusCode: 400
     },
+
+    24003: {
+        message: '[GraffitiWall] 找不到這個 Graffiti',
+        statusCode: 404
+    },
 };
