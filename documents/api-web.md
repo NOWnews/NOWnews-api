@@ -354,7 +354,10 @@ None
 
 #### Query Parameters
 
-None
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| startedAt | 開始時間 | String | | `2017-02-21` |
+| endedAt | 結束時間 | String | | `2017-03-21` |
 
 ## SEARCH API DOCUMENTS
 
