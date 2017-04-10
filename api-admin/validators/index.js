@@ -10,6 +10,7 @@ import video from './video';
 import specialTopic from './specialTopic';
 import specialChannel from './specialChannel';
 import indexpage from './indexpage';
+import graffitiWall from './graffitiWall';
 
 module.exports = {
     user,
@@ -17,6 +18,7 @@ module.exports = {
     news,
     newsMemo,
     tag,
+    graffitiWall,
     menu,
     image,
     video,

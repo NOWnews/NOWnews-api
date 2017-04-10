@@ -408,4 +408,15 @@ module.exports = {
         message: '[Video] 缺少 url 這個欄位',
         statusCode: 400
     },
+
+    // Graffiti
+    24001: {
+        message: '[GraffitiWall] 缺少 Graffiti 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    24002: {
+        message: '[GraffitiWall] 缺少 CreatedBy 這個欄位或是格式不正確',
+        statusCode: 400
+    },
 };

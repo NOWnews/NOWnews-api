@@ -27,13 +27,6 @@ let schema = new Schema({
         required: true
     },
 
-    // 更新者
-    UpdatedBy: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
-    },
-
     // 塗鴉底下的留言
     messages: [{
         user: {
