@@ -9,7 +9,7 @@ module.exports = async (req, res, next) => {
     try {
 
         let { id } = req.params;
-        let { User, message, content, UpdatedBy } = req.body;
+        let { message, content, UpdatedBy } = req.body;
 
         let post = await PostBoard.findById(id)
             .where('isTrashed').equals(false)
@@ -21,7 +21,10 @@ module.exports = async (req, res, next) => {
 
 
         if (message && message !== ''){
-            message = { User, message };
+            message = {
+                User: UpdatedBy,
+                message
+            };
             updatePostMessages = post.messages.push(message);
         }
 

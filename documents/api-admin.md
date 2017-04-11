@@ -1964,11 +1964,9 @@ None
 
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
-| User | 某個 user ObjectId | String | | |
+| content | 修改貼文內容 | String | | |
 |---|---|---|---|---|
-| content | 貼文內容 | String | | |
-|---|---|---|---|---|
-| message | 此篇帖文的留言內容 | String | | |
+| message | 新增此篇帖文的留言內容 | String | | |
 |---|---|---|---|---|
 | UpdatedBy | 某個 user objectId | String | √ | |
 
