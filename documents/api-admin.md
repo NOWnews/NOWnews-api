@@ -1966,7 +1966,7 @@ None
 |---|---|---|---|---|
 | content | 修改貼文內容 | String | | |
 |---|---|---|---|---|
-| message | 新增此篇帖文的留言內容 | String | | |
+| message | 新增此篇貼文的留言內容 | String | | |
 |---|---|---|---|---|
 | UpdatedBy | 某個 user objectId | String | √ | |
 
