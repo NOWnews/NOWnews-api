@@ -22,7 +22,7 @@ module.exports = async (req, res, next) => {
 
         if (message && message !== ''){
             message = { User, message };
-            updatePostMessages = [...post.messages, message];
+            updatePostMessages = post.messages.push(message);
         }
 
         if (content && content !== ''){
