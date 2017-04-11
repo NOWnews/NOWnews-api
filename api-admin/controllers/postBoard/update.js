@@ -19,13 +19,12 @@ module.exports = async (req, res, next) => {
 
         let updatePostMessages = post.messages;
 
-
         if (message && message !== ''){
             message = {
                 User: UpdatedBy,
                 message
             };
-            updatePostMessages = post.messages.push(message);
+            updatePostMessages = [...post.messages, message];
         }
 
         if (content && content !== ''){
