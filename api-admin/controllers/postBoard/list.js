@@ -32,7 +32,7 @@ module.exports = async (req, res, next) => {
                 .countAsync()
         ]);
 
-        debug('post board list = %j', postBoardList);
+        debug('post board list = %j', postBoard);
 
         let pageData = pagination(total, limit, page, skip);
         debug('pageData = %j', pageData);
