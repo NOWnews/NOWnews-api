@@ -1864,3 +1864,168 @@ None
 |---|---|---|---|---|
 | startedAt | 開始時間(預設為當天 00:00) | Date | | |
 | endedAt | 結束時間(預設為當天 23:59) | Date | | |
+
+
+## POST BOARD API DOCUMENTS
+
+- 留言版 CRUD 的 API
+
+### [POST] `/postBoard`
+
+建立貼文的 API
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'YouCanSeeMeJohnCena' |
+
+#### Url Parameters
+
+NONE
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| content | 貼文內容 | String | √ | |
+|---|---|---|---|---|
+| CreatedBy | 某個 user objectId| String | √ | |
+
+#### Query Parameters
+
+None
+
+
+### [GET] `/postBoard`
+
+搜尋貼文列表 的 API
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'YouCanSeeMeJohnCena' |
+
+#### Url Parameters
+
+NONE
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None
+
+### [GET] `/postBoard/{:id}`
+
+搜尋貼文的 API
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'YouCanSeeMeJohnCena' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | postBoard 的 ObjectId | String | √ |  |
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None
+
+
+### [PUT] `/postBoard/{:id}`
+
+更新貼文內容及留言的 API
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'YouCanSeeMeJohnCena' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | postBoard 的 ObjectId | String | √ |  |
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| User | 某個 user ObjectId | String | √ | |
+|---|---|---|---|---|
+| content | 貼文內容 | String | | |
+|---|---|---|---|---|
+| message | 此篇帖文的留言內容 | String | | |
+|---|---|---|---|---|
+| UpdatedBy | 某個 user objectId | String | √ | |
+
+#### Query Parameters
+
+None
+
+
+### [DELETE] `/postBoard/{:id}`
+
+刪除此貼文的 API
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'YouCanSeeMeJohnCena' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | postBoard 的 ObjectId | String | √ |  |
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None
+
+
+### [DELETE] `/postBoard/{:id}/message`
+
+刪除此貼文中單筆留言的 API
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'YouCanSeeMeJohnCena' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | postBoard 的 ObjectId | String | √ |  |
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| messageId | 此篇帖文的 objectId | String | √ | |
+|---|---|---|---|---|
+| UpdatedBy | 某個 user objectId | String | √ | |
+
+#### Query Parameters
+
+None

@@ -408,4 +408,20 @@ module.exports = {
         message: '[Video] 缺少 url 這個欄位',
         statusCode: 400
     },
+
+    // PostBoard
+    24001: {
+        message: '[PostBoard] 缺少 content 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    24002: {
+        message: '[PostBoard] 缺少 CreatedBy 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    24003: {
+        message: '[PostBoard] 找不到這則 post',
+        statusCode: 404
+    },
 };
