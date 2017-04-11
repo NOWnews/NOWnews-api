@@ -1964,7 +1964,7 @@ None
 
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
-| User | 某個 user ObjectId | String | √ | |
+| User | 某個 user ObjectId | String | | |
 |---|---|---|---|---|
 | content | 貼文內容 | String | | |
 |---|---|---|---|---|

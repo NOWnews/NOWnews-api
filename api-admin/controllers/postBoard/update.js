@@ -35,7 +35,7 @@ module.exports = async (req, res, next) => {
 
         let updatedPost = await post.saveAsync();
 
-        return res.json(updatedPost);
+        return res.json({updatedPost});
     }catch(err) {
         return next(err);
     }
