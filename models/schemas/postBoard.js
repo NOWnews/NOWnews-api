@@ -36,7 +36,7 @@ let schema = new Schema({
 
     // 塗鴉底下的留言
     messages: [{
-        user: {
+        User: {
             type: Schema.Types.ObjectId,
             ref: 'User',
             required: true

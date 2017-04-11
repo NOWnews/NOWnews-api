@@ -14,7 +14,7 @@ module.exports = async (req, res, next) => {
             .where('isTrashed').equals(false);
 
         let post = await cursor
-            .deepPopulate('CreatedBy.Avatar messages.user.Avatar')
+            .deepPopulate('CreatedBy.Avatar messages.User.Avatar')
             .execAsync();
 
         if(!post) {
@@ -23,7 +23,9 @@ module.exports = async (req, res, next) => {
 
         debug('this post = %j', post);
 
-        return res.json(post);
+        return res.json({
+            post
+        });
     }catch(err) {
         return next(err);
     }

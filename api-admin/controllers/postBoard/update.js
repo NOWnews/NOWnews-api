@@ -10,7 +10,7 @@ module.exports = async (req, res, next) => {
     try {
 
         let { id } = req.params;
-        let { user, message, content, UpdatedBy } = req.body;
+        let { User, message, content, UpdatedBy } = req.body;
 
         let post = await PostBoard.findById(id)
             .where('isTrashed').equals(false)
@@ -22,11 +22,8 @@ module.exports = async (req, res, next) => {
 
 
         if (message && message !== ''){
-            message = {
-                user: user,
-                message: message
-            }
-            updatePostMessages = _.concat(post.messages, message);
+            message = { User, message };
+            updatePostMessages = [...post.messages, message];
         }
 
         if (content && content !== ''){

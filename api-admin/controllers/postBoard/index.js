@@ -3,6 +3,7 @@ import express from 'express';
 let router = express.Router();
 
 import validators from '../../validators';
+import baseQuery from '../../middlewares/baseQuery';
 
 import create from './create';
 import list from './list';
@@ -13,7 +14,7 @@ import update from './update';
 
 router.route('/postBoard')
     .post(validators.postBoard.create, create)
-    .get(list);
+    .get(baseQuery, list);
 
 router.route('/postBoard/:id')
     .get(one)

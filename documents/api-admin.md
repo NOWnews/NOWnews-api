@@ -1921,7 +1921,7 @@ None
 
 ### [GET] `/postBoard/{:id}`
 
-搜尋貼文列表 的 API
+搜尋貼文的 API
 
 #### Header Parameters
 
@@ -1964,7 +1964,7 @@ None
 
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
-| user | 某個 user ObjectId | String | √ | |
+| User | 某個 user ObjectId | String | √ | |
 |---|---|---|---|---|
 | content | 貼文內容 | String | | |
 |---|---|---|---|---|
