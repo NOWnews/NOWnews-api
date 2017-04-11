@@ -9,7 +9,7 @@ module.exports = async (req, res, next) => {
     try {
 
         let { id } = req.params;
-        let { User, message, content, UpdatedBy } = req.body;
+        let { message, content, UpdatedBy } = req.body;
 
         let post = await PostBoard.findById(id)
             .where('isTrashed').equals(false)
@@ -21,8 +21,11 @@ module.exports = async (req, res, next) => {
 
 
         if (message && message !== ''){
-            message = { User, message };
-            updatePostMessages = [...post.messages, message];
+            message = {
+                User: UpdatedBy,
+                message
+            };
+            updatePostMessages = post.messages.push(message);
         }
 
         if (content && content !== ''){
@@ -35,7 +38,7 @@ module.exports = async (req, res, next) => {
 
         let updatedPost = await post.saveAsync();
 
-        return res.json(updatedPost);
+        return res.json({updatedPost});
     }catch(err) {
         return next(err);
     }

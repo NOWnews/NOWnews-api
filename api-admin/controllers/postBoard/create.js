@@ -19,7 +19,7 @@ module.exports = async (req, res, next) => {
 
         debug('new postBoard = %j', postBoard);
 
-        return res.json(postBoard);
+        return res.json({postBoard});
     }catch(err) {
         return next(err);
     }

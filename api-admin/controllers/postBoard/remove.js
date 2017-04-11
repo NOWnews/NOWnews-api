@@ -24,7 +24,7 @@ module.exports = async (req, res, next) => {
 
         let removedPost = await post.saveAsync();
 
-        return res.json(removedPost);
+        return res.json({removedPost});
     }catch(err) {
         return next(err);
     }
