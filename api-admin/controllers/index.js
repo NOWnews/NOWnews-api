@@ -19,6 +19,7 @@ import statistics from './statistics';
 import indexPage from './indexPage';
 import preview from './preview';
 import postBoard from './postBoard';
+import getNewsListByCategory from './getNewsListByCategory';
 
 module.exports = (app) => {
 
@@ -43,6 +44,7 @@ module.exports = (app) => {
     app.use('/', indexPage);
     app.use('/', preview);
     app.use('/', postBoard);
+    app.use('/', getNewsListByCategory);
 
     return (req, res, next) => {
         return next();
