@@ -1,14 +1,16 @@
 
 import Debug from 'debug';
-const debug = Debug('NOWnews-api:api-web:controllers:category:list');
+const debug = Debug('NOWnews-api:api-admin:controllers:getNewsListBycategory:list');
 
 import Promise from 'bluebird';
 
 import { pagination } from '../../../libs';
 import { News, Menu } from '../../../models';
+import { Pageview, TemperatureLog } from '../../../pvModels';
 
 module.exports = async (req, res, next) => {
     try {
+
         let { limit, page, skip } = req.query;
         let { categoryName, type } = req.params;
 
@@ -29,6 +31,8 @@ module.exports = async (req, res, next) => {
                 { MainMenu: menu._id },
                 { Menus: menu._id}
             ]);
+
+
         let newsTotalCursor = News.find()
             .where('isTrashed').equals(false)
             .where('startedAt').lte(Date.now())
@@ -53,6 +57,50 @@ module.exports = async (req, res, next) => {
                 .execAsync(),
             newsTotalCursor.countAsync()
         ]);
+
+        //暫存新聞列表
+        let mappingNews = {};
+
+        let newsIds = newsList.map((news) => {
+            //這是所有新聞
+            mappingNews[news._id] = news
+            return news._id
+        })
+        //單一ID?
+        console.log(newsIds,'L74');
+        console.log(mappingNews,'L69')
+
+        // newsList.forEach((news) => {
+        //     mappingNews[news._id] = news
+        //     pageviewList.forEach((pageview) => {
+        //         if (pageview.newsId === news.id) {
+        //             console.log(123);
+        //         }
+        //     })
+        // })
+
+        //找pageview DB的資料
+        let pageviewList = await Pageview.find()
+        .where('newsId').in(newsIds)
+        .sort('-totalScore')
+        .execAsync();
+
+        //做map把新聞列表列出每一筆newsid跟pv與權重 最後組合的
+        let pageviewsResult = pageviewList.map((pageview) => {
+            let {newsId, temperatures, pageviews, weightedScore} = pageview;
+            let pv =  temperatures + pageviews
+            // mappingNews[news._id] = news
+            let news = mappingNews[newsId];
+            return {
+                newsId,
+                pv,
+                weightedScore,
+                ...news
+            }
+        })
+
+        console.log(pageviewsResult,'L108');
+
 
         // 處理分頁
         debug('total = %d', total);
