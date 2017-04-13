@@ -57,6 +57,7 @@ module.exports = async (req, res, next) => {
                 .execAsync(),
             newsTotalCursor.countAsync()
         ]);
+        //上方code為api-web 抄過來的
 
         //暫存新聞列表
         let mappingNews = {};
@@ -69,15 +70,6 @@ module.exports = async (req, res, next) => {
         //單一ID?
         console.log(newsIds,'L74');
         console.log(mappingNews,'L69')
-
-        // newsList.forEach((news) => {
-        //     mappingNews[news._id] = news
-        //     pageviewList.forEach((pageview) => {
-        //         if (pageview.newsId === news.id) {
-        //             console.log(123);
-        //         }
-        //     })
-        // })
 
         //找pageview DB的資料
         let pageviewList = await Pageview.find()
@@ -99,7 +91,7 @@ module.exports = async (req, res, next) => {
             }
         })
 
-        console.log(pageviewsResult,'L108');
+        console.log(pageviewsResult,'最後拿到的資料');
 
 
         // 處理分頁
