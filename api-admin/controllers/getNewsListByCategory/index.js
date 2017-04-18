@@ -6,7 +6,7 @@ import baseQuery from '../../middlewares/baseQuery';
 
 import list from './list';
 
-router.route('/cat/:categoryName')
+router.route('/cat/:categoryId')
     .get(baseQuery, list);
 
 // router.route('/cat/:categoryName/:type')
