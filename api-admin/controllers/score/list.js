@@ -57,7 +57,7 @@ module.exports = async (req, res, next) => {
                 });
         });
 
-        return res.json(newsListWithPageviews);
+        return res.json({newsListWithPageviews});
     } catch(err) {
         return next(err);
     }
