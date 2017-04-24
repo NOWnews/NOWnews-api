@@ -57,10 +57,10 @@ module.exports = async (req, res, next) => {
                 ])
                 .where('isTrashed').equals(false)
                 .where('status').equals('RELEASE')
-                .populate('MainPhoto MainVideo')
+                .populate('MainPhoto MainVideo MainMenu')
                 .limit(limit)
                 .skip(skip)
-                .select('sn title MainPhoto content startedAt createdAt updatedAt')
+                .select('sn title shortTitle MainPhoto type startedAt createdAt updatedAt')
                 .sort('-createdAt')
                 .execAsync(),
             totalCursor
@@ -72,6 +72,7 @@ module.exports = async (req, res, next) => {
                 .where('status').equals('RELEASE')
                 .countAsync()
         ]);
+
         debug('news list = %j', newsList);
 
         // 處理分頁
