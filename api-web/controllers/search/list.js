@@ -10,28 +10,43 @@ import { pagination } from '../../../libs';
 module.exports = async (req, res, next) => {
     try {
 
+        const DEFAULT_TIME_TYPE_TO_MOMENT = {
+            lastWeek: 'week',
+            lastMonth: 'month',
+            lastYear: 'year'
+        };
+
         let { keyword } = req.params;
-        let { limit, skip, page, startedAt, endedAt } = req.query;
+        let { limit, skip, page, startedAt, endedAt, timeRange } = req.query;
+        let momentUnit = DEFAULT_TIME_TYPE_TO_MOMENT[timeRange];
 
         // 新聞相關的 cursor
         let cursor = News.find();
         let totalCursor = News.find();
 
-        // 如果有開始時間，就以開始時間為主，沒有的話就以現在時間為主
-        if(startedAt) {
-            startedAt = `moment(startedAt).format('YYYY-MM-DD') 00:00`;
+        if (momentUnit) {
+            startedAt = `${moment().subtract(1, momentUnit)} 00:00`;
             cursor.where('startedAt').lte(moment(startedAt));
             totalCursor.where('startedAt').lte(startedAt);
         } else {
-            cursor.where('startedAt').lte(Date.now());
-            totalCursor.where('startedAt').lte(Date.now());
+
+            // 如果有開始時間，就以開始時間為主，沒有的話就以現在時間為主
+            if(startedAt) {
+                startedAt = `${moment(startedAt).format('YYYY-MM-DD')} 00:00`;
+                cursor.where('startedAt').lte(moment(startedAt));
+                totalCursor.where('startedAt').lte(startedAt);
+            } else {
+                cursor.where('startedAt').lte(Date.now());
+                totalCursor.where('startedAt').lte(Date.now());
+            }
+
+            if (endedAt) {
+                endedAt = `${moment(endedAt).format('YYYY-MM-DD')} 23:59`;
+                cursor.where('startedAt').gte(endedAt);
+                totalCursor.where('startedAt').gte(endedAt);
+            }
         }
 
-        if(endedAt) {
-            endedAt = `moment(startedAt).format('YYYY-MM-DD') 23:59`;
-            cursor.where('startedAt').gte(endedAt);
-            totalCursor.where('startedAt').gte(endedAt);
-        }
 
         // 找出相關列表與分頁資料
         let [ newsList, total ] = await Promise.all([

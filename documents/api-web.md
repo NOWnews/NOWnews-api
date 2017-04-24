@@ -386,3 +386,4 @@ None
 |---|---|---|---|---|
 | startedAt | 開始時間 | String | | `2017-02-21` |
 | endedAt | 結束時間 | String | | `2017-03-21` |
+| timeRange | 時間區間 | String | | `lastWeek`/`lastMonth`/`lastYear` |
