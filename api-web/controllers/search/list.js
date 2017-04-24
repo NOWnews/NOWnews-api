@@ -25,25 +25,26 @@ module.exports = async (req, res, next) => {
         let totalCursor = News.find();
 
         if (momentUnit) {
-            startedAt = `${moment().subtract(1, momentUnit)} 00:00`;
-            cursor.where('startedAt').lte(moment(startedAt));
-            totalCursor.where('startedAt').lte(startedAt);
+            startedAt = `${moment().subtract(1, momentUnit).format('YYYY-MM-DD')} 00:00`;
+            cursor.where('startedAt').gte(startedAt);
+            totalCursor.where('startedAt').gte(startedAt);
         } else {
 
             // 如果有開始時間，就以開始時間為主，沒有的話就以現在時間為主
             if(startedAt) {
                 startedAt = `${moment(startedAt).format('YYYY-MM-DD')} 00:00`;
-                cursor.where('startedAt').lte(moment(startedAt));
-                totalCursor.where('startedAt').lte(startedAt);
+                cursor.where('startedAt').gte(startedAt);
+                totalCursor.where('startedAt').gte(startedAt);
             } else {
-                cursor.where('startedAt').lte(Date.now());
-                totalCursor.where('startedAt').lte(Date.now());
+                today = `${moment().format('YYYY-MM-DD')} 00:00`;
+                cursor.where('startedAt').gte(today);
+                totalCursor.where('startedAt').gte(today);
             }
 
             if (endedAt) {
                 endedAt = `${moment(endedAt).format('YYYY-MM-DD')} 23:59`;
-                cursor.where('startedAt').gte(endedAt);
-                totalCursor.where('startedAt').gte(endedAt);
+                cursor.where('startedAt').lte(endedAt);
+                totalCursor.where('startedAt').lte(endedAt);
             }
         }
 
