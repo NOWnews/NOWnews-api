@@ -62,7 +62,7 @@ module.exports = async (req, res, next) => {
                 .limit(limit)
                 .skip(skip)
                 .select('sn title shortTitle MainPhoto type startedAt createdAt updatedAt')
-                .sort('-createdAt')
+                .sort('-startedAt')
                 .execAsync(),
             totalCursor
                 .or([
