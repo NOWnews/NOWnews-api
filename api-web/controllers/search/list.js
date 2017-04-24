@@ -25,24 +25,24 @@ module.exports = async (req, res, next) => {
         let totalCursor = News.find();
 
         if (momentUnit) {
-            startedAt = `${moment().subtract(1, momentUnit).format('YYYY-MM-DD')} 00:00`;
+            startedAt = moment().subtract(1, momentUnit).format('YYYY-MM-DD 00:00');
             cursor.where('startedAt').gte(startedAt);
             totalCursor.where('startedAt').gte(startedAt);
         } else {
 
-            // 如果有開始時間，就以開始時間為主，沒有的話就以現在時間為主
+            // default StratedAt is today.
             if(startedAt) {
-                startedAt = `${moment(startedAt).format('YYYY-MM-DD')} 00:00`;
+                startedAt = moment(startedAt).format('YYYY-MM-DD 00:00');
                 cursor.where('startedAt').gte(startedAt);
                 totalCursor.where('startedAt').gte(startedAt);
             } else {
-                today = `${moment().format('YYYY-MM-DD')} 00:00`;
+                const today = moment().format('YYYY-MM-DD 00:00');
                 cursor.where('startedAt').gte(today);
                 totalCursor.where('startedAt').gte(today);
             }
 
             if (endedAt) {
-                endedAt = `${moment(endedAt).format('YYYY-MM-DD')} 23:59`;
+                endedAt = moment(endedAt).format('YYYY-MM-DD 23:59');
                 cursor.where('startedAt').lte(endedAt);
                 totalCursor.where('startedAt').lte(endedAt);
             }
