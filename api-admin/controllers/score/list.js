@@ -24,7 +24,7 @@ module.exports = async (req, res, next) => {
         let newsList = await News.find()
             .where('isTrashed').equals(false)
             // .where('startedAt').gte(startedAt)
-            // .where('startedAt').gte(endedAt)
+            // .where('startedAt').lte(endedAt)
             .or([
                 { MainMenu: menuId },
                 { Menus: menuId }
