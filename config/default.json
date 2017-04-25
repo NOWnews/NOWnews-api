@@ -88,6 +88,6 @@
     "pageviewWeight": {
         "pageviews": 1,
         "temperatures": 3,
-        "weightedScore": 0.3
+        "weightedScore": 0.1
     }
 }

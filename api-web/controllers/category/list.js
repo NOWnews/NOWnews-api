@@ -9,7 +9,6 @@ import { News, Menu } from '../../../models';
 
 module.exports = async (req, res, next) => {
     try {
-
         let { limit, page, skip } = req.query;
         let { categoryName, type } = req.params;
 
