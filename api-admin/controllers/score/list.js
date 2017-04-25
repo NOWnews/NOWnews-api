@@ -22,14 +22,14 @@ module.exports = async (req, res, next) => {
         // 找出某個分類裡面的新聞
         let newsList = await News.find()
             .where('isTrashed').equals(false)
-            .where('startedAt').gte(startedAt)
-            .where('startedAt').lte(endedAt)
+            // .where('startedAt').gte(startedAt)
+            // .where('startedAt').gte(endedAt)
             .or([
                 { MainMenu: menuId },
                 { Menus: menuId }
             ])
             .sort(sort)
-            .select('_id sn title shortTitle')
+            .select('_id sn title shortTitle createdAt')
             .lean()
             .execAsync();
 
@@ -40,6 +40,8 @@ module.exports = async (req, res, next) => {
             return Pageview.findOne()
                 .where('newsId').equals(news._id)
                 .then((pageviewData) => {
+
+                    news.createdAt = moment(news.createdAt).format('YYYY-MM-DD HH:mm');
 
                     if (!pageviewData) {
                         news.originalPageviews = 0;
