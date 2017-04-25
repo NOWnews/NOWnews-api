@@ -19,6 +19,7 @@ module.exports = async (req, res, next) => {
         endedAt = endedAt ? `${endedAt} 23:59` : `${moment().format('YYYY-MM-DD')} 23:59`;
         sort = sort || '-startedAt';
 
+
         // 找出某個分類裡面的新聞
         let newsList = await News.find()
             .where('isTrashed').equals(false)
