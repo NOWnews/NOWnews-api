@@ -14,8 +14,7 @@ module.exports = async (req, res, next) => {
 
         let { newsId } = req.params;
         let { weightedScore } = req.body;
-        console.log(newsId);
-        console.log(weightedScore);
+        weightedScore = weightedScore || 0;
 
         let updatedPageview = await Pageview.findOneAndUpdateAsync({
                 newsId: newsId

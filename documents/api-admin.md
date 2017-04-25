@@ -2027,3 +2027,60 @@ None
 #### Query Parameters
 
 None
+
+## SCORES BOARD API DOCUMENTS
+
+### [GET] `/scores`
+
+取得某個 menu 所有新聞列表與其分數
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | 某個 user objectId | ObjectId | √ | |
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| menuId | 某個 menu 的 ObjectId | ObjectId | √ | |
+| startedAt | 開始時間(預設為當天 00:00) | Date | | |
+| endedAt | 結束時間(預設為當天 23:59) | Date | | |
+| sort | 排序(預設為 `-startedAt`) | String | | |
+
+### [PUT] `/scores/{:newsId}`
+
+更新某一則新聞的權重分數
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| newsId | 新聞的 ObjectId | ObjectId | √ | |
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| weightedScore | 欲加權的分數 | Number | √ | |
+
+#### Query Parameters
+
+None

@@ -15,16 +15,15 @@ module.exports = async (req, res, next) => {
     try {
 
         let { startedAt, endedAt, sort, menuId } = req.query;
-        // startedAt = startedAt ? `${startedAt} 00:00` : `${moment().format('YYYY-MM-DD')} 00:00`;
-        // endedAt = endedAt ? `${endedAt} 23:59` : `${moment().format('YYYY-MM-DD')} 23:59`;
-        // sort = sort || '-startedAt';
+        startedAt = startedAt ? `${startedAt} 00:00` : `${moment().format('YYYY-MM-DD')} 00:00`;
+        endedAt = endedAt ? `${endedAt} 23:59` : `${moment().format('YYYY-MM-DD')} 23:59`;
+        sort = sort || '-startedAt';
 
         // 找出某個分類裡面的新聞
         let newsList = await News.find()
-            // .where('isTrashed').equals(false)
-            // .where('startedAt').gte(startedAt)
-            // .where('startedAt').gte(endedAt)
-            // .where('status').equals('RELEASE')
+            .where('isTrashed').equals(false)
+            .where('startedAt').gte(startedAt)
+            .where('startedAt').gte(endedAt)
             .or([
                 { MainMenu: menuId },
                 { Menus: menuId }
