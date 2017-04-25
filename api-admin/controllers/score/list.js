@@ -19,10 +19,13 @@ module.exports = async (req, res, next) => {
         endedAt = endedAt ? `${endedAt} 23:59` : `${moment().format('YYYY-MM-DD')} 23:59`;
         sort = sort || '-startedAt';
 
+        debug('startedAt = %s', startedAt);
+        debug('endedAt = %s', endedAt);
 
         // 找出某個分類裡面的新聞
         let newsList = await News.find()
             .where('isTrashed').equals(false)
+            .where('status').equals('RELEASE')
             .where('startedAt').gte(startedAt)
             .where('startedAt').lte(endedAt)
             .or([
