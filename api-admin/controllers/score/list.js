@@ -23,8 +23,8 @@ module.exports = async (req, res, next) => {
         // 找出某個分類裡面的新聞
         let newsList = await News.find()
             .where('isTrashed').equals(false)
-            // .where('startedAt').gte(startedAt)
-            // .where('startedAt').lte(endedAt)
+            .where('startedAt').gte(startedAt)
+            .where('startedAt').lte(endedAt)
             .or([
                 { MainMenu: menuId },
                 { Menus: menuId }
