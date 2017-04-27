@@ -387,3 +387,36 @@ None
 | startedAt | 開始時間 | String | | `2017-02-21` |
 | endedAt | 結束時間 | String | | `2017-03-21` |
 | timeRange | 時間區間 | String | | `lastWeek`/`lastMonth`/`lastYear` |
+
+## SPECIALTOPIC API DOCUMENTS
+
+- 專題列表
+- 單一專題
+
+### [GET] `/specialtopics`
+
+專題列表
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'YouCanSeeMeJohnCena' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| keyword | 關鍵字 | String | √ | |
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| limit | 一次回傳的數量 | Number | | |
+| skip | 跳過多少資料 | Number | | |
+| page | 第幾頁 | Number | | |
