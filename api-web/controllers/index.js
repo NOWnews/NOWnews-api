@@ -9,6 +9,7 @@ import temperature from './temperature';
 import hot from './hot';
 import search from './search';
 import specialTopic from './specialTopic';
+import specialChannel from './specialChannel';
 
 module.exports = (app) => {
 
@@ -22,6 +23,7 @@ module.exports = (app) => {
     app.use('/', hot);
     app.use('/', search);
     app.use('/', specialTopic);
+    app.use('/', specialChannel);
 
     return (req, res, next) => {
         return next();

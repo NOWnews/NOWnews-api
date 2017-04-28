@@ -391,7 +391,6 @@ None
 ## SPECIALTOPIC API DOCUMENTS
 
 - 專題列表
-- 單一專題
 
 ### [GET] `/specialtopics`
 
@@ -405,9 +404,7 @@ None
 
 #### Url Parameters
 
-| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
-|---|---|---|---|---|
-| keyword | 關鍵字 | String | √ | |
+None
 
 #### Body Parameters
 
@@ -420,3 +417,58 @@ None
 | limit | 一次回傳的數量 | Number | | |
 | skip | 跳過多少資料 | Number | | |
 | page | 第幾頁 | Number | | |
+
+## SPECIALCHANNEL API DOCUMENTS
+
+- 特輯列表
+- 單一特輯
+
+### [GET] `/specialchannels`
+
+特輯列表
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'YouCanSeeMeJohnCena' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| limit | 一次回傳的數量 | Number | | |
+| skip | 跳過多少資料 | Number | | |
+| page | 第幾頁 | Number | | |
+
+### [GET] `/specialchannels/{:sn}`
+
+單一特輯
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'YouCanSeeMeJohnCena' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| sn | 特輯的 sn | Number | √ | |
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None
