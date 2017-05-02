@@ -7,7 +7,7 @@ describe('User', function() {
 
   describe('#log in()', function() {
 
-    it('should log in with error.', function(done) {    
+    it('log in with wrong user data.', function(done) {    
       const data = querystring.stringify({'email': 'test@nownews.com', 'password': '111111'}); 
       const options = {
           host: 'localhost',
@@ -30,7 +30,7 @@ describe('User', function() {
 
     });
 
-    it('should log in with 200 res code.', function(done) {    
+    it('log in with superuser.', function(done) {    
       const data = querystring.stringify({'email': 'superuser@nownews.com', 'password': 'superuser28331543'}); 
       // Configure the request
       const options = {
