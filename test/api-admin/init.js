@@ -30,7 +30,11 @@ afterEach(function(done) {
     let that = this;
     this.connection.on('connected', function() {
         that.connection.db.dropDatabase(function(err) {
-            done(err);
+            if(err){
+                done(err);
+            }
+            that.connection.close(done);
+            
         });
     });
 });
