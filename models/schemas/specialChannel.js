@@ -85,6 +85,15 @@ schema.virtual('formatUpdatedAt').get(function () {
 
 schema.plugin(autoIncrement);
 
-schema.plugin(deepPopulate);
+schema.plugin(deepPopulate, {
+    populate: {
+        'newsList.MainMenu': {
+            select: 'name'
+        },
+        'newsList.MainPhoto': {
+            select: 'url'
+        }
+    }
+});
 
 module.exports = schema;
