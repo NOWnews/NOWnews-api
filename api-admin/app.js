@@ -7,7 +7,10 @@ import controllers from './controllers';
 import errorHandlers from './errorHandlers';
 
 // 初始化資料
-initDataStart();
+if (process.env.NODE_ENV != "test") {
+    initDataStart();
+}
+
 
 // middlewares
 app.use(middlewares(app));

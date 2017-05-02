@@ -48,8 +48,9 @@ module.exports = async () => {
     // 處理 User 資料
     let superuser = await User.findById('530000000000000000000001').execAsync();
     if(!superuser) {
-        superuserData.password = hashPwd(superuserData.password);
-        await User.createAsync(superuserData);
+        let userData = superuserData();
+        userData.password = hashPwd(userData.password);
+        let test = await User.createAsync(userData);
     }
 
     console.log(chalk.green(`初始化資料完成`));

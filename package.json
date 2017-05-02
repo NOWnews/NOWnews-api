@@ -7,7 +7,7 @@
     "api-web": "npm install && DEBUG=NOWnews-api* NODE_ENV=develop ./node_modules/nodemon/bin/nodemon.js ./bin/api-web.js",
     "api-admin": "npm install && DEBUG=NOWnews-api* NODE_ENV=develop ./node_modules/nodemon/bin/nodemon.js ./bin/api-admin.js",
     "cron": "npm install && DEBUG=NOWnews-api* NODE_ENV=develop ./node_modules/nodemon/bin/nodemon.js ./bin/cron.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test/api-admin"
   },
   "repository": {
     "type": "git",
@@ -58,5 +58,8 @@
     "scp2": "^0.5.0",
     "ua-parser-js": "^0.7.12",
     "xml2json": "^0.11.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.3.0"
   }
 }

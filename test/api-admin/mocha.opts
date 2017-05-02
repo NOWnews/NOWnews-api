@@ -1,0 +1,5 @@
+--recursive
+--require should
+--reporter nyan
+--require babel-register
+--compilers
