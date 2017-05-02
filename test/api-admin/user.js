@@ -1,7 +1,7 @@
-const request = require('request');
-const querystring = require('querystring');
-const http = require('http');
-const assert = require('chai').assert;
+import request from 'request';
+import querystring from 'querystring';
+import http from 'http';
+import {assert} from 'chai'
 
 describe('User', function() {
 
@@ -43,7 +43,7 @@ describe('User', function() {
               'Content-Length': Buffer.byteLength(data)
           }
       }
-      
+
       const req = http.request(options, function (res) {
       	assert.equal(res.statusCode, 200);
         done();

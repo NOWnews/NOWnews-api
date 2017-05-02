@@ -7,7 +7,7 @@ import controllers from './controllers';
 import errorHandlers from './errorHandlers';
 
 // 初始化資料
-if (process.env.NODE_ENV != "test") {
+if (process.env.NODE_ENV !== "test") {
     initDataStart();
 }
 
