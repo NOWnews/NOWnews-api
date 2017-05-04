@@ -1,8 +1,9 @@
-
+import DeepPopulate from 'mongoose-deep-populate';
 import autoIncrement from 'mongoose-easy-auto-increment';
 import mongoose from 'mongoose';
 import moment from 'moment-timezone';
 let Schema = mongoose.Schema;
+let deepPopulate = DeepPopulate(mongoose);
 
 let schema = new Schema({
 
@@ -83,5 +84,16 @@ schema.virtual('formatUpdatedAt').get(function () {
 });
 
 schema.plugin(autoIncrement);
+
+schema.plugin(deepPopulate, {
+    populate: {
+        'newsList.MainMenu': {
+            select: 'name'
+        },
+        'newsList.MainPhoto': {
+            select: 'url'
+        }
+    }
+});
 
 module.exports = schema;

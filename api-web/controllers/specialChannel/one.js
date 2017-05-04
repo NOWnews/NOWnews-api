@@ -13,7 +13,8 @@ module.exports = async (req, res, next) => {
         let specialChannel = await SpecialChannel.findOne()
             .where('sn').equals(sn)
             .where('isTrashed').equals(false)
-            .populate('MainPhoto newsList Tag')
+            .populate('newsList')
+            .deepPopulate('newsList.MainMenu newsList.MainPhoto')
             .execAsync();
 
         return res.json(specialChannel);
