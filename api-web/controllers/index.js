@@ -8,6 +8,7 @@ import pageview from './pageview';
 import temperature from './temperature';
 import hot from './hot';
 import search from './search';
+import location from './location';
 import specialTopic from './specialTopic';
 import specialChannel from './specialChannel';
 
@@ -22,6 +23,7 @@ module.exports = (app) => {
     app.use('/', temperature);
     app.use('/', hot);
     app.use('/', search);
+    app.use('/', location);
     app.use('/', specialTopic);
     app.use('/', specialChannel);
 
