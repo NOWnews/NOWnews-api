@@ -12,6 +12,15 @@ import moment from 'moment-timezone';
 import config from 'config';
 import imageServer from 'scp2';
 
+import googleCloud from 'google-cloud';
+const gcloud = googleCloud({
+    projectId: 'nownews-website-167108',
+    keyFilename: 'pems/NOWnews-Website-e1f7525355ca.json',
+    promise: Promise
+});
+const gcs = gcloud.storage();
+const bucket = gcs.bucket('nownews-web-test');
+
 import { Image } from '../../../models';
 
 module.exports = async(req, res, next) => {
@@ -45,24 +54,36 @@ module.exports = async(req, res, next) => {
         // 將圖片名稱換掉
         fs.renameSync(path, newPath);
 
-        // scp 到 img.nownews.com 圖床
-        await new Promise((resolve, reject) => {
+        // scp 到 img.nownews.com 圖床與 google cloud storage
+        let [ local, cloud ] = await Promise.all([
+            new Promise((resolve, reject) => {
+                    let username = config.get('admin.imageServer.username');
+                    let password = config.get('admin.imageServer.password');
+                    let host = config.get('admin.imageServer.host');
+                    let folder = config.get('admin.imageServer.folder');
+                    let port = config.get('admin.imageServer.port');
+                    let scpCommand = `${username}:${password}@${host}:${port}:${folder}`;
 
-            let username = config.get('admin.imageServer.username');
-            let password = config.get('admin.imageServer.password');
-            let host = config.get('admin.imageServer.host');
-            let folder = config.get('admin.imageServer.folder');
-            let port = config.get('admin.imageServer.port');
-            let scpCommand = `${username}:${password}@${host}:${port}:${folder}`;
+                    imageServer.scp(newPath, scpCommand, (err) => {
+                        if(err) {
+                            return reject(err);
+                        }
 
-            imageServer.scp(newPath, scpCommand, (err) => {
-                if(err) {
-                    return reject(err);
-                }
+                        return resolve('ok');
+                    });
+                }),
+            bucket.upload(newPath, {
+                    destination: `images/${newName}`,
+                    public: true
+                })
+                .then((file) => {
+                    console.log(typeof file);
+                    debug(file);
+                    return Promise.resolve(file);
+                })
+        ]);
 
-                return resolve('ok');
-            });
-        });
+        debug('cloud = %j', cloud);
 
         // 組成要儲存的資料
         let options = {
@@ -79,6 +100,7 @@ module.exports = async(req, res, next) => {
             Tag,
             width: width,
             height: height,
+            // url: `http://35.186.248.88/images/${newName}`,
             url: `${config.get('admin.imageServer.url')}/${newName}`,
             CreatedBy,
             UpdatedBy: CreatedBy
