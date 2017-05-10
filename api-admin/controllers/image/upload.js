@@ -55,23 +55,51 @@ module.exports = async(req, res, next) => {
         fs.renameSync(path, newPath);
 
         // scp 到 img.nownews.com 圖床與 google cloud storage
-        let [ local, cloud ] = await Promise.all([
-            new Promise((resolve, reject) => {
-                    let username = config.get('admin.imageServer.username');
-                    let password = config.get('admin.imageServer.password');
-                    let host = config.get('admin.imageServer.host');
-                    let folder = config.get('admin.imageServer.folder');
-                    let port = config.get('admin.imageServer.port');
-                    let scpCommand = `${username}:${password}@${host}:${port}:${folder}`;
+        // let [ local, cloud ] = await Promise.all([
+        //     new Promise((resolve, reject) => {
+        //             let username = config.get('admin.imageServer.username');
+        //             let password = config.get('admin.imageServer.password');
+        //             let host = config.get('admin.imageServer.host');
+        //             let folder = config.get('admin.imageServer.folder');
+        //             let port = config.get('admin.imageServer.port');
+        //             let scpCommand = `${username}:${password}@${host}:${port}:${folder}`;
 
-                    imageServer.scp(newPath, scpCommand, (err) => {
-                        if(err) {
-                            return reject(err);
-                        }
+        //             imageServer.scp(newPath, scpCommand, (err) => {
+        //                 if(err) {
+        //                     return reject(err);
+        //                 }
 
-                        return resolve('ok');
-                    });
-                }),
+        //                 return resolve('ok');
+        //             });
+        //         }),
+        //     bucket.upload(newPath, {
+        //             destination: `images/${newName}`,
+        //             public: true
+        //         })
+        //         .then((file) => {
+        //             console.log(typeof file);
+        //             debug(file);
+        //             return Promise.resolve(file);
+        //         })
+        // ]);
+
+        let [ cloud ] = await Promise.all([
+            // new Promise((resolve, reject) => {
+            //         let username = config.get('admin.imageServer.username');
+            //         let password = config.get('admin.imageServer.password');
+            //         let host = config.get('admin.imageServer.host');
+            //         let folder = config.get('admin.imageServer.folder');
+            //         let port = config.get('admin.imageServer.port');
+            //         let scpCommand = `${username}:${password}@${host}:${port}:${folder}`;
+
+            //         imageServer.scp(newPath, scpCommand, (err) => {
+            //             if(err) {
+            //                 return reject(err);
+            //             }
+
+            //             return resolve('ok');
+            //         });
+            //     }),
             bucket.upload(newPath, {
                     destination: `images/${newName}`,
                     public: true
@@ -100,8 +128,8 @@ module.exports = async(req, res, next) => {
             Tag,
             width: width,
             height: height,
-            // url: `http://35.186.248.88/images/${newName}`,
-            url: `${config.get('admin.imageServer.url')}/${newName}`,
+            url: `http://35.190.31.67/images/${newName}`,
+            // url: `${config.get('admin.imageServer.url')}/${newName}`,
             CreatedBy,
             UpdatedBy: CreatedBy
         };
