@@ -3,7 +3,6 @@ import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-web:controllers:category:list');
 
 import Promise from 'bluebird';
-import mongoose from 'mongoose';
 
 import { pagination } from '../../../libs';
 import { News, Menu } from '../../../models';
