@@ -15,6 +15,15 @@ import moment from 'moment-timezone';
 import config from 'config';
 import server from 'scp2';
 
+import googleCloud from 'google-cloud';
+const gcloud = googleCloud({
+    projectId: 'nownews-website-167108',
+    keyFilename: 'pems/NOWnews-Website-e1f7525355ca.json',
+    promise: Promise
+});
+const gcs = gcloud.storage();
+const bucket = gcs.bucket('nownews-web-test');
+
 import { Video } from '../../../models';
 
 module.exports = async(req, res, next) => {
@@ -35,24 +44,38 @@ module.exports = async(req, res, next) => {
         // 將影片名稱換掉
         fs.renameSync(path, newPath);
 
+        debug('newPath = %s', newPath);
+
         // scp 到 img.nownews.com 圖床
-        await new Promise((resolve, reject) => {
+        let [ local, cloud ] = await Promise.all([
+            new Promise((resolve, reject) => {
+                    let username = config.get('admin.videoServer.username');
+                    let password = config.get('admin.videoServer.password');
+                    let host = config.get('admin.videoServer.host');
+                    let folder = config.get('admin.videoServer.folder');
+                    let port = config.get('admin.videoServer.port');
+                    let scpCommand = `${username}:${password}@${host}:${port}:${folder}`;
 
-            let username = config.get('admin.videoServer.username');
-            let password = config.get('admin.videoServer.password');
-            let host = config.get('admin.videoServer.host');
-            let folder = config.get('admin.videoServer.folder');
-            let port = config.get('admin.videoServer.port');
-            let scpCommand = `${username}:${password}@${host}:${port}:${folder}`;
+                    server.scp(newPath, scpCommand, (err) => {
+                        if(err) {
+                            return reject(err);
+                        }
 
-            server.scp(newPath, scpCommand, (err) => {
-                if(err) {
-                    return reject(err);
-                }
+                        return resolve('ok');
+                    });
+                }),
+            bucket.upload(newPath, {
+                    destination: `videos/${newName}`,
+                    public: true
+                })
+                .then((file) => {
+                    console.log(typeof file);
+                    debug(file);
+                    return Promise.resolve(file);
+                })
+        ]);
 
-                return resolve('ok');
-            });
-        });
+        // debug('cloud = %j', cloud);
 
         // 組成要儲存的資料
         let options = {
@@ -65,6 +88,7 @@ module.exports = async(req, res, next) => {
             type,
             mimetype,
             isDeliver: isDeliver === 'true' ? true : false,
+            // url: `http://35.190.31.67/videos/${newName}`,
             url: `${config.get('admin.videoServer.url')}/${newName}`,
             size,
             CreatedBy,
