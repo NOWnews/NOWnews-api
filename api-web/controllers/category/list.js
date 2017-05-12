@@ -27,7 +27,7 @@ module.exports = async (req, res, next) => {
             .where('status').equals('RELEASE')
             .or([
                 { MainMenu: menu._id },
-                { Menus: menu._id}
+                { Menus: menu._id }
             ]);
         let newsTotalCursor = News.find()
             .where('isTrashed').equals(false)
@@ -35,7 +35,7 @@ module.exports = async (req, res, next) => {
             .where('status').equals('RELEASE')
             .or([
                 { MainMenu: menu._id },
-                { Menus: menu._id}
+                { Menus: menu._id }
             ]);
 
         if(type) {
@@ -61,7 +61,8 @@ module.exports = async (req, res, next) => {
 
         return res.json({
             newsList,
-            pageData
+            pageData,
+            menu
         });
     } catch (err) {
         return next(err);
