@@ -229,6 +229,11 @@ schema.virtual('formatStartedAt').get(function () {
     return moment(this.startedAt).tz('Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });
 
+schema.virtual('url').get(function () {
+    let dateString = moment(this.startedAt).tz('Asia/Taipei').format('YYYYMMDD');
+    return `/news/${dateString}/${this.sn}`;
+});
+
 schema.plugin(autoIncrement);
 
 module.exports = schema;
