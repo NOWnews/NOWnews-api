@@ -55,7 +55,7 @@ module.exports = async(req, res, next) => {
         fs.renameSync(path, newPath);
 
         // scp 到 img.nownews.com 圖床與 google cloud storage
-        let [ local, cloud ] = await Promise.all([
+        let [ imageStorage, cloud ] = await Promise.all([
             new Promise((resolve, reject) => {
                     let username = config.get('admin.imageServer.username');
                     let password = config.get('admin.imageServer.password');
@@ -82,8 +82,6 @@ module.exports = async(req, res, next) => {
                     return Promise.resolve(file);
                 })
         ]);
-
-        // debug('cloud = %j', cloud);
 
         // 組成要儲存的資料
         let options = {

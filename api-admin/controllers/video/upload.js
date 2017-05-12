@@ -44,10 +44,8 @@ module.exports = async(req, res, next) => {
         // 將影片名稱換掉
         fs.renameSync(path, newPath);
 
-        debug('newPath = %s', newPath);
-
         // scp 到 img.nownews.com 圖床
-        let [ local, cloud ] = await Promise.all([
+        let [ videoStorage, cloud ] = await Promise.all([
             new Promise((resolve, reject) => {
                     let username = config.get('admin.videoServer.username');
                     let password = config.get('admin.videoServer.password');
