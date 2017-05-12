@@ -4,7 +4,7 @@
         "showError": true,
         "mongodb": {
             "host": "mongodb://localhost:27017",
-            "db": "NOWnews_Staging"
+            "db": "NOWnews_Develop"
         },
         "pvMongodb": {
             "host": "mongodb://localhost:27017",
@@ -59,7 +59,7 @@
         "showError": true,
         "mongodb": {
             "host": "mongodb://localhost:27017",
-            "db": "NOWnews_Staging"
+            "db": "NOWnews_Develop"
         },
         "pvMongodb": {
             "host": "mongodb://localhost:27017",
