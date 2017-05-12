@@ -217,6 +217,12 @@ schema.index({
     location: '2dsphere'
 });
 
+schema.virtual('parseUrl').get(function () {
+    let createdAt = moment(this.createdAt).tz('Asia/Taipei').format('YYYYMMDD');
+    let url = `/news/${createdAt}/${this.sn}`;
+    return url;
+});
+
 schema.virtual('formatCreatedAt').get(function () {
     return moment(this.createdAt).tz('Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });

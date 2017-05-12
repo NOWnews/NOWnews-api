@@ -56,7 +56,7 @@ module.exports = async (req, res, next) => {
         let [ newsList, total ] = await Promise.all([
             cursor
                 .where('isTrashed').equals(false)
-                .populate('Author LastReviewer CreatedBy UpdatedBy')
+                .populate('Author LastReviewer CreatedBy UpdatedBy Menus MainMenu')
                 .limit(limit)
                 .skip(skip)
                 .sort(sort)
