@@ -10,8 +10,8 @@ import { News } from '../../../models';
 module.exports = async (req, res, next) => {
 
     let { address, latlng } = req.query;
-    let geoKey = config.get('admin.apiKeys.geocode');
-    let geoUrl = config.get('admin.apiUrls.geocode');
+    let geoKey = config.get('general.apiKeys.geocode');
+    let geoUrl = config.get('general.apiUrls.geocode');
 
     try {
 

@@ -503,4 +503,4 @@ None
 | skip | 跳過多少資料 | Number | | |
 | page | 第幾頁 | Number | | |
 | lat | 緯度 | Number | | √ |
-| long | 精度 | Number | | √ |
+| lng | 精度 | Number | | √ |

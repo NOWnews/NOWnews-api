@@ -1,4 +1,12 @@
 {
+    "general": {
+        "apiKeys": {
+            "geocode": "AIzaSyBMndk_T5tmXq8GE_dbvZjINOPS0zHbEgs"
+        },
+        "apiUrls": {
+            "geocode": "https://maps.googleapis.com/maps/api/geocode/json"
+        }
+    },
     "admin": {
         "mode": "production",
         "showError": false,
@@ -23,12 +31,6 @@
             "limit": 20,
             "skip": 0,
             "page": 1
-        },
-        "apiKeys": {
-            "geocode": "AIzaSyBMndk_T5tmXq8GE_dbvZjINOPS0zHbEgs"
-        },
-        "apiUrls": {
-            "geocode": "https://maps.googleapis.com/maps/api/geocode/json"
         },
         "imageServer": {
             "username": "imgscp",
@@ -78,12 +80,6 @@
             "limit": 20,
             "skip": 0,
             "page": 1
-        },
-        "apiKeys": {
-            "geocode": "AIzaSyBMndk_T5tmXq8GE_dbvZjINOPS0zHbEgs"
-        },
-        "apiUrls": {
-            "geocode": "https://maps.googleapis.com/maps/api/geocode/json"
         }
     },
     "pageviewWeight": {
