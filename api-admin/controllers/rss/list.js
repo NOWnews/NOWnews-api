@@ -2,6 +2,7 @@ import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:rss:list');
 import _ from 'lodash';
 import Promise from 'bluebird';
+import moment from 'moment-timezone';
 
 import {
     News,Menu
@@ -29,15 +30,16 @@ module.exports = async(req, res, next) => {
         let rssNeedNews = News.find();
 
         if(start){
-            debug('start %j',start);
+            debug('startTime %s',moment(parseInt(start, 10)).tz('Asia/Taipei').format('YYYY/MM/DD hh:mm'));
             rssNeedNews.where('createdAt').gte(new Date(parseInt(start, 10)));
 
         }
         if(end){
-            debug('end %j',end);
+            debug('endTime %s',moment(parseInt(end, 10)).tz('Asia/Taipei').format('YYYY/MM/DD hh:mm'));
             rssNeedNews.where('createdAt').lte(new Date(parseInt(end, 10)));
         }
         if(limit) {
+            debug('limit %s',limit);
             rssNeedNews
             .limit(limit);
         }
@@ -55,7 +57,7 @@ module.exports = async(req, res, next) => {
 
         res.json(newsList);
 
-        debug('newslist %j', newsList );
+        debug('共撈了 %d 新聞', newsList.length );
 
     }catch(err) {
         return next(err);
