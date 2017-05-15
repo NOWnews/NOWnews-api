@@ -61,7 +61,7 @@ module.exports = async (req, res, next) => {
                 .populate('MainPhoto MainVideo MainMenu')
                 .limit(limit)
                 .skip(skip)
-                .select('sn title shortTitle MainPhoto type startedAt createdAt updatedAt')
+                .select('sn title shortTitle MainPhoto MainMenu type startedAt createdAt updatedAt')
                 .sort('-startedAt')
                 .execAsync(),
             totalCursor
