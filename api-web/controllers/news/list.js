@@ -64,7 +64,7 @@ module.exports = async (req, res, next) => {
                 .populate('MainMenu Menus MainPhoto MainVideo')
                 .limit(limit)
                 .skip(skip)
-                .sort('-createdAt')
+                .sort('-startedAt')
                 .execAsync(),
             totalCursor.where('isTrashed').equals(false)
                 .where('status').equals('RELEASE')
