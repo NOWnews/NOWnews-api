@@ -20,7 +20,8 @@ module.exports = async (sn) => {
             .where('Tags').in(Tags)
             .where('sn').ne(sn)
             .populate('MainMenu MainPhoto')
-            .select('title shortTitle sn MainMenu MainPhoto')
+            .select('title shortTitle sn MainMenu MainPhoto type')
+            .sort('-startedAt')
             .limit(3)
             .execAsync();
         debug('relation News = %j', relationNews);

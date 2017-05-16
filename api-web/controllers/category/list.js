@@ -48,7 +48,7 @@ module.exports = async (req, res, next) => {
         let [ newsList, total ] = await Promise.all([
             newsListCursor
                 .populate('MainMenu MainPhoto MainVideo')
-                .select('sn title shortTitle MainMenu MainPhoto MainVideo')
+                .select('sn title shortTitle MainMenu MainPhoto MainVideo type')
                 .limit(limit)
                 .skip(skip)
                 .sort('-startedAt')
