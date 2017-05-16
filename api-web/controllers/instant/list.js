@@ -23,7 +23,7 @@ module.exports = async (req, res, next) => {
                 .limit(limit)
                 .skip(skip)
                 .sort('-startedAt')
-                .select('sn _id title shortTitle summary MainMenu Menus MainPhoto MainVideo createdAt updatedAt startedAt')
+                .select('sn _id title shortTitle summary MainMenu Menus MainPhoto MainVideo createdAt updatedAt startedAt type')
                 .execAsync(),
             totalCursor.where('isTrashed').equals(false)
                 .where('status').equals('RELEASE')
