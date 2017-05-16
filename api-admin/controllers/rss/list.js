@@ -1,24 +1,24 @@
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:rss:list');
+
 import _ from 'lodash';
 import moment from 'moment-timezone';
 import { News,Menu } from '../../../models';
-import { pagination } from '../../../libs';
 
 module.exports = async(req, res, next) => {
 
     let { limit, categories, start, end } = req.query;
 
     try {
-            categories = categories?categories.split(','):[];
+            categories = categories ? categories.split(',') : [];
             start = moment(parseInt(start, 10));
             end = moment(parseInt(end, 10));
 
             debug('categories %j', categories);
 
             let mainMenus = await Menu.find({ 'level': 0 }, 'name').execAsync();
-            let filteredMenus = _.filter(mainMenus, menu => { return categories.includes(menu.name); });
-            let objectIds = _.map(filteredMenus, menu => { return menu['_id']; } );
+            let filteredMenus = _.filter(mainMenus, menu => { return _.includes(categories, menu.name); });
+            let objectIds = _.map(filteredMenus, menu => { return menu['_id']; });
 
             debug('categories objectIds = %j', objectIds);
 
@@ -50,17 +50,14 @@ module.exports = async(req, res, next) => {
                 .sort('-startedAt');
 
             let newsList = await rssNeedNews.execAsync();
-            
+
             debug('共撈了 %d 新聞', newsList.length);
 
             return res.json(newsList);
 
-               
         } catch (err) {
 
         return next(err);
     }
-
-
 
 };
