@@ -1,65 +1,63 @@
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:rss:list');
 import _ from 'lodash';
-import Promise from 'bluebird';
 import moment from 'moment-timezone';
-
-import {
-    News,Menu
-} from '../../../models';
-import {
-    pagination
-} from '../../../libs';
+import { News,Menu } from '../../../models';
+import { pagination } from '../../../libs';
 
 module.exports = async(req, res, next) => {
 
-    let { limit , categories , start , end } = req.query;
-    if (categories) {
-        categories = JSON.parse(categories);
-    }
+    let { limit, categories, start, end } = req.query;
 
     try {
-        debug('categories %j',categories);
-        
-        let mainMenus = await Menu.find({'level':[0]},'name').execAsync();
-        let filteredMenus = mainMenus.filter(menu => categories.includes(menu.name))
-        let objectIds = filteredMenus.map(menu => menu['_id'])
+            categories = categories?categories.split(','):[];
+            start = moment(parseInt(start, 10));
+            end = moment(parseInt(end, 10));
 
-        debug('objectIds = %j',objectIds);
-        
-        let rssNeedNews = News.find();
+            debug('categories %j', categories);
 
-        if(start){
-            debug('startTime %s',moment(parseInt(start, 10)).tz('Asia/Taipei').format('YYYY/MM/DD hh:mm'));
-            rssNeedNews.where('createdAt').gte(new Date(parseInt(start, 10)));
+            let mainMenus = await Menu.find({ 'level': 0 }, 'name').execAsync();
+            let filteredMenus = _.filter(mainMenus, menu => { return categories.includes(menu.name); });
+            let objectIds = _.map(filteredMenus, menu => { return menu['_id']; } );
 
-        }
-        if(end){
-            debug('endTime %s',moment(parseInt(end, 10)).tz('Asia/Taipei').format('YYYY/MM/DD hh:mm'));
-            rssNeedNews.where('createdAt').lte(new Date(parseInt(end, 10)));
-        }
-        if(limit) {
-            debug('limit %s',limit);
-            rssNeedNews
-            .limit(limit);
-        }
+            debug('categories objectIds = %j', objectIds);
 
-        if(categories) {
-            rssNeedNews
-            .where('isDeliver').equals(true)
-            .where('MainMenu').in(objectIds);
-        }
+            let rssNeedNews = News.find();
 
-        rssNeedNews
-            .populate('MainPhoto MainMenu Menus');
+            if (start) {
+                debug('startTime %s', start );
+                rssNeedNews.where('createdAt').gte(start);
 
-        let newsList = await rssNeedNews.execAsync();
+            }
+            if (end) {
+                debug('endTime %s', end );
+                rssNeedNews.where('createdAt').lte(end);
+            }
+            if (limit) {
+                debug('limit %s', limit);
+                rssNeedNews.limit(parseInt(limit,10));
+            }
 
-        res.json(newsList);
+            if (categories) {
+                rssNeedNews
+                    .where('isDeliver').equals(true)
+                    .where('MainMenu').in(objectIds);
+            }
 
-        debug('共撈了 %d 新聞', newsList.length );
+            rssNeedNews.populate('MainPhoto MainMenu Menus');
 
-    }catch(err) {
+            let newsList = await rssNeedNews.execAsync();
+            
+            debug('共撈了 %d 新聞', newsList.length);
+
+            return res.json(newsList);
+
+               
+        } catch (err) {
+
         return next(err);
     }
+
+
+
 };

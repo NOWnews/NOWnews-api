@@ -13,7 +13,7 @@ module.exports = async (req, res, next) => {
         let { categoryName, type } = req.params;
 
         let menu = await Menu.findOne()
-            .where('name').equals(categoryName)
+            .where('categoryName').equals(categoryName)
             .execAsync();
 
         // 如果連選單的資料都查不到，直接噴給他空的
