@@ -62,7 +62,6 @@ module.exports = async (req, res, next) => {
                 .where('status').equals('RELEASE')
                 .where('startedAt').lte(Date.now())
                 .populate('MainMenu Menus MainPhoto MainVideo')
-                .select('sn _id title shortTitle MainMenu MainPhoto startedAt type')
                 .limit(limit)
                 .skip(skip)
                 .sort('-startedAt')
