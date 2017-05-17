@@ -11,8 +11,7 @@ module.exports = async(req, res, next) => {
 
     try {
             categories = categories?categories.split(','):[];
-            start = moment(parseInt(start, 10));
-            end = moment(parseInt(end, 10));
+
 
             debug('categories %j', categories);
 
@@ -25,13 +24,15 @@ module.exports = async(req, res, next) => {
             let rssNeedNews = News.find();
 
             if (start) {
+                start = moment(parseInt(start, 10));
                 debug('startTime %s', start );
-                rssNeedNews.where('createdAt').gte(start);
+                rssNeedNews.where('startedAt').gte(start);
 
             }
             if (end) {
+                end = moment(parseInt(end, 10));
                 debug('endTime %s', end );
-                rssNeedNews.where('createdAt').lte(end);
+                rssNeedNews.where('startedAt').lte(end);
             }
             if (limit) {
                 debug('limit %s', limit);
@@ -50,12 +51,12 @@ module.exports = async(req, res, next) => {
                 .sort('-startedAt');
 
             let newsList = await rssNeedNews.execAsync();
-            
+
             debug('共撈了 %d 新聞', newsList.length);
 
             return res.json(newsList);
 
-               
+
         } catch (err) {
 
         return next(err);
