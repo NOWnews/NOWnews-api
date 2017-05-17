@@ -8,11 +8,16 @@ import { News } from '../../../models';
 module.exports = async (req, res, next) => {
     try {
 
-        let { limit, skip, page } = req.query;
+        let { limit, skip, page, type } = req.query;
 
         // 新聞相關的 cursor
         let cursor = News.find();
         let totalCursor = News.find();
+
+        if (type) {
+            cursor.where('type').equals(type);
+            totalCursor.where('type').equals(type);
+        }
 
         // 找出相關列表與分頁資料
         let [ newsList, total ] = await Promise.all([

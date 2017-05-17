@@ -535,3 +535,4 @@ None
 | limit | 一次回傳的數量 | Number | | |
 | skip | 跳過多少資料 | Number | | |
 | page | 第幾頁 | Number | | |
+| type | 新聞類型 | String | | video/photo/news |
