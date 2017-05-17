@@ -4,6 +4,8 @@ import mongoose from 'mongoose';
 import moment from 'moment-timezone';
 let Schema = mongoose.Schema;
 
+import config from 'config';
+
 let schema = new Schema({
 
     // 圖片的標題
@@ -137,6 +139,13 @@ let schema = new Schema({
     toJSON:{
         virtuals: true,
     }
+});
+
+schema.virtual('thumbnail').get(function () {
+    let url = config.get('general.thumbnail.url');
+    let width = config.get('general.thumbnail.width');
+    let quality = config.get('general.thumbnail.quality');
+    return `${url}/?w=${width}&q=${quality}&src=${encodeURIComponent(this.url)}`;
 });
 
 schema.virtual('formatCreatedAt').get(function () {
