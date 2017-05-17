@@ -133,8 +133,9 @@ None
 
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
-| mainMenus | MainMenu 的 sn | String | | `/news?mainMenus=1`, `/news?mainMenus=1,2,3` |
-| menus | Menus 的 sn | String | | `/news?mainMenus=4,5,6` |
+| mainMenus | MainMenu 的 sn | Number | | `/news?mainMenus=1`, `/news?mainMenus=1,2,3` |
+| menus | Menus 的 sn | Number | | `/news?mainMenus=4,5,6` |
+| author | 作者的 ObjectId | ObjectId | | `/news?author=5913fcab11f62d4a32be69d4` |
 
 ### [GET] `/news/{:sn}`
 
