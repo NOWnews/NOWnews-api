@@ -133,8 +133,9 @@ None
 
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
-| mainMenus | MainMenu 的 sn | String | | `/news?mainMenus=1`, `/news?mainMenus=1,2,3` |
-| menus | Menus 的 sn | String | | `/news?mainMenus=4,5,6` |
+| mainMenus | MainMenu 的 sn | Number | | `/news?mainMenus=1`, `/news?mainMenus=1,2,3` |
+| menus | Menus 的 sn | Number | | `/news?mainMenus=4,5,6` |
+| author | 作者的 ObjectId | ObjectId | | `/news?author=5913fcab11f62d4a32be69d4` |
 
 ### [GET] `/news/{:sn}`
 
@@ -472,3 +473,65 @@ None
 #### Query Parameters
 
 None
+
+## LOCATION API DOCUMENTS
+
+- 地區新聞列表
+
+### [GET] `/location`
+
+地區新聞列表
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'YouCanSeeMeJohnCena' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| limit | 一次回傳的數量 | Number | | |
+| skip | 跳過多少資料 | Number | | |
+| page | 第幾頁 | Number | | |
+| lat | 緯度 | Number | | √ |
+| lng | 精度 | Number | | √ |
+
+## INSTANT API DOCUMENTS
+
+- 即時新聞列表
+
+### [GET] `/instant`
+
+即時新聞列表
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'YouCanSeeMeJohnCena' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| limit | 一次回傳的數量 | Number | | |
+| skip | 跳過多少資料 | Number | | |
+| page | 第幾頁 | Number | | |

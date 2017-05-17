@@ -14,6 +14,8 @@ module.exports = async (req, res, next) => {
 
         let menu = await Menu.findOne()
             .where('categoryName').equals(categoryName)
+            .where('isTrashed').equals(false)
+            .where('status').equals('OPEN')
             .execAsync();
 
         // 如果連選單的資料都查不到，直接噴給他空的
@@ -27,7 +29,7 @@ module.exports = async (req, res, next) => {
             .where('status').equals('RELEASE')
             .or([
                 { MainMenu: menu._id },
-                { Menus: menu._id}
+                { Menus: menu._id }
             ]);
         let newsTotalCursor = News.find()
             .where('isTrashed').equals(false)
@@ -35,7 +37,7 @@ module.exports = async (req, res, next) => {
             .where('status').equals('RELEASE')
             .or([
                 { MainMenu: menu._id },
-                { Menus: menu._id}
+                { Menus: menu._id }
             ]);
 
         if(type) {
@@ -46,7 +48,7 @@ module.exports = async (req, res, next) => {
         let [ newsList, total ] = await Promise.all([
             newsListCursor
                 .populate('MainMenu MainPhoto MainVideo')
-                .select('sn title shortTitle MainMenu MainPhoto MainVideo')
+                .select('sn title shortTitle MainMenu MainPhoto MainVideo type')
                 .limit(limit)
                 .skip(skip)
                 .sort('-startedAt')
@@ -61,7 +63,8 @@ module.exports = async (req, res, next) => {
 
         return res.json({
             newsList,
-            pageData
+            pageData,
+            menu
         });
     } catch (err) {
         return next(err);

@@ -1,23 +1,22 @@
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:rss:list');
+
 import _ from 'lodash';
 import moment from 'moment-timezone';
 import { News,Menu } from '../../../models';
-import { pagination } from '../../../libs';
 
 module.exports = async(req, res, next) => {
 
     let { limit, categories, start, end } = req.query;
 
     try {
-            categories = categories?categories.split(','):[];
-
+            categories = categories ? categories.split(',') : [];
 
             debug('categories %j', categories);
 
             let mainMenus = await Menu.find({ 'level': 0 }, 'name').execAsync();
-            let filteredMenus = _.filter(mainMenus, menu => { return categories.includes(menu.name); });
-            let objectIds = _.map(filteredMenus, menu => { return menu['_id']; } );
+            let filteredMenus = _.filter(mainMenus, menu => { return _.includes(categories, menu.name); });
+            let objectIds = _.map(filteredMenus, menu => { return menu['_id']; });
 
             debug('categories objectIds = %j', objectIds);
 
@@ -53,12 +52,9 @@ module.exports = async(req, res, next) => {
 
             return res.json(newsList);
 
-
         } catch (err) {
 
         return next(err);
     }
-
-
 
 };

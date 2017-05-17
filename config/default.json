@@ -1,4 +1,12 @@
 {
+    "general": {
+        "apiKeys": {
+            "geocode": "AIzaSyBMndk_T5tmXq8GE_dbvZjINOPS0zHbEgs"
+        },
+        "apiUrls": {
+            "geocode": "https://maps.googleapis.com/maps/api/geocode/json"
+        }
+    },
     "admin": {
         "mode": "default",
         "showError": true,
@@ -24,27 +32,21 @@
             "skip": 0,
             "page": 1
         },
-        "apiKeys": {
-            "geocode": "AIzaSyBMndk_T5tmXq8GE_dbvZjINOPS0zHbEgs"
-        },
-        "apiUrls": {
-            "geocode": "https://maps.googleapis.com/maps/api/geocode/json"
-        },
         "imageServer": {
             "username": "imgscp",
             "password": "zAQ!@#EDCXSW",
             "host": "img.nownews.com", //59.124.93.47
             "port": 50022,
-            "url": "http://img.nownews.com/images/nownews_develop",
-            "folder": "/var/www/images/nownews_develop"
+            "url": "http://img.nownews.com/nownews_develop/images",
+            "folder": "/var/www/img.nownews.com/nownews_develop/images"
         },
         "videoServer": {
             "username": "imgscp",
             "password": "zAQ!@#EDCXSW",
             "host": "img.nownews.com", //59.124.93.47
             "port": 50022,
-            "url": "http://img.nownews.com/videos/nownews_develop",
-            "folder": "/var/www/videos/nownews_develop"
+            "url": "http://img.nownews.com/nownews_develop/videos",
+            "folder": "/var/www/img.nownews.com/nownews_develop/videos"
         },
         "indexpage": {
             "carousels": 10,
@@ -77,12 +79,6 @@
             "limit": 20,
             "skip": 0,
             "page": 1
-        },
-        "apiKeys": {
-            "geocode": "AIzaSyBMndk_T5tmXq8GE_dbvZjINOPS0zHbEgs"
-        },
-        "apiUrls": {
-            "geocode": "https://maps.googleapis.com/maps/api/geocode/json"
         }
     },
     "pageviewWeight": {
