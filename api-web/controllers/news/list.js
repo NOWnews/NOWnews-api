@@ -10,7 +10,7 @@ import { pagination } from '../../../libs';
 module.exports = async (req, res, next) => {
     try {
 
-        let { mainMenus, menus, limit, skip, page } = req.query;
+        let { mainMenus, author, menus, limit, skip, page } = req.query;
 
         let mainMenuSns = _.words(mainMenus);
         let menuSns = _.words(menus);
@@ -54,6 +54,11 @@ module.exports = async (req, res, next) => {
                 { MainMenu: { $in: mainMenuIds }},
                 { Menus: { $in: menuIds }}
             ]);
+        }
+
+        if(author) {
+            cursor.where('Author').equals(author);
+            totalCursor.where('Author').equals(author);
         }
 
         // 找出相關列表與分頁資料
