@@ -11,8 +11,6 @@ module.exports = async(req, res, next) => {
 
     try {
             categories = categories ? categories.split(',') : [];
-            start = moment(parseInt(start, 10));
-            end = moment(parseInt(end, 10));
 
             debug('categories %j', categories);
 
@@ -25,13 +23,15 @@ module.exports = async(req, res, next) => {
             let rssNeedNews = News.find();
 
             if (start) {
+                start = moment(parseInt(start, 10));
                 debug('startTime %s', start );
-                rssNeedNews.where('createdAt').gte(start);
+                rssNeedNews.where('startedAt').gte(start);
 
             }
             if (end) {
+                end = moment(parseInt(end, 10));
                 debug('endTime %s', end );
-                rssNeedNews.where('createdAt').lte(end);
+                rssNeedNews.where('startedAt').lte(end);
             }
             if (limit) {
                 debug('limit %s', limit);
@@ -44,10 +44,7 @@ module.exports = async(req, res, next) => {
                     .where('MainMenu').in(objectIds);
             }
 
-            rssNeedNews
-                .populate('MainPhoto MainMenu Menus')
-                .where('status').equals('RELEASE')
-                .sort('-startedAt');
+            rssNeedNews.populate('MainPhoto MainMenu Menus');
 
             let newsList = await rssNeedNews.execAsync();
 
