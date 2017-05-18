@@ -28,7 +28,7 @@ module.exports = async (req, res, next) => {
                 .limit(limit)
                 .skip(skip)
                 .sort('-startedAt')
-                .select('sn _id title shortTitle MainMenu MainPhoto startedAt type')
+                .select('sn _id title shortTitle MainMenu MainPhoto MainVideo startedAt type')
                 .execAsync(),
             totalCursor.where('isTrashed').equals(false)
                 .where('status').equals('RELEASE')
