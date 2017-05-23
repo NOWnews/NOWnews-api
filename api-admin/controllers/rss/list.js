@@ -21,15 +21,15 @@ module.exports = async(req, res, next) => {
             debug('categories objectIds = %j', objectIds);
 
             let rssNeedNews = News.find();
-
+            console.log(parseInt(start, 10), 'L24')
             if (start) {
-                start = moment(parseInt(start, 10));
+                start = moment(start).tz('Asia/Taipei');
                 debug('startTime %s', start );
                 rssNeedNews.where('startedAt').gte(start);
 
             }
             if (end) {
-                end = moment(parseInt(end, 10));
+                end = moment(end).tz('Asia/Taipei');
                 debug('endTime %s', end );
                 rssNeedNews.where('startedAt').lte(end);
             }

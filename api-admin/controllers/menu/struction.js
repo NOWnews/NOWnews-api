@@ -39,7 +39,7 @@ module.exports = async (req, res, next) => {
 
         let menuData = await Menu.findAdminStructionAsync();
         debug('menuData = %j', menuData);
- 
+
         return res.json(menuData);
     } catch (err) {
         return next(err);
