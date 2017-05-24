@@ -12,6 +12,7 @@ import location from './location';
 import instant from './instant';
 import specialTopic from './specialTopic';
 import specialChannel from './specialChannel';
+import personalize from './personalize';
 
 module.exports = (app) => {
 
@@ -28,6 +29,7 @@ module.exports = (app) => {
     app.use('/', instant);
     app.use('/', specialTopic);
     app.use('/', specialChannel);
+    app.use('/', personalize);
 
     return (req, res, next) => {
         return next();
