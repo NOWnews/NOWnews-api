@@ -48,7 +48,7 @@ module.exports = async(req, res, next) => {
         // 編輯新的名字與 ObjectId
         let objectId = mongoose.Types.ObjectId();
         let now = moment(Date.now()).tz('Asia/Taipei').format('YYYYMMDDHHmm');
-        let newName = `${objectId}-${now}.${ext}`;
+        let newName = `${objectId}_${now}.${ext}`;
         let newPath = `uploads/${newName}`;
 
         // 將圖片名稱換掉
