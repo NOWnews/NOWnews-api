@@ -54,21 +54,23 @@ module.exports = async () => {
                 }
             });
 
-            // 計算各分類的比例
-            let countKeys = _.keys(count);
+            // 照分類比例做排序
+            let sortedCount = _.keys(count).sort((i,j) => {
+                return count[j] - count[i];
+            });
+
+            // 只取前三名的 menu 資料
+            let topMenuIds = _.slice(sortedCount, 0, 3);
+
+            // 計算前三名分類的比例
             let total = 0;
 
-            _.forIn(count, (value, key) => {
-                total += value; 
+            _.forEach(topMenuIds, (key) => {
+                total += count[key];
             });
 
             _.forIn(count, (value, key) => {
                 count[key] = ( count[key] / total ).toFixed(2);
-            });
-
-            // 照分類比例做排序
-            let sortedCount = _.keys(count).sort((i,j) => {
-                return count[j] - count[i];
             });
 
             // 整理資料
@@ -90,7 +92,7 @@ module.exports = async () => {
         debug('personalizes = %j', personalizes);
 
         // 將分析好的資料存入資料庫
-        let newMimingData = await Personalize.createAsync(personalizes);
+        let newMiningData = await Personalize.createAsync(personalizes);
 
         return Promise.resolve({});
     } catch (err) {

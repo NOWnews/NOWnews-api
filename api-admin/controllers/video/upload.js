@@ -38,7 +38,7 @@ module.exports = async(req, res, next) => {
         let objectId = mongoose.Types.ObjectId();
         let now = moment(Date.now()).tz('Asia/Taipei').format('YYYYMMDDHHmm');
         let { ext } = fileType(buffer);
-        let newName = `${objectId}-${now}.${ext}`;
+        let newName = `${objectId}_${now}.${ext}`;
         let newPath = `uploads/${newName}`;
 
         // 將影片名稱換掉

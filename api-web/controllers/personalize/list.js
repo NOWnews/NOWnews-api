@@ -21,11 +21,11 @@ module.exports = async (req, res, next) => {
 
         let [ dataByUser, dataByCookie ] = await Promise.all([
             Personalize.findOne()
-                .where('userId').equals(null)
+                .where('userId').equals(userId)
                 .sort('-createdAt')
                 .execAsync(),
             Personalize.findOne()
-                .where('cookie').equals(null)
+                .where('cookie').equals(cookie)
                 .sort('-createdAt')
                 .execAsync(),
         ]);
