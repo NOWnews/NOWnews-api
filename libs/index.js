@@ -8,6 +8,7 @@ import getRelationNewsBySn from './getRelationNewsBySn';
 import getNextNewsBySn from './getNextNewsBySn';
 import getPrevNewsBySn from './getPrevNewsBySn';
 import updateAllHotNews from './updateAllHotNews';
+import updatePersonalize from './updatePersonalize';
 import refreshIndexPage from './refreshIndexPage';
 
 module.exports = {
@@ -20,5 +21,6 @@ module.exports = {
     getNextNewsBySn,
     getPrevNewsBySn,
     updateAllHotNews,
+    updatePersonalize,
     refreshIndexPage
 };

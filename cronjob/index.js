@@ -1,9 +1,11 @@
 
 import updateAllHotNews from './updateAllHotNews';
+import updatePersonalize from './updatePersonalize';
 
 module.exports = async () => {
 
     await Promise.all([
-        updateAllHotNews.start()
+        updateAllHotNews.start(),
+        updatePersonalize.start()
     ]);
 };
