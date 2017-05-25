@@ -29,6 +29,7 @@ module.exports = async (req, res, next) => {
                 $set: { isTrashed: true }
             },
             {
+                multi: true,
                 new: true
             }
         );
