@@ -29,7 +29,12 @@ module.exports = async (req, res, next) => {
                     url: options.url
                 }, {
                     $inc: { pageviews: 1 },
-                    $set: { newsId: options.newsId, menuId: options.menuId }
+                    $set: {
+                        newsId: options.newsId,
+                        menuId: options.menuId,
+                        cookie: options.cookie,
+                        userId: options.userId
+                    }
                 }, {
                     upsert: true,
                     new: true,
@@ -39,6 +44,8 @@ module.exports = async (req, res, next) => {
                 url: options.url,
                 queryString: options.queryString,
                 menuId: options.menuId,
+                cookie: options.cookie,
+                userId: options.userId,
                 title: options.title,
                 userAgent: userAgent.getUA(),
                 browser: browser || appView,
