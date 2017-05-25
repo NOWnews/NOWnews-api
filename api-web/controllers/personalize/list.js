@@ -33,9 +33,25 @@ module.exports = async (req, res, next) => {
         debug('dataByUser = %j', dataByUser);
         debug('dataByCookie = %j', dataByCookie);
 
-        // 找不到分析過後的資料，回傳空陣列
+        // 找不到分析過後的資料，回傳隨機資料
         if(!dataByUser && !dataByCookie) {
-            return res.json([]);
+            let total = await News.find()
+                .where('isTrashed').equals(false)
+                .where('status').equals('RELEASE')
+                .where('startedAt').lte(Date.now())
+                .countAsync();
+            let randomSkip = Math.floor(Math.random() * total);
+            let randomNews = await News.find()
+                .where('isTrashed').equals(false)
+                .where('status').equals('RELEASE')
+                .where('startedAt').lte(Date.now())
+                .populate('MainMenu Menus MainPhoto MainVideo')
+                .select('sn _id title shortTitle MainMenu MainPhoto startedAt type')
+                .limit(limit)
+                .skip(randomSkip)
+                .execAsync();
+
+            return res.json(randomNews);
         }
 
         // 參照資料，如果有 user 就用 user，沒有就用 cookie 的資料
