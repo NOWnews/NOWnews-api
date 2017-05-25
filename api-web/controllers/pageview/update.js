@@ -22,7 +22,7 @@ module.exports = async (req, res, next) => {
 
         let platformInfo = device(userAgent.getUA()).type;
 
-        let options = _.pick(req.body, 'newsId', 'queryString', 'url', 'menuId', 'title', 'appPlatform', 'appView' );
+        let options = _.pick(req.body, 'newsId', 'queryString', 'url', 'menuId', 'title', 'appPlatform', 'appView', 'cookie', 'userId' );
 
         let [ pageview, pageviewLog ] = await Promise.all([
             Pageview.findOneAndUpdateAsync({

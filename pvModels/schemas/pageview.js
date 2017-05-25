@@ -19,6 +19,16 @@ let schema = new Schema({
         default: null
     },
 
+    userId: {
+        type: Schema.Types.ObjectId,
+        default: null
+    },
+
+    cookie: {
+        type: String,
+        default: null
+    },
+
     pageviews: {
         type: Number,
         default: 0

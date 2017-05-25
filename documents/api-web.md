@@ -262,6 +262,8 @@ None
 | url | 當前的 url(不包含 queryString) | String | √ | |
 | newsId | 新聞的 ObjectId | String | | |
 | menuId | 此新聞的 MainMenu ObjectId | String | | |
+| cookie | 瀏覽器中 cookie `NOWPersonalize` 的值 | String | | |
+| userId | 如果有登入後，會帶入 user id | String | | |
 | queryString | url 後面的 query string | String | | |
 | appPlatform | 如果是從 APP 來的話再帶入這個欄位 |  [`IOS`, `ANDROID`] | | |
 | appView | 如果是從 APP 來的話再帶入這個欄位 | [`IN_APP`] | | |
@@ -536,3 +538,31 @@ None
 | skip | 跳過多少資料 | Number | | |
 | page | 第幾頁 | Number | | |
 | type | 新聞類型 | String | | VIDEO/PHOTO/NEWS |
+
+## PERSONALIZE API DOCUMENTS
+
+- 個人推薦新聞
+
+### [GET] `/personalize`
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'YouCanSeeMeJohnCena' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| limit | 一次回傳的數量 | Number | | |
+| cookie | 瀏覽器的 user cookie | String | 與 userId 2 選 1 | |
+| userId | user 的 ObjectId | ObjectId | 與 cookie 2 選 1 | |

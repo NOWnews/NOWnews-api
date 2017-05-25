@@ -20,13 +20,16 @@ console.log(chalk.red(`mongodb connect to: ${host}/${db}`));
 import pageviewSchema from './schemas/pageview';
 import pageviewLogSchema from './schemas/pageviewLog';
 import temperatureLogSchema from './schemas/temperatureLog';
+import personalizeSchema from './schemas/personalize';
 
 let Pageview = connection.model('Pageview', pageviewSchema);
 let PageviewLog = connection.model('PageviewLog', pageviewLogSchema);
 let TemperatureLog = connection.model('TemperatureLog', temperatureLogSchema);
+let Personalize = connection.model('Personalize', personalizeSchema);
 
 module.exports = {
     Pageview,
     PageviewLog,
-    TemperatureLog
+    TemperatureLog,
+    Personalize
 };
