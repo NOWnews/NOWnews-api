@@ -38,8 +38,8 @@ module.exports = async () => {
 
         // 利用 log 分析每個使用者的資料
         let personalizes = _.map(personalLogs, (personalLog) => {
-
-            let data = { cookie: personalLog.cookie || null, userId: personalLog.userId || null };
+            debug('personalLog = %j', personalLog);
+            let data = { cookie: personalLog._id || null, userId: personalLog.logs[0].userId || null };
             let count = {};
 
             // 計算各分類的總量
@@ -86,7 +86,7 @@ module.exports = async () => {
                 menuId: sortedCount[2],
                 value: count[sortedCount[2]]
             };
-
+            debug('data = %j', data);
             return data;
         });
         debug('personalizes = %j', personalizes);
