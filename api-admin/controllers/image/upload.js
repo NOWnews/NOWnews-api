@@ -30,6 +30,24 @@ module.exports = async(req, res, next) => {
 
     try{
 
+        // 如果有帶入要壓浮水印的參數，就押上浮水印
+        if(req.body.isWatermark) {
+            await new Promise((resolve, reject) => {
+                gm(path)
+                    .resize(970, null)
+                    .command('composite')
+                    .in('-gravity', 'SouthEast')
+                    .in('-geometry', '+15 +15')
+                    .in('source/nownews_watermark.png')
+                    .write(path, (err, stdout, stderr, command) => {
+                        if (err){
+                            return reject(err);
+                        }
+                        return resolve({});
+                    });
+            });
+        }
+
         // 讀取檔案的前 4100 bytes 存成 buffer
         let buffer = readChunk.sync(path, 0, 4100);
 
