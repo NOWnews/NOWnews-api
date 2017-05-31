@@ -24,6 +24,7 @@ module.exports = async(req, res, next) => {
         let [ videos, total ] = await Promise.all([
             cursor
                 .where('isTrashed').equals(false)
+                .populate('CreatedBy UpdatedBy')
                 .limit(limit)
                 .skip(skip)
                 .sort(sort)
