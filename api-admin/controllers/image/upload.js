@@ -31,7 +31,7 @@ module.exports = async(req, res, next) => {
     try{
 
         // 如果有帶入要壓浮水印的參數，就押上浮水印
-        if(req.body.watermark) {
+        if(req.body.isWatermark) {
             await new Promise((resolve, reject) => {
                 gm(path)
                     .resize(970, null)
