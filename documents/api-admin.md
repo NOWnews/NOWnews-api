@@ -411,7 +411,7 @@ None
 | isDeliver | 是否可以上傳 | String |  | `true` |
 | Tag | 圖片的標籤(關鍵字) | ObjectId |  | |
 | CreatedBy | 最後更新者 | String | √ | `530000000000000000000001` |
-| isWatermark | 是否壓上浮水印 | Boolean |  | |
+| isWatermark | 是否壓上浮水印 | String |  | |
 
 #### Query Parameters
 None
