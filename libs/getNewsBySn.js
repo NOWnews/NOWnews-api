@@ -12,7 +12,7 @@ module.exports = async (sn) => {
             .where('isTrashed').equals(false)
             .where('status').equals('RELEASE')
             .where('startedAt').lte(Date.now())
-            .populate('MainMenu Menus MainPhoto MainVideo Photos Videos Author Tags CreatedBy UpdatedBy')
+            .populate('MainMenu Menus MainPhoto MainVideo Photos Videos Tags')
             .execAsync();
         debug('news = %j', news);
 
