@@ -4,6 +4,7 @@ const debug = Debug('NOWnews-api:api-admin:controllers:preview:create');
 
 import cryptoRandomString from 'crypto-random-string';
 
+import _ from 'lodash';
 import redis from '../../../redis';
 import { News } from '../../../models';
 
@@ -19,12 +20,15 @@ module.exports = async (req, res, next) => {
             'content',
             'Photos',
             'Videos',
-            'type'
+            'type',
+            'startedAt',
+            'createdAt',
+            'Tags',
         ]);
 
         let redisKey = `preview${cryptoRandomString(10)}`;
 
-        let cacheData = await redis.setValue(redisKey, options, 5);
+        let cacheData = await redis.setValue(redisKey, options, 300);
 
         return res.json({
             redisKey
