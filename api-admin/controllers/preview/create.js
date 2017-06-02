@@ -10,21 +10,21 @@ import { News } from '../../../models';
 module.exports = async (req, res, next) => {
     try {
 
-        let { id } = req.body;
-
-        let news = await News.findById(id)
-            .populate('Author LastReviewer CreatedBy UpdatedBy MainMenu Menus Tags MainPhoto MainVideo')
-            .lean()
-            .execAsync();
-        debug('news = %j', news);
-
-        if(!news) {
-            throw new Error('16003');
-        }
+        let options = _.pick(req.body, [
+            'title',
+            'MainMenu',
+            'newsBy',
+            'MainPhoto',
+            'MainVideo',
+            'content',
+            'Photos',
+            'Videos',
+            'type'
+        ]);
 
         let redisKey = `preview${cryptoRandomString(10)}`;
 
-        let cacheData = await redis.setValue(redisKey, news, 5);
+        let cacheData = await redis.setValue(redisKey, options, 5);
 
         return res.json({
             redisKey

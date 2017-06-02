@@ -1775,7 +1775,15 @@ None
 
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
-| id | 新聞 ObjectId | ObjectId | √ | |
+| title | 新聞標題 | String | | |
+| MainMenu | 主選單 object | Object | | |
+| newsBy | 訊頭 | String | | |
+| MainPhoto | 主圖 Object | Object | | |
+| MainVideo | 主影音 Object | Object | | |
+| content | 新聞內容 | String | | |
+| Photos | 圖片 | Object | | |
+| Videos | 影音 | Object | | |
+| type | 新聞的類別 | String | | |
 
 #### Query Parameters
 
