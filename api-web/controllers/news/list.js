@@ -67,7 +67,7 @@ module.exports = async (req, res, next) => {
                 .where('status').equals('RELEASE')
                 .where('startedAt').lte(Date.now())
                 .populate( ['MainMenu', 'Menus', 'MainPhoto', 'MainVideo',
-                { path:'Author' ,  populate: { path: 'Avatar', select: 'url' } ,select: 'Avatar'}] )
+                { path:'Author' ,  populate: { path: 'Avatar', select: 'url' } ,select: 'Avatar name'}] )
                 .select('sn _id title shortTitle MainMenu MainPhoto startedAt type Author')
                 .limit(limit)
                 .skip(skip)
