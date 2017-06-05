@@ -12,7 +12,8 @@ module.exports = async (sn) => {
             .where('isTrashed').equals(false)
             .where('status').equals('RELEASE')
             .where('startedAt').lte(Date.now())
-            .populate('MainMenu Menus MainPhoto MainVideo Photos Videos Tags')
+            .populate(['MainMenu', 'Menus', 'MainPhoto', 'MainVideo', 'Photos', 'Videos', 'Tags',
+            { path:'Author' ,  populate: { path: 'Avatar', select: 'url' } ,select: 'Avatar'}])
             .execAsync();
         debug('news = %j', news);
 
