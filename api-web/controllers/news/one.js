@@ -27,7 +27,7 @@ module.exports = async (req, res, next) => {
         }
 
         //加上pageview的totalscore
-        let pageView = await Pageview.find()
+        let pageView = await Pageview.findOne()
             .where('url').equals(news.parseUrl)
             .select('totalScore');
 
