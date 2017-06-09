@@ -4,6 +4,7 @@ const debug = Debug('NOWnews-api:api-web:controllers:news:one');
 import redis from '../../../redis';
 import libs from '../../../libs';
 import { News } from '../../../models';
+import { Pageview } from '../../../pvModels'
 
 module.exports = async (req, res, next) => {
 
@@ -24,6 +25,14 @@ module.exports = async (req, res, next) => {
         if(!news) {
             throw new Error('16003');
         }
+
+        //加上pageview的totalscore
+        let pageView = await Pageview.find()
+            .where('url').equals(news.parseUrl)
+            .select('totalScore');
+
+        news = news.toObject();
+        news.pageView = pageView;
 
         // 將這篇新聞存入 redis
         let cacheData = await redis.setValue(`news${sn}`, news, 3600 * 6);
