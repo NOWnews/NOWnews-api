@@ -20,7 +20,7 @@ module.exports = async (sn) => {
             .where('Tags').in(Tags)
             .where('sn').ne(sn)
             .populate('MainMenu MainPhoto')
-            .select('title shortTitle sn MainMenu MainPhoto type')
+            .select('title shortTitle sn MainMenu MainPhoto type startedAt')
             .sort('-startedAt')
             .limit(3)
             .execAsync();
