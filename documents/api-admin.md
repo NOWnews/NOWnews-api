@@ -761,6 +761,8 @@ None
 | type | 新聞的分類 | String |  | `type=NEWS` |
 | status | 狀態 | String |  | `status=DRAFT` |
 | Author | 作者 | String |  | `Author=520000000000000000000001` |
+| startedAt | 開始時間 | String |  | `startedAt=2017-06-07` |
+| endedAt | 結束時間 | String |  | `endedAt=2017-06-07` |
 | CreatedBy | 建立者 | String |  | `CreatedBy=520000000000000000000001` |
 | UpdatedBy | 更新者 | String |  | `UpdatedBy=520000000000000000000001` |
 | page | 第幾頁 | Number |  | `page=1` |

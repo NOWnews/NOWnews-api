@@ -1,4 +1,4 @@
-
+import moment from 'moment';
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:news:list');
 
@@ -9,7 +9,8 @@ import { pagination } from '../../../libs';
 
 module.exports = async (req, res, next) => {
 
-    let { limit, page, skip, title, type, status, Author, CreatedBy, UpdatedBy, LastReviewer, sort } = req.query;
+    let { limit, page, skip, title, type, status, Author,
+         CreatedBy, UpdatedBy, LastReviewer, sort, startedAt, endedAt} = req.query;
     debug('req.query = %j', req.query);
 
     try {
@@ -51,6 +52,16 @@ module.exports = async (req, res, next) => {
         if(LastReviewer) {
             cursor.where('LastReviewer').equals(LastReviewer);
             totalCursor.where('LastReviewer').equals(LastReviewer);
+        }
+
+        if(startedAt) {
+            cursor.where('createdAt').gte(moment(`${startedAt} 00:00`).tz('Asia/Taipei'));
+            totalCursor.where('createdAt').gte(moment(`${startedAt} 00:00`).tz('Asia/Taipei'));
+        }
+
+        if(endedAt){
+            cursor.where('createdAt').lte(moment(`${endedAt} 23:59`).tz('Asia/Taipei'));
+            totalCursor.where('createdAt').lte(moment(`${endedAt} 23:59`).tz('Asia/Taipei'));
         }
 
         let [ newsList, total ] = await Promise.all([
