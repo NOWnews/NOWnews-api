@@ -15,6 +15,13 @@ module.exports = async (req, res, next) => {
         let cacheNews = await redis.getValue(`news${sn}`);
 
         if(cacheNews) {
+            //加上pageview的totalscore
+            let pageView = await Pageview.findOne()
+                .where('url').equals(cacheNews.parseUrl)
+                .select('totalScore')
+                .execAsync();
+
+            cacheNews.pageView = pageView;
             return res.json(cacheNews);
         }
 
@@ -29,7 +36,8 @@ module.exports = async (req, res, next) => {
         //加上pageview的totalscore
         let pageView = await Pageview.findOne()
             .where('url').equals(news.parseUrl)
-            .select('totalScore');
+            .select('totalScore')
+            .execAsync();
 
         news = news.toObject();
         news.pageView = pageView;
