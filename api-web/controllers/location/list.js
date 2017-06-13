@@ -62,7 +62,7 @@ module.exports = async (req, res, next) => {
 
         let opts = {
             center: [lng, lat],
-            maxDistance: 10,
+            maxDistance: 0.0005,
             spherical: true
         };
 
