@@ -25,7 +25,7 @@ module.exports = async (req, res, next) => {
                 .where('CreatedBy').equals(id)
                 .where('startedAt').gte(`${startedAt} 00:00`)
                 .where('startedAt').lte(`${endedAt} 23:59`)
-                .select('_id sn title startedAt formatStartedAt')
+                .select('_id sn title startedAt formatStartedAt status')
                 .execAsync()
         ]);
 
@@ -35,7 +35,8 @@ module.exports = async (req, res, next) => {
                 newsId: news._id,
                 title: news.title,
                 startedAt: news.formatStartedAt,
-                url: news.parseUrl
+                url: news.parseUrl,
+                status: news.status
             };
             return Pageview.findOne()
                 .where('newsId').equals(news._id)
