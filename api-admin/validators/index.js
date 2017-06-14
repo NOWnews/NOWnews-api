@@ -11,6 +11,7 @@ import specialTopic from './specialTopic';
 import specialChannel from './specialChannel';
 import indexpage from './indexpage';
 import postBoard from './postBoard';
+import dailyPlan from './dailyPlan';
 
 module.exports = {
     user,
@@ -24,5 +25,6 @@ module.exports = {
     video,
     specialTopic,
     specialChannel,
-    indexpage
+    indexpage,
+    dailyPlan
 };

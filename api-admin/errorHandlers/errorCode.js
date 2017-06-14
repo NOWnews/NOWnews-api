@@ -424,4 +424,25 @@ module.exports = {
         message: '[PostBoard] 找不到這則 post',
         statusCode: 404
     },
+
+    // DailyPlan
+    25001: {
+        message: '[DailyPlan] 缺少 title 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    25002: {
+        message: '[DailyPlan] 缺少 Content 這個欄位或是格式不正確',
+        statusCode: 400
+    },
+
+    25003: {
+        message: '[DailyPlan] 缺少 CreatedBy 這個欄位或是格式不正確',
+        statusCode: 404
+    },
+
+    25004: {
+        message: '[DailyPlan] 找不到這則稿單',
+        statusCode: 404
+    },
 };
