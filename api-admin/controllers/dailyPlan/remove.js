@@ -5,7 +5,6 @@ const debug = Debug('NOWnews-api:api-admin:controllers:dailyPlan:remove');
 import { DailyPlan } from '../../../models';
 
 module.exports = async (req, res, next) => {
-
     try {
 
         let { id } = req.params;
@@ -17,7 +16,7 @@ module.exports = async (req, res, next) => {
             .execAsync();
 
         if(!dailyPlan) {
-            throw new Error('24003');
+            throw new Error('25004');
         }
 
         dailyPlan.set('isTrashed', true);

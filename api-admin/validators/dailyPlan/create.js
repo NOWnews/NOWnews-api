@@ -18,10 +18,6 @@ module.exports = (req, res, next) => {
         throw new Error('25001');
     }
 
-    if(!content || content === '') {
-        throw new Error('25002');
-    }
-
     if(!mongoose.Types.ObjectId.isValid(CreatedBy)) {
         throw new Error('25003');
 

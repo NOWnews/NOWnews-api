@@ -1,9 +1,6 @@
-
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:dailyPlan:create');
-
 import _ from 'lodash';
-
 import { DailyPlan } from '../../../models';
 
 module.exports = async (req, res, next) => {
@@ -17,7 +14,7 @@ module.exports = async (req, res, next) => {
             title, startedAt, Center, content, comments, CreatedBy, UpdatedBy
         });
 
-        debug('new dailyPlan = %j', dailyPlan);
+        debug('dailyPlan = %j', dailyPlan);
 
         return res.json({dailyPlan});
     }catch(err) {

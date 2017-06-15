@@ -9,7 +9,8 @@ import create from './create';
 import list from './list';
 import one from './one';
 import remove from './remove';
-import removeMessage from './removeMessage';
+import createComment from './createComment';
+import removeComment from './removeComment';
 import update from './update';
 
 router.route('/dailyPlan')
@@ -21,7 +22,8 @@ router.route('/dailyPlan/:id')
     .put(update)
     .delete(remove);
 
-router.route('/dailyPlan/:id/message')
-    .delete(removeMessage);
+router.route('/dailyPlan/:id/comment')
+    .post(createComment)
+    .delete(removeComment);
 
 module.exports = router;

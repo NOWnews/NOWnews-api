@@ -17,7 +17,7 @@ module.exports = async (req, res, next) => {
             .execAsync();
 
         if(!dailyPlan) {
-            throw new Error('24003');
+            throw new Error('25004');
         }
 
         let updateTitle = dailyPlan.title;
@@ -35,19 +35,7 @@ module.exports = async (req, res, next) => {
         if(Center && Center !== ''){
             updateCenter = Center;
         }
-        if (content && content !== ''){
-            updateContent = content;
-        }
-
-        // updateComments = comments;
-
-        // if (message && message !== ''){
-        //     message = {
-        //         User: UpdatedBy,
-        //         message
-        //     };
-        //     updatePostMessages = [...post.messages, message];
-        // }
+        updateContent = content;
 
         dailyPlan.set('title', updateTitle);
         dailyPlan.set('startedAt', updateStartedAt);
