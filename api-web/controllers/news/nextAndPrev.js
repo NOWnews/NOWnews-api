@@ -25,11 +25,17 @@ module.exports = async (req, res, next) => {
             libs.getNextNewsBySn(sn)
         ]);
 
+        // 當有上下篇新聞的時候，過期時間設定長一點
+        let expire = 300;
+        if(prevNews && nextNews) {
+            expire = 3600 * 5;
+        }
+
         // 將這篇新聞存入 redis
         let newCache = await redis.setValue(`news${sn}NextAndPrev`, {
             next: _.pick(nextNews, 'sn', 'title', 'shortTitle'),
             prev: _.pick(prevNews, 'sn', 'title', 'shortTitle')
-        }, 3600 * 6)
+        }, expire);
         debug('newCache = %j', newCache);
 
         return res.json(newCache);
