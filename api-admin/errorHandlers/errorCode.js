@@ -445,4 +445,14 @@ module.exports = {
         message: '[DailyPlan] 找不到這則稿單',
         statusCode: 404
     },
+
+    25005: {
+        message: '[DailyPlan] 缺少 startedAt 這個欄位或是格式不正確',
+        statusCode: 404
+    },
+
+    25006: {
+        message: '[DailyPlan] 缺少 Center 這個欄位或是格式不正確',
+        statusCode: 404
+    }
 };

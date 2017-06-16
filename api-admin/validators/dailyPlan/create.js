@@ -10,12 +10,22 @@ module.exports = (req, res, next) => {
 
     let {
         title,
+        startedAt,
         content,
-        CreatedBy
+        CreatedBy,
+        Center
     } = req.body;
 
     if(!title || title === '') {
         throw new Error('25001');
+    }
+
+    if(!startedAt) {
+        throw new Error('25005');
+    }
+
+     if(!Center) {
+        throw new Error('25006');
     }
 
     if(!mongoose.Types.ObjectId.isValid(CreatedBy)) {
