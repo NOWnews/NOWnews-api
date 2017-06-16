@@ -39,7 +39,7 @@ module.exports = new cron.CronJob({
                     title: item.title,
                     shortTitle: '',
                     summary: item.summary,
-                    MainMenu: '560000000000000000000002',
+                    MainMenu: '560000000000000000000013',
                     Menus: [],
                     MainPhoto: null,
                     MainVideo: null,
