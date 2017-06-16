@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import config from 'config';
 import Promise from 'bluebird';
+import redis from '../../../redis';
 import request from 'request-promise';
 import transformBig5 from '../../../libs/transformBig5';
 
@@ -8,6 +9,13 @@ const adServ = config.get('web.adServ');
 
 module.exports = async (req, res, next) => {
     try {
+
+        const redisValue = await redis.getValue('adWebCommon');
+
+        if (redisValue && !!redisValue.footer) {
+            return res.json(redisValue);
+        }
+
         const config = { encoding: null };
         const result = await Promise.all([
             // Footer150x150 *5
@@ -33,10 +41,15 @@ module.exports = async (req, res, next) => {
             transformBig5(result[7])
         ];
 
-        return res.json({
+        const ads = {
             footer,
             instant
-        });
+        };
+
+        await redis.setValue('adWebCommon', ads, 180);
+
+
+        return res.json(ads);
     } catch (err) {
         return next(err);
     }
