@@ -10,7 +10,7 @@ import { pagination } from '../../../libs';
 module.exports = async (req, res, next) => {
 
     let { limit, page, skip, title, type, status, Author,
-         CreatedBy, UpdatedBy, LastReviewer, sort, startedAt, endedAt, MainMenu} = req.query;
+         CreatedBy, UpdatedBy, LastReviewer, sort, startedAt, endedAt, MainMenu, sn} = req.query;
     debug('req.query = %j', req.query);
 
     try {
@@ -67,6 +67,11 @@ module.exports = async (req, res, next) => {
         if(MainMenu){
             cursor.where('MainMenu').equals(MainMenu);
             totalCursor.where('MainMenu').equals(MainMenu);
+        }
+
+        if(sn){
+            cursor.where('sn').equals(sn);
+            totalCursor.where('sn').equals(sn);
         }
 
         let [ newsList, total ] = await Promise.all([
