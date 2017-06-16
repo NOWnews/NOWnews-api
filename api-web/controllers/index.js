@@ -1,4 +1,4 @@
-
+import ad from './ad';
 import indexPage from './indexPage';
 import category from './category';
 import news from './news';
@@ -17,6 +17,7 @@ import personalize from './personalize';
 
 module.exports = (app) => {
 
+    app.use('/', ad);
     app.use('/', indexPage);
     app.use('/', category);
     app.use('/', news);

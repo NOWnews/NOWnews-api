@@ -64,6 +64,7 @@
 
     "web": {
         "mode": "staging",
+        "adServ": "http://ad1.nownews.com/ads.php",
         "showError": true,
         "mongodb": {
             "host": "mongodb://10.140.0.2:27017", // (no / 192.168.40.185)

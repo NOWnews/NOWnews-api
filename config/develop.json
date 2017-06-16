@@ -64,6 +64,7 @@
 
     "web": {
         "mode": "develop",
+        "adServ": "http://ad1.nownews.com/ads.php",
         "showError": true,
         "mongodb": {
             "host": "mongodb://localhost:27017",
