@@ -13,7 +13,7 @@ module.exports = (req, res, next) => {
         content,
         CreatedBy
     } = req.body;
-    console.log('...',req.body);
+
     if(!title || title === '') {
         throw new Error('25001');
     }
