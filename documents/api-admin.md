@@ -2126,3 +2126,186 @@ None
 |---|---|---|---|---|
 | end | 結束時間 | String | | 2017-05-20 |
 |---|---|---|---|---|
+
+
+### [POST] `/dailyPlan`
+
+建立稿單的 API
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'YouCanSeeMeJohnCena' |
+
+#### Url Parameters
+
+NONE
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| title | 稿單標題 | String | √ | |
+| CreatedBy | 某個 user objectId| String | √ | |
+| startedAt | 新聞日期 | String | √ | |
+| content | 稿單內容 | String |  | |
+| Center | 某個 Center objectId | String | √ | |
+
+#### Query Parameters
+
+None
+
+### [GET] `/dailyPlan`
+
+取得稿單列表的 API
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None
+
+### [GET] `/dailyPlan/{:id}`
+
+取得單個稿單的 API
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'YouCanSeeMeJohnCena' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | dailyPlan 的 ObjectId | String | √ |  |
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None
+
+### [PUT] `/dailyPlan/{:id}`
+
+更新稿單的 API
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'YouCanSeeMeJohnCena' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | dailyPlan 的 ObjectId | String | √ |  |
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| title | 修改的稿單標題 | String | √ | |
+| startedAt | 修改的新聞日期 | String | √ | |
+| content | 修改的稿單內容 | String |  | |
+| Center | 修改的某個 Center objectId | String | √ | |
+
+#### Query Parameters
+
+None
+
+### [DELETE] `/dailyPlan/{:id}`
+
+刪除此稿單的 API
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'YouCanSeeMeJohnCena' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | dailyPlan 的 ObjectId | String | √ |  |
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None
+
+### [POST] `/dailyPlan/{:id}/comment`
+
+建立稿單回應的 API
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'YouCanSeeMeJohnCena' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | dailyPlan 的 ObjectId | String | √ |  |
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| content | 回應內容 | String |  | |
+| name | 回應者名稱 | String |  | |
+| createdBy | 建立者的 User ObjectId | String |  | |
+
+#### Query Parameters
+
+None
+
+### [DELETE] `/dailyPlan/{:id}/comment`
+
+刪除稿單回應的 API
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'YouCanSeeMeJohnCena' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | dailyPlan 的 ObjectId | String | √ |  |
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| commentIndex | comments Array 的index值 | String | √ | |
+
+#### Query Parameters
+
+None
+

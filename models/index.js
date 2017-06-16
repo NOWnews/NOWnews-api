@@ -34,6 +34,7 @@ import loginTrackSchema from './schemas/loginTrack';
 import indexpageSchema from './schemas/indexpage';
 import specialTopicSchema from './schemas/specialTopic';
 import specialChannelSchema from './schemas/specialChannel';
+import dailyPlanSchema from './schemas/dailyPlan';
 
 let User = connection.model('User', userSchema);
 let News = connection.model('News', newsSchema);
@@ -52,6 +53,7 @@ let LoginTrack = connection.model('LoginTrack', loginTrackSchema);
 let IndexPage = connection.model('IndexPage', indexpageSchema);
 let SpecialTopic = connection.model('SpecialTopic', specialTopicSchema);
 let SpecialChannel = connection.model('SpecialChannel', specialChannelSchema);
+let DailyPlan = connection.model('DailyPlan', dailyPlanSchema);
 
 module.exports = {
     User,
@@ -70,5 +72,6 @@ module.exports = {
     LoginTrack,
     IndexPage,
     SpecialTopic,
-    SpecialChannel
+    SpecialChannel,
+    DailyPlan
 };

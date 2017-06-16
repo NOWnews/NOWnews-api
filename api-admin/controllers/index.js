@@ -2,6 +2,7 @@ import home from './home';
 import user from './user';
 import policy from './policy';
 import role from './role';
+import dailyPlan from './dailyPlan';
 import center from './center';
 import department from './department';
 import image from './image';
@@ -29,6 +30,7 @@ module.exports = (app) => {
     app.use('/', policy);
     app.use('/', role);
     app.use('/', center);
+    app.use('/', dailyPlan);
     app.use('/', image);
     app.use('/', video);
     app.use('/', department);

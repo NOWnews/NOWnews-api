@@ -20,7 +20,7 @@ module.exports = (req, res, next) => {
     if(!title || title === '') {
         throw new Error('16001');
     }
-
+    debug('CreatedBy.....',CreatedBy);
     if(!mongoose.Types.ObjectId.isValid(CreatedBy)) {
         throw new Error('16002');
     }
