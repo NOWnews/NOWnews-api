@@ -22,7 +22,6 @@ import preview from './preview';
 import postBoard from './postBoard';
 import score from './score';
 import rss from './rss';
-import sitemap from './sitemap';
 
 module.exports = (app) => {
 
@@ -50,7 +49,6 @@ module.exports = (app) => {
     app.use('/', postBoard);
     app.use('/', score);
     app.use('/',rss)
-    app.use('/',sitemap)
 
     return (req, res, next) => {
         return next();
