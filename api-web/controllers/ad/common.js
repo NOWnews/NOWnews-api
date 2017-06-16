@@ -1,55 +1,46 @@
-import _ from 'lodash';
+import axios from 'axios';
 import config from 'config';
+import _ from 'lodash';
 import Promise from 'bluebird';
-import redis from '../../../redis';
-import request from 'request-promise';
-import transformBig5 from '../../../libs/transformBig5';
 
 const adServ = config.get('web.adServ');
 
 module.exports = async (req, res, next) => {
     try {
-
-        const redisValue = await redis.getValue('adWebCommon');
-
-        if (redisValue && !!redisValue.footer) {
-            return res.json(redisValue);
-        }
-
-        const opts = { encoding: null };
         const result = await Promise.all([
-            // Footer150x150 *5
-            request(`${adServ}?ownerid=3009`, opts),
-            request(`${adServ}?ownerid=3010`, opts),
-            request(`${adServ}?ownerid=3011`, opts),
-            request(`${adServ}?ownerid=3012`, opts),
-            request(`${adServ}?ownerid=3013`, opts),
+            // Footer150x150 *5 - 圖片
+            axios.get(`${adServ}?ownerid=3009`),
+            axios.get(`${adServ}?ownerid=3010`),
+            axios.get(`${adServ}?ownerid=3011`),
+            axios.get(`${adServ}?ownerid=3012`),
+            axios.get(`${adServ}?ownerid=3013`),
+
+            // Footer150x150 *5 - 文字
+            axios.get(`${adServ}?ownerid=3014`),
+            axios.get(`${adServ}?ownerid=3015`),
+            axios.get(`${adServ}?ownerid=3016`),
+            axios.get(`${adServ}?ownerid=3017`),
+            axios.get(`${adServ}?ownerid=3018`),
 
             // 跑馬燈第三個版位：全網新聞速報 *3
-            request(`${adServ}?ownerid=3020`, opts),
-            request(`${adServ}?ownerid=3021`, opts),
-            request(`${adServ}?ownerid=3022`, opts),
+            axios.get(`${adServ}?ownerid=3030`),
+            axios.get(`${adServ}?ownerid=3031`),
+            axios.get(`${adServ}?ownerid=3032`),
         ]);
 
         const footer = _.map([0, 1, 2, 3, 4], (key) => {
-            return transformBig5(result[key]);
+            return {
+                img: result[key].data,
+                word: result[key + 5].data
+            }
         });
 
-        const instant = [
-            transformBig5(result[5]),
-            transformBig5(result[6]),
-            transformBig5(result[7])
-        ];
+        const instant = [result[10].data, result[11].data, result[12].data];
 
-        const ads = {
+        return res.json({
             footer,
             instant
-        };
-
-        await redis.setValue('adWebCommon', ads, 3600);
-
-
-        return res.json(ads);
+        });
     } catch (err) {
         return next(err);
     }
