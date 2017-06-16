@@ -16,19 +16,19 @@ module.exports = async (req, res, next) => {
             return res.json(redisValue);
         }
 
-        const config = { encoding: null };
+        const opts = { encoding: null };
         const result = await Promise.all([
             // Footer150x150 *5
-            request(`${adServ}?ownerid=3009`, config),
-            request(`${adServ}?ownerid=3010`, config),
-            request(`${adServ}?ownerid=3011`, config),
-            request(`${adServ}?ownerid=3012`, config),
-            request(`${adServ}?ownerid=3013`, config),
+            request(`${adServ}?ownerid=3009`, opts),
+            request(`${adServ}?ownerid=3010`, opts),
+            request(`${adServ}?ownerid=3011`, opts),
+            request(`${adServ}?ownerid=3012`, opts),
+            request(`${adServ}?ownerid=3013`, opts),
 
             // 跑馬燈第三個版位：全網新聞速報 *3
-            request(`${adServ}?ownerid=3020`, config),
-            request(`${adServ}?ownerid=3021`, config),
-            request(`${adServ}?ownerid=3022`, config),
+            request(`${adServ}?ownerid=3020`, opts),
+            request(`${adServ}?ownerid=3021`, opts),
+            request(`${adServ}?ownerid=3022`, opts),
         ]);
 
         const footer = _.map([0, 1, 2, 3, 4], (key) => {
@@ -46,7 +46,7 @@ module.exports = async (req, res, next) => {
             instant
         };
 
-        await redis.setValue('adWebCommon', ads, 180);
+        await redis.setValue('adWebCommon', ads, 3600);
 
 
         return res.json(ads);
