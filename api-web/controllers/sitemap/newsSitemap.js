@@ -12,7 +12,7 @@ module.exports = async (req, res, next) => {
                 .where('isTrashed').equals(false)
                 .where('status').equals('RELEASE')
                 .where('startedAt').lte(Date.now())
-                .select('createdAt sn title')
+                .select('startedAt sn title')
                 .limit(limit)
                 .sort('-startedAt');
 

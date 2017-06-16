@@ -12,7 +12,7 @@ module.exports = async (req, res, next) => {
                 .where('isTrashed').equals(false)
                 .where('status').equals('RELEASE')
                 .where('startedAt').lte(Date.now())
-                .select('createdAt sn')
+                .select('startedAt sn')
                 .limit(limit)
                 .sort('-startedAt');
 
@@ -24,7 +24,7 @@ module.exports = async (req, res, next) => {
                     url:'http://m.nownews.com/news/'+news.sn,
                     changefreq: 'daily',
                     priority: 1,
-                    lastmod: moment(news.updatedAt).format('YYYY-MM-DD')
+                    lastmod: moment(news.startedAt).format('YYYY-MM-DD')
                 }
             );
         });

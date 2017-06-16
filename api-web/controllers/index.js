@@ -34,7 +34,7 @@ module.exports = (app) => {
     app.use('/', specialTopic);
     app.use('/', specialChannel);
     app.use('/', personalize);
-    app.use('/',sitemap);
+    app.use('/', sitemap);
 
     return (req, res, next) => {
         return next();
