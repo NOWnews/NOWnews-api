@@ -109,25 +109,28 @@ module.exports = async (req, res, next) => {
         updatedNews = await updatedNews.populate('MainMenu Menus MainPhoto MainVideo Photos Videos Author Tags LastReviewer CreatedBy UpdatedBy').execPopulate();
         await newsLog(updatedNews, 'UPDATE');
 
+        /*
+         * 暫時先拿掉這個機制，
+         */
         // 要給 api web 使用的資料
-        let [ newsData, relationNewsData, prevNews, nextNews ] = await Promise.all([
-            libs.getNewsBySn(updatedNews.sn),
-            libs.getRelationNewsBySn(updatedNews.sn),
-            libs.getPrevNewsBySn(updatedNews.sn),
-            libs.getNextNewsBySn(updatedNews.sn)
-        ]);
+        // let [ newsData, relationNewsData, prevNews, nextNews ] = await Promise.all([
+        //     libs.getNewsBySn(updatedNews.sn),
+        //     libs.getRelationNewsBySn(updatedNews.sn),
+        //     libs.getPrevNewsBySn(updatedNews.sn),
+        //     libs.getNextNewsBySn(updatedNews.sn)
+        // ]);
 
         // 將發佈的新聞，此新聞的相關新聞，上下篇新聞存入 redis
-        if(newsData) {
-            await Promise.all([
-                redis.setValue(`news${updatedNews.sn}`, newsData, 3600 * 6),
-                redis.setValue(`relationNewsByNews${updatedNews.sn}`, relationNewsData, 300),
-                redis.setValue(`news${updatedNews.sn}NextAndPrev`, {
-                    next: _.pick(nextNews, 'sn', 'title', 'shortTitle'),
-                    prev: _.pick(prevNews, 'sn', 'title', 'shortTitle')
-                }, 3600 * 6)
-            ]);
-        }
+        // if(newsData) {
+        //     await Promise.all([
+        //         redis.setValue(`news${updatedNews.sn}`, newsData, 3600 * 6),
+        //         redis.setValue(`relationNewsByNews${updatedNews.sn}`, relationNewsData, 300),
+        //         redis.setValue(`news${updatedNews.sn}NextAndPrev`, {
+        //             next: _.pick(nextNews, 'sn', 'title', 'shortTitle'),
+        //             prev: _.pick(prevNews, 'sn', 'title', 'shortTitle')
+        //         }, 3600 * 6)
+        //     ]);
+        // }
 
         // 初始化 pageview 資訊
         await Pageview.findOneAndUpdateAsync({

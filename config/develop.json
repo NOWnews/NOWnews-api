@@ -17,12 +17,12 @@
         "mode": "develop",
         "showError": true,
         "mongodb": {
-            "host": "mongodb://localhost:27017",
-            "db": "NOWnews_Develop"
+            "host": "mongodb://35.189.165.175:27017",
+            "db": "NOWnews_Staging"
         },
         "pvMongodb": {
-            "host": "mongodb://localhost:27017",
-            "db": "NOWnewsAnalytics_Develop"
+            "host": "mongodb://35.189.165.175:27017",
+            "db": "NOWnewsAnalytics_Staging"
         },
         "redis": {
             "host": "localhost",
@@ -66,12 +66,12 @@
         "mode": "develop",
         "showError": true,
         "mongodb": {
-            "host": "mongodb://localhost:27017",
-            "db": "NOWnews_Develop"
+            "host": "mongodb://35.189.165.175:27017",
+            "db": "NOWnews_Staging"
         },
         "pvMongodb": {
-            "host": "mongodb://localhost:27017",
-            "db": "NOWnewsAnalytics_Develop"
+            "host": "mongodb://35.189.165.175:27017",
+            "db": "NOWnewsAnalytics_Staging"
         },
         "redis": {
             "host": "localhost",
