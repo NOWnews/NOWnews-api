@@ -13,8 +13,7 @@ let schema = new Schema({
     title: {
         type: String,
         required: true,
-        trim: true,
-        maxlength: 36
+        trim: true
     },
 
     // 稿單分類
