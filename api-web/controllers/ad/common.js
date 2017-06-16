@@ -1,41 +1,37 @@
-import axios from 'axios';
-import config from 'config';
 import _ from 'lodash';
+import config from 'config';
 import Promise from 'bluebird';
+import request from 'request-promise';
+import transformBig5 from '../../../libs/transformBig5';
 
 const adServ = config.get('web.adServ');
 
 module.exports = async (req, res, next) => {
     try {
+        const config = { encoding: null };
         const result = await Promise.all([
-            // Footer150x150 *5 - 圖片
-            axios.get(`${adServ}?ownerid=3009`),
-            axios.get(`${adServ}?ownerid=3010`),
-            axios.get(`${adServ}?ownerid=3011`),
-            axios.get(`${adServ}?ownerid=3012`),
-            axios.get(`${adServ}?ownerid=3013`),
-
-            // Footer150x150 *5 - 文字
-            axios.get(`${adServ}?ownerid=3014`),
-            axios.get(`${adServ}?ownerid=3015`),
-            axios.get(`${adServ}?ownerid=3016`),
-            axios.get(`${adServ}?ownerid=3017`),
-            axios.get(`${adServ}?ownerid=3018`),
+            // Footer150x150 *5
+            request(`${adServ}?ownerid=3009`, config),
+            request(`${adServ}?ownerid=3010`, config),
+            request(`${adServ}?ownerid=3011`, config),
+            request(`${adServ}?ownerid=3012`, config),
+            request(`${adServ}?ownerid=3013`, config),
 
             // 跑馬燈第三個版位：全網新聞速報 *3
-            axios.get(`${adServ}?ownerid=3030`),
-            axios.get(`${adServ}?ownerid=3031`),
-            axios.get(`${adServ}?ownerid=3032`),
+            request(`${adServ}?ownerid=3020`, config),
+            request(`${adServ}?ownerid=3021`, config),
+            request(`${adServ}?ownerid=3022`, config),
         ]);
 
         const footer = _.map([0, 1, 2, 3, 4], (key) => {
-            return {
-                img: result[key].data,
-                word: result[key + 5].data
-            }
+            return transformBig5(result[key]);
         });
 
-        const instant = [result[10].data, result[11].data, result[12].data];
+        const instant = [
+            transformBig5(result[5]),
+            transformBig5(result[6]),
+            transformBig5(result[7])
+        ];
 
         return res.json({
             footer,
