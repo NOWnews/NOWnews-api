@@ -159,7 +159,7 @@ let schema = new Schema({
     feedFrom: {
         type: String,
         default: 'OWN',
-        enum: ['OWN', 'CNYES']
+        enum: ['OWN', 'CNYES', 'MNA', 'CNA']
     },
 
     // 最後的新聞審稿者
