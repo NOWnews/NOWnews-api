@@ -14,6 +14,7 @@ import instant from './instant';
 import specialTopic from './specialTopic';
 import specialChannel from './specialChannel';
 import personalize from './personalize';
+import sitemap from './sitemap';
 
 module.exports = (app) => {
 
@@ -33,6 +34,7 @@ module.exports = (app) => {
     app.use('/', specialTopic);
     app.use('/', specialChannel);
     app.use('/', personalize);
+    app.use('/', sitemap);
 
     return (req, res, next) => {
         return next();
