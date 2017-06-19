@@ -85,7 +85,7 @@ let schema = new Schema({
     startedAt: {
         type: Date,
         default: Date.now,
-        set: (time) => { return moment(time).tz('Asia/Taipei'); }
+        set: (time) => { return moment(time); }
     },
 
     // 新聞類別
