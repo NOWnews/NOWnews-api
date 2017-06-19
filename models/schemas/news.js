@@ -3,10 +3,6 @@ import autoIncrement from 'mongoose-easy-auto-increment';
 import mongoose from 'mongoose';
 import moment from 'moment-timezone';
 
-let timeZone = (time) => {
-    return moment(time).tz('Asia/Taipei');
-};
-
 let Schema = mongoose.Schema;
 
 let schema = new Schema({
