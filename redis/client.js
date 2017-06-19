@@ -8,11 +8,13 @@ Promise.promisifyAll(redis.Multi.prototype);
 const host = config.get('admin.redis.host');
 const port = config.get('admin.redis.port');
 const db = config.get('admin.redis.db');
+const password = config.get('admin.redis.password');
 
 const client = redis.createClient({
     host: host,
     port: port,
-    db: db
+    db: db,
+    password: password
 });
 
 module.exports =  client;
