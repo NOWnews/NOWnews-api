@@ -8,12 +8,11 @@ import parseHeader from './parseHeader';
 
 module.exports = (app) => {
 
-    app.use(parseHeader());
-
+    app.use(cors());
     app.use(compression());
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
-    app.use(cors());
+    app.use(parseHeader());
     app.use(logger('dev'));
 
     return (req, res, next) => {

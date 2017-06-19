@@ -10,15 +10,14 @@ import parseHeader from './parseHeader';
 module.exports = (app) => {
 
     // app.use(prepare());
-    app.use(parseHeader());
-
+    app.use(cors());
     app.use(compression());
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({
         extended: true,
         limit: '100mb'
     }));
-    app.use(cors());
+    app.use(parseHeader());
     app.use(logger('dev'));
     // app.use(logger('(REQUEST LOG)- [method] :method [url] :url  [status] :status  [response-time] :response-time ms'));
 
