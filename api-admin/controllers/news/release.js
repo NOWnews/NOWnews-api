@@ -10,6 +10,7 @@ import { newsLog } from '../../../libs';
 import { Pageview } from '../../../pvModels';
 import redis from '../../../redis';
 import libs from '../../../libs';
+import moment from 'moment-timezone';
 
 module.exports = async (req, res, next) => {
     try {
@@ -42,7 +43,7 @@ module.exports = async (req, res, next) => {
         news.set('status', 'RELEASE');
 
         // 處理發布時間問題
-        let startedAt = req.body.startedAt ? req.body.startedAt : Date.now();
+        let startedAt = req.body.startedAt ? moment(req.body.startedAt).tz('Asia/Taipei') : Date.now();
         news.set('startedAt', startedAt);
 
         if(req.body.shortTitle) {

@@ -5,6 +5,7 @@ const debug = Debug('NOWnews-api:api-admin:controllers:news:review');
 import { News } from '../../../models';
 import { newsLog } from '../../../libs';
 import redis from '../../../redis';
+import moment from 'moment-timezone';
 
 module.exports = async (req, res, next) => {
     try {
@@ -88,7 +89,7 @@ module.exports = async (req, res, next) => {
         }
 
         if(req.body.startedAt) {
-            news.set('startedAt', req.body.startedAt);
+            news.set('startedAt', moment(req.body.startedAt).tz('Asia/Taipei'));
         }
 
         if(req.body.type) {
