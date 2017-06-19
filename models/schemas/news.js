@@ -158,7 +158,8 @@ let schema = new Schema({
     // RSS 內送的單位
     feedFrom: {
         type: String,
-        default: 'OWN'
+        default: 'OWN',
+        enum: ['OWN', 'CNYES', 'MNA', 'CNA']
     },
 
     // 最後的新聞審稿者

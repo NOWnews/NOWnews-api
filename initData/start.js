@@ -2,7 +2,7 @@
 import Promise from 'bluebird';
 import chalk from 'chalk';
 
-import { User, Policy, Role, Center, Department } from '../models';
+import { User, Policy, Role, Center, Department, Menu } from '../models';
 import { hashPwd } from '../libs';
 
 import policyData from './policy';
@@ -10,6 +10,8 @@ import roleData from './role';
 import centerData from './center';
 import departmentData from './department';
 import superuserData from './superuser';
+import usersData from './users';
+import menusData from './menus';
 
 module.exports = async () => {
 
@@ -51,6 +53,25 @@ module.exports = async () => {
         superuserData.password = hashPwd(superuserData.password);
         await User.createAsync(superuserData);
     }
+
+    // 處理一些預設使用者資料
+    usersData.forEach(async (data) => {
+        let doc = await User.findById(data._id).execAsync();
+        if(doc) {
+            return;
+        }
+        await User.createAsync(data);
+    });
+
+
+    // 處理一些預設使用者資料
+    menusData.forEach(async (data) => {
+        let doc = await Menu.findById(data._id).execAsync();
+        if(doc) {
+            return;
+        }
+        await Menu.createAsync(data);
+    });
 
     console.log(chalk.green(`初始化資料完成`));
 };

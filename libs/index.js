@@ -11,6 +11,7 @@ import updateAllHotNews from './updateAllHotNews';
 import updatePersonalize from './updatePersonalize';
 import updateHotKeywords from './updateHotKeywords';
 import refreshIndexPage from './refreshIndexPage';
+import parseRssFeed from './parseRssFeed';
 
 module.exports = {
     hashPwd,
@@ -24,5 +25,6 @@ module.exports = {
     updateAllHotNews,
     updatePersonalize,
     updateHotKeywords,
-    refreshIndexPage
+    refreshIndexPage,
+    parseRssFeed
 };

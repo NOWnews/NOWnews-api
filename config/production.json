@@ -11,6 +11,9 @@
             "width": 300,
             "height": 168,
             "quality": 70
+        },
+        "rssFeed": {
+            "cnyes": ""
         }
     },
     "admin": {
