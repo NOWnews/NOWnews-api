@@ -19,7 +19,15 @@ module.exports = new cron.CronJob({
     // 主要邏輯區
     onTick: async () => {
         try {
-            let rssJSON = await parseRssFeed(`${config.get('general.rssFeed.cnyes')}`);
+
+            let feedUrl = config.get('general.rssFeed.cnyes');
+
+            if(!feedUrl || feedUrl === '') {
+                console.log('cnyes 鉅亨網沒有設定');
+                return;
+            }
+
+            let rssJSON = await parseRssFeed(feedUrl);
 
             let newsList = [];
             let nowTime = moment();
