@@ -38,7 +38,8 @@ let schema = new Schema({
     // 新聞時間
     startedAt: {
         type: Date,
-        default: Date.now
+        default: Date.now,
+        set: (time) => { return moment(time); }
     },
 
     // 是否被刪除

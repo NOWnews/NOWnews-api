@@ -7,7 +7,6 @@ import _ from 'lodash';
 import { News } from '../../../models';
 // import { Total } from '../../../pvModels';
 import { newsLog } from '../../../libs';
-import moment from 'moment-timezone';
 
 module.exports = async (req, res, next) => {
 
@@ -51,8 +50,6 @@ module.exports = async (req, res, next) => {
         if(!options.Author) {
             options.Author = options.CreatedBy;
         }
-
-        options.startedAt = moment(options.startedAt).tz('Asia/Taipei');
 
         debug('options = %j', options);
 

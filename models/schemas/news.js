@@ -84,7 +84,8 @@ let schema = new Schema({
     // 新聞開始時間
     startedAt: {
         type: Date,
-        default: Date.now
+        default: Date.now,
+        set: (time) => { return moment(time); }
     },
 
     // 新聞類別
