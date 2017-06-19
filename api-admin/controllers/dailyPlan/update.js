@@ -3,12 +3,14 @@ import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:dailyPlan:list');
 
 import { DailyPlan } from '../../../models';
+import moment from 'moment-timezone';
 
 module.exports = async (req, res, next) => {
     try {
 
         let { id } = req.params;
         let { title, startedAt, Center, content, UpdatedBy } = req.body;
+        startedAt = moment(startedAt).tz('Asia/Taipei');
 
         debug('req.body %j', req.body);
 
