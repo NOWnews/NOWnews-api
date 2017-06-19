@@ -14,6 +14,10 @@
         },
         "rssFeed": {
             "cnyes": "http://news.cnyes.com/RSS/RSS_NowNews__0_cnyes.xml"
+        },
+        "googleCloud": {
+            "projectId": "nownews-website-167108",
+            "keyFilename": "pems/NOWnews-Website-e1f7525355ca.json"
         }
     },
     "admin": {
