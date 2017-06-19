@@ -2,13 +2,11 @@ import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:dailyPlan:create');
 import _ from 'lodash';
 import { DailyPlan } from '../../../models';
-import moment from 'moment-timezone';
 
 module.exports = async (req, res, next) => {
 
     let { title, startedAt, Center, content, comments, CreatedBy } = req.body;
     let UpdatedBy = CreatedBy;
-    startedAt = moment(startedAt).tz('Asia/Taipei');
 
     try {
 

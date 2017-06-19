@@ -3,6 +3,10 @@ import autoIncrement from 'mongoose-easy-auto-increment';
 import mongoose from 'mongoose';
 import moment from 'moment-timezone';
 
+let timeZone = (time) => {
+    return moment(time).tz('Asia/Taipei');
+};
+
 let Schema = mongoose.Schema;
 
 let schema = new Schema({
@@ -84,7 +88,8 @@ let schema = new Schema({
     // 新聞開始時間
     startedAt: {
         type: Date,
-        default: Date.now
+        default: Date.now,
+        set: (time) => return moment(time).tz('Asia/Taipei')
     },
 
     // 新聞類別
