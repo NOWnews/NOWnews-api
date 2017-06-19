@@ -14,22 +14,26 @@
         },
         "rssFeed": {
             "cnyes": ""
+        },
+        "googleCloud": {
+            "projectId": "nownews-official-website",
+            "keyFilename": "pems/NOWnews-Official-Website-3fe6935a938c.json"
         }
     },
     "admin": {
         "mode": "production",
-        "showError": false,
+        "showError": true,
         "mongodb": {
-            "host": "mongodb://localhost:27017",
+            "host": "mongodb://10.140.0.5:27017",
             "db": "NOWnews_Production"
         },
         "pvMongodb": {
-            "host": "mongodb://localhost:27017",
+            "host": "mongodb://10.140.0.5:27017",
             "db": "NOWnewsAnalytics_Production"
         },
         "redis": {
-            "host": "memcache.nownews.pri", // (61.67.121.141 / 192.168.40.141)
-            "port": 6379,
+            "host": "10.140.0.3",
+            "port": 16379,
             "db": 0,
             "expireSeconds": 3600
         },
@@ -68,18 +72,18 @@
     "web": {
         "mode": "production",
         "adServ": "http://ad1.nownews.com/ads.php",
-        "showError": false,
+        "showError": true,
         "mongodb": {
-            "host": "mongodb://localhost:27017",
+            "host": "mongodb://10.140.0.5:27017",
             "db": "NOWnews_Production"
         },
         "pvMongodb": {
-            "host": "mongodb://localhost:27017",
+            "host": "mongodb://10.140.0.5:27017",
             "db": "NOWnewsAnalytics_Production"
         },
         "redis": {
-            "host": "memcache.nownews.pri", // (61.67.121.141 / 192.168.40.141)
-            "port": 6379,
+            "host": "10.140.0.3",
+            "port": 16379,
             "db": 0,
             "expireSeconds": 3600
         },

@@ -14,8 +14,8 @@ import imageServer from 'scp2';
 
 import googleCloud from 'google-cloud';
 const gcloud = googleCloud({
-    projectId: 'nownews-website-167108',
-    keyFilename: 'pems/NOWnews-Website-e1f7525355ca.json',
+    projectId: config.get('general.googleCloud.projectId'),
+    keyFilename: config.get('general.googleCloud.keyFilename'),
     promise: Promise
 });
 const gcs = gcloud.storage();
