@@ -24,12 +24,8 @@ module.exports = async (req, res, next) => {
         options.UpdatedBy = options.CreatedBy;
         debug('options = %j', options);
 
-        // 確認名字或是 url 是否有重複
-        let [ getMenuByName, getMenuByUrl, getMenuByCategoryName ] = await Promise.all([
-            Menu.findOne()
-                .where('name').equals(options.name)
-                .where('isTrashed').equals(false)
-                .execAsync(),
+        // 確認 url 是否有重複
+        let [ getMenuByUrl, getMenuByCategoryName ] = await Promise.all([
             Menu.findOne()
                 .where('url').equals(options.url)
                 .where('isTrashed').equals(false)
@@ -42,10 +38,6 @@ module.exports = async (req, res, next) => {
                 .where('isTrashed').equals(false)
                 .execAsync(),
         ]);
-
-        if(getMenuByName) {
-            throw new Error('19004');
-        }
 
         if(getMenuByUrl) {
             throw new Error('19005');

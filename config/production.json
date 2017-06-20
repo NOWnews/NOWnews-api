@@ -17,7 +17,8 @@
         },
         "googleCloud": {
             "projectId": "nownews-official-website",
-            "keyFilename": "pems/NOWnews-Official-Website-3fe6935a938c.json"
+            "keyFilename": "pems/NOWnews-Official-Website-3fe6935a938c.json",
+            "storageBucket": "nownews-web"
         }
     },
     "admin": {
