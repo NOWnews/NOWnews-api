@@ -19,7 +19,7 @@ const gcloud = googleCloud({
     promise: Promise
 });
 const gcs = gcloud.storage();
-const bucket = gcs.bucket('nownews-web-test');
+const bucket = gcs.bucket(config.get('general.googleCloud.storageBucket'));
 
 import { Image } from '../../../models';
 
