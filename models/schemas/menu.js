@@ -20,14 +20,16 @@ let schema = new Schema({
     categoryName: {
         type: String,
         trim: true,
-        default: null
+        default: null,
+        lowercase: true
     },
 
     // 選單連結
     url: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
+        lowercase: true
     },
 
     // 是否為外部連結
