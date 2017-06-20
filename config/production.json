@@ -74,7 +74,7 @@
     "web": {
         "mode": "production",
         "adServ": "http://ad1.nownews.com/ads.php",
-        "showError": true,
+        "showError": false,
         "mongodb": {
             "host": "mongodb://10.140.0.5:27017",
             "db": "NOWnews_Production"

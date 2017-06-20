@@ -10,11 +10,16 @@ const port = config.get('admin.redis.port');
 const db = config.get('admin.redis.db');
 const password = config.get('admin.redis.password');
 
-const client = redis.createClient({
+let options = {
     host: host,
     port: port,
-    db: db,
-    password: password
-});
+    db: db
+};
+
+if(password !== null) {
+    options.password = password;
+}
+
+const client = redis.createClient(options);
 
 module.exports =  client;

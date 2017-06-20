@@ -36,7 +36,7 @@
             "host": "10.140.0.5", // (61.67.121.141 / 192.168.40.141)
             "port": 6379,
             "db": 1,
-            "password": "",
+            "password": null,
             "expireSeconds": 3600
         },
         "header": {
