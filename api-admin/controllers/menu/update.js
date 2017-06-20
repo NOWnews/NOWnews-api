@@ -10,13 +10,8 @@ module.exports = async (req, res, next) => {
         let { id } = req.params;
         let { name, url, categoryName, isExternal, status, UpdatedBy, isAdult } = req.body;
 
-        let [ menu, menuByName, menuByUrl, menuByCategoryName ] = await Promise.all([
+        let [ menu, menuByUrl, menuByCategoryName ] = await Promise.all([
             Menu.findById(id)
-                .where('isTrashed').equals(false)
-                .execAsync(),
-            Menu.findOne()
-                .where('_id').ne(id)
-                .where('name').equals(name)
                 .where('isTrashed').equals(false)
                 .execAsync(),
             Menu.findOne()
@@ -36,10 +31,6 @@ module.exports = async (req, res, next) => {
 
         if(!menu) {
             throw new Error('19006');
-        }
-
-        if(menuByName) {
-            throw new Error('19004');
         }
 
         if(menuByUrl) {
