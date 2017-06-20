@@ -53,7 +53,7 @@
             "host": "img.nownews.com", //59.124.93.47
             "port": 50022,
             "url": "https://img.nownews.com/nownews_production/images",
-            "folder": "/var/www/img.nownews.com/nownews_produciton/images"
+            "folder": "/var/www/img.nownews.com/nownews_production/images"
         },
         "videoServer": {
             "username": "imgscp",
@@ -61,7 +61,7 @@
             "host": "img.nownews.com", //59.124.93.47
             "port": 50022,
             "url": "https://img.nownews.com/nownews_production/videos",
-            "folder": "/var/www/img.nownews.com/nownews_produciton/videos"
+            "folder": "/var/www/img.nownews.com/nownews_production/videos"
         },
         "indexpage": {
             "carousels": 10,
