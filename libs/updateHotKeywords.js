@@ -26,9 +26,18 @@ module.exports = async () => {
             tags = _.concat(tags, news.Tags);
         });
 
+        if(_.isEmpty(tags)) {
+            return Promise.resolve({});
+        }
+
         // 計算各個 tag 的總量
         let obj = {};
         _.forEach(tags, (tag) => {
+
+            if(!tag || !tag.name) {
+                return;
+            }
+
             let name = tag.name;
             if(!obj[name] && tag.isTrashed !== true) {
                 obj[name] = 1;
