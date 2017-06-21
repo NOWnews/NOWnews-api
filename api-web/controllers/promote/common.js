@@ -32,14 +32,13 @@ module.exports = async (req, res, next) => {
         ]);
 
         const footer = _.map([0, 1, 2, 3, 4], (key) => {
-            console.log(key, '!!!');
-            return transformBig5(result[key]);
+            return transformBig5(result[key], 3009 + key);
         });
 
         const instant = [
-            transformBig5(result[5]),
-            transformBig5(result[6]),
-            transformBig5(result[7])
+            transformBig5(result[5], 3020),
+            transformBig5(result[6], 3021),
+            transformBig5(result[7], 3022)
         ];
 
         const ads = {
