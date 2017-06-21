@@ -1,4 +1,3 @@
-import ad from './ad';
 import indexPage from './indexPage';
 import category from './category';
 import news from './news';
@@ -14,11 +13,11 @@ import instant from './instant';
 import specialTopic from './specialTopic';
 import specialChannel from './specialChannel';
 import personalize from './personalize';
+import promote from './promote';
 import sitemap from './sitemap';
 
 module.exports = (app) => {
 
-    app.use('/', ad);
     app.use('/', indexPage);
     app.use('/', category);
     app.use('/', news);
@@ -34,6 +33,7 @@ module.exports = (app) => {
     app.use('/', specialTopic);
     app.use('/', specialChannel);
     app.use('/', personalize);
+    app.use('/', promote);
     app.use('/', sitemap);
 
     return (req, res, next) => {

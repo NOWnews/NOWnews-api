@@ -32,6 +32,7 @@ module.exports = async (req, res, next) => {
         ]);
 
         const footer = _.map([0, 1, 2, 3, 4], (key) => {
+            console.log(key, '!!!');
             return transformBig5(result[key]);
         });
 
