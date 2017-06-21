@@ -1,4 +1,4 @@
-import moment from 'moment';
+import moment from 'moment-timezone';
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:news:list');
 
@@ -55,13 +55,14 @@ module.exports = async (req, res, next) => {
         }
 
         if(startedAt) {
-            cursor.where('createdAt').gte(moment(`${startedAt} 00:00`).tz('Asia/Taipei'));
-            totalCursor.where('createdAt').gte(moment(`${startedAt} 00:00`).tz('Asia/Taipei'));
+            debug('startedAt...',startedAt);
+            cursor.where('startedAt').gte(moment.tz(startedAt,'Asia/Taipei').startOf('day'));
+            totalCursor.where('startedAt').gte(moment.tz(startedAt,'Asia/Taipei').startOf('day'));
         }
 
         if(endedAt){
-            cursor.where('createdAt').lte(moment(`${endedAt} 23:59`).tz('Asia/Taipei'));
-            totalCursor.where('createdAt').lte(moment(`${endedAt} 23:59`).tz('Asia/Taipei'));
+            cursor.where('startedAt').lte(moment.tz(endedAt,'Asia/Taipei').endOf('day'));
+            totalCursor.where('startedAt').lte(moment.tz(endedAt,'Asia/Taipei').endOf('day'));
         }
 
         if(MainMenu){
@@ -75,8 +76,8 @@ module.exports = async (req, res, next) => {
         }
 
         if(isScheduled === false || isScheduled === 'false') {
-            cursor.where('startedAt').lte(Date.now());
-            totalCursor.where('startedAt').lte(Date.now());
+            cursor.where('startedAt').lte(moment.tz('Asia/Taipei'));
+            totalCursor.where('startedAt').lte(moment.tz('Asia/Taipei') );
         }
 
         let [ newsList, total ] = await Promise.all([
