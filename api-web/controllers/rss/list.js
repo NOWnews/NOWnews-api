@@ -21,7 +21,7 @@ module.exports = async(req, res, next) => {
             debug('categories objectIds = %j', objectIds);
 
             let rssNeedNews = News.find();
-            console.log(parseInt(start, 10), 'L24')
+
             if (start) {
                 start = moment(start).tz('Asia/Taipei');
                 debug('startTime %s', start );
