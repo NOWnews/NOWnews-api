@@ -21,7 +21,6 @@ import indexPage from './indexPage';
 import preview from './preview';
 import postBoard from './postBoard';
 import score from './score';
-import rss from './rss';
 
 module.exports = (app) => {
 
@@ -48,7 +47,6 @@ module.exports = (app) => {
     app.use('/', preview);
     app.use('/', postBoard);
     app.use('/', score);
-    app.use('/',rss)
 
     return (req, res, next) => {
         return next();
