@@ -36,7 +36,7 @@ module.exports = (app) => {
     app.use('/', personalize);
     app.use('/', promote);
     app.use('/', sitemap);
-    app.use('/',rss);
+    app.use('/', rss);
 
     return (req, res, next) => {
         return next();
