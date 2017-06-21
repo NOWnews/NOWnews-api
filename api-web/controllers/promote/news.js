@@ -34,13 +34,13 @@ module.exports = async (req, res, next) => {
         ]);
 
         const recommand = _.map([0, 1, 2, 3, 4, 5], (key) => {
-            return transformBig5(result[key]);
+            return transformBig5(result[key], 3014 + key);
         });
 
         const ads = {
             recommand,
-            relation: transformBig5(result[6]),
-            like: transformBig5(result[7])
+            relation: transformBig5(result[6], 3024),
+            like: transformBig5(result[7], 3025)
         };
 
         await redis.setValue('adWebNews', ads, 3600);
