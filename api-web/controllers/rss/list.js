@@ -14,9 +14,14 @@ module.exports = async(req, res, next) => {
 
             debug('categories %j', categories);
 
-            let mainMenus = await Menu.find({ 'level': 0 }, 'name').execAsync();
-            let filteredMenus = _.filter(mainMenus, menu => { return _.includes(categories, menu.name); });
-            let objectIds = _.map(filteredMenus, menu => { return menu['_id']; });
+            let mainMenus = await Menu.find()
+                .where('isTrashed').equals(false)
+                .where('level').equals(0)
+                .where('name').in(categories)
+                .select('_id')
+                .execAsync();
+
+            let objectIds = _.map(mainMenus, menu => { return menu['_id']; });
 
             debug('categories objectIds = %j', objectIds);
 
