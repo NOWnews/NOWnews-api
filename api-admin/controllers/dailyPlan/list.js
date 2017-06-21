@@ -18,10 +18,10 @@ module.exports = async (req, res, next) => {
 
         // one day
         if(startedAt){
-            cursor.where('startedAt').gte(moment(`${startedAt} 00:00`).tz('Asia/Taipei'));
-            totalCursor.where('startedAt').gte(moment(`${startedAt} 00:00`).tz('Asia/Taipei'));
-            cursor.where('startedAt').lte(moment(`${startedAt} 23:59`).tz('Asia/Taipei'));
-            totalCursor.where('startedAt').lte(moment(`${startedAt} 23:59`).tz('Asia/Taipei'));
+            cursor.where('startedAt').gte(moment.tz(parseInt(startedAt),'Asia/Taipei').startOf('day'));
+            totalCursor.where('startedAt').gte(moment.tz(parseInt(startedAt),'Asia/Taipei').startOf('day'));
+            cursor.where('startedAt').lte(moment.tz(parseInt(startedAt),'Asia/Taipei').endOf('day'));
+            totalCursor.where('startedAt').lte(moment.tz(parseInt(startedAt),'Asia/Taipei').endOf('day'));
         }
 
         if(Center){
