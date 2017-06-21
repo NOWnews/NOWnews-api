@@ -5,13 +5,13 @@ import common from './common';
 import home from './home';
 import news from './news';
 
-router.route('/ad/common')
+router.route('/promote/common')
     .get(common);
 
-router.route('/ad/home')
+router.route('/promote/home')
     .get(home);
 
-router.route('/ad/news')
+router.route('/promote/news')
     .get(news);
 
 module.exports = router;
