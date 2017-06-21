@@ -55,7 +55,6 @@ module.exports = async (req, res, next) => {
         }
 
         if(startedAt) {
-            debug('startedAt...',startedAt);
             cursor.where('startedAt').gte(moment.tz(startedAt,'Asia/Taipei').startOf('day'));
             totalCursor.where('startedAt').gte(moment.tz(startedAt,'Asia/Taipei').startOf('day'));
         }
