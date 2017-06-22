@@ -14,8 +14,8 @@ module.exports = async (req, res, next) => {
         let { startedAt, endedAt } = req.query;
 
         // 重新組成時間字串
-        startedAt = startedAt ? moment(startedAt).format('YYYY-MM-DD') : moment(Date.now()).format('YYYY-MM-DD');
-        endedAt = endedAt ? moment(endedAt).format('YYYY-MM-DD') : moment(Date.now()).format('YYYY-MM-DD');
+        startedAt = startedAt ? moment.tz(startedAt, 'Asia/Taipei').startOf('day') : moment.tz('Asia/Taipei').startOf('day');
+        endedAt = endedAt ? moment.tz(endedAt, 'Asia/Taipei').endOf('day') : moment.tz('Asia/Taipei').endOf('day');
 
         let centers = await Center.find()
             .where('isTrashed').equals(false)
@@ -42,8 +42,8 @@ module.exports = async (req, res, next) => {
                     return News.find()
                         .where('isTrashed').equals(false)
                         .where('CreatedBy').in(userIds)
-                        .where('startedAt').gte(moment(`${startedAt} 00:00`))
-                        .where('startedAt').lte(`${endedAt} 23:59`)
+                        .where('startedAt').gte(startedAt)
+                        .where('startedAt').lte(endedAt)
                         .select('_id')
                         .execAsync();
                 })

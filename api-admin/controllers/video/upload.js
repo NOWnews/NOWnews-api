@@ -36,7 +36,7 @@ module.exports = async(req, res, next) => {
         let buffer = readChunk.sync(path, 0, 4100);
 
         let objectId = mongoose.Types.ObjectId();
-        let now = moment(Date.now()).tz('Asia/Taipei').format('YYYYMMDDHHmm');
+        let now = moment.tz('Asia/Taipei').format('YYYYMMDDHHmm');
         let { ext } = fileType(buffer);
         let newName = `${objectId}_${now}.${ext}`;
         let newPath = `uploads/${newName}`;

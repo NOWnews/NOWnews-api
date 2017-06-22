@@ -33,7 +33,7 @@ module.exports = async () => {
                 .where('MainMenu').equals(menu._id)
                 .where('status').equals('RELEASE')
                 .where('startedAt').lte(Date.now())
-                .where('startedAt').gte(moment().add(-6, 'hours'))
+                .where('startedAt').gte(moment.tz('Asia/Taipei').add(-6, 'hours'))
                 .limit(10)
                 .select('_id')
                 .execAsync()

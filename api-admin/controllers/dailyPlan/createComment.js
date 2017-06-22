@@ -10,7 +10,7 @@ module.exports = async (req, res, next) => {
 
     let { id } = req.params;
     let { content, name, createdBy } = req.body;
-    let createdAt = moment().format("YYYY-MM-DD hh:mm").tz('Asia/Taipei');
+    let createdAt = moment.tz('Asia/Taipei').format("YYYY-MM-DD hh:mm");
     try {
 
          let dailyPlan = await DailyPlan.findById(id)
