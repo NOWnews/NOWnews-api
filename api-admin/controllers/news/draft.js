@@ -87,7 +87,7 @@ module.exports = async (req, res, next) => {
         }
 
         if(req.body.startedAt) {
-            news.set('startedAt', moment.tz(req.body.startedAt,'Asia/Taipei'));
+            news.set('startedAt', moment.tz(req.body.startedAt, 'Asia/Taipei'));
         }
 
         if(req.body.type) {

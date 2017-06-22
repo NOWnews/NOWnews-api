@@ -55,13 +55,13 @@ module.exports = async (req, res, next) => {
         }
 
         if(startedAt) {
-            cursor.where('startedAt').gte(moment.tz(startedAt,'Asia/Taipei').startOf('day'));
-            totalCursor.where('startedAt').gte(moment.tz(startedAt,'Asia/Taipei').startOf('day'));
+            cursor.where('startedAt').gte(moment.tz(startedAt, 'Asia/Taipei').startOf('day'));
+            totalCursor.where('startedAt').gte(moment.tz(startedAt, 'Asia/Taipei').startOf('day'));
         }
 
         if(endedAt){
-            cursor.where('startedAt').lte(moment.tz(endedAt,'Asia/Taipei').endOf('day'));
-            totalCursor.where('startedAt').lte(moment.tz(endedAt,'Asia/Taipei').endOf('day'));
+            cursor.where('startedAt').lte(moment.tz(endedAt, 'Asia/Taipei').endOf('day'));
+            totalCursor.where('startedAt').lte(moment.tz(endedAt, 'Asia/Taipei').endOf('day'));
         }
 
         if(MainMenu){

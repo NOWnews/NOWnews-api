@@ -14,8 +14,8 @@ module.exports = async (req, res, next) => {
         let { id } = req.params;
         let { startedAt, endedAt } = req.query;
 
-        startedAt = startedAt ? moment.tz(startedAt,'Asia/Taipei').startOf('day') : moment.tz('Asia/Taipei').startOf('day');
-        endedAt = endedAt ? moment.tz(endedAt,'Asia/Taipei').endOf('day') : moment.tz('Asia/Taipei').endOf('day');
+        startedAt = startedAt ? moment.tz(startedAt, 'Asia/Taipei').startOf('day') : moment.tz('Asia/Taipei').startOf('day');
+        endedAt = endedAt ? moment.tz(endedAt, 'Asia/Taipei').endOf('day') : moment.tz('Asia/Taipei').endOf('day');
 
         // 取得使用者資訊與其新聞列表
         let [ user, newsList ] = await Promise.all([

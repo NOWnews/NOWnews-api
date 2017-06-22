@@ -15,8 +15,8 @@ module.exports = async (req, res, next) => {
         let { startedAt, endedAt } = req.query;
 
         // 重新組成時間字串
-        startedAt = startedAt ? moment.tz(startedAt,'Asia/Taipei').startOf('day') : moment.tz('Asia/Taipei').startOf('day');
-        endedAt = endedAt ? moment.tz(endedAt,'Asia/Taipei').endOf('day') : moment.tz('Asia/Taipei').endOf('day');
+        startedAt = startedAt ? moment.tz(startedAt, 'Asia/Taipei').startOf('day') : moment.tz('Asia/Taipei').startOf('day');
+        endedAt = endedAt ? moment.tz(endedAt, 'Asia/Taipei').endOf('day') : moment.tz('Asia/Taipei').endOf('day');
 
         let [ center, users ] = await Promise.all([
             Center.findById(id).execAsync(),

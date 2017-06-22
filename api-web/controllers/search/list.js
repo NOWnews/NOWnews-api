@@ -32,7 +32,7 @@ module.exports = async (req, res, next) => {
 
             // default StratedAt is today.
             if(startedAt) {
-                startedAt = moment.tz(startedAt,'Asia/Taipei').startOf('day');
+                startedAt = moment.tz(startedAt, 'Asia/Taipei').startOf('day');
                 cursor.where('startedAt').gte(startedAt);
                 totalCursor.where('startedAt').gte(startedAt);
             } else {
@@ -42,7 +42,7 @@ module.exports = async (req, res, next) => {
             }
 
             if (endedAt) {
-                endedAt = moment.tz(endedAt,'Asia/Taipei').endOf('day');
+                endedAt = moment.tz(endedAt, 'Asia/Taipei').endOf('day');
                 cursor.where('startedAt').lte(endedAt);
                 totalCursor.where('startedAt').lte(endedAt);
             }

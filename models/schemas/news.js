@@ -222,21 +222,21 @@ schema.index({
 });
 
 schema.virtual('parseUrl').get(function () {
-    let createdAt = moment.tz(this.createdAt,'Asia/Taipei').format('YYYYMMDD');
+    let createdAt = moment.tz(this.createdAt, 'Asia/Taipei').format('YYYYMMDD');
     let url = `/news/${createdAt}/${this.sn}`;
     return url;
 });
 
 schema.virtual('formatCreatedAt').get(function () {
-    return moment.tz(this.createdAt,'Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
+    return moment.tz(this.createdAt, 'Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });
 
 schema.virtual('formatUpdatedAt').get(function () {
-    return moment.tz(this.updatedAt,'Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
+    return moment.tz(this.updatedAt, 'Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });
 
 schema.virtual('formatStartedAt').get(function () {
-    return moment.tz(this.startedAt,'Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
+    return moment.tz(this.startedAt, 'Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });
 
 schema.plugin(autoIncrement);
