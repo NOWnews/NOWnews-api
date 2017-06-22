@@ -15,6 +15,7 @@ import specialChannel from './specialChannel';
 import personalize from './personalize';
 import promote from './promote';
 import sitemap from './sitemap';
+import rss from './rss';
 
 module.exports = (app) => {
 
@@ -35,6 +36,7 @@ module.exports = (app) => {
     app.use('/', personalize);
     app.use('/', promote);
     app.use('/', sitemap);
+    app.use('/', rss);
 
     return (req, res, next) => {
         return next();
