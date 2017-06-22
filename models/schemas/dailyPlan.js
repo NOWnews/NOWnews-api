@@ -39,7 +39,9 @@ let schema = new Schema({
     startedAt: {
         type: Date,
         default: Date.now,
-        set: (time) => { return moment(time); }
+        set:(time)=>{
+            return moment.tz(time, 'YYYY-MM-DDTHH:mm:ss', 'Asia/Taipei');
+        }
     },
 
     // 是否被刪除
