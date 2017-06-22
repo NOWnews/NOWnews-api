@@ -75,8 +75,8 @@ module.exports = async (req, res, next) => {
         }
 
         if(isScheduled === false || isScheduled === 'false') {
-            cursor.where('startedAt').lte(moment.tz('Asia/Taipei'));
-            totalCursor.where('startedAt').lte(moment.tz('Asia/Taipei') );
+            cursor.where('startedAt').lte(Date.now());
+            totalCursor.where('startedAt').lte(Date.now());
         }
 
         let [ newsList, total ] = await Promise.all([
