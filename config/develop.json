@@ -25,12 +25,12 @@
         "mode": "develop",
         "showError": true,
         "mongodb": {
-            "host": "mongodb://35.185.237.19:27017",
-            "db": "NOWnews_Staging"
+            "host": "mongodb://localhost:27017",
+            "db": "NOWnews_Develop"
         },
         "pvMongodb": {
-            "host": "mongodb://35.185.237.19:27017",
-            "db": "NOWnewsAnalytics_Staging"
+            "host": "mongodb://localhost:27017",
+            "db": "NOWnewsAnalytics_Develop"
         },
         "redis": {
             "host": "localhost",
