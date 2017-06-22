@@ -21,8 +21,12 @@ module.exports = async (req, res, next) => {
         let momentUnit = DEFAULT_TIME_TYPE_TO_MOMENT[timeRange];
 
         // 新聞相關的 cursor
-        let cursor = News.find();
-        let totalCursor = News.find();
+        let cursor = News.find()
+            .where('isTrashed').equals(false)
+            .where('status').equals('RELEASE');
+        let totalCursor = News.find()
+            .where('isTrashed').equals(false)
+            .where('status').equals('RELEASE');
 
         if (momentUnit) {
             startedAt = moment().subtract(1, momentUnit).format('YYYY-MM-DD 00:00');
@@ -56,8 +60,6 @@ module.exports = async (req, res, next) => {
                     { title: new RegExp(keyword, 'i') },
                     { content: new RegExp(keyword, 'i') }
                 ])
-                .where('isTrashed').equals(false)
-                .where('status').equals('RELEASE')
                 .populate('MainPhoto MainVideo MainMenu')
                 .limit(limit)
                 .skip(skip)
@@ -69,8 +71,6 @@ module.exports = async (req, res, next) => {
                     { title: new RegExp(keyword, 'i') },
                     { content: new RegExp(keyword, 'i') }
                 ])
-                .where('isTrashed').equals(false)
-                .where('status').equals('RELEASE')
                 .countAsync()
         ]);
 

@@ -38,4 +38,14 @@ let schema = new Schema({
     versionKey: false
 });
 
+schema.index({
+    userId: 1,
+    createdAt: -1
+});
+
+schema.index({
+    cookie: 1,
+    createdAt: -1
+});
+
 module.exports = schema;

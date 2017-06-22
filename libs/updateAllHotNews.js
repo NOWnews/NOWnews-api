@@ -30,10 +30,10 @@ module.exports = async () => {
         await Promise.map(mainMenus, (menu) => {
             return News.find()
                 .where('isTrashed').equals(false)
-                .where('MainMenu').equals(menu._id)
                 .where('status').equals('RELEASE')
                 .where('startedAt').lte(Date.now())
                 .where('startedAt').gte(moment().add(-6, 'hours'))
+                .where('MainMenu').equals(menu._id)
                 .limit(10)
                 .select('_id')
                 .execAsync()

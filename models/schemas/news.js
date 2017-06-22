@@ -211,13 +211,35 @@ let schema = new Schema({
     }
 });
 
-schema.statics.findBySn = function(sn) {
-    return this.findOne().where('sn').equals(sn);
-};
+schema.index({
+    isTrashed: 1
+});
+
+schema.index({
+    _id: 1,
+    isTrashed: 1
+});
+
+schema.index({
+    isTrashed: 1,
+    status: 1,
+    startedAt: -1
+});
+
+schema.index({
+    isTrashed: 1,
+    status: 1,
+    startedAt: -1,
+    type: 1
+});
 
 schema.index({
     location: '2dsphere'
 });
+
+schema.statics.findBySn = function(sn) {
+    return this.findOne().where('sn').equals(sn);
+};
 
 schema.virtual('parseUrl').get(function () {
     let createdAt = moment(this.createdAt).tz('Asia/Taipei').format('YYYYMMDD');

@@ -21,9 +21,9 @@ module.exports = async (req, res, next) => {
 
         let [ postBoard, total ] = await Promise.all([
             cursor.find()
+                .where('isTrashed').equals(false)
                 .limit(limit)
                 .skip(skip)
-                .where('isTrashed').equals(false)
                 .deepPopulate('CreatedBy.Avatar messages.User.Avatar')
                 .sort(sort)
                 .execAsync(),

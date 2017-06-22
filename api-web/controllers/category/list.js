@@ -13,8 +13,8 @@ module.exports = async (req, res, next) => {
         let { categoryName, type } = req.params;
 
         let menu = await Menu.findOne()
-            .where('categoryName').equals(categoryName)
             .where('isTrashed').equals(false)
+            .where('categoryName').equals(categoryName)
             .where('status').equals('OPEN')
             .execAsync();
 
@@ -25,16 +25,16 @@ module.exports = async (req, res, next) => {
 
         let newsListCursor = News.find()
             .where('isTrashed').equals(false)
-            .where('startedAt').lte(Date.now())
             .where('status').equals('RELEASE')
+            .where('startedAt').lte(Date.now())
             .or([
                 { MainMenu: menu._id },
                 { Menus: menu._id }
             ]);
         let newsTotalCursor = News.find()
             .where('isTrashed').equals(false)
-            .where('startedAt').lte(Date.now())
             .where('status').equals('RELEASE')
+            .where('startedAt').lte(Date.now())
             .or([
                 { MainMenu: menu._id },
                 { Menus: menu._id }

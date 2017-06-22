@@ -11,13 +11,19 @@ import { pagination } from '../../../libs';
 
 module.exports = async(req, res, next) => {
 
-    let { limit, page, skip, keywords, imageFrom, startedAt, endedAt, sort } = req.query;
+    let { limit, page, skip, keywords, imageFrom, startedAt, endedAt, sort, type } = req.query;
     debug('req.query = %j', req.query);
+
+    type = type || 'NEWS';
 
     try{
 
-        let cursor = Image.find().where('type').equals('NEWS');
-        let totalCursor = Image.find().where('type').equals('NEWS'); // 處理分頁用的
+        let cursor = Image.find()
+            .where('isTrashed').equals(false)
+            .where('type').equals(type);
+        let totalCursor = Image.find()
+            .where('isTrashed').equals(false)
+            .where('type').equals(type);
         sort = sort ? sort : '-createdAt';
 
         // 這個條件很複雜，就是要鍵入不同的關鍵字，還可以模糊搜尋
@@ -61,13 +67,11 @@ module.exports = async(req, res, next) => {
 
         let [ images, total ] = await Promise.all([
             cursor
-                .where('isTrashed').equals(false)
                 .limit(limit)
                 .skip(skip)
                 .sort(sort)
                 .execAsync(),
             totalCursor
-                .where('isTrashed').equals(false)
                 .countAsync()
         ]);
         debug('image list = %j', images);

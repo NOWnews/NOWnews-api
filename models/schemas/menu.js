@@ -135,6 +135,33 @@ let schema = new Schema({
     }
 });
 
+schema.index({
+    isTrashed: 1,
+    level: 1,
+    status: 1
+});
+
+schema.index({
+    _id: 1,
+    isTrashed: 1
+});
+
+schema.index({
+    isTrashed: 1,
+    categoryName: 1,
+    status: 1
+});
+
+schema.index({
+    isTrashed: 1,
+    level: 1,
+    name: 1
+});
+
+schema.index({
+    isTrashed: 1
+});
+
 // 給 Admin 用的 Menu 結構化資料
 schema.statics.findAdminStructionAsync = async function (){
     let self = this;

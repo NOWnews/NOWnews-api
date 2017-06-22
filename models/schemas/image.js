@@ -141,6 +141,15 @@ let schema = new Schema({
     }
 });
 
+schema.index({
+    isTrashed: 1
+});
+
+schema.index({
+    isTrashed: 1,
+    type: 1
+});
+
 schema.virtual('thumbnail').get(function () {
     let url = config.get('general.thumbnail.url');
     let width = config.get('general.thumbnail.width');

@@ -8,10 +8,10 @@ module.exports = async (sn) => {
     try {
 
         let [ prevNews ] = await News.find()
-            .where('sn').lt(sn)
             .where('isTrashed').equals(false)
             .where('status').equals('RELEASE')
             .where('startedAt').lte(Date.now())
+            .where('sn').lt(sn)
             .sort('-sn')
             .limit(1)
             .execAsync();

@@ -61,10 +61,10 @@ module.exports = async (req, res, next) => {
 
         if(refData.top1 && refData.top1.menuId && refData.top1.value) {
             let newsList = await News.find()
-                .where('MainMenu').equals(refData.top1.menuId)
                 .where('isTrashed').equals(false)
                 .where('status').equals('RELEASE')
                 .where('startedAt').lte(Date.now())
+                .where('MainMenu').equals(refData.top1.menuId)
                 .populate('MainMenu Menus MainPhoto MainVideo')
                 .select('sn _id title shortTitle MainMenu MainPhoto startedAt type')
                 .limit(Math.ceil(limit * refData.top1.value))
@@ -76,10 +76,10 @@ module.exports = async (req, res, next) => {
 
         if(refData.top2 && refData.top2.menuId && refData.top2.value ) {
             let newsList = await News.find()
-                .where('MainMenu').equals(refData.top2.menuId)
                 .where('isTrashed').equals(false)
                 .where('status').equals('RELEASE')
                 .where('startedAt').lte(Date.now())
+                .where('MainMenu').equals(refData.top2.menuId)
                 .populate('MainMenu Menus MainPhoto MainVideo')
                 .select('sn _id title shortTitle MainMenu MainPhoto startedAt type')
                 .limit(Math.ceil(limit * refData.top2.value))
@@ -91,10 +91,10 @@ module.exports = async (req, res, next) => {
 
         if(refData.top3 && refData.top3.menuId && refData.top3.value) {
             let newsList = await News.find()
-                .where('MainMenu').equals(refData.top3.menuId)
                 .where('isTrashed').equals(false)
                 .where('status').equals('RELEASE')
                 .where('startedAt').lte(Date.now())
+                .where('MainMenu').equals(refData.top3.menuId)
                 .populate('MainMenu Menus MainPhoto MainVideo')
                 .select('sn _id title shortTitle MainMenu MainPhoto startedAt type')
                 .limit(Math.ceil(limit * refData.top3.value))
