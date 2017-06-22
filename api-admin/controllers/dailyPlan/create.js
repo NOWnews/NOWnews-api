@@ -9,6 +9,7 @@ module.exports = async (req, res, next) => {
     let UpdatedBy = CreatedBy;
 
     try {
+
         let dailyPlan = await DailyPlan.createAsync({
             title, startedAt, Center, content, comments, CreatedBy, UpdatedBy
         });

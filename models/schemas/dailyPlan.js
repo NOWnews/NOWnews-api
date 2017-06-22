@@ -40,7 +40,7 @@ let schema = new Schema({
         type: Date,
         default: Date.now,
         set:(time)=>{
-            return moment.tz(time,'YYYY-MM-DDTHH:mm:ss','Asia/Taipei');
+            return moment.tz(time, 'YYYY-MM-DDTHH:mm:ss', 'Asia/Taipei');
         }
     },
 
