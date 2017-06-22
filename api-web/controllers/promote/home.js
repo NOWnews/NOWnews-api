@@ -27,7 +27,7 @@ module.exports = async (req, res, next) => {
             request(`${adServ}?ownerid=3033`, opts)
         ]);
 
-        const headlth = [
+        const health = [
             transformBig5(result[0], 3026),
             transformBig5(result[1], 3028),
             transformBig5(result[2], 3029)
@@ -35,7 +35,7 @@ module.exports = async (req, res, next) => {
 
         const ads = {
             cthouse: transformBig5(result[3], 3033),
-            headlth
+            health
         };
 
         await redis.setValue('adWebHome', ads, 3600);
