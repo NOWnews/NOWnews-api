@@ -39,7 +39,9 @@ let schema = new Schema({
     startedAt: {
         type: Date,
         default: Date.now,
-        set: (time) => { return moment(time); }
+        set:(time)=>{
+            return moment.tz(time, 'YYYY-MM-DDTHH:mm:ss', 'Asia/Taipei');
+        }
     },
 
     // 是否被刪除
@@ -84,15 +86,15 @@ let schema = new Schema({
 });
 
 schema.virtual('formatCreatedAt').get(function () {
-    return moment(this.createdAt).tz('Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
+    return moment.tz(this.createdAt, 'Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });
 
 schema.virtual('formatUpdatedAt').get(function () {
-    return moment(this.updatedAt).tz('Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
+    return moment.tz(this.updatedAt, 'Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });
 
 schema.virtual('formatStartedAt').get(function () {
-    return moment(this.startedAt).tz('Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
+    return moment.tz(this.startedAt, 'Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });
 
 schema.plugin(autoIncrement);

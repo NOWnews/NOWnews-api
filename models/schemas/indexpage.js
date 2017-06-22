@@ -91,7 +91,7 @@ schema.statics.findIndexPageAsync = function findIndexPageAsync (cb) {
 };
 
 schema.virtual('formatUpdatedAt').get(function () {
-    return moment(this.updatedAt).tz('Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
+    return moment.tz(this.updatedAt, 'Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });
 
 schema.plugin(deepPopulate);

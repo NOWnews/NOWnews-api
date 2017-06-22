@@ -237,11 +237,11 @@ schema.statics.findWebStructionAsync = async function (){
 };
 
 schema.virtual('formatCreatedAt').get(function () {
-    return moment(this.createdAt).tz('Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
+    return moment.tz(this.createdAt, 'Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });
 
 schema.virtual('formatUpdatedAt').get(function () {
-    return moment(this.updatedAt).tz('Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
+    return moment.tz(this.updatedAt, 'Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });
 
 schema.plugin(autoIncrement);

@@ -1,16 +1,16 @@
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:libs:updatePersonalize');
 
-import moment from 'moment';
+import moment from 'moment-timezone';
 import _ from 'lodash';
 
 import { Personalize, PageviewLog } from '../pvModels';
 
 module.exports = async () => {
     try {
-
-        let started = moment();
-        let ended = moment().add(-1, 'h');
+        let now = moment.tz('Asia/Taipei');
+        let startedAt = now.add(-1, 'h');
+        let endedAt = now;
 
         let personalLogs = await PageviewLog.aggregateAsync([
             {
@@ -18,14 +18,14 @@ module.exports = async () => {
                     cookie: { $ne: null },
                     $and: [ { url: { $ne: null } }, { url: { $ne: '/' } } ],
                     menuId: { $ne: null },
-                    createdAt: { $gte: new Date(ended), $lte: new Date(started) }
+                    createdAt: { $gte: startedAt, $lte: endedAt }
                 }
             },
             {
                 $group: {
                     _id: '$cookie',
-                    logs: { 
-                        '$push': { 
+                    logs: {
+                        '$push': {
                             cookie: '$cookie',
                             userId: '$userId',
                             url: '$url',

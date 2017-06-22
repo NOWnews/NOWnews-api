@@ -29,24 +29,24 @@ module.exports = async (req, res, next) => {
             .where('status').equals('RELEASE');
 
         if (momentUnit) {
-            startedAt = moment().subtract(1, momentUnit).format('YYYY-MM-DD 00:00');
+            startedAt = moment.tz('Asia/Taipei').subtract(1, momentUnit).startOf('day');
             cursor.where('startedAt').gte(startedAt);
             totalCursor.where('startedAt').gte(startedAt);
         } else {
 
             // default StratedAt is today.
             if(startedAt) {
-                startedAt = moment(startedAt).format('YYYY-MM-DD 00:00');
+                startedAt = moment.tz(startedAt, 'Asia/Taipei').startOf('day');
                 cursor.where('startedAt').gte(startedAt);
                 totalCursor.where('startedAt').gte(startedAt);
             } else {
-                const today = moment().format('YYYY-MM-DD 00:00');
+                const today = moment.tz('Asia/Taipei').startOf('day');
                 cursor.where('startedAt').gte(today);
                 totalCursor.where('startedAt').gte(today);
             }
 
             if (endedAt) {
-                endedAt = moment(endedAt).format('YYYY-MM-DD 23:59');
+                endedAt = moment.tz(endedAt, 'Asia/Taipei').endOf('day');
                 cursor.where('startedAt').lte(endedAt);
                 totalCursor.where('startedAt').lte(endedAt);
             }
