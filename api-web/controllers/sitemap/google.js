@@ -1,4 +1,4 @@
-import moment from 'moment';
+import moment from 'moment-timezone';
 import _ from 'lodash';
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-web:controllers:sitemap:google');
@@ -24,7 +24,7 @@ module.exports = async (req, res, next) => {
                     url:'http://m.nownews.com/news/'+news.sn,
                     changefreq: 'daily',
                     priority: 1,
-                    lastmod: moment(news.startedAt).format('YYYY-MM-DD')
+                    lastmod: moment.tz(news.startedAt,'Asia/Taipei').format('YYYY-MM-DD')
                 }
             );
         });

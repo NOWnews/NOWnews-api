@@ -1,4 +1,4 @@
-import moment from 'moment';
+import moment from 'moment-timezone';
 import _ from 'lodash';
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-web:controllers:sitemap:google');
@@ -24,7 +24,7 @@ module.exports = async (req, res, next) => {
                     name: "NOWnews 今日新聞",
                     language: 'zh-tw',
                     genres: 'PressRelease, UserGenerated',
-                    publication_date: moment(news.startedAt).format('YYYY-MM-DD'),
+                    publication_date: moment.tz(news.startedAt,'Asia/Taipei').format('YYYY-MM-DD'),
                     title: news.title
                 }
             );

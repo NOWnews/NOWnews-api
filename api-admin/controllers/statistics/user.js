@@ -14,8 +14,8 @@ module.exports = async (req, res, next) => {
         let { id } = req.params;
         let { startedAt, endedAt } = req.query;
 
-        startedAt = startedAt ? moment(startedAt).tz('Asia/Taipei').format('YYYY-MM-DD') : moment(Date.now()).tz('Asia/Taipei').format('YYYY-MM-DD');
-        endedAt = endedAt ? moment(endedAt).tz('Asia/Taipei').format('YYYY-MM-DD') : moment(Date.now()).tz('Asia/Taipei').format('YYYY-MM-DD');
+        startedAt = startedAt ? moment.tz(startedAt,'Asia/Taipei').startOf('day') : moment.tz('Asia/Taipei').startOf('day');
+        endedAt = endedAt ? moment.tz(endedAt,'Asia/Taipei').endOf('day') : moment.tz('Asia/Taipei').endOf('day');
 
         // 取得使用者資訊與其新聞列表
         let [ user, newsList ] = await Promise.all([
@@ -23,8 +23,8 @@ module.exports = async (req, res, next) => {
             News.find()
                 .where('isTrashed').equals(false)
                 .where('CreatedBy').equals(id)
-                .where('startedAt').gte(`${startedAt} 00:00`)
-                .where('startedAt').lte(`${endedAt} 23:59`)
+                .where('startedAt').gte(startedAt)
+                .where('startedAt').lte(endedAt)
                 .select('_id sn title startedAt formatStartedAt status')
                 .execAsync()
         ]);

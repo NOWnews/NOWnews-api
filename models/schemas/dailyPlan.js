@@ -86,15 +86,15 @@ let schema = new Schema({
 });
 
 schema.virtual('formatCreatedAt').get(function () {
-    return moment(this.createdAt).tz('Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
+    return moment.tz(this.createdAt,'Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });
 
 schema.virtual('formatUpdatedAt').get(function () {
-    return moment(this.updatedAt).tz('Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
+    return moment.tz(this.updatedAt,'Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });
 
 schema.virtual('formatStartedAt').get(function () {
-    return moment(this.startedAt).tz('Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
+    return moment.tz(this.startedAt,'Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });
 
 schema.plugin(autoIncrement);

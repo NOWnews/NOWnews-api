@@ -15,8 +15,8 @@ module.exports = async (req, res, next) => {
     try {
 
         let { startedAt, endedAt, sort, menuId } = req.query;
-        startedAt = startedAt ? `${startedAt} 00:00` : `${moment().format('YYYY-MM-DD')} 00:00`;
-        endedAt = endedAt ? `${endedAt} 23:59` : `${moment().format('YYYY-MM-DD')} 23:59`;
+        startedAt = startedAt ? moment.tz(startedAt,'Asia/Taipei').startOf('day') : moment.tz('Asia/Taipei').startOf('day');
+        endedAt = endedAt ? moment.tz(endedAt,'Asia/Taipei').endOf('day') : moment.tz('Asia/Taipei').endOf('day');
         sort = sort || '-startedAt';
 
         debug('startedAt = %s', startedAt);
@@ -45,7 +45,7 @@ module.exports = async (req, res, next) => {
                 .where('newsId').equals(news._id)
                 .then((pageviewData) => {
 
-                    news.createdAt = moment(news.createdAt).format('YYYY-MM-DD HH:mm');
+                    news.createdAt = moment.tz(news.createdAt,'Asia/Taipei').format('YYYY-MM-DD HH:mm');
 
                     if (!pageviewData) {
                         news.originalPageviews = 0;

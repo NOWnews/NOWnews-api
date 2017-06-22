@@ -30,18 +30,18 @@ module.exports = new cron.CronJob({
             let rssJSON = await parseRssFeed(feedUrl);
 
             let newsList = [];
-            let nowTime = moment();
-            let prevTime = moment().add(-5, 'm');
+            let nowTime = moment.tz('Asia/Taipei');
+            let prevTime = moment.tz('Asia/Taipei').add(-5, 'm');
 
             _.forEach(rssJSON.rss.channel.item, (item) => {
-                let newsPubDate = moment(new Date(item.pubDate));
+                let newsPubDate = moment.tz(item.pubDate,'Asia/Taipei');
                 if(newsPubDate < prevTime) {
                     return;
                 }
 
                 console.log(`收錄新聞: ${item.title}`);
-                console.log(`新聞發布時間: ${newsPubDate.tz('Asia/Taipei').format('YYYY-MM-DD HH:ss:mm')}`);
-                console.log(`收錄時間區間: ${prevTime.tz('Asia/Taipei').format('YYYY-MM-DD HH:ss:mm')} ~ ${nowTime.tz('Asia/Taipei').format('YYYY-MM-DD HH:ss:mm')}`);
+                console.log(`新聞發布時間: ${newsPubDate.format('YYYY-MM-DD HH:ss:mm')}`);
+                console.log(`收錄時間區間: ${prevTime.format('YYYY-MM-DD HH:ss:mm')} ~ ${nowTime.format('YYYY-MM-DD HH:ss:mm')}`);
                 console.log(`-------------------------------------------`);
                 newsList.push({
                     title: item.title,
