@@ -41,8 +41,14 @@ module.exports = async (req, res, next) => {
         debug('Menu ids = %j', menuIds);
 
         // 新聞相關的 cursor
-        let cursor = News.find();
-        let totalCursor = News.find();
+        let cursor = News.find()
+            .where('isTrashed').equals(false)
+            .where('status').equals('RELEASE')
+            .where('startedAt').lte(Date.now());
+        let totalCursor = News.find()
+            .where('isTrashed').equals(false)
+            .where('status').equals('RELEASE')
+            .where('startedAt').lte(Date.now());
 
         // 如果有 MainMenu 或是有 Menus 的狀況
         if(mainMenus || menus) {
@@ -63,20 +69,14 @@ module.exports = async (req, res, next) => {
 
         // 找出相關列表與分頁資料
         let [ newsList, total ] = await Promise.all([
-            cursor.where('isTrashed').equals(false)
-                .where('status').equals('RELEASE')
-                .where('startedAt').lte(Date.now())
-                .populate( ['MainMenu', 'Menus', 'MainPhoto', 'MainVideo',
+            cursor.populate( ['MainMenu', 'Menus', 'MainPhoto', 'MainVideo',
                 { path:'Author' ,  populate: { path: 'Avatar', select: 'url' }}] )
                 .select('sn _id title shortTitle MainMenu MainPhoto startedAt type Author')
                 .limit(limit)
                 .skip(skip)
                 .sort('-startedAt')
                 .execAsync(),
-            totalCursor.where('isTrashed').equals(false)
-                .where('status').equals('RELEASE')
-                .where('startedAt').lte(Date.now())
-                .countAsync()
+            totalCursor.countAsync()
         ]);
         debug('news list = %j', newsList);
 

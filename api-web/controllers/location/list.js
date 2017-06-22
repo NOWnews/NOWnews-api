@@ -68,13 +68,13 @@ module.exports = async (req, res, next) => {
 
         let cursor = News.find()
             .where('isTrashed').equals(false)
-            .where('startedAt').lte(Date.now())
             .where('status').equals('RELEASE')
+            .where('startedAt').lte(Date.now())
             .where('location').near(opts);
         let totalCursor = News.find()
             .where('isTrashed').equals(false)
-            .where('startedAt').lte(Date.now())
             .where('status').equals('RELEASE')
+            .where('startedAt').lte(Date.now())
             .where('location').near(opts);
 
         let [ newsList, total, results ] = await Promise.all([

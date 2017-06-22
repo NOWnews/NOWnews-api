@@ -11,13 +11,6 @@ let schema = new Schema({
         required: true
     },
 
-    // 上次經過決議後，發現 type 有跟沒有一樣XD
-    // type: {
-    //     type: String,
-    //     default: 'NEWS',
-    //     enum: ['NEWS', 'IMAGE', 'VIDEO']
-    // },
-
     isTrashed: {
         type: Boolean,
         default: false
@@ -58,7 +51,13 @@ let schema = new Schema({
     }
 });
 
-schema.index({ name: 1 });
+schema.index({
+    name: 1
+});
+
+schema.index({
+    isTrashed: 1
+});
 
 schema.virtual('formatCreatedAt').get(function () {
     return moment.tz(this.createdAt, 'Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');

@@ -58,4 +58,12 @@ let schema = new Schema({
     versionKey: false
 });
 
+schema.index({
+    url: 1
+});
+
+schema.index({
+    newsId: 1
+});
+
 module.exports = schema;

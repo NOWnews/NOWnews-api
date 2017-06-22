@@ -75,6 +75,15 @@ let schema = new Schema({
     }
 });
 
+schema.index({
+    isTrashed: 1
+});
+
+schema.index({
+    sn: 1,
+    isTrashed: 1
+});
+
 schema.virtual('formatCreatedAt').get(function () {
     return moment.tz(this.createdAt, 'Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });

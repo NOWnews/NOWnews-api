@@ -34,4 +34,9 @@ let schema = new Schema({
     versionKey: false
 });
 
+schema.index({
+    newsId: 1,
+    userId: 1
+});
+
 module.exports = schema;

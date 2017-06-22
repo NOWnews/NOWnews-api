@@ -13,8 +13,10 @@ module.exports = async (req, res, next) => {
         let { limit, page, skip, name } = req.query;
         debug('req.query = %j', req.query);
 
-        let cursor = Tag.find();
-        let totalCursor = Tag.find(); // 處理分頁用的
+        let cursor = Tag.find()
+            .where('isTrashed').equals(false);
+        let totalCursor = Tag.find()
+            .where('isTrashed').equals(false);
 
         if(name) {
             cursor.where('name').equals(new RegExp(name, 'i'));
@@ -25,12 +27,9 @@ module.exports = async (req, res, next) => {
             cursor.find()
                 .limit(limit)
                 .skip(skip)
-                .where('isTrashed').equals(false)
                 .populate('CreatedBy UpdatedBy')
                 .execAsync(),
-            totalCursor
-                .where('isTrashed').equals(false)
-                .countAsync()
+            totalCursor.countAsync()
         ]);
 
         // 處理分頁
