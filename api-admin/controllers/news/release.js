@@ -134,7 +134,7 @@ module.exports = async (req, res, next) => {
 
         // 初始化 pageview 資訊
         await Pageview.findOneAndUpdateAsync({
-                url: `/news/${moment.tz(updatedNews.startedAt,'Asia/Taipei').format('YYYYMMDD')}/${updatedNews.sn}`
+                url: `/news/${moment.tz(updatedNews.startedAt, 'Asia/Taipei').format('YYYYMMDD')}/${updatedNews.sn}`
             }, {
                 $set: { newsId: updatedNews._id, menuId: updatedNews.MainMenu._id }
             }, {

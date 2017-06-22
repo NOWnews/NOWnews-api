@@ -24,7 +24,7 @@ module.exports = async (req, res, next) => {
                     url:'https://m.nownews.com/news/'+news.sn,
                     changefreq: 'daily',
                     priority: 1,
-                    lastmod: moment.tz(news.startedAt,'Asia/Taipei').format('YYYY-MM-DD')
+                    lastmod: moment.tz(news.startedAt, 'Asia/Taipei').format('YYYY-MM-DD')
                 }
             );
         });

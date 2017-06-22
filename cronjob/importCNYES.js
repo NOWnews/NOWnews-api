@@ -34,7 +34,7 @@ module.exports = new cron.CronJob({
             let prevTime = moment.tz('Asia/Taipei').add(-5, 'm');
 
             _.forEach(rssJSON.rss.channel.item, (item) => {
-                let newsPubDate = moment.tz(item.pubDate,'Asia/Taipei');
+                let newsPubDate = moment.tz(item.pubDate, 'Asia/Taipei');
                 if(newsPubDate < prevTime) {
                     return;
                 }

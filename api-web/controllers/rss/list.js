@@ -28,13 +28,13 @@ module.exports = async(req, res, next) => {
             let rssNeedNews = News.find();
 
             if (start) {
-                start = moment.tz(start,'Asia/Taipei');
+                start = moment.tz(start, 'Asia/Taipei');
                 debug('startTime %s', start );
                 rssNeedNews.where('startedAt').gte(start);
 
             }
             if (end) {
-                end = moment.tz(end,'Asia/Taipei');
+                end = moment.tz(end, 'Asia/Taipei');
                 debug('endTime %s', end );
                 rssNeedNews.where('startedAt').lte(end);
             }
