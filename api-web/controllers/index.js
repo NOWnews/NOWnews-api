@@ -16,6 +16,7 @@ import personalize from './personalize';
 import promote from './promote';
 import sitemap from './sitemap';
 import rss from './rss';
+import appInfo from './app';
 
 module.exports = (app) => {
 
@@ -37,6 +38,7 @@ module.exports = (app) => {
     app.use('/', promote);
     app.use('/', sitemap);
     app.use('/', rss);
+    app.use('/', appInfo);
 
     return (req, res, next) => {
         return next();
