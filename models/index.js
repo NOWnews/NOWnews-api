@@ -35,6 +35,7 @@ import indexpageSchema from './schemas/indexpage';
 import specialTopicSchema from './schemas/specialTopic';
 import specialChannelSchema from './schemas/specialChannel';
 import dailyPlanSchema from './schemas/dailyPlan';
+import appSchema from './schemas/app';
 
 let User = connection.model('User', userSchema);
 let News = connection.model('News', newsSchema);
@@ -54,6 +55,7 @@ let IndexPage = connection.model('IndexPage', indexpageSchema);
 let SpecialTopic = connection.model('SpecialTopic', specialTopicSchema);
 let SpecialChannel = connection.model('SpecialChannel', specialChannelSchema);
 let DailyPlan = connection.model('DailyPlan', dailyPlanSchema);
+let App = connection.model('App', appSchema);
 
 module.exports = {
     User,
@@ -73,5 +75,6 @@ module.exports = {
     IndexPage,
     SpecialTopic,
     SpecialChannel,
-    DailyPlan
+    DailyPlan,
+    App
 };
