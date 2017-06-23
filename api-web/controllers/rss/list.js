@@ -7,10 +7,11 @@ import { News,Menu } from '../../../models';
 
 module.exports = async(req, res, next) => {
 
-    let { limit, categories, start, end } = req.query;
+    let { limit, categories, start, end, sort } = req.query;
 
     try {
             categories = categories ? categories.split(',') : [];
+            sort = sort || '-startedAt';
 
             debug('categories %j', categories);
 
@@ -49,7 +50,7 @@ module.exports = async(req, res, next) => {
                     .where('MainMenu').in(objectIds);
             }
 
-            rssNeedNews.populate('MainPhoto MainMenu Menus');
+            rssNeedNews.sort(sort).populate('MainPhoto MainMenu Menus');
 
             let newsList = await rssNeedNews.execAsync();
 
