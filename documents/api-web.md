@@ -758,6 +758,6 @@ None
 
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
-| version | app 版本號 | String | |  |
-| os | app 作業系統 | String | |  |
-| device | app 裝置 | String | |  |
+| version | app 版本號 | String | | `v1.0.1` |
+| os | app 作業系統 | String | | `IOS` |
+| device | app 裝置 | String | | `PHONE` |
