@@ -48,7 +48,6 @@ module.exports = async (req, res, next) => {
 
         await redis.setValue('adWebCommon', ads, 3600);
 
-
         return res.json(ads);
     } catch (err) {
         return next(err);
