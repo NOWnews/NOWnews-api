@@ -7,9 +7,7 @@ import { App } from '../../../models';
 module.exports = async (req, res, next) => {
     try {
 
-        console.log(12312341323);
-
-        let { version, os, tablet } = req.query;
+        let { version, os, device } = req.query;
         console.log(req.query);
 
         let causor = App.findOne()
@@ -23,8 +21,8 @@ module.exports = async (req, res, next) => {
             causor.where('os').equals(os);
         }
 
-        if(tablet) {
-            causor.where('tablet').equals(tablet);
+        if(device) {
+            causor.where('device').equals(device);
         }
 
         let appInfo = await causor
