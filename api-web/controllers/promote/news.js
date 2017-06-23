@@ -12,7 +12,7 @@ module.exports = async (req, res, next) => {
 
         const redisValue = await redis.getValue('adWebNews');
 
-        if (redisValue && !!redisValue.footer) {
+        if (redisValue && !!redisValue.recommand) {
             return res.json(redisValue);
         }
 
