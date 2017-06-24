@@ -6,21 +6,17 @@ let Schema = mongoose.Schema;
 
 let schema = new Schema({
 
-    version: {
-        type: String,
-        required: true
-    },
-
-    os: {
-        type: String,
-        required: true,
-        enum: ['IOS', 'ANDROID']
-    },
-
     device: {
         type: String,
         required: true,
         enum: ['TABLET', 'PHONE', 'BOX']
+    },
+
+    // app 首圖
+    Image: {
+        type: Schema.Types.ObjectId,
+        ref: 'Image',
+        default: null
     },
 
     isTrashed: {

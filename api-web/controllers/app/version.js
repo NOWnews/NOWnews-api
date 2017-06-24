@@ -1,6 +1,6 @@
 
 import Debug from 'debug';
-const debug = Debug('NOWnews-api:api-web:controllers:app:list');
+const debug = Debug('NOWnews-api:api-web:controllers:app:version');
 
 import { App } from '../../../models';
 
