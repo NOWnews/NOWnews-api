@@ -21,6 +21,7 @@ import indexPage from './indexPage';
 import preview from './preview';
 import postBoard from './postBoard';
 import score from './score';
+import appInfo from './app';
 
 module.exports = (app) => {
 
@@ -47,6 +48,7 @@ module.exports = (app) => {
     app.use('/', preview);
     app.use('/', postBoard);
     app.use('/', score);
+    app.use('/', appInfo);
 
     return (req, res, next) => {
         return next();
