@@ -1,5 +1,4 @@
 
-import autoIncrement from 'mongoose-easy-auto-increment';
 import mongoose from 'mongoose';
 import moment from 'moment-timezone';
 let Schema = mongoose.Schema;
@@ -66,7 +65,5 @@ schema.virtual('formatCreatedAt').get(function () {
 schema.virtual('formatUpdatedAt').get(function () {
     return moment.tz(this.updatedAt, 'Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });
-
-schema.plugin(autoIncrement);
 
 module.exports = schema;
