@@ -2,6 +2,8 @@
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:news:draft');
 
+import moment from 'moment-timezone';
+
 import { News } from '../../../models';
 import { newsLog } from '../../../libs';
 import redis from '../../../redis';
