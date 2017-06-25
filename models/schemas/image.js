@@ -53,7 +53,7 @@ let schema = new Schema({
     // 圖片的分類
     type: {
         type: String,
-        enum: ['NEWS','AVATAR'],
+        enum: ['NEWS','AVATAR', 'SPLASH'],
         default: 'NEWS'
     },
 

@@ -1,26 +1,21 @@
 
-import autoIncrement from 'mongoose-easy-auto-increment';
 import mongoose from 'mongoose';
 import moment from 'moment-timezone';
 let Schema = mongoose.Schema;
 
 let schema = new Schema({
 
-    version: {
-        type: String,
-        required: true
-    },
-
-    os: {
-        type: String,
-        required: true,
-        enum: ['IOS', 'ANDROID']
-    },
-
     device: {
         type: String,
         required: true,
         enum: ['TABLET', 'PHONE', 'BOX']
+    },
+
+    // app 首圖
+    Image: {
+        type: Schema.Types.ObjectId,
+        ref: 'Image',
+        default: null
     },
 
     isTrashed: {
@@ -70,7 +65,5 @@ schema.virtual('formatCreatedAt').get(function () {
 schema.virtual('formatUpdatedAt').get(function () {
     return moment.tz(this.updatedAt, 'Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });
-
-schema.plugin(autoIncrement);
 
 module.exports = schema;
