@@ -21,7 +21,7 @@ module.exports = async (sn) => {
             .where('isTrashed').equals(false)
             .where('status').equals('RELEASE')
             .where('startedAt').lte(Date.now())
-            .where('Tags').in(Tags)
+            .where('Tags').in(news.Tags)
             .where('sn').ne(sn)
             .populate('MainMenu MainPhoto')
             .select('title shortTitle sn MainMenu MainPhoto type startedAt')
