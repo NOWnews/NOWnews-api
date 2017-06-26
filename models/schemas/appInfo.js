@@ -48,6 +48,12 @@ let schema = new Schema({
     }
 });
 
+schema.index({
+    deviceId: 1,
+    token: 1,
+    os: 1
+});
+
 schema.virtual('formatCreatedAt').get(function () {
     return moment.tz(this.createdAt, 'Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });

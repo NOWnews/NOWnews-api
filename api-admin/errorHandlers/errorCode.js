@@ -454,5 +454,10 @@ module.exports = {
     25006: {
         message: '[DailyPlan] 缺少 Center 這個欄位或是格式不正確',
         statusCode: 404
+    },
+
+    26001: {
+        message: '[AppVersion] downloadLink 這個欄位格式不正確',
+        statusCode: 400
     }
 };
