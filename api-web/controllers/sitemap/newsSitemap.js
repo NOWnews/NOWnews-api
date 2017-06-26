@@ -8,13 +8,12 @@ import { News } from '../../../models';
 module.exports = async (req, res, next) => {
     try {
         let device = req.query.device;
-        let limit = 1275;
         let newsList = await News.find()
             .where('isTrashed').equals(false)
             .where('status').equals('RELEASE')
             .where('startedAt').lte(Date.now())
+            .where('startedAt').gte(moment.tz('Asia/Taipei').add('-3', 'day'))
             .select('startedAt sn title')
-            .limit(limit)
             .sort('-startedAt');
 
         let sitemapList = _.map(newsList, (news) => {
