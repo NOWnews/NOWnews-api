@@ -53,7 +53,8 @@ module.exports = async(req, res, next) => {
             rssNeedNews
                 .sort(sort)
                 .populate('MainPhoto MainMenu Menus')
-                .where('status').equals('RELEASE');
+                .where('status').equals('RELEASE')
+                .where('startedAt').lte(Date.now());
 
             let newsList = await rssNeedNews.execAsync();
 
