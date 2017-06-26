@@ -39,6 +39,7 @@ module.exports = async (req, res, next) => {
                 .where('isTrashed').equals(false)
                 .where('status').equals('RELEASE')
                 .where('startedAt').lte(Date.now())
+                .limit(1000)
                 .countAsync();
             let randomSkip = Math.floor(Math.random() * total);
             let randomNews = await News.find()

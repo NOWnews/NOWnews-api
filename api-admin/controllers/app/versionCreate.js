@@ -2,14 +2,14 @@
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:app:versionCreate');
 
-import { App } from '../../../models';
+import { AppVersion } from '../../../models';
 
 module.exports = async (req, res, next) => {
     try {
 
         let { version, os, device, CreatedBy } = req.body;
 
-        let newAppInfo = await App.createAsync({
+        let newAppInfo = await AppVersion.createAsync({
             version,
             os,
             device,

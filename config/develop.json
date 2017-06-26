@@ -19,6 +19,16 @@
             "projectId": "nownews-website-167108",
             "keyFilename": "pems/NOWnews-Website-e1f7525355ca.json",
             "storageBucket": "nownews-web-test"
+        },
+        "apn": {
+            "cert": "pems/NOWnewsPushCert.pem",
+            "key": "pems/NOWnewsPushKey.pem",
+            "passphrase": "Cvso8733",
+            "production": false,
+            "maxConnections": 100000
+        },
+        "gcm": {
+            "key": "AIzaSyAZNW71ymawhi6WXqI9L7nqyGNkOVy-ksY"
         }
     },
     "admin": {
