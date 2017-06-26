@@ -50,7 +50,10 @@ module.exports = async(req, res, next) => {
                     .where('MainMenu').in(objectIds);
             }
 
-            rssNeedNews.sort(sort).populate('MainPhoto MainMenu Menus');
+            rssNeedNews
+                .sort(sort)
+                .populate('MainPhoto MainMenu Menus')
+                .where('status').equals('RELEASE');
 
             let newsList = await rssNeedNews.execAsync();
 
