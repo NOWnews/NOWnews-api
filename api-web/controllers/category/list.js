@@ -53,7 +53,7 @@ module.exports = async (req, res, next) => {
                 .skip(skip)
                 .sort('-startedAt')
                 .execAsync(),
-            newsTotalCursor.countAsync()
+            newsTotalCursor.limit(1000).countAsync()
         ]);
 
         // 處理分頁

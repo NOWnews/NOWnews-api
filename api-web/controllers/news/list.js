@@ -76,7 +76,7 @@ module.exports = async (req, res, next) => {
                 .skip(skip)
                 .sort('-startedAt')
                 .execAsync(),
-            totalCursor.countAsync()
+            totalCursor.limit(1000).countAsync()
         ]);
         debug('news list = %j', newsList);
 
