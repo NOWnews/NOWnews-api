@@ -7,26 +7,26 @@ import { News } from '../../../models';
 
 module.exports = async (req, res, next) => {
     try {
+        let device = req.query.device;
         let limit = 595;
         let newsList = await News.find()
-                .where('isTrashed').equals(false)
-                .where('status').equals('RELEASE')
-                .where('startedAt').lte(Date.now())
-                .select('startedAt sn')
-                .limit(limit)
-                .sort('-startedAt');
+            .where('isTrashed').equals(false)
+            .where('status').equals('RELEASE')
+            .where('startedAt').lte(Date.now())
+            .select('startedAt sn')
+            .limit(limit)
+            .sort('-startedAt');
 
-        let sitemapList = [];
+        let sitemapList = _.map(newsList, (news) => {
 
-        _.map(newsList,(news)=>{
-            sitemapList.push(
-                {
-                    url:'http://m.nownews.com/news/'+news.sn,
-                    changefreq: 'daily',
-                    priority: 1,
-                    lastmod: moment.tz(news.startedAt, 'Asia/Taipei').format('YYYY-MM-DD')
-                }
-            );
+            let url = device === 'desktop' ? `www.nownews.com${news.parseUrl}` : `m.nownews.com/news/${news.sn}`;
+
+            return {
+                url: `http://${url}`,
+                changefreq: 'daily',
+                priority: 1,
+                lastmod: moment.tz(news.startedAt, 'Asia/Taipei').format('YYYY-MM-DD')
+            };
         });
 
         debug('sitemapList = %j', sitemapList);
