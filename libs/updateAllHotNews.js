@@ -11,7 +11,6 @@ import redis from '../redis';
 
 module.exports = async () => {
     try {
-
         console.log(`start update all hot news`);
         let mainMenus = await Menu.find()
             .where('isTrashed').equals(false)

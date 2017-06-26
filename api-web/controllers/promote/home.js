@@ -27,7 +27,7 @@ module.exports = async (req, res, next) => {
             request(`${adServ}?ownerid=3033`, opts),
 
             // crazyAd / Video
-            request(`${adServ}?ownerid=9999`, opts)
+            request(`${adServ}?ownerid=3030`, opts)
         ]);
 
         const health = [
@@ -37,7 +37,7 @@ module.exports = async (req, res, next) => {
         ];
 
         const ads = {
-            crazyAd: transformBig5(result[4], 9999),
+            crazyAd: transformBig5(result[4], 3030),
             cthouse: transformBig5(result[3], 3033),
             health
         };
