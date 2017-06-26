@@ -35,15 +35,15 @@
         "mode": "production",
         "showError": true,
         "mongodb": {
-            "host": "mongodb://10.140.0.5:27017",
+            "host": "mongodb://35.187.153.219:27017",
             "db": "NOWnews_Production"
         },
         "pvMongodb": {
-            "host": "mongodb://10.140.0.5:27017",
+            "host": "mongodb://35.187.153.219:27017",
             "db": "NOWnewsAnalytics_Production"
         },
         "redis": {
-            "host": "10.140.0.3",
+            "host": "104.199.132.216",
             "port": 16379,
             "db": 0,
             "password": "wu0w;62",
@@ -86,15 +86,15 @@
         "adServ": "http://ad1.nownews.com/ads.php",
         "showError": false,
         "mongodb": {
-            "host": "mongodb://10.140.0.5:27017",
+            "host": "mongodb://35.187.153.219:27017",
             "db": "NOWnews_Production"
         },
         "pvMongodb": {
-            "host": "mongodb://10.140.0.5:27017",
+            "host": "mongodb://35.187.153.219:27017",
             "db": "NOWnewsAnalytics_Production"
         },
         "redis": {
-            "host": "10.140.0.3",
+            "host": "104.199.132.216",
             "port": 16379,
             "db": 0,
             "password": "wu0w;62",
