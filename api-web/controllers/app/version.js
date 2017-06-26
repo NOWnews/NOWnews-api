@@ -2,15 +2,14 @@
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-web:controllers:app:version');
 
-import { App } from '../../../models';
+import { AppVersion } from '../../../models';
 
 module.exports = async (req, res, next) => {
     try {
 
         let { version, os, device } = req.query;
-        console.log(req.query);
 
-        let causor = App.findOne()
+        let causor = AppVersion.findOne()
             .where('isTrashed').equals(false);
 
         if(version) {

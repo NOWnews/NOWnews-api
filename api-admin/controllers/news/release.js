@@ -132,6 +132,13 @@ module.exports = async (req, res, next) => {
         //     ]);
         // }
 
+         // 檢查 redis 是否有資料，將之下架
+        await Promise.all([
+            redis.removeValue(`news${news.sn}`),
+            redis.removeValue(`relationNewsByNews${news.sn}`),
+            redis.removeValue(`news${news.sn}NextAndPrev`)
+        ]);
+
         // 初始化 pageview 資訊
         await Pageview.findOneAndUpdateAsync({
                 url: `/news/${moment.tz(updatedNews.startedAt, 'Asia/Taipei').format('YYYYMMDD')}/${updatedNews.sn}`

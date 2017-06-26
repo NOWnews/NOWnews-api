@@ -7,27 +7,27 @@ import { News } from '../../../models';
 
 module.exports = async (req, res, next) => {
     try {
-        let limit = 1275;
+        let device = req.query.device;
         let newsList = await News.find()
-                .where('isTrashed').equals(false)
-                .where('status').equals('RELEASE')
-                .where('startedAt').lte(Date.now())
-                .select('startedAt sn title')
-                .limit(limit)
-                .sort('-startedAt');
+            .where('isTrashed').equals(false)
+            .where('status').equals('RELEASE')
+            .where('startedAt').lte(Date.now())
+            .where('startedAt').gte(moment.tz('Asia/Taipei').add('-3', 'day'))
+            .select('startedAt sn title')
+            .sort('-startedAt');
 
-        let sitemapList = [];
-        _.map(newsList,(news)=>{
-            sitemapList.push(
-                {
-                    url:'https://m.nownews.com/news/'+news.sn,
-                    name: "NOWnews 今日新聞",
-                    language: 'zh-tw',
-                    genres: 'PressRelease, UserGenerated',
-                    publication_date: moment.tz(news.startedAt, 'Asia/Taipei').format('YYYY-MM-DD'),
-                    title: news.title
-                }
-            );
+        let sitemapList = _.map(newsList, (news) => {
+
+            let url = device === 'desktop' ? `www.nownews.com${news.parseUrl}` : `m.nownews.com/news/${news.sn}`;
+            let name = device === 'desktop' ? `NOWnews` : `NOWnews今日新聞`;
+            return {
+                url: `https://${url}`,
+                name: name,
+                language: 'zh-tw',
+                genres: 'PressRelease, UserGenerated',
+                publication_date: moment.tz(news.startedAt, 'Asia/Taipei').format('YYYY-MM-DD'),
+                title: news.title
+            };
         });
 
         debug('sitemapList = %j', sitemapList);

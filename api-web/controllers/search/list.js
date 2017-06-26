@@ -71,6 +71,7 @@ module.exports = async (req, res, next) => {
                     { title: new RegExp(keyword, 'i') },
                     { content: new RegExp(keyword, 'i') }
                 ])
+                .limit(1000)
                 .countAsync()
         ]);
 

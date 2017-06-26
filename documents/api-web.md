@@ -785,3 +785,30 @@ None
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
 | device | 裝置 | String | | `/app/splash?device=PHONE` |
+
+### [POST] `/app/info`
+
+儲存 app 要推播的相關資料
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'YouCanSeeMeJohnCena' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| deviceId | 裝置的識別 id | String | √ | |
+| token | 裝置的 token | String | MemberId | |
+| os | 裝置的作業系統 | String | √ | `ANDROID`, `IOS` |
+| MemberId | 如果有登入會員，請帶入會員的 id | ObjectId | | |
+
+#### Query Parameters
+
+None

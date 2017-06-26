@@ -33,7 +33,7 @@ module.exports = async (req, res, next) => {
                 .sort('-startedAt')
                 .select('sn _id title shortTitle MainMenu MainPhoto MainVideo startedAt type')
                 .execAsync(),
-            totalCursor.countAsync()
+            totalCursor.limit(1000).countAsync()
         ]);
         debug('news list = %j', newsList);
 

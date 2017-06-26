@@ -8,9 +8,13 @@ module.exports = async (sn) => {
     try {
 
         // 找出新聞的 Tags
-        let { Tags } = await News.findBySn(sn)
+        let news = await News.findBySn(sn)
             .select('Tags')
             .execAsync();
+
+        if(!news || !news.Tags) {
+            return Promise.resolve([]);
+        }
 
         // 找出此新聞的相關新聞
         let relationNews = await News.find()
