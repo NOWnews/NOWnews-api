@@ -8,6 +8,8 @@ const debug = Debug('NOWnews-api:api-admin:controllers:score:update');
 import config from 'config';
 
 import { Pageview } from '../../../pvModels';
+import libs from '../../../libs';
+import redis from '../../../redis';
 
 module.exports = async (req, res, next) => {
     try {
@@ -28,6 +30,10 @@ module.exports = async (req, res, next) => {
         // 加權後重新計算總分數
         updatedPageview.set('totalScore', updatedPageview.pageviews * config.get('pageviewWeight.pageviews') + updatedPageview.temperatures * config.get('pageviewWeight.temperatures') + updatedPageview.weightedScore * config.get('pageviewWeight.weightedScore'));
         updatedPageview = await updatedPageview.saveAsync();
+
+        await libs.updateAllHotNews();
+
+        // await redis.setValue(`hotNews-${menu.categoryName}`, hotNewsInMenu, 3600);
 
         return res.json(updatedPageview);
     } catch(err) {
