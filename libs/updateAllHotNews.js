@@ -32,7 +32,7 @@ module.exports = async () => {
                 .where('isTrashed').equals(false)
                 .where('status').equals('RELEASE')
                 .where('startedAt').lte(Date.now())
-                .where('startedAt').gte(moment.tz('Asia/Taipei').add(-10, 'day'))
+                .where('startedAt').gte(moment.tz('Asia/Taipei').add(-1, 'day'))
                 .where('MainMenu').equals(menu._id)
                 .select('_id')
                 .execAsync()
