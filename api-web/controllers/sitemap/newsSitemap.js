@@ -19,10 +19,10 @@ module.exports = async (req, res, next) => {
         let sitemapList = _.map(newsList, (news) => {
 
             let url = device === 'desktop' ? `www.nownews.com${news.parseUrl}` : `m.nownews.com/news/${news.sn}`;
-
+            let name = device === 'desktop' ? `NOWnews` : `NOWnews今日新聞`;
             return {
                 url: `https://${url}`,
-                name: "NOWnews 今日新聞",
+                name: name,
                 language: 'zh-tw',
                 genres: 'PressRelease, UserGenerated',
                 publication_date: moment.tz(news.startedAt, 'Asia/Taipei').format('YYYY-MM-DD'),
