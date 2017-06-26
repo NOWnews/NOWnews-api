@@ -23,6 +23,11 @@ let schema = new Schema({
         enum: ['TABLET', 'PHONE', 'BOX']
     },
 
+    downloadLink: {
+        type: String,
+        default: null
+    },
+
     isTrashed: {
         type: Boolean,
         default: false
