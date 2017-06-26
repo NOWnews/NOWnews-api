@@ -1,6 +1,6 @@
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:dailyPlan:list');
-import moment from 'moment';
+import moment from 'moment-timezone';
 import Promise from 'bluebird';
 import { DailyPlan } from '../../../models';
 import { pagination } from '../../../libs';
