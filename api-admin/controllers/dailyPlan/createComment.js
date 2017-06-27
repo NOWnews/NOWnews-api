@@ -1,7 +1,7 @@
 
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:dailyPlan:createComment');
-import moment from 'moment';
+import moment from 'moment-timezone';
 import _ from 'lodash';
 
 import { DailyPlan } from '../../../models';
