@@ -2,7 +2,7 @@
 import errorMapping from './errorCode';
 import config from 'config';
 
-let showError = config.get('admin.showError');
+let showError = config.get('web.showError');
 
 module.exports = (app) => {
 
