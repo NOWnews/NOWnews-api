@@ -8,7 +8,8 @@ const debug = Debug('NOWnews-api:api-admin:controllers:score:update');
 import config from 'config';
 
 import { Pageview } from '../../../pvModels';
-import libs from '../../../libs';
+import { News } from '../../../models';
+import { updateNotNewsByMenuId } from '../../../libs';
 import redis from '../../../redis';
 
 module.exports = async (req, res, next) => {
@@ -31,9 +32,15 @@ module.exports = async (req, res, next) => {
         updatedPageview.set('totalScore', updatedPageview.pageviews * config.get('pageviewWeight.pageviews') + updatedPageview.temperatures * config.get('pageviewWeight.temperatures') + updatedPageview.weightedScore * config.get('pageviewWeight.weightedScore'));
         updatedPageview = await updatedPageview.saveAsync();
 
-        await libs.updateAllHotNews();
+        let news = await News.findById(newsId)
+            .populate('MainMenu')
+            .execAsync();
 
-        // await redis.setValue(`hotNews-${menu.categoryName}`, hotNewsInMenu, 3600);
+        if(!news.MainMenu) {
+            throw new Error('19006');
+        }
+
+        await updateNotNewsByMenuId(news.MainMenu._id);
 
         return res.json(updatedPageview);
     } catch(err) {
