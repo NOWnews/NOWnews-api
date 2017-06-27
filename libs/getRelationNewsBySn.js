@@ -12,7 +12,7 @@ module.exports = async (sn) => {
             .select('Tags')
             .execAsync();
 
-        if(!news || !news.Tags) {
+        if(!news || !news.Tags || news.Tags.length === 0) {
             return Promise.resolve([]);
         }
 
