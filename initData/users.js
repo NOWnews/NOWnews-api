@@ -13,8 +13,8 @@ module.exports = [
         Department: '540000000000000000000001',
         jobTitle: 'rss 內送單位',
         profileLink: '',
-        CreatedBy: '530000000000000000000002',
-        UpdatedBy: '530000000000000000000002',
+        CreatedBy: '530000000000000000000001',
+        UpdatedBy: '530000000000000000000001',
         isInitUser: true
     },
     {
@@ -31,8 +31,8 @@ module.exports = [
         Department: '540000000000000000000001',
         jobTitle: '系統管理者',
         profileLink: '',
-        CreatedBy: '530000000000000000000002',
-        UpdatedBy: '530000000000000000000002',
+        CreatedBy: '530000000000000000000001',
+        UpdatedBy: '530000000000000000000001',
         isInitUser: true
     },
     {
@@ -48,8 +48,8 @@ module.exports = [
         Department: '540000000000000000000001',
         jobTitle: 'rss 內送單位',
         profileLink: '',
-        CreatedBy: '530000000000000000000002',
-        UpdatedBy: '530000000000000000000002',
+        CreatedBy: '530000000000000000000001',
+        UpdatedBy: '530000000000000000000001',
         isInitUser: true
     },
     {
@@ -65,8 +65,8 @@ module.exports = [
         Department: '540000000000000000000001',
         jobTitle: 'rss 內送單位',
         profileLink: '',
-        CreatedBy: '530000000000000000000002',
-        UpdatedBy: '530000000000000000000002',
+        CreatedBy: '530000000000000000000001',
+        UpdatedBy: '530000000000000000000001',
         isInitUser: true
     }
 ];
