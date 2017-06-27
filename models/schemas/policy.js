@@ -18,7 +18,7 @@ let schema = new Schema({
     // 類型
     type: {
         type: String,
-        enum: ['API', 'ADMIN'],
+        enum: ['API', 'ADMIN', 'ADMIN_MENU'],
         default: 'ADMIN'
     },
 
