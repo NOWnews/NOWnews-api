@@ -22,6 +22,8 @@ import preview from './preview';
 import postBoard from './postBoard';
 import score from './score';
 import appInfo from './app';
+import auth from './auth';
+
 
 module.exports = (app) => {
 
@@ -49,6 +51,7 @@ module.exports = (app) => {
     app.use('/', postBoard);
     app.use('/', score);
     app.use('/', appInfo);
+    app.use('/', auth);
 
     return (req, res, next) => {
         return next();
