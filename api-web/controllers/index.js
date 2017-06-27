@@ -17,6 +17,8 @@ import promote from './promote';
 import sitemap from './sitemap';
 import rss from './rss';
 import appInfo from './app';
+import stream from './stream';
+import live from './live';
 
 module.exports = (app) => {
 
@@ -39,6 +41,8 @@ module.exports = (app) => {
     app.use('/', sitemap);
     app.use('/', rss);
     app.use('/', appInfo);
+    app.use('/', stream);
+    app.use('/', live);
 
     return (req, res, next) => {
         return next();
