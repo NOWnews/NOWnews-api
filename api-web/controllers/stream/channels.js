@@ -19,8 +19,8 @@ module.exports = async (req, res, next) => {
         debug('ip string = %s', ipString);
 
         // 拿 ip 去跟防盜連做註冊
-        let { data: johncena } = await axios.get(`http://61.67.121.80:10011/api/wowza/register?ip=${ipString}`);
-        debug('johncena = %s', johncena);
+        let { data: registerData } = await axios.get(`http://61.67.121.80:10011/api/wowza/register?ip=${ipString}`);
+        debug('registerData = %s', registerData);
 
         // 綜合娛樂
         let entertainments = [
@@ -28,61 +28,61 @@ module.exports = async (req, res, next) => {
                 SN: '',
                 code: '',
                 title: '民視',
-                path: `http://59.124.93.43:1935/live/nns153.stream/playlist.m3u8?johncena=${johncena}`
+                path: `http://59.124.93.43:1935/live/nns153.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
             {
                 SN: '',
                 code: '',
                 title: '台視',
-                path: `http://59.124.93.43:1935/live/nns201.stream/playlist.m3u8?johncena=${johncena}`
+                path: `http://59.124.93.43:1935/live/nns201.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
             {
                 SN: '',
                 code: '',
                 title: '中視',
-                path: `http://59.124.93.43:1935/live/nns202.stream/playlist.m3u8?johncena=${johncena}`
+                path: `http://59.124.93.43:1935/live/nns202.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
             {
                 SN: '',
                 code: '',
                 title: '華視',
-                path: `http://59.124.93.43:1935/live/nns203.stream/playlist.m3u8?johncena=${johncena}`
+                path: `http://59.124.93.43:1935/live/nns203.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
             {
                 SN: '',
                 code: '',
                 title: '緯來綜合台',
-                path: `http://59.124.93.43:1935/live/nns213.stream/playlist.m3u8?johncena=${johncena}`
+                path: `http://59.124.93.43:1935/live/nns213.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
             {
                 SN: '',
                 code: '',
                 title: '公視2',
-                path: `http://59.124.93.43:1935/live/nns136.stream/playlist.m3u8?johncena=${johncena}`
+                path: `http://59.124.93.43:1935/live/nns136.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
             {
                 SN: '',
                 code: '',
                 title: '公視3',
-                path: `http://59.124.93.43:1935/live/nns137.stream/playlist.m3u8?johncena=${johncena}`
+                path: `http://59.124.93.43:1935/live/nns137.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
             {
                 SN: '',
                 code: '',
                 title: '靖天育樂台',
-                path: `http://59.124.93.43:1935/live/nns139.stream/playlist.m3u8?johncena=${johncena}`
+                path: `http://59.124.93.43:1935/live/nns139.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
             {
                 SN: '',
                 code: '',
                 title: 'KLT-靖天國際台',
-                path: `http://59.124.93.43:1935/live/nns144.stream/playlist.m3u8?johncena=${johncena}`
+                path: `http://59.124.93.43:1935/live/nns144.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
             {
                 SN: '',
                 code: '',
                 title: '靖天綜合台',
-                path: `http://59.124.93.43:1935/live/nns142.stream/playlist.m3u8?johncena=${johncena}`
+                path: `http://59.124.93.43:1935/live/nns142.stream/playlist.m3u8?johncena=${registerData.johncena}`
             }
         ];
 
@@ -92,25 +92,25 @@ module.exports = async (req, res, next) => {
                 SN: '',
                 code: '',
                 title: '卡通頻道',
-                path: `http://59.124.93.43:1935/live/nns209.stream/playlist.m3u8?johncena=${johncena}`
+                path: `http://59.124.93.43:1935/live/nns209.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
             {
                 SN: '',
                 code: '',
                 title: '迪士尼頻道',
-                path: `http://59.124.93.43:1935/live/nns210.stream/playlist.m3u8?johncena=${johncena}`
+                path: `http://59.124.93.43:1935/live/nns210.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
             {
                 SN: '',
                 code: '',
                 title: 'MOMO親子台',
-                path: `http://59.124.93.43:1935/live/nns211.stream/playlist.m3u8?johncena=${johncena}`
+                path: `http://59.124.93.43:1935/live/nns211.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
             {
                 SN: '',
                 code: '',
                 title: '靖天卡通台',
-                path: `http://59.124.93.43:1935/live/nns138.stream/playlist.m3u8?johncena=${johncena}`
+                path: `http://59.124.93.43:1935/live/nns138.stream/playlist.m3u8?johncena=${registerData.johncena}`
             }
         ];
 
@@ -120,37 +120,37 @@ module.exports = async (req, res, next) => {
                 SN: '',
                 code: '',
                 title: '民視新聞台',
-                path: `http://59.124.93.43:1935/live/nns199.stream/playlist.m3u8?johncena=${johncena}`
+                path: `http://59.124.93.43:1935/live/nns199.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
             {
                 SN: '',
                 code: '',
                 title: '寰宇新聞二台',
-                path: `http://59.124.93.43:1935/live/nns146.stream/playlist.m3u8?johncena=${johncena}`
+                path: `http://59.124.93.43:1935/live/nns146.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
             {
                 SN: '',
                 code: '',
                 title: '寰宇新聞台',
-                path: `http://59.124.93.43:1935/live/nns147.stream/playlist.m3u8?johncena=${johncena}`
+                path: `http://59.124.93.43:1935/live/nns147.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
             {
                 SN: '',
                 code: '',
                 title: '寰宇財經台',
-                path: `http://59.124.93.43:1935/live/nns148.stream/playlist.m3u8?johncena=${johncena}`
+                path: `http://59.124.93.43:1935/live/nns148.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
             {
                 SN: '',
                 code: '',
                 title: '靖天資訊台',
-                path: `http://59.124.93.43:1935/live/nns143.stream/playlist.m3u8?johncena=${johncena}`
+                path: `http://59.124.93.43:1935/live/nns143.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
             {
                 SN: '',
                 code: '',
                 title: 'NICE TV',
-                path: `http://59.124.93.43:1935/live/nns145.stream/playlist.m3u8?johncena=${johncena}`
+                path: `http://59.124.93.43:1935/live/nns145.stream/playlist.m3u8?johncena=${registerData.johncena}`
             }
         ];
 
@@ -160,31 +160,31 @@ module.exports = async (req, res, next) => {
                 SN: '',
                 code: '',
                 title: '衛視電影台',
-                path: `http://59.124.93.43:1935/live/nns173.stream/playlist.m3u8?johncena=${johncena}`
+                path: `http://59.124.93.43:1935/live/nns173.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
             {
                 SN: '',
                 code: '',
                 title: '衛視洋片台',
-                path: `http://59.124.93.43:1935/live/nns179.stream/playlist.m3u8?johncena=${johncena}`
+                path: `http://59.124.93.43:1935/live/nns179.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
             {
                 SN: '',
                 code: '',
                 title: 'HBO',
-                path: `http://59.124.93.43:1935/live/nns1226.stream/playlist.m3u8?johncena=${johncena}`
+                path: `http://59.124.93.43:1935/live/nns1226.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
             {
                 SN: '',
                 code: '',
                 title: '靖天戲劇台',
-                path: `http://59.124.93.43:1935/live/nns140.stream/playlist.m3u8?johncena=${johncena}`
+                path: `http://59.124.93.43:1935/live/nns140.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
             {
                 SN: '',
                 code: '',
                 title: '靖天日本台',
-                path: `http://59.124.93.43:1935/live/nns141.stream/playlist.m3u8?johncena=${johncena}`
+                path: `http://59.124.93.43:1935/live/nns141.stream/playlist.m3u8?johncena=${registerData.johncena}`
             }
         ];
 
@@ -194,31 +194,31 @@ module.exports = async (req, res, next) => {
                 SN: '',
                 code: '',
                 title: '緯來育樂台',
-                path: `http://59.124.93.43:1935/live/nns206.stream/playlist.m3u8?johncena=${johncena}`
+                path: `http://59.124.93.43:1935/live/nns206.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
             {
                 SN: '',
                 code: '',
                 title: '緯來體育台',
-                path: `http://59.124.93.43:1935/live/nns181.stream/playlist.m3u8?johncena=${johncena}`
+                path: `http://59.124.93.43:1935/live/nns181.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
             {
                 SN: '',
                 code: '',
                 title: '博斯足球台',
-                path: `http://59.124.93.43:1935/live/nns149.stream/playlist.m3u8?johncena=${johncena}`
+                path: `http://59.124.93.43:1935/live/nns149.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
             {
                 SN: '',
                 code: '',
                 title: '博斯無線台',
-                path: `http://59.124.93.43:1935/live/nns150.stream/playlist.m3u8?johncena=${johncena}`
+                path: `http://59.124.93.43:1935/live/nns150.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
             {
                 SN: '',
                 code: '',
                 title: '愛爾達體育台',
-                path: `http://59.124.93.43:1935/live/nns1217.stream/playlist.m3u8?johncena=${johncena}`
+                path: `http://59.124.93.43:1935/live/nns1217.stream/playlist.m3u8?johncena=${registerData.johncena}`
             }
         ];
 
@@ -228,7 +228,7 @@ module.exports = async (req, res, next) => {
                 lockTime: 30,
                 watchable: true,
                 icon: 'http://legacy.nownews.com/NOWnews_static/watchNOW-logo-v2.png',
-                titleMessage: '本直播由 watchNOW APP 提供精彩試看\n請密切關注 watchNOW 的下載通知！\n\n本服務由華夏新媒體有限公司提供\n客服專線: 0903-892-221\n聯絡我們: 0903899221@gmail.com',
+                titleMessage: '本直播由 watchNOW APP 提供精彩試看\n請密切關注 watchNOW 的下載通知！\n\n本服務由華夏新媒體有限公司提供\n客服專線: 0903-892-221\n聯絡我們: 0903892221@gmail.com',
                 downloadable: false,
                 iosDownloadLink: '',
                 androidDownloadLink: ''
