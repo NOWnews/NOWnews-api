@@ -20,6 +20,7 @@ module.exports = async (req, res, next) => {
             .where('isTrashed').equals(false)
             .where('status').nin(['SUSPENDED','LEAVING'])
             .populate('Avatar Role Department Center CreatedBy UpdatedBy')
+            .deepPopulate('Role.Policies')
             .select('-password')
             .execAsync();
 
