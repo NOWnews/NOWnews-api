@@ -16,40 +16,53 @@ import menusData from './menus';
 module.exports = async () => {
 
     // 處理 Policy 資料
-    policyData.forEach(async (data) => {
-        let doc = await Policy.findById(data._id).execAsync();
-        if(doc) {
-            return;
-        }
-        await Policy.createAsync(data);
+    await Promise.each(policyData, (data) => {
+        return Policy.findById(data._id).execAsync()
+            .then((doc) => {
+                // console.log('do policy data');
+                if(doc) {
+                    return Promise.resolve({});
+                }
+                return Policy.createAsync(data);
+            });
     });
 
     // 處理 Role 資料
-    roleData.forEach(async (data) => {
-        let doc = await Role.findById(data._id).execAsync();
-        if(doc) {
-            return;
-        }
-        await Role.createAsync(data);
+    await Promise.each(roleData, (data) => {
+        return Role.findById(data._id).execAsync()
+            .then((doc) => {
+                // console.log('do role data');
+                if(doc) {
+                    return Promise.resolve({});
+                }
+                return Role.createAsync(data);
+            });
     });
 
     // 處理 Center 資料
-    centerData.forEach(async (data) => {
-        let doc = await Center.findById(data._id).execAsync();
-        if(doc) {
-            return;
-        }
-        await Center.createAsync(data);
+    await Promise.each(centerData, (data) => {
+        return Center.findById(data._id).execAsync()
+            .then((doc) => {
+                // console.log('do center data');
+                if(doc) {
+                    return Promise.resolve({});
+                }
+                return Center.createAsync(data);
+            });
     });
 
-    // 處理 department 資料
-    departmentData.forEach(async (data) => {
-        let doc = await Department.findById(data._id).execAsync();
-        if(doc) {
-            return;
-        }
-        await Department.createAsync(data);
+    // 處理 Department 資料
+    await Promise.each(departmentData, (data) => {
+        return Department.findById(data._id).execAsync()
+            .then((doc) => {
+                // console.log('do department data');
+                if(doc) {
+                    return Promise.resolve({});
+                }
+                return Department.createAsync(data);
+            });
     });
+
 
     // 處理 User 資料
     let superuser = await User.findById('530000000000000000000001').execAsync();
@@ -58,23 +71,27 @@ module.exports = async () => {
         await User.createAsync(superuserData);
     }
 
-    // 處理一些預設使用者資料
-    usersData.forEach(async (data) => {
-        let doc = await User.findById(data._id).execAsync();
-        if(doc) {
-            return;
-        }
-        await User.createAsync(data);
+    await Promise.each(usersData, (data) => {
+        return User.findById(data._id).execAsync()
+            .then((doc) => {
+                // console.log('do user data');
+                if(doc) {
+                    return Promise.resolve({});
+                }
+                return User.createAsync(data);
+            });
     });
 
-
-    // 處理一些預設使用者資料
-    menusData.forEach(async (data) => {
-        let doc = await Menu.findById(data._id).execAsync();
-        if(doc) {
-            return;
-        }
-        await Menu.createAsync(data);
+    // 處理 Menu 資料
+    await Promise.each(menusData, (data) => {
+        return Menu.findById(data._id).execAsync()
+            .then((doc) => {
+                // console.log('do menu data');
+                if(doc) {
+                    return Promise.resolve({});
+                }
+                return Menu.createAsync(data);
+            });
     });
 
     console.log(chalk.green(`初始化資料完成`));
