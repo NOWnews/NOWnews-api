@@ -12,7 +12,7 @@ module.exports = async (req, res, next) => {
 
         const redisValue = await redis.getValue('adWebHome');
 
-        if (redisValue && !!redisValue.health) {
+        if (redisValue && !!redisValue.crazyAd) {
             return res.json(redisValue);
         }
 
@@ -24,7 +24,10 @@ module.exports = async (req, res, next) => {
             request(`${adServ}?ownerid=3029`, opts),
 
             // 3 (2017新版)中信房屋-貫穿全網
-            request(`${adServ}?ownerid=3033`, opts)
+            request(`${adServ}?ownerid=3033`, opts),
+
+            // crazyAd / Video
+            request(`${adServ}?ownerid=3030`, opts)
         ]);
 
         const health = [
@@ -34,6 +37,7 @@ module.exports = async (req, res, next) => {
         ];
 
         const ads = {
+            crazyAd: transformBig5(result[4], 3030),
             cthouse: transformBig5(result[3], 3033),
             health
         };

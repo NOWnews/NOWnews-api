@@ -25,7 +25,7 @@ module.exports = async (req, res, next) => {
         }
 
         let appInfo = await causor
-            .select('version device os sn')
+            .select('version device os sn downloadLink')
             .sort('-createdAt')
             .execAsync();
 

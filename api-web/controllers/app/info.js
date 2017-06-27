@@ -11,12 +11,22 @@ module.exports = async (req, res, next) => {
 
         let { token, deviceId, os, MemberId } = req.body;
 
-        await AppInfo.createAsync({
-            deviceId,
-            token,
-            os,
-            MemberId
-        });
+        await AppInfo.findOneAndUpdateAsync({
+                deviceId,
+                token,
+                os
+            }, {
+                $set: {
+                    deviceId,
+                    token,
+                    os,
+                    MemberId
+                }
+            }, {
+                upsert: true,
+                new: true,
+                setDefaultsOnInsert: true
+            });
 
         return next();
     } catch(err) {
