@@ -14,178 +14,178 @@ module.exports = [{
     "path": "/dailyplan",
     "method": "get"
 }, {
-    "_id": "520000000000000000000003",
+    "_id": "520000000000000000000001",
     "group": "新聞",
     "desc": "新增新聞",
     "type": "ADMIN_MENU",
     "path": "/news/create",
     "method": "get"
 }, {
-    "_id": "520000000000000000000004",
+    "_id": "520000000000000000000002",
     "group": "新聞",
     "desc": "所有新聞",
     "type": "ADMIN_MENU",
     "path": "/news/createList",
     "method": "get"
 }, {
-    "_id": "520000000000000000000005",
+    "_id": "520000000000000000000003",
     "group": "新聞",
     "desc": "我的新聞",
     "type": "ADMIN_MENU",
     "path": "/news/myList",
     "method": "get"
 }, {
-    "_id": "520000000000000000000006",
+    "_id": "520000000000000000000004",
     "group": "新聞",
     "desc": "待審中新聞",
     "type": "ADMIN_MENU",
     "path": "/news/reviewList",
     "method": "get"
 }, {
-    "_id": "520000000000000000000007",
+    "_id": "520000000000000000000005",
     "group": "新聞",
     "desc": "待我審核新聞",
     "type": "ADMIN_MENU",
     "path": "/news/takeMeReviewList",
     "method": "get"
 }, {
-    "_id": "530000000000000000000008",
+    "_id": "530000000000000000000001",
     "group": "關鍵字",
     "desc": "關鍵字列表",
     "type": "ADMIN_MENU",
     "path": "/tags",
     "method": "get"
 }, {
-    "_id": "540000000000000000000009",
+    "_id": "540000000000000000000001",
     "group": "圖片",
     "desc": "新增圖片",
     "type": "ADMIN_MENU",
     "path": "/image/create",
     "method": "get"
 }, {
-    "_id": "540000000000000000000010",
+    "_id": "540000000000000000000002",
     "group": "圖片",
     "desc": "圖片列表",
     "type": "ADMIN_MENU",
     "path": "/image/list",
     "method": "get"
 }, {
-    "_id": "550000000000000000000011",
+    "_id": "550000000000000000000001",
     "group": "影片",
     "desc": "新增影片",
     "type": "ADMIN_MENU",
     "path": "/video/create",
     "method": "get"
 }, {
-    "_id": "550000000000000000000012",
+    "_id": "550000000000000000000002",
     "group": "影片",
     "desc": "影片列表",
     "type": "ADMIN_MENU",
     "path": "/video/list",
     "method": "get"
 }, {
-    "_id": "560000000000000000000013",
+    "_id": "560000000000000000000001",
     "group": "選單設定",
     "desc": "選單建立",
     "type": "ADMIN_MENU",
     "path": "/menu/create",
     "method": "get"
 }, {
-    "_id": "560000000000000000000014",
+    "_id": "560000000000000000000002",
     "group": "選單設定",
     "desc": "選單排序",
     "type": "ADMIN_MENU",
     "path": "/menu/sort",
     "method": "get"
 }, {
-    "_id": "570000000000000000000015",
+    "_id": "570000000000000000000001",
     "group": "權限控管",
     "desc": "部門中心",
     "type": "ADMIN_MENU",
     "path": "/auth/department",
     "method": "get"
 }, {
-    "_id": "570000000000000000000016",
+    "_id": "570000000000000000000002",
     "group": "權限控管",
     "desc": "角色管理",
     "type": "ADMIN_MENU",
     "path": "/auth/role",
     "method": "get"
 }, {
-    "_id": "570000000000000000000017",
+    "_id": "570000000000000000000003",
     "group": "權限控管",
     "desc": "使用者管理",
     "type": "ADMIN_MENU",
     "path": "/auth/user",
     "method": "get"
 }, {
-    "_id": "580000000000000000000018",
+    "_id": "580000000000000000000001",
     "group": "專題",
     "desc": "專題列表",
     "type": "ADMIN_MENU",
     "path": "/topic",
     "method": "get"
 }, {
-    "_id": "580000000000000000000019",
+    "_id": "580000000000000000000002",
     "group": "專題",
     "desc": "新增專題",
     "type": "ADMIN_MENU",
     "path": "/topic/create",
     "method": "get"
 }, {
-    "_id": "590000000000000000000020",
+    "_id": "590000000000000000000001",
     "group": "特輯",
     "desc": "特輯列表",
     "type": "ADMIN_MENU",
     "path": "/specialchannel",
     "method": "get"
 }, {
-    "_id": "590000000000000000000021",
+    "_id": "590000000000000000000002",
     "group": "特輯",
     "desc": "新增特輯",
     "type": "ADMIN_MENU",
     "path": "/specialchannel/create",
     "method": "get"
 }, {
-    "_id": "510000000000000000000022",
+    "_id": "510000000000000000000001",
     "group": "首頁管理",
     "desc": "首頁管理建立",
     "type": "ADMIN_MENU",
     "path": "/indexpage/create",
     "method": "get"
 }, {
-    "_id": "511000000000000000000023",
+    "_id": "511000000000000000000001",
     "group": "統計",
     "desc": "統計部門則數",
     "type": "ADMIN_MENU",
     "path": "/statistics/centers",
     "method": "get"
 }, {
-    "_id": "512000000000000000000024",
+    "_id": "512000000000000000000001",
     "group": "新聞順序",
     "desc": "新聞順序設定",
     "type": "ADMIN_MENU",
     "path": "/priority",
     "method": "get"
 }, {
-    "_id": "513000000000000000000025",
+    "_id": "513000000000000000000001",
     "group": "APP控制",
     "desc": "版本控制",
     "type": "ADMIN_MENU",
     "path": "/app/version",
     "method": "get"
 }, {
-    "_id": "513000000000000000000026",
+    "_id": "513000000000000000000002",
     "group": "APP控制",
     "desc": "首圖控制",
     "type": "ADMIN_MENU",
     "path": "/app/splash",
     "method": "get"
 }, {
-    "_id": "513000000000000000000027",
+    "_id": "513000000000000000000003",
     "group": "APP控制",
     "desc": "推播新聞",
     "type": "ADMIN_MENU",
     "path": "/app/notification",
     "method": "get"
-}];
+}]
