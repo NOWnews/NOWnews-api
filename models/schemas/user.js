@@ -1,8 +1,11 @@
 
+import DeepPopulate from 'mongoose-deep-populate';
 import autoIncrement from 'mongoose-easy-auto-increment';
 import mongoose from 'mongoose';
 import moment from 'moment-timezone';
+
 let Schema = mongoose.Schema;
+let deepPopulate = DeepPopulate(mongoose);
 
 let schema = new Schema({
 
@@ -198,5 +201,6 @@ schema.virtual('formatLastLogin').get(function () {
 });
 
 schema.plugin(autoIncrement);
+schema.plugin(deepPopulate);
 
 module.exports = schema;
