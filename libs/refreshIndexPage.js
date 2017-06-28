@@ -16,6 +16,10 @@ module.exports = async () => {
             .lean()
             .execAsync();
 
+        if (!indexPage) {
+            return Promise.resolve({});
+        }
+
         // 檢查輪播是否有被刪除
         let removedCarouselIds = [];
         indexPage.carousels.forEach((item) => {
