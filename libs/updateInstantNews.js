@@ -1,22 +1,21 @@
-
 import Debug from 'debug';
-const debug = Debug('NOWnews-api:api-web:controllers:instant:list');
+const debug = Debug('NOWnews-api:libs:updateInstantNews');
 
-import { pagination } from '../../../libs';
-import { News } from '../../../models';
-import redis from '../../../redis';
+import pagination from './pagination';
+import { News, Menu } from '../models';
+import redis from '../redis';
 
-module.exports = async (req, res, next) => {
+// import _ from 'lodash';
+
+// import { News } from '../models';
+// import redis from '../redis';
+
+module.exports = async () => {
     try {
-
-        let { limit, skip, page, type } = req.query;
-
-
-        // 如果沒有 type 而且是第一頁，直接從 redis 拿資料
-        if(!type && page === 1) {
-            let instantPage1 = await redis.getValue(`instant-page1`);
-            return res.json(instantPage1);
-        }
+        // 之後這些參數要抽出來放在 config
+        const limit = 9;
+        const skip = 0;
+        const page = 1;
 
         // 新聞相關的 cursor
         let cursor = News.find()
@@ -27,11 +26,6 @@ module.exports = async (req, res, next) => {
             .where('isTrashed').equals(false)
             .where('status').equals('RELEASE')
             .where('startedAt').lte(Date.now());
-
-        if (type) {
-            cursor.where('type').equals(type);
-            totalCursor.where('type').equals(type);
-        }
 
         // 找出相關列表與分頁資料
         let [ newsList, total ] = await Promise.all([
@@ -48,11 +42,13 @@ module.exports = async (req, res, next) => {
         // 處理分頁
         let pageData = pagination(total, limit, page, skip);
 
-        return res.json({
+        await redis.setValue(`instant-page1`, {
             newsList,
             pageData
-        });
-    }catch(err) {
-        return next(err);
+        }, 3600);
+
+        return Promise.resolve({});
+    } catch (err) {
+        return Promise.reject(err);
     }
 };
