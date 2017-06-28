@@ -51,10 +51,11 @@ module.exports = async(req, res, next) => {
             }
 
             rssNeedNews
-                .sort(sort)
+                .where('isTrashed').equals(false)
                 .populate('MainPhoto MainMenu Menus')
                 .where('status').equals('RELEASE')
                 .where('startedAt').lte(Date.now());
+                .sort(sort)
 
             let newsList = await rssNeedNews.execAsync();
 
