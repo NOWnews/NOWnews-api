@@ -11,6 +11,7 @@ import updateAllHotNews from './updateAllHotNews';
 import updateNotNewsByMenuId from './updateNotNewsByMenuId';
 import updatePersonalize from './updatePersonalize';
 import updateHotKeywords from './updateHotKeywords';
+import updateInstantNews from './updateInstantNews';
 import refreshIndexPage from './refreshIndexPage';
 import parseRssFeed from './parseRssFeed';
 
@@ -27,6 +28,7 @@ module.exports = {
     updateNotNewsByMenuId,
     updatePersonalize,
     updateHotKeywords,
+    updateInstantNews,
     refreshIndexPage,
     parseRssFeed
 };
