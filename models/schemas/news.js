@@ -236,6 +236,14 @@ schema.index({
 });
 
 schema.index({
+    startedAt: -1
+});
+
+schema.index({
+    createdAt: -1
+});
+
+schema.index({
     location: '2dsphere'
 });
 

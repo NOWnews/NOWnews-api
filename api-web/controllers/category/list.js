@@ -26,23 +26,42 @@ module.exports = async (req, res, next) => {
         let newsListCursor = News.find()
             .where('isTrashed').equals(false)
             .where('status').equals('RELEASE')
-            .where('startedAt').lte(Date.now())
-            .or([
-                { MainMenu: menu._id },
-                { Menus: menu._id }
-            ]);
+            .where('startedAt').lte(Date.now());
         let newsTotalCursor = News.find()
             .where('isTrashed').equals(false)
             .where('status').equals('RELEASE')
-            .where('startedAt').lte(Date.now())
-            .or([
-                { MainMenu: menu._id },
-                { Menus: menu._id }
-            ]);
+            .where('startedAt').lte(Date.now());
+
+        // let newsListCursor = News.find()
+        //     .where('isTrashed').equals(false)
+        //     .where('status').equals('RELEASE')
+        //     .where('startedAt').lte(Date.now())
+        //     .or([
+        //         { MainMenu: menu._id },
+        //         { Menus: menu._id }
+        //     ]);
+        // let newsTotalCursor = News.find()
+        //     .where('isTrashed').equals(false)
+        //     .where('status').equals('RELEASE')
+        //     .where('startedAt').lte(Date.now())
+        //     .or([
+        //         { MainMenu: menu._id },
+        //         { Menus: menu._id }
+        //     ]);
 
         if(type) {
             newsListCursor.where('type').equals(type);
             newsTotalCursor.where('type').equals(type);
+        }
+
+        if(menu.level === 0) {
+            newsListCursor.where('MainMenu').equals(menu._id);
+            newsTotalCursor.where('MainMenu').equals(menu._id);
+        }
+
+        if(menu.level === 1) {
+            newsListCursor.where('Menus').equals(menu._id);
+            newsTotalCursor.where('Menus').equals(menu._id);
         }
 
         let [ newsList, total ] = await Promise.all([
