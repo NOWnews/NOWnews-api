@@ -36,6 +36,10 @@ module.exports = async (req, res, next) => {
         let { data: geoData } = await axios.get(geoUrl, options);
         debug('geoData = %j', geoData);
 
+        if (geoData.status === 'ZERO_RESULTS') {
+            return res.json({ address: '', location: [] });
+        }
+
         let location = geoData.results[0];
 
         let result = {
