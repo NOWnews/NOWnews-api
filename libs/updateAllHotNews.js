@@ -14,7 +14,7 @@ module.exports = async () => {
         console.log(`start update all hot news`);
         let mainMenus = await Menu.find()
             .where('isTrashed').equals(false)
-            .where('level').equals(0)
+            // .where('level').equals(0)
             .where('status').equals('OPEN')
             .or([
                 { isPermanented: true },
