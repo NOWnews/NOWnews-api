@@ -6,11 +6,17 @@ import Promise from 'bluebird';
 
 import { pagination } from '../../../libs';
 import { News, Menu } from '../../../models';
+import redis from '../../../redis';
 
 module.exports = async (req, res, next) => {
     try {
         let { limit, page, skip } = req.query;
         let { categoryName, type } = req.params;
+
+        if(!type && page === 1) {
+            let categoryFistPage = await redis.getValue(`category-${categoryName}-firstPage`);
+            return res.json(categoryFistPage);
+        }
 
         let menu = await Menu.findOne()
             .where('isTrashed').equals(false)
