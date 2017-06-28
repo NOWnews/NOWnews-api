@@ -27,8 +27,7 @@ module.exports = async () => {
                     { startedAt: { $lte: Date.now() }},
                     { endedAt: { $gte: Date.now() }}
                 ]}
-            ])
-            .select('_id categoryName');
+            ]);
         debug('menus = %j', menus);
 
         await Promise.each(menus, (menu) => {
