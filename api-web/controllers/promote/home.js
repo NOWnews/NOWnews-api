@@ -37,13 +37,7 @@ module.exports = async (req, res, next) => {
         ];
 
         const ads = {
-            // crazyAd: transformBig5(result[4], 3030),
-            crazyAd: {
-                "title": "華航空姐",
-                "type": "PHOTO",
-                "img": "http://legacy.nownews.com/ad2004/170629-192105-5160p.jpg",
-                "url": "https://ad1.nownews.com/adclick.php?ownerid=3030&bannerid=36730"
-            },
+            crazyAd: transformBig5(result[4], 3030),
             cthouse: transformBig5(result[3], 3033),
             health
         };
