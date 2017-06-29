@@ -11,33 +11,36 @@ import redis from '../redis';
 
 module.exports = async () => {
     try {
-        console.log(`start update all hot news`);
-        let mainMenus = await Menu.find()
+        console.log(`== Start Update All Hot News ==`);
+        let menus = await Menu.find()
             .where('isTrashed').equals(false)
             .where('status').equals('OPEN')
-            .or([
-                { isPermanented: true },
-                { $and: [
-                    { startedAt: { $lte: Date.now() }},
-                    { endedAt: { $gte: Date.now() }}
-                ]}
-            ])
-            .select('_id categoryName')
+            .where('isPermanented').equals(true)
+            .where('isExternal').equals(false)
+            .select('_id categoryName level')
             .execAsync();
 
-        await Promise.map(mainMenus, (menu) => {
-            return News.find()
+        await Promise.map(menus, (menu) => {
+
+            let cursor = News.find()
                 .where('isTrashed').equals(false)
                 .where('status').equals('RELEASE')
                 .where('startedAt').lte(Date.now())
-                .where('startedAt').gte(moment.tz('Asia/Taipei').add(-1, 'day'))
-                .or([
-                    { MainMenu: menu._id },
-                    { Menus: menu._id }
-                ])
+                .where('startedAt').gte(moment.tz('Asia/Taipei').add(-1, 'day'));
+
+            if(menu.level === 0) {
+                cursor.where('MainMenu').equals(menu._id);
+            }
+
+            if(menu.level === 1) {
+                cursor.where('Menus').equals(menu._id);
+            }
+
+            return cursor
                 .select('_id')
                 .execAsync()
                 .then((newsList) => {
+                    console.log(`== Find ${menu.categoryName} ${newsList.length} news ==`);
                     let newsIds = _.map(newsList, (news) => { return news._id });
                     return Promise.resolve(newsIds);
                 })
@@ -60,9 +63,9 @@ module.exports = async () => {
                 .then((hotNewsInMenu) => {
                     debug(`hotNews-${menu.categoryName} = %j`, hotNewsInMenu);
                     return redis.setValue(`hotNews-${menu.categoryName}`, hotNewsInMenu, 3600);
-                }, { concurrency: 5 });
-        });
-        console.log(`finished update all hot news`);
+                });
+        }, { concurrency: 5 });
+        console.log(`== Finished Update All Hot News ==`);
 
         return Promise.resolve({});
     } catch (err) {
