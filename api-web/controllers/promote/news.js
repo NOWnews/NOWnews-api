@@ -43,7 +43,7 @@ module.exports = async (req, res, next) => {
             like: transformBig5(result[7], 3025)
         };
 
-        await redis.setValue('adWebNews', ads, 3600);
+        await redis.setValue('adWebNews', ads, 300);
         return res.json(ads);
 
     } catch (err) {
