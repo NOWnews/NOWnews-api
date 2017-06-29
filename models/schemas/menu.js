@@ -94,6 +94,20 @@ let schema = new Schema({
         default: 'OPEN'
     },
 
+    // 版型
+    template: {
+        type: String,
+        default: 'DEFAULT',
+        enum: ['DEFAULT', 'COLUMN']
+    },
+
+    // 版型的廣告代碼
+    templateAD: {
+        type: String,
+        default: 'DEFAULT',
+        enum: ['DEFAULT', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+    },
+
     // 是否被刪除
     isTrashed: {
         type: Boolean,
