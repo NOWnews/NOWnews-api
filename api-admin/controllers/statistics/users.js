@@ -32,8 +32,8 @@ module.exports = async (req, res, next) => {
             let data = {};
 
             return News.find()
-                .where('isTrashed').equals(false)
                 .where('CreatedBy').in(user._id)
+                .where('isTrashed').equals(false)
                 .where('startedAt').gte(startedAt)
                 .where('startedAt').lte(endedAt)
                 .select('_id')
