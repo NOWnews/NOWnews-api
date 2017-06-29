@@ -94,6 +94,13 @@ let schema = new Schema({
         default: 'OPEN'
     },
 
+    // 版型
+    template: {
+        type: String,
+        enum: ['COMMOM'],
+        default: 'COMMOM'
+    },
+
     // 是否被刪除
     isTrashed: {
         type: Boolean,
