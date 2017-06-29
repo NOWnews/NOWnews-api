@@ -29,7 +29,7 @@ module.exports = async () => {
             ]);
         debug('menus = %j', menus);
 
-        await Promise.each(menus, (menu) => {
+        await Promise.map(menus, (menu) => {
             return Promise.all([
                 News.find()
                     .where('isTrashed').equals(false)
@@ -54,7 +54,7 @@ module.exports = async () => {
                         { Menus: menu._id }
                     ])
                     .limit(1000).countAsync()
-            ])
+            ], { concurrency: 5 })
             .then(([newsList, total]) => {
                 debug('newsList = %j', newsList);
                 debug('total = %d', total);
