@@ -36,7 +36,7 @@ module.exports = async () => {
 
             if(menu.level === 1) {
                 cursor.where('Menus').equals(menu._id);
-                totalCursor.where('MainMenu').equals(menu._id);
+                totalCursor.where('Menus').equals(menu._id);
             }
 
             cursor
