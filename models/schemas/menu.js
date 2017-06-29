@@ -103,9 +103,9 @@ let schema = new Schema({
 
     // 版型的廣告代碼，0 是預設廣告代碼
     templateAD: {
-        type: Number,
-        default: 0,
-        enum: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        type: String,
+        default: 'DEFAULT',
+        enum: ['DEFAULT', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
     },
 
     // 是否被刪除
