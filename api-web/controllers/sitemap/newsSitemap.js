@@ -14,7 +14,8 @@ module.exports = async (req, res, next) => {
             .where('startedAt').lte(Date.now())
             .where('startedAt').gte(moment.tz('Asia/Taipei').add('-3', 'day'))
             .select('startedAt sn title')
-            .sort('-startedAt');
+            .sort('-startedAt')
+            .limit(1000);
 
         let sitemapList = _.map(newsList, (news) => {
 
