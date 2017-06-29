@@ -1,3 +1,7 @@
+/*
+ * query 條件已經下過 index 了
+ */
+
 import moment from 'moment-timezone';
 import _ from 'lodash';
 import Debug from 'debug';
@@ -9,10 +13,10 @@ module.exports = async (req, res, next) => {
     try {
         let device = req.query.device;
         let newsList = await News.find()
-            .where('isTrashed').equals(false)
-            .where('status').equals('RELEASE')
             .where('startedAt').lte(Date.now())
             .where('startedAt').gte(moment.tz('Asia/Taipei').add('-3', 'day'))
+            .where('status').equals('RELEASE')
+            .where('isTrashed').equals(false)
             .select('startedAt sn')
             .sort('-startedAt');
 

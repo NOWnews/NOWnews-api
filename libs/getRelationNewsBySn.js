@@ -18,11 +18,11 @@ module.exports = async (sn) => {
 
         // 找出此新聞的相關新聞
         let relationNews = await News.find()
-            .where('isTrashed').equals(false)
-            .where('status').equals('RELEASE')
-            .where('startedAt').lte(Date.now())
             .where('Tags').in(news.Tags)
+            .where('status').equals('RELEASE')
+            .where('isTrashed').equals(false)
             .where('sn').ne(sn)
+            .where('startedAt').lte(Date.now())
             .populate('MainMenu MainPhoto')
             .select('title shortTitle sn MainMenu MainPhoto type startedAt')
             .sort('-startedAt')

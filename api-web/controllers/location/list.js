@@ -1,3 +1,6 @@
+/*
+ * query 條件已經下過 index 了
+ */
 
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-web:controllers:location:list');
@@ -67,15 +70,15 @@ module.exports = async (req, res, next) => {
         };
 
         let cursor = News.find()
-            .where('isTrashed').equals(false)
             .where('status').equals('RELEASE')
-            .where('startedAt').lte(Date.now())
-            .where('location').near(opts);
+            .where('location').near(opts)
+            .where('isTrashed').equals(false)
+            .where('startedAt').lte(Date.now());
         let totalCursor = News.find()
-            .where('isTrashed').equals(false)
             .where('status').equals('RELEASE')
-            .where('startedAt').lte(Date.now())
-            .where('location').near(opts);
+            .where('location').near(opts)
+            .where('isTrashed').equals(false)
+            .where('startedAt').lte(Date.now());
 
         let [ newsList, total, results ] = await Promise.all([
             cursor

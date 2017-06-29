@@ -23,15 +23,20 @@ module.exports = async (req, res, next) => {
         debug('endedAt = %s', endedAt);
 
         // 找出某個分類裡面的新聞
+
+        let cursor = News.find()
+
+
+
         let newsList = await News.find()
-            .where('isTrashed').equals(false)
-            .where('status').equals('RELEASE')
             .where('startedAt').gte(startedAt)
             .where('startedAt').lte(endedAt)
             .or([
                 { MainMenu: menuId },
                 { Menus: menuId }
             ])
+            .where('status').equals('RELEASE')
+            .where('isTrashed').equals(false)
             .sort(sort)
             .select('_id sn title shortTitle createdAt')
             .lean()

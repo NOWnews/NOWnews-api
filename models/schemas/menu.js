@@ -159,7 +159,19 @@ schema.index({
 });
 
 schema.index({
-    isTrashed: 1
+    categoryName: 1
+});
+
+schema.index({
+    status: 1
+});
+
+schema.index({
+    categoryName: 1
+});
+
+schema.index({
+    isPermanented: 1
 });
 
 // 給 Admin 用的 Menu 結構化資料

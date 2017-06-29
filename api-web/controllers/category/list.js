@@ -1,3 +1,6 @@
+/*
+ * query 條件已經下過 index 了
+ */
 
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-web:controllers:category:list');
@@ -29,46 +32,32 @@ module.exports = async (req, res, next) => {
             throw new Error('11001');
         }
 
-        let newsListCursor = News.find()
-            .where('isTrashed').equals(false)
-            .where('status').equals('RELEASE')
-            .where('startedAt').lte(Date.now());
-        let newsTotalCursor = News.find()
-            .where('isTrashed').equals(false)
-            .where('status').equals('RELEASE')
-            .where('startedAt').lte(Date.now());
-
-        // let newsListCursor = News.find()
-        //     .where('isTrashed').equals(false)
-        //     .where('status').equals('RELEASE')
-        //     .where('startedAt').lte(Date.now())
-        //     .or([
-        //         { MainMenu: menu._id },
-        //         { Menus: menu._id }
-        //     ]);
-        // let newsTotalCursor = News.find()
-        //     .where('isTrashed').equals(false)
-        //     .where('status').equals('RELEASE')
-        //     .where('startedAt').lte(Date.now())
-        //     .or([
-        //         { MainMenu: menu._id },
-        //         { Menus: menu._id }
-        //     ]);
-
-        if(type) {
-            newsListCursor.where('type').equals(type);
-            newsTotalCursor.where('type').equals(type);
-        }
+        let newsListCursor = News.find();
+        let newsTotalCursor = News.find();
 
         if(menu.level === 0) {
             newsListCursor.where('MainMenu').equals(menu._id);
             newsTotalCursor.where('MainMenu').equals(menu._id);
         }
 
+        if(type) {
+            newsListCursor.where('type').equals(type);
+            newsTotalCursor.where('type').equals(type);
+        }
+
         if(menu.level === 1) {
             newsListCursor.where('Menus').equals(menu._id);
             newsTotalCursor.where('Menus').equals(menu._id);
         }
+
+        newsListCursor
+            .where('status').equals('RELEASE')
+            .where('isTrashed').equals(false)
+            .where('startedAt').lte(Date.now());
+        newsTotalCursor
+            .where('status').equals('RELEASE')
+            .where('isTrashed').equals(false)
+            .where('startedAt').lte(Date.now());
 
         let [ newsList, total ] = await Promise.all([
             newsListCursor

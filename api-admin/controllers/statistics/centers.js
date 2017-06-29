@@ -40,8 +40,8 @@ module.exports = async (req, res, next) => {
                 .then((userIds) => {
                     // 用 user 找出某中心所有的 news
                     return News.find()
-                        .where('isTrashed').equals(false)
                         .where('CreatedBy').in(userIds)
+                        .where('isTrashed').equals(false)
                         .where('startedAt').gte(startedAt)
                         .where('startedAt').lte(endedAt)
                         .select('_id')
