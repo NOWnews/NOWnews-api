@@ -1,3 +1,6 @@
+/*
+ * query 條件已經下過 index 了
+ */
 
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-web:controllers:personalize:list');
@@ -36,15 +39,15 @@ module.exports = async (req, res, next) => {
         // 找不到分析過後的資料，回傳隨機資料
         if(!dataByUser && !dataByCookie) {
             let total = await News.find()
-                .where('isTrashed').equals(false)
                 .where('status').equals('RELEASE')
+                .where('isTrashed').equals(false)
                 .where('startedAt').lte(Date.now())
                 .limit(1000)
                 .countAsync();
             let randomSkip = Math.floor(Math.random() * total);
             let randomNews = await News.find()
-                .where('isTrashed').equals(false)
                 .where('status').equals('RELEASE')
+                .where('isTrashed').equals(false)
                 .where('startedAt').lte(Date.now())
                 .populate('MainMenu Menus MainPhoto MainVideo')
                 .select('sn _id title shortTitle MainMenu MainPhoto startedAt type')
@@ -62,10 +65,10 @@ module.exports = async (req, res, next) => {
 
         if(refData.top1 && refData.top1.menuId && refData.top1.value) {
             let newsList = await News.find()
-                .where('isTrashed').equals(false)
-                .where('status').equals('RELEASE')
-                .where('startedAt').lte(Date.now())
                 .where('MainMenu').equals(refData.top1.menuId)
+                .where('status').equals('RELEASE')
+                .where('isTrashed').equals(false)
+                .where('startedAt').lte(Date.now())
                 .populate('MainMenu Menus MainPhoto MainVideo')
                 .select('sn _id title shortTitle MainMenu MainPhoto startedAt type')
                 .limit(Math.ceil(limit * refData.top1.value))
@@ -77,10 +80,10 @@ module.exports = async (req, res, next) => {
 
         if(refData.top2 && refData.top2.menuId && refData.top2.value ) {
             let newsList = await News.find()
-                .where('isTrashed').equals(false)
-                .where('status').equals('RELEASE')
-                .where('startedAt').lte(Date.now())
                 .where('MainMenu').equals(refData.top2.menuId)
+                .where('status').equals('RELEASE')
+                .where('isTrashed').equals(false)
+                .where('startedAt').lte(Date.now())
                 .populate('MainMenu Menus MainPhoto MainVideo')
                 .select('sn _id title shortTitle MainMenu MainPhoto startedAt type')
                 .limit(Math.ceil(limit * refData.top2.value))
@@ -92,10 +95,10 @@ module.exports = async (req, res, next) => {
 
         if(refData.top3 && refData.top3.menuId && refData.top3.value) {
             let newsList = await News.find()
-                .where('isTrashed').equals(false)
-                .where('status').equals('RELEASE')
-                .where('startedAt').lte(Date.now())
                 .where('MainMenu').equals(refData.top3.menuId)
+                .where('status').equals('RELEASE')
+                .where('isTrashed').equals(false)
+                .where('startedAt').lte(Date.now())
                 .populate('MainMenu Menus MainPhoto MainVideo')
                 .select('sn _id title shortTitle MainMenu MainPhoto startedAt type')
                 .limit(Math.ceil(limit * refData.top3.value))

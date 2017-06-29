@@ -1,3 +1,6 @@
+/*
+ * query 條件已經下過 index 了
+ */
 
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-web:controllers:search:list');
@@ -20,13 +23,22 @@ module.exports = async (req, res, next) => {
         let { limit, skip, page, startedAt, endedAt, timeRange } = req.query;
         let momentUnit = DEFAULT_TIME_TYPE_TO_MOMENT[timeRange];
 
-        // 新聞相關的 cursor
-        let cursor = News.find()
-            .where('isTrashed').equals(false)
-            .where('status').equals('RELEASE');
-        let totalCursor = News.find()
-            .where('isTrashed').equals(false)
-            .where('status').equals('RELEASE');
+        let cursor = News.find();
+        let totalCursor = News.find();
+
+        cursor.and([
+            { title: new RegExp(keyword, 'i') },
+            { content: new RegExp(keyword, 'i') }
+        ])
+        .where('status').equals('RELEASE')
+        .where('isTrashed').equals(false);
+
+        totalCursor.and([
+            { title: new RegExp(keyword, 'i') },
+            { content: new RegExp(keyword, 'i') }
+        ])
+        .where('status').equals('RELEASE')
+        .where('isTrashed').equals(false);
 
         if (momentUnit) {
             startedAt = moment.tz('Asia/Taipei').subtract(1, momentUnit).startOf('day');
@@ -56,10 +68,6 @@ module.exports = async (req, res, next) => {
         // 找出相關列表與分頁資料
         let [ newsList, total ] = await Promise.all([
             cursor
-                .or([
-                    { title: new RegExp(keyword, 'i') },
-                    { content: new RegExp(keyword, 'i') }
-                ])
                 .populate('MainPhoto MainVideo MainMenu')
                 .limit(limit)
                 .skip(skip)
@@ -67,10 +75,6 @@ module.exports = async (req, res, next) => {
                 .sort('-startedAt')
                 .execAsync(),
             totalCursor
-                .or([
-                    { title: new RegExp(keyword, 'i') },
-                    { content: new RegExp(keyword, 'i') }
-                ])
                 .limit(1000)
                 .countAsync()
         ]);

@@ -24,7 +24,7 @@ module.exports = async (req, res, next) => {
                 .execAsync(),
             totalCursor
                 .where('isTrashed').equals(false)
-                .limit(1000)
+                .limit(100)
                 .countAsync()
         ]);
 

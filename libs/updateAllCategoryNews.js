@@ -25,22 +25,28 @@ module.exports = async () => {
             .execAsync();
 
         await Promise.map(menus, (menu) => {
-            let cursor = News.find()
-                .where('isTrashed').equals(false)
-                .where('status').equals('RELEASE')
-                .where('startedAt').lte(Date.now());
-            let totalCursor = News.find()
-                .where('isTrashed').equals(false)
-                .where('status').equals('RELEASE')
-                .where('startedAt').lte(Date.now());
+
+            let cursor = News.find();
+            let totalCursor = News.find();
 
             if(menu.level === 0) {
                 cursor.where('MainMenu').equals(menu._id);
+                totalCursor.where('MainMenu').equals(menu._id);
             }
 
             if(menu.level === 1) {
                 cursor.where('Menus').equals(menu._id);
+                totalCursor.where('MainMenu').equals(menu._id);
             }
+
+            cursor
+                .where('status').equals('RELEASE')
+                .where('isTrashed').equals(false)
+                .where('startedAt').lte(Date.now());
+            totalCursor
+                .where('status').equals('RELEASE')
+                .where('isTrashed').equals(false)
+                .where('startedAt').lte(Date.now());
 
             return Promise.all([
                 cursor

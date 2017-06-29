@@ -22,9 +22,9 @@ module.exports = async () => {
 
         await Promise.map(menus, (menu) => {
 
-            let cursor = News.find()
-                .where('isTrashed').equals(false)
-                .where('status').equals('RELEASE')
+            let cursor = News.find();
+
+            cursor
                 .where('startedAt').lte(Date.now())
                 .where('startedAt').gte(moment.tz('Asia/Taipei').add(-1, 'day'));
 
@@ -35,6 +35,10 @@ module.exports = async () => {
             if(menu.level === 1) {
                 cursor.where('Menus').equals(menu._id);
             }
+
+            cursor
+                .where('status').equals('RELEASE')
+                .where('isTrashed').equals(false);
 
             return cursor
                 .select('_id')
