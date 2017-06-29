@@ -25,10 +25,11 @@ module.exports = async (req, res, next) => {
             request(`${adServ}?ownerid=3012`, opts),
             request(`${adServ}?ownerid=3013`, opts),
 
-            // 跑馬燈第三個版位：全網新聞速報 *3
+            // 跑馬燈第三個版位：全網新聞速報 *4
             request(`${adServ}?ownerid=3020`, opts),
             request(`${adServ}?ownerid=3021`, opts),
             request(`${adServ}?ownerid=3022`, opts),
+            request(`${adServ}?ownerid=3031`, opts),
         ]);
 
         const footer = _.map([0, 1, 2, 3, 4], (key) => {
@@ -38,7 +39,8 @@ module.exports = async (req, res, next) => {
         const instant = [
             transformBig5(result[5], 3020),
             transformBig5(result[6], 3021),
-            transformBig5(result[7], 3022)
+            transformBig5(result[7], 3022),
+            transformBig5(result[8], 3031),
         ];
 
         const ads = {
@@ -46,7 +48,7 @@ module.exports = async (req, res, next) => {
             instant
         };
 
-        await redis.setValue('adWebCommon', ads, 3600);
+        await redis.setValue('adWebCommon', ads, 300);
 
         return res.json(ads);
     } catch (err) {
