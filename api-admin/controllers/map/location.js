@@ -36,14 +36,15 @@ module.exports = async (req, res, next) => {
         let { data: geoData } = await axios.get(geoUrl, options);
         debug('geoData = %j', geoData);
 
-        if (geoData.status === 'ZERO_RESULTS') {
+        let location = geoData.results[0];
+
+        // 可能狀況 geoData.status === 'ZERO_RESULTS' || geoData.status === 'OVER_QUERY_LIMIT'
+        if (!location) {
             return res.json({ address: '', location: [] });
         }
 
-        let location = geoData.results[0];
-
         let result = {
-            address: location.formatted_address,
+            address: location && location.formatted_address,
             location: [location.geometry.location.lng, location.geometry.location.lat] // [ lng, lat ]
         }
 

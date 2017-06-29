@@ -117,6 +117,13 @@ module.exports = async (req, res, next) => {
             news.set('Tags', req.body.Tags);
         }
 
+        if(req.body.template) {
+            news.set('template', req.body.template);
+        }
+
+        if(req.body.templateAD) {
+            news.set('templateAD', req.body.templateAD);
+        }
         let updatedNews = await news.saveAsync();
         debug('update news = %j', updatedNews);
 
