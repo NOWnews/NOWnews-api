@@ -51,7 +51,7 @@ module.exports = async(req, res, next) => {
 
             let newsList = await cursor
                 .populate('MainPhoto MainMenu Menus')
-                .limit(limit)
+                .limit(parseInt(limit, 10))
                 .sort('-startedAt')
                 .execAsync();
 
