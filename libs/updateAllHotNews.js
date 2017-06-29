@@ -16,7 +16,8 @@ module.exports = async () => {
             .where('isTrashed').equals(false)
             .where('status').equals('OPEN')
             .where('isPermanented').equals(true)
-            .select('_id categoryName')
+            .where('isExternal').equals(false)
+            .select('_id categoryName level')
             .execAsync();
 
         await Promise.map(menus, (menu) => {
@@ -24,7 +25,8 @@ module.exports = async () => {
             let cursor = News.find()
                 .where('isTrashed').equals(false)
                 .where('status').equals('RELEASE')
-                .where('startedAt').lte(Date.now());
+                .where('startedAt').lte(Date.now())
+                .where('startedAt').gte(moment.tz('Asia/Taipei').add(-1, 'day'));
 
             if(menu.level === 0) {
                 cursor.where('MainMenu').equals(menu._id);
@@ -38,6 +40,7 @@ module.exports = async () => {
                 .select('_id')
                 .execAsync()
                 .then((newsList) => {
+                    console.log(`Find ${menu.categoryName} ${newsList.length} news`);
                     let newsIds = _.map(newsList, (news) => { return news._id });
                     return Promise.resolve(newsIds);
                 })
