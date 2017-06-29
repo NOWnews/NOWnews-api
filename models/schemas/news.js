@@ -349,6 +349,8 @@ schema.index({
     status: 1,
     isTrashed: 1,
     startedAt: -1
+}, {
+    default_language: 'hant'
 });
 
 schema.index({
