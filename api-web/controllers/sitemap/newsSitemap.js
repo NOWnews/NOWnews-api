@@ -21,6 +21,10 @@ module.exports = async (req, res, next) => {
 
             let url = device === 'desktop' ? `www.nownews.com${news.parseUrl}` : `m.nownews.com/news/${news.sn}`;
             let name = device === 'desktop' ? `NOWnews` : `NOWnews今日新聞`;
+
+            // 濾掉 word 裡面奇怪的東西
+            news.title = news.title.replace(/[\u200B-\u200D\uFEFF]/g,'');
+
             return {
                 url: `https://${url}`,
                 name: name,
