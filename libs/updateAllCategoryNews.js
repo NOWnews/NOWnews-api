@@ -20,49 +20,43 @@ module.exports = async () => {
         let menus = await Menu.find()
             .where('isTrashed').equals(false)
             .where('status').equals('OPEN')
-            .or([
-                { isPermanented: true },
-                { $and: [
-                    { startedAt: { $lte: Date.now() }},
-                    { endedAt: { $gte: Date.now() }}
-                ]}
-            ]);
-        debug('menus = %j', menus);
+            .where('isPermanented').equals(true)
+            .execAsync();
 
-        await Promise.map(menus, (menu) => {
+        await Promise.mapSeries(menus, (menu) => {
+            let cursor = News.find()
+                .where('isTrashed').equals(false)
+                .where('status').equals('RELEASE')
+                .where('startedAt').lte(Date.now());
+            let totalCursor = News.find()
+                .where('isTrashed').equals(false)
+                .where('status').equals('RELEASE')
+                .where('startedAt').lte(Date.now());
+
+            if(menu.level === 0) {
+                cursor.where('MainMenu').equals(menu._id);
+            }
+
+            if(menu.level === 1) {
+                cursor.where('menus').equals(menu._id);
+            }
+
             return Promise.all([
-                News.find()
-                    .where('isTrashed').equals(false)
-                    .where('status').equals('RELEASE')
-                    .where('startedAt').lte(Date.now())
-                    .or([
-                        { MainMenu: menu._id },
-                        { Menus: menu._id }
-                    ])
+                cursor
                     .populate('MainMenu MainPhoto MainVideo')
                     .select('sn title shortTitle MainMenu MainPhoto MainVideo type startedAt')
                     .limit(limit)
                     .skip(skip)
                     .sort('-startedAt')
                     .execAsync(),
-                News.find()
-                    .where('isTrashed').equals(false)
-                    .where('status').equals('RELEASE')
-                    .where('startedAt').lte(Date.now())
-                    .or([
-                        { MainMenu: menu._id },
-                        { Menus: menu._id }
-                    ])
-                    .limit(1000).countAsync()
-            ], { concurrency: 5 })
+                totalCursor.limit(1000).countAsync()
+            ])
             .then(([newsList, total]) => {
                 debug('newsList = %j', newsList);
                 debug('total = %d', total);
 
                 let pageData = pagination(total, limit, page, skip);
                 let key = `category-${menu.categoryName}-firstPage`;
-                debug('category key = %s', key);
-                console.log(`updated category ${menu.categoryName} first page`);
                 return redis.setValue(key, {
                     newsList,
                     pageData,
