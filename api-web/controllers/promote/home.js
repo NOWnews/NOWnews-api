@@ -42,7 +42,7 @@ module.exports = async (req, res, next) => {
             health
         };
 
-        await redis.setValue('adWebHome', ads, 3600);
+        await redis.setValue('adWebHome', ads, 300);
 
         return res.json(ads);
     } catch (err) {
