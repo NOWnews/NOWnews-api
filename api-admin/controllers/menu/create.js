@@ -19,6 +19,8 @@ module.exports = async (req, res, next) => {
             'isExternal',
             'isAdult',
             'status',
+            'template',
+            'templateAD',
             'CreatedBy'
         ]);
         options.UpdatedBy = options.CreatedBy;
