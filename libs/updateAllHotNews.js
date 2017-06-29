@@ -11,7 +11,7 @@ import redis from '../redis';
 
 module.exports = async () => {
     try {
-        console.log(`start update all hot news`);
+        console.log(`== Start Update All Hot News ==`);
         let menus = await Menu.find()
             .where('isTrashed').equals(false)
             .where('status').equals('OPEN')
@@ -40,7 +40,7 @@ module.exports = async () => {
                 .select('_id')
                 .execAsync()
                 .then((newsList) => {
-                    console.log(`Find ${menu.categoryName} ${newsList.length} news`);
+                    console.log(`== Find ${menu.categoryName} ${newsList.length} news ==`);
                     let newsIds = _.map(newsList, (news) => { return news._id });
                     return Promise.resolve(newsIds);
                 })
@@ -65,7 +65,7 @@ module.exports = async () => {
                     return redis.setValue(`hotNews-${menu.categoryName}`, hotNewsInMenu, 3600);
                 });
         }, { concurrency: 5 });
-        console.log(`finished update all hot news`);
+        console.log(`== Finished Update All Hot News ==`);
 
         return Promise.resolve({});
     } catch (err) {

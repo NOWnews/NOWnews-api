@@ -11,7 +11,7 @@ import redis from '../redis';
 
 module.exports = async () => {
     try {
-
+        console.log(`** Start Update All Category News **`);
         // 之後這些參數要抽出來放在 config
         const limit = 15;
         const skip = 0;
@@ -21,6 +21,7 @@ module.exports = async () => {
             .where('isTrashed').equals(false)
             .where('status').equals('OPEN')
             .where('isPermanented').equals(true)
+            .where('isExternal').equals(false)
             .execAsync();
 
         await Promise.mapSeries(menus, (menu) => {
@@ -57,6 +58,7 @@ module.exports = async () => {
 
                 let pageData = pagination(total, limit, page, skip);
                 let key = `category-${menu.categoryName}-firstPage`;
+                console.log(`** Update ${menu.categoryName} ${newsList.length} News At First Page **`);
                 return redis.setValue(key, {
                     newsList,
                     pageData,
@@ -64,6 +66,8 @@ module.exports = async () => {
                 }, 3600);
             });
         });
+
+        console.log(`** Finish Update All Category News **`);
 
         return Promise.resolve({});
     } catch (err) {
