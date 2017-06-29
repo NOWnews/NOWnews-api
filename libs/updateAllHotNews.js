@@ -14,7 +14,6 @@ module.exports = async () => {
         console.log(`start update all hot news`);
         let mainMenus = await Menu.find()
             .where('isTrashed').equals(false)
-            // .where('level').equals(0)
             .where('status').equals('OPEN')
             .or([
                 { isPermanented: true },
@@ -32,7 +31,10 @@ module.exports = async () => {
                 .where('status').equals('RELEASE')
                 .where('startedAt').lte(Date.now())
                 .where('startedAt').gte(moment.tz('Asia/Taipei').add(-1, 'day'))
-                .where('MainMenu').equals(menu._id)
+                .or([
+                    { MainMenu: menu._id },
+                    { Menus: menu._id }
+                ])
                 .select('_id')
                 .execAsync()
                 .then((newsList) => {
@@ -51,24 +53,14 @@ module.exports = async () => {
 
                     return Promise.mapSeries(pageviews, (pageview) => {
                         return News.findById(pageview.newsId)
-                            // .where('_id').in(newsIds)
                             .select('_id sn title shortTitle')
                             .execAsync();
                     });
-
-                    // let newsIds = _.map(pageviews, (pageview) => { return pageview.newsId });
-                    // return Promise.resolve(newsIds);
                 })
-                // .then((newsIds) => {
-                //     return News.find()
-                //         .where('_id').in(newsIds)
-                //         .select('_id sn title shortTitle')
-                //         .execAsync();
-                // })
                 .then((hotNewsInMenu) => {
                     debug(`hotNews-${menu.categoryName} = %j`, hotNewsInMenu);
                     return redis.setValue(`hotNews-${menu.categoryName}`, hotNewsInMenu, 3600);
-                });
+                }, { concurrency: 5 });
         });
         console.log(`finished update all hot news`);
 
