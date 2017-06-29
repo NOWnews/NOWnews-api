@@ -1,3 +1,7 @@
+/*
+ * query 條件已經下過 index 了
+ */
+
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:rss:list');
 
@@ -11,7 +15,6 @@ module.exports = async(req, res, next) => {
 
     try {
             categories = categories ? categories.split(',') : [];
-            sort = sort || '-startedAt';
 
             debug('categories %j', categories);
 
@@ -26,38 +29,31 @@ module.exports = async(req, res, next) => {
 
             debug('categories objectIds = %j', objectIds);
 
-            let rssNeedNews = News.find();
+            let cursor = News.find();
 
             if (start) {
                 start = moment.tz(start, 'Asia/Taipei');
                 debug('startTime %s', start );
-                rssNeedNews.where('startedAt').gte(start);
-
+                cursor.where('startedAt').gte(start);
             }
+
             if (end) {
                 end = moment.tz(end, 'Asia/Taipei');
                 debug('endTime %s', end );
-                rssNeedNews.where('startedAt').lte(end);
-            }
-            if (limit) {
-                debug('limit %s', limit);
-                rssNeedNews.limit(parseInt(limit,10));
+                cursor.where('startedAt').lte(end);
             }
 
-            if (categories) {
-                rssNeedNews
-                    .where('isDeliver').equals(true)
-                    .where('MainMenu').in(objectIds);
-            }
-
-            rssNeedNews
-                .where('isTrashed').equals(false)
-                .populate('MainPhoto MainMenu Menus')
+            cursor
+                .where('MainMenu').in(objectIds)
+                .where('isDeliver').equals(true)
                 .where('status').equals('RELEASE')
-                .where('startedAt').lte(Date.now())
-                .sort(sort);
+                .where('isTrashed').equals(false);
 
-            let newsList = await rssNeedNews.execAsync();
+            let newsList = await cursor
+                .populate('MainPhoto MainMenu Menus')
+                .limit(limit)
+                .sort('-startedAt')
+                .execAsync();
 
             debug('共撈了 %d 新聞', newsList.length);
 

@@ -218,21 +218,7 @@ schema.index({
 });
 
 schema.index({
-    _id: 1,
-    isTrashed: 1
-});
-
-schema.index({
-    isTrashed: 1,
-    status: 1,
-    startedAt: -1
-});
-
-schema.index({
-    isTrashed: 1,
-    status: 1,
-    startedAt: -1,
-    type: 1
+    status: 1
 });
 
 schema.index({
@@ -245,6 +231,215 @@ schema.index({
 
 schema.index({
     location: '2dsphere'
+});
+
+schema.index({
+    MainMenu: 1,
+    type: 1,
+    Menus: 1,
+    status: 1,
+    isTrashed: 1,
+    startedAt: -1
+});
+
+schema.index({
+    MainMenu: 1,
+    Menus: 1,
+    status: 1,
+    isTrashed: 1,
+    startedAt: -1
+});
+
+schema.index({
+    status: 1,
+    isTrashed: 1,
+    startedAt: -1
+});
+
+schema.index({
+    type: 1,
+    status: 1,
+    isTrashed: 1,
+    startedAt: -1
+});
+
+schema.index({
+    MainMenu: 1,
+    status: 1,
+    isTrashed: 1,
+    startedAt: -1
+});
+
+schema.index({
+    Menus: 1,
+    status: 1,
+    isTrashed: 1,
+    startedAt: -1
+});
+
+schema.index({
+    MainMenu: 1,
+    type: 1,
+    status: 1,
+    isTrashed: 1,
+    startedAt: -1
+});
+
+schema.index({
+    MainMenu: 1,
+    Menus: 1,
+    status: 1,
+    isTrashed: 1,
+    startedAt: -1
+});
+
+schema.index({
+    type: 1,
+    status: 1,
+    isTrashed: 1,
+    startedAt: -1
+});
+
+schema.index({
+    status: 1,
+    isTrashed: 1,
+    startedAt: -1
+});
+
+schema.index({
+    status: 1,
+    location: '2dsphere',
+    isTrashed: 1,
+    startedAt: -1
+});
+
+schema.index({
+    Author: 1,
+    status: 1,
+    isTrashed: 1,
+    startedAt: -1
+});
+
+schema.index({
+    startedAt: -1,
+    startedAt: 1,
+    MainMenu: 1,
+    isDeliver: 1,
+    status: 1,
+    isTrashed: 1
+});
+
+schema.index({
+    title: 'text',
+    content: 'text',
+    status: 1,
+    isTrashed: 1,
+    startedAt: -1
+});
+
+schema.index({
+    startedAt: -1,
+    startedAt: 1,
+    status: 1,
+    isTrashed: 1
+});
+
+schema.index({
+    sn: 1,
+    status: 1,
+    isTrashed: 1,
+    startedAt: 1
+});
+
+schema.index({
+    sn: 1,
+    status: 1,
+    isTrashed: 1,
+    startedAt: 1
+});
+
+schema.index({
+    sn: -1,
+    status: 1,
+    isTrashed: 1,
+    startedAt: -1
+});
+
+schema.index({
+    Tags: 1,
+    status: 1,
+    isTrashed: 1,
+    sn: 1,
+    startedAt: -1
+});
+
+schema.index({
+    startedAt: -1,
+    startedAt: 1,
+    MainMenu: 1,
+    status: 1,
+    isTrashed: 1
+});
+
+schema.index({
+    startedAt: -1,
+    startedAt: 1,
+    Menus: 1,
+    status: 1,
+    isTrashed: 1
+});
+
+schema.index({
+    id: 1,
+    isTrashed: 1
+});
+
+schema.index({
+    startedAt: 1,
+    startedAt: -1,
+    MainMenu: 1,
+    status: 1,
+    isTrashed: 1
+});
+
+schema.index({
+    startedAt: 1,
+    startedAt: -1,
+    Menus: 1,
+    status: 1,
+    isTrashed: 1
+});
+
+schema.index({
+    CreatedBy: 1,
+    isTrashed: 1,
+    startedAt: 1,
+    startedAt: -1
+});
+
+schema.index({
+    sn: 1,
+    CreatedBy: 1,
+    MainMenu: 1,
+    status: 1,
+    startedAt: 1
+});
+
+schema.index({
+    CreatedBy: 1,
+    startedAt: -1
+});
+
+schema.index({
+    CreatedBy: 1,
+    status: 1,
+    startedAt: -1
+});
+
+schema.index({
+    LastReviewer: 1,
+    status: 1,
+    startedAt: -1
 });
 
 schema.statics.findBySn = function(sn) {

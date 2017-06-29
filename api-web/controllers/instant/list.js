@@ -1,3 +1,6 @@
+/*
+ * query 條件已經下過 index 了
+ */
 
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-web:controllers:instant:list');
@@ -18,20 +21,23 @@ module.exports = async (req, res, next) => {
             return res.json(instantPage1);
         }
 
-        // 新聞相關的 cursor
-        let cursor = News.find()
-            .where('isTrashed').equals(false)
-            .where('status').equals('RELEASE')
-            .where('startedAt').lte(Date.now());
-        let totalCursor = News.find()
-            .where('isTrashed').equals(false)
-            .where('status').equals('RELEASE')
-            .where('startedAt').lte(Date.now());
+        let cursor = News.find();
+        let totalCursor = News.find();
 
         if (type) {
             cursor.where('type').equals(type);
             totalCursor.where('type').equals(type);
         }
+
+        // 新聞相關的 cursor
+        cursor
+            .where('status').equals('RELEASE')
+            .where('isTrashed').equals(false)
+            .where('startedAt').lte(Date.now());
+        totalCursor
+            .where('status').equals('RELEASE')
+            .where('isTrashed').equals(false)
+            .where('startedAt').lte(Date.now());
 
         // 找出相關列表與分頁資料
         let [ newsList, total ] = await Promise.all([

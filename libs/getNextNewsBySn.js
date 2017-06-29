@@ -8,8 +8,8 @@ module.exports = async (sn) => {
     try {
 
         let [ nextNews ] = await News.find()
-            .where('isTrashed').equals(false)
             .where('status').equals('RELEASE')
+            .where('isTrashed').equals(false)
             .where('startedAt').lte(Date.now())
             .where('sn').gt(sn)
             .sort('sn')
