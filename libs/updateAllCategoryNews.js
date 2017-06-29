@@ -24,7 +24,7 @@ module.exports = async () => {
             .where('isExternal').equals(false)
             .execAsync();
 
-        await Promise.mapSeries(menus, (menu) => {
+        await Promise.map(menus, (menu) => {
             let cursor = News.find()
                 .where('isTrashed').equals(false)
                 .where('status').equals('RELEASE')
@@ -39,7 +39,7 @@ module.exports = async () => {
             }
 
             if(menu.level === 1) {
-                cursor.where('menus').equals(menu._id);
+                cursor.where('Menus').equals(menu._id);
             }
 
             return Promise.all([
@@ -65,7 +65,7 @@ module.exports = async () => {
                     menu
                 }, 3600);
             });
-        });
+        }, { concurrency: 10 });
 
         console.log(`** Finish Update All Category News **`);
 

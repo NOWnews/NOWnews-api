@@ -33,7 +33,7 @@ module.exports = async () => {
             }
 
             if(menu.level === 1) {
-                cursor.where('menus').equals(menu._id);
+                cursor.where('Menus').equals(menu._id);
             }
 
             return cursor
