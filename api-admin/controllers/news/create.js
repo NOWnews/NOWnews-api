@@ -36,7 +36,9 @@ module.exports = async (req, res, next) => {
             'newsBy',
             'Tags',
             'CreatedBy',
-            'LastReviewer'
+            'LastReviewer',
+            'template',
+            'templateAD',
         ]);
 
         let isAdult = options.isAdult === true ? true : false;

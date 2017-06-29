@@ -8,7 +8,10 @@ module.exports = async (req, res, next) => {
     try {
 
         let { id } = req.params;
-        let { name, url, categoryName, isExternal, status, UpdatedBy, isAdult } = req.body;
+        let {
+            name, url, categoryName, isExternal, status, UpdatedBy,
+            isAdult, template, templateAD
+        } = req.body;
 
         let [ menu, menuByUrl, menuByCategoryName ] = await Promise.all([
             Menu.findById(id)
@@ -57,11 +60,20 @@ module.exports = async (req, res, next) => {
             menu.set('categoryName', categoryName);
         }
 
+        if(template) {
+            menu.set('template', template);
+        }
+
+        if(templateAD) {
+            menu.set('templateAD', templateAD);
+        }
+
         isExternal = isExternal === true ? true : false;
         isAdult = isAdult === true ? true : false;
         menu.set('isExternal', isExternal);
         menu.set('isAdult', isAdult);
         menu.set('UpdatedBy', UpdatedBy);
+
 
         let updatedMenu = await menu.saveAsync();
 
