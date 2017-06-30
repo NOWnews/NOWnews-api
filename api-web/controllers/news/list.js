@@ -53,15 +53,27 @@ module.exports = async (req, res, next) => {
             totalCursor.where('Author').equals(author);
         }
 
-        if(menu.level === 0) {
-            newsListCursor.where('MainMenu').equals(menu._id);
-            newsTotalCursor.where('MainMenu').equals(menu._id);
+        // 如果有 MainMenu 或是有 Menus 的狀況
+        if(mainMenus || menus) {
+            cursor.or([
+                { MainMenu: { $in: mainMenuIds }},
+                { Menus: { $in: menuIds }}
+            ]);
+            totalCursor.or([
+                { MainMenu: { $in: mainMenuIds }},
+                { Menus: { $in: menuIds }}
+            ]);
         }
 
-        if(menu.level === 1) {
-            newsListCursor.where('Menus').equals(menu._id);
-            newsTotalCursor.where('Menus').equals(menu._id);
-        }
+        // if(menu.level === 0) {
+        //     newsListCursor.where('MainMenu').equals(menu._id);
+        //     newsTotalCursor.where('MainMenu').equals(menu._id);
+        // }
+
+        // if(menu.level === 1) {
+        //     newsListCursor.where('Menus').equals(menu._id);
+        //     newsTotalCursor.where('Menus').equals(menu._id);
+        // }
 
 
         // 新聞相關的 cursor
