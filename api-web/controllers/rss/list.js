@@ -38,7 +38,7 @@ module.exports = async(req, res, next) => {
             }
 
             if (end) {
-                end = moment.tz(end, 'Asia/Taipei').endOf('day');
+                end = Date.now();
                 debug('endTime %s', end );
                 cursor.where('startedAt').lte(end);
             }
