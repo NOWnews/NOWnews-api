@@ -26,14 +26,14 @@ module.exports = async (req, res, next) => {
         let cursor = News.find();
         let totalCursor = News.find();
 
-        cursor.and([
+        cursor.or([
             { title: new RegExp(keyword, 'i') },
             { content: new RegExp(keyword, 'i') }
         ])
         .where('status').equals('RELEASE')
         .where('isTrashed').equals(false);
 
-        totalCursor.and([
+        totalCursor.or([
             { title: new RegExp(keyword, 'i') },
             { content: new RegExp(keyword, 'i') }
         ])
