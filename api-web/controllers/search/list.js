@@ -25,7 +25,7 @@ module.exports = async (req, res, next) => {
 
         let cursor = News.find();
         let totalCursor = News.find();
-
+        let dateNow = Date.now();
         cursor.or([
             { title: new RegExp(keyword, 'i') },
             { content: new RegExp(keyword, 'i') }
@@ -44,6 +44,8 @@ module.exports = async (req, res, next) => {
             startedAt = moment.tz('Asia/Taipei').subtract(1, momentUnit).startOf('day');
             cursor.where('startedAt').gte(startedAt);
             totalCursor.where('startedAt').gte(startedAt);
+            cursor.where('startedAt').lte(dateNow);
+            totalCursor.where('startedAt').lte(dateNow);
         } else {
 
             // default StratedAt is today.
@@ -57,10 +59,13 @@ module.exports = async (req, res, next) => {
                 totalCursor.where('startedAt').gte(today);
             }
 
-            if (endedAt) {
-                endedAt = moment.tz(endedAt, 'Asia/Taipei').endOf('day');
-                cursor.where('startedAt').lte(endedAt);
-                totalCursor.where('startedAt').lte(endedAt);
+            let momentEndedAt = moment.tz(endedAt, 'Asia/Taipei');
+            if (endedAt && momentEndedAt.isAfter(dateNow)) {
+                cursor.where('startedAt').lte(momentEndedAt);
+                totalCursor.where('startedAt').lte(momentEndedAt);
+            } else {
+                cursor.where('startedAt').lte(dateNow);
+                totalCursor.where('startedAt').lte(dateNow);
             }
         }
 
