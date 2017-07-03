@@ -152,7 +152,8 @@ schema.index({
 
 schema.virtual('thumbnail').get(function () {
 
-    let regexString = /https:\/\/img.nownews.com\//;
+    // 要通用 http 或是 https，而且網址有可能為 img.nownews.com 或是 s.nownews.com
+    let regexString = /^(http|https):\/\/[A-Za-z]+.nownews.com\//;
 
     if(this.url.match(regexString) === null) {
         return this.url;
