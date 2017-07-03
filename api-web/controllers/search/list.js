@@ -41,9 +41,12 @@ module.exports = async (req, res, next) => {
         .where('isTrashed').equals(false);
 
         if (momentUnit) {
+            const tomorrow = moment.tz('Asia/Taipei').add(1, 'day').startOf('day');
             startedAt = moment.tz('Asia/Taipei').subtract(1, momentUnit).startOf('day');
             cursor.where('startedAt').gte(startedAt);
             totalCursor.where('startedAt').gte(startedAt);
+            cursor.where('startedAt').lt(tomorrow);
+            totalCursor.where('startedAt').lt(tomorrow);
         } else {
 
             // default StratedAt is today.
