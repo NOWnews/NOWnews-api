@@ -151,6 +151,13 @@ schema.index({
 });
 
 schema.virtual('thumbnail').get(function () {
+
+    let regexString = /https:\/\/img.nownews.com\//;
+
+    if(this.url.match(regexString) === null) {
+        return this.url;
+    }
+
     let url = config.get('general.thumbnail.url');
     let width = config.get('general.thumbnail.width');
     let quality = config.get('general.thumbnail.quality');

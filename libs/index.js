@@ -14,6 +14,7 @@ import updatePersonalize from './updatePersonalize';
 import updateHotKeywords from './updateHotKeywords';
 import updateInstantNews from './updateInstantNews';
 import updateNewestNews from './updateNewestNews';
+import updateNewestImages from './updateNewestImages';
 import refreshIndexPage from './refreshIndexPage';
 import parseRssFeed from './parseRssFeed';
 
@@ -33,6 +34,7 @@ module.exports = {
     updateHotKeywords,
     updateInstantNews,
     updateNewestNews,
+    updateNewestImages,
     refreshIndexPage,
     parseRssFeed
 };
