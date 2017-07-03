@@ -1,9 +1,10 @@
 import moment from 'moment-timezone';
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:news:list');
-
+import _ from 'lodash';
 import Promise from 'bluebird';
 
+import { Pageview } from '../../../pvModels';
 import { News } from '../../../models';
 import { pagination } from '../../../libs';
 
@@ -94,6 +95,22 @@ module.exports = async (req, res, next) => {
         ]);
         debug('news list = %j', newsList);
 
+        // 為每篇news加上PV
+        let newsIds = [];
+        newsList = _.map(newsList,(news)=>{
+            newsIds.push(news._id);
+            return news.toJSON();
+        });
+        let pageviews = await Pageview.find()
+            .where('newsId').in(newsIds)
+            .execAsync();
+        let pageviewGroups = _.groupBy(pageviews,'newsId');
+        newsList = _.map(newsList,(news)=>{
+            news.pageviews = _.sumBy(pageviewGroups[news.id], 'pageviews') || 0;
+            return news;
+        });
+
+        debug('news... = %j',newsList);
         // 處理分頁
         debug('total = %d', total);
         let pageData = pagination(total, limit, page, skip);
