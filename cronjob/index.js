@@ -4,6 +4,7 @@ import updatePersonalize from './updatePersonalize';
 import updateHotKeywords from './updateHotKeywords';
 import updateInstantNews from './updateInstantNews';
 import updateAllCategoryNews from './updateAllCategoryNews';
+import updateNewestNews from './updateNewestNews';
 // import importCNYES from './importCNYES';
 
 module.exports = async () => {
@@ -13,7 +14,8 @@ module.exports = async () => {
         updatePersonalize.start(),
         updateHotKeywords.start(),
         updateInstantNews.start(),
-        updateAllCategoryNews.start()
+        updateAllCategoryNews.start(),
+        updateNewestNews.start()
         // importCNYES.start()
     ]);
 };
