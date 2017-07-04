@@ -22,11 +22,14 @@ module.exports = async () => {
 
         await Promise.map(menus, (menu) => {
 
+            // 專欄新聞撈到 3 年前，一般新聞撈 1 天前
+            let defaultDays = menu.template === 'DEFAULT' ? -1 : -1095;
+
             let cursor = News.find();
 
             cursor
                 .where('startedAt').lte(Date.now())
-                .where('startedAt').gte(moment.tz('Asia/Taipei').add(-1, 'day'));
+                .where('startedAt').gte(moment.tz('Asia/Taipei').add(defaultDays, 'day'));
 
             if(menu.level === 0) {
                 cursor.where('MainMenu').equals(menu._id);
