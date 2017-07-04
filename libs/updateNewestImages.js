@@ -14,7 +14,7 @@ module.exports = async () => {
 
         let images = await Image.find()
             .where('isTrashed').equals(false)
-            .where('createdAt').gte(moment.tz('Asia/Taipei').add('-3', 'day'))
+            .where('createdAt').gte(moment.tz('Asia/Taipei').add('-3', 'hours'))
             .where('createdAt').lte(Date.now())
             .sort('-createdAt')
             .execAsync();
