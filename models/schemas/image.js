@@ -151,6 +151,14 @@ schema.index({
 });
 
 schema.virtual('thumbnail').get(function () {
+
+    // 要通用 http 或是 https，而且網址有可能為 img.nownews.com 或是 s.nownews.com
+    let regexString = /^(http|https):\/\/[A-Za-z]+.nownews.com\//;
+
+    if(this.url.match(regexString) === null) {
+        return this.url;
+    }
+
     let url = config.get('general.thumbnail.url');
     let width = config.get('general.thumbnail.width');
     let quality = config.get('general.thumbnail.quality');

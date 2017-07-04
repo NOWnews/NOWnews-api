@@ -122,24 +122,24 @@ module.exports = async (req, res, next) => {
                 title: '民視新聞台',
                 path: `http://59.124.93.43:1935/live/nns199.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
-            {
-                SN: '',
-                code: '',
-                title: '寰宇新聞二台',
-                path: `http://59.124.93.43:1935/live/nns146.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            },
-            {
-                SN: '',
-                code: '',
-                title: '寰宇新聞台',
-                path: `http://59.124.93.43:1935/live/nns147.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            },
-            {
-                SN: '',
-                code: '',
-                title: '寰宇財經台',
-                path: `http://59.124.93.43:1935/live/nns148.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            },
+            // {
+            //     SN: '',
+            //     code: '',
+            //     title: '寰宇新聞二台',
+            //     path: `http://59.124.93.43:1935/live/nns146.stream/playlist.m3u8?johncena=${registerData.johncena}`
+            // },
+            // {
+            //     SN: '',
+            //     code: '',
+            //     title: '寰宇新聞台',
+            //     path: `http://59.124.93.43:1935/live/nns147.stream/playlist.m3u8?johncena=${registerData.johncena}`
+            // },
+            // {
+            //     SN: '',
+            //     code: '',
+            //     title: '寰宇財經台',
+            //     path: `http://59.124.93.43:1935/live/nns148.stream/playlist.m3u8?johncena=${registerData.johncena}`
+            // },
             {
                 SN: '',
                 code: '',
@@ -202,18 +202,18 @@ module.exports = async (req, res, next) => {
                 title: '緯來體育台',
                 path: `http://59.124.93.43:1935/live/nns181.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
-            {
-                SN: '',
-                code: '',
-                title: '博斯足球台',
-                path: `http://59.124.93.43:1935/live/nns149.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            },
-            {
-                SN: '',
-                code: '',
-                title: '博斯無線台',
-                path: `http://59.124.93.43:1935/live/nns150.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            },
+            // {
+            //     SN: '',
+            //     code: '',
+            //     title: '博斯足球台',
+            //     path: `http://59.124.93.43:1935/live/nns149.stream/playlist.m3u8?johncena=${registerData.johncena}`
+            // },
+            // {
+            //     SN: '',
+            //     code: '',
+            //     title: '博斯無線台',
+            //     path: `http://59.124.93.43:1935/live/nns150.stream/playlist.m3u8?johncena=${registerData.johncena}`
+            // },
             {
                 SN: '',
                 code: '',
