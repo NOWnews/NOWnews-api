@@ -44,7 +44,13 @@ module.exports = async (req, res, next) => {
         // note.mutableContent = 1;
 
         // 送出推播資料
-        let results = await apnConnection.send(note, deviceTokens);
+        let results = await Promise.map(deviceTokens, (token) => {
+            return apnConnection.send(note, token)
+                .then((result) => {
+                    console.log(result);
+                    return Promise.resolve(result);
+                });
+        }, { concurrency: 50 });
         debug('results = %j', results);
 
         return res.status(200).send();

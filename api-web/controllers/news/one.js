@@ -39,7 +39,7 @@ module.exports = async (req, res, next) => {
             .select('totalScore')
             .execAsync();
 
-        news = news.toObject();
+        news = news.toJSON();
         news.pageView = pageView;
 
         // 將這篇新聞存入 redis

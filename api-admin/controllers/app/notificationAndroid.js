@@ -71,12 +71,12 @@ module.exports = async (req, res, next) => {
                     if(err) {
                         return reject(err);
                     }
+                    console.log(response);
                     return resolve(response);
                 });
             });
         });
         debug('results = %j', results);
-
 
         return res.status(200).send();
     } catch(err) {
