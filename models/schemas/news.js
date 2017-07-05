@@ -224,6 +224,9 @@ let schema = new Schema({
     },
     toJSON:{
         virtuals: true,
+    },
+    toObject: {
+        virtuals: true
     }
 });
 
@@ -481,7 +484,5 @@ schema.virtual('formatStartedAt').get(function () {
 });
 
 schema.plugin(autoIncrement);
-
-schema.set('toObject', { virtuals:true });
 
 module.exports = schema;
