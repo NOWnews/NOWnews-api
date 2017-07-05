@@ -5,7 +5,7 @@ import redis from '../../../redis';
 import libs from '../../../libs';
 import { News } from '../../../models';
 import { Pageview } from '../../../pvModels'
-
+import _ from 'lodash';
 module.exports = async (req, res, next) => {
 
     try {
@@ -13,15 +13,16 @@ module.exports = async (req, res, next) => {
         let { sn } = req.params;
 
         let cacheNews = await redis.getValue(`news${sn}`);
-
         if(cacheNews) {
+            cacheNews.pageView = { totalScore : 0 };
             //加上pageview的totalscore
-            let pageView = await Pageview.findOne()
-                .where('url').equals(cacheNews.parseUrl)
+            let pageviewList = await Pageview.find()
+                .where('newsId').in(cacheNews.id)
                 .select('totalScore')
                 .execAsync();
-
-            cacheNews.pageView = pageView;
+            _.map(pageviewList,(pv)=>{
+                cacheNews.pageView.totalScore += pv.totalScore;
+            });
             return res.json(cacheNews);
         }
 
@@ -32,15 +33,18 @@ module.exports = async (req, res, next) => {
         if(!news) {
             throw new Error('16003');
         }
+        news = news.toJSON();
+        news.pageView = { totalScore: 0 };
 
         //加上pageview的totalscore
-        let pageView = await Pageview.findOne()
-            .where('url').equals(news.parseUrl)
+        let pageviewList = await Pageview.find()
+            .where('newsId').in(news.id)
             .select('totalScore')
             .execAsync();
+        _.map(pageviewList,(pv)=>{
+            news.pageView.totalScore += pv.totalScore;
+        });
 
-        news = news.toJSON();
-        news.pageView = pageView;
 
         // 將這篇新聞存入 redis
         let cacheData = await redis.setValue(`news${sn}`, news, 3600 * 6);
