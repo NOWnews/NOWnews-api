@@ -36,13 +36,16 @@ module.exports = async (req, res, next) => {
                 title: news.title,
                 startedAt: news.formatStartedAt,
                 url: news.parseUrl,
-                status: news.status
+                status: news.status,
+                pvTotal: 0
             };
-            return Pageview.findOne()
-                .where('newsId').equals(news._id)
+            return Pageview.find()
+                .where('newsId').in(news._id)
                 .execAsync()
-                .then((pageview) => {
-                    data.pvTotal = pageview ? pageview.pageviews : 0;
+                .then((pageviewList) => {
+                    _.map(pageviewList,(pv)=>{
+                        data.pvTotal += pv.pageviews;
+                    });
                     return Promise.resolve(data);
                 });
         });

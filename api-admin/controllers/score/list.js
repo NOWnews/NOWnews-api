@@ -10,6 +10,7 @@ import Promise from 'bluebird';
 
 import { Menu, News } from '../../../models';
 import { Pageview } from '../../../pvModels';
+import _ from 'lodash';
 
 module.exports = async (req, res, next) => {
     try {
@@ -46,23 +47,25 @@ module.exports = async (req, res, next) => {
 
         // 用新聞 id 找出 pv
         let newsListWithPageviews = await Promise.mapSeries(newsList, (news) => {
-            return Pageview.findOne()
-                .where('newsId').equals(news._id)
-                .then((pageviewData) => {
+            //初始值
+            news.originalPageviews = 0;
+            news.pageviews = 0;
+            news.weightedScore = 0;
+            news.totalScore = 0;
+            news.createdAt = moment.tz(news.createdAt, 'Asia/Taipei').format('YYYY-MM-DD HH:mm');
 
-                    news.createdAt = moment.tz(news.createdAt, 'Asia/Taipei').format('YYYY-MM-DD HH:mm');
-
-                    if (!pageviewData) {
-                        news.originalPageviews = 0;
-                        news.pageviews = 0;
-                        news.weightedScore = 0;
-                        news.totalScore = 0;
+            return Pageview.find()
+                .where('newsId').in(news._id)
+                .then((pageviewList) => {
+                    if (pageviewList.length === 0) {
                         return Promise.resolve(news);
                     }
-                    news.pageviews = pageviewData.pageviews + pageviewData.temperatures;
-                    news.originalPageviews = pageviewData.pageviews;
-                    news.weightedScore = pageviewData.weightedScore;
-                    news.totalScore = pageviewData.totalScore;
+                    _.map(pageviewList,(pv)=>{
+                        news.pageviews += pv.pageviews + pv.temperatures;
+                        news.originalPageviews += pv.pageviews;
+                        news.weightedScore += pv.weightedScore;
+                        news.totalScore += pv.totalScore;
+                    });
                     return Promise.resolve(news);
                 });
         });
