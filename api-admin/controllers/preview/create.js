@@ -23,6 +23,8 @@ module.exports = async (req, res, next) => {
             'type',
             'startedAt',
             'createdAt',
+            'freeContent',
+            'traceCode',
             'Tags',
         ]);
 
