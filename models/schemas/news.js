@@ -463,8 +463,8 @@ schema.statics.findBySn = function(sn) {
 };
 
 schema.virtual('parseUrl').get(function () {
-    let createdAt = moment.tz(this.createdAt, 'Asia/Taipei').format('YYYYMMDD');
-    let url = `/news/${createdAt}/${this.sn}`;
+    let startedAt = moment.tz(this.startedAt, 'Asia/Taipei').format('YYYYMMDD');
+    let url = `/news/${startedAt}/${this.sn}`;
     return url;
 });
 

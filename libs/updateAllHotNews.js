@@ -17,7 +17,7 @@ module.exports = async () => {
             .where('status').equals('OPEN')
             .where('isPermanented').equals(true)
             .where('isExternal').equals(false)
-            .select('_id categoryName level')
+            .select('_id categoryName level template')
             .execAsync();
 
         await Promise.map(menus, (menu) => {
