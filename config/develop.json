@@ -74,7 +74,7 @@
             "folder": "/var/www/img.nownews.com/nownews_develop/videos"
         },
         "indexpage": {
-            "carousels": 10,
+            "carousels": 30,
             "specialTopics": 8,
             "specialChannels": 8,
             "videos": 20
