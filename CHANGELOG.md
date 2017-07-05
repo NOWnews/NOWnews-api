@@ -6,6 +6,7 @@ NOWnews-api change logs
 ### Added
 -  增加 `/policies/check` 端點 @esbb48
 -  增加欄位給預覽端點 `freeContent`, `traceCode` @esbb48
+-  增加 `/promote/common` 好康報報的廣告版位 @esbb48
 
 ## 1.0.3 - 2017-07-04
 ### Added
