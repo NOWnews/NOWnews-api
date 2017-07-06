@@ -459,5 +459,15 @@ module.exports = {
     26001: {
         message: '[AppVersion] downloadLink 這個欄位格式不正確',
         statusCode: 400
+    },
+
+    27001: {
+        message: '[Policy] 找不到對應的權限',
+        statusCode: 400
+    },
+
+    27002: {
+        message: '[Policy] 您沒有權限訪問此頁，如有疑慮請洽詢管理員',
+        statusCode: 403
     }
 };
