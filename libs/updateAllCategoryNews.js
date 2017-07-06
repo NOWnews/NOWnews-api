@@ -66,10 +66,11 @@ module.exports = async () => {
                 let keyDesktop = `category-${menu.categoryName}-15-firstPage`;
                 let keyMobile = `category-${menu.categoryName}-30-firstPage`;
                 let desktopNewsList = newsList.slice(0, 15);
+                let desktopPageData = pagination(total, 15, page, skip);
                 console.log(`** Update ${menu.categoryName} ${newsList.length} News At First Page **`);
                 redis.setValue(keyDesktop, {
                     desktopNewsList,
-                    pageData,
+                    desktopPageData,
                     menu
                 }, 3600);
                 redis.setValue(keyMobile, {
