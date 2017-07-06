@@ -52,17 +52,32 @@ module.exports = async () => {
                     return Promise.resolve(newsIds);
                 })
                 .then((newsIds) => {
-                    return Pageview.find()
-                        .where('newsId').in(newsIds)
-                        .sort('-totalScore')
-                        .limit(10)
-                        .select('newsId')
-                        .execAsync();
+
+                    return Pageview.aggregateAsync([
+                        {
+                            $match: {
+                                newsId: { $in: newsIds }
+                            }
+                        },
+                        {
+                            $group: {
+                                _id: '$newsId',
+                                sum: { $sum: '$totalScore' }
+                            }
+                        },
+                        {
+                            $sort: {
+                                sum: -1
+                            }
+                        },
+                        {
+                            $limit : 10
+                        }
+                    ]);
                 })
                 .then((pageviews) => {
-
                     return Promise.mapSeries(pageviews, (pageview) => {
-                        return News.findById(pageview.newsId)
+                        return News.findById(pageview._id)
                             .select('_id sn title shortTitle')
                             .execAsync();
                     });
