@@ -101,12 +101,29 @@ module.exports = async (req, res, next) => {
             newsIds.push(news._id);
             return news.toJSON();
         });
-        let pageviews = await Pageview.find()
-            .where('newsId').in(newsIds)
-            .execAsync();
-        let pageviewGroups = _.groupBy(pageviews,'newsId');
+
+        let pageviews = await Pageview.aggregateAsync([
+            {
+                $match: {
+                    newsId: { $in: newsIds }
+                }
+            },
+            {
+                $group: {
+                    _id: '$newsId',
+                    sumPageviews: { $sum: '$pageviews' },
+                }
+            }
+        ]);
+
+        let sumMap = {};
+        _.map(pageviews,(pv)=>{
+            sumMap[pv._id] = {
+                sumPageviews: pv.sumPageviews,
+            };
+        });
         newsList = _.map(newsList,(news)=>{
-            news.pageviews = _.sumBy(pageviewGroups[news.id], 'pageviews') || 0;
+            news.pageviews = sumMap[news._id] ? sumMap[news._id].sumPageviews : 0;
             return news;
         });
 

@@ -26,9 +26,6 @@ module.exports = async (req, res, next) => {
         // 找出某個分類裡面的新聞
 
         let cursor = News.find()
-
-
-
         let newsList = await News.find()
             .where('startedAt').gte(startedAt)
             .where('startedAt').lte(endedAt)
@@ -44,33 +41,44 @@ module.exports = async (req, res, next) => {
             .execAsync();
 
         debug('newsList = %j', newsList);
+        let newsIds = _.map(newsList, (news) => { return news._id });
+        let pageviews = await Pageview.aggregateAsync([
+                         {
+                             $match: {
+                                 newsId: { $in: newsIds }
+                             }
+                         },
+                         {
+                             $group: {
+                                 _id: '$newsId',
+                                 sumPageviews: { $sum: '$pageviews' },
+                                 sumWeightedScore: { $sum: '$weightedScore' },
+                                 sumTotalScore: { $sum: '$totalScore' },
+                                 sumTemperatures: { $sum: '$temperatures' }
+                             }
+                         }
+                     ]);
 
-        // 用新聞 id 找出 pv
-        let newsListWithPageviews = await Promise.mapSeries(newsList, (news) => {
-            //初始值
-            news.originalPageviews = 0;
-            news.pageviews = 0;
-            news.weightedScore = 0;
-            news.totalScore = 0;
-            news.createdAt = moment.tz(news.createdAt, 'Asia/Taipei').format('YYYY-MM-DD HH:mm');
-
-            return Pageview.find()
-                .where('newsId').in(news._id)
-                .then((pageviewList) => {
-                    if (pageviewList.length === 0) {
-                        return Promise.resolve(news);
-                    }
-                    _.map(pageviewList,(pv)=>{
-                        news.pageviews += pv.pageviews + pv.temperatures;
-                        news.originalPageviews += pv.pageviews;
-                        news.weightedScore += pv.weightedScore;
-                        news.totalScore += pv.totalScore;
-                    });
-                    return Promise.resolve(news);
-                });
+        let sumMap = {};
+        _.map(pageviews,(pv)=>{
+            sumMap[pv._id] = {
+                sumPageviews: pv.sumPageviews,
+                sumWeightedScore: pv.sumWeightedScore,
+                sumTotalScore: pv.sumTotalScore,
+                sumTemperatures: pv.sumTemperatures
+            };
         });
 
-        return res.json( newsListWithPageviews );
+        newsList = _.map(newsList,(news)=>{
+            news.originalPageviews = sumMap[news._id] ? sumMap[news._id].sumPageviews : 0 ;
+            news.pageviews = sumMap[news._id] ? sumMap[news._id].sumPageviews + sumMap[news._id].sumTemperatures : 0 ;
+            news.weightedScore = sumMap[news._id] ? sumMap[news._id].sumWeightedScore : 0 ;
+            news.totalScore = sumMap[news._id] ? sumMap[news._id].sumTotalScore : 0 ;
+            news.createdAt = moment.tz(news.createdAt, 'Asia/Taipei').format('YYYY-MM-DD HH:mm');
+            return news;
+        });
+
+        return res.json( newsList );
     } catch(err) {
         return next(err);
     }

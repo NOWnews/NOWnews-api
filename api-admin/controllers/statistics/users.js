@@ -48,19 +48,22 @@ module.exports = async (req, res, next) => {
                     return Promise.resolve(newsIds);
                 })
                 .then((newsIds) => {
-                    return Pageview.find()
-                        .where('newsId').in(newsIds)
-                        .select('pageviews')
-                        .execAsync();
+                    return Pageview.aggregateAsync([
+                        {
+                            $match: {
+                                newsId: { $in: newsIds }
+                            }
+                        },
+                        {
+                            $group: {
+                                _id: 'all',
+                                sumPageviews: { $sum: '$pageviews' },
+                            }
+                        }
+                    ]);
                 })
                 .then((pageviews) => {
-                    // 計算總 pv 並存入資料
-                    let pv = 0;
-                    for( let pageview of pageviews ) {
-                        if(pageview && pageview.pageviews) { pv += pageview.pageviews; }
-                    }
-
-                    data.pvTotal = pv;
+                    data.pvTotal = pageviews[0] ? pageviews[0].sumPageviews : 0;
                     return Promise.resolve(data);
                 });
         });
