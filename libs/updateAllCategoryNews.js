@@ -13,7 +13,7 @@ module.exports = async () => {
     try {
         console.log(`** Start Update All Category News **`);
         // 之後這些參數要抽出來放在 config
-        const limit = 15;
+        const limit = 30;
         const skip = 0;
         const page = 1;
 
@@ -63,13 +63,23 @@ module.exports = async () => {
                 debug('total = %d', total);
 
                 let pageData = pagination(total, limit, page, skip);
-                let key = `category-${menu.categoryName}-firstPage`;
+                let keyDesktop = `category-${menu.categoryName}-15-firstPage`;
+                let keyMobile = `category-${menu.categoryName}-30-firstPage`;
+                let desktopNewsList = newsList.slice(0, 15);
+                let desktopPageData = pagination(total, 15, page, skip);
                 console.log(`** Update ${menu.categoryName} ${newsList.length} News At First Page **`);
-                return redis.setValue(key, {
+                redis.setValue(keyDesktop, {
+                    desktopNewsList,
+                    desktopPageData,
+                    menu
+                }, 3600);
+                redis.setValue(keyMobile, {
                     newsList,
                     pageData,
                     menu
                 }, 3600);
+
+                return;
             });
         }, { concurrency: 10 });
 

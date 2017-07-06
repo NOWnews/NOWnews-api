@@ -17,7 +17,7 @@ module.exports = async (req, res, next) => {
         let { categoryName, type } = req.params;
 
         if(!type && page === 1) {
-            let categoryFistPage = await redis.getValue(`category-${categoryName}-firstPage`);
+            let categoryFistPage = await redis.getValue(`category-${categoryName}-${limit}-firstPage`);
             return res.json(categoryFistPage);
         }
 
