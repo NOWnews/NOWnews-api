@@ -62,7 +62,7 @@ module.exports = async () => {
                         {
                             $group: {
                                 _id: '$newsId',
-                                sum: { $sum: '$pageviews' }
+                                sum: { $sum: '$totalScore' }
                             }
                         },
                         {
