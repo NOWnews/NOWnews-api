@@ -17,15 +17,7 @@ module.exports = async (categoryName, limit, skip, page) => {
 
         let menu = await Menu.findOne()
             .where('categoryName').equals(categoryName)
-            .where('isTrashed').equals(false)
-            .where('status').equals('OPEN')
-            .where('isPermanented').equals(true)
-            .where('isExternal').equals(false)
             .execAsync();
-
-        if(!menu) {
-
-        }
 
         let cursor = News.find();
         let totalCursor = News.find();
