@@ -2434,7 +2434,7 @@ None
 
 ### [GET] `/policies/group`
 
-送出所有 android 的推播
+取得所有個角色的權限
 
 #### Header Parameters
 
@@ -2456,7 +2456,7 @@ None
 
 ### [GET] `/policies/check`
 
-送出所有 android 的推播
+確認這個角色有沒有這個端點權限
 
 #### Header Parameters
 
