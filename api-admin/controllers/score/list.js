@@ -39,7 +39,7 @@ module.exports = async (req, res, next) => {
             .where('status').equals('RELEASE')
             .where('isTrashed').equals(false)
             .sort(sort)
-            .select('_id sn title shortTitle createdAt')
+            .select('_id sn title shortTitle createdAt startedAt')
             .lean()
             .execAsync();
 
