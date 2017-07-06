@@ -119,6 +119,12 @@ let schema = new Schema({
         default: null
     },
 
+    // 是否為業配文
+    isSponsored: {
+        type: Boolean,
+        default: null
+    },
+
     // 新聞新聞的位置
     location : {
         type: [Number],
@@ -158,6 +164,18 @@ let schema = new Schema({
     LastReviewer: {
         type: Schema.Types.Mixed,
         default: null
+    },
+
+    // 版型
+    template: {
+        type: String,
+        default: 'DEFAULT'
+    },
+
+    // 版型的廣告代碼
+    templateAD: {
+        type: String,
+        default: 'DEFAULT'
     },
 
     /*

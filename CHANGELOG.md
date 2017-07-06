@@ -1,6 +1,9 @@
 # Change Log
 
 NOWnews-api change logs
+## 1.0.4 - 2017-07-05
+### Added
+-  增加 `isSponsored`, `template`, `templateAD` 欄位到 `NewsLog` @esbb48
 
 ## 1.0.4 - 2017-07-05
 ### Added
