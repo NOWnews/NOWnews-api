@@ -110,7 +110,7 @@ module.exports = async (req, res, next) => {
             return news;
         });
 
-        debug('news... = %j',newsList);
+        debug('news list with pv = %j',newsList);
         // 處理分頁
         debug('total = %d', total);
         let pageData = pagination(total, limit, page, skip);
