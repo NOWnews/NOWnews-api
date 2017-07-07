@@ -2,6 +2,10 @@
 
 NOWnews-api change logs
 
+## 1.0.5 - 2017-07-07
+### Changed
+-  調整 search @esbb48
+
 ## 1.0.4 - 2017-07-05
 ### Added
 -  增加 `/policies/check` 端點 @esbb48

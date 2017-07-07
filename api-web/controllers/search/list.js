@@ -26,19 +26,13 @@ module.exports = async (req, res, next) => {
         let cursor = News.find();
         let totalCursor = News.find();
         let dateNow = Date.now();
-        cursor.or([
-            { title: new RegExp(keyword, 'i') },
-            { content: new RegExp(keyword, 'i') }
-        ])
-        .where('status').equals('RELEASE')
+        cursor
         .where('isTrashed').equals(false);
+        .where('status').equals('RELEASE')
 
-        totalCursor.or([
-            { title: new RegExp(keyword, 'i') },
-            { content: new RegExp(keyword, 'i') }
-        ])
-        .where('status').equals('RELEASE')
+        totalCursor
         .where('isTrashed').equals(false);
+        .where('status').equals('RELEASE')
 
         if (momentUnit) {
             startedAt = moment.tz('Asia/Taipei').subtract(1, momentUnit).startOf('day');
@@ -72,14 +66,20 @@ module.exports = async (req, res, next) => {
 
         // 找出相關列表與分頁資料
         let [ newsList, total ] = await Promise.all([
-            cursor
+            cursor.or([
+                    { title: new RegExp(keyword, 'i') },
+                    { content: new RegExp(keyword, 'i') }
+                ])
                 .populate('MainPhoto MainVideo MainMenu')
                 .limit(limit)
                 .skip(skip)
                 .select('sn title shortTitle MainVideo MainPhoto MainMenu type startedAt')
                 .sort('-startedAt')
                 .execAsync(),
-            totalCursor
+            totalCursor.or([
+                    { title: new RegExp(keyword, 'i') },
+                    { content: new RegExp(keyword, 'i') }
+                ])
                 .limit(1000)
                 .countAsync()
         ]);

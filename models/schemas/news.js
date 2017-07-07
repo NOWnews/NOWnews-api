@@ -347,11 +347,11 @@ schema.index({
 });
 
 schema.index({
-    title: 'text',
-    content: 'text',
-    status: 1,
     isTrashed: 1,
-    startedAt: -1
+    status: 1,
+    startedAt: -1,
+    title: 'text',
+    content: 'text'
 }, {
     default_language: 'hant'
 });
