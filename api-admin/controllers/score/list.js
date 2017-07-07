@@ -58,22 +58,14 @@ module.exports = async (req, res, next) => {
                              }
                          }
                      ]);
-
-        let sumMap = {};
-        _.map(pageviews,(pv)=>{
-            sumMap[pv._id] = {
-                sumPageviews: pv.sumPageviews,
-                sumWeightedScore: pv.sumWeightedScore,
-                sumTotalScore: pv.sumTotalScore,
-                sumTemperatures: pv.sumTemperatures
-            };
+        pageviews = _.keyBy(pageviews,(pv)=>{
+            return pv._id;
         });
 
         newsList = _.map(newsList,(news)=>{
-            news.originalPageviews = sumMap[news._id] ? sumMap[news._id].sumPageviews : 0 ;
-            news.pageviews = sumMap[news._id] ? sumMap[news._id].sumPageviews + sumMap[news._id].sumTemperatures : 0 ;
-            news.weightedScore = sumMap[news._id] ? sumMap[news._id].sumWeightedScore : 0 ;
-            news.totalScore = sumMap[news._id] ? sumMap[news._id].sumTotalScore : 0 ;
+            news.pageviews = pageviews[news._id] ? pageviews[news._id].sumPageviews : 0 ;
+            news.weightedScore = pageviews[news._id] ? pageviews[news._id].sumWeightedScore : 0 ;
+            news.totalScore = pageviews[news._id] ? pageviews[news._id].sumTotalScore : 0 ;
             news.createdAt = moment.tz(news.createdAt, 'Asia/Taipei').format('YYYY-MM-DD HH:mm');
             return news;
         });

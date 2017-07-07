@@ -41,11 +41,9 @@ module.exports = async (req, res, next) => {
             .where('newsId').in(news.id)
             .select('totalScore')
             .execAsync();
-        _.map(pageviewList,(pv)=>{
+        for(let pv of pageviwList){
             news.pageView.totalScore += pv.totalScore;
-        });
-
-
+        }
         // 將這篇新聞存入 redis
         let cacheData = await redis.setValue(`news${sn}`, news, 3600 * 6);
         debug('cacheData = %j', cacheData);

@@ -2,6 +2,11 @@
 
 NOWnews-api change logs
 
+## 1.0.3 - 2017-07-06
+### Changed
+-  修改計算PV數的方式為aggregate @jasonHsieh
+-  修正PV數 包括`/statistics`和`scores`下的端點 @jasonHsieh
+
 ## 1.0.3 - 2017-07-04
 ### Added
 -  增加 `/news/newest` 端點 @SimonSun

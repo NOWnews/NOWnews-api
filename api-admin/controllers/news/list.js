@@ -115,15 +115,11 @@ module.exports = async (req, res, next) => {
                 }
             }
         ]);
-
-        let sumMap = {};
-        _.map(pageviews,(pv)=>{
-            sumMap[pv._id] = {
-                sumPageviews: pv.sumPageviews,
-            };
+        pageviews = _.keyBy(pageviews,(pv)=>{
+            return pv._id;
         });
         newsList = _.map(newsList,(news)=>{
-            news.pageviews = sumMap[news._id] ? sumMap[news._id].sumPageviews : 0;
+            news.pageviews = pageviews[news._id] ? pageviews[news._id].sumPageviews : 0;
             return news;
         });
 

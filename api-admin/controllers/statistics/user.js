@@ -42,11 +42,8 @@ module.exports = async (req, res, next) => {
                 }
             }
         ]);
-        let sumMap = {};
-        _.map(pageviews,(pv)=>{
-            sumMap[pv._id] = {
-                sumPageviews: pv.sumPageviews
-            };
+        pageviews = _.keyBy(pageviews,(pv)=>{
+            return pv._id;
         });
         let userNewsList = _.map(newsList,(news)=>{
             let data = {
@@ -55,7 +52,7 @@ module.exports = async (req, res, next) => {
                 startedAt: news.formatStartedAt,
                 url: news.parseUrl,
                 status: news.status,
-                pvTotal: sumMap[news._id] ? sumMap[news._id].sumPageviews : 0
+                pvTotal: pageviews[news._id] ? pageviews[news._id].sumPageviews : 0
             };
             return data;
         });

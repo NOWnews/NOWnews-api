@@ -74,7 +74,7 @@ module.exports = async (req, res, next) => {
                     ]);
                 })
                 .then((pageviews) => {
-                    data.pvTotal = pageviews[0] ? pageviews[0].sumPageviews : 0;
+                    data.pvTotal = _.isEmpty(pageviews) ? 0 : pageviews[0].sumPageviews;
                     return Promise.resolve(data);
                 });
         });
