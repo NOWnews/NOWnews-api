@@ -8,7 +8,9 @@ import getRelationNewsBySn from './getRelationNewsBySn';
 import getNextNewsBySn from './getNextNewsBySn';
 import getPrevNewsBySn from './getPrevNewsBySn';
 import updateAllHotNews from './updateAllHotNews';
-import updateAllCategoryNews from './updateAllCategoryNews';
+import updateCategoryFirstPage from './updateCategoryFirstPage';
+import updateFirstPageForMobile from './updateFirstPageForMobile';
+import updateFirstPageForDesktop from './updateFirstPageForDesktop';
 import updateNotNewsByMenuId from './updateNotNewsByMenuId';
 import updatePersonalize from './updatePersonalize';
 import updateHotKeywords from './updateHotKeywords';
@@ -28,7 +30,9 @@ module.exports = {
     getNextNewsBySn,
     getPrevNewsBySn,
     updateAllHotNews,
-    updateAllCategoryNews,
+    updateCategoryFirstPage,
+    updateFirstPageForMobile,
+    updateFirstPageForDesktop,
     updateNotNewsByMenuId,
     updatePersonalize,
     updateHotKeywords,
