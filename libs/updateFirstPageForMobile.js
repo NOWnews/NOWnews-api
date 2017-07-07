@@ -1,0 +1,34 @@
+import Debug from 'debug';
+const debug = Debug('NOWnews-api:libs:updateFirstPageForMobile');
+
+import Promise from 'bluebird';
+import config from 'config';
+
+import { News, Menu } from '../models';
+import updateCategoryFirstPage from './updateCategoryFirstPage';
+
+module.exports = async () => {
+    try {
+        console.log(`** Start Update Mobile Category News **`);
+
+        const limit = config.get('general.queryOptions.mobile.limit');
+        const skip = config.get('general.queryOptions.mobile.skip');
+        const page = config.get('general.queryOptions.mobile.page');
+
+        let menus = await Menu.find()
+            .where('isTrashed').equals(false)
+            .where('status').equals('OPEN')
+            .where('isPermanented').equals(true)
+            .where('isExternal').equals(false)
+            .execAsync();
+
+        let cacheData = await Promise.map(menus, (menu) => {
+            return updateCategoryFirstPage(menu.categoryName, limit, skip, page);
+        }, { concurrency: 20 });
+
+        console.log(`** Finish Update Mobile Category News **`);
+        return Promise.resolve(cacheData);
+    } catch (err) {
+        return Promise.reject(err);
+    }
+};
