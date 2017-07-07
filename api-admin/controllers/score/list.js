@@ -10,6 +10,7 @@ import Promise from 'bluebird';
 
 import { Menu, News } from '../../../models';
 import { Pageview } from '../../../pvModels';
+import _ from 'lodash';
 
 module.exports = async (req, res, next) => {
     try {
@@ -25,9 +26,6 @@ module.exports = async (req, res, next) => {
         // 找出某個分類裡面的新聞
 
         let cursor = News.find()
-
-
-
         let newsList = await News.find()
             .where('startedAt').gte(startedAt)
             .where('startedAt').lte(endedAt)
@@ -38,36 +36,41 @@ module.exports = async (req, res, next) => {
             .where('status').equals('RELEASE')
             .where('isTrashed').equals(false)
             .sort(sort)
-            .select('_id sn title shortTitle createdAt')
+            .select('_id sn title shortTitle createdAt startedAt')
             .lean()
             .execAsync();
 
         debug('newsList = %j', newsList);
-
-        // 用新聞 id 找出 pv
-        let newsListWithPageviews = await Promise.mapSeries(newsList, (news) => {
-            return Pageview.findOne()
-                .where('newsId').equals(news._id)
-                .then((pageviewData) => {
-
-                    news.createdAt = moment.tz(news.createdAt, 'Asia/Taipei').format('YYYY-MM-DD HH:mm');
-
-                    if (!pageviewData) {
-                        news.originalPageviews = 0;
-                        news.pageviews = 0;
-                        news.weightedScore = 0;
-                        news.totalScore = 0;
-                        return Promise.resolve(news);
-                    }
-                    news.pageviews = pageviewData.pageviews + pageviewData.temperatures;
-                    news.originalPageviews = pageviewData.pageviews;
-                    news.weightedScore = pageviewData.weightedScore;
-                    news.totalScore = pageviewData.totalScore;
-                    return Promise.resolve(news);
-                });
+        let newsIds = _.map(newsList, (news) => { return news._id });
+        let pageviews = await Pageview.aggregateAsync([
+                         {
+                             $match: {
+                                 newsId: { $in: newsIds }
+                             }
+                         },
+                         {
+                             $group: {
+                                 _id: '$newsId',
+                                 sumPageviews: { $sum: '$pageviews' },
+                                 sumWeightedScore: { $sum: '$weightedScore' },
+                                 sumTotalScore: { $sum: '$totalScore' },
+                                 sumTemperatures: { $sum: '$temperatures' }
+                             }
+                         }
+                     ]);
+        pageviews = _.keyBy(pageviews,(pv)=>{
+            return pv._id;
         });
 
-        return res.json( newsListWithPageviews );
+        newsList = _.map(newsList,(news)=>{
+            news.pageviews = pageviews[news._id] ? pageviews[news._id].sumPageviews : 0 ;
+            news.weightedScore = pageviews[news._id] ? pageviews[news._id].sumWeightedScore : 0 ;
+            news.totalScore = pageviews[news._id] ? pageviews[news._id].sumTotalScore : 0 ;
+            news.createdAt = moment.tz(news.createdAt, 'Asia/Taipei').format('YYYY-MM-DD HH:mm');
+            return news;
+        });
+
+        return res.json( newsList );
     } catch(err) {
         return next(err);
     }
