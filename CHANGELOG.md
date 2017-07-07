@@ -4,6 +4,7 @@ NOWnews-api change logs
 
 ## 1.0.6 - 2017-07-07
 ### Changed
+-  修改縮圖https to http @waynelin
 -  調整 `/search/:keyword`, `/news` 查詢順序 @esbb48
 
 ## 1.0.5 - 2017-07-06
