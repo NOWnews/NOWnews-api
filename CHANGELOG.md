@@ -7,6 +7,16 @@ NOWnews-api change logs
 -  修改計算PV數的方式為aggregate @jasonHsieh
 -  修正PV數 包括`/statistics`和`scores`下的端點 @jasonHsieh
 
+## 1.0.5 - 2017-07-06
+### Changed
+-  重構 `libs/updateAllCategoryNews` @SimonSun
+
+## 1.0.4 - 2017-07-05
+### Added
+-  增加 `/policies/check` 端點 @esbb48
+-  增加欄位給預覽端點 `freeContent`, `traceCode` @esbb48
+-  增加 `/promote/common` 好康報報的廣告版位 @esbb48
+
 ## 1.0.3 - 2017-07-04
 ### Added
 -  增加 `/news/newest` 端點 @SimonSun

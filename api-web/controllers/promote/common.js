@@ -12,7 +12,7 @@ module.exports = async (req, res, next) => {
 
         const redisValue = await redis.getValue('adWebCommon');
 
-        if (redisValue && !!redisValue.footer) {
+        if (redisValue && !!redisValue.grabBag) {
             return res.json(redisValue);
         }
 
@@ -30,6 +30,12 @@ module.exports = async (req, res, next) => {
             request(`${adServ}?ownerid=3021`, opts),
             request(`${adServ}?ownerid=3022`, opts),
             request(`${adServ}?ownerid=3031`, opts),
+
+            // 好康報報 *4 左上, 右上, 左下, 右下
+            request(`${adServ}?ownerid=3034`, opts),
+            request(`${adServ}?ownerid=3035`, opts),
+            request(`${adServ}?ownerid=3036`, opts),
+            request(`${adServ}?ownerid=3037`, opts),
         ]);
 
         const footer = _.map([0, 1, 2, 3, 4], (key) => {
@@ -43,8 +49,13 @@ module.exports = async (req, res, next) => {
             transformBig5(result[8], 3031),
         ];
 
+        const grabBag = _.map([0, 1, 2, 3], (key) => {
+            return transformBig5(result[9 + key], 3034 + key);
+        });
+
         const ads = {
             footer,
+            grabBag,
             instant
         };
 

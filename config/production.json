@@ -29,6 +29,18 @@
         },
         "gcm": {
             "key": "AIzaSyAZNW71ymawhi6WXqI9L7nqyGNkOVy-ksY"
+        },
+        "queryOptions": {
+            "desktop": {
+                "limit": 15,
+                "skip": 0,
+                "page": 1
+            },
+            "mobile": {
+                "limit": 30,
+                "skip": 0,
+                "page": 1
+            }
         }
     },
     "admin": {
@@ -104,7 +116,7 @@
             "X-NOWnews-API": ["YouCanSeeMeJohnCena","JHK","VSOONTECH"]
         },
         "baseQuery": {
-            "limit": 20,
+            "limit": 15,
             "skip": 0,
             "page": 1
         }
