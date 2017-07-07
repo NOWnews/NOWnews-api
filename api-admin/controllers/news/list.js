@@ -101,16 +101,29 @@ module.exports = async (req, res, next) => {
             newsIds.push(news._id);
             return news.toJSON();
         });
-        let pageviews = await Pageview.find()
-            .where('newsId').in(newsIds)
-            .execAsync();
-        let pageviewGroups = _.groupBy(pageviews,'newsId');
+
+        let pageviews = await Pageview.aggregateAsync([
+            {
+                $match: {
+                    newsId: { $in: newsIds }
+                }
+            },
+            {
+                $group: {
+                    _id: '$newsId',
+                    sumPageviews: { $sum: '$pageviews' },
+                }
+            }
+        ]);
+        pageviews = _.keyBy(pageviews,(pv)=>{
+            return pv._id;
+        });
         newsList = _.map(newsList,(news)=>{
-            news.pageviews = _.sumBy(pageviewGroups[news.id], 'pageviews') || 0;
+            news.pageviews = pageviews[news._id] ? pageviews[news._id].sumPageviews : 0;
             return news;
         });
 
-        debug('news... = %j',newsList);
+        debug('news list with pv = %j',newsList);
         // 處理分頁
         debug('total = %d', total);
         let pageData = pagination(total, limit, page, skip);
