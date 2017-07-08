@@ -196,12 +196,12 @@ module.exports = async (req, res, next) => {
                 title: '緯來育樂台',
                 path: `http://59.124.93.43:1935/live/nns206.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
-            {
-                SN: '',
-                code: '',
-                title: '緯來體育台',
-                path: `http://59.124.93.43:1935/live/nns181.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            },
+            // {
+            //     SN: '',
+            //     code: '',
+            //     title: '緯來體育台',
+            //     path: `http://59.124.93.43:1935/live/nns181.stream/playlist.m3u8?johncena=${registerData.johncena}`
+            // },
             // {
             //     SN: '',
             //     code: '',
