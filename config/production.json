@@ -24,7 +24,7 @@
             "cert": "pems/NOWnewsPushCert.pem",
             "key": "pems/NOWnewsPushKey.pem",
             "passphrase": "Cvso8733",
-            "production": false,
+            "production": true,
             "maxConnections": 100000
         },
         "gcm": {

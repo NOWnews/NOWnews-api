@@ -24,8 +24,8 @@ module.exports = async (req, res, next) => {
         let note = new gcm.Message({
             data: {
                 message: {
-                    // type: 'NEWS',
-                    // id: req.body.id,
+                    type: 'NORMAL',
+                    id: '',
                     title: req.body.title,
                     summary: req.body.summary,
                     image: req.body.image,
@@ -39,6 +39,20 @@ module.exports = async (req, res, next) => {
         let count = 0;
         let countTokens = [];
         let tokens = [];
+
+        /*
+         * 測試用
+         */
+        // let tokens = ['dYD-7BemFiY:APA91bFB6ZwxsNPQt_7NH9-9V33DT5b6l8PdYn2zMBQrY7EB5RhhscmH_aLAMxpBJBdPCsOQaVVfObdhZ0j0w3dPUppy-koxSAVRGTVi2VAUgf0iBJ7ruAl1v1MipytVHIYCk7hF0Eha'];
+        // await new Promise((resolve, reject) => {
+        //     sender.send(note, { registrationTokens: tokens }, (err, response) => {
+        //         if(err) {
+        //             return reject(err);
+        //         }
+        //         console.log(response);
+        //         return resolve(response);
+        //     });
+        // });
 
         _.forEach(devices, (device) => {
 
