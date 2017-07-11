@@ -2,9 +2,17 @@
 
 NOWnews-api change logs
 
-## 1.0.6 - 2017-07-11
+
+## 1.0.7 - 2017-07-11
 ### Changed
 -  更新 staging 設定黨 @esbb48
+
+## 1.0.6 - 2017-07-07
+### Fixed
+-  修正新聞沒快取時PV會出錯的問題 @jasonHsieh
+
+### Changed
+-  修改縮圖https to http @waynelin
 
 ## 1.0.5 - 2017-07-06
 ### Changed

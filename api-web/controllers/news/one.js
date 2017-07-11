@@ -20,9 +20,9 @@ module.exports = async (req, res, next) => {
                 .where('newsId').in(cacheNews.id)
                 .select('totalScore')
                 .execAsync();
-            _.map(pageviewList,(pv)=>{
+            for(let pv of pageviewList){
                 cacheNews.pageView.totalScore += pv.totalScore;
-            });
+            };
             return res.json(cacheNews);
         }
 
@@ -41,7 +41,7 @@ module.exports = async (req, res, next) => {
             .where('newsId').in(news.id)
             .select('totalScore')
             .execAsync();
-        for(let pv of pageviwList){
+        for(let pv of pageviewList){
             news.pageView.totalScore += pv.totalScore;
         }
         // 將這篇新聞存入 redis

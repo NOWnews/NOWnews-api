@@ -16,8 +16,12 @@ module.exports = async (req, res, next) => {
         let { limit, page, skip } = req.query;
         let { categoryName, type } = req.params;
 
+        let categoryFistPage = null;
         if(!type && page === 1) {
-            let categoryFistPage = await redis.getValue(`category-${categoryName}-${limit}news-firstPage`);
+            categoryFistPage = await redis.getValue(`category-${categoryName}-${limit}news-firstPage`);
+        }
+
+        if(categoryFistPage !== null) {
             return res.json(categoryFistPage);
         }
 
