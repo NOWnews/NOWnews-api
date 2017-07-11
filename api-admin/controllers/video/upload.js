@@ -14,6 +14,7 @@ import mongoose from 'mongoose';
 import moment from 'moment-timezone';
 import config from 'config';
 import server from 'scp2';
+import md5File from 'md5-file/promise';
 
 import googleCloud from 'google-cloud';
 const gcloud = googleCloud({
@@ -34,6 +35,10 @@ module.exports = async(req, res, next) => {
 
         // 讀取檔案的前 4100 bytes 存成 buffer
         let buffer = readChunk.sync(path, 0, 4100);
+
+        // 這段是因為我們要上傳原生影片廣告給 NOWlink 用
+        let md5hash = await md5File(path);
+        console.log(`${originalname} md5 is: ${md5hash}`);
 
         let objectId = mongoose.Types.ObjectId();
         let now = moment.tz('Asia/Taipei').format('YYYYMMDDHHmm');

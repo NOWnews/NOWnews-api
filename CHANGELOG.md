@@ -2,6 +2,11 @@
 
 NOWnews-api change logs
 
+## 1.0.8 - 2017-07-11
+### Added
+-  加入 NOWlink 原生廣告 api 端點 `/app/nativead` @SimonSun
+-  加入 NOWlink 原生廣告曝光率與點擊數端點 `/app/nativead/callback` @SimonSun
+
 ## 1.0.7 - 2017-07-07
 ### Fixed
 -  修正新聞沒快取時PV會出錯的問題 @jasonHsieh

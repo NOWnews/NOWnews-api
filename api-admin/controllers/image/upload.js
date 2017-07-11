@@ -53,6 +53,10 @@ module.exports = async(req, res, next) => {
 
         let { ext } = fileType(buffer);
 
+        // 這段是因為我們要上傳原生圖片廣告給 NOWlink 用，需要知道 md5
+        let md5hash = await md5File(path);
+        console.log(`${originalname} md5 is: ${md5hash}`);
+
         // 用 gm 去讀取圖片的長寬
         let { width, height } = await new Promise((resolve, reject) => {
                 gm(path).size((err, size) => {
