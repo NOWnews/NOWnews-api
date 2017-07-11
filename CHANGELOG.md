@@ -7,22 +7,22 @@ NOWnews-api change logs
 -  加入 NOWlink 原生廣告 api 端點 `/app/nativead` @SimonSun
 -  加入 NOWlink 原生廣告曝光率與點擊數端點 `/app/nativead/callback` @SimonSun
 
-## 1.0.7 - 2017-07-07
+## 1.0.7 - 2017-07-11
+### Changed
+-  更新 staging 設定黨 @esbb48
+
+## 1.0.6 - 2017-07-07
 ### Fixed
 -  修正新聞沒快取時PV會出錯的問題 @jasonHsieh
 
-## 1.0.6 - 2017-07-07
 ### Changed
 -  修改縮圖https to http @waynelin
-
-## 1.0.3 - 2017-07-06
-### Changed
--  修改計算PV數的方式為aggregate @jasonHsieh
--  修正PV數 包括`/statistics`和`scores`下的端點 @jasonHsieh
 
 ## 1.0.5 - 2017-07-06
 ### Changed
 -  重構 `libs/updateAllCategoryNews` @SimonSun
+-  修改計算PV數的方式為aggregate @jasonHsieh
+-  修正PV數 包括`/statistics`和`scores`下的端點 @jasonHsieh
 
 ## 1.0.4 - 2017-07-05
 ### Added
