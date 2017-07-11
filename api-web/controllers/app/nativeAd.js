@@ -10,8 +10,22 @@ module.exports = async (req, res, next) => {
 
         const placement = req.query.placement;
 
+        let allVideoADs = [
+            {
+                url: 'https://img.nownews.com/nownews_develop/videos/5964e8578f7ff61321537118_201707112301.mp4',
+                md5: 'e0405138c9169f200c8c2f76637e7dcd'
+            },
+            {
+                url: 'https://img.nownews.com/nownews_develop/videos/5964e9958f7ff61321537119_201707112307.mp4',
+                md5: '14334c0f1f4f80f60c7056e20aa3b1bf'
+            }
+        ];
+
+        let randomNumber = Math.floor( Math.random() * allVideoADs.length );
+        let showVideoAd = allVideoADs[randomNumber];
+
         const allAds = {
-            // 開機時的廣告
+            // 開機時的廣告，會隨機吐影音廣告
             lunch: {
                 videoNativeADs: [
                     {
@@ -19,8 +33,8 @@ module.exports = async (req, res, next) => {
                         type: 'VIDEO',
                         size: 'FULL',
                         placement: 'lunch',
-                        url: 'https://www.youtube.com/embed/jLMDoFwb4Oc',
-                        md5: '1f3870be274f6c49b3e31a0c6728957f',
+                        url: showVideoAd.url,
+                        md5: showVideoAd.md5,
                         exposure: `/app/nativead/callback?placement=${placement}&name=LunchVideoAD&event=exposure`
                     }
                 ]
@@ -33,8 +47,8 @@ module.exports = async (req, res, next) => {
                         type: 'NORMAL',
                         size: 'NORMAL',
                         placement: 'LIVE',
-                        url: 'https://www.w3schools.com/css/trolltunga.jpg',
-                        md5: '1f3870be274f6c49b3e31a0c6728957f',
+                        url: 'https://img.nownews.com/nownews_develop/images/5964ed2d9c29ea1779c477b3_201707112322.jpg',
+                        md5: '0793be4485e5ec90d53ba4de3d18ea99',
                         exposure: `/app/nativead/callback?placement=${placement}&name=LiveNormalAD_First&event=exposure`
                     },
                     {
@@ -42,8 +56,8 @@ module.exports = async (req, res, next) => {
                         type: 'NORMAL',
                         size: 'NORMAL',
                         placement: 'LIVE',
-                        url: 'https://www.w3schools.com/css/trolltunga.jpg',
-                        md5: '1f3870be274f6c49b3e31a0c6728957f',
+                        url: 'https://img.nownews.com/nownews_develop/images/5964ed559c29ea1779c477b4_201707112323.jpg',
+                        md5: '22b926f43129e23812207ff8e1b66a05',
                         exposure: `/app/nativead/callback?placement=${placement}&name=LiveNormalAD_Second&event=exposure`
                     },
                 ]
@@ -56,8 +70,8 @@ module.exports = async (req, res, next) => {
                         type: 'NORMAL',
                         size: 'FULL',
                         placement: 'RECOMMEND',
-                        url: 'https://www.w3schools.com/css/trolltunga.jpg',
-                        md5: '1f3870be274f6c49b3e31a0c6728957f',
+                        url: 'https://img.nownews.com/nownews_develop/images/5964ecdea941fb165187901d_201707112321.jpg',
+                        md5: '83e5691db3728b769e4f662b9e382dae',
                         exposure: `/app/nativead/callback?placement=${placement}&name=normalNativeADs&event=exposure`
                     }
                 ]
