@@ -2,14 +2,15 @@
 
 NOWnews-api change logs
 
-## 1.0.3 - 2017-07-06
+## 1.0.6 - 2017-07-11
 ### Changed
--  修改計算PV數的方式為aggregate @jasonHsieh
--  修正PV數 包括`/statistics`和`scores`下的端點 @jasonHsieh
+-  更新 staging 設定黨 @esbb48
 
 ## 1.0.5 - 2017-07-06
 ### Changed
 -  重構 `libs/updateAllCategoryNews` @SimonSun
+-  修改計算PV數的方式為aggregate @jasonHsieh
+-  修正PV數 包括`/statistics`和`scores`下的端點 @jasonHsieh
 
 ## 1.0.4 - 2017-07-05
 ### Added
