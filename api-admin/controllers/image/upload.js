@@ -11,6 +11,7 @@ import mongoose from 'mongoose';
 import moment from 'moment-timezone';
 import config from 'config';
 import imageServer from 'scp2';
+import md5File from 'md5-file/promise';
 
 import googleCloud from 'google-cloud';
 const gcloud = googleCloud({
