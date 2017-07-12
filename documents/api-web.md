@@ -862,7 +862,7 @@ None
 |---|---|---|---|---|
 | placement | 哪一個位置 | [`live`, `lunch`, `recommand`] | √ | |
 | name | 哪一個位置 | 廣告的名稱 | √ | |
-| event | 觸發的事件 | [`exposure`,`click`] | √ | |
+| event | 觸發的事件 | [`impression`,`click`] | √ | |
 
 
 ## STREAM API DOCUMENTS

@@ -15,8 +15,8 @@ let schema = new Schema({
     // 事件名稱
     event: {
         type: String,
-        default: 'EXPOSURE',
-        enum: ['EXPOSURE', 'CLICK']
+        default: 'IMPRESSION',
+        enum: ['IMPRESSION', 'CLICK']
     },
 
     // 建立時間

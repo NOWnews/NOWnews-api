@@ -19,8 +19,8 @@ module.exports = async (req, res, next) => {
         let event = req.query.event;
 
         let updateOption;
-        if(event === 'exposure') {
-            updateOption = { $inc: { exposure: 1 } };
+        if(event === 'impression') {
+            updateOption = { $inc: { impression: 1 } };
         } else if(event === 'click') {
             updateOption = { $inc: { click: 1 } };
         }

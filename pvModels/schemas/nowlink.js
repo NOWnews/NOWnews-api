@@ -13,7 +13,7 @@ let schema = new Schema({
     },
 
     // 曝光量
-    exposure: {
+    impression: {
         type: Number,
         default: 0
     },

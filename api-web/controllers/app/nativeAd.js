@@ -35,7 +35,7 @@ module.exports = async (req, res, next) => {
                         placement: 'lunch',
                         url: showVideoAd.url,
                         md5: showVideoAd.md5,
-                        exposure: `/app/nativead/callback?placement=${placement}&name=LunchVideoAD&event=exposure`
+                        impression: `/app/nativead/callback?placement=${placement}&name=LunchVideoAD&event=impression`
                     }
                 ]
             },
@@ -49,7 +49,7 @@ module.exports = async (req, res, next) => {
                         placement: 'LIVE',
                         url: 'https://img.nownews.com/nownews_develop/images/5964ed2d9c29ea1779c477b3_201707112322.jpg',
                         md5: '0793be4485e5ec90d53ba4de3d18ea99',
-                        exposure: `/app/nativead/callback?placement=${placement}&name=LiveNormalAD_First&event=exposure`
+                        impression: `/app/nativead/callback?placement=${placement}&name=LiveNormalAD_First&event=impression`
                     },
                     {
                         name: 'LiveNormalAD_Second',
@@ -58,7 +58,7 @@ module.exports = async (req, res, next) => {
                         placement: 'LIVE',
                         url: 'https://img.nownews.com/nownews_develop/images/5964ed559c29ea1779c477b4_201707112323.jpg',
                         md5: '22b926f43129e23812207ff8e1b66a05',
-                        exposure: `/app/nativead/callback?placement=${placement}&name=LiveNormalAD_Second&event=exposure`
+                        impression: `/app/nativead/callback?placement=${placement}&name=LiveNormalAD_Second&event=impression`
                     },
                 ]
             },
@@ -72,7 +72,7 @@ module.exports = async (req, res, next) => {
                         placement: 'RECOMMEND',
                         url: 'https://img.nownews.com/nownews_develop/images/5964ecdea941fb165187901d_201707112321.jpg',
                         md5: '83e5691db3728b769e4f662b9e382dae',
-                        exposure: `/app/nativead/callback?placement=${placement}&name=normalNativeADs&event=exposure`
+                        impression: `/app/nativead/callback?placement=${placement}&name=normalNativeADs&event=impression`
                     }
                 ]
             }
