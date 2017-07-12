@@ -13,7 +13,6 @@ module.exports = async (req, res, next) => {
 
         await AppInfo.findOneAndUpdateAsync({
                 deviceId,
-                token,
                 os
             }, {
                 $set: {
