@@ -79,7 +79,10 @@ module.exports = async (req, res, next) => {
             }
         });
 
-        let results = await Promise.map(tokens, (tokenArray) => {
+        // 都先吐 200 要不然連線太久會 timeout
+        res.status(200).send();
+
+        let results = Promise.map(tokens, (tokenArray) => {
             return new Promise((resolve, reject) => {
                 sender.send(note, { registrationTokens: tokenArray }, (err, response) => {
                     if(err) {
@@ -92,7 +95,7 @@ module.exports = async (req, res, next) => {
         });
         debug('results = %j', results);
 
-        return res.status(200).send();
+        return next();
     } catch(err) {
         return next(err);
     }
