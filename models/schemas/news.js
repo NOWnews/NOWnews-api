@@ -465,6 +465,19 @@ schema.statics.findBySn = function(sn) {
     return this.findOne().where('sn').equals(sn);
 };
 
+schema.virtual('completeUrl').get(function () {
+    let startedAt = moment.tz(this.startedAt, 'Asia/Taipei').format('YYYYMMDD');
+    let url = `/news/${startedAt}/${this.sn}`;
+    // 暫時，為了救回舊新聞的 FB 讚數
+    let oldNews = {
+        2579651: 'http://www.nownews.com/n/2017/06/26/2579651',
+        2478938: 'http://www.nownews.com/n/2017/06/14/2478938',
+        2574647: 'http://www.nownews.com/n/2017/06/24/2574647',
+        2580134: 'http://www.nownews.com/n/2017/06/26/2580134'
+    };
+    return oldNews[this.sn] ? oldNews[this.sn] : `https://www.nownews.com${url}`;
+});
+
 schema.virtual('parseUrl').get(function () {
     let startedAt = moment.tz(this.startedAt, 'Asia/Taipei').format('YYYYMMDD');
     let url = `/news/${startedAt}/${this.sn}`;
