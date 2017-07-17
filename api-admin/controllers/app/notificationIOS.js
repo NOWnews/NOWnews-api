@@ -43,8 +43,11 @@ module.exports = async (req, res, next) => {
         // note.contentAvailable = 1;
         // note.mutableContent = 1;
 
+        // 都先吐 200 要不然連線太久會 timeout
+        res.status(200).send();
+
         // 送出推播資料
-        let results = await Promise.map(deviceTokens, (token) => {
+        let results = Promise.map(deviceTokens, (token) => {
             return apnConnection.send(note, token)
                 .then((result) => {
                     console.log(result);
@@ -53,7 +56,7 @@ module.exports = async (req, res, next) => {
         }, { concurrency: 50 });
         debug('results = %j', results);
 
-        return res.status(200).send();
+        return next();
     } catch(err) {
         return next(err);
     }
