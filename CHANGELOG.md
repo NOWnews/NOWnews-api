@@ -1,6 +1,10 @@
 # Change Log
 
 NOWnews-api change logs
+## 1.0.11 - 2017-07-18
+### fixed
+- hotnews 多拉圖片欄位 @wb
+
 ## 1.0.10 - 2017-07-18
 ### Added
 - news 增加虛擬欄位 completeUrl @esbb48
