@@ -15,7 +15,7 @@ import { Pageview } from '../pvModels';
 
 module.exports = new cron.CronJob({
     // 設定多久跑一次
-    cronTime: '0 */10 * * * *',
+    cronTime: '0 */3 * * * *',
 
     // 主要邏輯區
     onTick: async () => {
