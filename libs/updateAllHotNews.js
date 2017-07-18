@@ -78,7 +78,8 @@ module.exports = async () => {
                 .then((pageviews) => {
                     return Promise.mapSeries(pageviews, (pageview) => {
                         return News.findById(pageview._id)
-                            .select('_id sn title shortTitle')
+                            .populate('MainPhoto')
+                            .select('_id sn title shortTitle MainPhoto')
                             .execAsync();
                     });
                 })
