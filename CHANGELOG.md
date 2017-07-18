@@ -1,10 +1,13 @@
 # Change Log
 
 NOWnews-api change logs
+## 1.0.10 - 2017-07-18
+### Added
+- news 增加虛擬欄位 completeUrl @esbb48
+
 ## 1.0.9 - 2017-07-14
 ### Changed
 - 增加熱門新聞數量 @esbb48
-
 
 ## 1.0.8 - 2017-07-11
 ### Added
