@@ -24,12 +24,12 @@ module.exports = async (req, res, next) => {
 
         // 綜合娛樂
         let entertainments = [
-            {
-                SN: '',
-                code: '',
-                title: '民視',
-                path: `http://59.124.93.43:1935/live/nns153.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            },
+            // {
+            //     SN: '',
+            //     code: '',
+            //     title: '民視',
+            //     path: `http://59.124.93.43:1935/live/nns153.stream/playlist.m3u8?johncena=${registerData.johncena}`
+            // },
             {
                 SN: '',
                 code: '',
@@ -116,12 +116,12 @@ module.exports = async (req, res, next) => {
 
         // 新聞資訊
         let news = [
-            {
-                SN: '',
-                code: '',
-                title: '民視新聞台',
-                path: `http://59.124.93.43:1935/live/nns199.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            },
+            // {
+            //     SN: '',
+            //     code: '',
+            //     title: '民視新聞台',
+            //     path: `http://59.124.93.43:1935/live/nns199.stream/playlist.m3u8?johncena=${registerData.johncena}`
+            // },
             // {
             //     SN: '',
             //     code: '',
@@ -168,12 +168,12 @@ module.exports = async (req, res, next) => {
                 title: '衛視洋片台',
                 path: `http://59.124.93.43:1935/live/nns179.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
-            {
-                SN: '',
-                code: '',
-                title: 'HBO',
-                path: `http://59.124.93.43:1935/live/nns1226.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            },
+            // {
+            //     SN: '',
+            //     code: '',
+            //     title: 'HBO',
+            //     path: `http://59.124.93.43:1935/live/nns1226.stream/playlist.m3u8?johncena=${registerData.johncena}`
+            // },
             {
                 SN: '',
                 code: '',
