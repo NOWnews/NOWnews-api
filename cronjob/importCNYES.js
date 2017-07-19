@@ -9,7 +9,7 @@ import config from 'config';
 import cron from 'cron';
 import _ from 'lodash';
 import moment from 'moment-timezone';
-import { parseRssFeed } from '../libs';
+import { parseRssFeed, newsLog } from '../libs';
 import { News, Image } from '../models';
 import { Pageview } from '../pvModels';
 
@@ -139,6 +139,10 @@ module.exports = new cron.CronJob({
                 };
 
                 let news = await News.createAsync(newsOptions);
+
+                // 處理 log
+                let newsForLog = await news.populate('MainMenu Menus MainPhoto MainVideo Photos Videos Author Tags LastReviewer CreatedBy UpdatedBy').execPopulate();
+                await newsLog(newsForLog, 'CREATE');
 
                 // 初始化 pageview 資訊
                 await Pageview.findOneAndUpdateAsync({
