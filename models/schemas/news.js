@@ -165,6 +165,18 @@ let schema = new Schema({
         enum: ['OWN', 'CNYES', 'MNA', 'CNA']
     },
 
+    // RSS 內送新聞的唯一值
+    feedUniqKey: {
+        type: String,
+        default: null
+    },
+
+    // RSS 內送新聞的連結
+    feedUrl: {
+        type: String,
+        default: null
+    },
+
     // 最後的新聞審稿者
     LastReviewer: {
         type: Schema.Types.ObjectId,

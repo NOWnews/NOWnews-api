@@ -2,6 +2,7 @@ import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:menu:update');
 
 import redis from '../../../redis';
+import { updateCategoryFirstPage } from '../../../libs';
 import { Menu } from '../../../models';
 
 module.exports = async (req, res, next) => {
@@ -81,6 +82,13 @@ module.exports = async (req, res, next) => {
         let webMenu = await Menu.findWebStructionAsync();
         let cacheData = await redis.setValue(`menu`, webMenu);
         debug('cacheData = %j', cacheData);
+
+        if(updatedMenu.status === 'OPEN') {
+            await Promise.all([
+                updateCategoryFirstPage(updatedMenu.categoryName, 15, 0, 1), // Desktop Category First Page
+                updateCategoryFirstPage(updatedMenu.categoryName, 30, 0, 1) // Mobile Category First Page
+            ]);
+        }
 
         return res.json(updatedMenu);
     } catch (err) {
