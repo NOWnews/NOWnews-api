@@ -13,7 +13,7 @@
             "quality": 70
         },
         "rssFeed": {
-            "cnyes": "http://news.cnyes.com/RSS/RSS_NowNews__0_cnyes.xml"
+            "cnyes": "https://service.cnyes.com/rss/v2/news?vendor=nownews"
         },
         "googleCloud": {
             "projectId": "nownews-website-167108",

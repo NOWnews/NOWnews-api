@@ -119,6 +119,12 @@ let schema = new Schema({
         default: null
     },
 
+    // 使否為業配文
+    isSponsored: {
+        type: Boolean,
+        default: null
+    },
+
     // 新聞新聞的位置
     location : {
         type: [Number],
@@ -152,6 +158,30 @@ let schema = new Schema({
     feedFrom: {
         type: String,
         default: null
+    },
+
+    // RSS 內送新聞的唯一值
+    feedUniqKey: {
+        type: String,
+        default: null
+    },
+
+    // RSS 內送新聞的連結
+    feedUrl: {
+        type: String,
+        default: null
+    },
+
+    // 新聞樣板
+    template: {
+        type: String,
+        default: 'DEFAULT'
+    },
+
+    // 新聞樣版廣告
+    templateAD: {
+        type: String,
+        default: 'DEFAULT'
     },
 
     // 最後的新聞審稿者
