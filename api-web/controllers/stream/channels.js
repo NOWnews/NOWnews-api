@@ -226,9 +226,11 @@ module.exports = async (req, res, next) => {
             liveInfo: {
                 watchTime: 20,
                 lockTime: 30,
-                watchable: true,
+                watchable: false,
+                leftbutton: '立即下载',
+                rightbutton: '立即試看',
                 icon: 'http://legacy.nownews.com/NOWnews_static/watchNOW-logo-v2.png',
-                titleMessage: '本直播由 watchNOW APP 提供精彩試看\n請密切關注 watchNOW 的下載通知！\n\n本服務由華夏新媒體有限公司提供\n客服專線: 0903-892-221\n聯絡我們: 0903892221@gmail.com',
+                titleMessage: '本直播由 watchNOW APP 提供精彩試看\n請密切關注 watchNOW 的下載通知！\n\n本服務由華夏新媒體有限公司提供\n客服專線: 0903-892-221\n聯絡我們: 090389222l@gmail.com',
                 downloadable: false,
                 iosDownloadLink: '',
                 androidDownloadLink: ''
