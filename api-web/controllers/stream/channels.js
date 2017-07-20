@@ -222,6 +222,44 @@ module.exports = async (req, res, next) => {
             }
         ];
 
+        // 無線數位
+        let wireless = [
+            {
+                SN: '',
+                code: '',
+                title: '公共電視',
+                path: `http://59.124.93.43:1935/live/nns204.stream/playlist.m3u8?johncena=${registerData.johncena}`
+            }
+        ];
+
+        // 衛星電視
+        let satellite = [
+            {
+                SN: '',
+                code: '',
+                title: '北京國際台',
+                path: `http://59.124.93.43:1935/live/nns112.stream/playlist.m3u8?johncena=${registerData.johncena}`
+            },
+            {
+                SN: '',
+                code: '',
+                title: '湖南國際電視',
+                path: `http://59.124.93.43:1935/live/nns117.stream/playlist.m3u8?johncena=${registerData.johncena}`
+            },
+            {
+                SN: '',
+                code: '',
+                title: '上海東方衛視',
+                path: `http://59.124.93.43:1935/live/nns113.stream/playlist.m3u8?johncena=${registerData.johncena}`
+            },
+            {
+                SN: '',
+                code: '',
+                title: '深圳電視台',
+                path: `http://59.124.93.43:1935/live/nns118.stream/playlist.m3u8?johncena=${registerData.johncena}`
+            },
+        ];
+
         return res.json({
             liveInfo: {
                 watchTime: 20,
@@ -235,30 +273,40 @@ module.exports = async (req, res, next) => {
             },
             data: [
                 {
-                    categoryName: '綜合娛樂',
-                    count: entertainments.length,
-                    list: entertainments
+                    categoryName: '無線數位',
+                    count: wireless.length,
+                    list: wireless
                 },
                 {
-                    categoryName: '兒少動漫',
-                    count: animes.length,
-                    list: animes
+                    categoryName: '衛星電視',
+                    count: satellite.length,
+                    list: satellite
                 },
-                {
-                    categoryName: '新聞資訊',
-                    count: news.length,
-                    list: news
-                },
-                {
-                    categoryName: '戲劇電影',
-                    count: dramas.length,
-                    list: dramas
-                },
-                {
-                    categoryName: '專業體育',
-                    count: sports.length,
-                    list: sports
-                }
+                // {
+                //     categoryName: '綜合娛樂',
+                //     count: entertainments.length,
+                //     list: entertainments
+                // },
+                // {
+                //     categoryName: '兒少動漫',
+                //     count: animes.length,
+                //     list: animes
+                // },
+                // {
+                //     categoryName: '新聞資訊',
+                //     count: news.length,
+                //     list: news
+                // },
+                // {
+                //     categoryName: '戲劇電影',
+                //     count: dramas.length,
+                //     list: dramas
+                // },
+                // {
+                //     categoryName: '專業體育',
+                //     count: sports.length,
+                //     list: sports
+                // }
             ]
         });
     } catch(err) {
