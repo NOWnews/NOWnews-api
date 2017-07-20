@@ -238,25 +238,25 @@ module.exports = async (req, res, next) => {
                 SN: '',
                 code: '',
                 title: '北京國際台',
-                path: `http://59.124.93.43:1935/live/nns112.stream/playlist.m3u8?johncena=${registerData.johncena}`
+                path: `http://59.124.93.43:1935/live/gw112.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
             {
                 SN: '',
                 code: '',
                 title: '湖南國際電視',
-                path: `http://59.124.93.43:1935/live/nns117.stream/playlist.m3u8?johncena=${registerData.johncena}`
+                path: `http://59.124.93.43:1935/live/gw117.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
             {
                 SN: '',
                 code: '',
                 title: '上海東方衛視',
-                path: `http://59.124.93.43:1935/live/nns113.stream/playlist.m3u8?johncena=${registerData.johncena}`
+                path: `http://59.124.93.43:1935/live/gw113.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
             {
                 SN: '',
                 code: '',
                 title: '深圳電視台',
-                path: `http://59.124.93.43:1935/live/nns118.stream/playlist.m3u8?johncena=${registerData.johncena}`
+                path: `http://59.124.93.43:1935/live/gw118.stream/playlist.m3u8?johncena=${registerData.johncena}`
             },
         ];
 
