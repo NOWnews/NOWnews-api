@@ -1,6 +1,9 @@
 # Change Log
 
 NOWnews-api change logs
+## 1.0.13 - 2017-07-24
+- Rss 加上圖片新聞的圖片 populate @wb
+
 ## 1.0.12 - 2017-07-20
 - 直播上了2個類別, 5個頻道 @wb
 
