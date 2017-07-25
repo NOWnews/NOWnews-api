@@ -12,8 +12,8 @@ module.exports = async (req, res, next) => {
 
         const placement = req.query.placement;
 
-        // banner 型圖片廣告
-        let bannerImageAds = [
+        // 一般圖片廣告
+        let normalImageAds = [
             {
                 url: 'https://img.nownews.com/nownews_production/images/596f0a7592a64942762bee7c_201707191529.png',
                 md5: '934c563cb55bfdf39e35b7ab7401f4f1'
@@ -36,8 +36,8 @@ module.exports = async (req, res, next) => {
             },
         ];
 
-        // 一般圖片廣告
-        let normalImageAds = [
+        // banner 型圖片廣告
+        let bannerImageAds = [
             {
                 url: 'https://img.nownews.com/nownews_production/images/596f0da05a53eb427052ea84_201707191543.png',
                 md5: '236c8755f9513079213f13dd55b6bd48'
@@ -63,12 +63,12 @@ module.exports = async (req, res, next) => {
         // 影音廣告
         let allVideoADs = [
             {
-                url: 'https://img.nownews.com/nownews_develop/videos/5964e8578f7ff61321537118_201707112301.mp4',
-                md5: 'e0405138c9169f200c8c2f76637e7dcd'
+                url: 'https://img.nownews.com/nownews_production/videos/597728d04ed41a01c6f27826_201707251917.mp4',
+                md5: 'a60752ad4aa146e170a2cdcf37da16ad'
             },
             {
-                url: 'https://img.nownews.com/nownews_develop/videos/5964e9958f7ff61321537119_201707112307.mp4',
-                md5: '14334c0f1f4f80f60c7056e20aa3b1bf'
+                url: 'https://img.nownews.com/nownews_production/videos/59772947e6e9df01ba582311_201707251919.mp4',
+                md5: '79b1459387f5156729056440bd70d3fa'
             }
         ];
 
