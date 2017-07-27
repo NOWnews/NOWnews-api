@@ -50,7 +50,7 @@ module.exports = async(req, res, next) => {
                 .where('isTrashed').equals(false);
 
             let newsList = await cursor
-                .populate('MainPhoto MainMenu Menus Photos')
+                .populate('MainPhoto MainMenu Menus Photos MainVideo')
                 .limit(parseInt(limit, 10))
                 .sort('-startedAt')
                 .execAsync();
