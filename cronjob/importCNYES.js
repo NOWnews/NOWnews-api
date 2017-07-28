@@ -20,9 +20,7 @@ module.exports = new cron.CronJob({
     // 主要邏輯區
     onTick: async () => {
         try {
-
             console.log(`------------- Start Import 鉅亨網 RSS Feed -------------`);
-
             let feedUrl = config.get('general.rssFeed.cnyes');
 
             if(!feedUrl || feedUrl === '') {
@@ -36,20 +34,19 @@ module.exports = new cron.CronJob({
 
             let newsList = [];
             let nowTime = moment.tz('Asia/Taipei');
-            let prevTime = moment.tz('Asia/Taipei').add(-10, 'months');
-
+            let prevTime = moment.tz('Asia/Taipei').add(-10, 'm');
             for(let item of  rssJSON.rss.channel.item){
 
                 // 如果不是在設定的時間區間內的新聞，就不需要收錄
                 let newsPubDate = moment.tz(new Date(item.pubDate), 'Asia/Taipei');
                 if(newsPubDate < prevTime) {
-                    return;
+                    continue;
                 }
 
                 // 確認對方給的新聞 url 是否符合規範，不符合規範就不收錄
                 let regexString = /^(http|https):\/\/news.cnyes.com\/news\/id\/[0-9]+/;
                 if(item.link.match(regexString) === null) {
-                    return;
+                    continue;
                 }
 
                 // 取出對方新聞 uniq key
@@ -65,7 +62,7 @@ module.exports = new cron.CronJob({
                     .where('feedUniqKey').equals(uniqKey)
                     .execAsync();
                 if(aliveNews) {
-                    return;
+                    continue;
                 }
 
                 /*
@@ -157,11 +154,10 @@ module.exports = new cron.CronJob({
             };
 
             console.log(`------------- Finish Import 鉅亨網 RSS Feed -------------`);
-            return;
         } catch (err) {
             return console.log(err);
         }
     },
-    start: true,
+    start: false,
     runOnInit: true
 });
