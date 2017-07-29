@@ -5,11 +5,11 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 
 import parseHeader from './parseHeader';
-// import prepare from './prepare';
+import prepare from './prepare';
 
 module.exports = (app) => {
 
-    // app.use(prepare());
+    app.use(prepare());
     app.use(cors());
     app.use(compression());
     app.use(bodyParser.json());

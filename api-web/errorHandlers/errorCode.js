@@ -1,5 +1,10 @@
 module.exports = {
 
+    10001: {
+        message: 'Forbidden，你他媽在亂打試試看，反正我也不痛不癢，大力一點好嗎',
+        statusCode: 403
+    },
+
     // Menu
     11001: {
         message: '找不到這個 menu',
