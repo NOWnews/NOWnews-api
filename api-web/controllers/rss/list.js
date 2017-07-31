@@ -38,7 +38,12 @@ module.exports = async(req, res, next) => {
             }
 
             if (end) {
-                end = Date.now();
+                end = moment.tz(end, 'Asia/Taipei');
+                let now = moment.tz('Asia/Taipei');
+                //篩除預發稿的新聞
+                if(end.isAfter(now)){
+                  end = now;
+                }
                 debug('endTime %s', end );
                 cursor.where('startedAt').lte(end);
             }
