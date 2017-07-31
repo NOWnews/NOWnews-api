@@ -18,6 +18,6 @@ module.exports = new cron.CronJob({
         }
     },
 
-    start: true,
+    start: false,
     runOnInit: true
 });

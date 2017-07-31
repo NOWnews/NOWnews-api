@@ -1,6 +1,9 @@
 # Change Log
 
 NOWnews-api change logs
+## 1.0.15 - 2017-07-30
+- 修正鉅亨網匯入新聞有重複的問題 @appleoxxo
+
 ## 1.0.14 - 2017-07-27
 - Rss 加上影片新聞的影片 populate @wb
 
