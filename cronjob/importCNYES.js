@@ -65,6 +65,9 @@ module.exports = new cron.CronJob({
                     continue;
                 }
 
+                //鉅亨網要求加上在新聞內文 文末加上連結
+                const link = "http://news.cnyes.com/news/cat/all?utm_medium=news&utm_source=nownews";
+                item['content:encoded'] +=`\n更多精彩內容請至 《鉅亨網》 <a href="${link}">連結>></a>`
                 /*
                  * 鉅亨網沒有圖片，所以不用處理
                  * 這些處理圖片的 code 留下來當參考
