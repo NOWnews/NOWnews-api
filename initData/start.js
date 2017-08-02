@@ -2,7 +2,7 @@
 import Promise from 'bluebird';
 import chalk from 'chalk';
 
-import { User, Policy, Role, Center, Department, Menu } from '../models';
+import { User, Policy, Role, Center, Department, Menu, Image } from '../models';
 import { hashPwd } from '../libs';
 
 import policyData from './policy';
@@ -12,8 +12,21 @@ import departmentData from './department';
 import superuserData from './superuser';
 import usersData from './users';
 import menusData from './menus';
+import imagesData from './images';
 
 module.exports = async () => {
+
+    // 處理 images 資料
+    await Promise.each(imagesData, (data) => {
+        return Image.findById(data._id).execAsync()
+            .then((doc) => {
+                // console.log('do policy data');
+                if(doc) {
+                    return Promise.resolve({});
+                }
+                return Image.createAsync(data);
+            });
+    });
 
     // 處理 Policy 資料
     await Promise.each(policyData, (data) => {
