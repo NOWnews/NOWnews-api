@@ -34,6 +34,7 @@ module.exports = async (req, res, next) => {
             devices = [
                 { token: 'cNPgV00NEwM:APA91bHO_WUqnci3uVhpiKDMCX0cYYntwrnzinJz1DvpRznfoLa-R_LehgR6PSxUywkCHTp9npgZ5FSr7GvGgZO6muZQwLnGWgF6DO0ZKwr6NDJVy_xnRibH92HiYaut2_TIMDIv3j_P' }
             ];
+            deviceTotal = devices.length;
         }
 
         /*

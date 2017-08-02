@@ -38,6 +38,7 @@ module.exports = async (req, res, next) => {
             devices = [
                 { token: 'e9AGh5PTqYk:APA91bHFNqrarWJ1zVUeD72iaNf9pLY-2LIhW0i2K6N3iT4nw1ktWvZT9qE5RElkPRx9ksWaVCEFUb4VOlZp2-ylnrkLdZDs0iTvCE8ThK9CPMIaunEtnEEs7uwRA4f-ekwRlH6YXQcT' }
             ];
+            deviceTotal = devices.length;
         }
 
         _.forEach(devices, (device) => {
