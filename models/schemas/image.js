@@ -166,6 +166,18 @@ schema.virtual('thumbnail').get(function () {
     return `${url}/?w=${width}&q=${quality}&src=${encodeURIComponent(sourceUrl)}`;
 });
 
+schema.virtual('googleCDN').get(function () {
+
+    let regexString = /^(http|https):\/\/img.nownews.com\/nownews_[A-Za-z1-9]+\/[A-Za-z]+\//;
+    if(this.url.match(regexString) === null) {
+        return this.url;
+    }
+
+    let replaceString = this.url.match(regexString)[0];
+    let fileName = this.url.replace(replaceString, '');
+    return `https://rssimg.nownews.com/images/${fileName}`;
+});
+
 schema.virtual('formatCreatedAt').get(function () {
     return moment.tz(this.createdAt, 'Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });
