@@ -36,7 +36,8 @@ module.exports = async (req, res, next) => {
          */
         if(mode !== 'production') {
             devices = [
-                { token: 'e9AGh5PTqYk:APA91bHFNqrarWJ1zVUeD72iaNf9pLY-2LIhW0i2K6N3iT4nw1ktWvZT9qE5RElkPRx9ksWaVCEFUb4VOlZp2-ylnrkLdZDs0iTvCE8ThK9CPMIaunEtnEEs7uwRA4f-ekwRlH6YXQcT' }
+                { token: 'e9AGh5PTqYk:APA91bHFNqrarWJ1zVUeD72iaNf9pLY-2LIhW0i2K6N3iT4nw1ktWvZT9qE5RElkPRx9ksWaVCEFUb4VOlZp2-ylnrkLdZDs0iTvCE8ThK9CPMIaunEtnEEs7uwRA4f-ekwRlH6YXQcT' },
+                { token: 'dat3LYEYNIA:APA91bGIIyztnkOx4neRzXFxdTVM-7da15IvEcOtCsrtULMC3eITIqfSqdF7BCvVyc_2TNPzbi6l2gd2FAL6LxCxowsu886MCuv5y6-qYlayOdpQQKhaeUpBNQ-f86czu6YoMO1BwNcf' }
             ];
             deviceTotal = devices.length;
         }
