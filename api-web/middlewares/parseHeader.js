@@ -15,7 +15,8 @@ module.exports = (app) => {
         let apiKey = req.header('X-NOWnews-API');
 
         if(!apiKey || !keys.includes(apiKey)) {
-            return next(new Error(''));
+            console.log(`Request Url Without Header Key: ${req.url}`);
+            return next(new Error('10001'));
         }
 
         return next();
