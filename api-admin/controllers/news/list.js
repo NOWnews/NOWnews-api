@@ -20,24 +20,9 @@ module.exports = async (req, res, next) => {
         let totalCursor = News.find(); // 處理分頁用的
         sort = sort ? sort : '-createdAt';
 
-        if(title) {
-            cursor.where('title').equals(new RegExp(title, 'i'));
-            totalCursor.where('title').equals(new RegExp(title, 'i'));
-        }
-
-        if(type) {
-            cursor.where('type').equals(type);
-            totalCursor.where('type').equals(type);
-        }
-
-        if(status) {
-            cursor.where('status').equals(status);
-            totalCursor.where('status').equals(status);
-        }
-
-        if(Author) {
-            cursor.where('Author').equals(Author);
-            totalCursor.where('Author').equals(Author);
+        if(sn) {
+            cursor.where('sn').equals(sn);
+            totalCursor.where('sn').equals(sn);
         }
 
         if(CreatedBy) {
@@ -45,14 +30,34 @@ module.exports = async (req, res, next) => {
             totalCursor.where('CreatedBy').equals(CreatedBy);
         }
 
+        if(LastReviewer) {
+            cursor.where('LastReviewer').equals(LastReviewer);
+            totalCursor.where('LastReviewer').equals(LastReviewer);
+        }
+
+        if(Author) {
+            cursor.where('Author').equals(Author);
+            totalCursor.where('Author').equals(Author);
+        }
+
         if(UpdatedBy) {
             cursor.where('UpdatedBy').equals(UpdatedBy);
             totalCursor.where('UpdatedBy').equals(UpdatedBy);
         }
 
-        if(LastReviewer) {
-            cursor.where('LastReviewer').equals(LastReviewer);
-            totalCursor.where('LastReviewer').equals(LastReviewer);
+        if(MainMenu){
+            cursor.where('MainMenu').equals(MainMenu);
+            totalCursor.where('MainMenu').equals(MainMenu);
+        }
+
+        if(status) {
+            cursor.where('status').equals(status);
+            totalCursor.where('status').equals(status);
+        }
+
+        if(type) {
+            cursor.where('type').equals(type);
+            totalCursor.where('type').equals(type);
         }
 
         if(startedAt) {
@@ -65,19 +70,14 @@ module.exports = async (req, res, next) => {
             totalCursor.where('startedAt').lte(moment.tz(endedAt, 'Asia/Taipei').endOf('day'));
         }
 
-        if(MainMenu){
-            cursor.where('MainMenu').equals(MainMenu);
-            totalCursor.where('MainMenu').equals(MainMenu);
-        }
-
-        if(sn){
-            cursor.where('sn').equals(sn);
-            totalCursor.where('sn').equals(sn);
-        }
-
         if(isScheduled === false || isScheduled === 'false') {
             cursor.where('startedAt').lte(Date.now());
             totalCursor.where('startedAt').lte(Date.now());
+        }
+
+        if(title) {
+            cursor.where('title').equals(new RegExp(title, 'i'));
+            totalCursor.where('title').equals(new RegExp(title, 'i'));
         }
 
         let [ newsList, total ] = await Promise.all([

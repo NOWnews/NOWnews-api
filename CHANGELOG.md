@@ -1,6 +1,10 @@
 # Change Log
 
 NOWnews-api change logs
+
+## 1.0.17 - 2017-08-02
+- 調整 `/search/:keyword`, `/news` 查詢順序 @esbb48
+
 ## 1.0.16 - 2017-07-30
 - 修正Rss API的時間條件 @appleoxxo
 
@@ -44,6 +48,7 @@ NOWnews-api change logs
 
 ### Changed
 -  修改縮圖https to http @waynelin
+
 
 ## 1.0.5 - 2017-07-06
 ### Changed
