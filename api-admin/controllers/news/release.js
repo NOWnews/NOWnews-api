@@ -73,6 +73,7 @@ module.exports = async (req, res, next) => {
             news.set('Videos', req.body.Videos);
         }
 
+
         if(req.body.freeContent) {
             news.set('freeContent', req.body.freeContent);
         }

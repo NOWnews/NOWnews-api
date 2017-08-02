@@ -13,7 +13,7 @@
             "quality": 70
         },
         "rssFeed": {
-            "cnyes": ""
+            "cnyes": "https://service.cnyes.com/rss/v2/news?vendor=nownews"
         },
         "googleCloud": {
             "projectId": "nownews-website-167108",
@@ -47,16 +47,16 @@
         "mode": "staging",
         "showError": true,
         "mongodb": {
-            "host": "mongodb://10.140.0.2,10.138.0.2:27017", // (no / 192.168.40.185)
+            "host": "mongodb://10.140.0.2,10.140.0.8:27017", // (no / 192.168.40.185)
             "db": "NOWnews_Staging"
         },
         "pvMongodb": {
-            "host": "mongodb://10.140.0.2,10.138.0.2:27017", // (no / 192.168.40.185)
+            "host": "mongodb://10.140.0.2,10.140.0.8:27017", // (no / 192.168.40.185)
             "db": "NOWnewsAnalytics_Staging"
         },
         "redis": {
-            "host": "10.140.0.5", // (61.67.121.141 / 192.168.40.141)
-            "port": 6379,
+            "host": "10.140.0.9", // (61.67.121.141 / 192.168.40.141)
+            "port": 16379,
             "db": 1,
             "password": null,
             "expireSeconds": 3600
@@ -98,16 +98,16 @@
         "adServ": "http://ad1.nownews.com/ads.php",
         "showError": true,
         "mongodb": {
-            "host": "mongodb://10.140.0.2,10.138.0.2:27017", // (no / 192.168.40.185)
+            "host": "mongodb://10.140.0.2,10.140.0.8:27017", // (no / 192.168.40.185)
             "db": "NOWnews_Staging"
         },
         "pvMongodb": {
-            "host": "mongodb://10.140.0.2,10.138.0.2:27017", // (no / 192.168.40.185)
+            "host": "mongodb://10.140.0.2,10.140.0.8:27017", // (no / 192.168.40.185)
             "db": "NOWnewsAnalytics_Staging"
         },
         "redis": {
-            "host": "10.140.0.5", // (61.67.121.141 / 192.168.40.141)
-            "port": 6379,
+            "host": "10.140.0.9", // (61.67.121.141 / 192.168.40.141)
+            "port": 16379,
             "db": 1,
             "password": "",
             "expireSeconds": 3600

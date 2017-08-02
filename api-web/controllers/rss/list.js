@@ -38,7 +38,12 @@ module.exports = async(req, res, next) => {
             }
 
             if (end) {
-                end = Date.now();
+                end = moment.tz(end, 'Asia/Taipei');
+                let now = moment.tz('Asia/Taipei');
+                //篩除預發稿的新聞
+                if(end.isAfter(now)){
+                  end = now;
+                }
                 debug('endTime %s', end );
                 cursor.where('startedAt').lte(end);
             }
@@ -50,7 +55,7 @@ module.exports = async(req, res, next) => {
                 .where('isTrashed').equals(false);
 
             let newsList = await cursor
-                .populate('MainPhoto MainMenu Menus')
+                .populate('MainPhoto MainMenu Menus Photos MainVideo')
                 .limit(parseInt(limit, 10))
                 .sort('-startedAt')
                 .execAsync();

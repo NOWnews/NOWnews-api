@@ -165,6 +165,18 @@ let schema = new Schema({
         enum: ['OWN', 'CNYES', 'MNA', 'CNA']
     },
 
+    // RSS 內送新聞的唯一值
+    feedUniqKey: {
+        type: String,
+        default: null
+    },
+
+    // RSS 內送新聞的連結
+    feedUrl: {
+        type: String,
+        default: null
+    },
+
     // 最後的新聞審稿者
     LastReviewer: {
         type: Schema.Types.ObjectId,
@@ -464,6 +476,21 @@ schema.index({
 schema.statics.findBySn = function(sn) {
     return this.findOne().where('sn').equals(sn);
 };
+
+schema.virtual('completeUrl').get(function () {
+    let startedAt = moment.tz(this.startedAt, 'Asia/Taipei').format('YYYYMMDD');
+    let url = `/news/${startedAt}/${this.sn}`;
+    // 暫時，改版埋的 og:url 異動產生掉讚，為了救回舊新聞的 FB 讚數。
+    let oldNews = {
+        2579651: 'http://www.nownews.com/n/2017/06/26/2579651',
+        2478938: 'http://www.nownews.com/n/2017/06/14/2478938',
+        2574647: 'http://www.nownews.com/n/2017/06/24/2574647',
+        2580134: 'http://www.nownews.com/n/2017/06/26/2580134',
+        2582280: 'http://www.nownews.com/news/20170628/2582280',
+        2582589: 'https://www.nownews.com/news/20170628/2582589'
+    };
+    return oldNews[this.sn] ? oldNews[this.sn] : `https://www.nownews.com${url}`;
+});
 
 schema.virtual('parseUrl').get(function () {
     let startedAt = moment.tz(this.startedAt, 'Asia/Taipei').format('YYYYMMDD');

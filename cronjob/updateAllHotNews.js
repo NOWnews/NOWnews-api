@@ -6,7 +6,7 @@ import { updateAllHotNews } from '../libs';
 
 module.exports = new cron.CronJob({
     // 設定多久跑一次
-    cronTime: '0 */30 * * * *',
+    cronTime: '0 */5 * * * *',
 
     // 主要邏輯區
     onTick: async () => {

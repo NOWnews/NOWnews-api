@@ -2,15 +2,57 @@
 
 NOWnews-api change logs
 
+## 1.0.17 - 2017-08-02
+- 調整 `/search/:keyword`, `/news` 查詢順序 @esbb48
+
+## 1.0.16 - 2017-07-30
+- 修正Rss API的時間條件 @appleoxxo
+
+## 1.0.15 - 2017-07-30
+- 修正鉅亨網匯入新聞有重複的問題 @appleoxxo
+
+## 1.0.14 - 2017-07-27
+- Rss 加上影片新聞的影片 populate @wb
+
+## 1.0.13 - 2017-07-24
+- Rss 加上圖片新聞的圖片 populate @wb
+
+## 1.0.12 - 2017-07-20
+- 直播上了2個類別, 5個頻道 @wb
+
+## 1.0.11 - 2017-07-19
+- 調整 `2582589` 這篇廣告對應的og:url @esbb48
+
+## 1.0.10 - 2017-07-18
+### Added
+- news 增加虛擬欄位 completeUrl @esbb48
+### Fixed
+- hotnews 多拉圖片欄位 @wb
+
+## 1.0.9 - 2017-07-14
+### Changed
+- 增加熱門新聞數量 @esbb48
+
+## 1.0.8 - 2017-07-11
+### Added
+-  加入 NOWlink 原生廣告 api 端點 `/app/nativead` @SimonSun
+-  加入 NOWlink 原生廣告曝光率與點擊數端點 `/app/nativead/callback` @SimonSun
+
+## 1.0.7 - 2017-07-11
+### Changed
+-  更新 staging 設定黨 @esbb48
+
 ## 1.0.6 - 2017-07-07
+### Fixed
+-  修正新聞沒快取時PV會出錯的問題 @jasonHsieh
+
 ### Changed
 -  修改縮圖https to http @waynelin
--  調整 `/search/:keyword`, `/news` 查詢順序 @esbb48
+
 
 ## 1.0.5 - 2017-07-06
 ### Changed
 -  重構 `libs/updateAllCategoryNews` @SimonSun
-### Changed
 -  修改計算PV數的方式為aggregate @jasonHsieh
 -  修正PV數 包括`/statistics`和`scores`下的端點 @jasonHsieh
 
