@@ -18,7 +18,7 @@ let schema = new Schema({
     os: {
         type: String,
         required: true,
-        enum: ['IOS', 'ANDROID'],
+        enum: ['IOS', 'ANDROID', 'WEB'],
         default: 'ANDROID'
     },
 

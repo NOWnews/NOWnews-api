@@ -1,6 +1,6 @@
 
 import Debug from 'debug';
-const debug = Debug('NOWnews-api:api-admin:controllers:app:splashCreate');
+const debug = Debug('NOWnews-api:api-admin:controllers:app:splashOne');
 
 import { AppSplash } from '../../../models';
 

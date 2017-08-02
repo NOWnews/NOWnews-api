@@ -6,7 +6,7 @@ module.exports = {
 
     10001: {
         message: 'API Header Key 不正確',
-        statusCode: 400
+        statusCode: 403
     },
 
     10002: {
