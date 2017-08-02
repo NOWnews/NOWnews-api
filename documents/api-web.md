@@ -806,7 +806,7 @@ None
 |---|---|---|---|---|
 | deviceId | 裝置的識別 id | String | √ | |
 | token | 裝置的 token | String | MemberId | |
-| os | 裝置的作業系統 | String | √ | `ANDROID`, `IOS` |
+| os | 裝置的作業系統 | String | √ | `ANDROID`, `IOS`, `WEB` |
 | MemberId | 如果有登入會員，請帶入會員的 id | ObjectId | | |
 
 #### Query Parameters
