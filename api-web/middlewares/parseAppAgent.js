@@ -8,27 +8,27 @@ let keys = config.get('admin.header.X-NOWnews-API');
 module.exports = async (req, res, next) => {
     try{
 
-        let headerVersion = req.header('X-NOWnewsAPP-Version');
-        let headerOS = req.header('X-NOWnewsAPP-OS');
-        let headerMode = req.header('X-NOWnewsAPP-Mode');
+        let appVersion = req.header('X-NOWnewsAPP-Version');
+        let appOS = req.header('X-NOWnewsAPP-OS');
+        let appMode = req.header('X-NOWnewsAPP-Mode');
 
         if(mode !== 'production') {
             return next();
         }
 
-        if(headerMode !== 'production') {
+        if(appMode !== 'production') {
             return next();
         }
 
         let lastVersion = await AppVersion.findOne()
-            .where('os').equals(headerOS)
+            .where('os').equals(appOS)
             .where('isTrashed').equals(false)
             .sort('-sn')
             .execAsync();
 
-        if(!headerVersion || headerVersion !== lastVersion.version) {
+        if(!appVersion || appVersion !== lastVersion.version) {
             console.log(`correct app version = ${lastVersion.version}`);
-            console.log(`user app version = ${headerVersion}`);
+            console.log(`user app version = ${appVersion}`);
             throw new Error('10002');
         }
 

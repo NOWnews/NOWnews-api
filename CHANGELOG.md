@@ -4,6 +4,9 @@ NOWnews-api change logs
 
 ## 1.0.18 - 2017-08-03
 - 加入計算 pageview 的平均數與總量 @SimonSun
+- 加入新聞列表端點給 search engine 用 @SimonSun
+- 更改 NOWnews APP 頻道列表 @SimonSun
+- 加入 APP 版本確認 @SimonSun
 
 ## 1.0.17 - 2017-08-02
 - 匯入鉅亨網新聞調整 @SimonSun
