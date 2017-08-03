@@ -2,6 +2,7 @@
 // TODO 為了世大運特別加的
 import uuidv4 from 'uuid/v4';
 import moment from 'moment-timezone';
+import _ from 'lodash';
 import config from 'config';
 
 module.exports = (news) => {
