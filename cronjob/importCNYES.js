@@ -9,7 +9,7 @@ import config from 'config';
 import cron from 'cron';
 import _ from 'lodash';
 import moment from 'moment-timezone';
-import { parseRssFeed, newsLog } from '../libs';
+import { parseRssFeed, newsLog, changeInternalLink } from '../libs';
 import { News, Image } from '../models';
 import { Pageview } from '../pvModels';
 
@@ -64,7 +64,8 @@ module.exports = new cron.CronJob({
                 if(aliveNews) {
                     continue;
                 }
-
+                //把內文的內連都改連回首頁
+                item['content:encoded'] = changeInternalLink(item['content:encoded']);
                 //鉅亨網要求加上在新聞內文 文末加上連結
                 const link = "http://news.cnyes.com/news/cat/all?utm_medium=news&utm_source=nownews";
                 item['content:encoded'] +=`\n更多精彩內容請至 《鉅亨網》 <a target="_blank" href="${link}">連結>></a>`
