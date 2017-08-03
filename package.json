@@ -1,6 +1,6 @@
 {
   "name": "nownews-api",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "nownews api service",
   "main": "index.js",
   "scripts": {
@@ -67,6 +67,7 @@
     "request-promise": "^4.2.1",
     "scp2": "^0.5.0",
     "ua-parser-js": "^0.7.12",
+    "uuid": "^3.1.0",
     "xml2json": "^0.11.0"
   }
 }

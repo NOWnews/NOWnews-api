@@ -6,6 +6,8 @@ import libs from '../../../libs';
 import { News } from '../../../models';
 import { Pageview } from '../../../pvModels'
 import _ from 'lodash';
+import summerUniversiade from '../../event/summerUniversiade';
+
 module.exports = async (req, res, next) => {
 
     try {
@@ -23,6 +25,9 @@ module.exports = async (req, res, next) => {
             for(let pv of pageviewList){
                 cacheNews.pageView.totalScore += pv.totalScore;
             };
+            // TODO 為了世大運特別加的
+            cacheNews = summerUniversiade(cacheNews);
+
             return res.json(cacheNews);
         }
 
@@ -35,6 +40,9 @@ module.exports = async (req, res, next) => {
         }
         news = news.toJSON();
         news.pageView = { totalScore: 0 };
+
+        // TODO 為了世大運特別加的
+        news = summerUniversiade(news);
 
         //加上pageview的totalscore
         let pageviewList = await Pageview.find()

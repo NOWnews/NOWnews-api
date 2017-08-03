@@ -2,6 +2,9 @@
 
 NOWnews-api change logs
 
+## 1.0.19 - 2017-08-03
+- 加入世大運活動 @wb
+
 ## 1.0.18 - 2017-08-03
 - 加入計算 pageview 的平均數與總量 @SimonSun
 - 調整鉅亨網新聞內連 @appleoxxo
