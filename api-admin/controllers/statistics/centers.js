@@ -51,7 +51,7 @@ module.exports = async (req, res, next) => {
                     // 將資料儲存進 data
                     data.centerId = center._id;
                     data.name = center.name;
-                    data.newstotal = newsList.length;
+                    data.newsTotal = newsList.length;
 
                     // 組成某部門所有新聞的 ids
                     let newsIds = _.map(newsList, (news) => { return news._id; });
@@ -75,14 +75,26 @@ module.exports = async (req, res, next) => {
                 })
                 .then((pageviews) => {
                     data.pvTotal = _.isEmpty(pageviews) ? 0 : pageviews[0].sumPageviews;
+                    data.pvAverage = data.newsTotal === 0 ? 0 : (data.pvTotal/data.newsTotal);
+                    data.pvAverage = Math.round(data.pvAverage * 100) / 100; // 取小數點兩位數
                     return Promise.resolve(data);
                 });
+        });
+
+        // 計算每天總量
+        let newsTotal = 0;
+        let todayTotal = 0;
+        _.forEach(centersInfo, (center) => {
+            newsTotal += center.newsTotal,
+            todayTotal += center.pvTotal
         });
 
         debug('centersInfo = %j', centersInfo);
 
         return res.json({
             centersInfo,
+            todayTotal,
+            newsTotal,
             startedAt,
             endedAt
         });

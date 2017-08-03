@@ -1,6 +1,15 @@
 # Change Log
 
 NOWnews-api change logs
+
+## 1.0.18 - 2017-08-03
+- 加入計算 pageview 的平均數與總量 @SimonSun
+
+## 1.0.17 - 2017-08-02
+- 匯入鉅亨網新聞調整 @SimonSun
+- 改成使用 Firebase Cloud Message 做 APP 推播 @SimonSun
+- 加入 Web 推播功能 @SimonSun
+
 ## 1.0.16 - 2017-07-30
 - 修正Rss API的時間條件 @appleoxxo
 
