@@ -5,7 +5,7 @@ import moment from 'moment-timezone';
 import config from 'config';
 
 module.exports = (news) => {
-	let mode = config.get('web.mode');
+    let mode = config.get('web.mode');
     let isWin = false;
     let kindList = [];
     let kindProbability = (list, ballType, probability) => {
@@ -63,17 +63,17 @@ module.exports = (news) => {
             kindList = kindProbability(kindList, 'snooker', 15);
             break;
         default:
-        	// 這邊是給測試用的
-        	if (mode === 'develop' || mode === 'staging') {
-        		isWin = _.random(1, 10) > 1 ? true : false;
-	            isChannel = true;
-	            kind = ['basketball', 'baseball', 'tennis', 'volleyball', 'snooker'];
-	            kindList = kindProbability(kindList, 'basketball', 20);
-	            kindList = kindProbability(kindList, 'baseball', 20);
-	            kindList = kindProbability(kindList, 'tennis', 30);
-	            kindList = kindProbability(kindList, 'volleyball', 15);
-	            kindList = kindProbability(kindList, 'snooker', 15);
-        	}
+            // 這邊是給測試用的
+            if (mode === 'develop' || mode === 'staging') {
+                isWin = _.random(1, 10) > 1 ? true : false;
+                isChannel = true;
+                kind = ['basketball', 'baseball', 'tennis', 'volleyball', 'snooker'];
+                kindList = kindProbability(kindList, 'basketball', 20);
+                kindList = kindProbability(kindList, 'baseball', 20);
+                kindList = kindProbability(kindList, 'tennis', 30);
+                kindList = kindProbability(kindList, 'volleyball', 15);
+                kindList = kindProbability(kindList, 'snooker', 15);
+            }
     }
     if (isChannel && isWin) {
         let id = uuidv4();
