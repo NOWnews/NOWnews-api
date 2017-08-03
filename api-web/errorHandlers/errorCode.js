@@ -5,6 +5,11 @@ module.exports = {
         statusCode: 403
     },
 
+    10002: {
+        message: 'Forbidden，APP 版本不符合',
+        statusCode: 403
+    },
+
     // Menu
     11001: {
         message: '找不到這個 menu',

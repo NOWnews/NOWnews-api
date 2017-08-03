@@ -2,11 +2,17 @@
 
 NOWnews-api change logs
 
-## 1.0.19 - 2017-08-03
-- 加入世大運活動 @wb
 
 ## 1.0.18 - 2017-08-03
+### Added
+
 - 加入計算 pageview 的平均數與總量 @SimonSun
+- 加入新聞列表端點給 search engine 用 @SimonSun
+- 更改 NOWnews APP 頻道列表 @SimonSun
+- 加入 APP 版本確認 @SimonSun
+- 加入世大運活動 @wb
+
+### Changed
 - 調整鉅亨網新聞內連 @appleoxxo
 
 ## 1.0.17 - 2017-08-02
