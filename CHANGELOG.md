@@ -1,6 +1,10 @@
 # Change Log
 
 NOWnews-api change logs
+
+## 1.0.17 - 2017-08-03
+- 調整鉅亨網新聞內連 @appleoxxo
+
 ## 1.0.16 - 2017-07-30
 - 修正Rss API的時間條件 @appleoxxo
 
