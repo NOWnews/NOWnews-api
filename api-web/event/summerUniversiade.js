@@ -48,7 +48,7 @@ module.exports = (news) => {
             isWin = _.random(1, 10) > 2 ? true : false;
             isChannel = ['運動', '政治', '社會'].indexOf(mainMenuName) > -1;
             kindList = kindProbability(kindList, 'volleyball', 50);
-            kindList = kindProbability(kindList, 'snooker', 50);
+            kindList = kindProbability(kindList, 'tabletennis', 50);
             break;
         case '20170831':
         case '20170901':
@@ -60,7 +60,7 @@ module.exports = (news) => {
             kindList = kindProbability(kindList, 'baseball', 20);
             kindList = kindProbability(kindList, 'tennis', 30);
             kindList = kindProbability(kindList, 'volleyball', 15);
-            kindList = kindProbability(kindList, 'snooker', 15);
+            kindList = kindProbability(kindList, 'tabletennis', 15);
             break;
         default:
             // 這邊是給測試用的
@@ -71,7 +71,7 @@ module.exports = (news) => {
                 kindList = kindProbability(kindList, 'baseball', 20);
                 kindList = kindProbability(kindList, 'tennis', 30);
                 kindList = kindProbability(kindList, 'volleyball', 15);
-                kindList = kindProbability(kindList, 'snooker', 15);
+                kindList = kindProbability(kindList, 'tabletennis', 15);
             }
     }
     if (isChannel && isWin) {
