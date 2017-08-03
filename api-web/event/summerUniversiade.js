@@ -56,7 +56,6 @@ module.exports = (news) => {
             // 機率為 90%
             isWin = _.random(1, 10) > 1 ? true : false;
             isChannel = true;
-            kind = ['basketball', 'baseball', 'tennis', 'volleyball', 'snooker'];
             kindList = kindProbability(kindList, 'basketball', 20);
             kindList = kindProbability(kindList, 'baseball', 20);
             kindList = kindProbability(kindList, 'tennis', 30);
@@ -68,7 +67,6 @@ module.exports = (news) => {
             if (mode === 'develop' || mode === 'staging') {
                 isWin = _.random(1, 10) > 1 ? true : false;
                 isChannel = true;
-                kind = ['basketball', 'baseball', 'tennis', 'volleyball', 'snooker'];
                 kindList = kindProbability(kindList, 'basketball', 20);
                 kindList = kindProbability(kindList, 'baseball', 20);
                 kindList = kindProbability(kindList, 'tennis', 30);
