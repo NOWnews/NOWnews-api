@@ -19,6 +19,7 @@ import updateNewestNews from './updateNewestNews';
 import updateNewestImages from './updateNewestImages';
 import refreshIndexPage from './refreshIndexPage';
 import parseRssFeed from './parseRssFeed';
+import changeInternalLink from './changeInternalLink';
 
 module.exports = {
     hashPwd,
@@ -40,5 +41,6 @@ module.exports = {
     updateNewestNews,
     updateNewestImages,
     refreshIndexPage,
-    parseRssFeed
+    parseRssFeed,
+    changeInternalLink
 };
