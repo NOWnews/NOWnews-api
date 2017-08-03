@@ -12,35 +12,8 @@ import moment from 'moment-timezone';
 
 module.exports = async (req, res, next) => {
 
-    try {
-
-        let { sn } = req.params;
-
-        let cacheNews = await redis.getValue(`news${sn}`);
-        if(cacheNews) {
-            cacheNews.pageView = { totalScore : 0 };
-            //加上pageview的totalscore
-            let pageviewList = await Pageview.find()
-                .where('newsId').in(cacheNews.id)
-                .select('totalScore')
-                .execAsync();
-            for(let pv of pageviewList){
-                cacheNews.pageView.totalScore += pv.totalScore;
-            };
-            return res.json(cacheNews);
-        }
-
-        // 要給 api web 使用的 news 資料
-        let news = await libs.getNewsBySn(sn);
-        debug('news data = %j', news);
-
-        if(!news) {
-            throw new Error('16003');
-        }
-        news = news.toJSON();
-        news.pageView = { totalScore: 0 };
-
-        // TODO 為了世大運特別加的
+    // TODO 為了世大運特別加的
+    let summerUniversiade = (news) => {
         let isWin = false;
         let kindList = [];
         let kindProbability = (list, ballType, probability) => {
@@ -106,8 +79,44 @@ module.exports = async (req, res, next) => {
                 kind: kindList[_.random(kindList.length - 1)]
             };
         }
-        //--- TODO END
+        return news;
+    }
+    //--- TODO END
 
+    try {
+
+        let { sn } = req.params;
+
+
+        let cacheNews = await redis.getValue(`news${sn}`);
+        if(cacheNews) {
+            cacheNews.pageView = { totalScore : 0 };
+            //加上pageview的totalscore
+            let pageviewList = await Pageview.find()
+                .where('newsId').in(cacheNews.id)
+                .select('totalScore')
+                .execAsync();
+            for(let pv of pageviewList){
+                cacheNews.pageView.totalScore += pv.totalScore;
+            };
+            // TODO 為了世大運特別加的
+            cacheNews = summerUniversiade(cacheNews);
+
+            return res.json(cacheNews);
+        }
+
+        // 要給 api web 使用的 news 資料
+        let news = await libs.getNewsBySn(sn);
+        debug('news data = %j', news);
+
+        if(!news) {
+            throw new Error('16003');
+        }
+        news = news.toJSON();
+        news.pageView = { totalScore: 0 };
+
+        // TODO 為了世大運特別加的
+        news = summerUniversiade(news);
 
         //加上pageview的totalscore
         let pageviewList = await Pageview.find()
