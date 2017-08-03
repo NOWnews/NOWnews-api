@@ -75,14 +75,23 @@ module.exports = async (req, res, next) => {
                 })
                 .then((pageviews) => {
                     data.pvTotal = _.isEmpty(pageviews) ? 0 : pageviews[0].sumPageviews;
+                    data.pvAverage = data.newstotal === 0 ? 0 : (data.pvTotal/data.newstotal);
+                    data.pvAverage = Math.round(data.pvAverage * 100) / 100; // 取小數點兩位數
                     return Promise.resolve(data);
                 });
+        });
+
+        // 計算每天總量
+        let todayTotal = 0;
+        _.forEach(centersInfo, (center) => {
+            todayTotal += center.pvTotal;
         });
 
         debug('centersInfo = %j', centersInfo);
 
         return res.json({
             centersInfo,
+            todayTotal,
             startedAt,
             endedAt
         });

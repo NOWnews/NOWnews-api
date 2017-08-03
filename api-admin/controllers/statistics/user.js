@@ -58,10 +58,16 @@ module.exports = async (req, res, next) => {
         });
         debug('userNewsList = %j', userNewsList);
 
+        let todayTotal = 0;
+        _.forEach(userNewsList, (news) => {
+            todayTotal += news.pvTotal;
+        });
+
         return res.json({
             userId: user._id,
             user: user.name,
             userNewsList,
+            todayTotal,
             startedAt,
             endedAt
         });
