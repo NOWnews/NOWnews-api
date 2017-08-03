@@ -6,7 +6,7 @@ import libs from '../../../libs';
 import { News } from '../../../models';
 import { Pageview } from '../../../pvModels'
 import _ from 'lodash';
-import summerUniversiade from '../event/summerUniversiade';
+import summerUniversiade from '../../event/summerUniversiade';
 
 module.exports = async (req, res, next) => {
 
