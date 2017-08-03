@@ -85,8 +85,8 @@ module.exports = async (req, res, next) => {
         let newsTotal = 0;
         let todayTotal = 0;
         _.forEach(centersInfo, (center) => {
-            newsTotal += center.newsTotal
-            todayTotal += center.pvTotal,
+            newsTotal += center.newsTotal,
+            todayTotal += center.pvTotal
         });
 
         debug('centersInfo = %j', centersInfo);
