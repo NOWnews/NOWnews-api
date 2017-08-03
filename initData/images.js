@@ -6,6 +6,8 @@ module.exports = [
         url : 'https://legacy.nownews.com/NOWnews_default/default_terry.jpg',
         CreatedBy : '530000000000000000000001',
         UpdatedBy : '530000000000000000000001',
-        isDeliver: false
+        isDeliver: false,
+        title: '圖 / NOWnews',
+        desc: '圖 / NOWnews'
     }
 ];
