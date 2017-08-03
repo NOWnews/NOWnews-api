@@ -4,6 +4,7 @@ NOWnews-api change logs
 
 ## 1.0.18 - 2017-08-03
 - 加入計算 pageview 的平均數與總量 @SimonSun
+- 調整鉅亨網新聞內連 @appleoxxo
 
 ## 1.0.17 - 2017-08-02
 - 匯入鉅亨網新聞調整 @SimonSun
