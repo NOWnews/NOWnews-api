@@ -110,7 +110,7 @@ module.exports = new cron.CronJob({
                     location: [121.5914087,25.0693482], //台北市內湖區的座標
                     shortTitle: shortTitle,
                     summary: title, //鉅亨網沒有提供summary這個欄位 但前台og tag要用到summary 所以放title
-                    MainMenu: '560000000000000000000002',
+                    MainMenu: '560000000000000000000016',
                     Menus: ['560000000000000000000013'],
                     MainPhoto: '511000000000000000000001',
                     MainVideo: null,
