@@ -72,8 +72,10 @@ module.exports = async (req, res, next) => {
 
 
         // 計算每天總量
+        let newsTotal = 0;
         let todayTotal = 0;
         _.forEach(usersInfo, (user) => {
+            newsTotal += user.newsTotal;
             todayTotal += user.pvTotal;
         });
 
@@ -84,6 +86,7 @@ module.exports = async (req, res, next) => {
             center: center.name,
             users: usersInfo,
             todayTotal,
+            newsTotal,
             startedAt,
             endedAt
         });

@@ -82,9 +82,11 @@ module.exports = async (req, res, next) => {
         });
 
         // 計算每天總量
+        let newsTotal = 0;
         let todayTotal = 0;
         _.forEach(centersInfo, (center) => {
-            todayTotal += center.pvTotal;
+            newsTotal += center.newsTotal
+            todayTotal += center.pvTotal,
         });
 
         debug('centersInfo = %j', centersInfo);
@@ -92,6 +94,7 @@ module.exports = async (req, res, next) => {
         return res.json({
             centersInfo,
             todayTotal,
+            newsTotal,
             startedAt,
             endedAt
         });
