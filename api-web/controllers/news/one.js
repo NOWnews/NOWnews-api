@@ -25,6 +25,7 @@ module.exports = async (req, res, next) => {
             return list;
         };
         let isChannel = false;
+        let mainMenuName = news.MainMenu ? news.MainMenu.name : '--';
         switch(moment.tz('Asia/Taipei').format('YYYYMMDD')) {
             case '20170814':
             case '20170815':
@@ -35,7 +36,7 @@ module.exports = async (req, res, next) => {
             case '20170820':
                 // 機率為 80%
                 isWin = _.random(1, 10) > 2 ? true : false;
-                isChannel = ['運動', '生活', '娛樂'].indexOf(news.MainMenu.name) > -1;
+                isChannel = ['運動', '生活', '娛樂'].indexOf(mainMenuName) > -1;
                 kindList = kindProbability(kindList, 'basketball', 50);
                 kindList = kindProbability(kindList, 'baseball', 20);
                 kindList = kindProbability(kindList, 'tennis', 20);
@@ -52,7 +53,7 @@ module.exports = async (req, res, next) => {
             case '20170830':
                 // 機率為 80%
                 isWin = _.random(1, 10) > 2 ? true : false;
-                isChannel = ['運動', '政治', '社會'].indexOf(news.MainMenu.name) > -1;
+                isChannel = ['運動', '政治', '社會'].indexOf(mainMenuName) > -1;
                 kindList = kindProbability(kindList, 'volleyball', 50);
                 kindList = kindProbability(kindList, 'snooker', 50);
                 break;
