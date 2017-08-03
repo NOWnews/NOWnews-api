@@ -63,16 +63,30 @@ module.exports = async (req, res, next) => {
                     ]);
                 })
                 .then((pageviews) => {
-                    data.pvTotal = pageviews[0] ? pageviews[0].sumPageviews : 0;
+                    data.pvTotal = _.isEmpty(pageviews) ? 0 : pageviews[0].sumPageviews;
+                    data.pvAverage = (data.newsTotal === 0) ? 0 : (data.pvTotal/data.newsTotal);
+                    data.pvAverage = Math.round(data.pvAverage * 100) / 100; // 取小數點兩位數
                     return Promise.resolve(data);
                 });
         });
+
+
+        // 計算每天總量
+        let newsTotal = 0;
+        let todayTotal = 0;
+        _.forEach(usersInfo, (user) => {
+            newsTotal += user.newsTotal;
+            todayTotal += user.pvTotal;
+        });
+
         debug('usersInfo = %j', usersInfo);
 
         return res.json({
             centerId: center._id,
             center: center.name,
             users: usersInfo,
+            todayTotal,
+            newsTotal,
             startedAt,
             endedAt
         });
