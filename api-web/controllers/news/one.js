@@ -44,9 +44,10 @@ module.exports = async (req, res, next) => {
         let isWin = false;
         let kindList = [];
         let kindProbability = (list, ballType, probability) => {
+            let i = 0;
             while (i < probability) {
                 list.push(ballType);
-                i++;
+                i ++;
             }
             return list;
         };
