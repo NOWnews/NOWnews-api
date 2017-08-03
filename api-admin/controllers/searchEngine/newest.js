@@ -10,7 +10,7 @@ import { News } from '../../../models';
 module.exports = async (req, res, next) => {
     try {
         let newsList = await News.find()
-            .sort('-sn')
+            .sort('-updatedAt')
             .select('_id sn title shortTitle content createdAt updatedAt startedAt')
             .lean()
             .limit(1000)
