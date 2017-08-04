@@ -22,6 +22,7 @@ import preview from './preview';
 import postBoard from './postBoard';
 import score from './score';
 import appInfo from './app';
+import searchEngine from './searchEngine';
 
 module.exports = (app) => {
 
@@ -49,6 +50,7 @@ module.exports = (app) => {
     app.use('/', postBoard);
     app.use('/', score);
     app.use('/', appInfo);
+    app.use('/', searchEngine);
 
     return (req, res, next) => {
         return next();
