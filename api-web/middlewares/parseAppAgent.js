@@ -9,7 +9,7 @@ module.exports = async (req, res, next) => {
     try{
 
         // 這邊先直接給所有 app 通過，之後等 app 新版上線後就要拿掉
-        return next();
+        // return next();
 
         let appVersion = req.header('X-NOWnewsAPP-Version');
         let appOS = req.header('X-NOWnewsAPP-OS');
@@ -19,7 +19,7 @@ module.exports = async (req, res, next) => {
             return next();
         }
 
-        if(appMode !== 'production') {
+        if(!appMode || appMode !== 'production') {
             return next();
         }
 
