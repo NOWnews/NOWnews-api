@@ -30,8 +30,6 @@ module.exports = async (req, res, next) => {
             .execAsync();
 
         if(!lastVersion || appVersion !== lastVersion.version) {
-            console.log(`correct app version = ${lastVersion.version}`);
-            console.log(`user app version = ${appVersion}`);
             throw new Error('10002');
         }
 
