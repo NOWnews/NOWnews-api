@@ -19,7 +19,7 @@ module.exports = async (req, res, next) => {
             return next();
         }
 
-        if(!appMode || appMode !== 'production') {
+        if(appMode !== 'production') {
             return next();
         }
 
