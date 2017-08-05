@@ -29,7 +29,7 @@ module.exports = async (req, res, next) => {
             .sort('-sn')
             .execAsync();
 
-        if(!appVersion || appVersion !== lastVersion.version) {
+        if(!lastVersion || appVersion !== lastVersion.version) {
             console.log(`correct app version = ${lastVersion.version}`);
             console.log(`user app version = ${appVersion}`);
             throw new Error('10002');
