@@ -25,17 +25,43 @@ const bucket = gcs.bucket(config.get('general.googleCloud.storageBucket'));
 import { Image } from '../../../models';
 
 module.exports = async(req, res, next) => {
-
-    let { title, desc, keyword, type, isDeliver, Tag, CreatedBy } = req.body;
-    let { path, mimetype, originalname } = req.file;
-
     try{
+
+
+        let { title, desc, keyword, type, isDeliver, Tag, CreatedBy } = req.body;
+        let { path, mimetype, originalname } = req.file;
+
+        // 用 gm 去讀取圖片的長寬
+        let { width, height } = await new Promise((resolve, reject) => {
+                gm(path).size((err, size) => {
+                    if(err) {
+                        return reject(err);
+                    }
+                    return resolve(size);
+                });
+            });
+
+        // 如果長度大於 1600
+        if(width && width > 1600) {
+            console.log(`image name "${originalname}" width = ${width} px`);
+            await new Promise((resolve, reject) => {
+                gm(path)
+                    .resize(1600, null)
+                    .quality(90)
+                    .write(path, (err, stdout, stderr, command) => {
+                        if (err){
+                            return reject(err);
+                        }
+                        return resolve({});
+                    });
+            });
+        }
 
         // 如果有帶入要壓浮水印的參數，就押上浮水印
         if(req.body.isWatermark) {
             await new Promise((resolve, reject) => {
                 gm(path)
-                    .resize(970, null)
+                    .resize(1080, null)
                     .command('composite')
                     .in('-gravity', 'SouthEast')
                     .in('-geometry', '+15 +15')
@@ -57,16 +83,6 @@ module.exports = async(req, res, next) => {
         // 這段是因為我們要上傳原生圖片廣告給 NOWlink 用，需要知道 md5
         let md5hash = await md5File(path);
         console.log(`${originalname} md5 is: ${md5hash}`);
-
-        // 用 gm 去讀取圖片的長寬
-        let { width, height } = await new Promise((resolve, reject) => {
-                gm(path).size((err, size) => {
-                    if(err) {
-                        return reject(err);
-                    }
-                    return resolve(size);
-                });
-            });
 
         // 編輯新的名字與 ObjectId
         let objectId = mongoose.Types.ObjectId();
@@ -100,7 +116,6 @@ module.exports = async(req, res, next) => {
                     public: true
                 })
                 .then((file) => {
-                    console.log(typeof file);
                     debug(file);
                     return Promise.resolve(file);
                 })
