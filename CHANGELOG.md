@@ -2,6 +2,9 @@
 
 NOWnews-api change logs
 
+## [Unreleased]
+### Changed
+- 修改鉅亨網匯入新聞的文末連結 @appleoxxo
 
 ## 1.0.18 - 2017-08-03
 ### Added
