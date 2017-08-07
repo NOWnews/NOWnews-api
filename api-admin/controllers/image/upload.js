@@ -84,12 +84,6 @@ module.exports = async(req, res, next) => {
         let md5hash = await md5File(path);
         console.log(`${originalname} md5 is: ${md5hash}`);
 
-        // 編輯新的名字與 ObjectId
-        let objectId = mongoose.Types.ObjectId();
-        let now = moment.tz('Asia/Taipei').format('YYYYMMDDHHmm');
-        let newName = `${objectId}_${now}.${ext}`;
-        let newPath = `uploads/${newName}`;
-
         // 用 gm 去讀取圖片的長寬
         let { width, height } = await new Promise((resolve, reject) => {
                 gm(path).size((err, size) => {
@@ -99,6 +93,12 @@ module.exports = async(req, res, next) => {
                     return resolve(size);
                 });
             });
+
+        // 編輯新的名字與 ObjectId
+        let objectId = mongoose.Types.ObjectId();
+        let now = moment.tz('Asia/Taipei').format('YYYYMMDDHHmm');
+        let newName = `${objectId}_${now}.${ext}`;
+        let newPath = `uploads/${newName}`;
 
         // 將圖片名稱換掉
         fs.renameSync(path, newPath);
