@@ -32,7 +32,7 @@ module.exports = async(req, res, next) => {
         let { path, mimetype, originalname } = req.file;
 
         // 用 gm 去讀取圖片的長寬
-        let { width, height } = await new Promise((resolve, reject) => {
+        let { width: originWidth, height: originHeight } = await new Promise((resolve, reject) => {
                 gm(path).size((err, size) => {
                     if(err) {
                         return reject(err);
@@ -42,8 +42,8 @@ module.exports = async(req, res, next) => {
             });
 
         // 如果長度大於 1600
-        if(width && width > 1600) {
-            console.log(`image name "${originalname}" width = ${width} px`);
+        if(originWidth && originWidth > 1600) {
+            console.log(`image name "${originalname}" origin width = ${originWidth} px`);
             await new Promise((resolve, reject) => {
                 gm(path)
                     .resize(1600, null)
@@ -89,6 +89,16 @@ module.exports = async(req, res, next) => {
         let now = moment.tz('Asia/Taipei').format('YYYYMMDDHHmm');
         let newName = `${objectId}_${now}.${ext}`;
         let newPath = `uploads/${newName}`;
+
+        // 用 gm 去讀取圖片的長寬
+        let { width, height } = await new Promise((resolve, reject) => {
+                gm(path).size((err, size) => {
+                    if(err) {
+                        return reject(err);
+                    }
+                    return resolve(size);
+                });
+            });
 
         // 將圖片名稱換掉
         fs.renameSync(path, newPath);
