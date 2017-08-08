@@ -25,21 +25,61 @@ const bucket = gcs.bucket(config.get('general.googleCloud.storageBucket'));
 import { Image } from '../../../models';
 
 module.exports = async(req, res, next) => {
-
-    let { title, desc, keyword, type, isDeliver, Tag, CreatedBy } = req.body;
-    let { path, mimetype, originalname } = req.file;
-
     try{
 
-        // 如果有帶入要壓浮水印的參數，就押上浮水印
-        if(req.body.isWatermark) {
+
+        let { title, desc, keyword, type, isDeliver, Tag, CreatedBy } = req.body;
+        let { path, mimetype, originalname } = req.file;
+        let compression = false;
+        let image = gm(path);
+
+        // 用 gm 去讀取圖片的長寬
+        let { width: originWidth, height: originHeight } = await new Promise((resolve, reject) => {
+                image.size((err, size) => {
+                    if(err) {
+                        return reject(err);
+                    }
+                    return resolve(size);
+                });
+            });
+
+
+
+        // 大於 1600 且有浮水印
+        if(req.body.isWatermark && originWidth && originWidth > 1600) {
+            console.log(`image name "${originalname}" origin width = ${originWidth} px`);
+            compression = true;
+            image
+                .resize(1080, null)
+                .command('composite')
+                .in('-gravity', 'SouthEast')
+                .in('-geometry', '+15 +15')
+                .in('source/nownews_watermark.png');
+        }
+
+        // 大於 1600 但是沒有浮水印
+        if(!req.body.isWatermark && originWidth && originWidth > 1600) {
+            console.log(`image name "${originalname}" origin width = ${originWidth} px`);
+            compression = true;
+            image
+                .resize(1600, null);
+        }
+
+        // 小於 1600 但是有浮水印
+        if(req.body.isWatermark && originWidth && originWidth < 1600) {
+            compression = true;
+            image
+                .resize(1080, null)
+                .command('composite')
+                .in('-gravity', 'SouthEast')
+                .in('-geometry', '+15 +15')
+                .in('source/nownews_watermark.png');
+        }
+
+
+        if(compression === true) {
             await new Promise((resolve, reject) => {
-                gm(path)
-                    .resize(970, null)
-                    .command('composite')
-                    .in('-gravity', 'SouthEast')
-                    .in('-geometry', '+15 +15')
-                    .in('source/nownews_watermark.png')
+                image
                     .write(path, (err, stdout, stderr, command) => {
                         if (err){
                             return reject(err);
@@ -60,7 +100,7 @@ module.exports = async(req, res, next) => {
 
         // 用 gm 去讀取圖片的長寬
         let { width, height } = await new Promise((resolve, reject) => {
-                gm(path).size((err, size) => {
+                image.size((err, size) => {
                     if(err) {
                         return reject(err);
                     }
@@ -100,7 +140,6 @@ module.exports = async(req, res, next) => {
                     public: true
                 })
                 .then((file) => {
-                    console.log(typeof file);
                     debug(file);
                     return Promise.resolve(file);
                 })
