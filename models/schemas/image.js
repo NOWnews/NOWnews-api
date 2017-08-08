@@ -160,7 +160,7 @@ schema.virtual('thumbnail').get(function () {
 
     let url = config.get('general.thumbnail.url');
     let sourceUrl = this.url;
-    sourceUrl = sourceUrl.replace('https://', 'http://');
+    sourceUrl = sourceUrl.replace(this.url.match(regexString)[0], '/');
     let width = config.get('general.thumbnail.width');
     let quality = config.get('general.thumbnail.quality');
     return `${url}/?w=${width}&q=${quality}&src=${encodeURIComponent(sourceUrl)}`;
