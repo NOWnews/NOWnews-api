@@ -187,4 +187,32 @@ module.exports = [{
     "type": "ADMIN_MENU",
     "path": "/app/notification",
     "method": "get"
+},{
+    "_id": "510014000000000000000001",
+    "group": "ott 控制",
+    "desc": "頻道群管理",
+    "type": "ADMIN_MENU",
+    "path": "/ott/groups",
+    "method": "get"
+}, {
+    "_id": "510014000000000000000002",
+    "group": "ott 控制",
+    "desc": "頻道管理",
+    "type": "ADMIN_MENU",
+    "path": "/ott/channels",
+    "method": "get"
+}, {
+    "_id": "510014000000000000000003",
+    "group": "ott 控制",
+    "desc": "頻道排序",
+    "type": "ADMIN_MENU",
+    "path": "/ott/sort",
+    "method": "get"
+}, {
+    "_id": "510014000000000000000004",
+    "group": "ott 控制",
+    "desc": "頻道資訊管理",
+    "type": "ADMIN_MENU",
+    "path": "/ott/info",
+    "method": "get"
 }];
