@@ -2,6 +2,10 @@
 
 NOWnews-api change logs
 
+## 1.0.20 - 2017-08-09
+### Changed
+- 調整世大運機率前幾天 80% 變 60% @esbb48
+
 ## 1.0.19 - 2017-08-07
 ### Changed
 - 修改鉅亨網匯入新聞的文末連結 @appleoxxo
