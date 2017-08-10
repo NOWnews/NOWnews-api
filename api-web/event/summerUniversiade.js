@@ -65,7 +65,7 @@ module.exports = (news) => {
         default:
             // 這邊是給測試用的
             if (mode === 'develop' || mode === 'staging') {
-                isWin = _.random(1, 10) > 1 ? true : false;
+                isWin = _.random(1, 10) > 4 ? true : false;
                 isChannel = true;
                 kindList = kindProbability(kindList, 'basketball', 20);
                 kindList = kindProbability(kindList, 'baseball', 20);
