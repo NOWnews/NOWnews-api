@@ -40,7 +40,7 @@ module.exports = async (req, res, next) => {
         }
 
         if(defaultLocation) {
-            user.set('defaultSettings.location', defaultLocation);
+            uoptions.defaultSettings.location = defaultLocation;
         }
 
         if (defaultMenu && mongoose.Types.ObjectId.isValid(defaultMenu)) {
