@@ -168,13 +168,13 @@ schema.virtual('thumbnail').get(function () {
         let url = config.get('general.thumbnail.url');
         let replaceString = imgMatchArray[0];
         let srcUrl = this.url.replace(replaceString, '/');
-        return `${url}/?w=1080&q=70&src=${encodeURIComponent(srcUrl)}`;
+        return `${url}/?w=300&q=70&src=${encodeURIComponent(srcUrl)}`;
     }
 
     // 如果是 http://[A-Za-z].nownews.com 的圖片網址
     if(otherMatchArray) {
         let url = config.get('general.thumbnail.url');
-        return `${url}/?w=1080&q=70&src=${encodeURIComponent(this.url)}`;
+        return `${url}/?w=300&q=70&src=${encodeURIComponent(this.url)}`;
     }
 });
 
