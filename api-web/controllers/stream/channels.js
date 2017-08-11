@@ -236,56 +236,70 @@ module.exports = async (req, res, next) => {
             liveInfo: {
                 watchTime: 20,
                 lockTime: 30,
-                watchable: true,
+                watchable: false,
                 icon: 'http://legacy.nownews.com/NOWnews_static/ios512.png',
-                titleMessage: '本服務由天暢國際股份有限公司提供\n\n線上客服請搜尋 LINE/wechat ID：nowlink_cs',
+                // titleMessage: '本服務由天暢國際股份有限公司提供\n\n線上客服請搜尋 LINE/wechat ID：nowlink_cs',
+                titleMessage: '天暢國際 台灣好 電視直播服務即將在此推出全新服務',
                 downloadable: false,
                 iosDownloadLink: '',
                 androidDownloadLink: '',
-                videoAD: true
+                videoAD: true,
+                leftbutton: '立即下载',
+                rightbutton: '敬請期待'
             },
             data: [
-
                 {
-                    categoryName: '綜合娛樂',
-                    count: entertainments.length,
-                    list: entertainments
-                },
-                {
-                    categoryName: '兒少動漫',
-                    count: animes.length,
-                    list: animes
-                },
-                {
-                    categoryName: '新聞訊息',
-                    count: news.length,
-                    list: news
-                },
-                {
-                    categoryName: '電影戲劇',
-                    count: dramas.length,
-                    list: dramas
-                },
-                {
-                    categoryName: '體育競賽',
-                    count: sports.length,
-                    list: sports
-                },
-                {
-                    categoryName: '數位無線',
-                    count: wireless.length,
-                    list: wireless
-                },
-                {
-                    categoryName: '資訊生活',
-                    count: lifeInformation.length,
-                    list: lifeInformation
-                },
-                {
-                    categoryName: '宗教信仰',
-                    count: belief.length,
-                    list: belief
+                    categoryName: '公告',
+                    count: 0,
+                    list: [
+                        {
+                            SN: '',
+                            code: '',
+                            title: '天暢國際 台灣好 電視直播服務即將在此推出全新服務 敬請期待！',
+                            path: ''
+                        }
+                    ]
                 }
+                // {
+                //     categoryName: '綜合娛樂',
+                //     count: entertainments.length,
+                //     list: entertainments
+                // },
+                // {
+                //     categoryName: '兒少動漫',
+                //     count: animes.length,
+                //     list: animes
+                // },
+                // {
+                //     categoryName: '新聞訊息',
+                //     count: news.length,
+                //     list: news
+                // },
+                // {
+                //     categoryName: '電影戲劇',
+                //     count: dramas.length,
+                //     list: dramas
+                // },
+                // {
+                //     categoryName: '體育競賽',
+                //     count: sports.length,
+                //     list: sports
+                // },
+                // {
+                //     categoryName: '數位無線',
+                //     count: wireless.length,
+                //     list: wireless
+                // },
+                // {
+                //     categoryName: '資訊生活',
+                //     count: lifeInformation.length,
+                //     list: lifeInformation
+                // },
+                // {
+                //     categoryName: '宗教信仰',
+                //     count: belief.length,
+                //     list: belief
+                // }
             ]
         });
     } catch(err) {
