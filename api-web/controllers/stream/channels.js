@@ -4,9 +4,13 @@ const debug = Debug('NOWnews-api:api-web:controllers:tv:channels');
 
 import { Address6 } from 'ip-address';
 import axios from 'axios';
+import _ from 'lodash';
+import { Provider } from '../../../ottModels';
 
 module.exports = async (req, res, next) => {
     try {
+
+        let platform = req.params.platform || 'NOWNEWS';
 
         /*
          * 處理 ip，那個 'x-real-ip' 不知道是哪個該死的設定在 nginx 裡面取代 remote address
@@ -21,6 +25,51 @@ module.exports = async (req, res, next) => {
         // 拿 ip 去跟防盜連做註冊
         let { data: registerData } = await axios.get(`http://61.67.121.80:10011/api/wowza/register?ip=${ipString}`);
         debug('registerData = %s', registerData);
+
+        let provider = await Provider.findOne()
+            .where('platform').equals(platform)
+            .where('isTrashed').equals(false)
+            .deepPopulate('data data.channels')
+            .lean()
+            .execAsync();
+
+        let result = {
+            liveInfo: {},
+            data: []
+        };
+
+        result.liveInfo.watchTime = provider.watchTime;
+        result.liveInfo.lockTime = provider.lockTime;
+        result.liveInfo.watchable = provider.watchable;
+        result.liveInfo.icon = provider.icon;
+        result.liveInfo.titleMessage = provider.titleMessage;
+        result.liveInfo.downloadable = provider.downloadable;
+        result.liveInfo.iosDownloadLink = provider.iosDownloadLink;
+        result.liveInfo.androidDownloadLink = provider.androidDownloadLink;
+        result.liveInfo.videoAD = provider.videoAD;
+
+
+        _.forEach(provider.data, (category) => {
+            let obj = {
+                list: []
+            };
+            obj.categoryName = category.name;
+            obj.count = category.channels.length;
+
+            _.forEach(category.channels, (channel) => {
+                obj.list.push({
+                    SN: '',
+                    code: '',
+                    title: channel.name,
+                    path: `${channel.path}?johncena=${registerData.johncena}`
+                });
+            });
+
+            result.data.push(obj);
+        });
+        console.log(result);
+
+
 
         // 綜合娛樂
         let entertainments = [

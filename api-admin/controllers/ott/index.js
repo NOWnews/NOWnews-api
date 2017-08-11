@@ -2,59 +2,37 @@
 import express from 'express';
 let router = express.Router();
 
-import validators from '../../validators';
-import baseQuery from '../../middlewares/baseQuery';
+import providerCreate from './provider.create';
+import providerList from './provider.list';
+import providerOne from './provider.one';
+import providerUpdate from './provider.update';
+import categoryCreate from './category.create';
+import categoryRemove from './category.remove';
+import channelCreate from './channel.create';
+import channelRemove from './channel.remove';
+import weightUpdate from './weight.update';
 
-import readgroupfile from './readgroupfile'
-import readchannelfile from './readchannelfile'
+router.route('/ott/providers')
+    .get(providerList)
+    .post(providerCreate);
 
-import infocreate from './info.create';
-import info from './info';
-import channelcreate from './channel.create';
-import channelgroupcreate from './channelgroup.create';
-// import list from './list';
-import one from './one';
-import update from './update';
-import remove from './remove';
-import sort from './sort';
-import struction from './struction';
-import channellist from './channel.list';
+router.route('/ott/providers/:id')
+    .get(providerOne)
+    .put(providerUpdate);
 
-router.route('/ott/info')
-    .get(baseQuery)
-    .get(info)
-    .put(infocreate);
+router.route('/ott/categories')
+    .post(categoryCreate);
 
+router.route('/ott/categories/:id')
+    .delete(categoryRemove);
 
-router.route('/ott/channelcreate')
-    .get(baseQuery)
-    .post(channelcreate);
+router.route('/ott/channels')
+    .post(channelCreate);
 
-router.route('/ott/channelgroupcreate')
-    .get(baseQuery)
-    .post(channelgroupcreate);
+router.route('/ott/channels/:id')
+    .delete(channelRemove);
 
-
-router.route('/ott/files/group')
-    .get(readgroupfile)
-
-router.route('/ott/files/channel')
-    .get(readchannelfile)
-
-router.route('/ott/struction')
-    .get(struction);
-
-router.route('/ott/channellist')
-    .get(channellist);
-// router.route('/menus/struction')
-//     .get(struction);
-
-router.route('/ott/sort')
-    .put(sort);
-
-router.route('/ott/:id')
-    .get(one)
-    .put(update)
-    .delete(remove);
+router.route('/ott/weight')
+    .put(weightUpdate);
 
 module.exports = router;

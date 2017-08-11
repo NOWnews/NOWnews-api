@@ -32,7 +32,7 @@ module.exports = async (req, res, next) => {
 
         if(mode !== 'production') {
             devices = [
-                { token: 'cNPgV00NEwM:APA91bHO_WUqnci3uVhpiKDMCX0cYYntwrnzinJz1DvpRznfoLa-R_LehgR6PSxUywkCHTp9npgZ5FSr7GvGgZO6muZQwLnGWgF6DO0ZKwr6NDJVy_xnRibH92HiYaut2_TIMDIv3j_P' }
+                { token: 'dP1_xAexXMY:APA91bFgr_LiFBiTwpun80Ds90yAhPwytFqR4gVnpMo51rP46hVb2nA-SXFhOWmXTS4KJGFotdTQlmhVLjuheBkkI9XbkFxqsCQB0_vzEiOmIpx00nTQT8aeMrYJzLOmUkiSIVuH74sy' }
             ];
             deviceTotal = devices.length;
         }

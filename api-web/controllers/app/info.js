@@ -16,9 +16,7 @@ module.exports = async (req, res, next) => {
                 os
             }, {
                 $set: {
-                    deviceId,
                     token,
-                    os,
                     MemberId
                 }
             }, {
