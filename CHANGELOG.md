@@ -2,6 +2,10 @@
 
 NOWnews-api change logs
 
+## 1.0.21 - 2017-08-11
+### Added
+- 增加 user 預設欄位 @wb
+
 ## 1.0.20 - 2017-08-09
 ### Changed
 - 調整世大運機率前幾天 80% 變 60% @esbb48
