@@ -29,7 +29,7 @@ module.exports = async (req, res, next) => {
         ]);
         options.defaultSettings = {};
 
-        let { defaultAuthor, defaultMenu, defaultNewsBy } = req.body;
+        let { defaultAuthor, defaultMenu, defaultNewsBy, defaultLocation } = req.body;
 
         if (defaultAuthor && mongoose.Types.ObjectId.isValid(defaultAuthor)) {
             options.defaultSettings.Author = defaultAuthor;
@@ -37,6 +37,10 @@ module.exports = async (req, res, next) => {
 
         if (defaultNewsBy) {
             options.defaultSettings.newsBy = defaultNewsBy;
+        }
+
+        if(defaultLocation) {
+            user.set('defaultSettings.location', defaultLocation);
         }
 
         if (defaultMenu && mongoose.Types.ObjectId.isValid(defaultMenu)) {
