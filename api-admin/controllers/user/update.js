@@ -27,7 +27,7 @@ module.exports = async (req, res, next) => {
         defaultAuthor,
         defaultMenu,
         defaultNewsBy,
-        defaultlocation,
+        defaultLocation,
         UpdatedBy
     } = req.body;
 
