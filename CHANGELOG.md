@@ -2,6 +2,11 @@
 
 NOWnews-api change logs
 
+## 1.0.22 - 2017-08-12
+### Changed
+- 調整直撥 api 內容 @SimonSun
+- 先把 user 預設 location 欄位先註解起來 @SimonSun
+
 ## 1.0.21 - 2017-08-11
 ### Added
 - 增加 user 預設欄位 @wb
