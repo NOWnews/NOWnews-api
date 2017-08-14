@@ -21,6 +21,7 @@ import refreshIndexPage from './refreshIndexPage';
 import parseRssFeed from './parseRssFeed';
 import changeInternalLink from './changeInternalLink';
 import getChannelsByPlatform from './getChannelsByPlatform';
+import getFacebookPostInfo from './getFacebookPostInfo';
 
 module.exports = {
     hashPwd,
@@ -44,5 +45,6 @@ module.exports = {
     refreshIndexPage,
     parseRssFeed,
     changeInternalLink,
-    getChannelsByPlatform
+    getChannelsByPlatform,
+    getFacebookPostInfo
 };
