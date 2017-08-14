@@ -2,6 +2,10 @@
 
 NOWnews-api change logs
 
+## 1.0.23 - 2017-08-14
+### Changed
+- 暫停世大運活動 @esbb48
+
 ## 1.0.22 - 2017-08-12
 ### Changed
 - 調整直撥 api 內容 @SimonSun
