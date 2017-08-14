@@ -6,16 +6,13 @@ import Promise from 'bluebird';
 import _ from 'lodash';
 
 import redis from '../../../redis';
-import { Category, Channel } from '../../../ottModels';
+import { getChannelsByPlatform } from '../../../libs';
+import { Category, Channel, Provider } from '../../../ottModels';
 
 module.exports = async (req, res, next) => {
 
     try {
-        console.log(req.body);
         let { categoryArray, channelArray } = req.body;
-        // console.log(categoryArray);
-        // console.log(channelArray);
-
 
         await Promise.all([
             Promise.map(categoryArray, (category) => {
@@ -35,6 +32,17 @@ module.exports = async (req, res, next) => {
                     });
             }, { concurrency: 10 }),
         ]);
+
+        let providers = Provider.find()
+            .where('isTrashed').equals(false)
+            .execAsync();
+
+        await Promise.map(providers, (provider) => {
+            return getChannelsByPlatform(provider.platform)
+                .then((result) => {
+                    return redis.setValue(`OTTProvider${provider.platform}`, result);
+                });
+        });
 
         return res.status(200).json({ status: 'ok' });
     } catch (err) {

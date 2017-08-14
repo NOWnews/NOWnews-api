@@ -152,30 +152,57 @@ schema.index({
 
 schema.virtual('thumbnail').get(function () {
 
-    // 要通用 http 或是 https，而且網址有可能為 img.nownews.com 或是 s.nownews.com
-    let regexString = /^(http|https):\/\/[A-Za-z]+.nownews.com\//;
-    if(this.url.match(regexString) === null) {
+    let imgRegexString = /^(http|https):\/\/img.nownews.com\//;
+    let otherRegexString = /^(http|https):\/\/[A-Za-z]+.nownews.com\//;
+
+    let imgMatchArray = this.url.match(imgRegexString);
+    let otherMatchArray = this.url.match(otherRegexString);
+
+    // 如果不屬於 http://xxx.nownews.com 的圖片網址
+    if(imgMatchArray === null && otherMatchArray === null) {
         return this.url;
     }
 
-    let url = config.get('general.thumbnail.url');
-    let sourceUrl = this.url;
-    sourceUrl = sourceUrl.replace('https://', 'http://');
-    let width = config.get('general.thumbnail.width');
-    let quality = config.get('general.thumbnail.quality');
-    return `${url}/?w=${width}&q=${quality}&src=${encodeURIComponent(sourceUrl)}`;
+    // 如果是 http://img.nownews.com 的圖片網址
+    if(imgMatchArray) {
+        let url = config.get('general.thumbnail.url');
+        let replaceString = imgMatchArray[0];
+        let srcUrl = this.url.replace(replaceString, '/');
+        return `${url}/?w=300&q=70&src=${encodeURIComponent(srcUrl)}`;
+    }
+
+    // 如果是 http://[A-Za-z].nownews.com 的圖片網址
+    if(otherMatchArray) {
+        let url = config.get('general.thumbnail.url');
+        return `${url}/?w=300&q=70&src=${encodeURIComponent(this.url)}`;
+    }
 });
 
 schema.virtual('googleCDN').get(function () {
 
-    let regexString = /^(http|https):\/\/img.nownews.com\/nownews_[A-Za-z1-9]+\/[A-Za-z]+\//;
-    if(this.url.match(regexString) === null) {
+    let imgRegexString = /^(http|https):\/\/img.nownews.com\/nownews_[A-Za-z1-9]+\/[A-Za-z]+\//;
+    let otherRegexString = /^(http|https):\/\/[A-Za-z]+.nownews.com\//;
+
+    let imgMatchArray = this.url.match(imgRegexString);
+    let otherMatchArray = this.url.match(otherRegexString);
+
+    // 如果不屬於 http://xxx.nownews.com 的圖片網址
+    if(imgMatchArray === null && otherMatchArray === null) {
         return this.url;
     }
 
-    let replaceString = this.url.match(regexString)[0];
-    let fileName = this.url.replace(replaceString, '');
-    return `https://rssimg.nownews.com/images/${fileName}`;
+    // 如果是 http://img.nownews.com 的圖片網址
+    if(imgMatchArray) {
+        let replaceString = imgMatchArray[0];
+        let fileName = this.url.replace(replaceString, '');
+        return `https://rssimg.nownews.com/images/${fileName}`;
+    }
+
+    // 如果是 http://[A-Za-z].nownews.com 的圖片網址
+    if(otherMatchArray) {
+        let url = config.get('general.thumbnail.url');
+        return `${url}/?w=1080&q=100&src=${encodeURIComponent(this.url)}`;
+    }
 });
 
 schema.virtual('formatCreatedAt').get(function () {

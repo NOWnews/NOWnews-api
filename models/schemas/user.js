@@ -131,7 +131,13 @@ let schema = new Schema({
         newsBy: {
             type: String,
             default: null
-        }
+        },
+
+        // 使用者預設地址
+        // location: {
+        //     type: String,
+        //     default: null
+        // }
 
     },
 

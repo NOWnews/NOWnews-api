@@ -5,6 +5,7 @@ const debug = Debug('NOWnews-api:api-admin:controllers:ott:category.create');
 import Promise from 'bluebird';
 import _ from 'lodash';
 
+import { getChannelsByPlatform } from '../../../libs';
 import redis from '../../../redis';
 import { Provider, Category } from '../../../ottModels';
 
@@ -49,6 +50,9 @@ module.exports = async (req, res, next) => {
         provider.saveAsync();
 
         debug('new category = %j', newCategory);
+
+        let result = await getChannelsByPlatform(provider.platform);
+        await redis.setValue(`OTTProvider${provider.platform}`, result);
 
         return res.status(200).json(newCategory);
     } catch (err) {

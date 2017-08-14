@@ -188,38 +188,39 @@ module.exports = [{
     "path": "/app/notification",
     "method": "get"
 },{
+    "_id": "510014000000000000000004",
+    "group": "OTT 控制",
+    "desc": "平台建立",
+    "type": "ADMIN_MENU",
+    "path": "/ott/info",
+    "method": "get"
+}, {
+    "_id": "510014000000000000000005",
+    "group": "OTT 控制",
+    "desc": "平台列表",
+    "type": "ADMIN_MENU",
+    "path": "/ott/providers/list",
+    "method": "get"
+},
+{
     "_id": "510014000000000000000001",
-    "group": "ott 控制",
-    "desc": "頻道分類建立",
+    "group": "OTT 控制",
+    "desc": "分類建立",
     "type": "ADMIN_MENU",
     "path": "/ott/category",
     "method": "get"
 }, {
     "_id": "510014000000000000000002",
-    "group": "ott 控制",
+    "group": "OTT 控制",
     "desc": "頻道建立",
     "type": "ADMIN_MENU",
     "path": "/ott/channels",
     "method": "get"
 }, {
     "_id": "510014000000000000000003",
-    "group": "ott 控制",
-    "desc": "頻道分類排序列表",
+    "group": "OTT 控制",
+    "desc": "排序控制",
     "type": "ADMIN_MENU",
     "path": "/ott/channels/list",
-    "method": "get"
-}, {
-    "_id": "510014000000000000000004",
-    "group": "ott 控制",
-    "desc": "頻道平台資訊建立",
-    "type": "ADMIN_MENU",
-    "path": "/ott/info",
-    "method": "get"
-}, {
-    "_id": "510014000000000000000005",
-    "group": "ott 控制",
-    "desc": "頻道平台資訊列表",
-    "type": "ADMIN_MENU",
-    "path": "/ott/providers/list",
     "method": "get"
 }];

@@ -28,14 +28,14 @@ module.exports = async (req, res, next) => {
         let dateNow = Date.now();
         cursor.or([
             { title: new RegExp(keyword, 'i') },
-            { content: new RegExp(keyword, 'i') }
+            // { content: new RegExp(keyword, 'i') }
         ])
         .where('status').equals('RELEASE')
         .where('isTrashed').equals(false);
 
         totalCursor.or([
             { title: new RegExp(keyword, 'i') },
-            { content: new RegExp(keyword, 'i') }
+            // { content: new RegExp(keyword, 'i') }
         ])
         .where('status').equals('RELEASE')
         .where('isTrashed').equals(false);

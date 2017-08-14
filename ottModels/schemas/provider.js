@@ -58,6 +58,16 @@ let schema = new Schema({
         default: true
     },
 
+    leftbutton: {
+        type: String,
+        default: ''
+    },
+
+    rightbutton: {
+        type: String,
+        default: ''
+    },
+
     data: [{
         type: Schema.Types.ObjectId,
         ref: 'Category'

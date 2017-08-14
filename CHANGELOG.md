@@ -2,9 +2,25 @@
 
 NOWnews-api change logs
 
+## 1.0.22 - 2017-08-12
+### Changed
+- 調整直撥 api 內容 @SimonSun
+- 先把 user 預設 location 欄位先註解起來 @SimonSun
+
+## 1.0.21 - 2017-08-11
+### Added
+- 增加 user 預設欄位 @wb
+
+## 1.0.20 - 2017-08-09
+### Changed
+- 調整世大運機率前幾天 80% 變 60% @esbb48
+
 ## 1.0.19 - 2017-08-07
 ### Changed
 - 修改鉅亨網匯入新聞的文末連結 @appleoxxo
+- 新聞內容全文檢索功能暫時拿掉，目前只搜尋標題 @SimonSun
+- 上傳圖片長度大於 1600px 則將圖片 resize 到 1600px 的長度 @SimonSun
+- 圖片如果要壓上浮水印，則把圖片長度拉到 1080px 的長度 @SimonSun
 
 ## 1.0.18 - 2017-08-03
 ### Added
