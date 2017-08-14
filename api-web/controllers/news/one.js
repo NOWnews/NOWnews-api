@@ -25,8 +25,11 @@ module.exports = async (req, res, next) => {
             for(let pv of pageviewList){
                 cacheNews.pageView.totalScore += pv.totalScore;
             };
+
+            delete cacheNews.SummerUniversiade; // 預防 redis 裡面有資料
+
             // TODO 為了世大運特別加的
-            cacheNews = summerUniversiade(cacheNews);
+            // cacheNews = summerUniversiade(cacheNews);
 
             return res.json(cacheNews);
         }
@@ -42,7 +45,7 @@ module.exports = async (req, res, next) => {
         news.pageView = { totalScore: 0 };
 
         // TODO 為了世大運特別加的
-        news = summerUniversiade(news);
+        // news = summerUniversiade(news);
 
         //加上pageview的totalscore
         let pageviewList = await Pageview.find()
