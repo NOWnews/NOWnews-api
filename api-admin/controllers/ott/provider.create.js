@@ -36,7 +36,7 @@ module.exports = async (req, res, next) => {
             .execAsync();
 
         if(provider) {
-            throw new Error('');
+            throw new Error('28004');
         }
 
         let newProvider = await Provider.createAsync({

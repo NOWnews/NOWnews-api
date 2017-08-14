@@ -54,6 +54,10 @@
             "host": "mongodb://10.140.0.2,10.140.0.8:27017", // (no / 192.168.40.185)
             "db": "NOWnewsAnalytics_Staging"
         },
+        "ottMongodb": {
+            "host": "mongodb://10.140.0.2,10.140.0.8:27017",
+            "db": "NOWnewsOTT_Staging"
+        },
         "redis": {
             "host": "10.140.0.9", // (61.67.121.141 / 192.168.40.141)
             "port": 16379,
@@ -104,6 +108,10 @@
         "pvMongodb": {
             "host": "mongodb://10.140.0.2,10.140.0.8:27017", // (no / 192.168.40.185)
             "db": "NOWnewsAnalytics_Staging"
+        },
+        "ottMongodb": {
+            "host": "mongodb://10.140.0.2,10.140.0.8:27017",
+            "db": "NOWnewsOTT_Staging"
         },
         "redis": {
             "host": "10.140.0.9", // (61.67.121.141 / 192.168.40.141)

@@ -17,7 +17,7 @@ module.exports = async (req, res, next) => {
             .execAsync();
 
         if(!provider) {
-            throw new Error('');
+            throw new Error('28002');
         }
 
         let {

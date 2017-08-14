@@ -33,8 +33,12 @@ module.exports = async (req, res, next) => {
                 .execAsync()
         ]);
 
-        if(category || !provider) {
-            throw new Error('');
+        if(category) {
+            throw new Error('28001');
+        }
+
+        if(!provider) {
+            throw new Error('28002');
         }
 
         let newCategory = await Category.createAsync({

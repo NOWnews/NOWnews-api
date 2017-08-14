@@ -34,13 +34,11 @@ module.exports = async (req, res, next) => {
         ]);
 
         if(channel) {
-            console.log('此服務的此分類已經有這個頻道連結');
-            throw new Error('');
+            throw new Error('28003');
         }
 
         if(!provider) {
-            console.log('此平台無效或是已經被刪除');
-            throw new Error('');
+            throw new Error('28002');
         }
 
         let newChannel = await Channel.createAsync({
