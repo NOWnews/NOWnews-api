@@ -23,6 +23,8 @@ import postBoard from './postBoard';
 import score from './score';
 import appInfo from './app';
 import searchEngine from './searchEngine';
+import ott from './ott';
+
 
 module.exports = (app) => {
 
@@ -51,6 +53,7 @@ module.exports = (app) => {
     app.use('/', score);
     app.use('/', appInfo);
     app.use('/', searchEngine);
+    app.use('/', ott);
 
     return (req, res, next) => {
         return next();

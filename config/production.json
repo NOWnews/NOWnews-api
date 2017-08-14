@@ -54,6 +54,10 @@
             "host": "mongodb://10.140.0.5,10.140.0.13:27017",
             "db": "NOWnewsAnalytics_Production"
         },
+        "ottMongodb": {
+            "host": "mongodb://10.140.0.5,10.140.0.13:27017",
+            "db": "NOWnewsOTT_Production"
+        },
         "redis": {
             "host": "10.140.0.3",
             "port": 16379,
@@ -104,6 +108,10 @@
         "pvMongodb": {
             "host": "mongodb://10.140.0.5,10.140.0.13:27017",
             "db": "NOWnewsAnalytics_Production"
+        },
+        "ottMongodb": {
+            "host": "mongodb://10.140.0.5,10.140.0.13:27017",
+            "db": "NOWnewsOTT_Production"
         },
         "redis": {
             "host": "10.140.0.3",

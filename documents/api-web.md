@@ -448,9 +448,7 @@ None
 
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
-| limit | 一次回傳的數量 | Number | | |
-| skip | 跳過多少資料 | Number | | |
-| page | 第幾頁 | Number | | |
+| platform | 服務平台 | `['NOWNEWS', 'WATCHNOW', 'NOWLINK']`，不帶預設是 `NOWNEWS` | | |
 
 ### [GET] `/specialchannels/{:sn}`
 

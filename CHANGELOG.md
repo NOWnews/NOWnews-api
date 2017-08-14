@@ -6,6 +6,9 @@ NOWnews-api change logs
 ### Changed
 - 暫停世大運活動 @esbb48
 
+### Added
+- 加入與調整 OTT 後台功能 @SimonSun
+
 ## 1.0.22 - 2017-08-12
 ### Changed
 - 調整直撥 api 內容 @SimonSun

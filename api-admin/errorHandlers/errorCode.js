@@ -469,5 +469,26 @@ module.exports = {
     27002: {
         message: '[Policy] 您沒有權限訪問此頁，如有疑慮請洽詢管理員',
         statusCode: 403
-    }
+    },
+
+    // OTT
+    28001: {
+        message: '此分類在此平台內已經存在',
+        statusCode: 400
+    },
+
+    28002: {
+        message: '找不到此平台',
+        statusCode: 404
+    },
+
+    28003: {
+        message: '此平台此分類已經有這個頻道了',
+        statusCode: 400
+    },
+
+    28004: {
+        message: '此平台已經存在',
+        statusCode: 400
+    },
 };
