@@ -9,8 +9,9 @@ module.exports = async (url) => {
 
         let facebookToken = '132863386747341%257CTQ6gBA9E40cop1BjDhTCp4fE9wQ';
         let graphUrl = `https://graph.facebook.com/v2.10/?id=${url}&fields=engagement&access_token=${facebookToken}`;
-
-        let { data: result } = await axios.get(graphUrl);
+        let { data: result } = await axios.get(graphUrl, {
+            timeout: 1000
+        });
         debug('facebook post feed = %j', result);
 
         return Promise.resolve(result);

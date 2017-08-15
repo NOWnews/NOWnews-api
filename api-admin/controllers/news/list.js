@@ -135,6 +135,11 @@ module.exports = async (req, res, next) => {
                 .then((facebookInfo) => {
                     news.facebookInfo = facebookInfo;
                     return Promise.resolve({});
+                })
+                .catch((err) => {
+                    console.log(err);
+                    news.facebookInfo = {};
+                    return Promise.resolve({});
                 });
         });
 
