@@ -121,7 +121,7 @@
             "expireSeconds": 3600
         },
         "header": {
-            "X-NOWnews-API": ["YouCanSeeMeJohnCena","JHK","VSOONTECH"]
+            "X-NOWnews-API": ["YouCanSeeMeJohnCena","JHK","VSOONTECH","1KXUN"]
         },
         "baseQuery": {
             "limit": 15,
