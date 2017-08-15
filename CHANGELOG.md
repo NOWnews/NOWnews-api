@@ -12,6 +12,7 @@ NOWnews-api change logs
 
 ### Added
 - 加入與調整 OTT 後台功能 @SimonSun
+- 後台每篇貼文加上 facebook 資訊(表情數，分享數，留言數) @SimonSun
 
 ## 1.0.22 - 2017-08-12
 ### Changed
