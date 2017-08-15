@@ -13,13 +13,14 @@ module.exports = async (req, res, next) => {
     try {
 
         let newsList = await News.find()
+            .where('startedAt').lte(Date.now())
             .where('MainMenu').equals(entertainmentObjId)
+            .where('isDeliver').equals(true)
             .where('status').equals('RELEASE')
             .where('isTrashed').equals(false)
-            .where('startedAt').lte(Date.now())
+            .sort('-startedAt')
             .limit(50)
             .select('sn title shortTitle summary startedAt')
-            .sort('-startedAt')
             .lean()
             .execAsync();
 
