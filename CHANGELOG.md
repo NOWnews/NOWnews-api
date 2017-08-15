@@ -2,6 +2,10 @@
 
 NOWnews-api change logs
 
+## 1.0.24 - 2017-08-15
+### Added
+- 加入千尋娛樂用 api 端點 @SimonSun
+
 ## 1.0.23 - 2017-08-14
 ### Changed
 - 暫停世大運活動 @esbb48
