@@ -8,7 +8,7 @@ import { pagination } from '../../../libs';
 module.exports = async (req, res, next) => {
     try{
 
-        let { title, limit, page, skip } = req.query;
+        let { title, limit, page, skip, select } = req.query;
 
         let cursor = SpecialChannel.find();
         let totalCursor = SpecialChannel.find();
@@ -16,6 +16,10 @@ module.exports = async (req, res, next) => {
         if (title) {
             cursor.where('title').equals(new RegExp(title, 'i'));
             totalCursor.where('title').equals(new RegExp(title, 'i'));
+        }
+
+        if (select) {
+            cursor.select(select)
         }
 
         let [ specialChannels, total ] = await Promise.all([

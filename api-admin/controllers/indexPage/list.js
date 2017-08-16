@@ -7,7 +7,12 @@ module.exports = async (req, res, next) => {
     try {
 
         let indexPage = await IndexPage.findOne()
-            .populate('carousels specialTopics specialChannels videos UpdatedBy')
+            .populate([
+                { path:'videos', select: 'title sn'},
+                { path:'carousels', select: 'title sn'},
+                { path:'specialTopics', select: 'title url'},
+                { path:'specialChannels', select: 'title sn'}
+            ])
             .execAsync();
 
         return res.json(indexPage);
