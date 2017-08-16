@@ -58,8 +58,7 @@ module.exports = async () => {
         }, {
             $set: {
                 name: data.name,
-                desc: data.desc,
-                Policies: data.Policies
+                desc: data.desc
             }
         }, {
             upsert: true
