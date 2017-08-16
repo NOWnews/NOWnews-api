@@ -16,6 +16,12 @@ module.exports = async (req, res, next) => {
 
         let devices = await AppInfo.find()
             .where('os').equals('WEB')
+            .and([
+                { token: { $exists: true } },
+                { token: { $ne: '' } },
+                { token: { $ne: null } },
+                { token: { $ne: 'null' } }
+            ])
             .execAsync();
         debug('web devices length = %d', devices.length);
 
