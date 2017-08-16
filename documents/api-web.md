@@ -448,9 +448,7 @@ None
 
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
-| limit | 一次回傳的數量 | Number | | |
-| skip | 跳過多少資料 | Number | | |
-| page | 第幾頁 | Number | | |
+| platform | 服務平台 | `['NOWNEWS', 'WATCHNOW', 'NOWLINK']`，不帶預設是 `NOWNEWS` | | |
 
 ### [GET] `/specialchannels/{:sn}`
 
@@ -894,6 +892,30 @@ None
 ### [GET] `/live/info`
 
 取得直播相關資訊
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'YouCanSeeMeJohnCena' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None
+
+## 1KXUN API DOCUMENTS
+
+### [GET] `/1kxun/entertainment`
+
+千尋專用的娛樂新聞 api
 
 #### Header Parameters
 

@@ -2,6 +2,23 @@
 
 NOWnews-api change logs
 
+## 1.0.24 - 2017-08-15
+### Added
+- 加入千尋娛樂用 api 端點 @SimonSun
+
+## 1.0.23 - 2017-08-14
+### Changed
+- 暫停世大運活動 @esbb48
+
+### Added
+- 加入與調整 OTT 後台功能 @SimonSun
+- 後台每篇貼文加上 facebook 資訊(表情數，分享數，留言數) @SimonSun
+
+## 1.0.22 - 2017-08-12
+### Changed
+- 調整直撥 api 內容 @SimonSun
+- 先把 user 預設 location 欄位先註解起來 @SimonSun
+
 ## 1.0.21 - 2017-08-11
 ### Added
 - 增加 user 預設欄位 @wb

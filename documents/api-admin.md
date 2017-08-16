@@ -2480,3 +2480,252 @@ None
 |---|---|---|---|---|
 | path | 路徑 | String | √ | '/dailyplan/create' |
 | roleId | 角色id | String | √ | '520000000000000000000001' |
+
+## OTT API DOCUMENTS
+
+### [POST] `/ott/providers`
+
+新增 OTT 平台資料
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| platform | 平台名稱 | String | √ | 'NOWNEWS' |
+| watchTime | 觀看時間 | Number | | |
+| lockTime | 鎖定時間 | Number | | |
+| watchable | 可否觀看 | Boolean | | |
+| icon | 圖示的連結 | String | | |
+| titleMessage | 標題 | String | | |
+| downloadable | 可否下載 | Boolean | | |
+| iosDownloadLink | IOS 下載連結 | String | | |
+| androidDownloadLink | Android 下載連結 | String | | |
+| videoAD | 影音廣告設定 | Boolean | | |
+| rightbutton | 右邊按鈕文字設定 | String | | |
+| leftbutton | 左邊按鈕文字設定 | String | | |
+| CreatedBy | 建立者 | ObjectId | | |
+
+#### Query Parameters
+
+None
+
+### [GET] `/ott/providers`
+
+取得 OTT 平台所有資料
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None
+
+### [PUT] `/ott/providers/{:id}`
+
+更新某一個平台的資料
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | 某一個平台的 ObjectId | ObjectId | √ | |
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| watchTime | 觀看時間 | Number | | |
+| lockTime | 鎖定時間 | Number | | |
+| watchable | 可否觀看 | Boolean | | |
+| icon | 圖示的連結 | String | | |
+| titleMessage | 標題 | String | | |
+| downloadable | 可否下載 | Boolean | | |
+| iosDownloadLink | IOS 下載連結 | String | | |
+| androidDownloadLink | Android 下載連結 | String | | |
+| videoAD | 影音廣告設定 | Boolean | | |
+| rightbutton | 右邊按鈕文字設定 | String | | |
+| leftbutton | 左邊按鈕文字設定 | String | | |
+| UpdatedBy | 更新者 | ObjectId | | |
+
+#### Query Parameters
+
+None
+
+### [GET] `/ott/providers/{:id}`
+
+取得單一平台資料
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | 某一個平台的 ObjectId | ObjectId | √ | |
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None
+
+### [POST] `/ott/categories`
+
+新增某個平台的分類
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| name | 分類名稱 | String | | |
+| categoryName | 分類顯示名稱 | String | √ | |
+| providerId | 平台的 ObjectId | ObjectId | √ | |
+| CreatedBy | 建立著的 ObjectId | ObjectId | √ | |
+
+#### Query Parameters
+
+None
+
+### [DELETE] `/ott/categories/{:id}`
+
+刪除某個分類
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | 分類的 ObjectId | ObjectId | | |
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None
+
+### [POST] `/ott/channels`
+
+新增某個頻道
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| title | 頻道標題 | String | | |
+| path | 頻道源的路徑 | String | | |
+| categoryId | 分類的 ObjectId | ObjectId | √ | |
+| providerId | 平台的 ObjectId | ObjectId | √ | |
+| CreatedBy | 建立著的 ObjectId | ObjectId | √ | |
+
+#### Query Parameters
+
+None
+
+### [DELETE] `/ott/channels/{:id}`
+
+刪除某個頻道
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | 頻道的 ObjectId | ObjectId | | |
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None
+
+### [PUT] `/ott/weight`
+
+更新分類與頻道的排序
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| categoryArray | 分類的物件陣列 | Object | √ | `[{ _id: 'xxxxx', weight: 1 }, { _id: 'ooooo', weight: 2 }]` |
+| channelArray | 頻道的物件陣列 | Object | √ | `[{ _id: 'aaaaa', weight: 1 }, { _id: 'bbbbbb', weight: 2 }]` |
+
+#### Query Parameters
+
+None

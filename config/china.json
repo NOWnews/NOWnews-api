@@ -54,6 +54,10 @@
             "host": "mongodb://107.167.184.222:27017",
             "db": "NOWnewsAnalytics_Production"
         },
+        "ottMongodb": {
+            "host": "mongodb://107.167.184.222:27017",
+            "db": "NOWnewsOTT_Production"
+        },
         "redis": {
             "host": "104.199.132.216",
             "port": 16379,
@@ -105,6 +109,10 @@
             "host": "mongodb://107.167.184.222:27017",
             "db": "NOWnewsAnalytics_Production"
         },
+        "ottMongodb": {
+            "host": "mongodb://107.167.184.222:27017",
+            "db": "NOWnewsOTT_Production"
+        },
         "redis": {
             "host": "104.199.132.216",
             "port": 16379,
@@ -113,7 +121,7 @@
             "expireSeconds": 3600
         },
         "header": {
-            "X-NOWnews-API": ["YouCanSeeMeJohnCena","JHK","VSOONTECH"]
+            "X-NOWnews-API": ["YouCanSeeMeJohnCena","JHK","VSOONTECH","1KXUN"]
         },
         "baseQuery": {
             "limit": 15,
