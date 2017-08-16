@@ -81,12 +81,13 @@ module.exports = async (req, res, next) => {
         }
 
         if(select) {
-            cursor.select(select)
+            cursor.select(select);
         }
 
         // 撈出來的新聞不要有葉佩雯
         if(noSponsored) {
-            cursor.where('isSponsored').equals(false)
+            cursor.where('isSponsored').equals(false);
+            totalCursor.where('isSponsored').equals(false);
         }
 
         let [ newsList, total ] = await Promise.all([
