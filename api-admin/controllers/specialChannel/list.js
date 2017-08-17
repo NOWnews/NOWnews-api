@@ -38,8 +38,13 @@ module.exports = async (req, res, next) => {
 
         // 加上 pv
         let newsUrl = [];
-        specialChannels = _.map(specialChannels,(news)=>{
-            newsUrl.push(`/channel/${news.sn}`);
+        specialChannels = _.map(specialChannels, (news) => {
+            if (news.sn) {
+                let desktopUrl = `/channel/${news.sn}`;
+                let mobileUrl = `/news/channel/${news.sn}`;
+                newsUrl.push(desktopUrl);
+                newsUrl.push(mobileUrl);
+            }
             return news.toJSON();
         });
 
@@ -56,11 +61,17 @@ module.exports = async (req, res, next) => {
                 }
             }
         ]);
-        pageviews = _.keyBy(pageviews,(pv)=>{
+        pageviews = _.keyBy(pageviews, (pv) => {
             return pv._id;
         });
-        specialChannels = _.map(specialChannels,(news)=>{
-            news.pageviews = pageviews[`/channel/${news.sn}`] ? pageviews[`/channel/${news.sn}`].sumPageviews : 0;
+        specialChannels = _.map(specialChannels, (news) => {
+            if (news.sn) {
+                let desktopUrl = `/channel/${news.sn}`;
+                let mobileUrl = `/news/channel/${news.sn}`;
+                let desktopPv = pageviews[desktopUrl] ? pageviews[desktopUrl].sumPageviews : 0;
+                let mobilePv = pageviews[mobileUrl] ? pageviews[mobileUrl].sumPageviews : 0
+                news.pageviews = desktopPv + mobilePv;
+            }
             return news;
         });
 

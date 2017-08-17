@@ -38,8 +38,13 @@ module.exports = async (req, res, next) => {
 
         // 加上 pv
         let newsUrl = [];
-        specialTopics = _.map(specialTopics,(news)=>{
-            newsUrl.push(news.url);
+        specialTopics = _.map(specialTopics, (news) => {
+            if (news.url) {
+                let desktopUrl = news.url;
+                let mobileUrl = '/news/' + news.url.split('/').pop();
+                newsUrl.push(desktopUrl);
+                newsUrl.push(mobileUrl);
+            }
             return news.toJSON();
         });
 
@@ -56,11 +61,17 @@ module.exports = async (req, res, next) => {
                 }
             }
         ]);
-        pageviews = _.keyBy(pageviews,(pv)=>{
+        pageviews = _.keyBy(pageviews, (pv) => {
             return pv._id;
         });
-        specialTopics = _.map(specialTopics,(news)=>{
-            news.pageviews = pageviews[news.url] ? pageviews[news.url].sumPageviews : 0;
+        specialTopics = _.map(specialTopics, (news) => {
+            if (news.url) {
+                let desktopUrl = news.url;
+                let mobileUrl = '/news/' + news.url.split('/').pop();
+                let desktopPv = pageviews[desktopUrl] ? pageviews[desktopUrl].sumPageviews : 0;
+                let mobilePv = pageviews[mobileUrl] ? pageviews[mobileUrl].sumPageviews : 0
+                news.pageviews = desktopPv + mobilePv;
+            }
             return news;
         });
 
