@@ -72,7 +72,7 @@ module.exports = new cron.CronJob({
                 let { firstImage, htmlContent } = getAndRemoveFirstImage(item.description);
                 item.description = htmlContent;
 
-                item.description += `新聞來源:『國防部軍事新聞通訊社』\n`;
+                item.description += `新聞來源:國防部軍事新聞通訊社`;
 
                 // 如果內容有圖的話 抓內容的第一張圖當主圖
                 let mainPhoto = null;
