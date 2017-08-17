@@ -2,9 +2,28 @@
 
 NOWnews-api change logs
 
+## 1.0.26 - 2017-08-17
+### Added
+- 加入 GCP Error Report 機制 (加入 `@google-cloud/error-reporting` 套件) @SimonSun
+
+### Changed
+- 調整千尋 API 內容，加入 `MainPhoto` 欄位 @SimonSun
+
+## 1.0.25 - 2017-08-16
+### Changed
+- 調整推播搜尋條件，把空的或是 `null` 的資料濾除 @SimonSun
+
+## 1.0.24 - 2017-08-15
+### Added
+- 加入千尋娛樂用 api 端點 @SimonSun
+
 ## 1.0.23 - 2017-08-14
 ### Changed
 - 暫停世大運活動 @esbb48
+
+### Added
+- 加入與調整 OTT 後台功能 @SimonSun
+- 後台每篇貼文加上 facebook 資訊(表情數，分享數，留言數) @SimonSun
 
 ## 1.0.22 - 2017-08-12
 ### Changed

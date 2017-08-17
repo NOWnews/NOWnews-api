@@ -20,6 +20,8 @@ import updateNewestImages from './updateNewestImages';
 import refreshIndexPage from './refreshIndexPage';
 import parseRssFeed from './parseRssFeed';
 import changeInternalLink from './changeInternalLink';
+import getChannelsByPlatform from './getChannelsByPlatform';
+import getFacebookPostInfo from './getFacebookPostInfo';
 
 module.exports = {
     hashPwd,
@@ -42,5 +44,7 @@ module.exports = {
     updateNewestImages,
     refreshIndexPage,
     parseRssFeed,
-    changeInternalLink
+    changeInternalLink,
+    getChannelsByPlatform,
+    getFacebookPostInfo
 };

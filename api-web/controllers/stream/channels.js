@@ -4,9 +4,16 @@ const debug = Debug('NOWnews-api:api-web:controllers:tv:channels');
 
 import { Address6 } from 'ip-address';
 import axios from 'axios';
+import _ from 'lodash';
+
+import redis from '../../../redis';
+import { getChannelsByPlatform } from '../../../libs';
+import { Provider } from '../../../ottModels';
 
 module.exports = async (req, res, next) => {
     try {
+
+        let platform = req.query.platform || 'NOWNEWS';
 
         /*
          * 處理 ip，那個 'x-real-ip' 不知道是哪個該死的設定在 nginx 裡面取代 remote address
@@ -22,286 +29,20 @@ module.exports = async (req, res, next) => {
         let { data: registerData } = await axios.get(`http://61.67.121.80:10011/api/wowza/register?ip=${ipString}`);
         debug('registerData = %s', registerData);
 
-        // 綜合娛樂
-        let entertainments = [
-            {
-                SN: '',
-                code: '',
-                title: '中天綜合台',
-                path: `http://59.124.93.43:1935/live/nns188.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            },
-            {
-                SN: '',
-                code: '',
-                title: 'TVBS',
-                path: `http://59.124.93.43:1935/live/nns170.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            },
-            {
-                SN: '',
-                code: '',
-                title: '民視台灣台',
-                path: `http://59.124.93.43:1935/live/nns154.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            },
-            {
-                SN: '',
-                code: '',
-                title: 'Nice TV',
-                path: `http://59.124.93.43:1935/live/nns145.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            },
-            {
-                SN: '',
-                code: '',
-                title: 'KLT-靖天國際台',
-                path: `http://59.124.93.43:1935/live/nns144.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            },
-            {
-                SN: '',
-                code: '',
-                title: '靖天日本台',
-                path: `http://59.124.93.43:1935/live/nns141.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            },
-            {
-                SN: '',
-                code: '',
-                title: '靖天綜合台',
-                path: `http://59.124.93.43:1935/live/nns142.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            }
-        ];
+        // 從 redis 取出資料
+        let result = await redis.getValue(`OTTProvider${platform}`);
+        if(!result) {
+            result = await getChannelsByPlatform(platform);
+        }
 
-        // 兒少動漫
-        let animes = [
-            {
-                SN: '',
-                code: '',
-                title: 'CN卡通頻道',
-                path: `http://59.124.93.43:1935/live/nns209.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            },
-            {
-                SN: '',
-                code: '',
-                title: '靖天卡通台',
-                path: `http://59.124.93.43:1935/live/nns138.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            }
-        ];
-
-        // 新聞訊息
-        let news = [
-            {
-                SN: '',
-                code: '',
-                title: '民視新聞台',
-                path: `http://59.124.93.43:1935/live/nns199.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            },
-            {
-                SN: '',
-                code: '',
-                title: '中天新聞台',
-                path: `http://59.124.93.43:1935/live/nns198.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            },
-            {
-                SN: '',
-                code: '',
-                title: '東森新聞台',
-                path: `http://59.124.93.43:1935/live/nns197.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            },
-            {
-                SN: '',
-                code: '',
-                title: 'TVBS-N',
-                path: `http://59.124.93.43:1935/live/nns169.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            },
-            {
-                SN: '',
-                code: '',
-                title: '非凡新聞台',
-                path: `http://59.124.93.43:1935/live/nns172.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            },
-            {
-                SN: '',
-                code: '',
-                title: 'CNN',
-                path: `http://59.124.93.43:1935/live/nns152.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            },
-            {
-                SN: '',
-                code: '',
-                title: '東森財經新聞',
-                path: `http://59.124.93.43:1935/live/nns171.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            },
-        ];
-
-        // 電影戲劇
-        let dramas = [
-            {
-                SN: '',
-                code: '',
-                title: '靖天戲劇台',
-                path: `http://59.124.93.43:1935/live/nns140.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            }
-        ];
-
-        // 體育競賽
-        let sports = [
-            {
-                SN: '',
-                code: '',
-                title: '靖天育樂台',
-                path: `http://59.124.93.43:1935/live/nns139.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            }
-        ];
-
-        // 數位無線
-        let wireless = [
-            {
-                SN: '',
-                code: '',
-                title: '民視',
-                path: `http://59.124.93.43:1935/live/nns153.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            },
-            {
-                SN: '',
-                code: '',
-                title: '台視',
-                path: `http://59.124.93.43:1935/live/nns201.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            },
-            {
-                SN: '',
-                code: '',
-                title: '中視',
-                path: `http://59.124.93.43:1935/live/nns202.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            },
-            {
-                SN: '',
-                code: '',
-                title: '華視',
-                path: `http://59.124.93.43:1935/live/nns203.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            }
-        ];
-
-        // 衛星電視
-        // let satellite = [
-            // {
-            //     SN: '',
-            //     code: '',
-            //     title: '北京國際台',
-            //     path: `http://59.124.93.43:1935/live/gw112.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            // },
-            // {
-            //     SN: '',
-            //     code: '',
-            //     title: '湖南國際電視',
-            //     path: `http://59.124.93.43:1935/live/gw117.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            // },
-            // {
-            //     SN: '',
-            //     code: '',
-            //     title: '上海東方衛視',
-            //     path: `http://59.124.93.43:1935/live/gw113.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            // },
-            // {
-            //     SN: '',
-            //     code: '',
-            //     title: '深圳電視台',
-            //     path: `http://59.124.93.43:1935/live/gw118.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            // },
-        // ];
-
-        // 資訊生活
-        let lifeInformation = [
-            {
-                SN: '',
-                code: '',
-                title: '非凡商業台',
-                path: `http://59.124.93.43:1935/live/cfr230.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            },
-            {
-                SN: '',
-                code: '',
-                title: '靖天資訊台',
-                path: `http://59.124.93.43:1935/live/nns143.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            }
-        ];
-
-        // 宗教信仰
-        let belief = [
-            {
-                SN: '',
-                code: '',
-                title: '大愛電視台',
-                path: `http://59.124.93.43:1935/live/cfr059.stream/playlist.m3u8?johncena=${registerData.johncena}`
-            }
-        ];
-
-        return res.json({
-            liveInfo: {
-                watchTime: 20,
-                lockTime: 30,
-                watchable: false,
-                icon: 'http://legacy.nownews.com/NOWnews_static/ios512.png',
-                // titleMessage: '本服務由天暢國際股份有限公司提供\n\n線上客服請搜尋 LINE/wechat ID：nowlink_cs',
-                titleMessage: '天暢國際 台灣好 電視直播服務即將在此推出全新服務',
-                downloadable: false,
-                iosDownloadLink: '',
-                androidDownloadLink: '',
-                videoAD: true,
-                leftbutton: '立即下载',
-                rightbutton: '敬請期待'
-            },
-            data: [
-                {
-                    categoryName: '公告',
-                    count: 0,
-                    list: [
-                        {
-                            SN: '',
-                            code: '',
-                            title: '天暢國際 台灣好 電視直播服務即將在此推出全新服務 敬請期待！',
-                            path: ''
-                        }
-                    ]
-                }
-                // {
-                //     categoryName: '綜合娛樂',
-                //     count: entertainments.length,
-                //     list: entertainments
-                // },
-                // {
-                //     categoryName: '兒少動漫',
-                //     count: animes.length,
-                //     list: animes
-                // },
-                // {
-                //     categoryName: '新聞訊息',
-                //     count: news.length,
-                //     list: news
-                // },
-                // {
-                //     categoryName: '電影戲劇',
-                //     count: dramas.length,
-                //     list: dramas
-                // },
-                // {
-                //     categoryName: '體育競賽',
-                //     count: sports.length,
-                //     list: sports
-                // },
-                // {
-                //     categoryName: '數位無線',
-                //     count: wireless.length,
-                //     list: wireless
-                // },
-                // {
-                //     categoryName: '資訊生活',
-                //     count: lifeInformation.length,
-                //     list: lifeInformation
-                // },
-                // {
-                //     categoryName: '宗教信仰',
-                //     count: belief.length,
-                //     list: belief
-                // }
-            ]
+        // 將串流的資料加入防盜連
+        _.forEach(result.data, (data) => {
+            _.forEach(data.list, (item) => {
+                item.path = `${item.path}?johncena=${registerData.johncena}`;
+            });
         });
+
+        return res.json(result);
     } catch(err) {
         return next(err);
     }

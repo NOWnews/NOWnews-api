@@ -20,6 +20,7 @@ import rss from './rss';
 import appInfo from './app';
 import stream from './stream';
 import live from './live';
+import kxun from './1kxun';
 
 module.exports = (app) => {
 
@@ -45,6 +46,7 @@ module.exports = (app) => {
     app.use('/', appInfo);
     app.use('/', stream);
     app.use('/', live);
+    app.use('/', kxun);
 
     return (req, res, next) => {
         return next();

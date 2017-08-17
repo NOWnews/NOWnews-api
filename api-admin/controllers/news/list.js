@@ -6,7 +6,7 @@ import Promise from 'bluebird';
 
 import { Pageview } from '../../../pvModels';
 import { News } from '../../../models';
-import { pagination } from '../../../libs';
+import { pagination, getFacebookPostInfo } from '../../../libs';
 
 module.exports = async (req, res, next) => {
 
@@ -128,6 +128,20 @@ module.exports = async (req, res, next) => {
         debug('total = %d', total);
         let pageData = pagination(total, limit, page, skip);
         debug('pageData = %j', pageData);
+
+        // 去跟 Facebook 要貼文的資料
+        await Promise.map(newsList, (news) => {
+            return getFacebookPostInfo(`https://www.nownews.com${news.parseUrl}`)
+                .then((facebookInfo) => {
+                    news.facebookInfo = facebookInfo;
+                    return Promise.resolve({});
+                })
+                .catch((err) => {
+                    console.log(err);
+                    news.facebookInfo = {};
+                    return Promise.resolve({});
+                });
+        });
 
         return res.json({
             newsList,
