@@ -14,8 +14,8 @@ import { News, Image } from '../models';
 import { Pageview } from '../pvModels';
 
 module.exports = new cron.CronJob({
-    /*
-    * 設定多久跑一次 軍聞社新聞更新頻率一天一次
+    /* 設定多久跑一次
+    * 軍聞社新聞更新頻率一天一次
     * 故設定每2小時檢查一次且檢查2天以內的新聞
     */
     cronTime: '0 0 */2 * * *',
