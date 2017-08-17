@@ -446,9 +446,7 @@ None
 
 #### Query Parameters
 
-| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
-|---|---|---|---|---|
-| platform | 服務平台 | `['NOWNEWS', 'WATCHNOW', 'NOWLINK']`，不帶預設是 `NOWNEWS` | | |
+None
 
 ### [GET] `/specialchannels/{:sn}`
 
@@ -885,7 +883,9 @@ None
 
 #### Query Parameters
 
-None
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| platform | 服務平台 | `['NOWNEWS', 'WATCHNOW', 'NOWLINK']`，不帶預設是 `NOWNEWS` | | |
 
 ## LIVE API DOCUMENTS
 
