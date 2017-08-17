@@ -8,6 +8,7 @@ import updateFirstPageForDesktop from './updateFirstPageForDesktop';
 import updateNewestNews from './updateNewestNews';
 import updateNewestImages from './updateNewestImages';
 import importCNYES from './importCNYES';
+import importMNA from './importMNA';
 
 module.exports = async () => {
 
@@ -20,6 +21,7 @@ module.exports = async () => {
         updateFirstPageForDesktop.start(),
         updateNewestNews.start(),
         updateNewestImages.start(),
-        importCNYES.start()
+        importCNYES.start(),
+        importMNA.start()
     ]);
 };

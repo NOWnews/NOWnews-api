@@ -13,7 +13,8 @@
             "quality": 70
         },
         "rssFeed": {
-            "cnyes": "https://service.cnyes.com/rss/v2/news?vendor=nownews"
+            "cnyes": "https://service.cnyes.com/rss/v2/news?vendor=nownews",
+            "mna": "http://mna.gpwb.gov.tw/service/RSS.php?type=news"
         },
         "googleCloud": {
             "projectId": "nownews-official-website",
