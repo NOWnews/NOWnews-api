@@ -2,6 +2,10 @@
 
 NOWnews-api change logs
 
+## 1.0.25 - 2017-08-16
+### Changed
+- 調整推播搜尋條件，把空的或是 `null` 的資料濾除 @SimonSun
+
 ## 1.0.24 - 2017-08-15
 ### Added
 - 加入千尋娛樂用 api 端點 @SimonSun

@@ -16,6 +16,12 @@ module.exports = async (req, res, next) => {
 
         let devices = await AppInfo.find()
             .where('os').equals('ANDROID')
+            .and([
+                { token: { $exists: true } },
+                { token: { $ne: '' } },
+                { token: { $ne: null } },
+                { token: { $ne: 'null' } }
+            ])
             .execAsync();
         debug('android devices length = %d', devices.length);
 
@@ -30,6 +36,9 @@ module.exports = async (req, res, next) => {
         let tokensCollection = [];
         console.log(`Android devices total = ${deviceTotal}`);
 
+        /*
+         * 非正式環境用的 devices
+         */
         if(mode !== 'production') {
             devices = [
                 { token: 'dP1_xAexXMY:APA91bFgr_LiFBiTwpun80Ds90yAhPwytFqR4gVnpMo51rP46hVb2nA-SXFhOWmXTS4KJGFotdTQlmhVLjuheBkkI9XbkFxqsCQB0_vzEiOmIpx00nTQT8aeMrYJzLOmUkiSIVuH74sy' },
@@ -39,11 +48,7 @@ module.exports = async (req, res, next) => {
             deviceTotal = devices.length;
         }
 
-        /*
-         * 非正式環境用的 devices
-         */
         _.forEach(devices, (device) => {
-
             countTokens.push(device.token);
             countTotal++;
             count++;

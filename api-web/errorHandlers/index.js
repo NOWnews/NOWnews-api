@@ -1,13 +1,25 @@
 
 import errorMapping from './errorCode';
 import config from 'config';
+import stackdriverError from '@google-cloud/error-reporting';
 
-let showError = config.get('web.showError');
+const errorReporting = stackdriverError({
+    projectId: config.get('general.googleCloud.projectId'),
+    keyFilename: config.get('general.googleCloud.keyFilename'),
+    logLevel: 5,
+    reportUnhandledRejections: true,
+    ignoreEnvironmentCheck: true,
+    serviceContext: {
+        service: 'api-web'
+    }
+});
+const showError = config.get('web.showError');
 
 module.exports = (app) => {
 
     app.use(function(err, req, res, next) {
 
+        errorReporting.report(err);
         let errorFormat = errorMapping[err.message];
 
         // 處理 error 訊息
