@@ -19,8 +19,9 @@ module.exports = async (req, res, next) => {
             .where('status').equals('RELEASE')
             .where('isTrashed').equals(false)
             .sort('-startedAt')
+            .populate('MainPhoto')
             .limit(50)
-            .select('sn title shortTitle summary startedAt')
+            .select('sn title shortTitle MainPhoto summary startedAt')
             .lean()
             .execAsync();
 
@@ -29,6 +30,7 @@ module.exports = async (req, res, next) => {
             return {
                 title: news.title,
                 shortTitle: news.shortTitle,
+                MainPhoto: news.MainPhoto.url,
                 summary: news.summary,
                 startedAt: moment(news.startedAt).unix('x'),
                 url: `https://www.nownews.com/news/${moment.tz(news.startedAt, 'Asia/Taipei').format('YYYYMMDD')}/${news.sn}`

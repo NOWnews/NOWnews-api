@@ -2,6 +2,13 @@
 
 NOWnews-api change logs
 
+## 1.0.26 - 2017-08-17
+### Added
+- 加入 GCP Error Report 機制 (加入 `@google-cloud/error-reporting` 套件) @SimonSun
+
+### Changed
+- 調整千尋 API 內容，加入 `MainPhoto` 欄位 @SimonSun
+
 ## 1.0.25 - 2017-08-16
 ### Changed
 - 調整推播搜尋條件，把空的或是 `null` 的資料濾除 @SimonSun
