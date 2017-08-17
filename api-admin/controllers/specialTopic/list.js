@@ -2,8 +2,10 @@
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:specialTopic:list');
 
+import _ from 'lodash';
 import { SpecialTopic } from '../../../models';
 import { pagination } from '../../../libs';
+import { Pageview } from '../../../pvModels';
 
 module.exports = async (req, res, next) => {
     try{
@@ -33,6 +35,34 @@ module.exports = async (req, res, next) => {
                 .countAsync()
         ]);
         debug('specialTopic list = %j', specialTopics);
+
+        // 加上 pv
+        let newsUrl = [];
+        specialTopics = _.map(specialTopics,(news)=>{
+            newsUrl.push(news.url);
+            return news.toJSON();
+        });
+
+        let pageviews = await Pageview.aggregateAsync([
+            {
+                $match: {
+                    url: { $in: newsUrl }
+                }
+            },
+            {
+                $group: {
+                    _id: '$url',
+                    sumPageviews: { $sum: '$pageviews' },
+                }
+            }
+        ]);
+        pageviews = _.keyBy(pageviews,(pv)=>{
+            return pv._id;
+        });
+        specialTopics = _.map(specialTopics,(news)=>{
+            news.pageviews = pageviews[news.url] ? pageviews[news.url].sumPageviews : 0;
+            return news;
+        });
 
         // 處理分頁
         debug('total = %d', total);
