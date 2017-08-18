@@ -17,6 +17,10 @@ module.exports = async (platform) => {
             .lean()
             .execAsync();
 
+        if(!provider) {
+            throw new Error('12001');
+        }
+
         let result = {
             liveInfo: {},
             data: []
