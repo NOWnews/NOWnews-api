@@ -2,7 +2,7 @@
 
 NOWnews-api change logs
 
-## 1.0.27 - 2017-08-18
+## [Unreleased]
 ### Added
 - 加入 GCP Trace 機制 (加入 `@google-cloud/trace-agent` 套件) @SimonSun
 
