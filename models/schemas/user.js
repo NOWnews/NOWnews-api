@@ -133,7 +133,7 @@ let schema = new Schema({
             default: null
         },
 
-        使用者預設地址
+        // 使用者預設地址
         location: {
             type: String,
             default: null
