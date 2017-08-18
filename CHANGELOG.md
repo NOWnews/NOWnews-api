@@ -2,6 +2,13 @@
 
 NOWnews-api change logs
 
+## 1.0.27 - 2017-08-18
+### Added
+- 加入 GCP Trace 機制 (加入 `@google-cloud/trace-agent` 套件) @SimonSun
+
+### Changed
+- Fixed 當頻道列表為空的時候會產生的錯誤 @SimonSun
+
 ## 1.0.26 - 2017-08-17
 ### Added
 - 加入 GCP Error Report 機制 (加入 `@google-cloud/error-reporting` 套件) @SimonSun
