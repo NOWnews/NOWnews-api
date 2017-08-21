@@ -49,7 +49,20 @@ module.exports = async (req, res, next) => {
                 .where('status').equals('RELEASE')
                 .where('isTrashed').equals(false)
                 .where('startedAt').lte(Date.now())
-                .populate('MainMenu Menus MainPhoto MainVideo')
+                .populate([
+                    {
+                        path: 'MainMenu',
+                        select: '_id sn name'
+                    },
+                    {
+                        path: 'MainPhoto',
+                        select: '_id sn url height width desc title googleCDN thumbnail'
+                    },
+                    {
+                        path: 'MainVideo',
+                        select: '_id sn url desc title'
+                    }
+                ])
                 .select('sn _id title shortTitle MainMenu MainPhoto startedAt type')
                 .limit(limit)
                 .skip(randomSkip)
