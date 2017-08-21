@@ -24,5 +24,10 @@ module.exports = {
     11003: {
         message: '您已經取消過喜歡了',
         statusCode: 400
+    },
+
+    12001: {
+        message: '找不到這個平台',
+        statusCode: 404
     }
 };

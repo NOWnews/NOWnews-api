@@ -2,12 +2,23 @@
 
 NOWnews-api change logs
 
-## 1.0.26 - 2017-08-17
+## [Unreleased]
+### Added
+- 加入 GCP Trace 機制 (加入 `@google-cloud/trace-agent` 套件) @SimonSun
+
 ### Changed
+- Fixed 當頻道列表為空的時候會產生的錯誤 @SimonSun
 - 取得首頁控版的資料，用 select 取得需要的欄位 @wb
 - 首頁控版加上後台所需要的後台網址 @wb
 - 各新聞加上 pv( 首頁控版 api, 特輯列表 api, 專題列表 api) @wb
 - 增開使用者的地區虛擬欄位 ( defaultLocation ) @wb
+
+## 1.0.26 - 2017-08-17
+### Added
+- 加入 GCP Error Report 機制 (加入 `@google-cloud/error-reporting` 套件) @SimonSun
+
+### Changed
+- 調整千尋 API 內容，加入 `MainPhoto` 欄位 @SimonSun
 
 ## 1.0.25 - 2017-08-16
 ### Changed
