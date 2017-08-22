@@ -7,6 +7,7 @@ NOWnews-api change logs
 - 加入 GCP Trace 機制 (加入 `@google-cloud/trace-agent` 套件) @SimonSun
 
 ### Changed
+- 修復admin上傳過大mp4檔案會失敗的問題 @appleoxxo
 - Fixed 當頻道列表為空的時候會產生的錯誤 @SimonSun
 - 新聞內頁，個人化新聞，相關新聞 API 瘦身 @SimonSun
 - menu，即時新聞 API 瘦身 @SimonSun
