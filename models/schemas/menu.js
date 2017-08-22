@@ -232,6 +232,7 @@ schema.statics.findWebStructionAsync = async function (){
                 { endedAt: { $gte: Date.now() }}
             ]}
         ])
+        .select('_id sn name url ParentId hasChild isExternal categoryName isAdult')
         .sort('weight')
         .lean()
         .execAsync();
@@ -250,6 +251,7 @@ schema.statics.findWebStructionAsync = async function (){
                     { endedAt: { $gte: Date.now() }}
                 ]}
             ])
+            .select('_id sn name url ParentId hasChild isExternal categoryName isAdult')
             .sort('weight')
             .lean()
             .execAsync()
