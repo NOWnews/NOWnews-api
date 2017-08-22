@@ -14,7 +14,6 @@ module.exports = async (req, res, next) => {
 
         let { limit, skip, page, type } = req.query;
 
-
         // 如果沒有 type 而且是第一頁，直接從 redis 拿資料
         if(!type && page === 1) {
             let instantPage1 = await redis.getValue(`instant-page1`);
@@ -41,11 +40,21 @@ module.exports = async (req, res, next) => {
 
         // 找出相關列表與分頁資料
         let [ newsList, total ] = await Promise.all([
-            cursor.populate('MainMenu Menus MainPhoto MainVideo')
+            cursor
+                .populate([
+                    {
+                        path: 'MainMenu',
+                        select: '_id sn name'
+                    },
+                    {
+                        path: 'MainPhoto',
+                        select: '_id sn url height desc width title googleCDN thumbnail'
+                    }
+                ])
                 .limit(limit)
                 .skip(skip)
                 .sort('-startedAt')
-                .select('sn _id title shortTitle MainMenu MainPhoto MainVideo startedAt type')
+                .select('_id sn title shortTitle MainMenu MainPhoto startedAt type')
                 .execAsync(),
             totalCursor.limit(1000).countAsync()
         ]);
