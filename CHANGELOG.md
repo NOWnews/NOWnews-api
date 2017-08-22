@@ -5,6 +5,9 @@ NOWnews-api change logs
 ## [Unreleased]
 ### Added
 - 加入 GCP Trace 機制 (加入 `@google-cloud/trace-agent` 套件) @SimonSun
+- 加入 GCP Trace 機制 (加入 `@google-cloud/trace-agent` 套件) @SimonSun
+- 加入 `tools/cleanUselessDevices.js` 清除沒效用的 device 小工具  @SimonSun
+- 加入 `tools/cleanRepeatDevices.js` 清除重複 device 小工具  @SimonSun
 
 ### Changed
 - Fixed 當頻道列表為空的時候會產生的錯誤 @SimonSun
