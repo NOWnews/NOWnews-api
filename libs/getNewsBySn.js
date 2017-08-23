@@ -39,11 +39,11 @@ module.exports = async (sn) => {
                 },
                 {
                     path: 'Author',
-                    populate: { path: 'Avatar', select: 'url' },
-                    select: 'Avatar'
+                    populate: { path: 'Avatar' },
+                    select: 'Avatar _id'
                 }
             ])
-            .select('_id sn title templateAD template Tags newsBy isSponsored isAdult traceCode type startedAt freeContent Photos content MainVideo MainPhoto Menus MainMenu summary shortTitle')
+            .select('_id sn title templateAD template Tags newsBy isSponsored isAdult traceCode type startedAt freeContent Photos content MainVideo MainPhoto Menus MainMenu summary shortTitle Author')
             .execAsync();
         debug('news = %j', news);
 
