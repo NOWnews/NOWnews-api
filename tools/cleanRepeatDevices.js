@@ -1,6 +1,7 @@
 /*
  * 用來清理重複 device 的資料
  * 啟動方式: cd tools && NODE_ENV=${NODE_ENV} node tools/cleanRepeatDevices.js ${OS}
+ * OS: 'IOS', 'ANDROID', 'WEB'
  */
 
 require('babel-core/register');
