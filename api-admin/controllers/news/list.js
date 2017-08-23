@@ -10,7 +10,7 @@ import { pagination, getFacebookPostInfo } from '../../../libs';
 
 module.exports = async (req, res, next) => {
 
-    let { limit, page, skip, title, type, status, Author,
+    let { limit, page, skip, select, title, type, status, Author, noSponsored,
          CreatedBy, UpdatedBy, LastReviewer, sort, startedAt, endedAt, MainMenu, sn, isScheduled} = req.query;
     debug('req.query = %j', req.query);
 
@@ -78,6 +78,16 @@ module.exports = async (req, res, next) => {
         if(isScheduled === false || isScheduled === 'false') {
             cursor.where('startedAt').lte(Date.now());
             totalCursor.where('startedAt').lte(Date.now());
+        }
+
+        if(select) {
+            cursor.select(select);
+        }
+
+        // 撈出來的新聞不要有葉佩雯
+        if(noSponsored) {
+            cursor.where('isSponsored').equals(false);
+            totalCursor.where('isSponsored').equals(false);
         }
 
         let [ newsList, total ] = await Promise.all([

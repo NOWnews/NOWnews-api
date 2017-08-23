@@ -1,8 +1,17 @@
+const traceEngent = require('@google-cloud/trace-agent');
 require('babel-core/register');
 require('babel-polyfill');
 
 const chalk = require('chalk');
 const http = require('http');
+const config = require('config');
+
+require('@google-cloud/trace-agent').start({
+    projectId: config.get('general.googleCloud.projectId'),
+    keyFilename: config.get('general.googleCloud.keyFilename'),
+    logLevel: 1,
+    samplingRate: 1000
+});
 
 const api = require('../api-web/app.js');
 
