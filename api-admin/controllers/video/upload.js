@@ -31,8 +31,8 @@ module.exports = async(req, res, next) => {
     try{
         // 影片檔案若太大等太久連線會斷 延長斷線時間至30分鐘
         req.socket.setTimeout(30 * 60 * 1000);
-        req.socket.addListener('timeout', function() {
-          req.socket.destroy();
+        req.socket.addListener('timeout', () => {
+            req.socket.destroy();
         });
 
         let { Tags, title, desc, type, isDeliver, CreatedBy } = req.body;
