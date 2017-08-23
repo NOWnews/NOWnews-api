@@ -29,11 +29,21 @@ module.exports = async () => {
 
         // 找出相關列表與分頁資料
         let [ newsList, total ] = await Promise.all([
-            cursor.populate('MainMenu Menus MainPhoto MainVideo')
+            cursor
+                .populate([
+                    {
+                        path: 'MainMenu',
+                        select: '_id sn name'
+                    },
+                    {
+                        path: 'MainPhoto',
+                        select: '_id sn url height desc width title googleCDN thumbnail'
+                    }
+                ])
                 .limit(limit)
                 .skip(skip)
                 .sort('-startedAt')
-                .select('sn _id title shortTitle MainMenu MainPhoto MainVideo startedAt type')
+                .select('_id sn title shortTitle MainMenu MainPhoto startedAt type')
                 .execAsync(),
             totalCursor.limit(1000).countAsync()
         ]);
