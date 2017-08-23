@@ -134,10 +134,10 @@ let schema = new Schema({
         },
 
         // 使用者預設地址
-        // location: {
-        //     type: String,
-        //     default: null
-        // }
+        location: {
+            type: String,
+            default: null
+        }
 
     },
 
