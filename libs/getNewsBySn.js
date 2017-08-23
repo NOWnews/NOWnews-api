@@ -39,8 +39,8 @@ module.exports = async (sn) => {
                 },
                 {
                     path: 'Author',
-                    populate: { path: 'Avatar' },
-                    select: 'Avatar _id'
+                    populate: { path: 'Avatar', select: '_id url' },
+                    select: 'Avatar'
                 }
             ])
             .select('_id sn title templateAD template Tags newsBy isSponsored isAdult traceCode type startedAt freeContent Photos content MainVideo MainPhoto Menus MainMenu summary shortTitle Author')
