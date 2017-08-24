@@ -12,6 +12,9 @@ const entertainmentObjId = '560000000000000000000006';
 module.exports = async (req, res, next) => {
     try {
 
+        // 先將此端點關閉
+        throw new Error('10001');
+
         let newsList = await News.find()
             .where('startedAt').lte(Date.now())
             .where('MainMenu').equals(entertainmentObjId)
