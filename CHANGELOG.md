@@ -3,6 +3,8 @@
 NOWnews-api change logs
 
 ## [Unreleased]
+
+## 1.0.27 - 2017-08-24
 ### Added
 - 加入 GCP Trace 機制 (加入 `@google-cloud/trace-agent` 套件) @SimonSun
 - 加入 `tools/cleanUselessDevices.js` 清除沒效用的 device 小工具  @SimonSun
