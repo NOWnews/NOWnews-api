@@ -2,13 +2,15 @@
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:specialChannel:list');
 
+import _ from 'lodash';
 import { SpecialChannel } from '../../../models';
 import { pagination } from '../../../libs';
+import { Pageview } from '../../../pvModels';
 
 module.exports = async (req, res, next) => {
     try{
 
-        let { title, limit, page, skip } = req.query;
+        let { title, limit, page, skip, select } = req.query;
 
         let cursor = SpecialChannel.find();
         let totalCursor = SpecialChannel.find();
@@ -16,6 +18,10 @@ module.exports = async (req, res, next) => {
         if (title) {
             cursor.where('title').equals(new RegExp(title, 'i'));
             totalCursor.where('title').equals(new RegExp(title, 'i'));
+        }
+
+        if (select) {
+            cursor.select(select)
         }
 
         let [ specialChannels, total ] = await Promise.all([
@@ -29,6 +35,45 @@ module.exports = async (req, res, next) => {
                 .countAsync()
         ]);
         debug('specialChannels list = %j', specialChannels);
+
+        // 加上 pv
+        let newsUrl = [];
+        specialChannels = _.map(specialChannels, (news) => {
+            if (news.sn) {
+                let desktopUrl = `/channel/${news.sn}`;
+                let mobileUrl = `/news/channel/${news.sn}`;
+                newsUrl.push(desktopUrl);
+                newsUrl.push(mobileUrl);
+            }
+            return news.toJSON();
+        });
+
+        let pageviews = await Pageview.aggregateAsync([
+            {
+                $match: {
+                    url: { $in: newsUrl }
+                }
+            },
+            {
+                $group: {
+                    _id: '$url',
+                    sumPageviews: { $sum: '$pageviews' },
+                }
+            }
+        ]);
+        pageviews = _.keyBy(pageviews, (pv) => {
+            return pv._id;
+        });
+        specialChannels = _.map(specialChannels, (news) => {
+            if (news.sn) {
+                let desktopUrl = `/channel/${news.sn}`;
+                let mobileUrl = `/news/channel/${news.sn}`;
+                let desktopPv = pageviews[desktopUrl] ? pageviews[desktopUrl].sumPageviews : 0;
+                let mobilePv = pageviews[mobileUrl] ? pageviews[mobileUrl].sumPageviews : 0
+                news.pageviews = desktopPv + mobilePv;
+            }
+            return news;
+        });
 
         // 處理分頁
         debug('total = %d', total);

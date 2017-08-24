@@ -44,6 +44,7 @@ None
 | defaultAuthor | 使用者建立新聞時的預設作者 | ObjectId  |  | `520000000000000000000001` |
 | defaultMenu | 使用者建立新聞時的預設主選單 | ObjectId  |  | `520000000000000000000001` |
 | defaultNewsBy | 使用者建立新聞時的預設訊頭 | Stringg  |  | |
+| defaultLocation | 使用者建立新聞時的預設地區 | Stringg  |  | |
 | CreatedBy | 建立者 ObjectId | ObjectId  | √ | `530000000000000000000001` |
 
 #### Query Parameters
@@ -181,6 +182,7 @@ None
 | defaultAuthor | 使用者建立新聞時的預設作者 | ObjectId  |  | `520000000000000000000001` |
 | defaultMenu | 使用者建立新聞時的預設主選單 | ObjectId  |  | `520000000000000000000001` |
 | defaultNewsBy | 使用者建立新聞時的預設訊頭 | Stringg  |  | |
+| defaultLocation | 使用者建立新聞時的預設地區 | Stringg  |  | |
 | UpdatedBy | 建立者 ObjectId | ObjectId  | √ | `530000000000000000000001` |
 
 None

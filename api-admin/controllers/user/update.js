@@ -27,6 +27,7 @@ module.exports = async (req, res, next) => {
         defaultAuthor,
         defaultMenu,
         defaultNewsBy,
+        defaultLocation,
         UpdatedBy
     } = req.body;
 
@@ -111,6 +112,10 @@ module.exports = async (req, res, next) => {
 
         if(defaultNewsBy) {
             user.set('defaultSettings.newsBy', defaultNewsBy);
+        }
+
+        if(defaultLocation) {
+            user.set('defaultSettings.location', defaultLocation);
         }
 
         user.UpdatedBy = UpdatedBy;
