@@ -43,7 +43,8 @@ module.exports = async (req, res, next) => {
             devices = [
                 { token: 'dP1_xAexXMY:APA91bFgr_LiFBiTwpun80Ds90yAhPwytFqR4gVnpMo51rP46hVb2nA-SXFhOWmXTS4KJGFotdTQlmhVLjuheBkkI9XbkFxqsCQB0_vzEiOmIpx00nTQT8aeMrYJzLOmUkiSIVuH74sy' },
                 { token: 'cNPgV00NEwM:APA91bHO_WUqnci3uVhpiKDMCX0cYYntwrnzinJz1DvpRznfoLa-R_LehgR6PSxUywkCHTp9npgZ5FSr7GvGgZO6muZQwLnGWgF6DO0ZKwr6NDJVy_xnRibH92HiYaut2_TIMDIv3j_P' },
-                { token: 'eOKD5diP5ZA:APA91bHKC-puNylaU5WE-zDDe2dRng40FPobXrJfNtElWwSMK1xWB40CfDnte4dN6vrbcLH-ZummWEvSXMRMFBGYZUbFE8ymzqPIT8oYCtXjyw1-SD9E6AsUuDTgwBy_S5bBpans1nh-' }
+                { token: 'eOKD5diP5ZA:APA91bHKC-puNylaU5WE-zDDe2dRng40FPobXrJfNtElWwSMK1xWB40CfDnte4dN6vrbcLH-ZummWEvSXMRMFBGYZUbFE8ymzqPIT8oYCtXjyw1-SD9E6AsUuDTgwBy_S5bBpans1nh-' },
+                { token: 'cG0q9q_HvsQ:APA91bGy8q1rF13BKvPcFj8L4Ic5jZAtW6zy6U1J4y6_6qtuoIt2K5QiR886ALmMOqG-45i_Gt8UzkKGoWuvuryr_6EJ0JY1BEaoydmi5EFtS8U3WhdIZ9sRIq7QBn8lAzWQE4e6xhxZ' }
             ];
             deviceTotal = devices.length;
         }
