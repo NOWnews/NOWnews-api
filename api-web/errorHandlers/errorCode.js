@@ -1,7 +1,7 @@
 module.exports = {
 
     10001: {
-        message: 'Forbidden，你他媽在亂打試試看，反正我也不痛不癢，大力一點好嗎',
+        message: 'Forbidden，You Have No Permission To Access This End Point :)',
         statusCode: 403
     },
 
