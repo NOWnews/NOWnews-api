@@ -27,7 +27,7 @@ module.exports = async (req, res, next) => {
             newsIds.push(news._id);
             // 後台連結跟時間
             news.completeUrl = `/news/${news._id}`;
-            news.formatStartedAt = moment.tz(news.startedAt, 'Asia/Taipei').format('YYYYMMDD HH:MM');
+            news.formatStartedAt = moment.tz(news.startedAt, 'Asia/Taipei').format('YYYYMMDD HH:mm');
             return news;
         };
 
@@ -38,7 +38,7 @@ module.exports = async (req, res, next) => {
             newsUrl.push(mobileUrl);
             // 後台連結跟時間
             news.completeUrl = `/topic/${news._id}`;
-            news.formatStartedAt = moment.tz(news.createdAt, 'Asia/Taipei').format('YYYYMMDD HH:MM');
+            news.formatStartedAt = moment.tz(news.createdAt, 'Asia/Taipei').format('YYYYMMDD HH:mm');
             return news;
         };
 
@@ -49,7 +49,7 @@ module.exports = async (req, res, next) => {
             newsUrl.push(mobileUrl);
             // 後台連結跟時間
             news.completeUrl = `/specialchannel/${news._id}`;
-            news.formatStartedAt = moment.tz(news.createdAt, 'Asia/Taipei').format('YYYYMMDD HH:MM');
+            news.formatStartedAt = moment.tz(news.createdAt, 'Asia/Taipei').format('YYYYMMDD HH:mm');
             return news;
         };
 
