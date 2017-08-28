@@ -3,6 +3,8 @@
 NOWnews-api change logs
 
 ## [Unreleased]
+### Added
+- 刪除新聞的時候，也要有 log @SimonSun
 
 ## 1.0.27 - 2017-08-24
 ###Fixed
