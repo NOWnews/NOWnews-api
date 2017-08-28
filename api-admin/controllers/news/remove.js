@@ -2,6 +2,7 @@ import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:news:remove');
 
 import { News } from '../../../models';
+import { newsLog } from '../../../libs';
 import redis from '../../../redis';
 
 module.exports = async (req, res, next) => {
@@ -40,6 +41,10 @@ module.exports = async (req, res, next) => {
 
         let removedNews = await news.saveAsync();
         debug('removed news = %j', removedNews);
+
+        // 處理 log
+        removedNews = await removedNews.populate('MainMenu Menus MainPhoto MainVideo Photos Videos Author Tags LastReviewer CreatedBy UpdatedBy').execPopulate();
+        await newsLog(removedNews, 'DELETE');
 
         return res.json(removedNews);
     }catch(err) {

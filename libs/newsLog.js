@@ -38,6 +38,7 @@ module.exports = async (news, action = 'CREATE') => {
             newsBy: news.newsBy,
             Tags: news.Tags,
             isFeed: news.isFeed,
+            newsTrashed: news.isTrashed,
             feedUniqKey: news.feedUniqKey,
             feedUrl: news.feedUrl,
             feedFrom: news.feedFrom,
