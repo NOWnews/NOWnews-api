@@ -3,6 +3,7 @@
 NOWnews-api change logs
 
 ## [Unreleased]
+- cronjob加上中央社圖片匯入 @appleoxxo
 
 ## 1.0.27 - 2017-08-24
 ###Fixed
