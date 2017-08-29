@@ -2,6 +2,10 @@
 
 NOWnews-api change logs
 
+## [Unreleased]
+### Added
+- cronjob加上軍聞社新聞匯入 @appleoxxo
+
 ## 1.0.24 - 2017-08-15
 ### Added
 - 加入千尋娛樂用 api 端點 @SimonSun
