@@ -5,6 +5,40 @@ NOWnews-api change logs
 ## [Unreleased]
 ### Added
 - cronjob加上軍聞社新聞匯入 @appleoxxo
+- 刪除新聞的時候，也要有 log (因應這個功能，所以在 `newLog` 這個 schema 加入新的欄位 `newsTrashed`) @SimonSun
+
+## 1.0.27 - 2017-08-24
+###Fixed
+- 修正首頁控版的時間格式 @wb
+- 加上 Android token @wb
+
+## 1.0.27 - 2017-08-24
+### Added
+- 加入 GCP Trace 機制 (加入 `@google-cloud/trace-agent` 套件) @SimonSun
+- 加入 `tools/cleanUselessDevices.js` 清除沒效用的 device 小工具  @SimonSun
+
+### Changed
+- 修復admin上傳過大mp4檔案會失敗的問題 @appleoxxo
+- Fixed 當頻道列表為空的時候會產生的錯誤 @SimonSun
+- 取得首頁控版的資料，用 select 取得需要的欄位 @wb
+- 首頁控版加上後台所需要的後台網址 @wb
+- 各新聞加上 pv( 首頁控版 api, 特輯列表 api, 專題列表 api) @wb
+- 增開使用者的地區虛擬欄位 ( defaultLocation ) @wb
+- 新聞內頁，個人化新聞，相關新聞 API 瘦身 @SimonSun
+- menu，即時新聞 API 瘦身 @SimonSun
+- 調整 `tools/cleanRepeatDevices.js` 清除重複 device 小工具  @SimonSun
+- 暫時將千尋測試端點導到 403 @SimonSun
+
+## 1.0.26 - 2017-08-17
+### Added
+- 加入 GCP Error Report 機制 (加入 `@google-cloud/error-reporting` 套件) @SimonSun
+
+### Changed
+- 調整千尋 API 內容，加入 `MainPhoto` 欄位 @SimonSun
+
+## 1.0.25 - 2017-08-16
+### Changed
+- 調整推播搜尋條件，把空的或是 `null` 的資料濾除 @SimonSun
 
 ## 1.0.24 - 2017-08-15
 ### Added

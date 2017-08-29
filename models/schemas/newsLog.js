@@ -190,6 +190,12 @@ let schema = new Schema({
         default: null
     },
 
+    // 新聞被刪除狀態
+    newsTrashed: {
+        type: Boolean,
+        default: false
+    },
+
     /*
      * 以下是 log 本身的資料
      */

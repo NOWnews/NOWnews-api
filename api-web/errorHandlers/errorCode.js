@@ -1,7 +1,7 @@
 module.exports = {
 
     10001: {
-        message: 'Forbidden，你他媽在亂打試試看，反正我也不痛不癢，大力一點好嗎',
+        message: 'Forbidden，You Have No Permission To Access This End Point :)',
         statusCode: 403
     },
 
@@ -24,5 +24,10 @@ module.exports = {
     11003: {
         message: '您已經取消過喜歡了',
         statusCode: 400
+    },
+
+    12001: {
+        message: '找不到這個平台',
+        statusCode: 404
     }
 };

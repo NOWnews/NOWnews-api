@@ -23,8 +23,18 @@ module.exports = async (sn) => {
             .where('isTrashed').equals(false)
             .where('sn').ne(sn)
             .where('startedAt').lte(Date.now())
-            .populate('MainMenu MainPhoto')
-            .select('title shortTitle sn MainMenu MainPhoto type startedAt')
+
+            .populate([
+                {
+                    path: 'MainMenu',
+                    select: '_id sn name'
+                },
+                {
+                    path: 'MainPhoto',
+                    select: '_id sn url height width desc title googleCDN thumbnail'
+                }
+            ])
+            .select('_id sn title type startedAt MainPhoto MainMenu shortTitle')
             .sort('-startedAt')
             .limit(3)
             .execAsync();
