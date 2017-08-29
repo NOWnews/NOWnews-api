@@ -46,7 +46,7 @@ module.exports = async (news, action = 'CREATE') => {
             templateAD: news.templateAD,
             LastReviewer: news.LastReviewer,
             CreatedBy: news.UpdatedBy,
-            // UpdatedBy: news.UpdatedBy,
+            UpdatedBy: news.UpdatedBy,
             action
         };
 
