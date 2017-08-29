@@ -19,6 +19,8 @@ module.exports = async (req, res, next) => {
             throw new Error('16003');
         }
 
+        let { UpdatedBy } = req.body;
+
         // 取得原本上一則下一則新聞的資料，並移除 cache
         let nextAndPrev = await redis.getValue(`news${news.sn}NextAndPrev`);
 
@@ -38,6 +40,7 @@ module.exports = async (req, res, next) => {
         ]);
 
         news.set('isTrashed', true);
+        news.set('UpdatedBy', UpdatedBy);
 
         let removedNews = await news.saveAsync();
         debug('removed news = %j', removedNews);

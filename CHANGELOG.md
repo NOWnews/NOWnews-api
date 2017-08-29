@@ -4,7 +4,7 @@ NOWnews-api change logs
 
 ## [Unreleased]
 ### Added
-- 刪除新聞的時候，也要有 log @SimonSun
+- 刪除新聞的時候，也要有 log (因應這個功能，所以在 `newLog` 這個 schema 加入新的欄位 `newsTrashed`) @SimonSun
 
 ## 1.0.27 - 2017-08-24
 ###Fixed
