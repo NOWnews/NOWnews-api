@@ -222,7 +222,15 @@ let schema = new Schema({
     createdAt: {
         type: Date,
         default: Date.now
+    },
+
+    // 更新者
+    UpdatedBy: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     }
+
 }, {
     versionKey: false,
     toJSON:{
