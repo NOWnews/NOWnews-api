@@ -150,6 +150,13 @@ schema.index({
     type: 1
 });
 
+schema.index({
+    createdAt: -1,
+    imageFrom: 1,
+    type: 1,
+    isTrashed: 1
+});
+
 schema.virtual('thumbnail').get(function () {
 
     let imgRegexString = /^(http|https):\/\/img.nownews.com\//;

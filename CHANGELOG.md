@@ -6,6 +6,9 @@ NOWnews-api change logs
 ### Added
 - 刪除新聞的時候，也要有 log (因應這個功能，所以在 `newLog` 這個 schema 加入新的欄位 `newsTrashed`) @SimonSun
 
+### Changed
+- 優化圖片搜尋增加 index @esbb48
+
 ###Fixed
 - instant 補傳 MainVideo 的欄位 @esbb48
 
