@@ -197,3 +197,47 @@ db.news.createIndex({ sn: 1, CreatedBy: 1, MainMenu: 1, status: 1, startedAt: 1 
 db.news.createIndex({ CreatedBy: 1, startedAt: -1 })
 db.news.createIndex({ CreatedBy: 1, status: 1, startedAt: -1 })
 db.news.createIndex({ LastReviewer: 1, status: 1, startedAt: -1 })
+
+
+/* api-admin/controllers/image/list.js */
+
+程式碼
+```
+Image.find()
+    .where('isTrashed').equals(false)
+    .where('type').equals(type)
+    .where('imageFrom').equals(imageFrom)
+    .where('createdAt').gte(moment.tz(startedAt, 'Asia/Taipei').startOf('day'))
+    .where('createdAt').lte(moment.tz(endedAt, 'Asia/Taipei').endOf('day'))
+    .or([
+        { $and: [{ title: /見面會/i }] }, 
+        { $and: [{ desc: /見面會/i }] }, 
+        { $and: [{ keyword: /見面會/i }] }
+    ]);
+
+```
+
+實際 Query
+```
+db.getCollection('images').find(
+{
+    isTrashed: false,
+    type: 'NEWS', 
+    createdAt: {
+        $gte: ISODate("2017-06-28T00:00:00.0Z"),
+        $lt: ISODate("2017-08-29T00:00:00.0Z")
+    },
+    imageFrom: 'INTERNAL',
+    '$or': [ { '$and': [ { title: /見面會/i } ] }, { '$and': [ { desc: /見面會/i } ] }, { '$and': [ { keyword: /見面會/i } ] } ]
+}).explain('executionStats');
+```
+
+建立 index
+```
+db.images.createIndex({
+    createdAt: -1,
+    imageFrom: 1,
+    type: 1,
+    isTrashed: 1
+})
+```
