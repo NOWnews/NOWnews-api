@@ -49,12 +49,16 @@ module.exports = async (req, res, next) => {
                     {
                         path: 'MainPhoto',
                         select: '_id sn url height desc width title googleCDN thumbnail'
+                    },
+                    {
+                        path: 'MainVideo',
+                        select: '_id url'
                     }
                 ])
                 .limit(limit)
                 .skip(skip)
                 .sort('-startedAt')
-                .select('_id sn title shortTitle MainMenu MainPhoto startedAt type')
+                .select('_id sn title shortTitle MainMenu MainPhoto MainVideo startedAt type')
                 .execAsync(),
             totalCursor.limit(1000).countAsync()
         ]);
