@@ -6,6 +6,9 @@ NOWnews-api change logs
 ### Added
 - 刪除新聞的時候，也要有 log (因應這個功能，所以在 `newLog` 這個 schema 加入新的欄位 `newsTrashed`) @SimonSun
 
+###Fixed
+- instant 補傳 MainVideo 的欄位 @esbb48
+
 ## 1.0.27 - 2017-08-24
 ###Fixed
 - 修正首頁控版的時間格式 @wb
