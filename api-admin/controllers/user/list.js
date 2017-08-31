@@ -16,7 +16,7 @@ module.exports = async (req, res, next) => {
 
         let cursor = User.find();
         let totalCursor = User.find(); // 處理分頁用的
-        sort = sort ? sort : 'createdAt'
+        sort = sort ? sort : 'staffId'
 
         if(name) {
             cursor.where('name').equals(new RegExp(name, 'i'));
@@ -46,7 +46,7 @@ module.exports = async (req, res, next) => {
         let [ users, total ] = await Promise.all([
             cursor
                 .where('isTrashed').equals(false)
-                .where('isInitUser').equals(false)
+                .where('_id').ne('530000000000000000000001')
                 .populate('Role Department Center')
                 .limit(limit)
                 .skip(skip)
@@ -55,7 +55,7 @@ module.exports = async (req, res, next) => {
                 .execAsync(),
             totalCursor
                 .where('isTrashed').equals(false)
-                .where('isInitUser').equals(false)
+                .where('_id').ne('530000000000000000000001')
                 .countAsync()
         ]);
         debug('users = %j', users);
