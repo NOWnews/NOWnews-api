@@ -38,6 +38,7 @@ import dailyPlanSchema from './schemas/dailyPlan';
 import appVersionSchema from './schemas/appVersion';
 import appSplashSchema from './schemas/appSplash';
 import appInfoSchema from './schemas/appInfo';
+import moderatorSchema from './schemas/moderator';
 
 let User = connection.model('User', userSchema);
 let News = connection.model('News', newsSchema);
@@ -60,6 +61,7 @@ let DailyPlan = connection.model('DailyPlan', dailyPlanSchema);
 let AppVersion = connection.model('AppVersion', appVersionSchema);
 let AppSplash = connection.model('AppSplash', appSplashSchema);
 let AppInfo = connection.model('AppInfo', appInfoSchema);
+let Moderator = connection.model('moderator', moderatorSchema);
 
 module.exports = {
     User,
@@ -82,5 +84,6 @@ module.exports = {
     DailyPlan,
     AppVersion,
     AppSplash,
-    AppInfo
+    AppInfo,
+    Moderator
 };
