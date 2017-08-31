@@ -4,6 +4,21 @@ NOWnews-api change logs
 
 ## [Unreleased]
 
+## 1.0.28 - 2017-08-31
+### Changed
+- 中央社匯入圖片圖說加上▲ @appleoxxo
+- 暫時把鉅亨網新聞匯入註解掉 @appleoxxo
+
+### Added
+- 刪除新聞的時候，也要有 log (因應這個功能，所以在 `newLog` 這個 schema 加入新的欄位 `newsTrashed`) @SimonSun
+- cronjob加上中央社圖片匯入 @appleoxxo
+
+### Changed
+- 優化圖片搜尋增加 index @esbb48
+
+###Fixed
+- instant 補傳 MainVideo 的欄位 @esbb48
+
 ## 1.0.27 - 2017-08-24
 ###Fixed
 - 修正首頁控版的時間格式 @wb

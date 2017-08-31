@@ -2,6 +2,7 @@ import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:news:remove');
 
 import { News } from '../../../models';
+import { newsLog } from '../../../libs';
 import redis from '../../../redis';
 
 module.exports = async (req, res, next) => {
@@ -17,6 +18,8 @@ module.exports = async (req, res, next) => {
         if(!news) {
             throw new Error('16003');
         }
+
+        let { UpdatedBy } = req.body;
 
         // 取得原本上一則下一則新聞的資料，並移除 cache
         let nextAndPrev = await redis.getValue(`news${news.sn}NextAndPrev`);
@@ -37,9 +40,14 @@ module.exports = async (req, res, next) => {
         ]);
 
         news.set('isTrashed', true);
+        news.set('UpdatedBy', UpdatedBy);
 
         let removedNews = await news.saveAsync();
         debug('removed news = %j', removedNews);
+
+        // 處理 log
+        removedNews = await removedNews.populate('MainMenu Menus MainPhoto MainVideo Photos Videos Author Tags LastReviewer CreatedBy UpdatedBy').execPopulate();
+        await newsLog(removedNews, 'DELETE');
 
         return res.json(removedNews);
     }catch(err) {
