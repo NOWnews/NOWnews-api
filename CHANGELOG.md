@@ -4,6 +4,7 @@ NOWnews-api change logs
 
 ## [Unreleased]
 
+## 1.0.28 - 2017-08-31
 ### Changed
 - 中央社匯入圖片圖說加上▲ @appleoxxo
 - 暫時把鉅亨網新聞匯入註解掉 @appleoxxo
