@@ -2729,3 +2729,55 @@ None
 #### Query Parameters
 
 None
+
+### [GET] `/moderator/:id`
+
+班表的資訊
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | 班表的 ID | ObjectID | √ | `512000000000000000000001` |
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None
+
+### [PUT] `/moderator/:id`
+
+班表的更新
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | 班表的 ID | ObjectID | √ | `512000000000000000000001` |
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| UpdatedBy | 更新者 | ObjectID | √ | `530000000000000000000001` |
+| month | 月份 | String | √ | `2017-08` |
+| schedule | 每日的排程 | Object | √ | `{ "day1": [], "day2": ["--", "--"], "day3": [],...` |
+
+#### Query Parameters
+
+None
