@@ -5,7 +5,7 @@ NOWnews-api change logs
 ## [Unreleased]
 
 ### Changed
-- 修正匯入新聞若編輯無法選擇正確使用者 @appleoxxo
+- 修正匯入新聞若編輯無法選擇匯入作者 @appleoxxo
 - 中央社匯入圖片圖說加上▲ @appleoxxo
 - 暫時把鉅亨網新聞匯入註解掉 @appleoxxo
 
