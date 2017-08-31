@@ -79,7 +79,7 @@ module.exports = new cron.CronJob({
                 if( firstImage ){
                     let imageOptions = {
                         title: firstImage.alt || '（圖／軍聞社）',
-                        desc: firstImage.alt || '（圖／軍聞社）',
+                        desc: '▲ ' + firstImage.alt || '▲ （圖／軍聞社）',
                         keyword: '軍聞社',
                         imageFrom: 'MNA',
                         originalname: null,
