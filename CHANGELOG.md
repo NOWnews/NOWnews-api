@@ -9,6 +9,7 @@ NOWnews-api change logs
 - 暫時把鉅亨網新聞匯入註解掉 @appleoxxo
 
 ### Added
+- 加上版主班表功能 @Webber
 - 刪除新聞的時候，也要有 log (因應這個功能，所以在 `newLog` 這個 schema 加入新的欄位 `newsTrashed`) @SimonSun
 - cronjob加上中央社圖片匯入 @appleoxxo
 
