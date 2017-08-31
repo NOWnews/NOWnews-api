@@ -57,7 +57,7 @@ module.exports = new cron.CronJob({
 
                 let imageOptions = {
                     title: title,
-                    desc: desc,
+                    desc: '▲' + desc,
                     keyword: '中央社',
                     imageFrom: 'CNA',
                     originalname: null,
