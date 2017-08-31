@@ -491,4 +491,10 @@ module.exports = {
         message: '此平台已經存在',
         statusCode: 400
     },
+
+    // Moderator
+    29001: {
+        message: '[Moderator] 找不到班表',
+        statusCode: 404
+    },
 };

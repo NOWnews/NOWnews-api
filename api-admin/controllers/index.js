@@ -24,6 +24,7 @@ import score from './score';
 import appInfo from './app';
 import searchEngine from './searchEngine';
 import ott from './ott';
+import moderator from './moderator';
 
 
 module.exports = (app) => {
@@ -54,6 +55,7 @@ module.exports = (app) => {
     app.use('/', appInfo);
     app.use('/', searchEngine);
     app.use('/', ott);
+    app.use('/', moderator);
 
     return (req, res, next) => {
         return next();
