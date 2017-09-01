@@ -71,13 +71,10 @@ module.exports = new cron.CronJob({
                 item['content:encoded'] +=`\n更多精彩內容請至 《鉅亨網》 <a target="_blank" href="${link}">連結>></a>`
 
                 //新聞關鍵字
-                var keywords = item['media:keywords'].split(',');
+                var keywords = item['media:keywords'] ? item['media:keywords'].split(',') : [];
                 let tagList = await Promise.mapSeries(keywords, (tag) => {
                     // 變成小寫與去除頭尾空白
                     tag = tag.trim().toLowerCase();
-                    if(!tag){
-                      return;
-                    }
                     return Tag.findOne()
                         .where('name').equals(tag)
                         .where('isTrashed').equals(false)
