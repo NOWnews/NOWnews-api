@@ -44,6 +44,9 @@ module.exports = async (req, res, next) => {
         news = news.toJSON();
         news.pageView = { totalScore: 0 };
 
+        // 目前 IOS App 沒辦法吃 imgapi 的圖
+        news.content = news.content.replace(/http(?:s?):\/\/(?:imgapiv2\.|web\.|m\.)?nownews\.com\/(?:.+src=)/g, '');
+
         // TODO 為了世大運特別加的
         // news = summerUniversiade(news);
 
