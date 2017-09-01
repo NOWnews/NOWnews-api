@@ -4,13 +4,13 @@
 
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:cron:cronjob:importCNYES');
-
+import Promise from 'bluebird';
 import config from 'config';
 import cron from 'cron';
 import _ from 'lodash';
 import moment from 'moment-timezone';
 import { parseRssFeed, newsLog, changeInternalLink } from '../libs';
-import { News, Image } from '../models';
+import { News, Image, Tag } from '../models';
 import { Pageview } from '../pvModels';
 
 module.exports = new cron.CronJob({
@@ -70,6 +70,34 @@ module.exports = new cron.CronJob({
                 const link = "http://news.cnyes.com/?utm_medium=news&utm_source=nownews";
                 item['content:encoded'] +=`\n更多精彩內容請至 《鉅亨網》 <a target="_blank" href="${link}">連結>></a>`
 
+                //新聞關鍵字
+                var keywords = item['media:keywords'].split(',');
+                let tagList = await Promise.mapSeries(keywords, (tag) => {
+                    // 變成小寫與去除頭尾空白
+                    tag = tag.trim().toLowerCase();
+                    if(!tag){
+                      return;
+                    }
+                    return Tag.findOne()
+                        .where('name').equals(tag)
+                        .where('isTrashed').equals(false)
+                        .execAsync()
+                        .then((aliveTag) => {
+
+                            // 如果有存在的 tag 就直接吐出去
+                            if(aliveTag) {
+                                return Promise.resolve(aliveTag);
+                            }
+
+                            // 沒有這個 tag 就幫他建立
+                            return Tag.createAsync({
+                                name: tag,
+                                CreatedBy: '530000000000000000000002',
+                                UpdatedBy: '530000000000000000000002'
+                            });
+                        });
+                });
+
                 /*
                  * 鉅亨網沒有圖片，所以不用處理
                  * 這些處理圖片的 code 留下來當參考
@@ -100,6 +128,7 @@ module.exports = new cron.CronJob({
                 // }
 
                 console.log(`收錄新聞: ${item.title}`);
+                console.log(`新聞關鍵字:${keywords}`);
                 console.log(`新聞連結: ${item.link}`);
                 console.log(`新聞識別唯一值: ${uniqKey}`);
                 console.log(`新聞發布時間: ${newsPubDate.format('YYYY-MM-DD HH:ss:mm')}`);
@@ -128,7 +157,7 @@ module.exports = new cron.CronJob({
                     isSponsored: false,
                     Author: '530000000000000000000002',
                     newsBy: '鉅亨網',
-                    Tags: [],
+                    Tags: tagList || [],
                     isFeed: true,
                     feedFrom: 'CNYES',
                     feedUniqKey: uniqKey,
