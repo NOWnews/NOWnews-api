@@ -55,7 +55,7 @@ module.exports = new cron.CronJob({
 
                 // 處理標題或是短標題多於限制的字數，就把它截掉
                 let title = item.title.slice(0, 25);
-                let shortTitle = item.title.slice(0, 15);
+                let shortTitle = title.length > 16 ? title.slice(0, 13) + '...' : title.slice(0, 15);
 
                 // 如果這則新聞已經存過了，就不收錄
                 let aliveNews = await News.findOne()
@@ -127,7 +127,8 @@ module.exports = new cron.CronJob({
                 //     image = await Image.createAsync(imageOptions);
                 // }
 
-                console.log(`收錄新聞: ${item.title}`);
+                console.log(`新聞標題: ${item.title}`);
+                console.log(`新聞短標題: ${shortTitle}`);
                 console.log(`新聞關鍵字:${keywords}`);
                 console.log(`新聞連結: ${item.link}`);
                 console.log(`新聞識別唯一值: ${uniqKey}`);
