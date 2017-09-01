@@ -4,6 +4,9 @@ NOWnews-api change logs
 
 ## [Unreleased]
 
+### Fixed
+- 修正 ios 內文圖出不來的問題 @webber
+
 ## 1.0.28 - 2017-08-31
 ### Changed
 - 中央社匯入圖片圖說加上▲ @appleoxxo
