@@ -46,7 +46,7 @@ module.exports = async (req, res, next) => {
         let [ users, total ] = await Promise.all([
             cursor
                 .where('isTrashed').equals(false)
-                .where('_id').ne('530000000000000000000001')
+                .where('_id').ne('530000000000000000000001') //superuser不顯示
                 .populate('Role Department Center')
                 .limit(limit)
                 .skip(skip)
@@ -55,7 +55,7 @@ module.exports = async (req, res, next) => {
                 .execAsync(),
             totalCursor
                 .where('isTrashed').equals(false)
-                .where('_id').ne('530000000000000000000001')
+                .where('_id').ne('530000000000000000000001') //superuser不顯示
                 .countAsync()
         ]);
         debug('users = %j', users);
