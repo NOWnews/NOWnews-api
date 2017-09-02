@@ -11,7 +11,6 @@ module.exports = (url) => {
         let fileDest = path.join('uploads');
         let fileName = uuidv4();
         let filePath = path.join(fileDest, fileName);
-        //http://rss.cna.com.tw/client/nownews/pho/photo/20170831/20170831000001M.jpg
         axios.get(url, {
             responseType: 'arraybuffer'
         }).then(response => {
