@@ -41,7 +41,7 @@ module.exports = new cron.CronJob({
             }
 
             let rssJSON = await parseRssFeed(feedUrl);
-            //因中央社圖片XML的結構會依時間有變更 所以這樣指定值 詳見NOWnews-api Gitgub issue #652
+            //因中央社圖片XML的結構會依時間有變更 所以這樣指定值 詳見NOWnews-api Github issue #652
             let imageList =
                 _.get(rssJSON, 'NewsML.NewsItem[0].NewsComponent.NewsComponent.NewsComponent', null) ||
                 _.get(rssJSON, 'NewsML.NewsItem.NewsComponent.NewsComponent.NewsComponent', null);
@@ -114,6 +114,7 @@ module.exports = new cron.CronJob({
                   break;
                 }
 
+                let newFileUrl = `${config.get('admin.imageServer.url')}/${newName}`;
 
                 let imageOptions = {
                     title: title,
@@ -129,7 +130,7 @@ module.exports = new cron.CronJob({
                     height: null,
                     isDeliver: false,
                     Tag: null,
-                    url: `${config.get('admin.imageServer.url')}/${newName}`,
+                    url: newFileUrl,
                     isTrashed: false,
                     CreatedBy: '530000000000000000000004',
                     UpdatedBy: '530000000000000000000004',
@@ -147,6 +148,7 @@ module.exports = new cron.CronJob({
                     });
                 });
                 console.log(`匯入中央社圖片URL: ${href}`);
+                console.log(`匯入中央社圖片新URL: ${newFileUrl}`);
                 console.log(`匯入中央社圖片title: ${title}`);
                 console.log(`-------------------------------------------`);
             }
