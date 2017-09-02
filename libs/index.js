@@ -22,7 +22,7 @@ import parseRssFeed from './parseRssFeed';
 import changeInternalLink from './changeInternalLink';
 import getChannelsByPlatform from './getChannelsByPlatform';
 import getFacebookPostInfo from './getFacebookPostInfo';
-
+import downloadFile from './downloadFile';
 module.exports = {
     hashPwd,
     pagination,
@@ -46,5 +46,6 @@ module.exports = {
     parseRssFeed,
     changeInternalLink,
     getChannelsByPlatform,
-    getFacebookPostInfo
+    getFacebookPostInfo,
+    downloadFile
 };

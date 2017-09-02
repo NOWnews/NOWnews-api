@@ -8,8 +8,19 @@ const debug = Debug('NOWnews-api:cron:cronjob:importCnaImages');
 import config from 'config';
 import cron from 'cron';
 import _ from 'lodash';
-import { parseRssFeed } from '../libs';
+import { parseRssFeed, downloadFile } from '../libs';
 import { Image } from '../models';
+import readChunk from 'read-chunk';
+import fileType from 'file-type';
+import googleCloud from 'google-cloud';
+const gcloud = googleCloud({
+    projectId: config.get('general.googleCloud.projectId'),
+    keyFilename: config.get('general.googleCloud.keyFilename'),
+    promise: Promise
+});
+const gcs = gcloud.storage();
+const bucket = gcs.bucket(config.get('general.googleCloud.storageBucket'));
+
 module.exports = new cron.CronJob({
     // 設定多久跑一次
     cronTime: '0 */3 * * * *',
@@ -47,20 +58,62 @@ module.exports = new cron.CronJob({
                 if(!href){
                   continue;
                 }
+
+
+                let downloadedFilePath = await downloadFile(href);
+
+                // 讀取檔案的前 4100 bytes 存成 buffer
+                let buffer = readChunk.sync(downloadedFilePath, 0, 4100);
+                let { ext } = fileType(buffer);
+
+                // 編輯新的名字與 ObjectId
+                let objectId = mongoose.Types.ObjectId();
+                let now = moment.tz('Asia/Taipei').format('YYYYMMDDHHmm');
+                let newName = `${objectId}_${now}.${ext}`;
+                let newPath = `uploads/${newName}`;
+
+                // scp 到 img.nownews.com 圖床與 google cloud storage
+                let [ imageStorage, cloud ] = await Promise.all([
+                    new Promise((resolve, reject) => {
+                            let username = config.get('admin.imageServer.username');
+                            let password = config.get('admin.imageServer.password');
+                            let host = config.get('admin.imageServer.host');
+                            let folder = config.get('admin.imageServer.folder');
+                            let port = config.get('admin.imageServer.port');
+                            let scpCommand = `${username}:${password}@${host}:${port}:${folder}`;
+
+                            imageServer.scp(newPath, scpCommand, (err) => {
+                                if(err) {
+                                    return reject(err);
+                                }
+                                return resolve('ok');
+                            });
+                        }),
+                    bucket.upload(newPath, {
+                            destination: `images/${newName}`,
+                            public: true
+                        })
+                        .then((file) => {
+                            debug(file);
+                            return Promise.resolve(file);
+                        })
+                ]);
+
                 // 如果這張圖片已經存過了 之後的就都不收錄 因為這資料有按照順序時間排
                 let aliveImage = await Image.findOne()
-                    .where('url').equals(href)
+                    .where('originalname').equals(href)
                     .execAsync();
                 if(aliveImage) {
                   break;
                 }
+
 
                 let imageOptions = {
                     title: title,
                     desc: desc,
                     keyword: '中央社',
                     imageFrom: 'CNA',
-                    originalname: null,
+                    originalname: href,
                     format: null,
                     type: 'NEWS',
                     mode: 'NORMAl',
@@ -69,7 +122,7 @@ module.exports = new cron.CronJob({
                     height: null,
                     isDeliver: false,
                     Tag: null,
-                    url: href,
+                    url: `${config.get('admin.imageServer.url')}/${newName}`,
                     isTrashed: false,
                     CreatedBy: '530000000000000000000004',
                     UpdatedBy: '530000000000000000000004',
@@ -83,7 +136,7 @@ module.exports = new cron.CronJob({
 
             console.log(`------------- Finish Import 中央社 圖片 -------------`);
         } catch (err) {
-            return console.log(err);
+            return console.error(err);
         }
     },
     start: false,
