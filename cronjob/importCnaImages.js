@@ -63,6 +63,13 @@ module.exports = new cron.CronJob({
                   continue;
                 }
 
+                // 如果這張圖片已經存過了 之後的就都不收錄 因為這資料有按照順序時間排
+                let aliveImage = await Image.findOne()
+                    .where('originalname').equals(href)
+                    .execAsync();
+                if(aliveImage) {
+                  break;
+                }
 
                 let downloadedFilePath = await downloadFile(href);
 
@@ -105,14 +112,6 @@ module.exports = new cron.CronJob({
                             return Promise.resolve(file);
                         })
                 ]);
-
-                // 如果這張圖片已經存過了 之後的就都不收錄 因為這資料有按照順序時間排
-                let aliveImage = await Image.findOne()
-                    .where('originalname').equals(href)
-                    .execAsync();
-                if(aliveImage) {
-                  break;
-                }
 
                 let newFileUrl = `${config.get('admin.imageServer.url')}/${newName}`;
 
