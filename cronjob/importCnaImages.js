@@ -121,7 +121,7 @@ module.exports = new cron.CronJob({
                     desc: '▲' + desc,
                     keyword: '中央社',
                     imageFrom: 'CNA',
-                    originalname: href,
+                    originalname: href, //存原圖片URL當作日後判斷已匯入的識別值
                     format: null,
                     type: 'NEWS',
                     mode: 'NORMAl',
