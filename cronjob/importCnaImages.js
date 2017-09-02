@@ -75,6 +75,9 @@ module.exports = new cron.CronJob({
                 let newName = `${objectId}_${now}.${ext}`;
                 let newPath = `uploads/${newName}`;
 
+                // 將圖片名稱換掉
+                fs.renameSync(downloadedFilePath, newPath);
+
                 // scp 到 img.nownews.com 圖床與 google cloud storage
                 let [ imageStorage, cloud ] = await Promise.all([
                     new Promise((resolve, reject) => {
@@ -132,6 +135,16 @@ module.exports = new cron.CronJob({
                 };
 
                 image = await Image.createAsync(imageOptions);
+
+                // 刪掉檔案
+                await new Promise((resolve, reject) => {
+                    fs.unlink(newPath, (err, result) => {
+                        if(err) {
+                            return reject(err);
+                        }
+                        return resolve(result);
+                    });
+                });
                 console.log(`匯入中央社圖片URL: ${href}`);
                 console.log(`匯入中央社圖片title: ${title}`);
                 console.log(`-------------------------------------------`);
