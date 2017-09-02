@@ -12,6 +12,7 @@ import { parseRssFeed, downloadFile } from '../libs';
 import { Image } from '../models';
 import moment from 'moment-timezone';
 import mongoose from 'mongoose';
+import fs from 'fs';
 import readChunk from 'read-chunk';
 import fileType from 'file-type';
 import imageServer from 'scp2';
