@@ -39,7 +39,7 @@ module.exports = new cron.CronJob({
 
                 // 如果不是在設定的時間區間內的新聞，就不需要收錄
                 let newsPubDate = moment.tz(new Date(item.pubDate), 'Asia/Taipei');
-                if(newsPubDate < prevTime) {
++                if( newsPubDate.isBefore(prevTime) ) {
                     continue;
                 }
 
