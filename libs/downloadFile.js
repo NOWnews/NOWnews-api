@@ -8,7 +8,11 @@ const debug = Debug('NOWnews-api:libs:downloadFile');
 
 module.exports = (url) => {
     return new Promise((resolve, reject) => {
-        let fileDest = path.join('uploads');
+        let dirPath = 'uploads';
+        if (!fs.existsSync(dirPath)){
+            fs.mkdirSync(dirPath);
+        }
+        let fileDest = path.join(dirPath);
         let fileName = uuidv4();
         let filePath = path.join(fileDest, fileName);
         axios.get(url, {
