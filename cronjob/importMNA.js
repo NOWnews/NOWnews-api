@@ -67,15 +67,23 @@ module.exports = new cron.CronJob({
                    continue;
                 }
 
-
+                //新聞內容如果有內連的話 都改成我們首頁
                 item.description = changeInternalLink(item.description);
-                let { firstImage, htmlContent } = getAndRemoveFirstImage(item.description);
-                item.description = htmlContent;
 
+                //如果內文有圖片 把第一個圖片移除 並取出當作主圖
+                let { firstImage, htmlContent } = getAndRemoveFirstImage(item.description);
+
+                item.description = htmlContent;
                 item.description += `新聞來源:國防部軍事新聞通訊社`;
 
-                // 如果內容有圖的話 抓內容的第一張圖當主圖
                 let mainPhoto = null;
+                const mnaImagesObjectIds = [
+                  '511000000000000000000002',
+                  '511000000000000000000003',
+                  '511000000000000000000004'
+                ];
+                let randomDefaultImage = mnaImagesObjectIds[Math.floor(Math.random() * mnaImagesObjectIds.length)];
+
                 if( firstImage ){
                     let imageOptions = {
                         title: firstImage.alt || '（圖／軍聞社）',
@@ -100,6 +108,7 @@ module.exports = new cron.CronJob({
                     mainPhoto = await Image.createAsync(imageOptions);
                 }
 
+
                 console.log(`------------------軍聞社--------------------`);
                 console.log(`收錄新聞: ${item.title}`);
                 console.log(`新聞連結: ${item.link}`);
@@ -115,7 +124,7 @@ module.exports = new cron.CronJob({
                     summary: item.item || title,
                     MainMenu: '560000000000000000000001', //政治
                     Menus: ['5952deb29413e266c5ddad41'], //國防軍武
-                    MainPhoto: mainPhoto ?  mainPhoto._id : '511000000000000000000001',
+                    MainPhoto: mainPhoto ?  mainPhoto._id : randomDefaultImage,
                     MainVideo: null,
                     content: item.description,
                     Photos: [],
