@@ -39,7 +39,7 @@ module.exports = new cron.CronJob({
 
                 // 如果不是在設定的時間區間內的新聞，就不需要收錄
                 let newsPubDate = moment.tz(new Date(item.pubDate), 'Asia/Taipei');
-+                if( newsPubDate.isBefore(prevTime) ) {
+                if( newsPubDate.isBefore(prevTime) ) {
                     continue;
                 }
 
@@ -133,6 +133,15 @@ module.exports = new cron.CronJob({
                 console.log(`收錄時間區間: ${prevTime.format('YYYY-MM-DD HH:ss:mm')} ~ ${nowTime.format('YYYY-MM-DD HH:ss:mm')}`);
                 console.log(`-------------------------------------------`);
 
+                // 鉅亨網完全沒有圖片 全部主圖都隨機從這4個墊檔圖指定
+                const cnyesImagesObjectIds = [
+                  '511000000000000000000005',
+                  '511000000000000000000006',
+                  '511000000000000000000007',
+                  '511000000000000000000008',
+                ];
+                let randomDefaultImageId = cnyesImagesObjectIds[Math.floor(Math.random() * cnyesImagesObjectIds.length)];
+
                 let newsOptions = {
                     title: title,
                     location: [121.5914087,25.0693482], //台北市內湖區的座標
@@ -140,7 +149,7 @@ module.exports = new cron.CronJob({
                     summary: title, //鉅亨網沒有提供summary這個欄位 但前台og tag要用到summary 所以放title
                     MainMenu: '560000000000000000000016',
                     Menus: ['560000000000000000000013'],
-                    MainPhoto: '511000000000000000000001',
+                    MainPhoto: randomDefaultImageId,
                     MainVideo: null,
                     content: item['content:encoded'],
                     Photos: [],
