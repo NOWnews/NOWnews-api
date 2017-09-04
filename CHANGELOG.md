@@ -4,8 +4,12 @@ NOWnews-api change logs
 
 ## [Unreleased]
 
+## 1.0.30 - 2017-09-04
 ### Fixed
 - 修正 中央社匯入圖片有IP限制 外網看不到的問題 @appleoxxo
+
+## 1.0.29 - 2017-09-01
+### Fixed
 - 修正 ios 內文圖出不來的問題 @webber
 
 ## 1.0.28 - 2017-08-31
