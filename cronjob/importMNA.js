@@ -82,7 +82,7 @@ module.exports = new cron.CronJob({
                   '511000000000000000000003',
                   '511000000000000000000004'
                 ];
-                let randomDefaultImage = mnaImagesObjectIds[Math.floor(Math.random() * mnaImagesObjectIds.length)];
+                let randomDefaultImageId = mnaImagesObjectIds[Math.floor(Math.random() * mnaImagesObjectIds.length)];
 
                 if( firstImage ){
                     let imageOptions = {
