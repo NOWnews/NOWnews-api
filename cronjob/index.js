@@ -1,4 +1,3 @@
-
 import updateAllHotNews from './updateAllHotNews';
 import updatePersonalize from './updatePersonalize';
 import updateHotKeywords from './updateHotKeywords';
