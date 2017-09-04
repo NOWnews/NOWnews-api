@@ -124,7 +124,7 @@ module.exports = new cron.CronJob({
                     summary: item.item || title,
                     MainMenu: '560000000000000000000001', //政治
                     Menus: ['5952deb29413e266c5ddad41'], //國防軍武
-                    MainPhoto: mainPhoto ?  mainPhoto._id : randomDefaultImage,
+                    MainPhoto: mainPhoto ?  mainPhoto._id : randomDefaultImageId,
                     MainVideo: null,
                     content: item.description,
                     Photos: [],
