@@ -25,12 +25,13 @@
                 "int": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_int.xml"],
                 "life": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_life.xml"],
                 "local": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_local.xml"],
-                "politics":["http://rss.cna.com.tw/client/nownews/cfp/article_feed_politics.xml"],
+                "politics": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_politics.xml"],
                 "society": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_society.xml"],
                 "sports": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_sports_cn.xml",
-                "http://rss.cna.com.tw/client/nownews/cfp/article_feed_sports_int.xml",
-                "http://rss.cna.com.tw/client/nownews/cfp/article_feed_sports_tw.xml"],
-                "stars":["http://rss.cna.com.tw/client/nownews/cfp/article_feed_stars.xml"],
+                    "http://rss.cna.com.tw/client/nownews/cfp/article_feed_sports_int.xml",
+                    "http://rss.cna.com.tw/client/nownews/cfp/article_feed_sports_tw.xml"
+                ],
+                "stars": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_stars.xml"],
                 "tech": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_tech.xml"]
 
             }
