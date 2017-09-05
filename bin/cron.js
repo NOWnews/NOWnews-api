@@ -2,11 +2,11 @@ require('babel-core/register');
 require('babel-polyfill');
 
 let initDataStart = require('../initData/start');
+const cronjobs = require('../cronjob');
 
 // 初始化資料
 initDataStart()
     .then(result => {
-        const cronjobs = require('../cronjob');
         cronjobs();
         console.log('cron job start');
     }).catch(err => {
