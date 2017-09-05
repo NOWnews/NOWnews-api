@@ -3,6 +3,8 @@
 NOWnews-api change logs
 
 ## [Unreleased]
+### Fixed
+- 修正 google trace engine 造成 CPU 與 Memory 消耗過大問題 @SimonSun
 
 ## 1.0.30 - 2017-09-04
 ### Fixed
