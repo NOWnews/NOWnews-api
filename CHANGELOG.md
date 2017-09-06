@@ -3,7 +3,8 @@
 NOWnews-api change logs
 
 ## [Unreleased]
-
+### Added
+- 新增中央社新聞匯入 @appleoxxo
 ## 1.0.30 - 2017-09-04
 ### Fixed
 - 修正 中央社匯入圖片有IP限制 外網看不到的問題 @appleoxxo

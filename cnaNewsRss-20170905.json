@@ -1,0 +1,1876 @@
+{
+    "NewsML": {
+        "Catalog": {
+            "Href": "http://www.feedpartner.net/catalog.MasterCatalog.xml"
+        },
+        "NewsEnvelope": {
+            "DateAndTime": "20170905T083817",
+            "NewsService": {
+                "FormalName": "Thumbnail",
+                "link-url": "http://www.cna.com.tw",
+                "$t": "http://rss.cna.com.tw/images/cna_logo_msn_165x35.png"
+            }
+        },
+        "NewsItem": [{
+            "LinkType": "opennew",
+            "Identification": {
+                "NewsIdentifier": {
+                    "ProviderId": "中央通訊社"
+                }
+            },
+            "NewsManagement": {
+                "NewsItemType": {
+                    "FormalName": "News"
+                },
+                "FirstCreated": "20170905T083320",
+                "ThisRevisionCreated": "20170905T083320",
+                "Status": {
+                    "FormalName": "Usable"
+                }
+            },
+            "NewsComponent": {
+                "Duid": "newsitem_20170905CFP0231",
+                "Essential": "no",
+                "EquivalentsList": "no",
+                "NewsLines": {
+                    "CopyrightLine": "Copyright (c) The Central News Agency. All Rights Reserved."
+                },
+                "NewsComponent": {
+                    "Duid": "20170905CFP0231",
+                    "DateLine": "20170905T083320",
+                    "Author": "繆宗翰",
+                    "NewsComponent": {
+                        "Role": {
+                            "FormalName": "Main"
+                        },
+                        "NewsLines": {
+                            "HeadLine": "洞朗對峙後  金磚宣言中印各有所得",
+                            "SlugLine": "金磚國家峰會「廈門\n宣言」這次罕見點名巴基斯坦若干恐怖組織。學者劉復\n國分析，中國對此做出讓步，可視為給印度撤軍洞朗的\n台階，也讓中共領導人習近平在19大前獲得更高威望。\n\n    中國官媒新華社昨晚9時許公布2017金磚國家峰會\n「廈門宣言」，其中直接點名在巴基斯坦的恐怖組織「\n虔誠 ...",
+                            "MoreLink": {}
+                        },
+                        "ContentItem": {
+                            "MediaType": {
+                                "FormalName": "ComplexData"
+                            },
+                            "MimeType": {
+                                "FormalName": "text/vnd.IPTC.NITF"
+                            },
+                            "DataContent": {
+                                "nitf": {
+                                    "body": {
+                                        "body.head": {
+                                            "hedline": {
+                                                "hl1": "洞朗對峙後  金磚宣言中印各有所得"
+                                            }
+                                        },
+                                        "body.content": {
+                                            "p": ["（中央社記者繆宗翰台北5日電）金磚國家峰會「廈門宣言」這次罕見點名巴基斯坦若干恐怖組織。學者劉復國分析，中國對此做出讓步，可視為給印度撤軍洞朗的台階，也讓中共領導人習近平在19大前獲得更高威望。", "中國官媒新華社昨晚9時許公布2017金磚國家峰會「廈門宣言」，其中直接點名在巴基斯坦的恐怖組織「虔誠軍」（Lashkar-e-Taiba）、「穆罕默德軍」（Jaish-e-Mohammed ）。", "對比去年金磚國家峰會在印度發表的「果阿宣言」。當時，主辦國印度希望金磚國家能討論反恐合作，並在宣言中提到「穆罕默德軍」、「虔誠軍」，卻因中國反對未能如願。", "最後「果阿宣言」僅呼籲「各國應確保領土不被利用來從事恐怖主義活動」，並要求聯合國毫不拖延地通過「關於打擊國際恐怖主義的全面公約」。", "為此，印度媒體與美聯社等外媒報導都形容這次「廈門宣言」是中國讓步，與印度的外交勝利。", "長期研究亞太區域戰略的國立政治大學國際關係研究中心研究員劉復國對中央社記者分析，這次的宣言很可能是中國給印度自洞朗（Doklam）撤軍的台階。", "這次峰會前夕，對峙長達2個多月的中印洞朗對峙於8月底暫告結束。印方宣稱雙方撤軍，中國則聲稱「印方將越界人員和設備全部撤回邊界印方一側，中方現場人員對此進行了確認」。", "劉復國分析，除了氣候因素使洞朗對峙必須在9月之前落幕外，金磚峰會是中印雙方非常重視的區域集團組織，雙方不願僵局持續到峰會上，勢必透過外交管道在峰會前密切磋商，才能使對峙順利落幕，這次的宣言可能就是關鍵。", "但劉復國也認為，中國在這次宣言中並非一昧讓步，涉及新疆的「東突厥斯坦伊斯蘭運動」、「烏茲別克斯坦伊斯蘭運動」等組織，同樣也被列入宣言當中；而中國這次藉由宣言，確定與印度對峙正式告一段落，穩定區域情勢，也有助習近平在中共第19次全國代表大會前提高領導威望。1060905"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }, {
+            "LinkType": "opennew",
+            "Identification": {
+                "NewsIdentifier": {
+                    "ProviderId": "中央通訊社"
+                }
+            },
+            "NewsManagement": {
+                "NewsItemType": {
+                    "FormalName": "News"
+                },
+                "FirstCreated": "20170905T080419",
+                "ThisRevisionCreated": "20170905T080419",
+                "Status": {
+                    "FormalName": "Usable"
+                }
+            },
+            "NewsComponent": {
+                "Duid": "newsitem_20170905CFP0218",
+                "Essential": "no",
+                "EquivalentsList": "no",
+                "NewsLines": {
+                    "CopyrightLine": "Copyright (c) The Central News Agency. All Rights Reserved."
+                },
+                "NewsComponent": {
+                    "Duid": "20170905CFP0218",
+                    "DateLine": "20170905T080419",
+                    "Author": "中央社",
+                    "NewsComponent": {
+                        "Role": {
+                            "FormalName": "Main"
+                        },
+                        "NewsLines": {
+                            "HeadLine": "網傳癌末  中紀委公布王岐山湖南調研",
+                            "SlugLine": "日前網傳中共中央紀律檢查委員\n會書記王岐山罹患肝癌末期的消息後，中共中央紀委網\n站今天下午貼出王岐山3至5日於湖南主持巡察工作座談\n會的消息，並稱王岐山看望幹部，與黨員交談。\n\n    據中共中央紀委與大陸監察部聯合官網，王岐山3\n日至5日在湖南省調研並主持召開巡察工作座談會。\n\n  ...",
+                            "MoreLink": {}
+                        },
+                        "ContentItem": {
+                            "MediaType": {
+                                "FormalName": "ComplexData"
+                            },
+                            "MimeType": {
+                                "FormalName": "text/vnd.IPTC.NITF"
+                            },
+                            "DataContent": {
+                                "nitf": {
+                                    "body": {
+                                        "body.head": {
+                                            "hedline": {
+                                                "hl1": "網傳癌末  中紀委公布王岐山湖南調研"
+                                            }
+                                        },
+                                        "body.content": {
+                                            "p": ["（中央社台北5日電）日前網傳中共中央紀律檢查委員會書記王岐山罹患肝癌末期的消息後，中共中央紀委網站今天下午貼出王岐山3至5日於湖南主持巡察工作座談會的消息，並稱王岐山看望幹部，與黨員交談。", "據中共中央紀委與大陸監察部聯合官網，王岐山3日至5日在湖南省調研並主持召開巡察工作座談會。", "他在會上表示，要學習領會中共總書記習近平「7‧26」重要講話精神，深入貫徹中共第18屆中央委員會第6次全體會議精神，牢固樹立「四個意識」，推動全面從嚴治黨向基層延伸拓展，以優異成績迎接黨的19大（中共第19次全國代表大會）勝利召開。", "此外，中共中央政治局委員、中央書記處書記、中央巡視工作領導小組副組長趙樂際出席並講話。", "除了王岐山講話，中紀委官網也稱王岐山到中共株洲市委員會巡察辦公室看望巡察幹部，並到中國中車株洲電力機車有限公司考察，還深入瀏陽市官橋鎮石灰嘴村和黨員交談。", "現居美國的中國維權人士北風（本名溫雲超）2日在推特稱王岐山已肝癌末期「時日無多」，一時在微信等大陸社群網站引起討論。1060905"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }, {
+            "LinkType": "opennew",
+            "Identification": {
+                "NewsIdentifier": {
+                    "ProviderId": "中央通訊社"
+                }
+            },
+            "NewsManagement": {
+                "NewsItemType": {
+                    "FormalName": "News"
+                },
+                "FirstCreated": "20170905T080019",
+                "ThisRevisionCreated": "20170905T080019",
+                "Status": {
+                    "FormalName": "Usable"
+                }
+            },
+            "NewsComponent": {
+                "Duid": "newsitem_20170905CFP0213",
+                "Essential": "no",
+                "EquivalentsList": "no",
+                "NewsLines": {
+                    "CopyrightLine": "Copyright (c) The Central News Agency. All Rights Reserved."
+                },
+                "NewsComponent": {
+                    "Duid": "20170905CFP0213",
+                    "DateLine": "20170905T080019",
+                    "Author": "陳家倫",
+                    "NewsComponent": {
+                        "Role": {
+                            "FormalName": "Main"
+                        },
+                        "NewsLines": {
+                            "HeadLine": "中印對峙落幕  習近平會莫迪談和平",
+                            "SlugLine": "中印對峙落幕後，中\n國大陸國家主席習近平今天與印度總理莫迪舉行雙邊會\n晤時表示，盼印度能正確、理性看待中國發展，雙方應\n相互尊重、求同存異，維護好邊境地區的和平安寧。\n\n    莫迪（Narendra Modi）則說，印中不應視對方為\n對手，而應使合作成為兩國關係主流，雙方應共同努力\n ...",
+                            "MoreLink": {}
+                        },
+                        "ContentItem": {
+                            "MediaType": {
+                                "FormalName": "ComplexData"
+                            },
+                            "MimeType": {
+                                "FormalName": "text/vnd.IPTC.NITF"
+                            },
+                            "DataContent": {
+                                "nitf": {
+                                    "body": {
+                                        "body.head": {
+                                            "hedline": {
+                                                "hl1": "中印對峙落幕  習近平會莫迪談和平"
+                                            }
+                                        },
+                                        "body.content": {
+                                            "p": ["（中央社記者陳家倫廈門5日電）中印對峙落幕後，中國大陸國家主席習近平今天與印度總理莫迪舉行雙邊會晤時表示，盼印度能正確、理性看待中國發展，雙方應相互尊重、求同存異，維護好邊境地區的和平安寧。", "莫迪（Narendra Modi）則說，印中不應視對方為對手，而應使合作成為兩國關係主流，雙方應共同努力維護邊境地區和平安寧。印方願同中方共同努力，確保兩國關係穩定發展。", "2017年金磚國家峰會3至5日在中國大陸福建省廈門市舉行，今天是峰會議程最後一天。根據新華社報導，習近平5日在廈門會見莫迪；另據印度媒體報導，這場會晤為時一小時。", "習近平表示，希望印方能夠正確、理性看待中國發展。要向世界表明，和平相處、合作共贏是中印兩國唯一正確的選擇。雙方應相互尊重、求同存異，維護好邊境地區的和平安寧。", "習近平還向莫迪說，健康穩定的中印關係符合兩國人民根本利益。中方願與印方一道，以雙方共同倡導的和平共處五項原則為指引，增進政治互信，推進互利合作，推動中印關係沿著「正確軌道」向前發展。", "報導引述莫迪表示，印中不應視對方為對手，而應使合作成為兩國關係主流。雙方應增進政治互信，共同努力維護邊境地區和平安寧。印方願同中方共同努力，確保兩國關係穩定發展。", "中國大陸與印度自6月18日起在雙方邊界的洞朗地區對峙，直至2017年金磚國家峰會召開前6天，長達73天的對峙才落幕。", "莫迪4日上午出席2017年金磚國家領導人會晤前與習近平首次公開會面並握手，並於5日舉行雙邊會晤。1060905"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }, {
+            "LinkType": "opennew",
+            "Identification": {
+                "NewsIdentifier": {
+                    "ProviderId": "中央通訊社"
+                }
+            },
+            "NewsManagement": {
+                "NewsItemType": {
+                    "FormalName": "News"
+                },
+                "FirstCreated": "20170905T072917",
+                "ThisRevisionCreated": "20170905T072917",
+                "Status": {
+                    "FormalName": "Usable"
+                }
+            },
+            "NewsComponent": {
+                "Duid": "newsitem_20170905CFP0193",
+                "Essential": "no",
+                "EquivalentsList": "no",
+                "NewsLines": {
+                    "CopyrightLine": "Copyright (c) The Central News Agency. All Rights Reserved."
+                },
+                "NewsComponent": {
+                    "Duid": "20170905CFP0193",
+                    "DateLine": "20170905T072917",
+                    "Author": "中央社",
+                    "NewsComponent": {
+                        "Role": {
+                            "FormalName": "Main"
+                        },
+                        "NewsLines": {
+                            "HeadLine": "青海化隆拆清真寺喇叭  漢回矛盾再現",
+                            "SlugLine": "據報導，中國大陸青海省海東市\n化隆縣8月拆除縣內355座清真寺的1065個高音喇叭，宣\n稱是「為民所想，利於環境整治」。當地回民批評這是\n「宗教歧視」，但漢民卻叫好並呼籲全省都應比照。\n\n    據海東時報8月19日報導，化隆縣按照中共海東市\n委相關要求，利用3天全部清理摘除355座清真 ...",
+                            "MoreLink": {}
+                        },
+                        "ContentItem": {
+                            "MediaType": {
+                                "FormalName": "ComplexData"
+                            },
+                            "MimeType": {
+                                "FormalName": "text/vnd.IPTC.NITF"
+                            },
+                            "DataContent": {
+                                "nitf": {
+                                    "body": {
+                                        "body.head": {
+                                            "hedline": {
+                                                "hl1": "青海化隆拆清真寺喇叭  漢回矛盾再現"
+                                            }
+                                        },
+                                        "body.content": {
+                                            "p": ["（中央社台北5日電）據報導，中國大陸青海省海東市化隆縣8月拆除縣內355座清真寺的1065個高音喇叭，宣稱是「為民所想，利於環境整治」。當地回民批評這是「宗教歧視」，但漢民卻叫好並呼籲全省都應比照。", "據海東時報8月19日報導，化隆縣按照中共海東市委相關要求，利用3天全部清理摘除355座清真寺的高音喇叭，「有效切斷了農村及集鎮的噪聲汙染源」。", "中共海東市委副書記、統戰部長李國忠對此作出批示表示肯定，還要求編輯專報，報中共青海省委統戰部、省民宗委等上級部門，下發各縣區「學習借鑑」；同時要求繼續關注指導其他縣區加緊做好相關工作。", "俄羅斯衛星通訊社中文網4日報導，以回族人居多的化隆縣政府曾希望中國大陸國家機關和社會組織提出旨在降低讓居民不滿的噪音汙染的建議；清真寺的高音喇叭成為環保部門的主要清理對象。", "報導指出，近年來中國大陸西北各地清真寺數量快速增加，當地媒體經常報導有關居民抱怨高音喇叭影響睡眠的問題。", "根據伊斯蘭教（回教）傳統，尖塔上的宣禮聲，每天相隔均等時間響5次，夜間也不例外，召喚教徒祈禱。現在清真寺經常為此藉助高音喇叭。", "報導說，雖然海東市政府強調此舉與壓制伊斯蘭教毫無關係，不過青海回教徒還是在社群網站上指出，該決定帶有宗教歧視特徵。但非回教徒卻支持這一措施，並希望能在其他地方推廣這一措施。", "從社群網站微博可看到漢回矛盾為此更形針鋒相對。部分回民點名李國忠是「貪官汙吏」，藉噪音汙染「破壞民族團結」。但部分漢民卻稱李國忠是「民族英雄」，並呼籲拆除喇叭應擴及到青海全省。", "據中共青海省紀律檢查委員會2016年2月6日公告，原任中共青海省格爾木市委書記的李國忠，因違反工作紀律被給予黨內警告處分。1060905"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }, {
+            "LinkType": "opennew",
+            "Identification": {
+                "NewsIdentifier": {
+                    "ProviderId": "中央通訊社"
+                }
+            },
+            "NewsManagement": {
+                "NewsItemType": {
+                    "FormalName": "News"
+                },
+                "FirstCreated": "20170905T062115",
+                "ThisRevisionCreated": "20170905T062115",
+                "Status": {
+                    "FormalName": "Usable"
+                }
+            },
+            "NewsComponent": {
+                "Duid": "newsitem_20170905CFP0166",
+                "Essential": "no",
+                "EquivalentsList": "no",
+                "NewsLines": {
+                    "CopyrightLine": "Copyright (c) The Central News Agency. All Rights Reserved."
+                },
+                "NewsComponent": {
+                    "Duid": "20170905CFP0166",
+                    "DateLine": "20170905T062115",
+                    "Author": "陳家倫",
+                    "NewsComponent": {
+                        "Role": {
+                            "FormalName": "Main"
+                        },
+                        "NewsLines": {
+                            "HeadLine": "習近平主持金磚記者會  8台媒全數進入",
+                            "SlugLine": "中國大陸國家主席習\n近平今天主持金磚峰會記者會時說，世界正經歷深刻複\n雜的變化，金磚國家應推動建立更公正合理的國際秩序\n。這場記者會，赴廈門採訪的8家台媒全數獲准進入。\n\n    2017年金磚國家峰會3至5日在廈門舉行，今天上午\n首先登場的是新興市場國家與發展中國家對話會，會議\n由習 ...",
+                            "MoreLink": {}
+                        },
+                        "ContentItem": {
+                            "MediaType": {
+                                "FormalName": "ComplexData"
+                            },
+                            "MimeType": {
+                                "FormalName": "text/vnd.IPTC.NITF"
+                            },
+                            "DataContent": {
+                                "nitf": {
+                                    "body": {
+                                        "body.head": {
+                                            "hedline": {
+                                                "hl1": "習近平主持金磚記者會  8台媒全數進入"
+                                            }
+                                        },
+                                        "body.content": {
+                                            "p": ["（中央社記者陳家倫廈門5日電）中國大陸國家主席習近平今天主持金磚峰會記者會時說，世界正經歷深刻複雜的變化，金磚國家應推動建立更公正合理的國際秩序。這場記者會，赴廈門採訪的8家台媒全數獲准進入。", "2017年金磚國家峰會3至5日在廈門舉行，今天上午首先登場的是新興市場國家與發展中國家對話會，會議由習近平主持。對話會結束後，再由習近平主持中外記者會，他在記者會上共發表約13分鐘的講話。", "根據新華社，習近平上午在新興市場國家與發展中國家對話會上宣布，中國將在南南合作（發展中國家合作）援助基金項目下提供5億美元的援助，幫助其他發展中國家應對饑荒、難民、氣候變化、公共衛生等挑戰。", "而在中外記者會上，習近平指出，金磚五國領導人認為，當今世界正經歷著深刻複雜的變化，世界經濟成長前景好轉，但各種全球性挑戰層出不窮。", "習近平表示，金磚五國應該深化在重大問題上的溝通和協調，推動建立更加公正合理的國際秩序；應發揮建設性作用，捍衛國際關係基本準則，維護國際公平正義。", "他還提到，深化政治安全合作，增進戰略互信，符合金磚五國共同利益和國際社會期待。此外，金磚五國在反恐、網路安全、維和、中東問題等領域的合作順利推進，提高金磚國家的影響力。", "當提到新興市場國家與發展中國家對話會時，習近平表示，對話會發出深化南南合作和全球發展合作的強烈訊號。各國領導人一致認為，應落實2030年可持續發展議程、完善全球經濟治理等發揮更大作用，深化南南合作，打造「金磚+」模式。", "2017年金磚國家峰會共有3000多名中外記者赴廈門採訪，而根據現場計算，這場中外記者會共開放200多名中外記者進入。原本前往廈門採訪的8家台灣媒體只獲得6張採訪證，但最後均獲發證件。1060905"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }, {
+            "LinkType": "opennew",
+            "Identification": {
+                "NewsIdentifier": {
+                    "ProviderId": "中央通訊社"
+                }
+            },
+            "NewsManagement": {
+                "NewsItemType": {
+                    "FormalName": "News"
+                },
+                "FirstCreated": "20170905T055914",
+                "ThisRevisionCreated": "20170905T055914",
+                "Status": {
+                    "FormalName": "Usable"
+                }
+            },
+            "NewsComponent": {
+                "Duid": "newsitem_20170905CFP0153",
+                "Essential": "no",
+                "EquivalentsList": "no",
+                "NewsLines": {
+                    "CopyrightLine": "Copyright (c) The Central News Agency. All Rights Reserved."
+                },
+                "NewsComponent": {
+                    "Duid": "20170905CFP0153",
+                    "DateLine": "20170905T055914",
+                    "Author": "中央社",
+                    "NewsComponent": {
+                        "Role": {
+                            "FormalName": "Main"
+                        },
+                        "NewsLines": {
+                            "HeadLine": "北韓核試遭陸淡化  微博搜不到氫彈",
+                            "SlugLine": "北韓3日宣稱成功試爆氫彈，全球\n包括鄰國中國在內都十分關注，但中國大陸社群平台微\n博卻將「氫彈」二字視為敏感詞，無法搜尋到相關結果\n。\n\n    在新浪微博實測，輸入「氫彈」後出現「根據相關\n法律法規和政策，搜索結果未予顯示」。\n\n    但在海外網站「自由微博」排行則顯示，「氫彈」 ...",
+                            "MoreLink": {}
+                        },
+                        "ContentItem": {
+                            "MediaType": {
+                                "FormalName": "ComplexData"
+                            },
+                            "MimeType": {
+                                "FormalName": "text/vnd.IPTC.NITF"
+                            },
+                            "DataContent": {
+                                "nitf": {
+                                    "body": {
+                                        "body.head": {
+                                            "hedline": {
+                                                "hl1": "北韓核試遭陸淡化  微博搜不到氫彈"
+                                            }
+                                        },
+                                        "body.content": {
+                                            "p": ["（中央社台北5日電）北韓3日宣稱成功試爆氫彈，全球包括鄰國中國在內都十分關注，但中國大陸社群平台微博卻將「氫彈」二字視為敏感詞，無法搜尋到相關結果。", "在新浪微博實測，輸入「氫彈」後出現「根據相關法律法規和政策，搜索結果未予顯示」。", "但在海外網站「自由微博」排行則顯示，「氫彈」和「朝鮮（北韓）」分別名列熱搜排行的2、3名。自由微博被認為能顯示和統計新浪用戶受當局審查後被刪除的微博內容。", "美國之音引述海外網站「中國數字（數位）時代」的消息指出，大陸政府下屬的出版審查機構下令，有關「朝鮮宣布金正恩下令氫彈試驗、試驗成功」的相關消息，「一律關閉評論」、「各網站不得刻意炒作有關話題」。", "即使在大陸搜尋網站百度上輸入「氫彈」二字，與新聞相關的結果也極少。", "北韓3日試爆氫彈的行動，是自2006年以來的第6次核試，由於發射時機在中國主辦的金磚國家峰會登場同一天，被認為是搗亂之舉。", "儘管中國大陸外交部對此譴責，但大陸媒體的反應很克制。中國中央電視台4日未再提北韓試爆氫彈事件；人民日報海外網微信公眾號俠客島文章「朝鮮又搞核試驗！中國外交部：堅決反對、強烈譴責」的評論文章也被封住。1060905"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }, {
+            "LinkType": "opennew",
+            "Identification": {
+                "NewsIdentifier": {
+                    "ProviderId": "中央通訊社"
+                }
+            },
+            "NewsManagement": {
+                "NewsItemType": {
+                    "FormalName": "News"
+                },
+                "FirstCreated": "20170905T053613",
+                "ThisRevisionCreated": "20170905T053613",
+                "Status": {
+                    "FormalName": "Usable"
+                }
+            },
+            "NewsComponent": {
+                "Duid": "newsitem_20170905CFP0139",
+                "Essential": "no",
+                "EquivalentsList": "no",
+                "NewsLines": {
+                    "CopyrightLine": "Copyright (c) The Central News Agency. All Rights Reserved."
+                },
+                "NewsComponent": {
+                    "Duid": "20170905CFP0139",
+                    "DateLine": "20170905T053613",
+                    "Author": "張謙",
+                    "NewsComponent": {
+                        "Role": {
+                            "FormalName": "Main"
+                        },
+                        "NewsLines": {
+                            "HeadLine": "香港電台更動引關注  陸官媒節目保留",
+                            "SlugLine": "官方香港電台近日調動\n節目，保留了中國大陸中央人民廣播電台香港之聲節目\n，以利於香港和大陸之間的文化交流。\n\n    與此同時，香港電台也保留了英國廣播公司國際頻\n道（BBC World Service），但時間有所更動。\n\n    香港電台這次調動節目的原因，是配合數位廣播的\n取消 ...",
+                            "MoreLink": {}
+                        },
+                        "ContentItem": {
+                            "MediaType": {
+                                "FormalName": "ComplexData"
+                            },
+                            "MimeType": {
+                                "FormalName": "text/vnd.IPTC.NITF"
+                            },
+                            "DataContent": {
+                                "nitf": {
+                                    "body": {
+                                        "body.head": {
+                                            "hedline": {
+                                                "hl1": "香港電台更動引關注  陸官媒節目保留"
+                                            }
+                                        },
+                                        "body.content": {
+                                            "p": ["（中央社記者張謙香港5日電）官方香港電台近日調動節目，保留了中國大陸中央人民廣播電台香港之聲節目，以利於香港和大陸之間的文化交流。", "與此同時，香港電台也保留了英國廣播公司國際頻道（BBC World Service），但時間有所更動。", "香港電台這次調動節目的原因，是配合數位廣播的取消。", "香港當局多年前推動本地廣播電台數位化，讓廣播更加清晰。但多年下來，數位廣播並不普及，當局決定取消數位廣播。", "香港電台最早配合當局的數位化政策，並自2012年開設多條頻道，同時播放大陸央廣和BBC節目。", "但隨著數位廣播的取消，有關節目改由香港電台原有的頻道播放。自本月3日起，香港電台其中一條AM頻道24小時轉播央廣香港之聲。", "BBC節目則改由FM頻道播放，時間由原先的24小時改由每晚11時至早上7時。", "上述變動已引起部分媒體關注，但港台機構傳訊組總監伍曼儀早前曾向本地媒體說，央廣香港之聲可以促進香港及大陸的文化交流，即使數位廣播中止，有關節目也有必要保留。", "至於BBC頻道改在深夜時段播放，是因為英國和香港有時差，在新時段播放，會有較多更新內容。", "伍曼議說，聽眾如果需要在其他時段收聽BBC節目，可以直接到BBC網站。", "在港英政府年代，香港電台24小時播放BBC節目，而這個節目也是許多學生學習英文的途徑。也許是這個歷史原因，它的任何更動都可能會引起某些人的聯想。", "在廣播上，AM的傳輸距離較短，容易受雜訊干擾，聲音品質比較差；FM的傳輸距離較長，不容易受雜訊干擾，聲音品質比較好。", "因此，本地廣播聽眾一般多聽FM頻道，少聽AM節目。1060905"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }, {
+            "LinkType": "opennew",
+            "Identification": {
+                "NewsIdentifier": {
+                    "ProviderId": "中央通訊社"
+                }
+            },
+            "NewsManagement": {
+                "NewsItemType": {
+                    "FormalName": "News"
+                },
+                "FirstCreated": "20170905T050512",
+                "ThisRevisionCreated": "20170905T050512",
+                "Status": {
+                    "FormalName": "Usable"
+                }
+            },
+            "NewsComponent": {
+                "Duid": "newsitem_20170905CFP0131",
+                "Essential": "no",
+                "EquivalentsList": "no",
+                "NewsLines": {
+                    "CopyrightLine": "Copyright (c) The Central News Agency. All Rights Reserved."
+                },
+                "NewsComponent": {
+                    "Duid": "20170905CFP0131",
+                    "DateLine": "20170905T050512",
+                    "Author": "中央社",
+                    "NewsComponent": {
+                        "Role": {
+                            "FormalName": "Main"
+                        },
+                        "NewsLines": {
+                            "HeadLine": "外籍貨輪走私大陸露餡  原來船名貼反了",
+                            "SlugLine": "據報導，一艘巴拿馬籍貨輪日前\n冒充中國大陸籍船隻，走私白糖到江蘇鹽城；但這艘貨\n輪卻把塗改的船名「大慶」兩個字貼反了，反而因此露\n餡，被盯上的軍警逮個正著。\n\n    綜合江蘇電視台「荔枝新聞」微信公眾號與中國青\n年網報導，8月31日，江蘇鹽城邊防支隊官兵在轄區一\n碼頭查獲一起走私白糖 ...",
+                            "MoreLink": {}
+                        },
+                        "ContentItem": {
+                            "MediaType": {
+                                "FormalName": "ComplexData"
+                            },
+                            "MimeType": {
+                                "FormalName": "text/vnd.IPTC.NITF"
+                            },
+                            "DataContent": {
+                                "nitf": {
+                                    "body": {
+                                        "body.head": {
+                                            "hedline": {
+                                                "hl1": "外籍貨輪走私大陸露餡  原來船名貼反了"
+                                            }
+                                        },
+                                        "body.content": {
+                                            "p": ["（中央社台北5日電）據報導，一艘巴拿馬籍貨輪日前冒充中國大陸籍船隻，走私白糖到江蘇鹽城；但這艘貨輪卻把塗改的船名「大慶」兩個字貼反了，反而因此露餡，被盯上的軍警逮個正著。", "綜合江蘇電視台「荔枝新聞」微信公眾號與中國青年網報導，8月31日，江蘇鹽城邊防支隊官兵在轄區一碼頭查獲一起走私白糖案件，當場逮捕涉嫌走私人員9人，查扣運輸船舶1艘、運輸貨車26輛，並扣押白糖重約1300噸，價值人民幣近千萬元（約新台幣4500萬元）。", "報導指出，鹽城警方當天在查港查船過程中，發現有多輛空貨車駛入碼頭附近，行跡十分可疑。同時碼頭剛剛停靠的一艘貨輪引起警方高度警覺，因為輪船頭赫然顯示印反的「大慶」二字，明顯是剛剛塗抹後刷上新漆的。", "軍警登船後發現，這艘船上船員大多為外籍人士，船長無法提供任何船舶運載貨物的簽關證件。隨後發現艙內載滿境外生產的白糖，重約1300噸。", "涉案船員供稱，這艘巴拿馬貨輪的實際船名為「濱河178」，船上共有8名船員，其中6名為印尼籍，2名為中國大陸籍。", "報導指出，船首改塗「大慶」字樣是為了方便進港卸貨，因此將船偽裝為大陸輪；但因為「外籍船員噴漆時把模板放反了」，因而露餡。", "報導指出，該船是在中韓之間海域裝載泰國生產的白糖，行駛至韓國濟州島添加燃油後，就駛往江蘇鹽城一未對外開放碼頭卸貨。這是江蘇查獲的首例外籍船舶無正規手續並非法停靠非開放碼頭的走私案件。1060905"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }, {
+            "LinkType": "opennew",
+            "Identification": {
+                "NewsIdentifier": {
+                    "ProviderId": "中央通訊社"
+                }
+            },
+            "NewsManagement": {
+                "NewsItemType": {
+                    "FormalName": "News"
+                },
+                "FirstCreated": "20170905T034109",
+                "ThisRevisionCreated": "20170905T034109",
+                "Status": {
+                    "FormalName": "Usable"
+                }
+            },
+            "NewsComponent": {
+                "Duid": "newsitem_20170905CFP0084",
+                "Essential": "no",
+                "EquivalentsList": "no",
+                "NewsLines": {
+                    "CopyrightLine": "Copyright (c) The Central News Agency. All Rights Reserved."
+                },
+                "NewsComponent": {
+                    "Duid": "20170905CFP0084",
+                    "DateLine": "20170905T034109",
+                    "Author": "中央社",
+                    "NewsComponent": {
+                        "Role": {
+                            "FormalName": "Main"
+                        },
+                        "NewsLines": {
+                            "HeadLine": "北京經濟型旅館抽檢  被單毛巾細菌多",
+                            "SlugLine": "中國大陸旅館衛生問題近來受到\n重視。一份針對北京快捷酒店（經濟型旅館）的衛生情\n況抽檢顯示，，其中以床上用品、面盆、毛巾的大腸桿\n菌、細菌等微生物超標問題最嚴重。\n\n    新京報報導，大陸網站上流傳「五星級酒店，你們\n為什麼不換床單？」文章，一家名為「藍莓評測」的評\n測機構日前到北京 ...",
+                            "MoreLink": {}
+                        },
+                        "ContentItem": {
+                            "MediaType": {
+                                "FormalName": "ComplexData"
+                            },
+                            "MimeType": {
+                                "FormalName": "text/vnd.IPTC.NITF"
+                            },
+                            "DataContent": {
+                                "nitf": {
+                                    "body": {
+                                        "body.head": {
+                                            "hedline": {
+                                                "hl1": "北京經濟型旅館抽檢  被單毛巾細菌多"
+                                            }
+                                        },
+                                        "body.content": {
+                                            "p": ["（中央社台北5日電）中國大陸旅館衛生問題近來受到重視。一份針對北京快捷酒店（經濟型旅館）的衛生情況抽檢顯示，，其中以床上用品、面盆、毛巾的大腸桿菌、細菌等微生物超標問題最嚴重。", "新京報報導，大陸網站上流傳「五星級酒店，你們為什麼不換床單？」文章，一家名為「藍莓評測」的評測機構日前到北京市5家五星級飯店體驗並以特製工具測試後，得出結論認為，這些飯店在住客退房後沒有更換床上用品，浴缸及洗漱用品也沒做到完全清潔。", "北京希爾頓飯店和北京香格里拉飯店則表示已對此展開調查。", "另外，北京市衛生和計劃生育監督所4日針對北京691家快捷酒店衛生情況檢查，其中46家不達標，合格率91.61%，包括七天快捷酒店、速8酒店等知名經濟型旅館都在開罰名單中。", "報導說，北京共有1052家快捷酒店，這次被抽查的飯店，主要問題是未按標準完成消毒。像是枕頭、床單等床上用品，還有浴室的面盆、毛巾等，檢查出大腸桿菌、細菌等微生物超標，原因多在於它們曾被使用過，但沒有被及時消毒。1060905"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }, {
+            "LinkType": "opennew",
+            "Identification": {
+                "NewsIdentifier": {
+                    "ProviderId": "中央通訊社"
+                }
+            },
+            "NewsManagement": {
+                "NewsItemType": {
+                    "FormalName": "News"
+                },
+                "FirstCreated": "20170905T031809",
+                "ThisRevisionCreated": "20170905T031809",
+                "Status": {
+                    "FormalName": "Usable"
+                }
+            },
+            "NewsComponent": {
+                "Duid": "newsitem_20170905CFP0074",
+                "Essential": "no",
+                "EquivalentsList": "no",
+                "NewsLines": {
+                    "CopyrightLine": "Copyright (c) The Central News Agency. All Rights Reserved."
+                },
+                "NewsComponent": {
+                    "Duid": "20170905CFP0074",
+                    "DateLine": "20170905T031809",
+                    "Author": "邱國強",
+                    "NewsComponent": {
+                        "Role": {
+                            "FormalName": "Main"
+                        },
+                        "NewsLines": {
+                            "HeadLine": "前蘇聯航艦總設計師  獲聘中國軍工機構",
+                            "SlugLine": "陸媒報導，曾任前蘇\n聯航空母艦總設計師，參與過遼寧號前身「瓦雅格」號\n航空母艦設計的烏克蘭籍資深專家巴比奇，日前被中國\n大陸一家專門設計船舶的軍工機構聘為專家。\n\n    澎湃新聞報導，聘請巴比奇（Valery Vasilevich \nBabich）為專家的是「青島中烏特種船舶研究設計院 ...",
+                            "MoreLink": {}
+                        },
+                        "ContentItem": {
+                            "MediaType": {
+                                "FormalName": "ComplexData"
+                            },
+                            "MimeType": {
+                                "FormalName": "text/vnd.IPTC.NITF"
+                            },
+                            "DataContent": {
+                                "nitf": {
+                                    "body": {
+                                        "body.head": {
+                                            "hedline": {
+                                                "hl1": "前蘇聯航艦總設計師  獲聘中國軍工機構"
+                                            }
+                                        },
+                                        "body.content": {
+                                            "p": ["（中央社記者邱國強北京5日電）陸媒報導，曾任前蘇聯航空母艦總設計師，參與過遼寧號前身「瓦雅格」號航空母艦設計的烏克蘭籍資深專家巴比奇，日前被中國大陸一家專門設計船舶的軍工機構聘為專家。", "澎湃新聞報導，聘請巴比奇（Valery VasilevichBabich）為專家的是「青島中烏特種船舶研究設計院有限公司」，是中國大陸與烏克蘭合作成立的「特種船舶」研究設計機構。", "根據報導，這家2014年9月以公司名義成立的軍工機構，號稱引進前蘇聯航空母艦的造艦技術，參與合作的單位分別是中國大陸山東省科學院、山東省科學院海洋儀器儀錶研究所，以及烏克蘭黑海船舶設計結構局。", "報導指出，這家公司以國際科技合作與技術交流自詡，透過引進烏克蘭船舶設計專家團隊、船舶設計技術與成套資料，為中國大陸帶來船舶設計人才，使青島成為「特種船舶研究設計公共研發平台」。", "這項報導提到，1941年生的巴比奇擁有30多年的船舶設計建造經歷，曾在黑海造船廠擔任航母裝備總設計師、設計局主任和對外經濟聯絡部主任，參與設計建造前蘇聯所有航母，其中包括擔任遼寧艦前身瓦雅格號的總設計師。", "根據報導，巴比奇曾在2013年10月接受陸媒專訪時說，「眼下遼寧艦只能算航母訓練平台」。但遼寧艦也並非普通的訓練艦，其歷史使命是為中國大陸未來航空母艦的國產化，提供「必要的理論和技術支持」。", "巴比奇當時說，瓦雅格號在大連改裝期間，中國大陸人員把艦上的鍋爐卸下進行改裝和完善，達到所需的技術要求，並在海試中得到驗證。但俄羅斯在航艦鍋爐改造方面卻「沒有取得像樣的成果」。1060905"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }, {
+            "LinkType": "opennew",
+            "Identification": {
+                "NewsIdentifier": {
+                    "ProviderId": "中央通訊社"
+                }
+            },
+            "NewsManagement": {
+                "NewsItemType": {
+                    "FormalName": "News"
+                },
+                "FirstCreated": "20170905T031509",
+                "ThisRevisionCreated": "20170905T031509",
+                "Status": {
+                    "FormalName": "Usable"
+                }
+            },
+            "NewsComponent": {
+                "Duid": "newsitem_20170905CFP0072",
+                "Essential": "no",
+                "EquivalentsList": "no",
+                "NewsLines": {
+                    "CopyrightLine": "Copyright (c) The Central News Agency. All Rights Reserved."
+                },
+                "NewsComponent": {
+                    "Duid": "20170905CFP0072",
+                    "DateLine": "20170905T031509",
+                    "Author": "張謙",
+                    "NewsComponent": {
+                        "Role": {
+                            "FormalName": "Main"
+                        },
+                        "NewsLines": {
+                            "HeadLine": "不法陸商進口廢衣物  翻新作外銷成衣",
+                            "SlugLine": "據報導，中國大陸有不\n法商人從海外進口大量廢舊衣物，經翻新後當作外銷成\n衣出售。\n\n    南方網今天報導，廣東深圳皇崗檢驗檢疫局近日就\n在皇崗口岸一輛商務車內查獲大量廢舊衣物，它們被裝\n在14個舊紙箱中，重達256.59公斤。\n\n    報導表示，由於旅客未向衛生檢疫機關申報，無法 ...",
+                            "MoreLink": {}
+                        },
+                        "ContentItem": {
+                            "MediaType": {
+                                "FormalName": "ComplexData"
+                            },
+                            "MimeType": {
+                                "FormalName": "text/vnd.IPTC.NITF"
+                            },
+                            "DataContent": {
+                                "nitf": {
+                                    "body": {
+                                        "body.head": {
+                                            "hedline": {
+                                                "hl1": "不法陸商進口廢衣物  翻新作外銷成衣"
+                                            }
+                                        },
+                                        "body.content": {
+                                            "p": ["（中央社記者張謙香港5日電）據報導，中國大陸有不法商人從海外進口大量廢舊衣物，經翻新後當作外銷成衣出售。", "南方網今天報導，廣東深圳皇崗檢驗檢疫局近日就在皇崗口岸一輛商務車內查獲大量廢舊衣物，它們被裝在14個舊紙箱中，重達256.59公斤。", "報導表示，由於旅客未向衛生檢疫機關申報，無法提供相關審批許可證書和檢疫證明，工作人員已把這些「洋垃圾」退回香港處理。", "報導指出，大陸方面已全面禁止洋垃圾入境，廢舊衣物也在此列。", "據報導，大陸一些不法商人為了降低成本、謀取高額利潤，把走私入境的國外舊衣物翻新後高價賣出。", "相關廢舊衣物可能來自國外垃圾站、廢品收購站甚至是太平間，不法分子將它們翻新後，便成了「外貿服裝（外銷成衣）」。", "報導指出，這些廢舊衣物未經衛生檢疫處理，可能攜帶病菌、傳染病病原體，流入市場後會危害消費者的身心健康。", "為此，深圳檢驗檢疫局已加大對廢舊衣物及其他「洋垃圾」入境的檢查力度。1060905"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }, {
+            "LinkType": "opennew",
+            "Identification": {
+                "NewsIdentifier": {
+                    "ProviderId": "中央通訊社"
+                }
+            },
+            "NewsManagement": {
+                "NewsItemType": {
+                    "FormalName": "News"
+                },
+                "FirstCreated": "20170904T143301",
+                "ThisRevisionCreated": "20170904T143301",
+                "Status": {
+                    "FormalName": "Usable"
+                }
+            },
+            "NewsComponent": {
+                "Duid": "newsitem_20170904CFP0336",
+                "Essential": "no",
+                "EquivalentsList": "no",
+                "NewsLines": {
+                    "CopyrightLine": "Copyright (c) The Central News Agency. All Rights Reserved."
+                },
+                "NewsComponent": {
+                    "Duid": "20170904CFP0336",
+                    "DateLine": "20170904T143301",
+                    "Author": "中央社",
+                    "NewsComponent": {
+                        "Role": {
+                            "FormalName": "Main"
+                        },
+                        "NewsLines": {
+                            "HeadLine": "金磚領袖廈門宣言  避談擴大合作",
+                            "SlugLine": "金磚五國領袖今天發表廈門宣言\n，從金磚五國的歷史回顧，到經濟合作、國際和平與安\n全，到加強人文交流無所不包，但對中國大陸希望能推\n動「金磚+」合作模式，僅簡單一句話帶過。\n\n    2017年金磚五國領袖峰會現在正在中國大陸福建省\n廈門市舉行，包括巴西、俄羅斯、印度與南非領袖都出\n席這 ...",
+                            "MoreLink": {}
+                        },
+                        "ContentItem": {
+                            "MediaType": {
+                                "FormalName": "ComplexData"
+                            },
+                            "MimeType": {
+                                "FormalName": "text/vnd.IPTC.NITF"
+                            },
+                            "DataContent": {
+                                "nitf": {
+                                    "body": {
+                                        "body.head": {
+                                            "hedline": {
+                                                "hl1": "金磚領袖廈門宣言  避談擴大合作"
+                                            }
+                                        },
+                                        "body.content": {
+                                            "p": ["（中央社台北4日電）金磚五國領袖今天發表廈門宣言，從金磚五國的歷史回顧，到經濟合作、國際和平與安全，到加強人文交流無所不包，但對中國大陸希望能推動「金磚+」合作模式，僅簡單一句話帶過。", "2017年金磚五國領袖峰會現在正在中國大陸福建省廈門市舉行，包括巴西、俄羅斯、印度與南非領袖都出席這項盛會。雖然中印之間先前才因洞朗邊境衝突產生齟齬，加上傳聞有成員國對金磚擴大有疑慮，各國領袖今天仍低調發表廈門宣言。", "在長達1.2萬字的71點宣言中，五國領袖對合作取得的成果感到滿意，包括成立新開發銀行（NDB）和應急儲備安排（CRA）、制定「金磚國家經濟夥伴戰略」等，領袖們也相信未來合作潛力巨大，期待能深化合作、加強溝通協調、維護國際與地區和平穩定，並促進人文交流。", "對於北韓核試的舉動，宣言表示遺憾，也對朝鮮半島緊張局勢和長期存在的核問題深表關切，強調這個問題只能透過所有相關方直接對話，以和平方式解決。", "五國領袖讚賞金磚合作機制取得的重要進展，在廈門會晤期間也舉辦新興市場國家與開發中國家對話會，討論落實2030年永續發展議程和建構廣泛的發展夥伴關係，推進金磚+合作。", "除了避談金磚+合作，另一個受到關注的焦點是宣言中首度直接點名在巴基斯坦的恐怖組織，且反恐描述比以往具體，被印度輿論視為是中國大陸讓步與印度的外交勝利。1060904"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }, {
+            "LinkType": "opennew",
+            "Identification": {
+                "NewsIdentifier": {
+                    "ProviderId": "中央通訊社"
+                }
+            },
+            "NewsManagement": {
+                "NewsItemType": {
+                    "FormalName": "News"
+                },
+                "FirstCreated": "20170904T141200",
+                "ThisRevisionCreated": "20170904T141200",
+                "Status": {
+                    "FormalName": "Usable"
+                }
+            },
+            "NewsComponent": {
+                "Duid": "newsitem_20170904CFP0331",
+                "Essential": "no",
+                "EquivalentsList": "no",
+                "NewsLines": {
+                    "CopyrightLine": "Copyright (c) The Central News Agency. All Rights Reserved."
+                },
+                "NewsComponent": {
+                    "Duid": "20170904CFP0331",
+                    "DateLine": "20170904T141200",
+                    "Author": "中央社",
+                    "NewsComponent": {
+                        "Role": {
+                            "FormalName": "Main"
+                        },
+                        "NewsLines": {
+                            "HeadLine": "19大  路透盤點習家軍可能入局人選",
+                            "SlugLine": "路透社今天報導，中共19大衡量\n中共總書記習近平權力的重要指標之一，將是他的政治\n盟友中有多少人能進入25人的中共中央政治局。報導點\n名陳敏爾、蔡奇、劉鶴、陳希等16人可能「入局」。\n\n    報導引述中國大陸多方消息來源和外交官指出，習\n近平預料將在中國共產黨第19次全國代表大會上安插 ...",
+                            "MoreLink": {}
+                        },
+                        "ContentItem": {
+                            "MediaType": {
+                                "FormalName": "ComplexData"
+                            },
+                            "MimeType": {
+                                "FormalName": "text/vnd.IPTC.NITF"
+                            },
+                            "DataContent": {
+                                "nitf": {
+                                    "body": {
+                                        "body.head": {
+                                            "hedline": {
+                                                "hl1": "19大  路透盤點習家軍可能入局人選"
+                                            }
+                                        },
+                                        "body.content": {
+                                            "p": ["（中央社台北4日電）路透社今天報導，中共19大衡量中共總書記習近平權力的重要指標之一，將是他的政治盟友中有多少人能進入25人的中共中央政治局。報導點名陳敏爾、蔡奇、劉鶴、陳希等16人可能「入局」。", "報導引述中國大陸多方消息來源和外交官指出，習近平預料將在中國共產黨第19次全國代表大會上安插信任的盟友進中共中央政治局。基於「七上八下」不成文規定，至少10名現任政治局委員屆時將退休。", "報導說，53歲的中共中央政治局委員、重慶市委前書記孫政才因違紀遭查後，已無望留任。69歲的中共中央紀律檢查委員會書記王岐山因年紀關係，能否留任中共中央政治局常委仍是未知數。", "這篇文章列出習近平盟友中16名可能「入局」的新面孔。", "這些人選有近一年多來陸續就任重要省市一把手的地方大員，包括61歲的中共北京市委書記蔡奇、56歲的重慶市委書記陳敏爾、61歲的天津市委書記李鴻忠、61歲的新疆維吾爾自治區黨委書記陳全國。", "報導說，陳敏爾是可能直接「入常」的黑馬人選。", "此外，報導預測，64歲的中共中央組織部常務副部長陳希有望扶正；9月滿55歲的中共中央辦公廳副主任丁薛祥也可能扶正；62歲的中國大陸國家發展和改革委員會主任何立峰若成為4名國務院副總理之一，便極可能「入局」。", "至於習近平重要財經智囊劉鶴，報導預測65歲的他可能出任中國大陸國務委員或國務院副總理。60歲的中共中央宣傳部常務副部長黃坤明，是接掌中宣部的頭號人選。", "在其他地方首長方面，報導認為58歲的中共江蘇省委書記李強、63歲的福建省委書記尤權、60歲的遼寧省委書記李希、59歲的上海市長應勇、57歲的廣東省長馬興瑞都是「入局」的可能人選。", "64歲的中共浙江省委前書記夏寶龍4月卸任後，出任中國大陸全國人民代表大會環境與資源保護委員會副主任委員，報導認為這減損他「入局」的機會。60歲的中國大陸公安部副部長王小洪，則可能接掌公安或國安單位。1060904"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }, {
+            "LinkType": "opennew",
+            "Identification": {
+                "NewsIdentifier": {
+                    "ProviderId": "中央通訊社"
+                }
+            },
+            "NewsManagement": {
+                "NewsItemType": {
+                    "FormalName": "News"
+                },
+                "FirstCreated": "20170904T111556",
+                "ThisRevisionCreated": "20170904T111556",
+                "Status": {
+                    "FormalName": "Usable"
+                }
+            },
+            "NewsComponent": {
+                "Duid": "newsitem_20170904CFP0293",
+                "Essential": "no",
+                "EquivalentsList": "no",
+                "NewsLines": {
+                    "CopyrightLine": "Copyright (c) The Central News Agency. All Rights Reserved."
+                },
+                "NewsComponent": {
+                    "Duid": "20170904CFP0293",
+                    "DateLine": "20170904T111556",
+                    "Author": "陳家倫",
+                    "NewsComponent": {
+                        "Role": {
+                            "FormalName": "Main"
+                        },
+                        "NewsLines": {
+                            "HeadLine": "習近平伉儷亮相金磚  播放台灣音樂作品",
+                            "SlugLine": "2017年金磚國家峰會\n歡迎宴會今晚登場，會中播出的音樂「廈門親像一首歌\n」的創作者是來自台灣的楊慕。他的經紀人鄭冬梅表示\n，這首歌3年前即創作完成，因金磚峰會再度走紅。\n\n    2017年金磚國家峰會3至5日在中國大陸福建省廈門\n市舉行，中國大陸國家主席習近平與妻子彭麗媛晚間為\n各 ...",
+                            "MoreLink": {}
+                        },
+                        "ContentItem": {
+                            "MediaType": {
+                                "FormalName": "ComplexData"
+                            },
+                            "MimeType": {
+                                "FormalName": "text/vnd.IPTC.NITF"
+                            },
+                            "DataContent": {
+                                "nitf": {
+                                    "body": {
+                                        "body.head": {
+                                            "hedline": {
+                                                "hl1": "習近平伉儷亮相金磚  播放台灣音樂作品"
+                                            }
+                                        },
+                                        "body.content": {
+                                            "p": ["（中央社記者陳家倫廈門3日電）2017年金磚國家峰會歡迎宴會今晚登場，會中播出的音樂「廈門親像一首歌」的創作者是來自台灣的楊慕。他的經紀人鄭冬梅表示，這首歌3年前即創作完成，因金磚峰會再度走紅。", "2017年金磚國家峰會3至5日在中國大陸福建省廈門市舉行，中國大陸國家主席習近平與妻子彭麗媛晚間為各國領導人伉儷舉行歡迎宴會，現場並播出閩南語歌曲「廈門親像一首歌」，歌詞講述著廈門的純樸民情。", "楊慕今天在台北舉行「廈門親像一首歌」城市情歌有聲禮品發布會。他的經紀人鄭冬梅晚間向中央社表示，這首歌其實3年前就問世，歌詞描述的是廈門的民間活力，獲得小市民的共鳴。", "歌詞寫著：「以前我有聽人在講，說廈門有一個鼓浪嶼，家家戶戶都有Piano，上面還站著一個鄭成功，我來到廈門有幾年，在我的心目中這是我的第二個故鄉，廈門是一個美麗的城市，有山有海還有白鷺鷥。」", "鄭東梅表示，2017年金磚國家峰會主辦地點在廈門，這首歌因而獲得青睞，並作為城市形象宣傳影片「Weare廈門」的背景音樂，在金磚前夕播出後，再度引起關注。金磚國家峰會新聞中心現場也有展示CD與書籍。1060904"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }, {
+            "LinkType": "opennew",
+            "Identification": {
+                "NewsIdentifier": {
+                    "ProviderId": "中央通訊社"
+                }
+            },
+            "NewsManagement": {
+                "NewsItemType": {
+                    "FormalName": "News"
+                },
+                "FirstCreated": "20170904T111156",
+                "ThisRevisionCreated": "20170904T111156",
+                "Status": {
+                    "FormalName": "Usable"
+                }
+            },
+            "NewsComponent": {
+                "Duid": "newsitem_20170904CFP0292",
+                "Essential": "no",
+                "EquivalentsList": "no",
+                "NewsLines": {
+                    "CopyrightLine": "Copyright (c) The Central News Agency. All Rights Reserved."
+                },
+                "NewsComponent": {
+                    "Duid": "20170904CFP0292",
+                    "DateLine": "20170904T111156",
+                    "Author": "中央社",
+                    "NewsComponent": {
+                        "Role": {
+                            "FormalName": "Main"
+                        },
+                        "NewsLines": {
+                            "HeadLine": "3隻可愛小雪豹  四川石渠現蹤",
+                            "SlugLine": "中國大陸四川省林業廳日前在四\n川省石渠縣一個隧洞中，發現3隻小雪豹蹤影。小雪豹\n瞪著無辜大眼睛看向鏡頭的畫面，可愛模樣讓人心都融\n化了。\n\n    新華社今天報導，四川石渠縣一名村民1日放牛時\n發現一隻已經死亡的岩羊，查看過程中，在一個小隧洞\n裡意外發現3隻小雪豹。據估計小雪豹只有3到 ...",
+                            "MoreLink": {}
+                        },
+                        "ContentItem": {
+                            "MediaType": {
+                                "FormalName": "ComplexData"
+                            },
+                            "MimeType": {
+                                "FormalName": "text/vnd.IPTC.NITF"
+                            },
+                            "DataContent": {
+                                "nitf": {
+                                    "body": {
+                                        "body.head": {
+                                            "hedline": {
+                                                "hl1": "3隻可愛小雪豹  四川石渠現蹤"
+                                            }
+                                        },
+                                        "body.content": {
+                                            "p": ["（中央社台北4日電）中國大陸四川省林業廳日前在四川省石渠縣一個隧洞中，發現3隻小雪豹蹤影。小雪豹瞪著無辜大眼睛看向鏡頭的畫面，可愛模樣讓人心都融化了。", "新華社今天報導，四川石渠縣一名村民1日放牛時發現一隻已經死亡的岩羊，查看過程中，在一個小隧洞裡意外發現3隻小雪豹。據估計小雪豹只有3到4個月大，但不見母豹蹤影。", "報導指出，當地護林員接獲通報後抵達現場了解狀況，並用非紅外線攝影機拍下小雪豹的可愛模樣。目前護林員正在進行遠距離監測，觀察母豹是否發生意外需要救援。若是母豹安全，護林員將立即撤離，避免人為干擾。", "這次發現小雪豹的地方位於四川洛須白唇鹿省級自然保護區，這裡是雪豹主要棲息與繁育地。過去4年裡，曾拍攝到20多次雪豹蹤跡，但像這次這樣一次拍到3隻小雪豹，相當罕見。", "四川省林業科學研究院調查指出，目前尚無法確定保護區內的雪豹種類與數量，僅能根據保護區內牧民訪問估計，保護區內的雪豹數量應不少於30隻。1060904"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }, {
+            "LinkType": "opennew",
+            "Identification": {
+                "NewsIdentifier": {
+                    "ProviderId": "中央通訊社"
+                }
+            },
+            "NewsManagement": {
+                "NewsItemType": {
+                    "FormalName": "News"
+                },
+                "FirstCreated": "20170904T105155",
+                "ThisRevisionCreated": "20170904T105155",
+                "Status": {
+                    "FormalName": "Usable"
+                }
+            },
+            "NewsComponent": {
+                "Duid": "newsitem_20170904CFP0287",
+                "Essential": "no",
+                "EquivalentsList": "no",
+                "NewsLines": {
+                    "CopyrightLine": "Copyright (c) The Central News Agency. All Rights Reserved."
+                },
+                "NewsComponent": {
+                    "Duid": "20170904CFP0287",
+                    "DateLine": "20170904T105155",
+                    "Author": "張謙",
+                    "NewsComponent": {
+                        "Role": {
+                            "FormalName": "Main"
+                        },
+                        "NewsLines": {
+                            "HeadLine": "兩岸交流30年 張志軍香港對台喊話",
+                            "SlugLine": "香港媒體報導，中國大\n陸國務院台灣事務辦公室主任張志軍今天在香港舉辦的\n兩岸交流30年紀念大會致詞時，重申北京當局的「一個\n中國」立場。\n\n    根據星島日報報導，兩岸和平發展聯合總會在香港\n舉辦「兩岸一家親，共圓中國夢─兩岸交流三十周年紀\n念大會」，張志軍、大陸人民政治協商會議全國 ...",
+                            "MoreLink": {}
+                        },
+                        "ContentItem": {
+                            "MediaType": {
+                                "FormalName": "ComplexData"
+                            },
+                            "MimeType": {
+                                "FormalName": "text/vnd.IPTC.NITF"
+                            },
+                            "DataContent": {
+                                "nitf": {
+                                    "body": {
+                                        "body.head": {
+                                            "hedline": {
+                                                "hl1": "兩岸交流30年 張志軍香港對台喊話"
+                                            }
+                                        },
+                                        "body.content": {
+                                            "p": ["（中央社記者張謙香港4日電）香港媒體報導，中國大陸國務院台灣事務辦公室主任張志軍今天在香港舉辦的兩岸交流30年紀念大會致詞時，重申北京當局的「一個中國」立場。", "根據星島日報報導，兩岸和平發展聯合總會在香港舉辦「兩岸一家親，共圓中國夢─兩岸交流三十周年紀念大會」，張志軍、大陸人民政治協商會議全國委員會副主席董建華和香港特別行政區行政長官林鄭月娥等人與會。", "報導引述張志軍說，去年5月以來，民進黨一直拒絕承認「九二共識」及兩岸同屬「一個中國」，破壞兩岸關係基礎，更令兩岸在各領域的合作大受影響。", "他說，不論是台灣那個政黨團體，過往曾提出甚麼主張，只要承認「九二共識」，兩岸交流就不存障礙，大陸願意分享其發展機遇。", "張志軍表示，自30年前第一批台灣人成功經香港到大陸探親，兩岸交流由無到有、由少到多、由間接到直接，並由單向變成雙向。", "回顧歷史，張志軍說，2015年中國大陸國家主席習近平跟「時任台灣地區領導人」馬英九會面，開啟了兩岸領導人直接對話的先河，也是兩岸發展的里程碑。", "張志軍指出，兩岸必須堅持「一個中國」原則，統則強，分必亂，要堅決反對「台獨」分裂意識，實現中華民族的偉大復興。1060904"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }, {
+            "LinkType": "opennew",
+            "Identification": {
+                "NewsIdentifier": {
+                    "ProviderId": "中央通訊社"
+                }
+            },
+            "NewsManagement": {
+                "NewsItemType": {
+                    "FormalName": "News"
+                },
+                "FirstCreated": "20170904T085249",
+                "ThisRevisionCreated": "20170904T085249",
+                "Status": {
+                    "FormalName": "Usable"
+                }
+            },
+            "NewsComponent": {
+                "Duid": "newsitem_20170904CFP0209",
+                "Essential": "no",
+                "EquivalentsList": "no",
+                "NewsLines": {
+                    "CopyrightLine": "Copyright (c) The Central News Agency. All Rights Reserved."
+                },
+                "NewsComponent": {
+                    "Duid": "20170904CFP0209",
+                    "DateLine": "20170904T085249",
+                    "Author": "邱國強",
+                    "NewsComponent": {
+                        "Role": {
+                            "FormalName": "Main"
+                        },
+                        "NewsLines": {
+                            "HeadLine": "北韓爆氫彈  陸：已向北韓大使嚴正交涉",
+                            "SlugLine": "中國大陸外交部發言\n人耿爽今天針對北韓試爆氫彈說，中方希望有關方面、\n特別是北韓能克制，不要再讓緊張升級。中國大陸外交\n部已向北韓駐北京「大使館負責人」提出嚴正交涉。\n\n    耿爽並針對北韓試爆氫彈，是否刻意選擇金磚峰會\n前舉行說，北韓無論在任何時候進行核試驗「都是錯誤\n的，都違反了 ...",
+                            "MoreLink": {}
+                        },
+                        "ContentItem": {
+                            "MediaType": {
+                                "FormalName": "ComplexData"
+                            },
+                            "MimeType": {
+                                "FormalName": "text/vnd.IPTC.NITF"
+                            },
+                            "DataContent": {
+                                "nitf": {
+                                    "body": {
+                                        "body.head": {
+                                            "hedline": {
+                                                "hl1": "北韓爆氫彈  陸：已向北韓大使嚴正交涉"
+                                            }
+                                        },
+                                        "body.content": {
+                                            "p": ["（中央社記者邱國強北京4日電）中國大陸外交部發言人耿爽今天針對北韓試爆氫彈說，中方希望有關方面、特別是北韓能克制，不要再讓緊張升級。中國大陸外交部已向北韓駐北京「大使館負責人」提出嚴正交涉。", "耿爽並針對北韓試爆氫彈，是否刻意選擇金磚峰會前舉行說，北韓無論在任何時候進行核試驗「都是錯誤的，都違反了安理會決議，違背了國際社會的普遍意願」，中方都將堅決反對。", "中國大陸外交部下午舉行例行記者會，北韓試爆氫彈成為全場焦點話題。耿爽在回答相關問題時，作上述表示。", "耿爽並針對美國總統川普揚言將與繼續和北韓貿易往來的國家斷絕貿易來往說，希望各方都能保持冷靜，共同推動這一問題早日回到對話協商和平解決。但中方堅決不能接受的是，一方面為和平解決北韓核問題付出艱辛努力，一方面自身利益卻受到損害。", "至於北韓試爆氫彈前有無通報中國大陸，耿爽則未正面回答，僅表示中方堅持朝鮮半島無核化，反對北韓進行核彈開發的立場眾所周知，北韓方面對此「一直是非常清楚的」。", "耿爽說，聯合國安理會後續會對北韓採取什麼行動，取決於安理會成員討論的結果。中國大陸作為安理會常任理事國，將本著一貫立場及「負責任和建設性態度」參與有關討論。", "他宣稱，中國大陸對北韓擁核問題作出的努力可說有目共睹，長期以來為推動各方透過對話協商和平解決問題「付出大量努力，開展大量工作」，提出「雙暫停」倡議及「雙軌並行」思路，一直就此與各方保持溝通，推動各方相向而行。1060904"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }, {
+            "LinkType": "opennew",
+            "Identification": {
+                "NewsIdentifier": {
+                    "ProviderId": "中央通訊社"
+                }
+            },
+            "NewsManagement": {
+                "NewsItemType": {
+                    "FormalName": "News"
+                },
+                "FirstCreated": "20170904T084048",
+                "ThisRevisionCreated": "20170904T084048",
+                "Status": {
+                    "FormalName": "Usable"
+                }
+            },
+            "NewsComponent": {
+                "Duid": "newsitem_20170904CFP0202",
+                "Essential": "no",
+                "EquivalentsList": "no",
+                "NewsLines": {
+                    "CopyrightLine": "Copyright (c) The Central News Agency. All Rights Reserved."
+                },
+                "NewsComponent": {
+                    "Duid": "20170904CFP0202",
+                    "DateLine": "20170904T084048",
+                    "Author": "中央社",
+                    "NewsComponent": {
+                        "Role": {
+                            "FormalName": "Main"
+                        },
+                        "NewsLines": {
+                            "HeadLine": "北韓核試  金磚國家強烈譴責",
+                            "SlugLine": "北韓3日宣稱成功試爆可由洲際彈\n道飛彈攜帶的氫彈。在中國大陸福建省廈門市舉行的金\n磚國家領導人峰會今天發表聯合聲明，強烈譴責北韓核\n試，並呼籲有關各方直接對話。\n\n    綜合香港電台等港媒報導，這份聲明指出，金磚國\n家對朝鮮半島核問題導致局勢持續緊張深表關切，強調\n和平談判是解決問題 ...",
+                            "MoreLink": {}
+                        },
+                        "ContentItem": {
+                            "MediaType": {
+                                "FormalName": "ComplexData"
+                            },
+                            "MimeType": {
+                                "FormalName": "text/vnd.IPTC.NITF"
+                            },
+                            "DataContent": {
+                                "nitf": {
+                                    "body": {
+                                        "body.head": {
+                                            "hedline": {
+                                                "hl1": "北韓核試  金磚國家強烈譴責"
+                                            }
+                                        },
+                                        "body.content": {
+                                            "p": ["（中央社台北4日電）北韓3日宣稱成功試爆可由洲際彈道飛彈攜帶的氫彈。在中國大陸福建省廈門市舉行的金磚國家領導人峰會今天發表聯合聲明，強烈譴責北韓核試，並呼籲有關各方直接對話。", "綜合香港電台等港媒報導，這份聲明指出，金磚國家對朝鮮半島核問題導致局勢持續緊張深表關切，強調和平談判是解決問題的唯一途徑，各方應以直接對話解決。", "此外，聲明還譴責一切形式恐怖主義，並對世界各地發生的恐怖攻擊表示哀悼。聲明重申，會要求實行、組織和支持恐怖主義活動的團體承擔責任，強調各國加強合作對抗恐怖主義的重要性。", "金磚國家（BRICS）包含巴西、俄羅斯、印度、中國大陸和南非。", "北韓3日宣稱，成功試爆的氫彈可裝載在最新研發的洲際彈道飛彈（ICBM）上。這是北韓2006年以來進行的第6次核試。", "中國大陸與俄羅斯外交部隨後分別發表聲明，對北韓再度核試表達強烈譴責。俄羅斯外交部聲明指出，北韓此舉對整個朝鮮半島和區域的和平與安全都構成嚴重威脅，若繼續沿此路線行動，將為北韓本身帶來「嚴重後果」。", "中國大陸國家主席習近平與俄羅斯總統蒲亭（Vladimir Putin）3日在廈門會晤，一致同意堅持朝鮮半島無核化目標，並密切溝通協調，妥善應對北韓再次進行核試這一最新形勢。1060904"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }, {
+            "LinkType": "opennew",
+            "Identification": {
+                "NewsIdentifier": {
+                    "ProviderId": "中央通訊社"
+                }
+            },
+            "NewsManagement": {
+                "NewsItemType": {
+                    "FormalName": "News"
+                },
+                "FirstCreated": "20170904T083648",
+                "ThisRevisionCreated": "20170904T083648",
+                "Status": {
+                    "FormalName": "Usable"
+                }
+            },
+            "NewsComponent": {
+                "Duid": "newsitem_20170904CFP0201",
+                "Essential": "no",
+                "EquivalentsList": "no",
+                "NewsLines": {
+                    "CopyrightLine": "Copyright (c) The Central News Agency. All Rights Reserved."
+                },
+                "NewsComponent": {
+                    "Duid": "20170904CFP0201",
+                    "DateLine": "20170904T083648",
+                    "Author": "中央社",
+                    "NewsComponent": {
+                        "Role": {
+                            "FormalName": "Main"
+                        },
+                        "NewsLines": {
+                            "HeadLine": "陸公安部：2016來 押解台籍嫌犯200人",
+                            "SlugLine": "根據中國大陸公安部統計，2016\n年以來，中國公安部從全球20多個國家抓捕電信詐騙犯\n罪嫌疑犯1600多人，其中押解到中國大陸的台灣籍嫌犯\n超過200人。\n\n    法制日報引述中國大陸公安部有關負責人指出，近\n年來電信網路新型違法犯罪情況越演越烈，不僅嚴重侵\n害群眾財產安全，也帶來生 ...",
+                            "MoreLink": {}
+                        },
+                        "ContentItem": {
+                            "MediaType": {
+                                "FormalName": "ComplexData"
+                            },
+                            "MimeType": {
+                                "FormalName": "text/vnd.IPTC.NITF"
+                            },
+                            "DataContent": {
+                                "nitf": {
+                                    "body": {
+                                        "body.head": {
+                                            "hedline": {
+                                                "hl1": "陸公安部：2016來 押解台籍嫌犯200人"
+                                            }
+                                        },
+                                        "body.content": {
+                                            "p": ["（中央社台北4日電）根據中國大陸公安部統計，2016年以來，中國公安部從全球20多個國家抓捕電信詐騙犯罪嫌疑犯1600多人，其中押解到中國大陸的台灣籍嫌犯超過200人。", "法制日報引述中國大陸公安部有關負責人指出，近年來電信網路新型違法犯罪情況越演越烈，不僅嚴重侵害群眾財產安全，也帶來生命悲劇，近日中國大陸公安部公布打擊治理電信網路犯罪專項行動的相關情況。", "這名負責人表示，從2016年以來，中國大陸公安機關通報的電信詐騙案件63萬起，造成的經濟損失達人民幣180億元（約新台幣828.5億元），損失同比下降10.9%。", "在案件破獲方面，2016年中國大陸公安機關破獲電信網路詐騙犯罪案件8.3萬起，抓捕違法犯罪人員3.4萬人，同比分別上升49.6%與61.8%。收回贓款、贓物價值30億元。", "此外，報導指出，隨著國際交流日益頻繁，電信網路詐騙犯罪擴大流動趨勢明顯。中國大陸公安部從2016年以來，先後赴20多個國家進行執法合作，抓捕電信詐騙犯罪嫌犯1600多人。前後從肯亞、馬來西亞、柬埔寨、月南、印尼與亞美尼亞押解台灣籍嫌犯超過200人。", "根據行政院大陸委員會7月底公布的統計，因涉及電信詐騙問題而遭押往中國大陸的台籍人士，總數已達227人。1060904"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }, {
+            "LinkType": "opennew",
+            "Identification": {
+                "NewsIdentifier": {
+                    "ProviderId": "中央通訊社"
+                }
+            },
+            "NewsManagement": {
+                "NewsItemType": {
+                    "FormalName": "News"
+                },
+                "FirstCreated": "20170904T080848",
+                "ThisRevisionCreated": "20170904T080848",
+                "Status": {
+                    "FormalName": "Usable"
+                }
+            },
+            "NewsComponent": {
+                "Duid": "newsitem_20170904CFP0190",
+                "Essential": "no",
+                "EquivalentsList": "no",
+                "NewsLines": {
+                    "CopyrightLine": "Copyright (c) The Central News Agency. All Rights Reserved."
+                },
+                "NewsComponent": {
+                    "Duid": "20170904CFP0190",
+                    "DateLine": "20170904T080848",
+                    "Author": "中央社",
+                    "NewsComponent": {
+                        "Role": {
+                            "FormalName": "Main"
+                        },
+                        "NewsLines": {
+                            "HeadLine": "劉霞悲痛健康不佳  將盡速安排體檢",
+                            "SlugLine": "已故諾貝爾和平獎得主劉曉波遺\n孀劉霞日前傳出已返抵北京住處。中國人權民運信息中\n心今天引述劉霞親人表示，劉霞悲傷情緒需要較長時間\n復原，會盡速安排劉霞全面體檢。\n\n    此外，曾在劉曉波生前赴瀋陽探視的劉曉波親屬則\n表示，劉霞在瀋陽照顧劉曉波時曾經昏倒，身體狀況不\n佳。\n\n    ...",
+                            "MoreLink": {}
+                        },
+                        "ContentItem": {
+                            "MediaType": {
+                                "FormalName": "ComplexData"
+                            },
+                            "MimeType": {
+                                "FormalName": "text/vnd.IPTC.NITF"
+                            },
+                            "DataContent": {
+                                "nitf": {
+                                    "body": {
+                                        "body.head": {
+                                            "hedline": {
+                                                "hl1": "劉霞悲痛健康不佳  將盡速安排體檢"
+                                            }
+                                        },
+                                        "body.content": {
+                                            "p": ["（中央社台北4日電）已故諾貝爾和平獎得主劉曉波遺孀劉霞日前傳出已返抵北京住處。中國人權民運信息中心今天引述劉霞親人表示，劉霞悲傷情緒需要較長時間復原，會盡速安排劉霞全面體檢。", "此外，曾在劉曉波生前赴瀋陽探視的劉曉波親屬則表示，劉霞在瀋陽照顧劉曉波時曾經昏倒，身體狀況不佳。", "總部設於香港的中國人權民運信息中心網站下午公布上述內容。", "內容也提到，中國人權民運信息中心創辦人盧四清日前曾與劉霞通話，當時劉霞便表示寓所外有車輛監視，她清楚監視仍嚴密。", "中國人權民運信息中心昨天下午也在官網引述劉霞家人表示，劉霞日前通話後，悲傷情緒加重；且通話後北京一些「重要人士」非常緊張。", "劉霞的家人希望，友人們暫時不要再和劉霞直接通話，避免引起劉霞情緒崩潰。", "劉曉波7月13日因肝癌在保外就醫期間過世，當月15日火化並海葬，此後外界一直無法確知劉霞的消息，海外各界不斷呼籲中國大陸方面釋放劉霞。1060904"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }, {
+            "LinkType": "opennew",
+            "Identification": {
+                "NewsIdentifier": {
+                    "ProviderId": "中央通訊社"
+                }
+            },
+            "NewsManagement": {
+                "NewsItemType": {
+                    "FormalName": "News"
+                },
+                "FirstCreated": "20170904T065046",
+                "ThisRevisionCreated": "20170904T065046",
+                "Status": {
+                    "FormalName": "Usable"
+                }
+            },
+            "NewsComponent": {
+                "Duid": "newsitem_20170904CFP0160",
+                "Essential": "no",
+                "EquivalentsList": "no",
+                "NewsLines": {
+                    "CopyrightLine": "Copyright (c) The Central News Agency. All Rights Reserved."
+                },
+                "NewsComponent": {
+                    "Duid": "20170904CFP0160",
+                    "DateLine": "20170904T065046",
+                    "Author": "張謙",
+                    "NewsComponent": {
+                        "Role": {
+                            "FormalName": "Main"
+                        },
+                        "NewsLines": {
+                            "HeadLine": "港中大校園出現港獨標語 隨即被拆",
+                            "SlugLine": "香港中文大學今天舉行\n開學典禮。據報導，早上校園內有些地方懸掛了寫上「\n香港獨立」的標語，但隨後被保安員拆除。\n\n    商業電台在報導中引述中大學生會會長區子灝說，\n學生會並無懸掛相關標語，相信是其他學生做的。\n\n    2014年底香港「占中運動」結束後，本地一些年輕\n人主張「港 ...",
+                            "MoreLink": {}
+                        },
+                        "ContentItem": {
+                            "MediaType": {
+                                "FormalName": "ComplexData"
+                            },
+                            "MimeType": {
+                                "FormalName": "text/vnd.IPTC.NITF"
+                            },
+                            "DataContent": {
+                                "nitf": {
+                                    "body": {
+                                        "body.head": {
+                                            "hedline": {
+                                                "hl1": "港中大校園出現港獨標語 隨即被拆"
+                                            }
+                                        },
+                                        "body.content": {
+                                            "p": ["（中央社記者張謙香港4日電）香港中文大學今天舉行開學典禮。據報導，早上校園內有些地方懸掛了寫上「香港獨立」的標語，但隨後被保安員拆除。", "商業電台在報導中引述中大學生會會長區子灝說，學生會並無懸掛相關標語，相信是其他學生做的。", "2014年底香港「占中運動」結束後，本地一些年輕人主張「港獨」，其中部分大學學生會被視為最大支持力量。", "近幾個月來，「港獨」力量似乎突然沉寂下來，不像2014至2016年間，不時有相關組織到街上示威遊行並高舉「港獨」標語。1060904"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }, {
+            "LinkType": "opennew",
+            "Identification": {
+                "NewsIdentifier": {
+                    "ProviderId": "中央通訊社"
+                }
+            },
+            "NewsManagement": {
+                "NewsItemType": {
+                    "FormalName": "News"
+                },
+                "FirstCreated": "20170904T064245",
+                "ThisRevisionCreated": "20170904T064245",
+                "Status": {
+                    "FormalName": "Usable"
+                }
+            },
+            "NewsComponent": {
+                "Duid": "newsitem_20170904CFP0155",
+                "Essential": "no",
+                "EquivalentsList": "no",
+                "NewsLines": {
+                    "CopyrightLine": "Copyright (c) The Central News Agency. All Rights Reserved."
+                },
+                "NewsComponent": {
+                    "Duid": "20170904CFP0155",
+                    "DateLine": "20170904T064245",
+                    "Author": "張謙",
+                    "NewsComponent": {
+                        "Role": {
+                            "FormalName": "Main"
+                        },
+                        "NewsLines": {
+                            "HeadLine": "共軍公布潛艇南海演練照片  過去少有",
+                            "SlugLine": "中國大陸方面近日公布\n解放軍潛艇在南海演練對抗的訊息和照片，是過去少有\n的事。\n\n    中國軍網報導，這次演練於8月在南海某海域進行\n，參與演練的是南海艦隊某潛艇支隊多艘潛艇，演練內\n容是支援海上封鎖作戰。\n\n    在演練中，支隊多艘潛艇組成紅方兵力打擊藍方運\n輸船隊和海上重要 ...",
+                            "MoreLink": {}
+                        },
+                        "ContentItem": {
+                            "MediaType": {
+                                "FormalName": "ComplexData"
+                            },
+                            "MimeType": {
+                                "FormalName": "text/vnd.IPTC.NITF"
+                            },
+                            "DataContent": {
+                                "nitf": {
+                                    "body": {
+                                        "body.head": {
+                                            "hedline": {
+                                                "hl1": "共軍公布潛艇南海演練照片  過去少有"
+                                            }
+                                        },
+                                        "body.content": {
+                                            "p": ["（中央社記者張謙香港4日電）中國大陸方面近日公布解放軍潛艇在南海演練對抗的訊息和照片，是過去少有的事。", "中國軍網報導，這次演練於8月在南海某海域進行，參與演練的是南海艦隊某潛艇支隊多艘潛艇，演練內容是支援海上封鎖作戰。", "在演練中，支隊多艘潛艇組成紅方兵力打擊藍方運輸船隊和海上重要設施；藍方則派出水面艦艇、潛艇等反潛兵力阻擊紅方潛艇。", "報導指出，解放軍312潛艇在演練中發射了兩枚魚雷，對目標實施精確打擊；313潛艇則靜音潛伏，伺機對藍方潛艇實施伏擊。", "在此之前，美國軍方一直強調在南海「自由航行權」，並派遣軍艦在區內巡航，以彰顯這方面的權利。", "大陸官網或官媒過去大都發放戰機或水面軍艦演練的訊息和圖片，少有潛艇的相關訊息。", "根據資料，舷號312的潛艇為大陸035型潛艇，北約代號明級，是大陸自行設計建造的第一代常規動力攻擊型潛艇。", "舷號313潛艇則是039G型，是039型的改進型，北約稱為宋級，也是常規攻擊潛艇。1060904"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }, {
+            "LinkType": "opennew",
+            "Identification": {
+                "NewsIdentifier": {
+                    "ProviderId": "中央通訊社"
+                }
+            },
+            "NewsManagement": {
+                "NewsItemType": {
+                    "FormalName": "News"
+                },
+                "FirstCreated": "20170904T045942",
+                "ThisRevisionCreated": "20170904T045942",
+                "Status": {
+                    "FormalName": "Usable"
+                }
+            },
+            "NewsComponent": {
+                "Duid": "newsitem_20170904CFP0113",
+                "Essential": "no",
+                "EquivalentsList": "no",
+                "NewsLines": {
+                    "CopyrightLine": "Copyright (c) The Central News Agency. All Rights Reserved."
+                },
+                "NewsComponent": {
+                    "Duid": "20170904CFP0113",
+                    "DateLine": "20170904T045942",
+                    "Author": "中央社",
+                    "NewsComponent": {
+                        "Role": {
+                            "FormalName": "Main"
+                        },
+                        "NewsLines": {
+                            "HeadLine": "北韓6度核試  陸民：反薩德怎不反核爆",
+                            "SlugLine": "北韓昨天宣稱成功試爆氫彈，是\n北韓自2006年以來的第6次核試。這次事件引發中國大\n陸網民討論，更有許多人開始質疑，南韓薩德系統和北\n韓核爆，究竟哪個危險？\n\n    中國中央電視台報導，北韓昨天核試引發芮氏規模\n6.3地震，在核試地點豊溪里（Punggye-ri）西北方約\n400公里 ...",
+                            "MoreLink": {}
+                        },
+                        "ContentItem": {
+                            "MediaType": {
+                                "FormalName": "ComplexData"
+                            },
+                            "MimeType": {
+                                "FormalName": "text/vnd.IPTC.NITF"
+                            },
+                            "DataContent": {
+                                "nitf": {
+                                    "body": {
+                                        "body.head": {
+                                            "hedline": {
+                                                "hl1": "北韓6度核試  陸民：反薩德怎不反核爆"
+                                            }
+                                        },
+                                        "body.content": {
+                                            "p": ["（中央社台北4日電）北韓昨天宣稱成功試爆氫彈，是北韓自2006年以來的第6次核試。這次事件引發中國大陸網民討論，更有許多人開始質疑，南韓薩德系統和北韓核爆，究竟哪個危險？", "中國中央電視台報導，北韓昨天核試引發芮氏規模6.3地震，在核試地點豊溪里（Punggye-ri）西北方約400公里遠的中國大陸東北城市長春都可感受到震動。中國外交部昨天下午也發表聲明譴責北韓。", "這次北韓核試引發中國網民討論，有新浪微博官方認證、擁有近20萬粉絲的中國歷史部落客「歷史先生」昨天就在微博發文質疑，「朝鮮（北韓）一次次在中朝邊境進行核試驗，從來沒聽說東北的愛國人士說朝鮮的核汙染問題，倒是紛紛指責韓國部署薩德防禦系統。」", "對此，有人留言表示這是「長期封閉洗腦的良好效果」。也有人比喻「你的鄰居在你家門口玩過火，你卻指責另一個較遠的鄰居買了個防火門，滅火器」。", "還有人說：「作為一個中國人，你到底是怕韓國部署薩德呢？還是怕朝鮮在家門口核試爆呢？祖國讓你怕啥你就怕啥！」", "但針對這個議題，也有人持反對態度，表示南韓薩德和北韓核彈，「都是會危害中國戰略安全的東西，這兩者對中國人而言，都是應該反對的」。", "北韓3月朝日本海（東海）發射4枚彈道飛彈後，美製終端高空防衛系統（THAAD，又稱薩德反導系統）運抵南韓，並於5月開始運作。首爾當局6月以有待環境影響評估為由，宣布暫緩部署薩德反導飛彈系統。", "這段期間以來，北京當局以「危害中國戰略安全」為由，強烈反對部署薩德；並傳出「限韓令」、民間抵制韓貨等消息。1060904"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }, {
+            "LinkType": "opennew",
+            "Identification": {
+                "NewsIdentifier": {
+                    "ProviderId": "中央通訊社"
+                }
+            },
+            "NewsManagement": {
+                "NewsItemType": {
+                    "FormalName": "News"
+                },
+                "FirstCreated": "20170904T041941",
+                "ThisRevisionCreated": "20170904T041941",
+                "Status": {
+                    "FormalName": "Usable"
+                }
+            },
+            "NewsComponent": {
+                "Duid": "newsitem_20170904CFP0102",
+                "Essential": "no",
+                "EquivalentsList": "no",
+                "NewsLines": {
+                    "CopyrightLine": "Copyright (c) The Central News Agency. All Rights Reserved."
+                },
+                "NewsComponent": {
+                    "Duid": "20170904CFP0102",
+                    "DateLine": "20170904T041941",
+                    "Author": "邱國強",
+                    "NewsComponent": {
+                        "Role": {
+                            "FormalName": "Main"
+                        },
+                        "NewsLines": {
+                            "HeadLine": "北韓爆氫彈  陸連測3次核輻射未超標",
+                            "SlugLine": "北韓3日試爆氫彈，引\n起北京關切及隔鄰的東北民眾議論。中國大陸環境保護\n部自3日下午到今天凌晨接連在東北及山東進行3次核輻\n射檢測，但暫未測出輻射異常情況。\n\n    根據中國大陸環保部官網公布內容，環保部分別在\n3日下午4時、晚間10時及今天凌晨4時，在吉林、黑龍\n江、遼寧、山東等4 ...",
+                            "MoreLink": {}
+                        },
+                        "ContentItem": {
+                            "MediaType": {
+                                "FormalName": "ComplexData"
+                            },
+                            "MimeType": {
+                                "FormalName": "text/vnd.IPTC.NITF"
+                            },
+                            "DataContent": {
+                                "nitf": {
+                                    "body": {
+                                        "body.head": {
+                                            "hedline": {
+                                                "hl1": "北韓爆氫彈  陸連測3次核輻射未超標"
+                                            }
+                                        },
+                                        "body.content": {
+                                            "p": ["（中央社記者邱國強北京4日電）北韓3日試爆氫彈，引起北京關切及隔鄰的東北民眾議論。中國大陸環境保護部自3日下午到今天凌晨接連在東北及山東進行3次核輻射檢測，但暫未測出輻射異常情況。", "根據中國大陸環保部官網公布內容，環保部分別在3日下午4時、晚間10時及今天凌晨4時，在吉林、黑龍江、遼寧、山東等4省的38個監測站，進行核輻射檢測，並在檢測後1小時彙整報告。", "從中國大陸環保部公布的資料顯示，這些監測站最北端已達黑龍江北部與俄羅斯隔河相望的黑河市愛輝區（卡倫山村），以及中國大陸領土最東端的撫遠市；而在山東，監測範圍也延伸到濟南及青島。", "資料同時顯示，中國大陸環保部針對北韓這次試爆氫彈，還在吉林省境內鄰近北韓邊界的一處地點，設置了「前沿指揮部」。而北韓試爆氫彈的地點，也被標示出來。", "根據中國大陸環保部資料，這3次報告的數據由上述4省的輻射環境監測單位彙報，並由環保部輻射環境監測技術中心彙整後發表。", "根據美國、日本、南韓、中國大陸等國的監測資料顯示，北韓試爆氫彈的地點位在北韓東北部，距離中國大陸吉林省最近，圖們江流域、長白山、鴨綠江上游則是最接近試爆地點的地區。1060904"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }, {
+            "LinkType": "opennew",
+            "Identification": {
+                "NewsIdentifier": {
+                    "ProviderId": "中央通訊社"
+                }
+            },
+            "NewsManagement": {
+                "NewsItemType": {
+                    "FormalName": "News"
+                },
+                "FirstCreated": "20170904T035340",
+                "ThisRevisionCreated": "20170904T035340",
+                "Status": {
+                    "FormalName": "Usable"
+                }
+            },
+            "NewsComponent": {
+                "Duid": "newsitem_20170904CFP0086",
+                "Essential": "no",
+                "EquivalentsList": "no",
+                "NewsLines": {
+                    "CopyrightLine": "Copyright (c) The Central News Agency. All Rights Reserved."
+                },
+                "NewsComponent": {
+                    "Duid": "20170904CFP0086",
+                    "DateLine": "20170904T035340",
+                    "Author": "張謙",
+                    "NewsComponent": {
+                        "Role": {
+                            "FormalName": "Main"
+                        },
+                        "NewsLines": {
+                            "HeadLine": "網傳疑似東風16車隊在浙江出現",
+                            "SlugLine": "據報導， 疑似是中國大\n陸東風16中短程彈道導彈（台稱飛彈）的車隊近日在浙\n江省出現。\n\n    新浪軍網今天在報導中轉載了網友拍攝到的相關照\n片，從照片所見，至少有4架導彈載車。\n\n    據說，這些照片是在浙江師範大學門前拍到的，疑\n似是東風16中短程彈道導彈車隊。\n\n    ...",
+                            "MoreLink": {}
+                        },
+                        "ContentItem": {
+                            "MediaType": {
+                                "FormalName": "ComplexData"
+                            },
+                            "MimeType": {
+                                "FormalName": "text/vnd.IPTC.NITF"
+                            },
+                            "DataContent": {
+                                "nitf": {
+                                    "body": {
+                                        "body.head": {
+                                            "hedline": {
+                                                "hl1": "網傳疑似東風16車隊在浙江出現"
+                                            }
+                                        },
+                                        "body.content": {
+                                            "p": ["（中央社記者張謙香港4日電）據報導， 疑似是中國大陸東風16中短程彈道導彈（台稱飛彈）的車隊近日在浙江省出現。", "新浪軍網今天在報導中轉載了網友拍攝到的相關照片，從照片所見，至少有4架導彈載車。", "據說，這些照片是在浙江師範大學門前拍到的，疑似是東風16中短程彈道導彈車隊。", "報導指出，東風16主要打擊目標或是美軍在亞太前線軍事基地，有精確打擊能力，也具備核常兼備能力，因此東風16被稱「沖繩專遞」。", "報導表示，在中共建軍90週年閱兵上，東風16首次亮相；這種新型導彈命中精度高、毀傷能力大、反應速度快，是火箭軍的近程重錘。", "曾有分析指出，東風16射程超過1000公里，最大射程可能達到1500公里。", "中國大陸浙江省屬於解放軍東部戰區。1060904"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }, {
+            "LinkType": "opennew",
+            "Identification": {
+                "NewsIdentifier": {
+                    "ProviderId": "中央通訊社"
+                }
+            },
+            "NewsManagement": {
+                "NewsItemType": {
+                    "FormalName": "News"
+                },
+                "FirstCreated": "20170904T024837",
+                "ThisRevisionCreated": "20170904T024837",
+                "Status": {
+                    "FormalName": "Usable"
+                }
+            },
+            "NewsComponent": {
+                "Duid": "newsitem_20170904CFP0052",
+                "Essential": "no",
+                "EquivalentsList": "no",
+                "NewsLines": {
+                    "CopyrightLine": "Copyright (c) The Central News Agency. All Rights Reserved."
+                },
+                "NewsComponent": {
+                    "Duid": "20170904CFP0052",
+                    "DateLine": "20170904T024837",
+                    "Author": "陳家倫",
+                    "NewsComponent": {
+                        "Role": {
+                            "FormalName": "Main"
+                        },
+                        "NewsLines": {
+                            "HeadLine": "中印對峙落幕  習近平與莫迪金磚首會面",
+                            "SlugLine": "金磚國家領導人會晤\n預定今天上午11時登場，中國大陸國家主席習近平上午\n在會場迎接各國與會代表。由於中印對峙剛落幕，印度\n總理莫迪與習近平握手的畫面，引來媒體關注。\n\n    印度總理莫迪（Narendra Modi）3日晚間8時30分\n左右飛抵廈門，準備出席金磚國家領導人會晤。印度媒\n ...",
+                            "MoreLink": {}
+                        },
+                        "ContentItem": {
+                            "MediaType": {
+                                "FormalName": "ComplexData"
+                            },
+                            "MimeType": {
+                                "FormalName": "text/vnd.IPTC.NITF"
+                            },
+                            "DataContent": {
+                                "nitf": {
+                                    "body": {
+                                        "body.head": {
+                                            "hedline": {
+                                                "hl1": "中印對峙落幕  習近平與莫迪金磚首會面"
+                                            }
+                                        },
+                                        "body.content": {
+                                            "p": ["（中央社記者陳家倫廈門4日電）金磚國家領導人會晤預定今天上午11時登場，中國大陸國家主席習近平上午在會場迎接各國與會代表。由於中印對峙剛落幕，印度總理莫迪與習近平握手的畫面，引來媒體關注。", "印度總理莫迪（Narendra Modi）3日晚間8時30分左右飛抵廈門，準備出席金磚國家領導人會晤。印度媒體先前報導，習近平與莫迪預計5日舉行雙邊會晤，離中印邊境對峙落幕時隔約一週。", "今天上午近10時，在金磚國家領導人會晤召開前，習近平與前來參加會晤的莫迪握手，畫面透過金磚國家峰會新聞中心的大螢幕轉播，立刻引來媒體關注，紛紛拿起相機拍攝，印度媒體也馬上連線轉播。", "2017年金磚國家峰會3至5日在中國大陸福建省廈門市舉行，其中，金磚國家領導人會晤4日上午登場，會晤由習近平主持，還有小範圍會議、大範圍會議，大範圍會議將透過金磚國家峰會新聞中心螢幕轉播。", "會晤結束後將通過「領導人廈門宣言」。此外，習近平今天也將出席金磚國家文化節啟動儀式暨文化圖片展，以及與工商理事會對話會、簽字儀式等。4日晚間，習近平與妻子彭麗媛將為各國領導人伉儷舉行歡迎宴會。1060904"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }, {
+            "LinkType": "opennew",
+            "Identification": {
+                "NewsIdentifier": {
+                    "ProviderId": "中央通訊社"
+                }
+            },
+            "NewsManagement": {
+                "NewsItemType": {
+                    "FormalName": "News"
+                },
+                "FirstCreated": "20170904T024237",
+                "ThisRevisionCreated": "20170904T024237",
+                "Status": {
+                    "FormalName": "Usable"
+                }
+            },
+            "NewsComponent": {
+                "Duid": "newsitem_20170904CFP0048",
+                "Essential": "no",
+                "EquivalentsList": "no",
+                "NewsLines": {
+                    "CopyrightLine": "Copyright (c) The Central News Agency. All Rights Reserved."
+                },
+                "NewsComponent": {
+                    "Duid": "20170904CFP0048",
+                    "DateLine": "20170904T024237",
+                    "Author": "中央社",
+                    "NewsComponent": {
+                        "Role": {
+                            "FormalName": "Main"
+                        },
+                        "NewsLines": {
+                            "HeadLine": "珠海市長落馬  恐涉國企數百億虧損案",
+                            "SlugLine": "陸媒報導，日前落馬的珠海市長\n李澤中，是因為先前擔任廣晟資產經營有限公司董事長\n時一筆虧損達人民幣百億元（約新台幣460億元）投資\n案被查，該公司已有多名高層接受調查。\n\n    中共中央紀律檢查委員會網站2日公布，中共廣東\n省珠海市委副書記、市長李澤中因為涉嫌嚴重違紀，正\n接受組織審 ...",
+                            "MoreLink": {}
+                        },
+                        "ContentItem": {
+                            "MediaType": {
+                                "FormalName": "ComplexData"
+                            },
+                            "MimeType": {
+                                "FormalName": "text/vnd.IPTC.NITF"
+                            },
+                            "DataContent": {
+                                "nitf": {
+                                    "body": {
+                                        "body.head": {
+                                            "hedline": {
+                                                "hl1": "珠海市長落馬  恐涉國企數百億虧損案"
+                                            }
+                                        },
+                                        "body.content": {
+                                            "p": ["（中央社台北4日電）陸媒報導，日前落馬的珠海市長李澤中，是因為先前擔任廣晟資產經營有限公司董事長時一筆虧損達人民幣百億元（約新台幣460億元）投資案被查，該公司已有多名高層接受調查。", "中共中央紀律檢查委員會網站2日公布，中共廣東省珠海市委副書記、市長李澤中因為涉嫌嚴重違紀，正接受組織審查。", "李澤中今年47歲，原本仕途看好，但3月才擔任珠海代市長，5月擔任市長，落馬消息一出引發各界揣測。", "大陸財新網報導，李澤中在今年3月轉任公職前，是廣東省屬大型國企廣晟資產經營有限公司的董事長、（中共）黨委書記。這家公司主要從事有色金屬工業、電子資訊產業、飯店旅遊業、工程建築房地產業等業務。", "李澤中2006年進入廣晟，2013年出任總經理，2016年任董事長和黨委書記。", "報導指出，經過多方確認，李澤中離開廣晟後，廣晟公司早年一筆虧損數額高達百億元的對外投資上報至廣東省國資委及廣東省政府，追責程序隨即啟動，李澤中因此被查。", "在李澤中之前，公司多名高層已在前一輪反腐中落馬，由於這一起巨額虧損，幾名落馬官員再次接受調查，譬如已在2014年9月接受調查的前董事長李進明，當時雖未被追究司法責任，但今年8月因本案被帶走。1060904"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }, {
+            "LinkType": "opennew",
+            "Identification": {
+                "NewsIdentifier": {
+                    "ProviderId": "中央通訊社"
+                }
+            },
+            "NewsManagement": {
+                "NewsItemType": {
+                    "FormalName": "News"
+                },
+                "FirstCreated": "20170904T022637",
+                "ThisRevisionCreated": "20170904T022637",
+                "Status": {
+                    "FormalName": "Usable"
+                }
+            },
+            "NewsComponent": {
+                "Duid": "newsitem_20170904CFP0044",
+                "Essential": "no",
+                "EquivalentsList": "no",
+                "NewsLines": {
+                    "CopyrightLine": "Copyright (c) The Central News Agency. All Rights Reserved."
+                },
+                "NewsComponent": {
+                    "Duid": "20170904CFP0044",
+                    "DateLine": "20170904T022637",
+                    "Author": "張謙",
+                    "NewsComponent": {
+                        "Role": {
+                            "FormalName": "Main"
+                        },
+                        "NewsLines": {
+                            "HeadLine": "陸非傳統安全報告：海軍先進度追上日本",
+                            "SlugLine": "據報導，中國大陸方面\n近日發表研究報告指出，當前大陸海軍的先進程度已經\n追上日本海上自衛隊，部分能力還超過日本。\n\n    香港大公網今天報導，大陸方面近日發表的「中國\n非傳統安全研究報告」，當中作出以上結論。\n\n    報告指出，大陸海軍在火力投射能力、聯合作戰能\n力以及艦隊規模方 ...",
+                            "MoreLink": {}
+                        },
+                        "ContentItem": {
+                            "MediaType": {
+                                "FormalName": "ComplexData"
+                            },
+                            "MimeType": {
+                                "FormalName": "text/vnd.IPTC.NITF"
+                            },
+                            "DataContent": {
+                                "nitf": {
+                                    "body": {
+                                        "body.head": {
+                                            "hedline": {
+                                                "hl1": "陸非傳統安全報告：海軍先進度追上日本"
+                                            }
+                                        },
+                                        "body.content": {
+                                            "p": ["（中央社記者張謙香港4日電）據報導，中國大陸方面近日發表研究報告指出，當前大陸海軍的先進程度已經追上日本海上自衛隊，部分能力還超過日本。", "香港大公網今天報導，大陸方面近日發表的「中國非傳統安全研究報告」，當中作出以上結論。", "報告指出，大陸海軍在火力投射能力、聯合作戰能力以及艦隊規模方面超過日本。", "不過，報告指大陸海軍的遠洋作戰能力、海上反恐能力等仍亟待提升。", "報告指出，目前大陸海軍仍存在不足，首先是結構不夠合理，比如擁有一艘航空母艦，但潛艇數量卻達到53艘，而潛艇並不具備護航等功能。", "其次是遠洋作戰能力不足。", "報告表示，大陸海軍擁有300多艘艦艇，但其中25艘江島級056型輕型護衛艦和60艘侯北級穿浪雙體飛彈巡邏艇022型並不具備遠洋作戰能力。1060904"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }, {
+            "LinkType": "opennew",
+            "Identification": {
+                "NewsIdentifier": {
+                    "ProviderId": "中央通訊社"
+                }
+            },
+            "NewsManagement": {
+                "NewsItemType": {
+                    "FormalName": "News"
+                },
+                "FirstCreated": "20170904T021737",
+                "ThisRevisionCreated": "20170904T021737",
+                "Status": {
+                    "FormalName": "Usable"
+                }
+            },
+            "NewsComponent": {
+                "Duid": "newsitem_20170904CFP0042",
+                "Essential": "no",
+                "EquivalentsList": "no",
+                "NewsLines": {
+                    "CopyrightLine": "Copyright (c) The Central News Agency. All Rights Reserved."
+                },
+                "NewsComponent": {
+                    "Duid": "20170904CFP0042",
+                    "DateLine": "20170904T021737",
+                    "Author": "繆宗翰",
+                    "NewsComponent": {
+                        "Role": {
+                            "FormalName": "Main"
+                        },
+                        "NewsLines": {
+                            "HeadLine": "廣州詩人浪子案擴大  友人也被捕",
+                            "SlugLine": "參與編纂劉曉波紀念\n詩選的廣州詩人浪子8月中旬被廣州警方以非法經營罪\n刑事拘留；曾協助浪子出版刊物的友人彭和平也傳出在\n8月29日被當地警方以相同罪名拘捕。\n\n    獨立中文作家筆會昨晚發布新聞稿指出，彭和平因\n協助浪子（本名吳明良）印製「一種開端」詩歌、藝術\n展覽圖錄，在8月29日 ...",
+                            "MoreLink": {}
+                        },
+                        "ContentItem": {
+                            "MediaType": {
+                                "FormalName": "ComplexData"
+                            },
+                            "MimeType": {
+                                "FormalName": "text/vnd.IPTC.NITF"
+                            },
+                            "DataContent": {
+                                "nitf": {
+                                    "body": {
+                                        "body.head": {
+                                            "hedline": {
+                                                "hl1": "廣州詩人浪子案擴大  友人也被捕"
+                                            }
+                                        },
+                                        "body.content": {
+                                            "p": ["（中央社記者繆宗翰台北4日電）參與編纂劉曉波紀念詩選的廣州詩人浪子8月中旬被廣州警方以非法經營罪刑事拘留；曾協助浪子出版刊物的友人彭和平也傳出在8月29日被當地警方以相同罪名拘捕。", "獨立中文作家筆會昨晚發布新聞稿指出，彭和平因協助浪子（本名吳明良）印製「一種開端」詩歌、藝術展覽圖錄，在8月29日遭廣州市公安局海珠區分局以「非法經營」為由刑事拘留。", "中國大陸廣東省廣州市海珠區文化廣電新聞出版局執法人員8月8日曾進入浪子住所，抄查過去策展的個人詩歌和藝術展覽場刊圖錄等。", "當地警方隨後指控，這批展覽圖冊沒有「准印證」和「書號」，認定屬於「非法出版物」，於8月18日進入浪子住所將他帶走，採刑事拘留。", "根據中國大陸最高人民法院「關於審理非法出版物刑事案件具體應用法律若干問題的解釋」，「嚴重危害社會秩序和擾亂市場秩序的非法出版物，情節嚴重的」，可依照刑法第225條規定，以非法經營罪定罪處罰。最高可處5年以下有期徒刑或拘役，易科或併科違法所得一倍以上、5倍以下罰金。", "對此，獨立中文作家筆會透過新聞稿表示，強烈抗議和譴責中國政府剝奪浪子各項公民權利和自由，羅織罪名，製造冤案，並蓄意將事態擴大化，並嚴重危害中國公民依憲法從事文學藝術創作、出版和思想、言論表達的自由。", "新聞稿也要求廣州當局立即停止一切錯誤行動，釋放浪子及彭和平。", "諾貝爾和平獎得主劉曉波6月底傳出罹癌保外就醫，浪子與許多中國大陸異議人士均發起連署；隨後浪子在7月1日遭當地警方行政拘留多日。", "而在劉曉波病逝後，浪子出獄隨即投入中國大陸詩人孟浪與眾多作家、詩人共同發起的劉曉波紀念詩選編纂，浪子的詩也有收錄。1060904"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }, {
+            "LinkType": "opennew",
+            "Identification": {
+                "NewsIdentifier": {
+                    "ProviderId": "中央通訊社"
+                }
+            },
+            "NewsManagement": {
+                "NewsItemType": {
+                    "FormalName": "News"
+                },
+                "FirstCreated": "20170903T144831",
+                "ThisRevisionCreated": "20170903T144831",
+                "Status": {
+                    "FormalName": "Usable"
+                }
+            },
+            "NewsComponent": {
+                "Duid": "newsitem_20170903CFP0220",
+                "Essential": "no",
+                "EquivalentsList": "no",
+                "NewsLines": {
+                    "CopyrightLine": "Copyright (c) The Central News Agency. All Rights Reserved."
+                },
+                "NewsComponent": {
+                    "Duid": "20170903CFP0220",
+                    "DateLine": "20170903T144831",
+                    "Author": "中央社",
+                    "NewsComponent": {
+                        "Role": {
+                            "FormalName": "Main"
+                        },
+                        "NewsLines": {
+                            "HeadLine": "北韓核試  習近平蒲亭同聲堅持無核化",
+                            "SlugLine": "北韓今天宣稱成功試爆氫彈，中\n國大陸國家主席習近平與俄羅斯總統蒲亭會晤時重申堅\n持朝鮮半島無核化目標，並說將密切溝通，妥善因應北\n韓再次核試的最新形勢。\n\n    另一方面，印度總理莫迪（Narendra Modi）晚間8 \n時30分左右飛抵2017年金磚國家峰會舉辦地福建省廈門\n市。 ...",
+                            "MoreLink": {}
+                        },
+                        "ContentItem": {
+                            "MediaType": {
+                                "FormalName": "ComplexData"
+                            },
+                            "MimeType": {
+                                "FormalName": "text/vnd.IPTC.NITF"
+                            },
+                            "DataContent": {
+                                "nitf": {
+                                    "body": {
+                                        "body.head": {
+                                            "hedline": {
+                                                "hl1": "北韓核試  習近平蒲亭同聲堅持無核化"
+                                            }
+                                        },
+                                        "body.content": {
+                                            "p": ["（中央社台北3日電）北韓今天宣稱成功試爆氫彈，中國大陸國家主席習近平與俄羅斯總統蒲亭會晤時重申堅持朝鮮半島無核化目標，並說將密切溝通，妥善因應北韓再次核試的最新形勢。", "另一方面，印度總理莫迪（Narendra Modi）晚間8時30分左右飛抵2017年金磚國家峰會舉辦地福建省廈門市。印度媒體報導，習近平與莫迪預計5日舉行雙邊會晤，離中印邊境對峙落幕時隔約一週。", "新華社報導，習近平今天會見下午飛抵廈門的蒲亭（Vladimir Putin），雙方同意深化中俄全面戰略協作夥伴關係，強化能源、航太等領域合作，並加強兩軍交流。", "報導指出，習近平和蒲亭還就共同關心的國際和地區問題深入交換意見，一致同意堅持朝鮮半島無核化目標，並密切溝通協調，妥善應對北韓再次進行核試這一最新形勢。", "據北韓官媒說法，北韓當地時間中午左右在豐溪里核試驗場進行核試，成功試爆的氫彈可裝載在最新研發的洲際彈道飛彈（ICBM）上。這是北韓進行的第6次核試，引發的地震規模超越前5次核試。", "中國大陸外交部隨後發表聲明說，北韓不顧國際社會普遍反對，再次進行核試，中國大陸政府對此表示堅決反對並予強烈譴責。", "俄羅斯外交部也發表聲明，對北韓這次核試深表憂慮並予以「最強烈譴責」。聲明說，北韓此舉對整個朝鮮半島和區域的和平與安全都構成嚴重威脅，若繼續沿此路線行動，將為北韓本身帶來嚴重後果。1060903"]
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }]
+    }
+}
