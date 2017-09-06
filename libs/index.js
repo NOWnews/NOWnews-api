@@ -22,7 +22,7 @@ import changeInternalLink from './changeInternalLink';
 import getAndRemoveFirstImage from './getAndRemoveFirstImage';
 import getChannelsByPlatform from './getChannelsByPlatform';
 import getFacebookPostInfo from './getFacebookPostInfo';
-
+import downloadFile from './downloadFile';
 
 module.exports = {
     hashPwd,
@@ -48,5 +48,6 @@ module.exports = {
     changeInternalLink,
     getAndRemoveFirstImage,
     getChannelsByPlatform,
-    getFacebookPostInfo
+    getFacebookPostInfo,
+    downloadFile
 };

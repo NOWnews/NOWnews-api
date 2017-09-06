@@ -4,6 +4,15 @@ NOWnews-api change logs
 
 ## [Unreleased]
 
+## 1.0.30 - 2017-09-04
+### Fixed
+- 修正 中央社匯入圖片有IP限制 外網看不到的問題 @appleoxxo
+
+## 1.0.29 - 2017-09-01
+### Fixed
+- 修正 ios 內文圖出不來的問題 @webber
+
+## 1.0.28 - 2017-08-31
 ### Changed
 - 中央社匯入圖片圖說加上▲ @appleoxxo
 - 暫時把鉅亨網新聞匯入註解掉 @appleoxxo
@@ -12,6 +21,9 @@ NOWnews-api change logs
 - cronjob加上軍聞社新聞匯入 @appleoxxo
 - 刪除新聞的時候，也要有 log (因應這個功能，所以在 `newLog` 這個 schema 加入新的欄位 `newsTrashed`) @SimonSun
 - cronjob加上中央社圖片匯入 @appleoxxo
+
+### Changed
+- 優化圖片搜尋增加 index @esbb48
 
 ###Fixed
 - instant 補傳 MainVideo 的欄位 @esbb48
