@@ -98,7 +98,7 @@ let schema = new Schema({
     template: {
         type: String,
         default: 'DEFAULT',
-        enum: ['DEFAULT', 'COLUMN']
+        enum: ['DEFAULT', 'COLUMN', 'SPECIALCHANNEL']
     },
 
     // 版型的廣告代碼
