@@ -13,8 +13,8 @@ import { parseRssFeed, newsLog, changeInternalLink } from '../libs';
 import { News, Image, Tag, Menu } from '../models';
 import { Pageview } from '../pvModels';
 module.exports = new cron.CronJob({
-    // 設定多久跑一次
-    cronTime: '0 */3 * * * *',
+    //設定每5分鐘收錄一次
+    cronTime: '0 */5 * * * *',
 
     // 主要邏輯區
     onTick: async() => {
