@@ -7,13 +7,13 @@ let Schema = mongoose.Schema;
 let schema = new Schema({
 
     month: {
-        type: String,
-        default: null
+        type: Number,
+        default: 0
     },
 
     year: {
-        type: String,
-        default: null
+        type: Number,
+        default: 0
     },
 
     schedule: {
