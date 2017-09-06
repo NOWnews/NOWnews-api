@@ -149,7 +149,7 @@ module.exports = new cron.CronJob({
                             location: [121.5914087, 25.0693482], //台北市內湖區的座標
                             shortTitle: news.shortTitle,
                             summary: news.desc || news.title,
-                            MainMenu: '5952cf6c9c2d7166cb9511d6', // !! 以後應該會改 '總覽' 主分類menu的_id 未在init data中 !!
+                            MainMenu: '560000000000000000000014',
                             Menus: ['560000000000000000000014'],
                             MainPhoto: randomImageId,
                             MainVideo: null,
