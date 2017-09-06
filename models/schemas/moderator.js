@@ -11,6 +11,11 @@ let schema = new Schema({
         default: null
     },
 
+    year: {
+        type: String,
+        default: null
+    },
+
     schedule: {
         day1: {
             type: Array,

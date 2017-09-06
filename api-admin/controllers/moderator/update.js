@@ -8,10 +8,13 @@ module.exports = async (req, res, next) => {
 
     let { id } = req.params;
     let {
+        year,
         month,
         schedule,
         UpdatedBy
     } = req.body;
+
+    debug('req.body = %j', req.body);
 
     try{
 
@@ -19,6 +22,10 @@ module.exports = async (req, res, next) => {
             .where('isTrashed').equals(false)
             .execAsync();
         debug('moderator = %j', moderator);
+
+        if(year) {
+            moderator.set('year', year);
+        }
 
         if(month) {
             moderator.set('month', month);
