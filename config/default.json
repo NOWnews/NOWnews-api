@@ -12,6 +12,12 @@
             "height": 168,
             "quality": 70
         },
+        "imagelab": {
+            "url": "https://devimagelab.nownews.com",
+            "width": 300,
+            "height": 168,
+            "quality": 70
+        },
         "rssFeed": {
             "cnyes": "https://service.cnyes.com/rss/v2/news?vendor=nownews",
             "cnaImage": "http://rss.cna.com.tw/client/nownews/pho/gallery_feed_cnaphoto.xml"
