@@ -212,6 +212,37 @@ schema.virtual('googleCDN').get(function () {
     }
 });
 
+schema.virtual('sizeFormat').get(function () {
+
+    let imagelab = config.get('general.imagelab.url');
+    let regexString = /^(http|https):\/\/[A-Za-z]+.nownews.com\//;
+    let imgMatch = this.url.match(regexString);
+
+    if(imgMatch === null) {
+        return {
+            w300q70: this.url,
+            w360q70: this.url,
+            w540q70: this.url,
+            w640q70: this.url,
+            w720q70: this.url,
+            w750q70: this.url,
+            w1080q85: this.url,
+            w1440q85: this.url
+        };
+    }
+
+    return {
+        w300q70: `${imagelab}/?w=300&q=70&src=${this.url}`,
+        w360q70: `${imagelab}/?w=360&q=70&src=${this.url}`,
+        w540q70: `${imagelab}/?w=540&q=70&src=${this.url}`,
+        w640q70: `${imagelab}/?w=640&q=70&src=${this.url}`,
+        w720q70: `${imagelab}/?w=720&q=70&src=${this.url}`,
+        w750q70: `${imagelab}/?w=750&q=70&src=${this.url}`,
+        w1080q85: `${imagelab}/?w=1080&q=85&src=${this.url}`,
+        w1440q85: `${imagelab}/?w=1440&q=85&src=${this.url}`
+    };
+});
+
 schema.virtual('formatCreatedAt').get(function () {
     return moment.tz(this.createdAt, 'Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });
