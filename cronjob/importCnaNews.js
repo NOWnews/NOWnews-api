@@ -135,6 +135,7 @@ module.exports = new cron.CronJob({
                         //把內文的內連都改連回首頁
                         news.content = changeInternalLink(news.content);
 
+                        console.log(`-------------------------------------------`);
                         console.log(`新聞標題: ${news.title}`);
                         console.log(`新聞短標題: ${news.shortTitle}`);
                         console.log(`新聞識別唯一值: ${news.uniqKey}`);
