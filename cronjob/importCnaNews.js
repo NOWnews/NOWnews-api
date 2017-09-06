@@ -10,9 +10,8 @@ import cron from 'cron';
 import _ from 'lodash';
 import moment from 'moment-timezone';
 import { parseRssFeed, newsLog, changeInternalLink } from '../libs';
-import { News, Image, Tag } from '../models';
+import { News, Image, Tag, Menu } from '../models';
 import { Pageview } from '../pvModels';
-
 module.exports = new cron.CronJob({
     // 設定多久跑一次
     cronTime: '0 */3 * * * *',
@@ -150,7 +149,7 @@ module.exports = new cron.CronJob({
                             location: [121.5914087, 25.0693482], //台北市內湖區的座標
                             shortTitle: news.shortTitle,
                             summary: news.desc || news.title,
-                            MainMenu: '560000000000000000000001',
+                            MainMenu: '5952cf6c9c2d7166cb9511d6', // !! 以後應該會改 '總覽' 主分類menu的_id 未在init data中 !!
                             Menus: ['560000000000000000000014'],
                             MainPhoto: randomImageId,
                             MainVideo: null,
