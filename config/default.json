@@ -19,7 +19,8 @@
             "cnyes": "https://service.cnyes.com/rss/v2/news?vendor=nownews",
             "cnaImage": "http://rss.cna.com.tw/client/nownews/pho/gallery_feed_cnaphoto.xml",
             "cnaNews": {
-                "business": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_business_cn.xml",
+                "business": [
+                    "http://rss.cna.com.tw/client/nownews/cfp/article_feed_business_cn.xml",
                     "http://rss.cna.com.tw/client/nownews/cfp/article_feed_business_int.xml",
                     "http://rss.cna.com.tw/client/nownews/cfp/article_feed_business_tw.xml"
                 ],
@@ -30,7 +31,8 @@
                 "local": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_local.xml"],
                 "politics": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_politics.xml"],
                 "society": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_society.xml"],
-                "sports": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_sports_cn.xml",
+                "sports": [
+                    "http://rss.cna.com.tw/client/nownews/cfp/article_feed_sports_cn.xml",
                     "http://rss.cna.com.tw/client/nownews/cfp/article_feed_sports_int.xml",
                     "http://rss.cna.com.tw/client/nownews/cfp/article_feed_sports_tw.xml"
                 ],
