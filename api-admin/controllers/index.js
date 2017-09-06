@@ -24,6 +24,7 @@ import score from './score';
 import appInfo from './app';
 import searchEngine from './searchEngine';
 import ott from './ott';
+import column from './column';
 
 
 module.exports = (app) => {
@@ -54,6 +55,7 @@ module.exports = (app) => {
     app.use('/', appInfo);
     app.use('/', searchEngine);
     app.use('/', ott);
+    app.use('/', column);
 
     return (req, res, next) => {
         return next();
