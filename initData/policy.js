@@ -153,6 +153,13 @@ module.exports = [{
     "path": "/indexpage/create",
     "method": "get"
 }, {
+    "_id": "510010000000000000000002",
+    "group": "首頁管理",
+    "desc": "版主班表管理",
+    "type": "ADMIN_MENU",
+    "path": "/moderator",
+    "method": "get"
+}, {
     "_id": "510011000000000000000001",
     "group": "統計",
     "desc": "統計部門則數",
