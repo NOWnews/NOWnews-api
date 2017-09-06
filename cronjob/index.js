@@ -6,8 +6,10 @@ import updateFirstPageForMobile from './updateFirstPageForMobile';
 import updateFirstPageForDesktop from './updateFirstPageForDesktop';
 import updateNewestNews from './updateNewestNews';
 import updateNewestImages from './updateNewestImages';
-// import importCNYES from './importCNYES';
+import importCNYES from './importCNYES';
 import importCnaImages from './importCnaImages';
+import importCnaNews from './importCnaNews';
+
 
 
 module.exports = async () => {
@@ -21,7 +23,8 @@ module.exports = async () => {
         updateFirstPageForDesktop.start(),
         updateNewestNews.start(),
         updateNewestImages.start(),
-        // importCNYES.start(),
-        importCnaImages.start()
+        importCNYES.start(),
+        importCnaImages.start(),
+        importCnaNews.start()
     ]);
 };

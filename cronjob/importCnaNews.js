@@ -18,184 +18,189 @@ module.exports = new cron.CronJob({
     cronTime: '0 */3 * * * *',
 
     // 主要邏輯區
-    onTick: async () => {
+    onTick: async() => {
         try {
             console.log(`------------- Start Import 中央社 RSS Feed -------------`);
-            let feedUrl = config.get('general.rssFeed.cnyes');
+            let feedUrls = config.get('general.rssFeed.cnaNews');
 
-            if(!feedUrl || feedUrl === '') {
-                console.log('cnyes 鉅亨網沒有設定');
+            if (!feedUrls || feedUrls === '') {
+                console.error('中央社 RSS Feed 沒有設定');
                 return;
             }
-
-            let rssJSON = await parseRssFeed(feedUrl);
-
-            // debug('json = %j', rssJSON.rss.channel.item[0]);
-
-            let newsList = [];
-            let nowTime = moment.tz('Asia/Taipei');
-            let prevTime = moment.tz('Asia/Taipei').add(-10, 'm');
-            for(let item of  rssJSON.rss.channel.item){
-
-                // 如果不是在設定的時間區間內的新聞，就不需要收錄
-                let newsPubDate = moment.tz(new Date(item.pubDate), 'Asia/Taipei');
-                if( newsPubDate.isBefore(prevTime) ) {
-                    continue;
+            let feedUrlsAndImages = {
+                business: {
+                    feedUrls: feedUrls.business,
+                    defaultImageIds: ['511000000000000000000009']
+                },
+                china: {
+                    feedUrls: feedUrls.china,
+                    defaultImageIds: ['511000000000000000000010']
+                },
+                health: {
+                    feedUrls: feedUrls.health,
+                    defaultImageIds: ['511000000000000000000011']
+                },
+                int: {
+                    feedUrls: feedUrls.int,
+                    defaultImageIds: ['511000000000000000000012']
+                },
+                life: {
+                    feedUrls: feedUrls.life,
+                    defaultImageIds: ['511000000000000000000013']
+                },
+                local: {
+                    feedUrls: feedUrls.local,
+                    defaultImageIds: ['511000000000000000000014']
+                },
+                politics: {
+                    feedUrls: feedUrls.politics,
+                    defaultImageIds: ['511000000000000000000015']
+                },
+                society: {
+                    feedUrls: feedUrls.society,
+                    defaultImageIds: ['511000000000000000000016']
+                },
+                sports: {
+                    feedUrls: feedUrls.sports,
+                    defaultImageIds: ['511000000000000000000017']
+                },
+                stars: {
+                    feedUrls: feedUrls.stars,
+                    defaultImageIds: ['511000000000000000000018']
+                },
+                tech: {
+                    feedUrls: feedUrls.tech,
+                    defaultImageIds: ['511000000000000000000019']
                 }
-
-                // 確認對方給的新聞 url 是否符合規範，不符合規範就不收錄
-                let regexString = /^(http|https):\/\/news.cnyes.com\/news\/id\/[0-9]+/;
-                if(item.link.match(regexString) === null) {
-                    continue;
-                }
-
-                // 取出對方新聞 uniq key
-                let splitLink = item.link.split('/');
-                let uniqKey = splitLink[splitLink.length - 1];
-
-                // 處理標題或是短標題多於限制的字數，就把它截掉
-                let title = item.title.slice(0, 25);
-                let shortTitle = title.length > 16 ? title.slice(0, 13) + '...' : title.slice(0, 15);
-
-                // 如果這則新聞已經存過了，就不收錄
-                let aliveNews = await News.findOne()
-                    .where('feedUniqKey').equals(uniqKey)
-                    .execAsync();
-                if(aliveNews) {
-                    continue;
-                }
-                //把內文的內連都改連回首頁
-                item['content:encoded'] = changeInternalLink(item['content:encoded']);
-                //鉅亨網要求加上在新聞內文 文末加上連結
-                const link = "http://news.cnyes.com/?utm_medium=news&utm_source=nownews";
-                item['content:encoded'] +=`\n更多精彩內容請至 《鉅亨網》 <a target="_blank" href="${link}">連結>></a>`
-
-                //新聞關鍵字
-                var keywords = item['media:keywords'] ? item['media:keywords'].split(',') : [];
-                let tagList = await Promise.mapSeries(keywords, (tag) => {
-                    // 變成小寫與去除頭尾空白
-                    tag = tag.trim().toLowerCase();
-                    return Tag.findOne()
-                        .where('name').equals(tag)
-                        .where('isTrashed').equals(false)
-                        .execAsync()
-                        .then((aliveTag) => {
-
-                            // 如果有存在的 tag 就直接吐出去
-                            if(aliveTag) {
-                                return Promise.resolve(aliveTag);
-                            }
-
-                            // 沒有這個 tag 就幫他建立
-                            return Tag.createAsync({
-                                name: tag,
-                                CreatedBy: '530000000000000000000002',
-                                UpdatedBy: '530000000000000000000002'
-                            });
-                        });
-                });
-
-                /*
-                 * 鉅亨網沒有圖片，所以不用處理
-                 * 這些處理圖片的 code 留下來當參考
-                 */
-                // let image = null;
-                // if(item['media:content']) {
-                //     let imageOptions = {
-                //         title: '（圖／鉅亨網）',
-                //         desc: '（圖／鉅亨網）',
-                //         keyword: '鉅亨網',
-                //         imageFrom: 'CNYES',
-                //         originalname: null,
-                //         format: null,
-                //         type: 'NEWS',
-                //         mode: 'NORMAl',
-                //         mimetype: null,
-                //         width: item['media:content'].width,
-                //         height: item['media:content'].height,
-                //         isDeliver: false,
-                //         Tag: null,
-                //         url: item['media:content'] && item['media:content'].url,
-                //         isTrashed: false,
-                //         CreatedBy: '530000000000000000000002',
-                //         UpdatedBy: '530000000000000000000002',
-                //     };
-
-                //     image = await Image.createAsync(imageOptions);
-                // }
-
-                console.log(`新聞標題: ${item.title}`);
-                console.log(`新聞短標題: ${shortTitle}`);
-                console.log(`新聞關鍵字:${keywords}`);
-                console.log(`新聞連結: ${item.link}`);
-                console.log(`新聞識別唯一值: ${uniqKey}`);
-                console.log(`新聞發布時間: ${newsPubDate.format('YYYY-MM-DD HH:ss:mm')}`);
-                console.log(`收錄時間區間: ${prevTime.format('YYYY-MM-DD HH:ss:mm')} ~ ${nowTime.format('YYYY-MM-DD HH:ss:mm')}`);
-                console.log(`-------------------------------------------`);
-
-                // 鉅亨網完全沒有圖片 全部主圖都隨機從這4個墊檔圖指定
-                const cnyesImagesObjectIds = [
-                  '511000000000000000000005',
-                  '511000000000000000000006',
-                  '511000000000000000000007',
-                  '511000000000000000000008',
-                ];
-                let randomDefaultImageId = cnyesImagesObjectIds[Math.floor(Math.random() * cnyesImagesObjectIds.length)];
-
-                let newsOptions = {
-                    title: title,
-                    location: [121.5914087,25.0693482], //台北市內湖區的座標
-                    shortTitle: shortTitle,
-                    summary: title, //鉅亨網沒有提供summary這個欄位 但前台og tag要用到summary 所以放title
-                    MainMenu: '560000000000000000000016',
-                    Menus: ['560000000000000000000013'],
-                    MainPhoto: randomDefaultImageId,
-                    MainVideo: null,
-                    content: item['content:encoded'],
-                    Photos: [],
-                    Videos: [],
-                    freeContent: null,
-                    startedAt: newsPubDate,
-                    type: 'NEWS',
-                    status: 'RELEASE',
-                    traceCode: null,
-                    isAdult: false,
-                    isDeliver: false,
-                    isSponsored: false,
-                    Author: '530000000000000000000002',
-                    newsBy: '鉅亨網',
-                    Tags: tagList || [],
-                    isFeed: true,
-                    feedFrom: 'CNYES',
-                    feedUniqKey: uniqKey,
-                    feedUrl: item.link,
-                    LastReviewer: '530000000000000000000002',
-                    isTrashed: false,
-                    CreatedBy: '530000000000000000000002',
-                    UpdatedBy: '530000000000000000000002',
-                    createdAt: newsPubDate,
-                    updatedAt: newsPubDate
-                };
-
-                let news = await News.createAsync(newsOptions);
-
-                // 處理 log
-                let newsForLog = await news.populate('MainMenu Menus MainPhoto MainVideo Photos Videos Author Tags LastReviewer CreatedBy UpdatedBy').execPopulate();
-                await newsLog(newsForLog, 'CREATE');
-
-                // 初始化 pageview 資訊
-                await Pageview.findOneAndUpdateAsync({
-                        url: `/news/${moment.tz(news.startedAt, 'Asia/Taipei').format('YYYYMMDD')}/${news.sn}`
-                    }, {
-                        $set: { newsId: news._id, menuId: news.MainMenu._id }
-                    }, {
-                        upsert: true,
-                        new: true,
-                        setDefaultsOnInsert: true
-                    });
             };
 
-            console.log(`------------- Finish Import 鉅亨網 RSS Feed -------------`);
+            for (let [categoryName, category] of Object.entries(feedUrlsAndImages)) {
+                console.log(`---- 開始匯入 中央社 ${categoryName} 分類 ----`);
+                let {
+                    feedUrls,
+                    defaultImageIds
+                } = category;
+
+                for (let [index, feedUrl] of feedUrls.entries()) {
+
+                    let rssJSON = await parseRssFeed(feedUrl);
+                    let newsList = _.get(rssJSON, 'NewsML.NewsItem', null);
+
+                    console.log(`中央社 ${categoryName}[${index}] 分類 共有 ${newsList.length} 筆新聞`);
+
+                    let nowTime = moment.tz('Asia/Taipei');
+                    let prevTime = moment.tz('Asia/Taipei').add(-1, 'day');
+
+                    for (let [index, value] of newsList.entries()) {
+
+                        console.log(`${categoryName} 第 ${index} 筆新聞:`);
+
+                        let news = {
+                            title: _.get(value, 'NewsComponent.NewsComponent.NewsComponent.ContentItem.DataContent.nitf.body["body.head"].hedline.hl1', null), // hedline 沒有打錯字 應該是中央社的技術人員手誤
+                            content: _.get(value, 'NewsComponent.NewsComponent.NewsComponent.ContentItem.DataContent.nitf.body["body.content"].p', null),
+                            uniqKey: _.get(value, 'NewsComponent.Duid', null),
+                            pubDate: _.get(value, 'NewsComponent.NewsComponent.DateLine', null),
+                            desc: _.get(value, 'NewsComponent.NewsComponent.NewsComponent.NewsLines.SlugLine', null)
+                        };
+                        // 沒有取得 標題 內容 識別值 日期，就不需要收錄
+                        if (!news.title || !news.content || !news.uniqKey || !news.pubDate) {
+                            debug('不收錄原因: 新聞資料不完整');
+                            continue;
+                        }
+                        // 如果不是在設定的時間區間內的新聞，就不需要收錄
+                        news.pubDate = moment.tz(news.pubDate, 'Asia/Taipei');
+                        if (news.pubDate.isBefore(prevTime)) {
+                            debug('不收錄原因: 新聞過期');
+                            continue;
+                        }
+                        //如果這則新聞已經存過 整個newslist就直接跳過不收錄 因為newsList是有按照時間順序 由新到舊
+                        let aliveNews = await News.findOne()
+                            .where('feedUniqKey').equals(news.uniqKey)
+                            .execAsync();
+                        if (aliveNews) {
+                            debug('不收錄原因: 已存過');
+                            break;
+                        }
+
+                        // 處理標題或是短標題多於限制的字數，就把它截掉
+                        news.title = news.title.slice(0, 25);
+                        news.shortTitle = news.title.length > 16 ? news.title.slice(0, 13) + '...' : news.title.slice(0, 15);
+
+                        // 中央社的內文比較特別 parseXML的時候  變成array了 現在把內文要組回來
+                        let contentTemp = '';
+                        _.forEach(news.content, value => {
+                            contentTemp += `<p>${value}</p>`
+                        });
+                        news.content = contentTemp;
+
+                        //把內文的內連都改連回首頁
+                        news.content = changeInternalLink(news.content);
+
+                        console.log(`新聞標題: ${news.title}`);
+                        console.log(`新聞短標題: ${news.shortTitle}`);
+                        console.log(`新聞識別唯一值: ${news.uniqKey}`);
+                        console.log(`新聞發布時間: ${news.pubDate.format('YYYY-MM-DD HH:ss:mm')}`);
+                        console.log(`收錄時間區間: ${prevTime.format('YYYY-MM-DD HH:ss:mm')} ~ ${nowTime.format('YYYY-MM-DD HH:ss:mm')}`);
+                        console.log(`-------------------------------------------`);
+
+                        let randomImageId = defaultImageIds[Math.floor(Math.random() * defaultImageIds.length)];
+
+                        let newsOptions = {
+                            title: news.title,
+                            location: [121.5914087, 25.0693482], //台北市內湖區的座標
+                            shortTitle: news.shortTitle,
+                            summary: news.desc || news.title,
+                            MainMenu: '560000000000000000000001',
+                            Menus: ['560000000000000000000014'],
+                            MainPhoto: randomImageId,
+                            MainVideo: null,
+                            content: news.content,
+                            Photos: [],
+                            Videos: [],
+                            freeContent: null,
+                            startedAt: news.pubDate,
+                            type: 'NEWS',
+                            status: 'RELEASE',
+                            traceCode: null,
+                            isAdult: false,
+                            isDeliver: false,
+                            isSponsored: false,
+                            Author: '530000000000000000000004',
+                            newsBy: '中央社',
+                            Tags: [],
+                            isFeed: true,
+                            feedFrom: 'CNA',
+                            feedUniqKey: news.uniqKey,
+                            feedUrl: feedUrl,
+                            LastReviewer: '530000000000000000000004',
+                            isTrashed: false,
+                            CreatedBy: '530000000000000000000004',
+                            UpdatedBy: '530000000000000000000004',
+                            createdAt: Date.now(),
+                            updatedAt: Date.now()
+                        };
+                        news = await News.createAsync(newsOptions);
+                        // 處理 log
+                        let newsForLog = await news.populate('MainMenu Menus MainPhoto MainVideo Photos Videos Author Tags LastReviewer CreatedBy UpdatedBy').execPopulate();
+                        await newsLog(newsForLog, 'CREATE');
+
+                        // 初始化 pageview 資訊
+                        await Pageview.findOneAndUpdateAsync({
+                            url: `/news/${moment.tz(news.startedAt, 'Asia/Taipei').format('YYYYMMDD')}/${news.sn}`
+                        }, {
+                            $set: {
+                                newsId: news._id,
+                                menuId: news.MainMenu._id
+                            }
+                        }, {
+                            upsert: true,
+                            new: true,
+                            setDefaultsOnInsert: true
+                        });
+                    };
+                }
+            }
+            console.log(`------------- Finish Import 中央社 RSS Feed -------------`);
         } catch (err) {
             return console.log(err);
         }
