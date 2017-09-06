@@ -2775,7 +2775,8 @@ None
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
 | UpdatedBy | 更新者 | ObjectID | √ | `530000000000000000000001` |
-| month | 月份 | String | √ | `2017-08` |
+| month | 月份 | Number | √ | `8` |
+| year | 年份 | Number | √ | `2017` |
 | schedule | 每日的排程 | Object | √ | `{ "day1": [], "day2": ["--", "--"], "day3": [],...` |
 
 #### Query Parameters
