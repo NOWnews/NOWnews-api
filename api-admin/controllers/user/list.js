@@ -9,7 +9,7 @@ import { pagination } from '../../../libs';
 
 module.exports = async (req, res, next) => {
 
-    let { limit, page, skip, name, status, Role, sort, Center, Department } = req.query;
+    let { limit, page, skip, name, status, Role, sort, Center, Department, isInitUser } = req.query;
     debug('req.query = %j', req.query);
 
     try{
@@ -43,10 +43,15 @@ module.exports = async (req, res, next) => {
             totalCursor.where('Department').equals(Department);
         }
 
+        if(!isInitUser){
+            cursor.where('isInitUser').equals(false);
+            totalCursor.where('isInitUser').equals(false);
+        }
+
         let [ users, total ] = await Promise.all([
             cursor
                 .where('isTrashed').equals(false)
-                .where('isInitUser').equals(false)
+                .where('_id').ne('530000000000000000000001') //superuser不顯示
                 .populate('Role Department Center')
                 .limit(limit)
                 .skip(skip)
@@ -55,7 +60,7 @@ module.exports = async (req, res, next) => {
                 .execAsync(),
             totalCursor
                 .where('isTrashed').equals(false)
-                .where('isInitUser').equals(false)
+                .where('_id').ne('530000000000000000000001') //superuser不顯示
                 .countAsync()
         ]);
         debug('users = %j', users);

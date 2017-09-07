@@ -11,7 +11,7 @@ import { pagination, getFacebookPostInfo } from '../../../libs';
 module.exports = async (req, res, next) => {
 
     let { limit, page, skip, select, title, type, status, Author, noSponsored,
-         CreatedBy, UpdatedBy, LastReviewer, sort, startedAt, endedAt, MainMenu, sn, isScheduled} = req.query;
+         CreatedBy, UpdatedBy, LastReviewer, sort, startedAt, endedAt, MainMenu, sn, isScheduled, isFeed } = req.query;
     debug('req.query = %j', req.query);
 
     try {
@@ -88,6 +88,14 @@ module.exports = async (req, res, next) => {
         if(noSponsored) {
             cursor.where('isSponsored').equals(false);
             totalCursor.where('isSponsored').equals(false);
+        }
+
+        if(isFeed === 'false'){
+            cursor.where('isFeed').equals(false);
+            totalCursor.where('isFeed').equals(false);
+        }else if(isFeed === 'true'){
+            cursor.where('isFeed').equals(true);
+            totalCursor.where('isFeed').equals(true);
         }
 
         let [ newsList, total ] = await Promise.all([

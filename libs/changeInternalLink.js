@@ -9,6 +9,6 @@ module.exports = (htmlContent) => {
           htmlContent = $.html()
           return htmlContent;
     } catch (err) {
-        return console.err(err);
+        return console.error(err);
     }
 };

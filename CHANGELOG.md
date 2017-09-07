@@ -3,9 +3,37 @@
 NOWnews-api change logs
 
 ## [Unreleased]
+### Fixed
+- api-web 的 /instant 移除匯入新聞（即時跑馬燈）
+- 修正 google trace engine 造成 CPU 與 Memory 消耗過大問題 @SimonSun
+
+### Added
+- 新增軍聞社新聞匯入 @appleoxxo
+- 新增中央社新聞匯入 @appleoxxo
+- 加入 imagelab 縮圖網址與在 Image mode 加入 sizeFormat 虛擬欄位 @SimonSun
+- 增加廠商專屬的列表「我的新聞(廠商)」權限@esbb48
+
+## 1.0.30 - 2017-09-04
+### Fixed
+- 修正 中央社匯入圖片有IP限制 外網看不到的問題 @appleoxxo
+
+## 1.0.29 - 2017-09-01
+### Fixed
+- 修正 ios 內文圖出不來的問題 @webber
+
+## 1.0.28 - 2017-08-31
+### Changed
+- Admin的api端點 /users 加上 isInitUser 判斷 ＠appleoxxo
+- Adminapi端點 /news 加上 isFeed 判斷 ＠appleoxxo
+- 鉅亨網匯入新聞加入關鍵字和修正短標題規則 @appleoxxo
+- 修正匯入新聞若編輯無法選擇匯入作者 @appleoxxo
+- 中央社匯入圖片圖說加上▲ @appleoxxo
+- 暫時把鉅亨網新聞匯入註解掉 @appleoxxo
+- 優化圖片搜尋增加 index @esbb48
+
 ### Added
 - 刪除新聞的時候，也要有 log (因應這個功能，所以在 `newLog` 這個 schema 加入新的欄位 `newsTrashed`) @SimonSun
-- 增加廠商專屬的列表「我的新聞(廠商)」權限@esbb48
+- cronjob加上中央社圖片匯入 @appleoxxo
 
 ###Fixed
 - instant 補傳 MainVideo 的欄位 @esbb48
