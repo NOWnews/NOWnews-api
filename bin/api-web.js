@@ -10,7 +10,7 @@ require('@google-cloud/trace-agent').start({
     projectId: config.get('general.googleCloud.projectId'),
     keyFilename: config.get('general.googleCloud.keyFilename'),
     logLevel: 1,
-    samplingRate: 1000
+    samplingRate: 10
 });
 
 const api = require('../api-web/app.js');

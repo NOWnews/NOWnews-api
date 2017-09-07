@@ -150,6 +150,13 @@ schema.index({
     type: 1
 });
 
+schema.index({
+    createdAt: -1,
+    imageFrom: 1,
+    type: 1,
+    isTrashed: 1
+});
+
 schema.virtual('thumbnail').get(function () {
 
     let imgRegexString = /^(http|https):\/\/img.nownews.com\//;
@@ -203,6 +210,37 @@ schema.virtual('googleCDN').get(function () {
         let url = config.get('general.thumbnail.url');
         return `${url}/?w=1080&q=100&src=${encodeURIComponent(this.url)}`;
     }
+});
+
+schema.virtual('sizeFormat').get(function () {
+
+    let imagelab = config.get('general.imagelab.url');
+    let regexString = /^(http|https):\/\/[A-Za-z]+.nownews.com\//;
+    let imgMatch = this.url.match(regexString);
+
+    if(imgMatch === null) {
+        return {
+            w300q70: this.url,
+            w360q70: this.url,
+            w540q70: this.url,
+            w640q70: this.url,
+            w720q70: this.url,
+            w750q70: this.url,
+            w1080q85: this.url,
+            w1440q85: this.url
+        };
+    }
+
+    return {
+        w300q70: `${imagelab}/?w=300&q=70&src=${this.url}`,
+        w360q70: `${imagelab}/?w=360&q=70&src=${this.url}`,
+        w540q70: `${imagelab}/?w=540&q=70&src=${this.url}`,
+        w640q70: `${imagelab}/?w=640&q=70&src=${this.url}`,
+        w720q70: `${imagelab}/?w=720&q=70&src=${this.url}`,
+        w750q70: `${imagelab}/?w=750&q=70&src=${this.url}`,
+        w1080q85: `${imagelab}/?w=1080&q=85&src=${this.url}`,
+        w1440q85: `${imagelab}/?w=1440&q=85&src=${this.url}`
+    };
 });
 
 schema.virtual('formatCreatedAt').get(function () {

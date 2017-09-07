@@ -1,6 +1,6 @@
 {
   "name": "nownews-api",
-  "version": "1.0.27",
+  "version": "1.0.30",
   "description": "nownews api service",
   "main": "index.js",
   "scripts": {
