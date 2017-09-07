@@ -79,6 +79,7 @@ None
 | page | 第幾頁 | Number |  | `page=1` |
 | limit | 一次幾筆資料 | Number |  | `limit=10` |
 | skip | 跳過幾筆資料 | Number |  | `skip=10` |
+| isInitUser |  | String |  | `isInitUser=true` |
 
 ### [POST] `/users/login`
 
@@ -771,6 +772,7 @@ None
 | limit | 一次幾筆資料 | Number |  | `limit=10` |
 | skip | 跳過幾筆資料 | Number |  | `skip=10` |
 | sort | 排序(預設為最新在最前面) | String | | `sort=createdAt`, `sort=-title` |
+| isFeed | 是否為匯入新聞 | String | | `isFeed=true`, `isFeed=false` |
 
 ### [GET] `/news/{:id}`
 

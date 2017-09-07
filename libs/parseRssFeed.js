@@ -4,7 +4,7 @@ const debug = Debug('NOWnews-api:libs:parseRssFeed');
 
 import xml2json from 'xml2json';
 import axios from 'axios';
-import Promise from 'bluebird'; 
+import Promise from 'bluebird';
 
 module.exports = async (feed) => {
 
@@ -17,7 +17,7 @@ module.exports = async (feed) => {
         // debug('rss data = %s', rssData);
 
         let jsonString = xml2json.toJson(rssData);
-        debug('rss data = %s', jsonString);
+        // debug('rss data = %s', jsonString);
 
         let jsonData = JSON.parse(jsonString);
 

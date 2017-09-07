@@ -17,7 +17,29 @@
         },
         "rssFeed": {
             "cnyes": "https://service.cnyes.com/rss/v2/news?vendor=nownews",
-            "cnaImage": "http://rss.cna.com.tw/client/nownews/pho/gallery_feed_cnaphoto.xml"
+            "cnaImage": "http://rss.cna.com.tw/client/nownews/pho/gallery_feed_cnaphoto.xml",
+            "cnaNews": {
+                "business": [
+                    "http://rss.cna.com.tw/client/nownews/cfp/article_feed_business_cn.xml",
+                    "http://rss.cna.com.tw/client/nownews/cfp/article_feed_business_int.xml",
+                    "http://rss.cna.com.tw/client/nownews/cfp/article_feed_business_tw.xml"
+                ],
+                "china": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_china.xml"],
+                "health": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_health.xml"],
+                "int": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_int.xml"],
+                "life": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_life.xml"],
+                "local": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_local.xml"],
+                "politics": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_politics.xml"],
+                "society": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_society.xml"],
+                "sports": [
+                    "http://rss.cna.com.tw/client/nownews/cfp/article_feed_sports_cn.xml",
+                    "http://rss.cna.com.tw/client/nownews/cfp/article_feed_sports_int.xml",
+                    "http://rss.cna.com.tw/client/nownews/cfp/article_feed_sports_tw.xml"
+                ],
+                "stars": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_stars.xml"],
+                "tech": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_tech.xml"]
+
+            }
         },
         "googleCloud": {
             "projectId": "nownews-website-167108",
@@ -125,7 +147,7 @@
             "expireSeconds": 3600
         },
         "header": {
-            "X-NOWnews-API": ["YouCanSeeMeJohnCena","JHK","VSOONTECH","1KXUN"]
+            "X-NOWnews-API": ["YouCanSeeMeJohnCena", "JHK", "VSOONTECH", "1KXUN"]
         },
         "baseQuery": {
             "limit": 15,
