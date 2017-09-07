@@ -17,9 +17,10 @@ module.exports = async (req, res, next) => {
         // 如果沒有 type 而且是第一頁，直接從 redis 拿資料
         if(!type && page === 1) {
             let instantPage1 = await redis.getValue(`instant-page1`);
-            return res.json(instantPage1);
+            if(instantPage1){
+                return res.json(instantPage1);
+            }
         }
-
         let cursor = News.find();
         let totalCursor = News.find();
 
@@ -32,11 +33,13 @@ module.exports = async (req, res, next) => {
         cursor
             .where('status').equals('RELEASE')
             .where('isTrashed').equals(false)
-            .where('startedAt').lte(Date.now());
+            .where('startedAt').lte(Date.now())
+            .where('isFeed').equals(false);
         totalCursor
             .where('status').equals('RELEASE')
             .where('isTrashed').equals(false)
-            .where('startedAt').lte(Date.now());
+            .where('startedAt').lte(Date.now())
+            .where('isFeed').equals(false);
 
         // 找出相關列表與分頁資料
         let [ newsList, total ] = await Promise.all([

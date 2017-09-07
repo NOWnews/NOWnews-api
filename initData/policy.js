@@ -48,6 +48,13 @@ module.exports = [{
     "path": "/news/takeMeReviewList",
     "method": "get"
 }, {
+    "_id": "510002000000000000000006",
+    "group": "新聞",
+    "desc": "我的新聞(廠商)",
+    "type": "ADMIN_MENU",
+    "path": "/news/vendorList",
+    "method": "get"
+}, {
     "_id": "510003000000000000000001",
     "group": "關鍵字",
     "desc": "關鍵字列表",
