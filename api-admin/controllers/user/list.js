@@ -16,7 +16,7 @@ module.exports = async (req, res, next) => {
 
         let cursor = User.find();
         let totalCursor = User.find(); // 處理分頁用的
-        sort = sort ? sort : 'staffId'
+        sort = sort ? sort : 'createdAt'
 
         if(name) {
             cursor.where('name').equals(new RegExp(name, 'i'));
