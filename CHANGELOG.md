@@ -20,6 +20,10 @@ NOWnews-api change logs
 
 ## 1.0.28 - 2017-08-31
 ### Changed
+- Admin的api端點 /users 加上 isInitUser 判斷 ＠appleoxxo
+- Adminapi端點 /news 加上 isFeed 判斷 ＠appleoxxo
+- 鉅亨網匯入新聞加入關鍵字和修正短標題規則 @appleoxxo
+- 修正匯入新聞若編輯無法選擇匯入作者 @appleoxxo
 - 中央社匯入圖片圖說加上▲ @appleoxxo
 - 暫時把鉅亨網新聞匯入註解掉 @appleoxxo
 
