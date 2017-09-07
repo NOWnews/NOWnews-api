@@ -11,6 +11,7 @@ NOWnews-api change logs
 - 新增軍聞社新聞匯入 @appleoxxo
 - 新增中央社新聞匯入 @appleoxxo
 - 加入 imagelab 縮圖網址與在 Image mode 加入 sizeFormat 虛擬欄位 @SimonSun
+- 增加廠商專屬的列表「我的新聞(廠商)」權限@esbb48
 
 ## 1.0.30 - 2017-09-04
 ### Fixed
@@ -28,13 +29,11 @@ NOWnews-api change logs
 - 修正匯入新聞若編輯無法選擇匯入作者 @appleoxxo
 - 中央社匯入圖片圖說加上▲ @appleoxxo
 - 暫時把鉅亨網新聞匯入註解掉 @appleoxxo
+- 優化圖片搜尋增加 index @esbb48
 
 ### Added
 - 刪除新聞的時候，也要有 log (因應這個功能，所以在 `newLog` 這個 schema 加入新的欄位 `newsTrashed`) @SimonSun
 - cronjob加上中央社圖片匯入 @appleoxxo
-
-### Changed
-- 優化圖片搜尋增加 index @esbb48
 
 ###Fixed
 - instant 補傳 MainVideo 的欄位 @esbb48
