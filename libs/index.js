@@ -1,4 +1,3 @@
-
 import hashPwd from './hashPwd';
 import pagination from './pagination';
 import newsLog from './newsLog';
@@ -20,9 +19,11 @@ import updateNewestImages from './updateNewestImages';
 import refreshIndexPage from './refreshIndexPage';
 import parseRssFeed from './parseRssFeed';
 import changeInternalLink from './changeInternalLink';
+import getAndRemoveFirstImage from './getAndRemoveFirstImage';
 import getChannelsByPlatform from './getChannelsByPlatform';
 import getFacebookPostInfo from './getFacebookPostInfo';
 import downloadFile from './downloadFile';
+
 module.exports = {
     hashPwd,
     pagination,
@@ -45,6 +46,7 @@ module.exports = {
     refreshIndexPage,
     parseRssFeed,
     changeInternalLink,
+    getAndRemoveFirstImage,
     getChannelsByPlatform,
     getFacebookPostInfo,
     downloadFile

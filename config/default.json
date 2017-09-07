@@ -17,6 +17,7 @@
         },
         "rssFeed": {
             "cnyes": "https://service.cnyes.com/rss/v2/news?vendor=nownews",
+            "mna": "http://mna.gpwb.gov.tw/service/RSS.php?type=news",
             "cnaImage": "http://rss.cna.com.tw/client/nownews/pho/gallery_feed_cnaphoto.xml",
             "cnaNews": {
                 "business": [
