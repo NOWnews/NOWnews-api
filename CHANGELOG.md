@@ -7,7 +7,8 @@ NOWnews-api change logs
 - 修正 google trace engine 造成 CPU 與 Memory 消耗過大問題 @SimonSun
 
 ### Added
-- cronjob加上軍聞社新聞匯入 @appleoxxo
+- 新增軍聞社新聞匯入 @appleoxxo
+- 新增中央社新聞匯入 @appleoxxo
 - 加入 imagelab 縮圖網址與在 Image mode 加入 sizeFormat 虛擬欄位 @SimonSun
 
 ## 1.0.30 - 2017-09-04
