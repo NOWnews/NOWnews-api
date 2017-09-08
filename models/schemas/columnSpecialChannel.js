@@ -6,12 +6,12 @@ let Schema = mongoose.Schema;
 
 let schema = new Schema({
     
-    menu: {
+    Menu: {
         type: Schema.Types.ObjectId,
         ref: 'Menu'
     },
 
-    subMenus: [{
+    SubMenus: [{
         type: Schema.Types.ObjectId,
         ref: 'Menu'
     }],
