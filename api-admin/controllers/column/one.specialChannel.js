@@ -14,7 +14,7 @@ module.exports = async (req, res, next) => {
             .execAsync();
 
         if(!data) {
-            throw new Error('');
+            throw new Error('29003');
         }
 
         return res.json(data);

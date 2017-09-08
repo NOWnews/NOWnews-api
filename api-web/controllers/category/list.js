@@ -37,23 +37,26 @@ module.exports = async (req, res, next) => {
         }
 
         // 處理業配專欄特輯版型
-        let columnSpecialChannel = await ColumnSpecialChannel.findOne()
-            .where('isTrashed').equals(false)
-            .or([
-                { Menu: menu._id },
-                { SubMenus: menu._id }
-            ])
-            .populate([
-                {
-                    path: 'Menu',
-                    select: 'name url template categoryName'
-                },
-                {
-                    path: 'SubMenus',
-                    select: 'name url template categoryName'
-                }
-            ])
-            .execAsync();
+        let columnSpecialChannel = null;
+        if(menu.template === "SPECIALCHANNEL") {
+            columnSpecialChannel = await ColumnSpecialChannel.findOne()
+                .where('isTrashed').equals(false)
+                .or([
+                    { Menu: menu._id },
+                    { SubMenus: menu._id }
+                ])
+                .populate([
+                    {
+                        path: 'Menu',
+                        select: 'name url template categoryName'
+                    },
+                    {
+                        path: 'SubMenus',
+                        select: 'name url template categoryName'
+                    }
+                ])
+                .execAsync();
+        }
 
         let newsListCursor = News.find();
         let newsTotalCursor = News.find();

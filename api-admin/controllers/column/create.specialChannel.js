@@ -12,21 +12,16 @@ module.exports = async (req, res, next) => {
         // 將所有的 id 做成一個 array
         let checkMenuIds = _.concat([req.body.Menu], req.body.SubMenus);
 
-        let menus = await Promise.map(checkMenuIds, (menuId) => {
-            return Menu.findById(menuId)
-                .where('isTrashed').equals(false)
-                .execAsync();
-        });
+        let menus = await Menu.find()
+            .where('isTrashed').equals(false)
+            .where('_id').in(checkMenuIds)
+            .where('template').equals('SPECIALCHANNEL')
+            .execAsync();
         debug('menus = %j', menus);
 
-        // 確認所有的 menu 是不是都是 template === 'SPECIALCHANNEL'
-        _.forEach(menus, (menu) => {
-            if(menu !== null) {
-                return;
-            }
-
-            throw new Error('');
-        });
+        if(menus.length !== checkMenuIds.length) {
+            throw new Error('29001');
+        }
 
         // 確認這個 Menu 是不是存在了
         let column = await ColumnSpecialChannel.findOne()
@@ -35,7 +30,7 @@ module.exports = async (req, res, next) => {
             .execAsync();
 
         if(column) {
-            throw new Error('');
+            throw new Error('29002');
         }
 
         let newData = await ColumnSpecialChannel.createAsync({

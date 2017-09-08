@@ -12,7 +12,7 @@ module.exports = async (req, res, next) => {
             .execAsync();
 
         if(!data) {
-            throw new Error('');
+            throw new Error('29003');
         }
 
         data.set('isTrashed', true);

@@ -3,7 +3,7 @@ const debug = Debug('NOWnews-api:libs:updateCategoryFirstPage');
 
 import Promise from 'bluebird';
 
-import { News, Menu } from '../models';
+import { News, Menu, ColumnSpecialChannel } from '../models';
 import pagination from './pagination';
 import redis from '../redis';
 import config from 'config';
@@ -24,23 +24,26 @@ module.exports = async (categoryName, limit, skip, page) => {
             .execAsync();
 
         // 處理業配專欄特輯版型
-        let columnSpecialChannel = await ColumnSpecialChannel.findOne()
-            .where('isTrashed').equals(false)
-            .or([
-                { Menu: menu._id },
-                { SubMenus: menu._id }
-            ])
-            .populate([
-                {
-                    path: 'Menu',
-                    select: 'name url template categoryName'
-                },
-                {
-                    path: 'SubMenus',
-                    select: 'name url template categoryName'
-                }
-            ])
-            .execAsync();
+        let columnSpecialChannel = null;
+        if(menu.template === "SPECIALCHANNEL") {
+            columnSpecialChannel = await ColumnSpecialChannel.findOne()
+                .where('isTrashed').equals(false)
+                .or([
+                    { Menu: menu._id },
+                    { SubMenus: menu._id }
+                ])
+                .populate([
+                    {
+                        path: 'Menu',
+                        select: 'name url template categoryName'
+                    },
+                    {
+                        path: 'SubMenus',
+                        select: 'name url template categoryName'
+                    }
+                ])
+                .execAsync();
+        }
 
         let cursor = News.find();
         let totalCursor = News.find();

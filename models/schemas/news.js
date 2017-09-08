@@ -195,7 +195,7 @@ let schema = new Schema({
     templateAD: {
         type: String,
         default: 'DEFAULT',
-        enum: ['DEFAULT', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+        enum: ['DEFAULT', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15']
     },
 
     // 是否被刪除
