@@ -21,11 +21,13 @@ module.exports = async () => {
         let cursor = News.find()
             .where('isTrashed').equals(false)
             .where('status').equals('RELEASE')
-            .where('startedAt').lte(Date.now());
+            .where('startedAt').lte(Date.now())
+            .where('isFeed').equals(false);
         let totalCursor = News.find()
             .where('isTrashed').equals(false)
             .where('status').equals('RELEASE')
-            .where('startedAt').lte(Date.now());
+            .where('startedAt').lte(Date.now())
+            .where('isFeed').equals(false);
 
         // 找出相關列表與分頁資料
         let [ newsList, total ] = await Promise.all([

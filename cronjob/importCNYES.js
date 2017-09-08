@@ -4,13 +4,13 @@
 
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:cron:cronjob:importCNYES');
-
+import Promise from 'bluebird';
 import config from 'config';
 import cron from 'cron';
 import _ from 'lodash';
 import moment from 'moment-timezone';
 import { parseRssFeed, newsLog, changeInternalLink } from '../libs';
-import { News, Image } from '../models';
+import { News, Image, Tag } from '../models';
 import { Pageview } from '../pvModels';
 
 module.exports = new cron.CronJob({
@@ -39,7 +39,7 @@ module.exports = new cron.CronJob({
 
                 // 如果不是在設定的時間區間內的新聞，就不需要收錄
                 let newsPubDate = moment.tz(new Date(item.pubDate), 'Asia/Taipei');
-                if(newsPubDate < prevTime) {
+                if( newsPubDate.isBefore(prevTime) ) {
                     continue;
                 }
 
@@ -55,7 +55,7 @@ module.exports = new cron.CronJob({
 
                 // 處理標題或是短標題多於限制的字數，就把它截掉
                 let title = item.title.slice(0, 25);
-                let shortTitle = item.title.slice(0, 15);
+                let shortTitle = title.length > 16 ? title.slice(0, 13) + '...' : title.slice(0, 15);
 
                 // 如果這則新聞已經存過了，就不收錄
                 let aliveNews = await News.findOne()
@@ -69,6 +69,31 @@ module.exports = new cron.CronJob({
                 //鉅亨網要求加上在新聞內文 文末加上連結
                 const link = "http://news.cnyes.com/?utm_medium=news&utm_source=nownews";
                 item['content:encoded'] +=`\n更多精彩內容請至 《鉅亨網》 <a target="_blank" href="${link}">連結>></a>`
+
+                //新聞關鍵字
+                var keywords = item['media:keywords'] ? item['media:keywords'].split(',') : [];
+                let tagList = await Promise.mapSeries(keywords, (tag) => {
+                    // 變成小寫與去除頭尾空白
+                    tag = tag.trim().toLowerCase();
+                    return Tag.findOne()
+                        .where('name').equals(tag)
+                        .where('isTrashed').equals(false)
+                        .execAsync()
+                        .then((aliveTag) => {
+
+                            // 如果有存在的 tag 就直接吐出去
+                            if(aliveTag) {
+                                return Promise.resolve(aliveTag);
+                            }
+
+                            // 沒有這個 tag 就幫他建立
+                            return Tag.createAsync({
+                                name: tag,
+                                CreatedBy: '530000000000000000000002',
+                                UpdatedBy: '530000000000000000000002'
+                            });
+                        });
+                });
 
                 /*
                  * 鉅亨網沒有圖片，所以不用處理
@@ -99,21 +124,32 @@ module.exports = new cron.CronJob({
                 //     image = await Image.createAsync(imageOptions);
                 // }
 
-                console.log(`收錄新聞: ${item.title}`);
+                console.log(`新聞標題: ${item.title}`);
+                console.log(`新聞短標題: ${shortTitle}`);
+                console.log(`新聞關鍵字:${keywords}`);
                 console.log(`新聞連結: ${item.link}`);
                 console.log(`新聞識別唯一值: ${uniqKey}`);
                 console.log(`新聞發布時間: ${newsPubDate.format('YYYY-MM-DD HH:ss:mm')}`);
                 console.log(`收錄時間區間: ${prevTime.format('YYYY-MM-DD HH:ss:mm')} ~ ${nowTime.format('YYYY-MM-DD HH:ss:mm')}`);
                 console.log(`-------------------------------------------`);
 
+                // 鉅亨網完全沒有圖片 全部主圖都隨機從這4個墊檔圖指定
+                const cnyesImagesObjectIds = [
+                  '511000000000000000000005',
+                  '511000000000000000000006',
+                  '511000000000000000000007',
+                  '511000000000000000000008',
+                ];
+                let randomDefaultImageId = cnyesImagesObjectIds[Math.floor(Math.random() * cnyesImagesObjectIds.length)];
+
                 let newsOptions = {
                     title: title,
                     location: [121.5914087,25.0693482], //台北市內湖區的座標
                     shortTitle: shortTitle,
                     summary: title, //鉅亨網沒有提供summary這個欄位 但前台og tag要用到summary 所以放title
-                    MainMenu: '560000000000000000000016',
+                    MainMenu: '560000000000000000000013',
                     Menus: ['560000000000000000000013'],
-                    MainPhoto: '511000000000000000000001',
+                    MainPhoto: randomDefaultImageId,
                     MainVideo: null,
                     content: item['content:encoded'],
                     Photos: [],
@@ -128,7 +164,7 @@ module.exports = new cron.CronJob({
                     isSponsored: false,
                     Author: '530000000000000000000002',
                     newsBy: '鉅亨網',
-                    Tags: [],
+                    Tags: tagList || [],
                     isFeed: true,
                     feedFrom: 'CNYES',
                     feedUniqKey: uniqKey,

@@ -32,7 +32,7 @@ let schema = new Schema({
     imageFrom: {
         type: String,
         default: 'INTERNAL',
-        enum: ['INTERNAL', 'EXTERNAL', 'CNA'] // 內部, 外部, 中央社
+        enum: ['INTERNAL', 'EXTERNAL', 'CNA', 'MNA'] // 內部, 外部, 中央社, 軍聞社
     },
 
     // 原始的檔案名稱
