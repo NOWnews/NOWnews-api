@@ -12,8 +12,8 @@ NOWnews-api change logs
 - 新增中央社新聞匯入 @appleoxxo
 - 加入 imagelab 縮圖網址與在 Image mode 加入 sizeFormat 虛擬欄位 @SimonSun
 - 增加廠商專屬的列表「我的新聞(廠商)」權限@esbb48
-- 加入特輯版型業配專欄 API @SimonSun
-- 加入從 excel 匯入新聞關鍵字工具 @SimonSun
+- 加入特輯版型業配專欄 API， initData policy.js 加入 `專欄管理(專欄列表 - 特輯版型)` 與 `專欄管理(新增專欄 - 特輯版型)` @SimonSun
+- 加入從 excel 匯入新聞關鍵字工具，加入 `convert-excel-to-json` node module @SimonSun
 
 ## 1.0.30 - 2017-09-04
 ### Fixed
