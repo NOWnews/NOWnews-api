@@ -3,6 +3,8 @@
 NOWnews-api change logs
 
 ## [Unreleased]
+### Changed
+- 修改admin端點 /indexpage 內carousel 新增feedFrom欄位資料 @appleoxxo
 ### Fixed
 - api-web 的 /instant 移除匯入新聞（即時跑馬燈）
 - 修正 google trace engine 造成 CPU 與 Memory 消耗過大問題 @SimonSun
