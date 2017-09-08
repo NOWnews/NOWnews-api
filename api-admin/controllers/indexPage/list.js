@@ -12,7 +12,7 @@ module.exports = async (req, res, next) => {
         let indexPage = await IndexPage.findOne()
             .populate([
                 { path:'videos', select: 'title sn startedAt'},
-                { path:'carousels', select: 'title sn startedAt'},
+                { path:'carousels', select: 'title sn startedAt feedFrom'},
                 { path:'specialTopics', select: 'title createdAt url'},
                 { path:'specialChannels', select: 'title sn createdAt'}
             ])
