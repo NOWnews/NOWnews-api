@@ -89,7 +89,7 @@ module.exports = async (req, res, next) => {
         // 找出相關列表與分頁資料
         let [ newsList, total ] = await Promise.all([
             cursor.populate( ['MainMenu', 'Menus', 'MainPhoto', 'MainVideo',
-                { path : 'Author' ,select : 'name Avatar' , populate : { path: 'Avatar', select: 'url' }}] )
+                { path : 'Author' , select : 'name Avatar' , populate : { path: 'Avatar', select: 'url' }}] )
                 .select('sn _id title shortTitle MainMenu MainPhoto startedAt type Author')
                 .limit(limit)
                 .skip(skip)
