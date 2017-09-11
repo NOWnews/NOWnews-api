@@ -15,6 +15,7 @@ let schema = new Schema({
         type: String,
         default: ''
     },
+    // 未來可能是寄信可以知道層次，目前系統管理者是 999
     level: {
         type: Number,
         default: 0
@@ -23,7 +24,7 @@ let schema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Policy'
     }],
-
+    // 可以審此角色的角色
     SuperiorRoles: [{
         type: Schema.Types.ObjectId,
         ref: 'Role'
