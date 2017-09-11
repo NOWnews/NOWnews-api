@@ -491,4 +491,20 @@ module.exports = {
         message: '此平台已經存在',
         statusCode: 400
     },
+
+    // Column Special Channel
+    29001: {
+        message: '你有不存在或非特輯專欄版型的選單在裡面',
+        statusCode: 400
+    },
+
+    29002: {
+        message: '此專欄版型已經存在',
+        statusCode: 400
+    },
+
+    29003: {
+        message: '找不到此專欄版型',
+        statusCode: 404
+    }
 };

@@ -188,14 +188,14 @@ let schema = new Schema({
     template: {
         type: String,
         default: 'DEFAULT',
-        enum: ['DEFAULT', 'COLUMN']
+        enum: ['DEFAULT', 'COLUMN', 'SPECIALCHANNEL']
     },
 
     // 版型的廣告代碼
     templateAD: {
         type: String,
         default: 'DEFAULT',
-        enum: ['DEFAULT', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+        enum: ['DEFAULT', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15']
     },
 
     // 是否被刪除

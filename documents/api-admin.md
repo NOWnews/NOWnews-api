@@ -2731,3 +2731,132 @@ None
 #### Query Parameters
 
 None
+
+## COLUMNSPECIALCHANNEL API DOCUMENTS
+
+專欄特輯版型 API
+
+### [GET] `/column/specialchannels`
+
+所有專欄版型
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None
+
+### [POST] `/column/specialchannels`
+
+新增專欄版型
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| Menu | menu 的 ObjectId | Object | √ | |
+| SubMenus | menu 的 ObjectId 陣列 | Array | √ | |
+| CreatedBy | 建立者 | Object | √ | |
+
+
+#### Query Parameters
+
+None
+
+### [GET] `/column/specialchannels/{:id}`
+
+取得單一專欄版型
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | 專欄版型的 ObjectId | Object | √ | |
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None
+
+### [PUT] `/column/specialchannels/{:id}`
+
+更新專欄版型
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | 專欄版型的 ObjectId | Object | √ | |
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| Menu | menu 的 ObjectId | Object | √ | |
+| SubMenus | menu 的 ObjectId 陣列 | Array | √ | |
+| UpdatedBy | 更新者 | Object | √ | |
+
+#### Query Parameters
+
+None
+
+### [DELETE] `/column/specialchannels/{:id}`
+
+刪除專欄版型
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | 專欄版型的 ObjectId | Object | √ | |
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None

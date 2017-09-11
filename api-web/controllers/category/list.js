@@ -8,7 +8,7 @@ const debug = Debug('NOWnews-api:api-web:controllers:category:list');
 import Promise from 'bluebird';
 
 import { pagination } from '../../../libs';
-import { News, Menu } from '../../../models';
+import { News, Menu, ColumnSpecialChannel } from '../../../models';
 import redis from '../../../redis';
 
 module.exports = async (req, res, next) => {
@@ -28,12 +28,34 @@ module.exports = async (req, res, next) => {
         let menu = await Menu.findOne()
             .where('isTrashed').equals(false)
             .where('categoryName').equals(categoryName)
-            .where('status').equals('OPEN')
+            // .where('status').equals('OPEN')
             .execAsync();
 
         // 如果連選單的資料都查不到，直接噴給他空的
         if(!menu || !menu._id) {
             throw new Error('11001');
+        }
+
+        // 處理業配專欄特輯版型
+        let columnSpecialChannel = null;
+        if(menu.template === "SPECIALCHANNEL") {
+            columnSpecialChannel = await ColumnSpecialChannel.findOne()
+                .where('isTrashed').equals(false)
+                .or([
+                    { Menu: menu._id },
+                    { SubMenus: menu._id }
+                ])
+                .populate([
+                    {
+                        path: 'Menu',
+                        select: 'name url template categoryName'
+                    },
+                    {
+                        path: 'SubMenus',
+                        select: 'name url template categoryName'
+                    }
+                ])
+                .execAsync();
         }
 
         let newsListCursor = News.find();
@@ -82,7 +104,8 @@ module.exports = async (req, res, next) => {
         return res.json({
             newsList,
             pageData,
-            menu
+            menu,
+            columnSpecialChannel
         });
     } catch (err) {
         return next(err);
