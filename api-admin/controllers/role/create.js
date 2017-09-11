@@ -8,7 +8,7 @@ import { Role } from '../../../models';
 
 module.exports = async (req, res, next) => {
 
-    let { name, desc, Policies, CreatedBy, UpdatedBy } = req.body;
+    let { name, desc, level, Policies, SuperiorRoles, CreatedBy, UpdatedBy } = req.body;
 
     try {
 
@@ -24,7 +24,9 @@ module.exports = async (req, res, next) => {
         let newRole = await Role.createAsync({
                 name,
                 desc,
+                level,
                 Policies,
+                SuperiorRoles,
                 CreatedBy,
                 UpdatedBy: CreatedBy
             });
