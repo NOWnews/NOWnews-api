@@ -225,6 +225,15 @@ module.exports = {
         message: '[News] 自己無法審核自己的新聞，請選擇其他審核者',
         statusCode: 403
     },
+
+    16014: {
+        message: '[News] 您的角色沒有發佈新聞的權限，請洽系統管理者',
+        statusCode: 403
+    },
+    16015: {
+        message: '[News] 缺少 UpdateUserRole 這個欄位或是格式不正確',
+        statusCode: 403
+    },
     // NewsMemo
     17001: {
         message: '[NewsMemo] 缺少 News 這個欄位或是格式不正確',
