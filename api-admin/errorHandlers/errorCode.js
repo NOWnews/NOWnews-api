@@ -221,7 +221,10 @@ module.exports = {
         message: '[News] 缺少 newsBy 這個欄位',
         statusCode: 400
     },
-
+    16013: {
+        message: '[News] 自己無法審核自己的新聞，請選擇其他審核者',
+        statusCode: 403
+    },
     // NewsMemo
     17001: {
         message: '[NewsMemo] 缺少 News 這個欄位或是格式不正確',

@@ -29,9 +29,9 @@ module.exports = async (req, res, next) => {
         }
 
         // 發布的人不應該是自己，應該會是其他人
-        // if(UpdatedBy === news.CreatedBy + '') {
-        //     throw new Error('16010');
-        // }
+        if (UpdatedBy === news.CreatedBy + '') {
+            throw new Error('16010');
+        }
 
         news.set('MainMenu', MainMenu);
         news.set('title', title);

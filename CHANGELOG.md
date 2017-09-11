@@ -7,6 +7,7 @@ NOWnews-api change logs
 ### Changed
 - 修改admin端點 /indexpage 內carousel 新增feedFrom欄位資料 @appleoxxo
 - 調整 Role 新增修改時可帶 `level`, `SuperiorRoles` 欄位 @esbb48
+- 在發布與送審時，確認更新者的身份 @esbb48
 
 ### Fixed
 - api-web 的 /instant 移除匯入新聞（即時跑馬燈）
