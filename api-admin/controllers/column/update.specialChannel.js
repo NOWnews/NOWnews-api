@@ -27,7 +27,7 @@ module.exports = async (req, res, next) => {
         let column = await ColumnSpecialChannel.findOne()
             .where('isTrashed').equals(false)
             .where('Menu').equals(req.body.Menu)
-            .where('Menu').ne(req.body.Menu)
+            .where('_id').ne(req.params.id)
             .execAsync();
 
         if(column) {
