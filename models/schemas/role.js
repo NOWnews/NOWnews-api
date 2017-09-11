@@ -11,15 +11,22 @@ let schema = new Schema({
         required: true,
         unique: true
     },
-
     desc: {
         type: String,
         default: ''
     },
-
+    level: {
+        type: Number,
+        default: 0
+    },
     Policies: [{
         type: Schema.Types.ObjectId,
         ref: 'Policy'
+    }],
+
+    SuperiorRoles: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Role'
     }],
 
     isTrashed: {
