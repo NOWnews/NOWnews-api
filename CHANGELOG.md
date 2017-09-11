@@ -3,6 +3,7 @@
 NOWnews-api change logs
 
 ## [Unreleased]
+
 ### Changed
 - 修改admin端點 /indexpage 內carousel 新增feedFrom欄位資料 @appleoxxo
 ### Fixed
@@ -14,6 +15,7 @@ NOWnews-api change logs
 - 新增中央社新聞匯入 @appleoxxo
 - 加入 imagelab 縮圖網址與在 Image mode 加入 sizeFormat 虛擬欄位 @SimonSun
 - 增加廠商專屬的列表「我的新聞(廠商)」權限@esbb48
+- 增加端點 `/roles/:id/reviewers` @esbb48
 
 ## 1.0.30 - 2017-09-04
 ### Fixed

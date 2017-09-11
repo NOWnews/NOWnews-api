@@ -222,6 +222,28 @@ None
 |---|---|---|---|---|
 | X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
 
+### [GET] `/roles/{:id}/reviewers`
+
+取得此角色可以審稿的使用者列表
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | Role 的 ObjectId | String |  | `/roles/520000000000000000000001/reviewers` |
+
+None
+
+#### Body Parameters
+
+#### Query Parameters
+
 
 ### [POST] `/roles`
 
