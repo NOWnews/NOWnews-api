@@ -20,6 +20,11 @@ module.exports = async (req, res, next) => {
             .execAsync();
         debug('news = %j', news);
 
+        // 審稿的人不應該是自己，應該會是其他人
+        if (LastReviewer === news.CreatedBy + '') {
+            throw new Error('16013');
+        }
+
         if(!news) {
             throw new Error('16003');
         }

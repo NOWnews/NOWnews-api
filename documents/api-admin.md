@@ -226,6 +226,28 @@ None
 |---|---|---|---|---|
 | X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
 
+### [GET] `/roles/{:id}/reviewers`
+
+取得此角色可以審稿的使用者列表
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | Role 的 ObjectId | String |  | `/roles/520000000000000000000001/reviewers` |
+
+None
+
+#### Body Parameters
+
+#### Query Parameters
+
 
 ### [POST] `/roles`
 
@@ -247,6 +269,8 @@ None
 |---|---|---|---|---|
 | name | 角色名稱 | String | √ | `分析師` |
 | desc | 角色描述 | String | √ | `分析後台資料` |
+| level | 角色層級 | Number | | 0 |
+| SuperiorRoles | 可以審此角色的角色 | Array | |  `["510000000000000000000001","510000000000000000000002"]` |
 | Policies |  | 驗證的端點權限 | √ | `["510000000000000000000001","510000000000000000000002"]` |
 | CreatedBy | 建立者 | String | √ | `530000000000000000000001` |
 | UpdatedBy | 最後更新者 | String | √ | `530000000000000000000001` |
@@ -327,6 +351,8 @@ None
 |---|---|---|---|---|
 | name | 角色名稱 | String | √ | `分析師` |
 | desc | 角色描述 | String | √ | `分析後台資料` |
+| level | 角色層級 | Number | | 0 |
+| SuperiorRoles | 可以審此角色的角色 | Array | |  `["510000000000000000000001","510000000000000000000002"]` |
 | Policies |  | 驗證的端點權限 | √ | `["510000000000000000000001","510000000000000000000002"]` |
 | UpdatedBy | 最後更新者 | String | √ | `530000000000000000000001` |
 
@@ -899,6 +925,7 @@ None
 | Author | 作者，若沒傳入則帶入建立者 | ObjectId | √ | |
 | Tags | 標籤(關鍵字) | [ObjectId] | | |
 | UpdatedBy | 更新者 | ObjectId | √ | |
+| UpdateUserRole | 更新者角色 | ObjectId | √ | |
 
 #### Query Parameters
 None

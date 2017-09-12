@@ -87,6 +87,7 @@ module.exports = [
         _id: '520000000000000000000001',
         name: '系統管理者',
         desc: '系統管理者',
+        level: 999,
         Policies: Admin,
         CreatedBy: '530000000000000000000001',
         UpdatedBy: '530000000000000000000001'

@@ -9,6 +9,8 @@ NOWnews-api change logs
 - 移除api-web端點 /news中的敏感資訊 @appleoxxo
 - 修改admin端點 /indexpage 內carousel 新增feedFrom欄位資料 @appleoxxo
 - 所有 .delete 端點，都加上 `UpdatedBy` @SimonSun
+- 調整 Role 新增修改時可帶 `level`, `SuperiorRoles` 欄位 @esbb48
+- 在發布與送審時，確認更新者的身份 @esbb48
 
 ### Fixed
 - api-web 的 /instant 移除匯入新聞（即時跑馬燈）
@@ -21,6 +23,8 @@ NOWnews-api change logs
 - 增加廠商專屬的列表「我的新聞(廠商)」權限@esbb48
 - 加入特輯版型業配專欄 API， initData policy.js 加入 `專欄管理(專欄列表 - 特輯版型)` 與 `專欄管理(新增專欄 - 特輯版型)` @SimonSun
 - 加入從 excel 匯入新聞關鍵字工具，加入 `convert-excel-to-json` node module @SimonSun
+- 增加欄位 `level`, `SuperiorRoles` 至 Role 表 @esbb48
+- 增加端點 `/roles/:id/reviewers` @esbb48
 
 ## 1.0.30 - 2017-09-04
 ### Fixed
