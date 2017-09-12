@@ -4,6 +4,7 @@ NOWnews-api change logs
 
 ## [Unreleased]
 ### Changed
+- 移除api-web端點 /news中的敏感資訊 @appleoxxo
 - 修改admin端點 /indexpage 內carousel 新增feedFrom欄位資料 @appleoxxo
 ### Fixed
 - api-web 的 /instant 移除匯入新聞（即時跑馬燈）
