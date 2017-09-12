@@ -8,6 +8,7 @@ module.exports = async (req, res, next) => {
     try {
 
         let { id } = req.params;
+        let { UpdatedBy } = req.body;
 
         let cursor = DailyPlan.findById(id)
             .where('isTrashed').equals(false);
@@ -20,6 +21,7 @@ module.exports = async (req, res, next) => {
         }
 
         dailyPlan.set('isTrashed', true);
+        dailyPlan.set('UpdatedBy', UpdatedBy);
 
         let removedDailyPlan = await dailyPlan.saveAsync();
 

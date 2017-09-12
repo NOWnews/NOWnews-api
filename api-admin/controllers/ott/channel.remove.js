@@ -12,11 +12,12 @@ import { Category, Channel } from '../../../ottModels';
 module.exports = async (req, res, next) => {
     try {
         let { id } = req.params;
+        let { UpdatedBy } = req.body;
 
         let removedChannel = await Channel.findOneAndUpdateAsync({
             _id: id,
         }, {
-            $set: { isTrashed: true }
+            $set: { isTrashed: true, UpdatedBy: UpdatedBy }
         }, {
             new: true
         });

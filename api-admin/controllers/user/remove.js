@@ -7,6 +7,7 @@ import { User } from '../../../models';
 module.exports = async (req, res, next) => {
 
     let { id } = req.params;
+    let { UpdatedBy } = req.body;
 
     try{
 
@@ -20,6 +21,7 @@ module.exports = async (req, res, next) => {
         }
 
         user.set('isTrashed', true);
+        user.set('UpdatedBy', UpdatedBy);
 
         let removedUser = await user.saveAsync();
 

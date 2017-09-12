@@ -9,6 +9,7 @@ module.exports = async (req, res, next) => {
     try {
 
         let { id } = req.params;
+        let { UpdatedBy } = req.body;
 
         let cursor = PostBoard.findById(id)
             .where('isTrashed').equals(false);
@@ -21,6 +22,7 @@ module.exports = async (req, res, next) => {
         }
 
         post.set('isTrashed', true);
+        post.set('UpdatedBy', UpdatedBy);
 
         let removedPost = await post.saveAsync();
 

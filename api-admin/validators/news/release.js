@@ -16,8 +16,10 @@ module.exports = (req, res, next) => {
         newsBy,
         Author,
         MainMenu,
-        UpdatedBy
+        UpdatedBy,
+        UpdateUserRole
     } = req.body;
+
 
     if(!title || title === '') {
         throw new Error('16001');
@@ -41,6 +43,10 @@ module.exports = (req, res, next) => {
 
     if(!newsBy || newsBy === '') {
         throw new Error('16012');
+    }
+
+    if(!mongoose.Types.ObjectId.isValid(UpdateUserRole)) {
+        throw new Error('16015');
     }
 
     return next();

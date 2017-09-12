@@ -5,7 +5,7 @@ const debug = Debug('NOWnews-api:api-admin:controllers:news:release');
 import _ from 'lodash';
 import moment from 'moment-timezone';
 
-import { News } from '../../../models';
+import { News, Role } from '../../../models';
 import { newsLog } from '../../../libs';
 import { Pageview } from '../../../pvModels';
 import redis from '../../../redis';
@@ -14,13 +14,14 @@ import libs from '../../../libs';
 module.exports = async (req, res, next) => {
     try {
 
-        let { title, content, newsBy, Author, MainMenu, UpdatedBy } = req.body;
+        let { UpdateUserRole, title, content, newsBy, Author, MainMenu, UpdatedBy } = req.body;
         let { id } = req.params;
         debug('req.body = %j', req.body);
         debug('req.params = %j', req.params);
 
         let news = await News.findById(id)
             .where('isTrashed').equals(false)
+            .populate('CreatedBy')
             .execAsync();
         debug('news = %j', news);
 
@@ -29,9 +30,18 @@ module.exports = async (req, res, next) => {
         }
 
         // 發布的人不應該是自己，應該會是其他人
-        // if(UpdatedBy === news.CreatedBy + '') {
-        //     throw new Error('16010');
-        // }
+        if (UpdatedBy === news.CreatedBy._id + '') {
+            throw new Error('16010');
+        }
+
+        const role = await Role.findOne(news.CreatedBy.Role)
+            .where('isTrashed').equals(false)
+            .where('SuperiorRoles').equals(UpdateUserRole)
+            .execAsync();
+
+        if(!role) {
+            throw new Error('16003');
+        }
 
         news.set('MainMenu', MainMenu);
         news.set('title', title);
