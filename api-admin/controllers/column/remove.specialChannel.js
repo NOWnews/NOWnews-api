@@ -7,6 +7,7 @@ module.exports = async (req, res, next) => {
     try {
 
         let { id } = req.params;
+        let { UpdatedBy } = req.body;
 
         let data = await ColumnSpecialChannel.findById(id)
             .execAsync();
@@ -16,6 +17,7 @@ module.exports = async (req, res, next) => {
         }
 
         data.set('isTrashed', true);
+        data.set('UpdatedBy', UpdatedBy);
         let removedData = await data.saveAsync();
 
         return res.json(removedData);

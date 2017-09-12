@@ -12,11 +12,12 @@ import { Provider, Category } from '../../../ottModels';
 module.exports = async (req, res, next) => {
     try {
         let { id } = req.params;
+        let { UpdatedBy } = req.body;
 
         let removedCategory = await Category.findOneAndUpdateAsync({
             _id: id,
         }, {
-            $set: { isTrashed: true }
+            $set: { isTrashed: true, UpdatedBy: UpdatedBy }
         }, {
             new: true
         });
