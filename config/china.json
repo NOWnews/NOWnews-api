@@ -13,7 +13,7 @@
             "quality": 70
         },
         "imagelab": {
-            "url": "https://imagelab.nownews.com"
+            "url": "https://imgapiv2.nownews.com"
         },
         "rssFeed": {
             "cnyes": "https://service.cnyes.com/rss/v2/news?vendor=nownews",
