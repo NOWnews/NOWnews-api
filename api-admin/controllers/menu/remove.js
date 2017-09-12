@@ -8,6 +8,7 @@ module.exports = async (req, res, next) => {
     try {
 
         let { id } = req.params;
+        let { UpdatedBy } = req.body;
 
         let menu = await Menu.findById(id)
             .where('isTrashed').equals(false)
@@ -17,6 +18,7 @@ module.exports = async (req, res, next) => {
         }
 
         menu.set('isTrashed', true);
+        menu.set('UpdatedBy', UpdatedBy);
 
         let removedMenu = await menu.saveAsync();
 

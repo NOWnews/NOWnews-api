@@ -10,7 +10,7 @@ module.exports = async (req, res, next) => {
     try {
 
         let { id } = req.params;
-        let { commentIndex } = req.body;
+        let { commentIndex, UpdatedBy } = req.body;
 
         let cursor = DailyPlan.findById(id)
             .where('isTrashed').equals(false);
@@ -26,6 +26,7 @@ module.exports = async (req, res, next) => {
         comments.splice(commentIndex,1);
 
         dailyPlan.set('Comments', comments);
+        dailyPlan.set('UpdatedBy', UpdatedBy);
 
         let removedDailyPlan = await dailyPlan.saveAsync();
 

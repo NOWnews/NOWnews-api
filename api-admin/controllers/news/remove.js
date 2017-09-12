@@ -6,10 +6,10 @@ import { newsLog } from '../../../libs';
 import redis from '../../../redis';
 
 module.exports = async (req, res, next) => {
-
-    let { id } = req.params;
-
     try {
+
+        let { id } = req.params;
+        let { UpdatedBy } = req.body;
 
         let news = await News.findById(id)
             .where('isTrashed').equals(false)
@@ -18,8 +18,6 @@ module.exports = async (req, res, next) => {
         if(!news) {
             throw new Error('16003');
         }
-
-        let { UpdatedBy } = req.body;
 
         // 取得原本上一則下一則新聞的資料，並移除 cache
         let nextAndPrev = await redis.getValue(`news${news.sn}NextAndPrev`);

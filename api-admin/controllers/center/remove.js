@@ -33,6 +33,7 @@ module.exports = async (req, res, next) => {
         }
 
         center.set('isTrashed', true);
+        center.set('UpdatedBy', UpdatedBy);
 
         let removedCenter = await center.saveAsync();
         debug('removed center = %j', removedCenter);

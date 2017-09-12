@@ -21,6 +21,7 @@ module.exports = async (req, res, next) => {
         }
 
         role.set('isTrashed', true);
+        role.set('UpdatedBy', UpdatedBy);
 
         let removedRole = await role.saveAsync();
 
