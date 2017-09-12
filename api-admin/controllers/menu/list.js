@@ -6,13 +6,17 @@ import { Menu } from '../../../models';
 module.exports = async (req, res, next) => {
     try {
 
-        let { level } = req.query;
+        let { level, template } = req.query;
 
         let cursor = Menu.find()
             .where('isTrashed').equals(false);
 
         if(level) {
             cursor.where('level').equals(level);
+        }
+
+        if(template) {
+            cursor.where('template').equals(template);
         }
 
         let menus = await cursor.execAsync();
