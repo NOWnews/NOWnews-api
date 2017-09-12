@@ -5,10 +5,10 @@ const debug = Debug('NOWnews-api:api-admin:controllers:image:remove');
 import { Image } from '../../../models';
 
 module.exports = async(req, res, next) => {
-
-    let { id } = req.params;
-
     try{
+
+        let { id } = req.params;
+        let { UpdatedBy } = req.body;
 
         let image = await Image.findById(id)
             .where('isTrashed').equals(false)
@@ -20,6 +20,7 @@ module.exports = async(req, res, next) => {
         }
 
         image.set('isTrashed', true);
+        image.set('UpdatedBy', UpdatedBy);
 
         let removedImage = await image.saveAsync();
 

@@ -7,6 +7,7 @@ module.exports = async (req, res, next) => {
     try {
 
         let { id } = req.params;
+        let { UpdatedBy } = req.body;
 
         let tag = await Tag.findById(id)
             .where('isTrashed').equals(false)
@@ -17,6 +18,7 @@ module.exports = async (req, res, next) => {
         }
 
         tag.set('isTrashed', true);
+        tag.set('UpdatedBy', UpdatedBy);
 
         let removedTag = await tag.saveAsync();
         debug('removed tag = %j', removedTag);

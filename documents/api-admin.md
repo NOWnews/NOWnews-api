@@ -204,11 +204,15 @@ None
 |---|---|---|---|---|
 | id | User 的 ObjectId | String |  | `/users/530000000000000000000001` |
 
-None
-
 #### Body Parameters
 
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| UpdatedBy | User 的 ObjectId | String | √ | |
+
 #### Query Parameters
+
+None
 
 ## ROLE API DOCUMENTS
 
@@ -315,9 +319,13 @@ None
 
 
 #### Body Parameters
-None
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| UpdatedBy | User 的 ObjectId | String | √ | |
 
 #### Query Parameters
+
 None
 
 ### [PUT] `/roles/:id`
@@ -536,9 +544,13 @@ None
 | id | 圖片 ObjectId | String | √ | `560000000000000000000001` |
 
 #### Body Parameters
-None
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| UpdatedBy | User 的 ObjectId | String | √ | |
 
 #### Query Parameters
+
 None
 
 ### [DELETE] `/images/{:id}/realRemove`
@@ -558,9 +570,11 @@ None
 | id | 圖片 ObjectId | String | √ | `560000000000000000000001` |
 
 #### Body Parameters
+
 None
 
 #### Query Parameters
+
 None
 
 ## VIDEO API DOCUMENTS
@@ -1006,9 +1020,13 @@ None
 | id | 新聞 ObjectId | String | √ | |
 
 #### Body Parameters
-None
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| UpdatedBy | User 的 ObjectId | String | √ | |
 
 #### Query Parameters
+
 None
 
 ## MAP API DOCUMENTS
@@ -1229,7 +1247,9 @@ None
 
 #### Body Parameters
 
-None
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| UpdatedBy | User 的 ObjectId | String | √ | |
 
 #### Query Parameters
 
@@ -1381,7 +1401,9 @@ None
 
 #### Body Parameters
 
-None
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| UpdatedBy | User 的 ObjectId | String | √ | |
 
 #### Query Parameters
 
@@ -1931,7 +1953,6 @@ NONE
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
 | content | 貼文內容 | String | √ | |
-|---|---|---|---|---|
 | CreatedBy | 某個 user objectId| String | √ | |
 
 #### Query Parameters
@@ -2007,9 +2028,7 @@ None
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
 | content | 修改貼文內容 | String | | |
-|---|---|---|---|---|
 | message | 新增此篇貼文的留言內容 | String | | |
-|---|---|---|---|---|
 | UpdatedBy | 某個 user objectId | String | √ | |
 
 #### Query Parameters
@@ -2035,7 +2054,9 @@ None
 
 #### Body Parameters
 
-None
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| UpdatedBy | User 的 ObjectId | String | √ | |
 
 #### Query Parameters
 
@@ -2063,7 +2084,6 @@ None
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
 | messageId | 此篇帖文的 objectId | String | √ | |
-|---|---|---|---|---|
 | UpdatedBy | 某個 user objectId | String | √ | |
 
 #### Query Parameters
@@ -2248,7 +2268,9 @@ None
 
 #### Body Parameters
 
-None
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| UpdatedBy | User 的 ObjectId | String | √ | |
 
 #### Query Parameters
 
@@ -2303,6 +2325,7 @@ None
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
 | commentIndex | comments Array 的index值 | String | √ | |
+| UpdatedBy | User 的 ObjectId | String | √ | |
 
 #### Query Parameters
 
@@ -2676,7 +2699,9 @@ None
 
 #### Body Parameters
 
-None
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| UpdatedBy | User 的 ObjectId | String | √ | |
 
 #### Query Parameters
 
@@ -2728,7 +2753,9 @@ None
 
 #### Body Parameters
 
-None
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| UpdatedBy | User 的 ObjectId | String | √ | |
 
 #### Query Parameters
 
@@ -2882,7 +2909,9 @@ None
 
 #### Body Parameters
 
-None
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| UpdatedBy | User 的 ObjectId | String | √ | |
 
 #### Query Parameters
 

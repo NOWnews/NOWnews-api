@@ -5,8 +5,10 @@ NOWnews-api change logs
 ## [Unreleased]
 
 ### Changed
+- pro imgapi 端點設為 imgapiv2 @wb
 - 移除api-web端點 /news中的敏感資訊 @appleoxxo
 - 修改admin端點 /indexpage 內carousel 新增feedFrom欄位資料 @appleoxxo
+- 所有 .delete 端點，都加上 `UpdatedBy` @SimonSun
 - 調整 Role 新增修改時可帶 `level`, `SuperiorRoles` 欄位 @esbb48
 - 在發布與送審時，確認更新者的身份 @esbb48
 
