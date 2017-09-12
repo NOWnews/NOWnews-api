@@ -5,6 +5,7 @@ NOWnews-api change logs
 ## [Unreleased]
 
 ### Changed
+- 原本發布的新聞也可以改成審稿狀態 @wb
 - pro imgapi 端點設為 imgapiv2 @wb
 - 移除api-web端點 /news中的敏感資訊 @appleoxxo
 - 修改admin端點 /indexpage 內carousel 新增feedFrom欄位資料 @appleoxxo

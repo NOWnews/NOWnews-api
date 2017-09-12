@@ -48,7 +48,7 @@ module.exports = async (req, res, next) => {
         ]);
 
         // 如果狀態不為草稿或是送審中，應該要先回復成草稿才能送審
-        if(news.status !== 'DRAFT' && news.status !== 'REVIEW') {
+        if(news.status !== 'DRAFT' && news.status !== 'REVIEW' && news.status !== 'RELEASE') {
             throw new Error('16009');
         }
 
