@@ -911,6 +911,7 @@ None
 | Author | 作者，若沒傳入則帶入建立者 | ObjectId | √ | |
 | Tags | 標籤(關鍵字) | [ObjectId] | | |
 | UpdatedBy | 更新者 | ObjectId | √ | |
+| UpdateUserRole | 更新者角色 | ObjectId | √ | |
 
 #### Query Parameters
 None

@@ -9,7 +9,7 @@ module.exports = async (req, res, next) => {
 
     try{
 
-        const role = await Role.findOne(id)
+        const role = await Role.findById(id)
             .where('isTrashed').equals(false)
             .select('SuperiorRoles')
             .execAsync();
@@ -25,9 +25,7 @@ module.exports = async (req, res, next) => {
             .select('_id name')
             .execAsync();
 
-        return res.json({
-            users
-        });
+        return res.json(users);
 
     } catch (err) {
         return next(err);
