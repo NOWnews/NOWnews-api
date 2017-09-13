@@ -4,6 +4,11 @@ NOWnews-api change logs
 
 ## [Unreleased]
 
+## 1.0.31 - 2017-09-13
+### Fixed
+- api-web 的 /instant 移除匯入新聞（即時跑馬燈）
+- 修正 google trace engine 造成 CPU 與 Memory 消耗過大問題 @SimonSun
+
 ### Changed
 - 任何狀態的新聞都可以改成審稿狀態 @wb
 - pro imgapi 端點設為 imgapiv2 @wb
@@ -13,10 +18,6 @@ NOWnews-api change logs
 - 調整 Role 新增修改時可帶 `level`, `SuperiorRoles` 欄位 @esbb48
 - 在發布與送審時，確認更新者的身份 @esbb48
 - 更改 china config 中 imagelab 的 url @SimonSun
-
-### Fixed
-- api-web 的 /instant 移除匯入新聞（即時跑馬燈）
-- 修正 google trace engine 造成 CPU 與 Memory 消耗過大問題 @SimonSun
 
 ### Added
 - 新增軍聞社新聞匯入 @appleoxxo
