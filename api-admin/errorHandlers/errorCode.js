@@ -202,11 +202,6 @@ module.exports = {
         statusCode: 403
     },
 
-    16009: {
-        message: '[News] 此新聞現在的狀態無法送審，請回復至草稿',
-        statusCode: 403
-    },
-
     16010: {
         message: '[News] 自己無法發布自己的新聞，請審核者協助發佈',
         statusCode: 403
