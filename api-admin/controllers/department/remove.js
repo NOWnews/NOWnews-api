@@ -37,6 +37,7 @@ module.exports = async (req, res, next) => {
         debug('trashedCenters = %j', trashedCenters);
 
         department.set('isTrashed', true);
+        department.set('UpdatedBy', UpdatedBy);
 
         let removedDepartment = await department.saveAsync();
         debug('removed department = %j', removedDepartment);

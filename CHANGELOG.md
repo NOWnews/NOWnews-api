@@ -4,6 +4,30 @@ NOWnews-api change logs
 
 ## [Unreleased]
 
+### Changed
+- 任何狀態的新聞都可以改成審稿狀態 @wb
+- pro imgapi 端點設為 imgapiv2 @wb
+- 移除api-web端點 /news中的敏感資訊 @appleoxxo
+- 修改admin端點 /indexpage 內carousel 新增feedFrom欄位資料 @appleoxxo
+- 所有 .delete 端點，都加上 `UpdatedBy` @SimonSun
+- 調整 Role 新增修改時可帶 `level`, `SuperiorRoles` 欄位 @esbb48
+- 在發布與送審時，確認更新者的身份 @esbb48
+- 更改 china config 中 imagelab 的 url @SimonSun
+
+### Fixed
+- api-web 的 /instant 移除匯入新聞（即時跑馬燈）
+- 修正 google trace engine 造成 CPU 與 Memory 消耗過大問題 @SimonSun
+
+### Added
+- 新增軍聞社新聞匯入 @appleoxxo
+- 新增中央社新聞匯入 @appleoxxo
+- 加入 imagelab 縮圖網址與在 Image mode 加入 sizeFormat 虛擬欄位 @SimonSun
+- 增加廠商專屬的列表「我的新聞(廠商)」權限@esbb48
+- 加入特輯版型業配專欄 API， initData policy.js 加入 `專欄管理(專欄列表 - 特輯版型)` 與 `專欄管理(新增專欄 - 特輯版型)` @SimonSun
+- 加入從 excel 匯入新聞關鍵字工具，加入 `convert-excel-to-json` node module @SimonSun
+- 增加欄位 `level`, `SuperiorRoles` 至 Role 表 @esbb48
+- 增加端點 `/roles/:id/reviewers` @esbb48
+
 ## 1.0.30 - 2017-09-04
 ### Fixed
 - 修正 中央社匯入圖片有IP限制 外網看不到的問題 @appleoxxo
@@ -14,15 +38,17 @@ NOWnews-api change logs
 
 ## 1.0.28 - 2017-08-31
 ### Changed
+- Admin的api端點 /users 加上 isInitUser 判斷 ＠appleoxxo
+- Adminapi端點 /news 加上 isFeed 判斷 ＠appleoxxo
+- 鉅亨網匯入新聞加入關鍵字和修正短標題規則 @appleoxxo
+- 修正匯入新聞若編輯無法選擇匯入作者 @appleoxxo
 - 中央社匯入圖片圖說加上▲ @appleoxxo
 - 暫時把鉅亨網新聞匯入註解掉 @appleoxxo
+- 優化圖片搜尋增加 index @esbb48
 
 ### Added
 - 刪除新聞的時候，也要有 log (因應這個功能，所以在 `newLog` 這個 schema 加入新的欄位 `newsTrashed`) @SimonSun
 - cronjob加上中央社圖片匯入 @appleoxxo
-
-### Changed
-- 優化圖片搜尋增加 index @esbb48
 
 ###Fixed
 - instant 補傳 MainVideo 的欄位 @esbb48

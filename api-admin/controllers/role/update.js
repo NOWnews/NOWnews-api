@@ -6,7 +6,7 @@ import { Role } from '../../../models';
 
 module.exports = async (req, res, next) => {
     let { id } = req.params;
-    let { name, desc, Policies, UpdatedBy } = req.body;
+    let { name, desc, level, Policies, SuperiorRoles, UpdatedBy } = req.body;
 
     try {
 
@@ -32,8 +32,12 @@ module.exports = async (req, res, next) => {
             throw new Error('12003');
         }
 
+        if (level) {
+            role.set('level', level);
+        }
         role.set('name', name);
         role.set('desc', desc);
+        role.set('SuperiorRoles', SuperiorRoles);
         role.set('Policies', Policies);
         role.set('UpdatedBy', UpdatedBy);
 

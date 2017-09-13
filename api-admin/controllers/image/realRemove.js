@@ -5,10 +5,9 @@ const debug = Debug('NOWnews-api:api-admin:controllers:image:realRemove');
 import { Image } from '../../../models';
 
 module.exports = async(req, res, next) => {
-
-    let { id } = req.params;
-
     try{
+
+        let { id } = req.params;
 
         let image = await Image.findById(id)
             .execAsync();

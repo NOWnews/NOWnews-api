@@ -79,6 +79,7 @@ None
 | page | 第幾頁 | Number |  | `page=1` |
 | limit | 一次幾筆資料 | Number |  | `limit=10` |
 | skip | 跳過幾筆資料 | Number |  | `skip=10` |
+| isInitUser |  | String |  | `isInitUser=true` |
 
 ### [POST] `/users/login`
 
@@ -203,11 +204,15 @@ None
 |---|---|---|---|---|
 | id | User 的 ObjectId | String |  | `/users/530000000000000000000001` |
 
-None
-
 #### Body Parameters
 
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| UpdatedBy | User 的 ObjectId | String | √ | |
+
 #### Query Parameters
+
+None
 
 ## ROLE API DOCUMENTS
 
@@ -220,6 +225,28 @@ None
 | 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
 |---|---|---|---|---|
 | X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+### [GET] `/roles/{:id}/reviewers`
+
+取得此角色可以審稿的使用者列表
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | Role 的 ObjectId | String |  | `/roles/520000000000000000000001/reviewers` |
+
+None
+
+#### Body Parameters
+
+#### Query Parameters
 
 
 ### [POST] `/roles`
@@ -242,6 +269,8 @@ None
 |---|---|---|---|---|
 | name | 角色名稱 | String | √ | `分析師` |
 | desc | 角色描述 | String | √ | `分析後台資料` |
+| level | 角色層級 | Number | | 0 |
+| SuperiorRoles | 可以審此角色的角色 | Array | |  `["510000000000000000000001","510000000000000000000002"]` |
 | Policies |  | 驗證的端點權限 | √ | `["510000000000000000000001","510000000000000000000002"]` |
 | CreatedBy | 建立者 | String | √ | `530000000000000000000001` |
 | UpdatedBy | 最後更新者 | String | √ | `530000000000000000000001` |
@@ -290,9 +319,13 @@ None
 
 
 #### Body Parameters
-None
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| UpdatedBy | User 的 ObjectId | String | √ | |
 
 #### Query Parameters
+
 None
 
 ### [PUT] `/roles/:id`
@@ -318,6 +351,8 @@ None
 |---|---|---|---|---|
 | name | 角色名稱 | String | √ | `分析師` |
 | desc | 角色描述 | String | √ | `分析後台資料` |
+| level | 角色層級 | Number | | 0 |
+| SuperiorRoles | 可以審此角色的角色 | Array | |  `["510000000000000000000001","510000000000000000000002"]` |
 | Policies |  | 驗證的端點權限 | √ | `["510000000000000000000001","510000000000000000000002"]` |
 | UpdatedBy | 最後更新者 | String | √ | `530000000000000000000001` |
 
@@ -509,9 +544,13 @@ None
 | id | 圖片 ObjectId | String | √ | `560000000000000000000001` |
 
 #### Body Parameters
-None
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| UpdatedBy | User 的 ObjectId | String | √ | |
 
 #### Query Parameters
+
 None
 
 ### [DELETE] `/images/{:id}/realRemove`
@@ -531,9 +570,11 @@ None
 | id | 圖片 ObjectId | String | √ | `560000000000000000000001` |
 
 #### Body Parameters
+
 None
 
 #### Query Parameters
+
 None
 
 ## VIDEO API DOCUMENTS
@@ -771,6 +812,7 @@ None
 | limit | 一次幾筆資料 | Number |  | `limit=10` |
 | skip | 跳過幾筆資料 | Number |  | `skip=10` |
 | sort | 排序(預設為最新在最前面) | String | | `sort=createdAt`, `sort=-title` |
+| isFeed | 是否為匯入新聞 | String | | `isFeed=true`, `isFeed=false` |
 
 ### [GET] `/news/{:id}`
 
@@ -883,6 +925,7 @@ None
 | Author | 作者，若沒傳入則帶入建立者 | ObjectId | √ | |
 | Tags | 標籤(關鍵字) | [ObjectId] | | |
 | UpdatedBy | 更新者 | ObjectId | √ | |
+| UpdateUserRole | 更新者角色 | ObjectId | √ | |
 
 #### Query Parameters
 None
@@ -977,9 +1020,13 @@ None
 | id | 新聞 ObjectId | String | √ | |
 
 #### Body Parameters
-None
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| UpdatedBy | User 的 ObjectId | String | √ | |
 
 #### Query Parameters
+
 None
 
 ## MAP API DOCUMENTS
@@ -1200,7 +1247,9 @@ None
 
 #### Body Parameters
 
-None
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| UpdatedBy | User 的 ObjectId | String | √ | |
 
 #### Query Parameters
 
@@ -1352,7 +1401,9 @@ None
 
 #### Body Parameters
 
-None
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| UpdatedBy | User 的 ObjectId | String | √ | |
 
 #### Query Parameters
 
@@ -1902,7 +1953,6 @@ NONE
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
 | content | 貼文內容 | String | √ | |
-|---|---|---|---|---|
 | CreatedBy | 某個 user objectId| String | √ | |
 
 #### Query Parameters
@@ -1978,9 +2028,7 @@ None
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
 | content | 修改貼文內容 | String | | |
-|---|---|---|---|---|
 | message | 新增此篇貼文的留言內容 | String | | |
-|---|---|---|---|---|
 | UpdatedBy | 某個 user objectId | String | √ | |
 
 #### Query Parameters
@@ -2006,7 +2054,9 @@ None
 
 #### Body Parameters
 
-None
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| UpdatedBy | User 的 ObjectId | String | √ | |
 
 #### Query Parameters
 
@@ -2034,7 +2084,6 @@ None
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
 | messageId | 此篇帖文的 objectId | String | √ | |
-|---|---|---|---|---|
 | UpdatedBy | 某個 user objectId | String | √ | |
 
 #### Query Parameters
@@ -2219,7 +2268,9 @@ None
 
 #### Body Parameters
 
-None
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| UpdatedBy | User 的 ObjectId | String | √ | |
 
 #### Query Parameters
 
@@ -2274,6 +2325,7 @@ None
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
 | commentIndex | comments Array 的index值 | String | √ | |
+| UpdatedBy | User 的 ObjectId | String | √ | |
 
 #### Query Parameters
 
@@ -2647,7 +2699,9 @@ None
 
 #### Body Parameters
 
-None
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| UpdatedBy | User 的 ObjectId | String | √ | |
 
 #### Query Parameters
 
@@ -2699,7 +2753,9 @@ None
 
 #### Body Parameters
 
-None
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| UpdatedBy | User 的 ObjectId | String | √ | |
 
 #### Query Parameters
 
@@ -2725,6 +2781,137 @@ None
 |---|---|---|---|---|
 | categoryArray | 分類的物件陣列 | Object | √ | `[{ _id: 'xxxxx', weight: 1 }, { _id: 'ooooo', weight: 2 }]` |
 | channelArray | 頻道的物件陣列 | Object | √ | `[{ _id: 'aaaaa', weight: 1 }, { _id: 'bbbbbb', weight: 2 }]` |
+
+#### Query Parameters
+
+None
+
+## COLUMNSPECIALCHANNEL API DOCUMENTS
+
+專欄特輯版型 API
+
+### [GET] `/column/specialchannels`
+
+所有專欄版型
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None
+
+### [POST] `/column/specialchannels`
+
+新增專欄版型
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| Menu | menu 的 ObjectId | Object | √ | |
+| SubMenus | menu 的 ObjectId 陣列 | Array | √ | |
+| CreatedBy | 建立者 | Object | √ | |
+
+
+#### Query Parameters
+
+None
+
+### [GET] `/column/specialchannels/{:id}`
+
+取得單一專欄版型
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | 專欄版型的 ObjectId | Object | √ | |
+
+#### Body Parameters
+
+None
+
+#### Query Parameters
+
+None
+
+### [PUT] `/column/specialchannels/{:id}`
+
+更新專欄版型
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | 專欄版型的 ObjectId | Object | √ | |
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| Menu | menu 的 ObjectId | Object | √ | |
+| SubMenus | menu 的 ObjectId 陣列 | Array | √ | |
+| UpdatedBy | 更新者 | Object | √ | |
+
+#### Query Parameters
+
+None
+
+### [DELETE] `/column/specialchannels/{:id}`
+
+刪除專欄版型
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| id | 專欄版型的 ObjectId | Object | √ | |
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| UpdatedBy | User 的 ObjectId | String | √ | |
 
 #### Query Parameters
 

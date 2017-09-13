@@ -48,6 +48,13 @@ module.exports = [{
     "path": "/news/takeMeReviewList",
     "method": "get"
 }, {
+    "_id": "510002000000000000000006",
+    "group": "新聞",
+    "desc": "我的新聞(廠商)",
+    "type": "ADMIN_MENU",
+    "path": "/news/vendorList",
+    "method": "get"
+}, {
     "_id": "510003000000000000000001",
     "group": "關鍵字",
     "desc": "關鍵字列表",
@@ -222,5 +229,19 @@ module.exports = [{
     "desc": "排序控制",
     "type": "ADMIN_MENU",
     "path": "/ott/channels/list",
+    "method": "get"
+},{
+    "_id": "510015000000000000000001",
+    "group": "專欄管理",
+    "desc": "新增專欄 - 特輯版型",
+    "type": "ADMIN_MENU",
+    "path": "/column/specialchannel/create",
+    "method": "get"
+},{
+    "_id": "510015000000000000000002",
+    "group": "專欄管理",
+    "desc": "專欄列表 - 特輯版型",
+    "type": "ADMIN_MENU",
+    "path": "/column/specialchannel",
     "method": "get"
 }];

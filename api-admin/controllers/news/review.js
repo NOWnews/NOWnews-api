@@ -20,6 +20,11 @@ module.exports = async (req, res, next) => {
             .execAsync();
         debug('news = %j', news);
 
+        // 審稿的人不應該是自己，應該會是其他人
+        if (LastReviewer === news.CreatedBy + '') {
+            throw new Error('16013');
+        }
+
         if(!news) {
             throw new Error('16003');
         }
@@ -41,11 +46,6 @@ module.exports = async (req, res, next) => {
             redis.removeValue(`relationNewsByNews${news.sn}`),
             redis.removeValue(`news${news.sn}NextAndPrev`)
         ]);
-
-        // 如果狀態不為草稿或是送審中，應該要先回復成草稿才能送審
-        if(news.status !== 'DRAFT' && news.status !== 'REVIEW') {
-            throw new Error('16009');
-        }
 
         news.set('MainMenu', MainMenu);
         news.set('title', title);

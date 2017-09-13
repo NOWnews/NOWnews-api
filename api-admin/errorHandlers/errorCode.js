@@ -202,11 +202,6 @@ module.exports = {
         statusCode: 403
     },
 
-    16009: {
-        message: '[News] 此新聞現在的狀態無法送審，請回復至草稿',
-        statusCode: 403
-    },
-
     16010: {
         message: '[News] 自己無法發布自己的新聞，請審核者協助發佈',
         statusCode: 403
@@ -221,7 +216,19 @@ module.exports = {
         message: '[News] 缺少 newsBy 這個欄位',
         statusCode: 400
     },
+    16013: {
+        message: '[News] 自己無法審核自己的新聞，請選擇其他審核者',
+        statusCode: 403
+    },
 
+    16014: {
+        message: '[News] 您的角色沒有發佈新聞的權限，請洽系統管理者',
+        statusCode: 403
+    },
+    16015: {
+        message: '[News] 缺少 UpdateUserRole 這個欄位或是格式不正確',
+        statusCode: 403
+    },
     // NewsMemo
     17001: {
         message: '[NewsMemo] 缺少 News 這個欄位或是格式不正確',
@@ -491,4 +498,20 @@ module.exports = {
         message: '此平台已經存在',
         statusCode: 400
     },
+
+    // Column Special Channel
+    29001: {
+        message: '你有不存在或非特輯專欄版型的選單在裡面',
+        statusCode: 400
+    },
+
+    29002: {
+        message: '此專欄版型已經存在',
+        statusCode: 400
+    },
+
+    29003: {
+        message: '找不到此專欄版型',
+        statusCode: 404
+    }
 };
