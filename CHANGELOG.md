@@ -3,7 +3,8 @@
 NOWnews-api change logs
 
 ## [Unreleased]
-
+### Changed
+- 因軍聞社圖片有的出不來 先停止匯入軍聞社新聞 ＠appleoxxo
 ## 1.0.31 - 2017-09-13
 ### Fixed
 - api-web 的 /instant 移除匯入新聞（即時跑馬燈）
