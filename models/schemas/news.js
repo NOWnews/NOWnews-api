@@ -2,6 +2,8 @@
 import autoIncrement from 'mongoose-easy-auto-increment';
 import mongoose from 'mongoose';
 import moment from 'moment-timezone';
+import config from 'config';
+const officialUrl = config.get('general.officialUrl');
 
 let Schema = mongoose.Schema;
 
@@ -489,7 +491,7 @@ schema.virtual('completeUrl').get(function () {
         2582280: 'http://www.nownews.com/news/20170628/2582280',
         2582589: 'https://www.nownews.com/news/20170628/2582589'
     };
-    return oldNews[this.sn] ? oldNews[this.sn] : `https://www.nownews.com${url}`;
+    return oldNews[this.sn] ? oldNews[this.sn] : `${officialUrl}${url}`;
 });
 
 schema.virtual('parseUrl').get(function () {
