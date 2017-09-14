@@ -1003,7 +1003,7 @@ None
 #### Query Parameters
 None
 
-### [GET] `/news/{:id}/wasReleased`
+### [GET] `/news/{:id}/wasreleased`
 
 確認此篇新聞是否有發佈過
 

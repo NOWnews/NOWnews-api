@@ -7,7 +7,7 @@ NOWnews-api change logs
 - 即時新聞 `/instant` 過濾掉業配文 ＠SimonSun
 
 ### Added
-- 加入 `/news/{:id}/wasReleased` 此篇新聞是否發佈過的 api 端點 ＠SimonSun
+- 加入 `/news/{:id}/wasreleased` 此篇新聞是否發佈過的 api 端點 ＠SimonSun
 
 ## 1.0.32 - 2017-09-14
 ### Changed
