@@ -6,6 +6,9 @@ NOWnews-api change logs
 ### Changed
 - 即時新聞 `/instant` 過濾掉業配文 ＠SimonSun
 
+### Added
+- 加入 `/news/{:id}/wasReleased` 此篇新聞是否發佈過的 api 端點 ＠SimonSun
+
 ## 1.0.32 - 2017-09-14
 ### Changed
 - 因軍聞社圖片有的出不來 先停止匯入軍聞社新聞 ＠appleoxxo
