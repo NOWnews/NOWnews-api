@@ -15,6 +15,7 @@
         "imagelab": {
             "url": "http://imgapiv2.nownews.com"
         },
+        "officialUrl": "https://www.nownews.com",
         "rssFeed": {
             "cnyes": "https://service.cnyes.com/rss/v2/news?vendor=nownews",
             "mna": "http://mna.gpwb.gov.tw/service/RSS.php?type=news",
