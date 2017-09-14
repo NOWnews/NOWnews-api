@@ -3,6 +3,8 @@
 NOWnews-api change logs
 
 ## [Unreleased]
+### Changed
+- 即時新聞 `/instant` 過濾掉業配文 ＠SimonSun
 
 ## 1.0.32 - 2017-09-14
 ### Changed
