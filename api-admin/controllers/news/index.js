@@ -14,7 +14,7 @@ import draft from './draft';
 import review from './review';
 import release from './release';
 import close from './close';
-import wasReleased from './wasReleased';
+import wasReleased from './wasreleased';
 
 router.route('/news')
     .get(baseQuery, list)
