@@ -3,6 +3,9 @@
 NOWnews-api change logs
 
 ## [Unreleased]
+
+- 熱門新聞改成一定要滿6筆（專欄版型11筆) @appleoxxo
+
 ### Changed
 - 移除api-web端點 /news中的敏感資訊 @appleoxxo
 - 修改admin端點 /indexpage 內carousel 新增feedFrom欄位資料 @appleoxxo
