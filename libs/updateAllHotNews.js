@@ -12,7 +12,7 @@ import redis from '../redis';
 module.exports = async() => {
     try {
         /* 熱門新聞抓取邏輯：
-         * 先查該分類下一天內的所有新聞 依熱門程度(pageview.totalScore)排序
+         * 先查該分類下1天內的所有新聞(專欄3年內) 依熱門程度(pageview.totalScore)排序
          * 如果一天內總數量不夠6篇(專欄11篇) 再去查該分類下最新的30篇新聞 依熱門排序 補上差額數量新聞
          */
 
