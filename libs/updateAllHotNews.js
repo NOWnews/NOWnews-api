@@ -27,7 +27,7 @@ module.exports = async() => {
 
         for (let menu of menus) {
             // 預設先抓取1天內的所有新聞
-            let defaultDays = -1;
+            let defaultDays = menu.template === 'DEFAULT' ? -1 : -1095;
             // 一般版型需要6筆 專欄需要11筆 熱門新聞
             let needNewsNumbers = menu.template === 'DEFAULT' ? 6 : 11;
 
@@ -78,7 +78,7 @@ module.exports = async() => {
                     $limit: needNewsNumbers
                 }
             ]);
-            sortedNewsIds = _.flatMap(sortedNewsIds, (news) => {
+            sortedNewsIds = _.map(sortedNewsIds, (news) => {
                 return news._id.toString();
             });
             //把新聞依照totalScore做排序 越高排越前面
@@ -138,7 +138,7 @@ module.exports = async() => {
                         $limit: needMoreNewsNumbers
                     }
                 ]);
-                sortedLatestNewsIds = _.flatMap(sortedLatestNewsIds, (news) => {
+                sortedLatestNewsIds = _.map(sortedLatestNewsIds, (news) => {
                     return news._id.toString();
                 });
                 let sortedLatestNews = _.sortBy(latestNews, (news) => {
