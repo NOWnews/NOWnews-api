@@ -12,6 +12,7 @@ module.exports = async (req, res, next) => {
 
         const redisValue = await redis.getValue('adWebHome');
 
+        // 依據每次新增的內容判斷是某要更新
         if (redisValue && !!redisValue.crazyAd) {
             return res.json(redisValue);
         }
