@@ -3,6 +3,9 @@
 NOWnews-api change logs
 
 ## [Unreleased]
+
+- 熱門新聞改成一定要滿6筆（專欄版型11筆) @appleoxxo
+
 ### Changed
 - 即時新聞 `/instant` 過濾掉業配文 ＠SimonSun
 - 依據不同環境產生對應合適的 `completeUrl`(og:url用) @esbb48
