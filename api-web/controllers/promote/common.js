@@ -11,8 +11,7 @@ module.exports = async (req, res, next) => {
     try {
 
         const redisValue = await redis.getValue('adWebCommon');
- 
-        // 依據每次新增的內容判斷是某要更新
+
         if (redisValue && !!redisValue.grabBag) {
             return res.json(redisValue);
         }
