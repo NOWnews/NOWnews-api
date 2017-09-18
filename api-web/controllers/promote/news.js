@@ -11,9 +11,8 @@ module.exports = async (req, res, next) => {
     try {
 
         const redisValue = await redis.getValue('adWebNews');
-
-        // 依據每次新增的內容判斷是某要更新
-        if (redisValue && !!redisValue.recommand[6]) {
+        
+        if (redisValue && !!redisValue.recommand) {
             return res.json(redisValue);
         }
 
