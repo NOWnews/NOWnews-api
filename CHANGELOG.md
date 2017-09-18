@@ -4,6 +4,7 @@ NOWnews-api change logs
 
 ## [Unreleased]
 
+- 修復不相關角色也能修改文章的問題 @appleoxxo
 - 熱門新聞改成一定要滿6筆（專欄版型11筆) @appleoxxo
 
 ### Changed
