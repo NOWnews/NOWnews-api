@@ -34,13 +34,14 @@ module.exports = async (req, res, next) => {
             throw new Error('16010');
         }
 
-        const role = await Role.findOne(news.CreatedBy.Role)
+        const role = await Role.findOne()
+            .where('_id').equals(news.CreatedBy.Role)
             .where('isTrashed').equals(false)
             .where('SuperiorRoles').equals(UpdateUserRole)
             .execAsync();
 
         if(!role) {
-            throw new Error('16003');
+            throw new Error('16014');
         }
 
         news.set('MainMenu', MainMenu);
