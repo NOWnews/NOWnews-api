@@ -3,8 +3,17 @@
 NOWnews-api change logs
 
 ## [Unreleased]
+
+### Fixed
+- 修復不相關角色也能修改文章的問題 @appleoxxo
+
+### Added
+- 增加三個內頁推薦廣告：3032, 3038, 3039 @esbb48
+- 熱門新聞改成一定要滿6筆（專欄版型11筆) @appleoxxo
+
 ### Changed
 - 即時新聞 `/instant` 過濾掉業配文 ＠SimonSun
+- 依據不同環境產生對應合適的 `completeUrl`(og:url用) @esbb48
 
 ## 1.0.32 - 2017-09-14
 ### Changed

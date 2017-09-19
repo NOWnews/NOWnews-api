@@ -222,7 +222,7 @@ module.exports = {
     },
 
     16014: {
-        message: '[News] 您的角色沒有發佈新聞的權限，請洽系統管理者',
+        message: '[News] 您的角色沒有發佈此篇新聞的權限，請洽系統管理者',
         statusCode: 403
     },
     16015: {
