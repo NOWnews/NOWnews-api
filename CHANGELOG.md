@@ -15,6 +15,9 @@ NOWnews-api change logs
 - 即時新聞 `/instant` 過濾掉業配文 ＠SimonSun
 - 依據不同環境產生對應合適的 `completeUrl`(og:url用) @esbb48
 
+### Added
+- 加入 `/news/{:id}/wasreleased` 此篇新聞是否發佈過的 api 端點 ＠SimonSun
+
 ## 1.0.32 - 2017-09-14
 ### Changed
 - 因軍聞社圖片有的出不來 先停止匯入軍聞社新聞 ＠appleoxxo
