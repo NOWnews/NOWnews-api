@@ -4,7 +4,9 @@ NOWnews-api change logs
 
 ## 1.0.33 - 2017-09-21
 
+## 1.0.33 - 2017-09-21
 ### Added
+- 加入 `/news/{:id}/wasreleased` 此篇新聞是否發佈過的 api 端點 ＠SimonSun
 - 增加三個內頁推薦廣告：3032, 3038, 3039 @esbb48
 - 熱門新聞改成一定要滿6筆（專欄版型11筆) @appleoxxo
 - 加入 `/news/{:id}/wasreleased` 此篇新聞是否發佈過的 api 端點 ＠SimonSun
