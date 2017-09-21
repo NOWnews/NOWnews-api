@@ -4,6 +4,9 @@ NOWnews-api change logs
 
 ## [Unreleased]
 
+### Changed
+- 相關新聞條件變更為：同主分類+同關鍵字 優先 若沒有則同主分類最新 補滿3筆 @appleoxxo
+
 ### Fixed
 - 修復不相關角色也能修改文章的問題 @appleoxxo
 
