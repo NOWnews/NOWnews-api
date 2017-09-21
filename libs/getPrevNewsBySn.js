@@ -14,6 +14,7 @@ module.exports = async (sn) => {
             .where('status').equals('RELEASE')
             .where('isTrashed').equals(false)
             .where('startedAt').lt(news.startedAt)
+            .where('MainMenu').equals(news.MainMenu)
             .sort('-startedAt')
             .limit(1)
             .execAsync();
