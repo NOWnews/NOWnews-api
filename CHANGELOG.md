@@ -4,6 +4,9 @@ NOWnews-api change logs
 
 ## [Unreleased]
 
+### Changed
+- 修改上下篇新聞的規則為依照發佈時間抓上下篇（只取同主分類的新聞）
+
 ### Fixed
 - 修復不相關角色也能修改文章的問題 @appleoxxo
 

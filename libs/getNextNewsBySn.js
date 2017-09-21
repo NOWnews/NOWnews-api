@@ -6,13 +6,15 @@ import Promise from 'bluebird';
 
 module.exports = async (sn) => {
     try {
+        let news = await News.findOne()
+            .where('sn').equals(sn)
+            .select('MainMenu startedAt');
 
         let [ nextNews ] = await News.find()
             .where('status').equals('RELEASE')
             .where('isTrashed').equals(false)
-            .where('startedAt').lte(Date.now())
-            .where('sn').gt(sn)
-            .sort('sn')
+            .where('startedAt').gt(news.startedAt)
+            .sort('startedAt')
             .limit(1)
             .execAsync();
         debug('next news = %j', nextNews);
