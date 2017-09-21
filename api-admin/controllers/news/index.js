@@ -14,6 +14,7 @@ import draft from './draft';
 import review from './review';
 import release from './release';
 import close from './close';
+import wasReleased from './wasReleased';
 
 router.route('/news')
     .get(baseQuery, list)
@@ -35,5 +36,8 @@ router.route('/news/:id/release')
 
 router.route('/news/:id/close')
     .put(validators.news.close, close);
+
+router.route('/news/:id/wasreleased')
+    .get(wasReleased);
 
 module.exports = router;

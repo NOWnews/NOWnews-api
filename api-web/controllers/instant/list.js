@@ -34,12 +34,14 @@ module.exports = async (req, res, next) => {
             .where('status').equals('RELEASE')
             .where('isTrashed').equals(false)
             .where('startedAt').lte(Date.now())
-            .where('isFeed').equals(false);
+            .where('isFeed').equals(false)
+            .where('isSponsored').equals(false);
         totalCursor
             .where('status').equals('RELEASE')
             .where('isTrashed').equals(false)
             .where('startedAt').lte(Date.now())
-            .where('isFeed').equals(false);
+            .where('isFeed').equals(false)
+            .where('isSponsored').equals(false);
 
         // 找出相關列表與分頁資料
         let [ newsList, total ] = await Promise.all([

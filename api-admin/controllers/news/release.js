@@ -14,7 +14,7 @@ import libs from '../../../libs';
 module.exports = async (req, res, next) => {
     try {
 
-        let { UpdateUserRole, title, content, newsBy, Author, MainMenu, UpdatedBy } = req.body;
+        let { UpdateUserRole, title, content, newsBy, Author, MainMenu, UpdatedBy, startedAt } = req.body;
         let { id } = req.params;
         debug('req.body = %j', req.body);
         debug('req.params = %j', req.params);
@@ -34,13 +34,14 @@ module.exports = async (req, res, next) => {
             throw new Error('16010');
         }
 
-        const role = await Role.findOne(news.CreatedBy.Role)
+        const role = await Role.findOne()
+            .where('_id').equals(news.CreatedBy.Role)
             .where('isTrashed').equals(false)
             .where('SuperiorRoles').equals(UpdateUserRole)
             .execAsync();
 
         if(!role) {
-            throw new Error('16003');
+            throw new Error('16014');
         }
 
         news.set('MainMenu', MainMenu);
@@ -52,8 +53,9 @@ module.exports = async (req, res, next) => {
         news.set('status', 'RELEASE');
 
         // 處理發布時間問題
-        let startedAt = req.body.startedAt ? req.body.startedAt : Date.now();
-        news.set('startedAt', startedAt);
+        if(startedAt){
+            news.set('startedAt', startedAt);
+        }
 
         if(req.body.shortTitle) {
             news.set('shortTitle', req.body.shortTitle);
