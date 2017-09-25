@@ -3,6 +3,7 @@ const debug = Debug('NOWnews-api:libs:getRelationNewsBySn');
 
 import { News } from '../models';
 import Promise from 'bluebird';
+import _ from 'lodash';
 import moment from 'moment-timezone';
 module.exports = async(sn) => {
     try {
@@ -44,12 +45,15 @@ module.exports = async(sn) => {
             .limit(needNewsNumbers);
 
         let relationNews = await cursor.execAsync();
-
         if (relationNews.length < needNewsNumbers) {
+
+            let ninSnArray = _.map(relationNews, (news) => news.sn);
+            ninSnArray.push(sn);
+            
             let sameMainMenuNews = await News.find()
                 .where('status').equals('RELEASE')
                 .where('isTrashed').equals(false)
-                .where('sn').ne(sn)
+                .where('sn').nin(ninSnArray)
                 .where('startedAt').lte(Date.now())
                 .where('startedAt').gte(gteTime)
                 .where('MainMenu').equals(news.MainMenu)
