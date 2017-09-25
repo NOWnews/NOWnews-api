@@ -47,13 +47,13 @@ module.exports = async(sn) => {
         let relationNews = await cursor.execAsync();
         if (relationNews.length < needNewsNumbers) {
 
-            let ninSnArray = _.map(relationNews, (news) => news.sn);
-            ninSnArray.push(sn);
+            let notInSnArray = _.map(relationNews, (news) => news.sn);
+            notInSnArray.push(sn);
             
             let sameMainMenuNews = await News.find()
                 .where('status').equals('RELEASE')
                 .where('isTrashed').equals(false)
-                .where('sn').nin(ninSnArray)
+                .where('sn').nin(notInSnArray)
                 .where('startedAt').lte(Date.now())
                 .where('startedAt').gte(gteTime)
                 .where('MainMenu').equals(news.MainMenu)
