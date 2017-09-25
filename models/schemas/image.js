@@ -159,28 +159,28 @@ schema.index({
 
 schema.virtual('thumbnail').get(function () {
 
-    let imgRegexString = /^(http|https):\/\/img.nownews.com\//;
+    // let imgRegexString = /^(http|https):\/\/img.nownews.com\//;
     let otherRegexString = /^(http|https):\/\/[A-Za-z]+.nownews.com\//;
 
-    let imgMatchArray = this.url.match(imgRegexString);
+    // let imgMatchArray = this.url.match(imgRegexString);
     let otherMatchArray = this.url.match(otherRegexString);
 
     // 如果不屬於 http://xxx.nownews.com 的圖片網址
-    if(imgMatchArray === null && otherMatchArray === null) {
+    if(otherMatchArray === null) {
         return this.url;
     }
 
     // 如果是 http://img.nownews.com 的圖片網址
-    if(imgMatchArray) {
-        let url = config.get('general.thumbnail.url');
-        let replaceString = imgMatchArray[0];
-        let srcUrl = this.url.replace(replaceString, '/');
-        return `${url}/?w=300&q=70&src=${encodeURIComponent(srcUrl)}`;
-    }
+    // if(imgMatchArray) {
+    //     let url = config.get('general.imagelab.url');
+    //     let replaceString = imgMatchArray[0];
+    //     let srcUrl = this.url.replace(replaceString, '/');
+    //     return `${url}/?w=300&q=70&src=${encodeURIComponent(srcUrl)}`;
+    // }
 
     // 如果是 http://[A-Za-z].nownews.com 的圖片網址
     if(otherMatchArray) {
-        let url = config.get('general.thumbnail.url');
+        let url = config.get('general.imagelab.url');
         return `${url}/?w=300&q=70&src=${encodeURIComponent(this.url)}`;
     }
 });
@@ -207,7 +207,7 @@ schema.virtual('googleCDN').get(function () {
 
     // 如果是 http://[A-Za-z].nownews.com 的圖片網址
     if(otherMatchArray) {
-        let url = config.get('general.thumbnail.url');
+        let url = config.get('general.imagelab.url');
         return `${url}/?w=1080&q=100&src=${encodeURIComponent(this.url)}`;
     }
 });

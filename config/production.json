@@ -6,14 +6,8 @@
         "apiUrls": {
             "geocode": "https://maps.googleapis.com/maps/api/geocode/json"
         },
-        "thumbnail": {
-            "url": "https://imgapiv2.nownews.com",
-            "width": 300,
-            "height": 168,
-            "quality": 70
-        },
         "imagelab": {
-            "url": "https://imgapiv2.nownews.com"
+            "url": "https://imagelab.nownews.com"
         },
         "officialUrl": "https://www.nownews.com",
         "rssFeed": {

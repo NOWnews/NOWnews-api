@@ -3,23 +3,24 @@
 NOWnews-api change logs
 
 ## [Unreleased]
-
 ### Changed
 - 相關新聞條件變更為：同主分類+同關鍵字 優先 若沒有則同主分類最新 補滿3筆 @appleoxxo
 
-### Fixed
-- 修復不相關角色也能修改文章的問題 @appleoxxo
-
+## 1.0.33 - 2017-09-21
 ### Added
+- 加入 `/news/{:id}/wasreleased` 此篇新聞是否發佈過的 api 端點 ＠SimonSun
 - 增加三個內頁推薦廣告：3032, 3038, 3039 @esbb48
 - 熱門新聞改成一定要滿6筆（專欄版型11筆) @appleoxxo
+- 加入 `/news/{:id}/wasreleased` 此篇新聞是否發佈過的 api 端點 ＠SimonSun
 
 ### Changed
 - 即時新聞 `/instant` 過濾掉業配文 ＠SimonSun
 - 依據不同環境產生對應合適的 `completeUrl`(og:url用) @esbb48
+- 使用 `imageLab` @esbb48
+- 統一使用同一個 config 移除不需要的 `general.thumbnail` @esbb48
 
-### Added
-- 加入 `/news/{:id}/wasreleased` 此篇新聞是否發佈過的 api 端點 ＠SimonSun
+### Fixed
+- 修復不相關角色也能修改文章的問題 @appleoxxo
 
 ## 1.0.32 - 2017-09-14
 ### Changed
