@@ -2,8 +2,11 @@
 
 NOWnews-api change logs
 
-## 1.0.33 - 2017-09-21
+## [Unreleased]
+### Changed
+- 相關新聞條件變更為：同主分類+同關鍵字 優先 若沒有則同主分類最新 補滿3筆 @appleoxxo
 
+## 1.0.33 - 2017-09-21
 ### Added
 - 加入 `/news/{:id}/wasreleased` 此篇新聞是否發佈過的 api 端點 ＠SimonSun
 - 增加三個內頁推薦廣告：3032, 3038, 3039 @esbb48
