@@ -4,6 +4,9 @@ NOWnews-api change logs
 
 ## [Unreleased]
 
+### Added
+- `/menus` 增加 `sort` 的搜尋條件 @esbb48
+
 ### Changed
 - 修改上下篇新聞的規則為依照發佈時間抓上下篇（只取同主分類的新聞）
 - 相關新聞條件變更為：同主分類+同關鍵字 優先 若沒有則同主分類最新 補滿3筆 @appleoxxo
