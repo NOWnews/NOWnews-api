@@ -4,8 +4,8 @@ import newsLog from './newsLog';
 import getIndexPage from './getIndexPage';
 import getNewsBySn from './getNewsBySn';
 import getRelationNewsBySn from './getRelationNewsBySn';
-import getNextNewsBySn from './getNextNewsBySn';
-import getPrevNewsBySn from './getPrevNewsBySn';
+import getNextNewsByNews from './getNextNewsByNews';
+import getPrevNewsByNews from './getPrevNewsByNews';
 import updateAllHotNews from './updateAllHotNews';
 import updateCategoryFirstPage from './updateCategoryFirstPage';
 import updateFirstPageForMobile from './updateFirstPageForMobile';
@@ -31,8 +31,8 @@ module.exports = {
     getIndexPage,
     getNewsBySn,
     getRelationNewsBySn,
-    getNextNewsBySn,
-    getPrevNewsBySn,
+    getNextNewsByNews,
+    getPrevNewsByNews,
     updateAllHotNews,
     updateCategoryFirstPage,
     updateFirstPageForMobile,

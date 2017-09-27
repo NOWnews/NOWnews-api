@@ -1,15 +1,11 @@
 import Debug from 'debug';
-const debug = Debug('NOWnews-api:libs:getPrevNewsBySn');
+const debug = Debug('NOWnews-api:libs:getPrevNewsByNews');
 
 import { News } from '../models';
 import Promise from 'bluebird';
 
-module.exports = async (sn) => {
+module.exports = async (news) => {
     try {
-        let news = await News.findOne()
-            .where('sn').equals(sn)
-            .select('MainMenu startedAt');
-
         let [ prevNews ] = await News.find()
             .where('status').equals('RELEASE')
             .where('isTrashed').equals(false)
