@@ -20,9 +20,15 @@ module.exports = async (req, res, next) => {
         }
 
         // 要給 api web 使用的 news 資料
+
+        let currentNews = await News.findOne()
+            .where('sn').equals(sn)
+            .select('MainMenu startedAt')
+            .lean();
+
         let [ prevNews, nextNews ] = await Promise.all([
-            libs.getPrevNewsBySn(sn),
-            libs.getNextNewsBySn(sn)
+            libs.getPrevNewsByNews(currentNews),
+            libs.getNextNewsByNews(currentNews)
         ]);
 
         // 當有上下篇新聞的時候，過期時間設定長一點

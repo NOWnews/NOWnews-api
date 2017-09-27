@@ -1,18 +1,17 @@
 import Debug from 'debug';
-const debug = Debug('NOWnews-api:libs:getNextNewsBySn');
+const debug = Debug('NOWnews-api:libs:getNextNewsByNews');
 
 import { News } from '../models';
 import Promise from 'bluebird';
 
-module.exports = async (sn) => {
+module.exports = async (news) => {
     try {
-
         let [ nextNews ] = await News.find()
             .where('status').equals('RELEASE')
             .where('isTrashed').equals(false)
-            .where('startedAt').lte(Date.now())
-            .where('sn').gt(sn)
-            .sort('sn')
+            .where('startedAt').gt(news.startedAt)
+            .where('MainMenu').equals(news.MainMenu)
+            .sort('startedAt')
             .limit(1)
             .execAsync();
         debug('next news = %j', nextNews);
