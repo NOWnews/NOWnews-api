@@ -3,6 +3,7 @@
 NOWnews-api change logs
 
 ## [Unreleased]
+- 調整浮水印與預設圖 @esbb48
 
 ## 1.0.34 - 2017-09-28
 ### Changed
