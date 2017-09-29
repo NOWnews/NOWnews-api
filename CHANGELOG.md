@@ -3,6 +3,8 @@
 NOWnews-api change logs
 
 ## [Unreleased]
+### Added
+- 新增 google 自然語言關鍵字推薦 api @SimonSun
 
 ## 1.0.34 - 2017-09-28
 ### Changed

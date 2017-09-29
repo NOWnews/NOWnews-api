@@ -2940,3 +2940,30 @@ None
 #### Query Parameters
 
 None
+
+## RECOMMEND API DOCUMENTS
+
+### [POST] `/recommend/newskeywords`
+
+新聞自然語言關鍵字推薦
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| title | 新聞的標題 | String | √ | `穿山甲寶寶超萌 緊抱媽媽尾巴搭便車` |
+| content | 新聞的內容 | String | √ | `<p>穿山甲寶寶超級可愛的 cute </p>` |
+
+#### Query Parameters
+
+None

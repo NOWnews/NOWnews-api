@@ -42,3 +42,5 @@ dump.rdb
 .vscode
 
 .DS_Store
+
+package-lock.json
