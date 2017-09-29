@@ -3,10 +3,14 @@
 NOWnews-api change logs
 
 ## [Unreleased]
-
 ### Added
+- cronjob恢復軍聞社匯入 加上圖片錯誤時存墊檔圖的機制 @appleoxxo
 - `/menus` 增加 `sort` 的搜尋條件 @esbb48
 
+### Changed
+- 新聞發布時會去更新 fb 暫存 @esbb48
+
+## 1.0.34 - 2017-09-28
 ### Changed
 - 修改上下篇新聞的規則為依照發佈時間抓上下篇（只取同主分類的新聞）
 - 相關新聞條件變更為：同主分類+同關鍵字 優先 若沒有則同主分類最新 補滿3筆 @appleoxxo
