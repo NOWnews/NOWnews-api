@@ -158,7 +158,7 @@ module.exports = new cron.CronJob({
                             Photos: [],
                             Videos: [],
                             freeContent: null,
-                            startedAt: moment.tz(news.pubDate, 'Asia/Taipei'),
+                            startedAt: news.pubDate,
                             type: 'NEWS',
                             status: 'RELEASE',
                             traceCode: null,
