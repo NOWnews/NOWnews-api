@@ -3,11 +3,9 @@
 NOWnews-api change logs
 
 ## [Unreleased]
-### Changed
-- 新聞發布時會去更新 fb 暫存 @esbb48
-
 ### Added
 - cronjob恢復軍聞社匯入 加上圖片錯誤時存墊檔圖的機制 @appleoxxo
+- `/menus` 增加 `sort` 的搜尋條件 @esbb48
 
 ### Changed
 - 新聞發布時會去更新 fb 暫存 @esbb48
