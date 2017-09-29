@@ -4,6 +4,12 @@ NOWnews-api change logs
 
 ## [Unreleased]
 
+### Added
+- cronjob恢復軍聞社匯入 加上圖片錯誤時存墊檔圖的機制 @appleoxxo
+
+### Changed
+- 新聞發布時會去更新 fb 暫存 @esbb48
+
 ## 1.0.34 - 2017-09-28
 ### Changed
 - 修改上下篇新聞的規則為依照發佈時間抓上下篇（只取同主分類的新聞）
