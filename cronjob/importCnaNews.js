@@ -107,7 +107,7 @@ module.exports = new cron.CronJob({
                             continue;
                         }
                         // 如果不是在設定的時間區間內的新聞，就不需要收錄
-                        news.pubDate = moment.tz(news.pubDate, 'Asia/Taipei');
+                        news.pubDate = moment.tz(news.pubDate, 'UTC');
                         if (news.pubDate.isBefore(prevTime)) {
                             debug('不收錄原因: 新聞過期');
                             continue;
