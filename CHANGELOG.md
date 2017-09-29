@@ -4,6 +4,9 @@ NOWnews-api change logs
 
 ## [Unreleased]
 
+### Fixed
+- 修正所有匯入新聞的時間（時區問題）@appleoxxo
+
 ## 1.0.34 - 2017-09-28
 ### Changed
 - 修改上下篇新聞的規則為依照發佈時間抓上下篇（只取同主分類的新聞）
