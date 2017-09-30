@@ -2,6 +2,7 @@
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:recommend:newsKeywords');
 import config from 'config';
+import { htmlToText } from '../../../libs';
 import _ from 'lodash';
 
 import Language from '@google-cloud/language';
@@ -37,6 +38,7 @@ module.exports = async (req, res, next) => {
     try {
 
         let { content, title } = req.body;
+        content = htmlToText(content);
 
         let [ contentAnalyze, titleAnalyze ] = await Promise.all([
             await language.analyzeEntities({
