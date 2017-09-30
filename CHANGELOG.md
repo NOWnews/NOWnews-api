@@ -5,6 +5,8 @@ NOWnews-api change logs
 ## [Unreleased]
 
 ### Added
+- cronjob恢復軍聞社匯入 加上圖片錯誤時存墊檔圖的機制 @appleoxxo
+- `/menus` 增加 `sort` 的搜尋條件 @esbb48
 - 新增 google 自然語言關鍵字推薦 api @SimonSun
 
 ### Changed
