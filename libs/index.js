@@ -16,6 +16,7 @@ import updateHotKeywords from './updateHotKeywords';
 import updateInstantNews from './updateInstantNews';
 import updateNewestNews from './updateNewestNews';
 import updateNewestImages from './updateNewestImages';
+import refreshFbDebugger from './refreshFbDebugger';
 import refreshIndexPage from './refreshIndexPage';
 import parseRssFeed from './parseRssFeed';
 import changeInternalLink from './changeInternalLink';
@@ -43,6 +44,7 @@ module.exports = {
     updateInstantNews,
     updateNewestNews,
     updateNewestImages,
+    refreshFbDebugger,
     refreshIndexPage,
     parseRssFeed,
     changeInternalLink,
