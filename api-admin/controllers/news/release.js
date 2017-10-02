@@ -14,7 +14,7 @@ import libs from '../../../libs';
 module.exports = async (req, res, next) => {
     try {
 
-        let { UpdateUserRole, title, content, newsBy, Author, MainMenu, UpdatedBy, startedAt } = req.body;
+        let { isSchedule, UpdateUserRole, title, content, newsBy, Author, MainMenu, UpdatedBy, startedAt } = req.body;
         let { id } = req.params;
         debug('req.body = %j', req.body);
         debug('req.params = %j', req.params);
@@ -170,8 +170,10 @@ module.exports = async (req, res, next) => {
                 setDefaultsOnInsert: true
             });
 
-        await libs.refreshFbDebugger(updatedNews.completeUrl);
-
+        // 不是預發稿就更新 fb share cache
+        if (!isSchedule) {
+            await libs.refreshFbDebugger(updatedNews.completeUrl);
+        }
         return res.json(updatedNews);
     }catch(err) {
         return next(err);
