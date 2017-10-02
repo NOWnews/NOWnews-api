@@ -12,6 +12,7 @@ import moment from 'moment-timezone';
 import { parseRssFeed, newsLog, changeInternalLink, getAndRemoveFirstImage } from '../libs';
 import { News, Image } from '../models';
 import { Pageview } from '../pvModels';
+import request from 'request-promise';
 
 module.exports = new cron.CronJob({
     /* 設定多久跑一次
@@ -84,7 +85,20 @@ module.exports = new cron.CronJob({
                 ];
                 let randomDefaultImageId = mnaImagesObjectIds[Math.floor(Math.random() * mnaImagesObjectIds.length)];
 
+                //存圖片前 先確認軍聞社提供的圖片是正常的 因為他們會提供錯誤的URL 打過去會回傳html
+                let isImage = false;
                 if( firstImage ){
+                    let imgRes = await request({
+                        method: 'GET',
+                        uri: firstImage.src,
+                        resolveWithFullResponse: true
+                    });
+                    if(imgRes.statusCode === 200 && imgRes.headers['content-length'] > 0 && imgRes.headers['content-type'].startsWith('image')){
+                        isImage = true;
+                    }
+                }
+
+                if( firstImage && isImage ){
                     let imageOptions = {
                         title: firstImage.alt || '（圖／軍聞社）',
                         desc: '▲ ' + firstImage.alt || '▲ （圖／軍聞社）',

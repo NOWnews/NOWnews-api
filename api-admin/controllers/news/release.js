@@ -170,6 +170,8 @@ module.exports = async (req, res, next) => {
                 setDefaultsOnInsert: true
             });
 
+        await libs.refreshFbDebugger(updatedNews.completeUrl);
+
         return res.json(updatedNews);
     }catch(err) {
         return next(err);
