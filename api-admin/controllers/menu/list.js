@@ -6,7 +6,9 @@ import { Menu } from '../../../models';
 module.exports = async (req, res, next) => {
     try {
 
-        let { level, template } = req.query;
+        let { level, template, sort } = req.query;
+
+        sort = sort ? sort : '-createdAt';
 
         let cursor = Menu.find()
             .where('isTrashed').equals(false);
@@ -19,7 +21,8 @@ module.exports = async (req, res, next) => {
             cursor.where('template').equals(template);
         }
 
-        let menus = await cursor.execAsync();
+        let menus = await cursor.sort(sort)
+                            .execAsync();
         debug('menus = %j', menus);
 
         return res.json(menus);

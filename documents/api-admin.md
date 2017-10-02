@@ -1304,6 +1304,8 @@ None
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
 | level | 選單的層級 | Number |  |  |
+| template | 版型 | String |  | 'SPECIALCHANNEL' |
+| sort | 排序 | String |  | 'weight' |
 
 ### [POST] `/menus`
 
