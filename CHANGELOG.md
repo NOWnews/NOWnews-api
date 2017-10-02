@@ -9,6 +9,7 @@ NOWnews-api change logs
 
 ### Changed
 - 新聞發布時會去更新 fb 暫存 @esbb48
+- 調整浮水印與預設圖 @esbb48
 
 ## 1.0.34 - 2017-09-28
 ### Changed
