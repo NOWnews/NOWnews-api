@@ -24,6 +24,7 @@ import getAndRemoveFirstImage from './getAndRemoveFirstImage';
 import getChannelsByPlatform from './getChannelsByPlatform';
 import getFacebookPostInfo from './getFacebookPostInfo';
 import downloadFile from './downloadFile';
+import htmlToText from './htmlToText';
 
 module.exports = {
     hashPwd,
@@ -51,5 +52,6 @@ module.exports = {
     getAndRemoveFirstImage,
     getChannelsByPlatform,
     getFacebookPostInfo,
-    downloadFile
+    downloadFile,
+    htmlToText
 };

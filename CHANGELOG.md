@@ -10,10 +10,12 @@ NOWnews-api change logs
 ## 1.0.35 - 2017-10-02
 ### Added
 - `/menus` 增加 `sort` 的搜尋條件 @esbb48
+- 新增 google 自然語言關鍵字推薦 api @SimonSun
 
 ### Changed
 - 新聞發布時會去更新 fb 暫存 @esbb48
 - 調整浮水印與預設圖 @esbb48
+
 
 ## 1.0.34 - 2017-09-28
 ### Changed
