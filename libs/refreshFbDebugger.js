@@ -8,7 +8,8 @@ module.exports = async (url) => {
     try {
         const options = {
             id: url,
-            scrape: true
+            scrape: true,
+            access_token: '132863386747341|TQ6gBA9E40cop1BjDhTCp4fE9wQ'
         };
         await axios.post('https://graph.facebook.com/', options);
         return Promise.resolve();
