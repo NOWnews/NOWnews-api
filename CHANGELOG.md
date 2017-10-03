@@ -9,6 +9,7 @@ NOWnews-api change logs
 
 ### Changed
 - 為 `refreshFbDebugger` 增加 `access_token` @esbb48
+- 調整浮水印 @esbb48
 
 ### Fixed
 - 預發稿不更新 fb 暫存 @esbb48
