@@ -72,7 +72,7 @@ module.exports = async (req, res, next) => {
         }
 
         // 參照資料，如果有 user 就用 user，沒有就用 cookie 的資料
-        let refData = dataByUser || dataByCookie;
+        let refData = userId !== undefined ? dataByUser : dataByCookie;
 
         let personalizeNews = [];
 

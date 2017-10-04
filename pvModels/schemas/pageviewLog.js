@@ -63,4 +63,12 @@ let schema = new Schema({
     versionKey: false
 });
 
+schema.index({
+    createdAt: -1
+});
+
+schema.index({
+    cookie: 1
+});
+
 module.exports = schema;

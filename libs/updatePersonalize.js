@@ -8,17 +8,24 @@ import { Personalize, PageviewLog } from '../pvModels';
 
 module.exports = async () => {
     try {
-        let now = moment.tz('Asia/Taipei');
-        let startedAt = now.add(-1, 'h');
-        let endedAt = now;
+
+        let startedAt = moment(Date.now()).add(-10, 'day');
+        let endedAt = moment(Date.now());
+
+        let rangePageviewLogs = await PageviewLog.find()
+            .and([
+                { createdAt: { $gte: startedAt } },
+                { createdAt: { $lte: endedAt } }
+            ])
+            .execAsync();
+        let logIds = _.map(rangePageviewLogs, (log) => {
+            return log._id;
+        });
 
         let personalLogs = await PageviewLog.aggregateAsync([
             {
                 $match: {
-                    cookie: { $ne: null },
-                    $and: [ { url: { $ne: null } }, { url: { $ne: '/' } } ],
-                    menuId: { $ne: null },
-                    createdAt: { $gte: startedAt, $lte: endedAt }
+                    $and: [ { _id: { $in: logIds } }, { cookie: { $ne: null } }, { url: { $ne: null } }, { url: { $ne: '/' } }, { menuId: { $ne: null } }],
                 }
             },
             {
