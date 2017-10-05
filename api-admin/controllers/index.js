@@ -25,6 +25,7 @@ import appInfo from './app';
 import searchEngine from './searchEngine';
 import ott from './ott';
 import column from './column';
+import recommend from './recommend';
 
 
 module.exports = (app) => {
@@ -56,6 +57,7 @@ module.exports = (app) => {
     app.use('/', searchEngine);
     app.use('/', ott);
     app.use('/', column);
+    app.use('/', recommend);
 
     return (req, res, next) => {
         return next();
