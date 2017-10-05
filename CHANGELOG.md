@@ -4,8 +4,7 @@ NOWnews-api change logs
 
 ## [Unreleased]
 
-### Added
-- cronjob恢復軍聞社匯入 加上圖片錯誤時存墊檔圖的機制 @appleoxxo
+## 1.0.36 - 2017-10-05
 
 ### Changed
 - 為 `refreshFbDebugger` 增加 `access_token` @esbb48
