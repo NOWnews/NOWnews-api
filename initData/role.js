@@ -191,7 +191,7 @@ module.exports = [
     {
         _id: '520000000000000000000014',
         name: '批次匯入新聞用',
-        desc: '鉅亨網、中央社、軍聞社、NOWnews新聞改版前新聞',
+        desc: '鉅亨網、中央社、軍聞社、NOWnews改版前新聞用',
         Policies: BasicEditor,
         CreatedBy: '530000000000000000000001',
         UpdatedBy: '530000000000000000000001'
