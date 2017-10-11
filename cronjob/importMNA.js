@@ -183,6 +183,16 @@ module.exports = new cron.CronJob({
                     };
 
                     mainPhoto = await Image.createAsync(imageOptions);
+
+                    // 刪掉檔案
+                    await new Promise((resolve, reject) => {
+                        fs.unlink(newPath, (err, result) => {
+                            if(err) {
+                                return reject(err);
+                            }
+                            return resolve(result);
+                        });
+                    });
                 }
 
 
