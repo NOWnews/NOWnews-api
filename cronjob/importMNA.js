@@ -137,20 +137,20 @@ module.exports = new cron.CronJob({
                     // scp 到 img.nownews.com 圖床與 google cloud storage
                     let [ imageStorage, cloud ] = await Promise.all([
                         new Promise((resolve, reject) => {
-                                let username = config.get('admin.imageServer.username');
-                                let password = config.get('admin.imageServer.password');
-                                let host = config.get('admin.imageServer.host');
-                                let folder = config.get('admin.imageServer.folder');
-                                let port = config.get('admin.imageServer.port');
-                                let scpCommand = `${username}:${password}@${host}:${port}:${folder}`;
+                            let username = config.get('admin.imageServer.username');
+                            let password = config.get('admin.imageServer.password');
+                            let host = config.get('admin.imageServer.host');
+                            let folder = config.get('admin.imageServer.folder');
+                            let port = config.get('admin.imageServer.port');
+                            let scpCommand = `${username}:${password}@${host}:${port}:${folder}`;
 
-                                imageServer.scp(newPath, scpCommand, (err) => {
-                                    if(err) {
-                                        return reject(err);
-                                    }
-                                    return resolve('ok');
-                                });
-                            }),
+                            imageServer.scp(newPath, scpCommand, (err) => {
+                                if(err) {
+                                    return reject(err);
+                                }
+                                return resolve('ok');
+                            });
+                        }),
                         bucket.upload(newPath, {
                                 destination: `images/${newName}`,
                                 public: true
