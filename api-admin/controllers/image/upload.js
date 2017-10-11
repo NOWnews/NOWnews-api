@@ -50,6 +50,7 @@ module.exports = async(req, res, next) => {
             console.log(`image name "${originalname}" origin width = ${originWidth} px`);
             compression = true;
             image
+                .interlace('Line')
                 .resize(1080, null)
                 .command('composite')
                 .in('-gravity', 'SouthEast')
@@ -62,6 +63,7 @@ module.exports = async(req, res, next) => {
             console.log(`image name "${originalname}" origin width = ${originWidth} px`);
             compression = true;
             image
+                .interlace('Line')
                 .resize(1600, null);
         }
 
@@ -69,6 +71,7 @@ module.exports = async(req, res, next) => {
         if(req.body.isWatermark && originWidth && originWidth < 1600) {
             compression = true;
             image
+                .interlace('Line')
                 .resize(1080, null)
                 .command('composite')
                 .in('-gravity', 'SouthEast')
