@@ -14,15 +14,20 @@ module.exports = async (req, res, next) => {
 
         let mode = config.get('admin.mode');
 
-        let devices = await AppInfo.find()
-            .where('os').equals('WEB')
-            .and([
-                { token: { $exists: true } },
-                { token: { $ne: '' } },
-                { token: { $ne: null } },
-                { token: { $ne: 'null' } }
-            ])
-            .execAsync();
+
+        let devices = await AppInfo.aggregateAsync([
+            {
+                $match: {
+                    os: 'WEB'
+
+                }
+            },
+            {
+                $group: {
+                    _id: '$token'
+                }
+            }
+        ]);
         debug('web devices length = %d', devices.length);
 
 
@@ -41,14 +46,14 @@ module.exports = async (req, res, next) => {
          */
         if(mode !== 'production') {
             devices = [
-                { token: 'dO7bE_a4TYE:APA91bGOTczVmmd_XtZv8sK6Rzqf-1YEJAqg8S5vGT0aMXLWaPt7ZZb18nLVQhQOPzRpg1EmJ5R12OKbD1G7j0TtV4Omis5ZO6RC1WugDbDd18LOqGDwEyF859-XLIiWUqLEb0sad17Y' }
+                { _id: 'dO7bE_a4TYE:APA91bGOTczVmmd_XtZv8sK6Rzqf-1YEJAqg8S5vGT0aMXLWaPt7ZZb18nLVQhQOPzRpg1EmJ5R12OKbD1G7j0TtV4Omis5ZO6RC1WugDbDd18LOqGDwEyF859-XLIiWUqLEb0sad17Y' }
             ];
             deviceTotal = devices.length;
         }
 
         _.forEach(devices, (device) => {
 
-            countTokens.push(device.token);
+            countTokens.push(device._id);
             countTotal++;
             count++;
 

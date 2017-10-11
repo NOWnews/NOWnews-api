@@ -12,6 +12,9 @@ NOWnews-api change logs
 ### Fixed
 - 軍聞社的新聞主圖改存到自家圖庫並恢復匯入 @appleoxxo
 
+### Changed
+- 避免重複的 token 被撈出 @esbb48
+
 ## 1.0.36 - 2017-10-05
 
 ### Changed
