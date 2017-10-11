@@ -4,6 +4,9 @@ NOWnews-api change logs
 
 ## [Unreleased]
 
+### Fixed
+- 軍聞社的新聞主圖改存到自家圖庫並恢復匯入 @appleoxxo
+
 ## 1.0.36 - 2017-10-05
 
 ### Changed
