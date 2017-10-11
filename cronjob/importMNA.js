@@ -99,9 +99,9 @@ module.exports = new cron.CronJob({
                 ];
                 let randomDefaultImageId = mnaImagesObjectIds[Math.floor(Math.random() * mnaImagesObjectIds.length)];
 
-                let aliveImage = await Image.findOne()
+                let aliveImage = firstImage ? await Image.findOne()
                     .where('originalname').equals(firstImage.src)
-                    .execAsync();
+                    .execAsync() : false;
 
                 //存圖片前 先確認軍聞社提供的圖片是正常的 因為他們會提供錯誤的URL 打過去會回傳html
                 let isImage = false;
