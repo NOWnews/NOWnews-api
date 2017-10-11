@@ -13,6 +13,20 @@ import { parseRssFeed, newsLog, changeInternalLink, getAndRemoveFirstImage } fro
 import { News, Image } from '../models';
 import { Pageview } from '../pvModels';
 import request from 'request-promise';
+import { downloadFile } from '../libs';
+import mongoose from 'mongoose';
+import fs from 'fs';
+import readChunk from 'read-chunk';
+import fileType from 'file-type';
+import imageServer from 'scp2';
+import googleCloud from 'google-cloud';
+const gcloud = googleCloud({
+    projectId: config.get('general.googleCloud.projectId'),
+    keyFilename: config.get('general.googleCloud.keyFilename'),
+    promise: Promise
+});
+const gcs = gcloud.storage();
+const bucket = gcs.bucket(config.get('general.googleCloud.storageBucket'));
 
 module.exports = new cron.CronJob({
     /* 設定多久跑一次
@@ -98,13 +112,61 @@ module.exports = new cron.CronJob({
                     }
                 }
 
-                if( firstImage && isImage ){
+                let aliveImage = isImage ? await Image.findOne()
+                    .where('originalname').equals(firstImage.src)
+                    .execAsync() : false;
+
+                if( firstImage && isImage && !aliveImage ){
+
+                    let downloadedFilePath = await downloadFile(firstImage.src);
+
+                    // 讀取檔案的前 4100 bytes 存成 buffer
+                    let buffer = readChunk.sync(downloadedFilePath, 0, 4100);
+                    let { ext } = fileType(buffer);
+
+                    // 編輯新的名字與 ObjectId
+                    let objectId = mongoose.Types.ObjectId();
+                    let now = moment.tz('Asia/Taipei').format('YYYYMMDDHHmm');
+                    let newName = `${objectId}_${now}.${ext}`;
+                    let newPath = `uploads/${newName}`;
+
+                    // 將圖片名稱換掉
+                    fs.renameSync(downloadedFilePath, newPath);
+
+                    // scp 到 img.nownews.com 圖床與 google cloud storage
+                    let [ imageStorage, cloud ] = await Promise.all([
+                        new Promise((resolve, reject) => {
+                                let username = config.get('admin.imageServer.username');
+                                let password = config.get('admin.imageServer.password');
+                                let host = config.get('admin.imageServer.host');
+                                let folder = config.get('admin.imageServer.folder');
+                                let port = config.get('admin.imageServer.port');
+                                let scpCommand = `${username}:${password}@${host}:${port}:${folder}`;
+
+                                imageServer.scp(newPath, scpCommand, (err) => {
+                                    if(err) {
+                                        return reject(err);
+                                    }
+                                    return resolve('ok');
+                                });
+                            }),
+                        bucket.upload(newPath, {
+                                destination: `images/${newName}`,
+                                public: true
+                            })
+                            .then((file) => {
+                                return Promise.resolve(file);
+                            })
+                    ]);
+
+                    let newFileUrl = `${config.get('admin.imageServer.url')}/${newName}`;
+
                     let imageOptions = {
                         title: firstImage.alt || '（圖／軍聞社）',
                         desc: '▲ ' + firstImage.alt || '▲ （圖／軍聞社）',
                         keyword: '軍聞社',
                         imageFrom: 'MNA',
-                        originalname: null,
+                        originalname: firstImage.src,
                         format: null,
                         type: 'NEWS',
                         mode: 'NORMAl',
@@ -113,7 +175,7 @@ module.exports = new cron.CronJob({
                         height: null,
                         isDeliver: false,
                         Tag: null,
-                        url: firstImage.src,
+                        url: newFileUrl,
                         isTrashed: false,
                         CreatedBy: '530000000000000000000005',
                         UpdatedBy: '530000000000000000000005',
@@ -138,7 +200,7 @@ module.exports = new cron.CronJob({
                     summary: item.item || title,
                     MainMenu: '560000000000000000000001', //政治
                     Menus: ['5952deb29413e266c5ddad41'], //國防軍武
-                    MainPhoto: mainPhoto ?  mainPhoto._id : randomDefaultImageId,
+                    MainPhoto: aliveImage ? aliveImage._id : ( mainPhoto ?  mainPhoto._id : randomDefaultImageId ),
                     MainVideo: null,
                     content: item.description,
                     Photos: [],
