@@ -25,6 +25,7 @@ import getChannelsByPlatform from './getChannelsByPlatform';
 import getFacebookPostInfo from './getFacebookPostInfo';
 import downloadFile from './downloadFile';
 import htmlToText from './htmlToText';
+import prepareImages from './prepareImages';
 
 module.exports = {
     hashPwd,
@@ -53,5 +54,6 @@ module.exports = {
     getChannelsByPlatform,
     getFacebookPostInfo,
     downloadFile,
-    htmlToText
+    htmlToText,
+    prepareImages
 };
