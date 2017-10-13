@@ -5,6 +5,7 @@ NOWnews-api change logs
 ## [Unreleased]
 
 - 後台上傳圖片改為漸進式JPEG @appleoxxo
+- 關閉新聞後 若新聞有在熱門新聞中 就把該分類的熱門新聞更新 @appleoxxo
 
 ## 1.0.37 - 2017-10-12
 ### Added

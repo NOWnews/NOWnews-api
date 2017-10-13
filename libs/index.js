@@ -25,6 +25,7 @@ import getChannelsByPlatform from './getChannelsByPlatform';
 import getFacebookPostInfo from './getFacebookPostInfo';
 import downloadFile from './downloadFile';
 import htmlToText from './htmlToText';
+import updateOneMenuHotNews from './updateOneMenuHotNews';
 
 module.exports = {
     hashPwd,
@@ -36,6 +37,7 @@ module.exports = {
     getNextNewsByNews,
     getPrevNewsByNews,
     updateAllHotNews,
+    updateOneMenuHotNews,
     updateCategoryFirstPage,
     updateFirstPageForMobile,
     updateFirstPageForDesktop,
@@ -53,5 +55,5 @@ module.exports = {
     getChannelsByPlatform,
     getFacebookPostInfo,
     downloadFile,
-    htmlToText
+    htmlToText,
 };
