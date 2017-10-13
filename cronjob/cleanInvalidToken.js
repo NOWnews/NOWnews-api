@@ -6,7 +6,7 @@ import { cleanInvalidToken } from '../libs';
 
 module.exports = new cron.CronJob({
     // 設定多久跑一次
-    cronTime: '0 */5 * * * *',
+    cronTime: '* 0 0 * * *',
 
     // 主要邏輯區
     onTick: async () => {

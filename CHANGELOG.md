@@ -3,22 +3,24 @@
 NOWnews-api change logs
 
 ## [Unreleased]
-
-- 後台上傳圖片改為漸進式JPEG @appleoxxo
-
-## 1.0.37 - 2017-10-12
 ### Added
-- [新隱藏Cron匯入點] cronjob恢復軍聞社匯入 加上圖片錯誤時存墊檔圖的機制 @appleoxxo
 - 新增兩個 tool 整理舊 Web AppInfo token 資料，請依序執行 @esbb48
   - tools/cleanRepeatTokenForWeb.js
   - tools/cleanInvalidToken.js
 - 新增 cronjob cleanInvalidToken @esbb48
 
 ### Changed
-- 產生批次匯入新聞專用的使用者，不然現在是系統管理者，新聞部同仁無法編輯再發布 @esbb48
+- 後台上傳圖片改為漸進式JPEG @appleoxxo
 - 區分 firebase prod 和 dev 的環境 @esbb48
 - 調整更新 POST `/app/info` 端點判斷重複的邏輯 @esbb48
 - 重構現有的 notification @esbb48
+
+## 1.0.37 - 2017-10-12
+### Added
+- [新隱藏Cron匯入點] cronjob恢復軍聞社匯入 加上圖片錯誤時存墊檔圖的機制 @appleoxxo
+
+### Changed
+- 產生批次匯入新聞專用的使用者，不然現在是系統管理者，新聞部同仁無法編輯再發布 @esbb48
 
 ### Fixed
 - 軍聞社的新聞主圖改存到自家圖庫並恢復匯入 @appleoxxo
