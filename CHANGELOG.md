@@ -6,7 +6,6 @@ NOWnews-api change logs
 
 - 後台上傳圖片改為漸進式JPEG @appleoxxo
 
-## 1.0.36 - 2017-10-05
 ## 1.0.37 - 2017-10-12
 ### Added
 - [新隱藏Cron匯入點] cronjob恢復軍聞社匯入 加上圖片錯誤時存墊檔圖的機制 @appleoxxo
