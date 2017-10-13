@@ -1,4 +1,6 @@
+import cleanInvalidToken from './cleanInvalidToken';
 import hashPwd from './hashPwd';
+import initFirebase from './initFirebase';
 import pagination from './pagination';
 import newsLog from './newsLog';
 import getIndexPage from './getIndexPage';
@@ -27,7 +29,9 @@ import downloadFile from './downloadFile';
 import htmlToText from './htmlToText';
 
 module.exports = {
+    cleanInvalidToken,
     hashPwd,
+    initFirebase,
     pagination,
     newsLog,
     getIndexPage,
