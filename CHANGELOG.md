@@ -14,6 +14,7 @@ NOWnews-api change logs
 - 區分 firebase prod 和 dev 的環境 @esbb48
 - 調整更新 POST `/app/info` 端點判斷重複的邏輯 @esbb48
 - 重構現有的 notification @esbb48
+- 避免重複的 token 被撈出 @esbb48
 
 ## 1.0.37 - 2017-10-12
 ### Added
@@ -24,9 +25,6 @@ NOWnews-api change logs
 
 ### Fixed
 - 軍聞社的新聞主圖改存到自家圖庫並恢復匯入 @appleoxxo
-
-### Changed
-- 避免重複的 token 被撈出 @esbb48
 
 ## 1.0.36 - 2017-10-05
 ### Changed
