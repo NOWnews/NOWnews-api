@@ -12,10 +12,14 @@ module.exports = async (news) => {
 
         // 讓 imagelab 有 cache
         await Promise.all([
-            axios.get(`https://imagelab.nownews.com/?w=1080&q=85&src=${news.MainPhoto.url}`),
-            axios.get(`https://imagelab.nownews.com/?w=640&q=70&src=${news.MainPhoto.url}`),
-            axios.get(`https://imagelab.nownews.com/?w=300&q=70&src=${news.MainPhoto.url}`),
-            axios.get(`https://imagelab.nownews.com/?w=200&q=70&src=${news.MainPhoto.url}`)
+            axios.get(`http://35.201.178.13:8877/?w=1080&q=85&src=${news.MainPhoto.url}`),
+            axios.get(`http://35.201.178.13:8877/?w=640&q=70&src=${news.MainPhoto.url}`),
+            axios.get(`http://35.201.178.13:8877/?w=300&q=70&src=${news.MainPhoto.url}`),
+            axios.get(`http://35.201.178.13:8877/?w=200&q=70&src=${news.MainPhoto.url}`),
+            axios.get(`http://35.201.162.15:8877/?w=1080&q=85&src=${news.MainPhoto.url}`),
+            axios.get(`http://35.201.162.15:8877/?w=640&q=70&src=${news.MainPhoto.url}`),
+            axios.get(`http://35.201.162.15:8877/?w=300&q=70&src=${news.MainPhoto.url}`),
+            axios.get(`http://35.201.162.15:8877/?w=200&q=70&src=${news.MainPhoto.url}`)
         ]);
         return Promise.resolve({});
     } catch (err) {
