@@ -15,7 +15,8 @@ module.exports = async (req, res, next) => {
             os: 'ANDROID',
             token: { 
                 $exists: true,
-                $ne: ''
+                $ne: '',
+                $ne: null,
             } 
         });
         
@@ -44,7 +45,7 @@ module.exports = async (req, res, next) => {
             return firebaseAdmin.messaging().sendToDevice(tokenArray, payload, { priority: "high", timeToLive: 60 * 60 * 24 });
         });
         console.log(results);
-
+        
         return res.status(200).send();
     } catch (err) {
         return next(err);
