@@ -55,5 +55,5 @@ module.exports = {
     getChannelsByPlatform,
     getFacebookPostInfo,
     downloadFile,
-    htmlToText,
+    htmlToText
 };
