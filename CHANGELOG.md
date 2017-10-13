@@ -7,7 +7,17 @@ NOWnews-api change logs
 - 後台上傳圖片改為漸進式JPEG @appleoxxo
 
 ## 1.0.36 - 2017-10-05
+## 1.0.37 - 2017-10-12
+### Added
+- [新隱藏Cron匯入點] cronjob恢復軍聞社匯入 加上圖片錯誤時存墊檔圖的機制 @appleoxxo
 
+### Changed
+- 產生批次匯入新聞專用的使用者，不然現在是系統管理者，新聞部同仁無法編輯再發布 @esbb48
+
+### Fixed
+- 軍聞社的新聞主圖改存到自家圖庫並恢復匯入 @appleoxxo
+
+## 1.0.36 - 2017-10-05
 ### Changed
 - 為 `refreshFbDebugger` 增加 `access_token` @esbb48
 - 調整浮水印 @esbb48

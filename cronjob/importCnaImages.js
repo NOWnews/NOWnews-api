@@ -108,7 +108,6 @@ module.exports = new cron.CronJob({
                             public: true
                         })
                         .then((file) => {
-                            debug(file);
                             return Promise.resolve(file);
                         })
                 ]);
