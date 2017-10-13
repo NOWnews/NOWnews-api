@@ -41,16 +41,6 @@ module.exports = async (req, res, next) => {
         let tokensCollection = [];
         console.log(`web device total = ${deviceTotal}`);
 
-        /*
-         * 非正式環境用的 devices
-         */
-        if(mode !== 'production') {
-            devices = [
-                { _id: 'dO7bE_a4TYE:APA91bGOTczVmmd_XtZv8sK6Rzqf-1YEJAqg8S5vGT0aMXLWaPt7ZZb18nLVQhQOPzRpg1EmJ5R12OKbD1G7j0TtV4Omis5ZO6RC1WugDbDd18LOqGDwEyF859-XLIiWUqLEb0sad17Y' }
-            ];
-            deviceTotal = devices.length;
-        }
-
         _.forEach(devices, (device) => {
 
             countTokens.push(device._id);

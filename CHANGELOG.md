@@ -7,7 +7,6 @@ NOWnews-api change logs
 - [新隱藏Cron匯入點] cronjob恢復軍聞社匯入 加上圖片錯誤時存墊檔圖的機制 @appleoxxo
 - 新增兩個 tool 整理舊 Web AppInfo token 資料，請依序執行 @esbb48
   - tools/cleanRepeatTokenForWeb.js
-  - tools/updateDeviceIdForWeb.js
   
 ### Changed
 - 產生批次匯入新聞專用的使用者，不然現在是系統管理者，新聞部同仁無法編輯再發布 @esbb48
