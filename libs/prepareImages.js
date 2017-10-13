@@ -14,6 +14,14 @@ module.exports = async (news) => {
         //手機尺寸 640 300
         // 讓 imagelab 有 cache
         await Promise.all([
+            axios.get(`http://35.201.254.162:8877/?w=1440&q=70&src=${news.MainPhoto.url}`),
+            axios.get(`http://35.201.254.162:8877/?w=1080&q=85&src=${news.MainPhoto.url}`),
+            axios.get(`http://35.201.254.162:8877/?w=720&q=70&src=${news.MainPhoto.url}`),
+            axios.get(`http://35.201.254.162:8877/?w=640&q=70&src=${news.MainPhoto.url}`),
+            axios.get(`http://35.201.254.162:8877/?w=540&q=70&src=${news.MainPhoto.url}`),
+            axios.get(`http://35.201.254.162:8877/?w=360&q=70&src=${news.MainPhoto.url}`),
+            axios.get(`http://35.201.254.162:8877/?w=300&q=70&src=${news.MainPhoto.url}`),
+            axios.get(`http://35.201.254.162:8877/?w=200&q=70&src=${news.MainPhoto.url}`),
             axios.get(`http://35.201.178.13:8877/?w=1440&q=70&src=${news.MainPhoto.url}`),
             axios.get(`http://35.201.178.13:8877/?w=1080&q=85&src=${news.MainPhoto.url}`),
             axios.get(`http://35.201.178.13:8877/?w=720&q=70&src=${news.MainPhoto.url}`),
@@ -21,15 +29,7 @@ module.exports = async (news) => {
             axios.get(`http://35.201.178.13:8877/?w=540&q=70&src=${news.MainPhoto.url}`),
             axios.get(`http://35.201.178.13:8877/?w=360&q=70&src=${news.MainPhoto.url}`),
             axios.get(`http://35.201.178.13:8877/?w=300&q=70&src=${news.MainPhoto.url}`),
-            axios.get(`http://35.201.178.13:8877/?w=200&q=70&src=${news.MainPhoto.url}`),
-            axios.get(`http://35.201.178.15:8877/?w=1440&q=70&src=${news.MainPhoto.url}`),
-            axios.get(`http://35.201.162.15:8877/?w=1080&q=85&src=${news.MainPhoto.url}`),
-            axios.get(`http://35.201.178.15:8877/?w=720&q=70&src=${news.MainPhoto.url}`),
-            axios.get(`http://35.201.162.15:8877/?w=640&q=70&src=${news.MainPhoto.url}`),
-            axios.get(`http://35.201.178.15:8877/?w=540&q=70&src=${news.MainPhoto.url}`),
-            axios.get(`http://35.201.178.15:8877/?w=360&q=70&src=${news.MainPhoto.url}`),
-            axios.get(`http://35.201.162.15:8877/?w=300&q=70&src=${news.MainPhoto.url}`),
-            axios.get(`http://35.201.162.15:8877/?w=200&q=70&src=${news.MainPhoto.url}`)
+            axios.get(`http://35.201.178.13:8877/?w=200&q=70&src=${news.MainPhoto.url}`)
         ]);
         return Promise.resolve({});
     } catch (err) {
