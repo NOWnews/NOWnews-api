@@ -14,7 +14,7 @@ module.exports = async (news) => {
         //桌機尺寸 1080 300 200
         //手機尺寸 640 300
         // 讓 imagelab 有 cache
-        await Promise.all([
+        let checkstatus = await Promise.all([
             axios.get(`http://35.201.254.162:8877/?w=1440&q=85&src=${news.MainPhoto.url}`),
             axios.get(`http://35.201.254.162:8877/?w=1242&q=85&src=${news.MainPhoto.url}`),
             axios.get(`http://35.201.254.162:8877/?w=1125&q=85&src=${news.MainPhoto.url}`),
@@ -40,6 +40,7 @@ module.exports = async (news) => {
             axios.get(`http://35.201.178.13:8877/?w=300&q=70&src=${news.MainPhoto.url}`),
             axios.get(`http://35.201.178.13:8877/?w=200&q=70&src=${news.MainPhoto.url}`)
         ]);
+        console.log(checkstatus)
         return Promise.resolve({});
     } catch (err) {
         console.log(err);
