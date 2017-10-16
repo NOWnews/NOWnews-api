@@ -15,8 +15,7 @@ module.exports = async (req, res, next) => {
             os: 'WEB',
             token: { 
                 $exists: true,
-                $ne: '',
-                $ne: null,
+                $ne: ['', null]
             } 
         });
         
