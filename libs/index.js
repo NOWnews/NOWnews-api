@@ -39,6 +39,7 @@ module.exports = {
     getNextNewsByNews,
     getPrevNewsByNews,
     updateAllHotNews,
+    updateHotNewsIfExists,
     updateOneMenuHotNews,
     updateCategoryFirstPage,
     updateFirstPageForMobile,
@@ -58,6 +59,5 @@ module.exports = {
     getFacebookPostInfo,
     downloadFile,
     htmlToText,
-    updateHotNewsIfExists,
     prepareImages
 };
