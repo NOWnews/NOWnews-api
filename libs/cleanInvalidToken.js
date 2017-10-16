@@ -59,11 +59,15 @@ module.exports = () => {
 
                 failureCount++;
 
-                if (result.error.errorInfo.code === 'messaging/invalid-registration-token') {
-                    removeTokens.push(tokensCollection[resIndex][resultIndex]);
-                } else {
-                    // 其他非預期的錯誤狀況
-                    console.error('result.error.errorInfo', result.error.errorInfo);
+                const errorInfo = result.error.errorInfo;
+                switch (errorInfo.code) {
+                    case 'messaging/mismatched-credential':
+                    case 'messaging/invalid-registration-token':
+                    case 'messaging/registration-token-not-registered':
+                        removeTokens.push(tokensCollection[resIndex][resultIndex]);
+                        break
+                    default:
+                        console.error('result.error.errorInfo', errorInfo);
                 }
 
             });   
