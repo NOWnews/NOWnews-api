@@ -16,7 +16,7 @@ module.exports = async (req, res, next) => {
             os: 'IOS',
             token: { 
                 $exists: true,
-                $ne: ['', null]
+                $nin: ['', null]
             } 
         });
         

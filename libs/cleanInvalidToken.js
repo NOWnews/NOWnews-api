@@ -18,7 +18,7 @@ module.exports = () => {
         const devices = await AppInfo.distinct('token', {
             token: { 
                 $exists: true,
-                $ne: ['', null]
+                $nin: ['', null]
             } 
         });
 
