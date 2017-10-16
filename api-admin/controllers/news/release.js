@@ -174,6 +174,10 @@ module.exports = async (req, res, next) => {
         if (!isSchedule) {
             await libs.refreshFbDebugger(updatedNews.completeUrl);
         }
+
+        // 新聞發佈時，先做一次圖片的 cache
+        await libs.prepareImages(updatedNews);
+
         return res.json(updatedNews);
     }catch(err) {
         return next(err);
