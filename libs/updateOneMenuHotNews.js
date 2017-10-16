@@ -16,7 +16,7 @@ module.exports = async(menu) => {
          * 如果一天內總數量不夠6篇(專欄11篇) 再去查該分類下最新的30篇新聞 依熱門排序 補上差額數量新聞
          */
 
-        console.log(`== Start Update One Menu Hot News ==`);
+        console.log(`== Start Update ${menu.categoryName} Menu Hot News ==`);
 
         // 預設先抓取1天內的所有新聞
         let defaultDays = menu.template === 'DEFAULT' ? -1 : -1095;
@@ -146,6 +146,8 @@ module.exports = async(menu) => {
 
         debug(`hotNews-${menu.categoryName} = %j`, sortedNews);
         redis.setValue(`hotNews-${menu.categoryName}`, sortedNews, 3600);
+
+        console.log(`== Finished Update ${menu.categoryName} Menu Hot News ==`);
 
 
     } catch (err) {

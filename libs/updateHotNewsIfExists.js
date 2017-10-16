@@ -1,5 +1,5 @@
 import Debug from 'debug';
-const debug = Debug('NOWnews-api:libs:updateAllHotNews');
+const debug = Debug('NOWnews-api:libs:updateOneCatHotNews');
 
 import Promise from 'bluebird';
 import moment from 'moment-timezone';
@@ -10,15 +10,12 @@ import { Pageview } from '../pvModels';
 import redis from '../redis';
 import updateOneMenuHotNews from './updateOneMenuHotNews';
 
-module.exports = async() => {
+module.exports = async(news) => {
     try {
-        /* 熱門新聞抓取邏輯：
-         * 先查該分類下1天內的所有新聞(專欄3年內) 依熱門程度(pageview.totalScore)排序
-         * 如果一天內總數量不夠6篇(專欄11篇) 再去查該分類下最新的30篇新聞 依熱門排序 補上差額數量新聞
-         */
-
-        console.log(`== Start Update All Hot News ==`);
+        // 檢查這筆新聞 有沒有在現有的熱門新聞內 有的話就更新那個分類的熱門新聞
+        let menuIds = news.Menus.concat(news.MainMenu);
         let menus = await Menu.find()
+            .where('_id').in(menuIds)
             .where('isTrashed').equals(false)
             .where('status').equals('OPEN')
             .where('isPermanented').equals(true)
@@ -26,9 +23,14 @@ module.exports = async() => {
             .select('_id categoryName level template')
             .execAsync();
 
-        for (let menu of menus) {
-            updateOneMenuHotNews(menu);
-        }
+        _.forEach(menus, async (menu)=>{
+            let oneMenuHotNews = await redis.getValue(`hotNews-${menu.categoryName}`);
+            if( _.find( oneMenuHotNews, { 'id' : news.id }) ){
+                updateOneMenuHotNews(menu);
+            }
+        });
+
+
     } catch (err) {
         return Promise.reject(err);
     }
