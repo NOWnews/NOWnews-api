@@ -5,7 +5,7 @@ NOWnews-api change logs
 ## [Unreleased]
 
 - 後台上傳圖片改為漸進式JPEG @appleoxxo
-- 如果原指定審稿人非最後審稿人，最後審稿者的名字要被覆蓋掉 @appleoxxo
+- 執行審稿者與指定審稿者不同時 文章的指定審稿者更新為執行審稿者 @appleoxxo
 
 ## 1.0.37 - 2017-10-12
 ### Added
