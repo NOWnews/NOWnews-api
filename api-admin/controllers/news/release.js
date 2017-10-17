@@ -29,29 +29,6 @@ module.exports = async (req, res, next) => {
             throw new Error('16003');
         }
 
-        // 發布的人不應該是自己，應該會是其他人
-        if (UpdatedBy === news.CreatedBy._id + '') {
-            throw new Error('16010');
-        }
-
-        const role = await Role.findOne()
-            .where('_id').equals(news.CreatedBy.Role)
-            .where('isTrashed').equals(false)
-            .where('SuperiorRoles').equals(UpdateUserRole)
-            .execAsync();
-
-        //如果審稿者和建立者同中心 也可以發布
-        let sameCenter = false;
-        let updater = await User.findOne()
-            .where('_id').equals(UpdatedBy)
-            .select('Center');
-        if(news.CreatedBy.Center.toString() === updater.Center.toString()){
-            sameCenter = true;
-        }
-        if(!role && !sameCenter) {
-            throw new Error('16014');
-        }
-
         news.set('MainMenu', MainMenu);
         news.set('title', title);
         news.set('content', content);
