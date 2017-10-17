@@ -214,11 +214,16 @@ schema.virtual('googleCDN').get(function () {
 
 schema.virtual('sizeFormat').get(function () {
 
+
     let imagelab = config.get('general.imagelab.url');
+    let imagelabRegexString = /^(http|https):\/\/img.nownews.com\/nownews_[A-Za-z1-9]+\/[A-Za-z]+\//;
     let regexString = /^(http|https):\/\/[A-Za-z]+.nownews.com\//;
+
+    let imagelabMatch = this.url.match(imagelabRegexString);
     let imgMatch = this.url.match(regexString);
 
-    if(imgMatch === null) {
+    // 如果圖片都不為 xxx.nownews.com
+    if(imgMatch === null && imagelabMatch === null) {
         return {
             w300q70: this.url,
             w360q70: this.url,
@@ -231,16 +236,67 @@ schema.virtual('sizeFormat').get(function () {
         };
     }
 
-    return {
-        w300q70: `${imagelab}/?w=300&q=70&src=${this.url}`,
-        w360q70: `${imagelab}/?w=360&q=70&src=${this.url}`,
-        w540q70: `${imagelab}/?w=540&q=70&src=${this.url}`,
-        w640q70: `${imagelab}/?w=640&q=70&src=${this.url}`,
-        w720q70: `${imagelab}/?w=720&q=70&src=${this.url}`,
-        w750q70: `${imagelab}/?w=750&q=70&src=${this.url}`,
-        w1080q85: `${imagelab}/?w=1080&q=85&src=${this.url}`,
-        w1440q85: `${imagelab}/?w=1440&q=85&src=${this.url}`
-    };
+    // 如果圖片是 img.nownews.com
+    if(imgMatch && imagelabMatch) {
+
+        let replaceString = imagelabMatch[0];
+        let fileName = this.url.replace(replaceString, '');
+        console.log(fileName);
+        console.log('-----------------------');
+
+        return {
+            w300q70: `${imagelab}/?w=300&q=70&src=https://rssimg.nownews.com/images/${fileName}`,
+            w360q70: `${imagelab}/?w=360&q=70&src=https://rssimg.nownews.com/images/${fileName}`,
+            w540q70: `${imagelab}/?w=540&q=70&src=https://rssimg.nownews.com/images/${fileName}`,
+            w640q70: `${imagelab}/?w=640&q=70&src=https://rssimg.nownews.com/images/${fileName}`,
+            w720q70: `${imagelab}/?w=720&q=70&src=https://rssimg.nownews.com/images/${fileName}`,
+            w750q70: `${imagelab}/?w=750&q=70&src=https://rssimg.nownews.com/images/${fileName}`,
+            w1080q85: `${imagelab}/?w=1080&q=85&src=https://rssimg.nownews.com/images/${fileName}`,
+            w1440q85: `${imagelab}/?w=1440&q=85&src=https://rssimg.nownews.com/images/${fileName}`
+        };
+    }
+
+    // 如果圖片是不是 img.nownews.com 但符合 xxx.nownews.com 的規範
+    if(imgMatch && imagelabMatch === null) {
+        return {
+            w300q70: `${imagelab}/?w=300&q=70&src=${this.url}`,
+            w360q70: `${imagelab}/?w=360&q=70&src=${this.url}`,
+            w540q70: `${imagelab}/?w=540&q=70&src=${this.url}`,
+            w640q70: `${imagelab}/?w=640&q=70&src=${this.url}`,
+            w720q70: `${imagelab}/?w=720&q=70&src=${this.url}`,
+            w750q70: `${imagelab}/?w=750&q=70&src=${this.url}`,
+            w1080q85: `${imagelab}/?w=1080&q=85&src=${this.url}`,
+            w1440q85: `${imagelab}/?w=1440&q=85&src=${this.url}`
+        };
+    }
+
+    // let imagelab = config.get('general.imagelab.url');
+    // let regexString = /^(http|https):\/\/[A-Za-z]+.nownews.com\//;
+    // let imgMatch = this.url.match(regexString);
+
+    // if(imgMatch === null) {
+    //     return {
+    //         w300q70: this.url,
+    //         w360q70: this.url,
+    //         w540q70: this.url,
+    //         w640q70: this.url,
+    //         w720q70: this.url,
+    //         w750q70: this.url,
+    //         w1080q85: this.url,
+    //         w1440q85: this.url
+    //     };
+    // }
+
+    // return {
+    //     w300q70: `${imagelab}/?w=300&q=70&src=${this.url}`,
+    //     w360q70: `${imagelab}/?w=360&q=70&src=${this.url}`,
+    //     w540q70: `${imagelab}/?w=540&q=70&src=${this.url}`,
+    //     w640q70: `${imagelab}/?w=640&q=70&src=${this.url}`,
+    //     w720q70: `${imagelab}/?w=720&q=70&src=${this.url}`,
+    //     w750q70: `${imagelab}/?w=750&q=70&src=${this.url}`,
+    //     w1080q85: `${imagelab}/?w=1080&q=85&src=${this.url}`,
+    //     w1440q85: `${imagelab}/?w=1440&q=85&src=${this.url}`
+    // };
 });
 
 schema.virtual('formatCreatedAt').get(function () {
