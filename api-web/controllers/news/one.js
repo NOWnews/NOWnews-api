@@ -14,29 +14,29 @@ module.exports = async (req, res, next) => {
 
         let { sn } = req.params;
 
-        // let cacheNews = await redis.getValue(`news${sn}`);
-        // if(cacheNews) {
-        //     cacheNews.pageView = { totalScore : 0 };
-        //     //加上pageview的totalscore
-        //     let pageviewList = await Pageview.find()
-        //         .where('newsId').in(cacheNews.id)
-        //         .select('totalScore')
-        //         .execAsync();
-        //     for(let pv of pageviewList){
-        //         cacheNews.pageView.totalScore += pv.totalScore;
-        //     };
+        let cacheNews = await redis.getValue(`news${sn}`);
+        if(cacheNews) {
+            cacheNews.pageView = { totalScore : 0 };
+            //加上pageview的totalscore
+            let pageviewList = await Pageview.find()
+                .where('newsId').in(cacheNews.id)
+                .select('totalScore')
+                .execAsync();
+            for(let pv of pageviewList){
+                cacheNews.pageView.totalScore += pv.totalScore;
+            };
 
-        //     delete cacheNews.SummerUniversiade; // 預防 redis 裡面有資料
+            delete cacheNews.SummerUniversiade; // 預防 redis 裡面有資料
 
-        //     // TODO 為了世大運特別加的
-        //     // cacheNews = summerUniversiade(cacheNews);
+            // TODO 為了世大運特別加的
+            // cacheNews = summerUniversiade(cacheNews);
 
-        //     return res.json(cacheNews);
-        // }
+            return res.json(cacheNews);
+        }
 
         // 要給 api web 使用的 news 資料
         let news = await libs.getNewsBySn(sn);
-        // debug('news data = %j', news);
+        debug('news data = %j', news);
 
         if(!news) {
             throw new Error('16003');
@@ -60,7 +60,7 @@ module.exports = async (req, res, next) => {
         }
         // 將這篇新聞存入 redis
         let cacheData = await redis.setValue(`news${sn}`, news, 3600 * 6);
-        // debug('cacheData = %j', cacheData);
+        debug('cacheData = %j', cacheData);
 
         return res.json(news);
     }catch(err) {
