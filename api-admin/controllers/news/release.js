@@ -5,7 +5,7 @@ const debug = Debug('NOWnews-api:api-admin:controllers:news:release');
 import _ from 'lodash';
 import moment from 'moment-timezone';
 
-import { News, Role } from '../../../models';
+import { News, Role, User } from '../../../models';
 import { newsLog } from '../../../libs';
 import { Pageview } from '../../../pvModels';
 import redis from '../../../redis';
@@ -40,7 +40,15 @@ module.exports = async (req, res, next) => {
             .where('SuperiorRoles').equals(UpdateUserRole)
             .execAsync();
 
-        if(!role) {
+        //如果審稿者和建立者同中心 也可以發布
+        let sameCenter = false;
+        let updater = await User.findOne()
+            .where('_id').equals(UpdatedBy)
+            .select('Center');
+        if(news.CreatedBy.Center.toString() === updater.Center.toString()){
+            sameCenter = true;
+        }
+        if(!role && !sameCenter) {
             throw new Error('16014');
         }
 

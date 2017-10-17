@@ -5,6 +5,7 @@ NOWnews-api change logs
 ## [Unreleased]
 
 - 後台上傳圖片改為漸進式JPEG @appleoxxo
+- 新聞可由中心的同仁審稿發佈 @appleoxxo
 
 ## 1.0.37 - 2017-10-12
 ### Added
