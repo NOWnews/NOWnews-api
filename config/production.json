@@ -116,6 +116,10 @@
             "specialTopics": 8,
             "specialChannels": 8,
             "videos": 20
+        },
+        "firebase": {
+            "key": "pems/NOWnews-project-firebase-prod.json",
+            "databaseURL": "https://spry-smithy-96510.firebaseio.com"
         }
     },
 

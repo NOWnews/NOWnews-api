@@ -116,6 +116,10 @@
             "specialTopics": 8,
             "specialChannels": 8,
             "videos": 20
+        },        
+        "firebase": {
+            "key": "pems/NOWnews-project-firebase-dev.json",
+            "databaseURL": "https://nownews-website-167108.firebaseio.com"
         }
     },
 
