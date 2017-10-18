@@ -10,6 +10,8 @@ NOWnews-api change logs
 - 新增 cronjob cleanInvalidToken @esbb48
 
 ### Changed
+- 增加廣告版位在 `/promote/home` 端點 @esbb48
+- 軍聞社匯入新聞改分類 @appleoxxo
 - 區分 firebase prod 和 dev 的環境 @esbb48
 - 調整更新 POST `/app/info` 端點判斷重複的邏輯 @esbb48
 - 重構現有的 notification @esbb48
