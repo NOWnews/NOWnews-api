@@ -11,6 +11,26 @@ module.exports = async (req, res, next) => {
 
         let { token, deviceId, os, MemberId } = req.body;
 
+        if (!token || !os || !deviceId || token === '' || token === 'null') {
+            return next();
+        }
+
+        // 如果有 token 一樣，就更新 deviceId
+        const matchResult = await AppInfo.findOneAndUpdateAsync({
+                token,
+                os
+            }, {
+                $set: {
+                    deviceId,
+                    MemberId
+                }
+            });
+
+        if (matchResult) {
+            return next();
+        }
+
+        // 如果有 deviceId 一樣，就更新 token，反之建立新的
         await AppInfo.findOneAndUpdateAsync({
                 deviceId,
                 os
