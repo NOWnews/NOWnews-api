@@ -1,7 +1,6 @@
 /*
- * 用來清理重複 device 的資料
- * 啟動方式: NODE_ENV=${NODE_ENV} node tools/cleanRepeatDevices.js ${OS}
- * OS: 'IOS', 'ANDROID', 'WEB'
+ * 用來清理重複 browser 重複 token
+ * 啟動方式: NODE_ENV=${NODE_ENV} node tools/cleanRepeatTokenForWeb.js
  */
 
 require('babel-core/register');
@@ -9,27 +8,19 @@ require('babel-polyfill');
 
 const models = require('../models');
 const _ = require('lodash');
-const Promise = require('bluebird');
 
 let removeIds = [];
-
-const os = process.argv[2];
-
 models.AppInfo.aggregateAsync([
         {
             $match: {
-                os: os
+                os: 'WEB'
             }
         },
         {
             $group: {
-                _id: '$deviceId',
+                _id: '$token',
                 devices: {
-                    '$push': {
-                        _id: '$_id',
-                        deviceId: '$deviceId',
-                        os: '$os',
-                    }
+                    '$push': '$_id'
                 }
             }
         },
@@ -41,15 +32,15 @@ models.AppInfo.aggregateAsync([
                 return;
             }
 
-            _.each(doc.devices, (device, idx) => {
-                if(idx === 1) { return; }
-                removeIds.push(device._id);
+            _.each(doc.devices, (deviceId, index) => {
+                if (index === 0) { 
+                    return; 
+                }
+                removeIds.push(deviceId);
                 return;
             });
-
             return;
         });
-
         return models.AppInfo.removeAsync({ _id: { $in : removeIds } });
     })
     .then((result) => {
