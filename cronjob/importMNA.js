@@ -209,7 +209,7 @@ module.exports = new cron.CronJob({
                     location: [121.5914087,25.0693482], //台北市內湖區的座標
                     shortTitle: shortTitle,
                     summary: item.item || title,
-                    MainMenu: '560000000000000000000001', //政治
+                    MainMenu: '5952deb29413e266c5ddad41', //國防軍武
                     Menus: ['5952deb29413e266c5ddad41'], //國防軍武
                     MainPhoto: aliveImage ? aliveImage._id : ( mainPhoto ?  mainPhoto._id : randomDefaultImageId ),
                     MainVideo: null,
