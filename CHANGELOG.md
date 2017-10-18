@@ -5,6 +5,7 @@ NOWnews-api change logs
 ## [Unreleased]
 ### Added
 - 增加廣告版位在 `/promote/home` 端點 @esbb48
+- 使用 pm2 config 控管 @esbb48
 
 ## 1.0.39 - 2017-10-17
 ### Changed
