@@ -6,6 +6,8 @@ NOWnews-api change logs
 ### Added
 - 增加廣告版位在 `/promote/home` 端點 @esbb48
 
+- 軍聞社匯入新聞改分類 @appleoxxo
+
 ## 1.0.39 - 2017-10-17
 ### Changed
 - 後台上傳圖片先去打一次imagelab協助併版 @wayne
