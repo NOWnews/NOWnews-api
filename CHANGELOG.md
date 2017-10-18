@@ -3,7 +3,7 @@
 NOWnews-api change logs
 
 ## [Unreleased]
-
+- 現在圖片的 sizeFormat 改使用 `rssimg.nownews.com` 這個來源 @SimonSun
 - 後台上傳圖片改為漸進式JPEG @appleoxxo
 
 ## 1.0.37 - 2017-10-12
