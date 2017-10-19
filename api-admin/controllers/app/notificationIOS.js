@@ -12,13 +12,18 @@ import { AppInfo } from '../../../models';
 module.exports = async (req, res, next) => {
     try {
 
-        const devices = await AppInfo.distinct('token', {
+        const deviceCollections = await AppInfo.find({
             os: 'IOS',
-            token: { 
+            token: {
                 $exists: true,
                 $nin: ['', null]
-            } 
-        });
+            }
+        })
+        .lean()
+        .select('token')
+        .execAsync();
+
+        const devices = _.map(deviceCollections, 'token');
         
         console.log(`iOS devices total = ${devices.length}`);
         
@@ -41,7 +46,7 @@ module.exports = async (req, res, next) => {
             }
         };
 
-        let results = await Promise.map(tokensCollection, (tokenArray) => {
+        let results = await Promise.mapSeries(tokensCollection, (tokenArray) => {
             return firebaseAdmin.messaging().sendToDevice(tokenArray, payload, { priority: "high", timeToLive: 60 * 60 * 24 });
         });
         console.log(results);
