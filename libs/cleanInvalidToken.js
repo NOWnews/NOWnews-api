@@ -8,19 +8,23 @@ import initFirebase from './initFirebase';
 
 import { AppInfo } from '../models';
 
-
 module.exports = () => {
  return new Promise(async (resolve, reject) => {
-     try {
+    try {
         
         initFirebase();
 
-        const devices = await AppInfo.distinct('token', {
-            token: { 
+        const deviceCollections = await AppInfo.find({
+            token: {
                 $exists: true,
                 $nin: ['', null]
-            } 
-        });
+            }
+        })
+        .lean()
+        .select('token')
+        .execAsync();
+
+        const devices = _.map(deviceCollections, 'token');
 
         // 1000 個一組，Google FCM 一次 request 的數量限制
         const tokensCollection = _.chunk(devices, 1000);
@@ -31,13 +35,15 @@ module.exports = () => {
             }
         }
 
-        const responses = await Promise.map(tokensCollection, (tokenArray) => {
+        const responses = await Promise.mapSeries(tokensCollection, (tokenArray) => {
             return firebaseAdmin.messaging().sendToDevice(tokenArray, payload, { dry_run: true });
         });
 
         let removeTokens = [];
-        
-        _.forEach(responses, (response, resIndex) => {
+
+        _.forEach(responses, async (response, resIndex) => {
+
+
             if (response.failureCount === 0 ) {
                 return;
             }
@@ -68,21 +74,24 @@ module.exports = () => {
                     default:
                         console.error('result.error.errorInfo', errorInfo);
                 }
-
-            });   
+            });  
         });
 
-        
-        if (removeTokens.length === 0) {
-            console.log('應刪除數量: 0, 實際刪除數量: 0');
-
-            return resolve();
-        }
         console.log(`應刪除數量: ${removeTokens.length}`);
 
-        const deletedResult = await AppInfo.removeAsync({ token: { $in : removeTokens } });
+        const removeTokensCollection = _.chunk(removeTokens, 1000);
+
+        const deleteResponses = await Promise.mapSeries(removeTokensCollection, (tokens) => {
+            return AppInfo.removeAsync({ token: { $in : tokens } });
+        });
+
+        let deletedCount = 0;
+        _.forEach(deleteResponses, (res) => {
+            deletedCount += res.result.n;
+        });
         
-        console.log(`實際刪除數量: ${deletedResult.result.n}`);
+        console.log(`實際刪除數量: ${deletedCount}`);
+
 
         return resolve();
 
