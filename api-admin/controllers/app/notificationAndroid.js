@@ -45,9 +45,10 @@ module.exports = async (req, res, next) => {
             }
         };
 
-        let results = await Promise.mapSeries(tokensCollection, (tokenArray) => {
+        let results = await Promise.map(tokensCollection, (tokenArray) => {
             return firebaseAdmin.messaging().sendToDevice(tokenArray, payload, { priority: "high", timeToLive: 60 * 60 * 24 });
-        });
+        }, { concurrency: 10 });
+
         console.log(results);
         
         return res.status(200).send();

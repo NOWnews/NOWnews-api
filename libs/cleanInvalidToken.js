@@ -79,7 +79,7 @@ module.exports = () => {
 
         console.log(`應刪除數量: ${removeTokens.length}`);
 
-        const removeTokensCollection = _.chunk(removeTokens, 1000);
+        const removeTokensCollection = _.chunk(removeTokens, 10000);
 
         const deleteResponses = await Promise.mapSeries(removeTokensCollection, (tokens) => {
             return AppInfo.removeAsync({ token: { $in : tokens } });

@@ -32,7 +32,7 @@ models.AppInfo.find(
 
         console.log(`應刪除數量: ${removeIds.length}`);
 
-        const removeIdsCollection = _.chunk(removeIds, 2000);
+        const removeIdsCollection = _.chunk(removeIds, 10000);
 
         return Promise.mapSeries(removeIdsCollection, (ids) => {
             return models.AppInfo.removeAsync({ _id: { $in : ids } });
