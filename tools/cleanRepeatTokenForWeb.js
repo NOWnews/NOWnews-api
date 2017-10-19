@@ -8,40 +8,46 @@ require('babel-polyfill');
 
 const models = require('../models');
 const _ = require('lodash');
+const Promise = require('bluebird');
 
 let removeIds = [];
-models.AppInfo.aggregateAsync([
+models.AppInfo.find(
         {
-            $match: {
-                os: 'WEB'
-            }
-        },
-        {
-            $group: {
-                _id: '$token',
-                devices: {
-                    '$push': '$_id'
-                }
-            }
-        },
-        { $sort : { createdAt : -1 } }
-    ])
+            os: 'WEB'
+        }
+    )
     .then((docs) => {
-        _.each(docs, (doc) => {
-            if(!doc.devices || doc.devices.length <= 1) {
-                return;
-            }
+        let countTokenObject = {};
 
-            _.each(doc.devices, (deviceId, index) => {
-                if (index === 0) { 
-                    return; 
-                }
-                removeIds.push(deviceId);
+        _.each(docs, ({ token, _id }) => {
+
+            if (!countTokenObject[token]) {
+                countTokenObject[token] = 1;
                 return;
-            });
+            } 
+            removeIds.push(_id);
+
             return;
         });
-        return models.AppInfo.removeAsync({ _id: { $in : removeIds } });
+
+        console.log(`應刪除數量: ${removeIds.length}`);
+
+        const removeIdsCollection = _.chunk(removeIds, 10000);
+
+        return Promise.mapSeries(removeIdsCollection, (ids) => {
+            return models.AppInfo.removeAsync({ _id: { $in : ids } });
+        });
+    })
+    .then((deleteResponses) => {
+
+        let deletedCount = 0;
+        _.forEach(deleteResponses, (res) => {
+            deletedCount += res.result.n;
+        });
+        
+        console.log(`實際刪除數量: ${deletedCount}`);
+
+        return process.exit();
     })
     .then((result) => {
         console.log('清除完成');
