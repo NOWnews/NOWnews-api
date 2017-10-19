@@ -19,6 +19,9 @@ NOWnews-api change logs
 - 現在圖片的 sizeFormat 改使用 `rssimg.nownews.com` 這個來源 @SimonSun
 - 將 staging 環境加入 CDN 並把 config 拆開 @SimonSun
 
+### Fixed
+- 避開使用 mongo 部分函示會有 16mb 的限制 @esbb48
+
 ## 1.0.39 - 2017-10-17
 ### Changed
 - 後台上傳圖片先去打一次imagelab協助併版 @wayne
