@@ -40,7 +40,9 @@
         "googleCloud": {
             "projectId": "nownews-website-167108",
             "keyFilename": "pems/NOWnews-Website-e1f7525355ca.json",
-            "storageBucket": "nownews-web-test"
+            "storageBucket": "nownews-web-test",
+            "image-cdn-url": "http://devimgrss.nownews.com",
+            "image-gcs-folder": "images"
         },
         "apn": {
             "cert": "pems/NOWnewsPushCert.pem",

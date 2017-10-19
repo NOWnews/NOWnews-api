@@ -18,6 +18,8 @@ NOWnews-api change logs
 - 調整更新 POST `/app/info` 端點判斷重複的邏輯 @esbb48
 - 重構現有的 notification @esbb48
 - 避免重複的 token 被撈出 @esbb48
+- 現在圖片的 sizeFormat 改使用 `rssimg.nownews.com` 這個來源 @SimonSun
+- 將 staging 環境加入 CDN 並把 config 拆開 @SimonSun
 
 ## 1.0.39 - 2017-10-17
 ### Changed
