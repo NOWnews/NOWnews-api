@@ -1,6 +1,6 @@
 /*
  * 用來清理無用或是錯誤 token 的程式
- * 啟動方式: cd tools && NODE_ENV=${NODE_ENV} node tools/cleanUselessDevices.js
+ * 啟動方式: NODE_ENV=${NODE_ENV} node tools/cleanUselessDevices.js
  */
 
 require('babel-core/register');
