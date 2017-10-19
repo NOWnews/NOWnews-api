@@ -202,7 +202,9 @@ schema.virtual('googleCDN').get(function () {
     if(imgMatchArray) {
         let replaceString = imgMatchArray[0];
         let fileName = this.url.replace(replaceString, '');
-        return `https://rssimg.nownews.com/images/${fileName}`;
+        let url = config.get('general.googleCloud.image-cdn-url');
+        let folder = config.get('general.googleCloud.image-gcs-folder');
+        return `${url}/${folder}/${fileName}`;
     }
 
     // 如果是 http://[A-Za-z].nownews.com 的圖片網址
@@ -241,18 +243,17 @@ schema.virtual('sizeFormat').get(function () {
 
         let replaceString = imagelabMatch[0];
         let fileName = this.url.replace(replaceString, '');
-        console.log(fileName);
-        console.log('-----------------------');
-
+        let url = config.get('general.googleCloud.image-cdn-url');
+        let folder = config.get('general.googleCloud.image-gcs-folder');
         return {
-            w300q70: `${imagelab}/?w=300&q=70&src=https://rssimg.nownews.com/images/${fileName}`,
-            w360q70: `${imagelab}/?w=360&q=70&src=https://rssimg.nownews.com/images/${fileName}`,
-            w540q70: `${imagelab}/?w=540&q=70&src=https://rssimg.nownews.com/images/${fileName}`,
-            w640q70: `${imagelab}/?w=640&q=70&src=https://rssimg.nownews.com/images/${fileName}`,
-            w720q70: `${imagelab}/?w=720&q=70&src=https://rssimg.nownews.com/images/${fileName}`,
-            w750q70: `${imagelab}/?w=750&q=70&src=https://rssimg.nownews.com/images/${fileName}`,
-            w1080q85: `${imagelab}/?w=1080&q=85&src=https://rssimg.nownews.com/images/${fileName}`,
-            w1440q85: `${imagelab}/?w=1440&q=85&src=https://rssimg.nownews.com/images/${fileName}`
+            w300q70: `${imagelab}/?w=300&q=70&src=${url}/${folder}/${fileName}`,
+            w360q70: `${imagelab}/?w=360&q=70&src=${url}/${folder}/${fileName}`,
+            w540q70: `${imagelab}/?w=540&q=70&src=${url}/${folder}/${fileName}`,
+            w640q70: `${imagelab}/?w=640&q=70&src=${url}/${folder}/${fileName}`,
+            w720q70: `${imagelab}/?w=720&q=70&src=${url}/${folder}/${fileName}`,
+            w750q70: `${imagelab}/?w=750&q=70&src=${url}/${folder}/${fileName}`,
+            w1080q85: `${imagelab}/?w=1080&q=85&src=${url}/${folder}/${fileName}`,
+            w1440q85: `${imagelab}/?w=1440&q=85&src=${url}/${folder}/${fileName}`
         };
     }
 
