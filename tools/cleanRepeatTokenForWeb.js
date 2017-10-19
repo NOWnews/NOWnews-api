@@ -16,7 +16,7 @@ models.AppInfo.find(
             os: 'WEB'
         }
     )
-    .then(async (docs) => {
+    .then((docs) => {
         let countTokenObject = {};
 
         _.each(docs, ({ token, _id }) => {
