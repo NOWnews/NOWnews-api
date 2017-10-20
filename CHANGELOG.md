@@ -3,8 +3,11 @@
 NOWnews-api change logs
 
 ## [Unreleased]
+### Fixed
+- 避免下一篇新聞選到預發稿 @esbb48
 
 ## 1.0.41 - 2017-10-20
+### Changed
 - 調整 china image-cdn-url @esbb48
 
 ## 1.0.40 - 2017-10-19
