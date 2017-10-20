@@ -4,6 +4,9 @@ NOWnews-api change logs
 
 ## [Unreleased]
 
+## 1.0.41 - 2017-10-20
+- 調整 china image-cdn-url @esbb48
+
 ## 1.0.40 - 2017-10-19
 ### Added
 - 新增兩個 tool 整理舊 Web AppInfo token 資料，請依序執行 @esbb48
