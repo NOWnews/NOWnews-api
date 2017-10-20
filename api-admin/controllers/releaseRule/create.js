@@ -12,8 +12,6 @@ module.exports = async(req, res, next) => {
 
     try {
         let data = req.body;
-        console.log('data.excludeRoles...',data.excludeRoles);
-        // let releaseRules = await ReleaseRule.find().where('isOn').equals(true);
         let ruleNames = ['sameCenter', 'sameUser', 'timeAndRole', 'superiorRoles', 'excludeRoles'];
 
         _.map(ruleNames, async (ruleName) => {
@@ -36,9 +34,23 @@ module.exports = async(req, res, next) => {
                     }
                     break;
                 case 'timeAndRole':
+                    let mixed = [];
+                    if(data.timeAndRoleCenterIds && !_.isArray(data.timeAndRoleCenterIds)){
+                        data.timeAndRoleCenterIds = [data.timeAndRoleCenterIds];
+                    }
+                    _.forEach(data.timeAndRoleCenterIds, (centerId, index)=>{
+                        mixed.push({
+                            centerId : centerId,
+                            startHour : data.timeAndRoleStartHours[index],
+                            startMinute : data.timeAndRoleStartMinutes[index],
+                            endHour : data.timeAndRoleEndHours[index],
+                            endMinute : data.timeAndRoleEndMinutes[index],
+                            roleIds : data[`timeAndRoleRoleIds[${index}]`]
+                        });
+                    });
                     upsertData = {
                         $set : {
-                            mixed: { },
+                            mixed: mixed,
                             isOn : data.timeAndRoleSwitch === 'on' ? true : false
                         }
                     }
