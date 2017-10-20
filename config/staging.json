@@ -40,7 +40,9 @@
         "googleCloud": {
             "projectId": "nownews-website-167108",
             "keyFilename": "pems/NOWnews-Website-e1f7525355ca.json",
-            "storageBucket": "nownews-web-test"
+            "storageBucket": "nownews-web-test",
+            "image-cdn-url": "http://devimgrss.nownews.com",
+            "image-gcs-folder": "images"
         },
         "apn": {
             "cert": "pems/NOWnewsPushCert.pem",
@@ -116,6 +118,10 @@
             "specialTopics": 8,
             "specialChannels": 8,
             "videos": 20
+        },        
+        "firebase": {
+            "key": "pems/NOWnews-project-firebase-dev.json",
+            "databaseURL": "https://nownews-website-167108.firebaseio.com"
         }
     },
 
