@@ -12,7 +12,7 @@ module.exports = async(req, res, next) => {
 
     try {
         let data = req.body;
-        let ruleNames = ['sameCenter', 'sameUser', 'timeAndRole', 'superiorRoles', 'excludeRoles'];
+        let ruleNames = ['sameCenter', 'sameUser', 'timeAndRole', 'excludeRoles'];
 
         _.map(ruleNames, async (ruleName) => {
             let upsertData = {};
@@ -37,8 +37,13 @@ module.exports = async(req, res, next) => {
                     let mixed = [];
                     if(data.timeAndRoleCenterIds && !_.isArray(data.timeAndRoleCenterIds)){
                         data.timeAndRoleCenterIds = [data.timeAndRoleCenterIds];
+                        data.timeAndRoleStartHours = [data.timeAndRoleStartHours];
+                        data.timeAndRoleEndHours = [data.timeAndRoleEndHours];
+                        data.timeAndRoleStartMinutes = [data.timeAndRoleStartMinutes];
+                        data.timeAndRoleEndMinutes = [data.timeAndRoleStartMinutes];
                     }
                     _.forEach(data.timeAndRoleCenterIds, (centerId, index)=>{
+                        console.log('data.timeAndRoleStartHours[index]',data.timeAndRoleStartHours[index]);
                         mixed.push({
                             centerId : centerId,
                             startHour : data.timeAndRoleStartHours[index],
@@ -55,18 +60,13 @@ module.exports = async(req, res, next) => {
                         }
                     }
                     break;
-                case 'superiorRoles':
-                    upsertData = {
-                        $set : {
-                            mixed: { },
-                            isOn : data.superiorRolesSwitch === 'on' ? true : false
-                        }
-                    }
-                    break;
                 case 'excludeRoles':
+                    if(data.excludeRoleIds && !_.isArray(data.excludeRoleIds)){
+                        data.excludeRoleIds = [data.excludeRoleIds];
+                    }
                     upsertData = {
                         $set : {
-                        mixed: { excludeRolesIds: data.excludeRoleIds },
+                        mixed: { excludeRoleIds: data.excludeRoleIds || [] },
                         isOn : data.excludeRolesSwitch === 'on' ? true : false
                         }
                     }

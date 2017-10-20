@@ -1,20 +1,34 @@
 import { User } from '../../../models';
-
-module.exports = async (req, res, next) => {
+import moment from 'moment-timezone';
+import _ from 'lodash';
+module.exports = async(req, res, next) => {
     try {
-        // if(req.authedRelease){
-        //     return next();
-        // }
-        // //如果審稿者和建立者同中心 有權可以發布
-        // let { UpdatedBy } = req.body;
-        // let updater = await User.findOne()
-        //     .where('_id').equals(UpdatedBy)
-        //     .select('Center');
-        // if(req.news.CreatedBy.Center.toString() === updater.Center.toString()){
-        //     req.authedRelease = true;
-        // }
-        next();
-    }catch(err) {
+        let timeAndRoleData = req.releaseRules.timeAndRole || {};
+        if (req.authedRelease || !timeAndRoleData.isOn) {
+            return next();
+        }
+        timeAndRoleData = timeAndRoleData.mixed;
+
+        if (_.isEmpty(timeAndRoleData)) {
+            return next();
+        }
+        let centerId = req.updater.Center.toString();
+        let roleId = req.updater.Role.toString();
+        _.forEach(timeAndRoleData, (t) => {
+            let now = moment.tz('Asia/Taipei');
+            var startTime = moment.tz(`${t.startHour}:${t.startMinute}:00`, 'HH:mm:ss', 'Asia/Taipei');
+            var endTime = moment.tz(`${t.endHour}:${t.endMinute}:59`, 'HH:mm:ss', 'Asia/Taipei');
+            if (t.roleIds.includes(roleId) &&
+                centerId == t.centerId &&
+                (now.isSameOrAfter(startTime) && now.isSameOrBefore(endTime))
+            ) {
+                req.authedRelease = true;
+            }
+        });
+
+        return next();
+
+    } catch (err) {
         return next(err);
     }
 };

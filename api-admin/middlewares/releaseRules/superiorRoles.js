@@ -6,7 +6,7 @@ import moment from 'moment-timezone';
 module.exports = async (req, res, next) => {
     try {
         if(req.authedRelease){
-           return next();
+            return next();
         }
         //檢查role的SuperiorRoles
         let { UpdateUserRole } = req.body;
@@ -18,7 +18,7 @@ module.exports = async (req, res, next) => {
         if(!role) {
             throw new Error('16014');
         }
-        next();
+        return next();
     }catch(err) {
         return next(err);
     }
