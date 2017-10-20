@@ -3,9 +3,34 @@
 NOWnews-api change logs
 
 ## [Unreleased]
+### Added
+- 新增兩個 tool 整理舊 Web AppInfo token 資料，請依序執行 @esbb48
+  - tools/cleanRepeatTokenForWeb.js
+  - tools/cleanInvalidToken.js
+- 新增 cronjob cleanInvalidToken @esbb48
 
+### Changed
+- 增加廣告版位在 `/promote/home` 端點 @esbb48
+- 軍聞社匯入新聞改分類 @appleoxxo
+- 區分 firebase prod 和 dev 的環境 @esbb48
+- 調整更新 POST `/app/info` 端點判斷重複的邏輯 @esbb48
+- 重構現有的 notification @esbb48
+- 避免重複的 token 被撈出 @esbb48
+- 現在圖片的 sizeFormat 改使用 `rssimg.nownews.com` 這個來源 @SimonSun
+- 將 staging 環境加入 CDN 並把 config 拆開 @SimonSun
+
+## 1.0.39 - 2017-10-17
+### Changed
+- 後台上傳圖片先去打一次imagelab協助併版 @wayne
+
+## 1.0.38 - 2017-10-16
+### Added
 - 後台上傳圖片改為漸進式JPEG @appleoxxo
+<<<<<<< HEAD
 - 新聞可由中心的同仁審稿發佈 @appleoxxo
+=======
+- 後台上傳圖片先去打一次imagelab ＠simon
+>>>>>>> develop
 
 ## 1.0.37 - 2017-10-12
 ### Added

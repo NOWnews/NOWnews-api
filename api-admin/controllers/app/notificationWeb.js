@@ -2,7 +2,6 @@
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:app:notificationWeb');
 
-import config from 'config';
 import _ from 'lodash';
 import Promise from 'bluebird';
 import firebaseAdmin from 'firebase-admin';
@@ -12,64 +11,17 @@ import { AppInfo } from '../../../models';
 module.exports = async (req, res, next) => {
     try {
 
-        let mode = config.get('admin.mode');
-
-        let devices = await AppInfo.find()
-            .where('os').equals('WEB')
-            .and([
-                { token: { $exists: true } },
-                { token: { $ne: '' } },
-                { token: { $ne: null } },
-                { token: { $ne: 'null' } }
-            ])
-            .execAsync();
-        debug('web devices length = %d', devices.length);
-
-
-        /*
-         * 正式程式碼
-         */
-        let deviceTotal = devices.length;
-        let countTotal = 0;
-        let count = 0;
-        let countTokens = [];
-        let tokensCollection = [];
-        console.log(`web device total = ${deviceTotal}`);
-
-        /*
-         * 非正式環境用的 devices
-         */
-        if(mode !== 'production') {
-            devices = [
-                { token: 'dO7bE_a4TYE:APA91bGOTczVmmd_XtZv8sK6Rzqf-1YEJAqg8S5vGT0aMXLWaPt7ZZb18nLVQhQOPzRpg1EmJ5R12OKbD1G7j0TtV4Omis5ZO6RC1WugDbDd18LOqGDwEyF859-XLIiWUqLEb0sad17Y' }
-            ];
-            deviceTotal = devices.length;
-        }
-
-        _.forEach(devices, (device) => {
-
-            countTokens.push(device.token);
-            countTotal++;
-            count++;
-
-            if(count === 1000 && countTotal <= deviceTotal) {
-                debug('info: 滿 1000 筆，但是總筆數「還沒滿」');
-                debug('count = %d', count);
-                debug('countTotal = %d', countTotal);
-                tokensCollection.push(countTokens);
-                countTokens = [];
-                count = 0;
-                return;
-            }
-
-            if(count < 1000 && countTotal === deviceTotal) {
-                debug('info: 未滿 1000 筆，但是總筆數已經「滿了」');
-                debug('count = %d', count);
-                debug('countTotal = %d', countTotal);
-                tokensCollection.push(countTokens);
-                return;
-            }
+        const devices = await AppInfo.distinct('token', {
+            os: 'WEB',
+            token: { 
+                $exists: true,
+                $nin: ['', null]
+            } 
         });
+        
+        console.log(`Web devices total = ${devices.length}`);
+
+        const tokensCollection = _.chunk(devices, 1000);
 
         let payload = {
             data: {
