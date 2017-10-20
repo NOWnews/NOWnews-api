@@ -43,7 +43,6 @@ module.exports = async(req, res, next) => {
                         data.timeAndRoleEndMinutes = [data.timeAndRoleStartMinutes];
                     }
                     _.forEach(data.timeAndRoleCenterIds, (centerId, index)=>{
-                        console.log('data.timeAndRoleStartHours[index]',data.timeAndRoleStartHours[index]);
                         mixed.push({
                             centerId : centerId,
                             startHour : data.timeAndRoleStartHours[index],
