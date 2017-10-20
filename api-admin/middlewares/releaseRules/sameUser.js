@@ -8,8 +8,8 @@ module.exports = async (req, res, next) => {
         if(req.authedRelease){
             return next();
         }
-        let { UpdatedBy} = req.body;
         // 發布的人不應該是自己，應該會是其他人
+        let { UpdatedBy} = req.body;
         if (UpdatedBy === req.news.CreatedBy.toString()) {
             throw new Error('16010');
         }

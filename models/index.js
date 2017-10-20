@@ -39,6 +39,7 @@ import appVersionSchema from './schemas/appVersion';
 import appSplashSchema from './schemas/appSplash';
 import appInfoSchema from './schemas/appInfo';
 import columnSpecialChannelSchema from './schemas/columnSpecialChannel';
+import releaseRule from './schemas/releaseRule';
 
 let User = connection.model('User', userSchema);
 let News = connection.model('News', newsSchema);
@@ -62,6 +63,8 @@ let AppVersion = connection.model('AppVersion', appVersionSchema);
 let AppSplash = connection.model('AppSplash', appSplashSchema);
 let AppInfo = connection.model('AppInfo', appInfoSchema);
 let ColumnSpecialChannel = connection.model('columnSpecialChannel', columnSpecialChannelSchema);
+let ReleaseRule = connection.model('releaseRule', releaseRule);
+
 
 module.exports = {
     User,
@@ -85,5 +88,6 @@ module.exports = {
     AppVersion,
     AppSplash,
     AppInfo,
-    ColumnSpecialChannel
+    ColumnSpecialChannel,
+    ReleaseRule
 };

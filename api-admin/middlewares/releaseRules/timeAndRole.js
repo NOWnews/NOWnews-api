@@ -1,19 +1,19 @@
-import { News } from '../../../models';
-import { newsLog } from '../../../libs';
-import redis from '../../../redis';
-import moment from 'moment-timezone';
+import { User } from '../../../models';
 
 module.exports = async (req, res, next) => {
     try {
-        let { id } = req.params;
-
-        let news = await News.findById(id)
-            .where('isTrashed').equals(false)
-            .populate('CreatedBy')
-            .execAsync();
-        req.news = news;
+        // if(req.authedRelease){
+        //     return next();
+        // }
+        // //如果審稿者和建立者同中心 有權可以發布
+        // let { UpdatedBy } = req.body;
+        // let updater = await User.findOne()
+        //     .where('_id').equals(UpdatedBy)
+        //     .select('Center');
+        // if(req.news.CreatedBy.Center.toString() === updater.Center.toString()){
+        //     req.authedRelease = true;
+        // }
         next();
-
     }catch(err) {
         return next(err);
     }
