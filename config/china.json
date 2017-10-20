@@ -41,7 +41,7 @@
             "projectId": "nownews-official-website",
             "keyFilename": "pems/NOWnews-Official-Website-3fe6935a938c.json",
             "storageBucket": "nownews-web",
-            "image-cdn-url": "https://rssimg.nownews.com",
+            "image-cdn-url": "https://img.nownews.com/nownews_production",
             "image-gcs-folder": "images"
         },
         "apn": {
