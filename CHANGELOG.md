@@ -3,6 +3,9 @@
 NOWnews-api change logs
 
 ## [Unreleased]
+### Added
+- 網站推播時自帶 utm @esbb48
+
 ### Fixed
 - 避免下一篇新聞選到預發稿 @esbb48
 
