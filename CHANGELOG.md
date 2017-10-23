@@ -8,6 +8,7 @@ NOWnews-api change logs
 
 ### Changed
 - 使用 pm2 config 控管 @esbb48
+- 移除世大運活動 code @esbb48
 
 ### Fixed
 - 避免下一篇新聞選到預發稿 @esbb48
