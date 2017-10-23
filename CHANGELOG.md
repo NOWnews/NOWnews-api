@@ -6,6 +6,9 @@ NOWnews-api change logs
 ### Added
 - 網站推播時自帶 utm @esbb48
 
+### Changed
+- 使用 pm2 config 控管 @esbb48
+
 ### Fixed
 - 避免下一篇新聞選到預發稿 @esbb48
 
