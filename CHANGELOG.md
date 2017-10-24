@@ -33,6 +33,7 @@ NOWnews-api change logs
 ## 1.0.38 - 2017-10-16
 ### Added
 - 後台上傳圖片改為漸進式JPEG @appleoxxo
+- 後台上傳圖片先去打一次imagelab ＠simon
 
 ## 1.0.37 - 2017-10-12
 ### Added
