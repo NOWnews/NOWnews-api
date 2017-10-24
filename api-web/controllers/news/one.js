@@ -35,6 +35,7 @@ module.exports = async (req, res, next) => {
         if(!news) {
             throw new Error('16003');
         }
+
         news = news.toJSON();
         news.pageView = { totalScore: 0 };
 
@@ -49,6 +50,13 @@ module.exports = async (req, res, next) => {
         for(let pv of pageviewList){
             news.pageView.totalScore += pv.totalScore;
         }
+        // 文中廣告
+        news.hasContentAd = news.template === 'DEFAULT';
+        if (news.hasContentAd) {
+            const insertIndex = news.content.indexOf ('</p>', 200) + 4; // 4 = '</p>'.length
+            news.contentAdIndex = insertIndex;
+        }
+
         // 將這篇新聞存入 redis
         let cacheData = await redis.setValue(`news${sn}`, news, 3600 * 6);
         debug('cacheData = %j', cacheData);
