@@ -53,7 +53,9 @@ module.exports = async (req, res, next) => {
         // 文中廣告
         news.hasContentAd = news.template === 'DEFAULT';
         if (news.hasContentAd) {
-            const insertIndex = news.content.indexOf ('</p>', 200) + 4; // 4 = '</p>'.length
+            // 預計是兩百字，可是避免有其他 img、style css 等等，因此以 250 保險。
+            // 4 = '</p>'.length
+            const insertIndex = news.content.indexOf ('</p>', 250) + 4;
             news.contentAdIndex = insertIndex;
         }
 
