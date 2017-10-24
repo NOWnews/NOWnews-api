@@ -1,6 +1,5 @@
 import { News, User, ReleaseRule } from '../../../models';
-import _ from 'lodash';
-module.exports = async (req, res, next) => {
+module.exports = async(req, res, next) => {
     try {
         let { id } = req.params;
         let { UpdatedBy } = req.body;
@@ -17,19 +16,15 @@ module.exports = async (req, res, next) => {
 
         req.updater = updater;
 
-        let releaseRules = await ReleaseRule.find()
-            .where('isOn').equals(true)
-            .where('isTrashed').equals(false);
+        let releaseRules = await ReleaseRule
+            .findOne({})
+            .sort({ createdAt: -1 });
 
-        if(_.isEmpty(releaseRules)){
-            req.releaseRules = {};
-        }else{
-            req.releaseRules = _.keyBy(releaseRules,'name');
-        }
+        req.releaseRules = releaseRules && releaseRules.rules || '';
 
         return next();
 
-    }catch(err) {
+    } catch (err) {
         return next(err);
     }
 };

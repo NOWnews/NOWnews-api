@@ -1,89 +1,40 @@
-// import Debug from 'debug';
-// const debug = Debug('NOWnews-api:api-admin:controllers:qqqq');
+import Debug from 'debug';
+const debug = Debug('NOWnews-api:api-admin:controllers:releaseRuleqqqq:create');
 import _ from 'lodash';
-import {
-    ReleaseRule
-} from '../../../models';
+import { ReleaseRule } from '../../../models';
 
 module.exports = async(req, res, next) => {
-
-
-
-
     try {
         let data = req.body;
-        let ruleNames = ['sameCenter', 'sameUser', 'timeAndRole', 'excludeRoles'];
-
-        _.map(ruleNames, async (ruleName) => {
-            let upsertData = {};
-            switch (ruleName) {
-                case 'sameCenter':
-                    upsertData = {
-                        $set : {
-                            mixed: { },
-                            isOn : data.sameCenterSwitch === 'on' ? true : false
-                        }
-                    }
-                    break;
-                case 'sameUser':
-                    upsertData = {
-                        $set : {
-                            mixed: { },
-                            isOn : data.sameUserSwitch === 'on' ? true : false
-                        }
-                    }
-                    break;
-                case 'timeAndRole':
-                    let mixed = [];
-                    if(data.timeAndRoleCenterIds && !_.isArray(data.timeAndRoleCenterIds)){
-                        data.timeAndRoleCenterIds = [data.timeAndRoleCenterIds];
-                        data.timeAndRoleStartHours = [data.timeAndRoleStartHours];
-                        data.timeAndRoleEndHours = [data.timeAndRoleEndHours];
-                        data.timeAndRoleStartMinutes = [data.timeAndRoleStartMinutes];
-                        data.timeAndRoleEndMinutes = [data.timeAndRoleStartMinutes];
-                    }
-                    _.forEach(data.timeAndRoleCenterIds, (centerId, index)=>{
-                        mixed.push({
-                            centerId : centerId,
-                            startHour : data.timeAndRoleStartHours[index],
-                            startMinute : data.timeAndRoleStartMinutes[index],
-                            endHour : data.timeAndRoleEndHours[index],
-                            endMinute : data.timeAndRoleEndMinutes[index],
-                            roleIds : data[`timeAndRoleRoleIds[${index}]`]
-                        });
-                    });
-                    upsertData = {
-                        $set : {
-                            mixed: mixed,
-                            isOn : data.timeAndRoleSwitch === 'on' ? true : false
-                        }
-                    }
-                    break;
-                case 'excludeRoles':
-                    if(data.excludeRoleIds && !_.isArray(data.excludeRoleIds)){
-                        data.excludeRoleIds = [data.excludeRoleIds];
-                    }
-                    upsertData = {
-                        $set : {
-                        mixed: { excludeRoleIds: data.excludeRoleIds || [] },
-                        isOn : data.excludeRolesSwitch === 'on' ? true : false
-                        }
-                    }
-                    break;
-                default:
-                    break;
+        let upsertData = {
+            CreatedBy: data.CreatedBy,
+            UpdatedBy: data.UpdatedBy
+        };
+        upsertData.rules = {
+            'excludeRoles': {
+                isOn: data.excludeRolesSwitch,
+                setting: {
+                    roleIds: data.excludeRoleIds || []
+                }
+            },
+            'timeAndRole': {
+                isOn: data.timeAndRoleSwitch,
+                setting: data.timeAndRole.setting || []
+            },
+            'sameCenter': {
+                isOn: data.sameCenterSwitch
+            },
+            'sameUser': {
+                isOn: data.sameUserSwitch
             }
-            let updatedRule = await ReleaseRule.findOneAndUpdateAsync({
-                name: ruleName
-            }, upsertData, {
-                upsert: true,
-                new: true,
-                setDefaultsOnInsert: true,
-            });
-
+        };
+        let updatedRule = await ReleaseRule.findOneAndUpdateAsync({}, upsertData, {
+            upsert: true,
+            new: true,
+            setDefaultsOnInsert: true,
         });
 
-        return res.json({});
+        return res.json(updatedRule);
     } catch (err) {
         return next(err);
     }

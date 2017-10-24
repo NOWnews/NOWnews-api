@@ -5,9 +5,7 @@ import { _ } from 'lodash';
 
 module.exports = async (req, res, next) => {
     try {
-        let releaseRules = await ReleaseRule.find({});
-        releaseRules = _.keyBy(releaseRules, 'name');
-
+        let releaseRules = await ReleaseRule.findOne({});
 
         return res.json(releaseRules);
     }catch(err) {

@@ -3,32 +3,65 @@ import moment from 'moment-timezone';
 let Schema = mongoose.Schema;
 
 let schema = new Schema({
+    rules: {
+        'excludeRoles': {
+            isOn: {
+                type: Schema.Types.Boolean,
+                require: true,
+                default: false
+            },
+            setting: {
+                roleIds: [{
+                    type: Schema.Types.String,
+                    // ref: 'Role',
+                    default: []
+                }]
+            }
 
-    // 新聞標題
-    name: {
-        type: String,
-        required: true,
-        trim: true,
-        maxlength: 36
-    },
-    isOn: {
-        type: Boolean,
-        default: false
-    },
-    mixed: {
-        type: Schema.Types.Mixed
-    },
-    isTrashed: {
-        type: Boolean,
-        default: false
-    },
-    // 建立者
-    CreatedBy: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
-    },
+        },
+        'timeAndRole': {
+            isOn: {
+                type: Schema.Types.Boolean,
+                require: true,
+                default: false
+            },
+            setting: [{
+                centerId: {
+                    type: Schema.Types.String,
+                },
+                roleIds: [{
+                    type: Schema.Types.String,
+                }],
+                startHour: {
+                    type: Schema.Types.String
+                },
+                startMinute: {
+                    type: Schema.Types.String
+                },
+                endHour: {
+                    type: Schema.Types.String
+                },
+                endMinute: {
+                    type: Schema.Types.String
+                }
+            }]
+        },
+        'sameCenter': {
+            isOn: {
+                type: Schema.Types.Boolean,
+                require: true,
+                default: false
+            }
+        },
+        'sameUser': {
+            isOn: {
+                type: Schema.Types.Boolean,
+                require: true,
+                default: true
+            }
+        }
 
+    },
     // 更新者
     UpdatedBy: {
         type: Schema.Types.ObjectId,
@@ -52,16 +85,16 @@ let schema = new Schema({
     timestamps: {
         updatedAt: 'updatedAt'
     },
-    toJSON:{
+    toJSON: {
         virtuals: true,
     }
 });
 
-schema.virtual('formatCreatedAt').get(function () {
+schema.virtual('formatCreatedAt').get(function() {
     return moment.tz(this.createdAt, 'Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });
 
-schema.virtual('formatUpdatedAt').get(function () {
+schema.virtual('formatUpdatedAt').get(function() {
     return moment.tz(this.updatedAt, 'Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');
 });
 

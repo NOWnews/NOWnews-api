@@ -1,25 +1,24 @@
-import { User } from '../../../models';
 import moment from 'moment-timezone';
 import _ from 'lodash';
 module.exports = async(req, res, next) => {
     try {
-        let timeAndRoleData = req.releaseRules.timeAndRole || {};
+        let timeAndRoleData = req.releaseRules && req.releaseRules.timeAndRole || {};
         if (req.authedRelease || !timeAndRoleData.isOn) {
             return next();
         }
-        timeAndRoleData = timeAndRoleData.mixed;
+        let setting = timeAndRoleData.setting;
 
-        if (_.isEmpty(timeAndRoleData)) {
+        if (_.isEmpty(setting)) {
             return next();
         }
         let centerId = req.updater.Center.toString();
         let roleId = req.updater.Role.toString();
-        _.forEach(timeAndRoleData, (t) => {
+        _.forEach(setting, (s) => {
             let now = moment.tz('Asia/Taipei');
-            var startTime = moment.tz(`${t.startHour}:${t.startMinute}:00`, 'HH:mm:ss', 'Asia/Taipei');
-            var endTime = moment.tz(`${t.endHour}:${t.endMinute}:59`, 'HH:mm:ss', 'Asia/Taipei');
-            if (t.roleIds.includes(roleId) &&
-                centerId == t.centerId &&
+            var startTime = moment.tz(`${s.startHour}:${s.startMinute}:00`, 'HH:mm:ss', 'Asia/Taipei');
+            var endTime = moment.tz(`${s.endHour}:${s.endMinute}:59`, 'HH:mm:ss', 'Asia/Taipei');
+            if (s.roleIds.includes(roleId) &&
+                centerId == s.centerId &&
                 (now.isSameOrAfter(startTime) && now.isSameOrBefore(endTime))
             ) {
                 req.authedRelease = true;

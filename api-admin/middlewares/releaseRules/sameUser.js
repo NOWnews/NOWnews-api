@@ -1,11 +1,9 @@
-import { News } from '../../../models';
-import { newsLog } from '../../../libs';
-import redis from '../../../redis';
+
 import moment from 'moment-timezone';
 
 module.exports = async (req, res, next) => {
     try {
-        let sameUserData = req.releaseRules.sameUser || {};
+        let sameUserData = req.releaseRules && req.releaseRules.sameUser || {};
         if(req.authedRelease || !sameUserData.isOn){
             return next();
         }
