@@ -1,6 +1,5 @@
 import Debug from 'debug';
-const debug = Debug('NOWnews-api:api-admin:controllers:releaseRuleqqqq:create');
-import _ from 'lodash';
+const debug = Debug('NOWnews-api:api-admin:controllers:releaseRule:create');
 import { ReleaseRule } from '../../../models';
 
 module.exports = async(req, res, next) => {

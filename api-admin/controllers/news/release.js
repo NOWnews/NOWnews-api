@@ -1,11 +1,10 @@
 
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:news:release');
-
 import _ from 'lodash';
 import moment from 'moment-timezone';
 
-import { News, Role, User } from '../../../models';
+import { News } from '../../../models';
 import { newsLog } from '../../../libs';
 import { Pageview } from '../../../pvModels';
 import redis from '../../../redis';

@@ -3,11 +3,18 @@
 NOWnews-api change logs
 
 ## [Unreleased]
+
 ### Added
 - 新增兩個 tool 整理舊 Web AppInfo token 資料，請依序執行 @esbb48
   - tools/cleanRepeatTokenForWeb.js
   - tools/cleanInvalidToken.js
 - 新增 cronjob cleanInvalidToken @esbb48
+
+- 新增 審核權限設定 可設定以下審核權限 @appleoxxo
+  - 1. 特定中心、時段、角色 可以發佈任何新聞 （此次新增）
+  - 2. 特定角色不能發佈文章（此次新增）
+  - 3. 新聞建立者同中心的同仁擁有發佈權 (此次新增)
+  - 4. 新聞審核者和建立者不能為同一位使用者（已有功能新增開關）
 
 ### Changed
 - 增加廣告版位在 `/promote/home` 端點 @esbb48
@@ -26,7 +33,6 @@ NOWnews-api change logs
 ## 1.0.38 - 2017-10-16
 ### Added
 - 後台上傳圖片改為漸進式JPEG @appleoxxo
-- 新聞可由中心的同仁審稿發佈 @appleoxxo
 
 ## 1.0.37 - 2017-10-12
 ### Added

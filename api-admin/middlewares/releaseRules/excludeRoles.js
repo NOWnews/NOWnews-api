@@ -1,5 +1,3 @@
-import { User } from '../../../models';
-
 module.exports = async (req, res, next) => {
     try {
         let excludeRolesData = req.releaseRules && req.releaseRules.excludeRoles || {};
