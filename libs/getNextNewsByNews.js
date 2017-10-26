@@ -10,6 +10,7 @@ module.exports = async (news) => {
             .where('status').equals('RELEASE')
             .where('isTrashed').equals(false)
             .where('startedAt').gt(news.startedAt)
+            .where('startedAt').lte(Date.now())
             .where('MainMenu').equals(news.MainMenu)
             .sort('startedAt')
             .limit(1)

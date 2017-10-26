@@ -2,7 +2,6 @@
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:app:notificationWeb');
 
-import config from 'config';
 import _ from 'lodash';
 import Promise from 'bluebird';
 import firebaseAdmin from 'firebase-admin';
@@ -12,65 +11,23 @@ import { AppInfo } from '../../../models';
 module.exports = async (req, res, next) => {
     try {
 
-        let mode = config.get('admin.mode');
-
-        let devices = await AppInfo.find()
-            .where('os').equals('WEB')
-            .and([
-                { token: { $exists: true } },
-                { token: { $ne: '' } },
-                { token: { $ne: null } },
-                { token: { $ne: 'null' } }
-            ])
-            .execAsync();
-        debug('web devices length = %d', devices.length);
-
-
-        /*
-         * 正式程式碼
-         */
-        let deviceTotal = devices.length;
-        let countTotal = 0;
-        let count = 0;
-        let countTokens = [];
-        let tokensCollection = [];
-        console.log(`web device total = ${deviceTotal}`);
-
-        /*
-         * 非正式環境用的 devices
-         */
-        if(mode !== 'production') {
-            devices = [
-                { token: 'dO7bE_a4TYE:APA91bGOTczVmmd_XtZv8sK6Rzqf-1YEJAqg8S5vGT0aMXLWaPt7ZZb18nLVQhQOPzRpg1EmJ5R12OKbD1G7j0TtV4Omis5ZO6RC1WugDbDd18LOqGDwEyF859-XLIiWUqLEb0sad17Y' }
-            ];
-            deviceTotal = devices.length;
-        }
-
-        _.forEach(devices, (device) => {
-
-            countTokens.push(device.token);
-            countTotal++;
-            count++;
-
-            if(count === 1000 && countTotal <= deviceTotal) {
-                debug('info: 滿 1000 筆，但是總筆數「還沒滿」');
-                debug('count = %d', count);
-                debug('countTotal = %d', countTotal);
-                tokensCollection.push(countTokens);
-                countTokens = [];
-                count = 0;
-                return;
+        const deviceCollections = await AppInfo.find({
+            os: 'WEB',
+            token: {
+                $exists: true,
+                $nin: ['', null]
             }
+        })
+        .lean()
+        .select('token')
+        .execAsync();
 
-            if(count < 1000 && countTotal === deviceTotal) {
-                debug('info: 未滿 1000 筆，但是總筆數已經「滿了」');
-                debug('count = %d', count);
-                debug('countTotal = %d', countTotal);
-                tokensCollection.push(countTokens);
-                return;
-            }
-        });
+        const devices = _.map(deviceCollections, 'token');
 
+        console.log(`Web devices total = ${devices.length}`);
+
+        const tokensCollection = _.chunk(devices, 1000);
+        const utmString = '?utm_source=web_notification&utm_medium=nownews&utm_campaign=post';
         let payload = {
             data: {
                 type: 'NORMAL',
@@ -78,20 +35,27 @@ module.exports = async (req, res, next) => {
                 title: req.body.title,
                 summary: req.body.summary,
                 image: req.body.image,
-                url: req.body.url
+                url: `${req.body.url}${utmString}`
             },
             notification: {
                 title: req.body.title,
                 body: req.body.summary,
                 icon: req.body.image,
-                clickAction: req.body.url
+                clickAction: `${req.body.url}${utmString}`
             }
         };
 
         let results = await Promise.map(tokensCollection, (tokenArray) => {
             return firebaseAdmin.messaging().sendToDevice(tokenArray, payload, { priority: "high", timeToLive: 60 * 60 * 24 });
+        }, { concurrency: 10 });
+
+        // show result
+        let successd = 0, faild = 0;
+        _.forEach(results, (result) => {
+            faild += result.failureCount;
+            successd += result.successCount;
         });
-        console.log(results);
+        console.log(`推播結果：successed: ${successd}, faild: ${faild}`);
 
         return res.status(200).send();
     } catch (err) {
