@@ -56,8 +56,9 @@ module.exports = async (req, res, next) => {
             successd += result.successCount;
         });
         console.log(`推播結果：successed: ${successd}, faild: ${faild}`);
-        
-        return res.status(200).send();
+        return res.json({
+            faild, successd
+        });
     } catch (err) {
         return next(err);
     }
