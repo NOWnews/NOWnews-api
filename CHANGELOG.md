@@ -2,12 +2,13 @@
 
 NOWnews-api change logs
 
-## 1.0.42 - 2017-10-26
 ## [Unreleased]
+### Added
+- 判斷此新聞是否增加文中廣告，並提供應插入廣告的位置 @esbb48
 
+## 1.0.42 - 2017-10-26
 ### Added
 - 網站推播時自帶 utm @esbb48
-- 判斷此新聞是否增加文中廣告，並提供應插入廣告的位置 @esbb48
 
 ### Changed
 - 使用 pm2 config 控管 @esbb48
