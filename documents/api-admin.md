@@ -2991,3 +2991,31 @@ None
 #### Query Parameters
 
 None
+
+### [GET] `/notificationLog`
+
+取得推播紀錄列表
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+#### Query Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| createdAt | 推播日期 | date |  | `createdAt=2017/01/01` |
+| title | 標題(模糊查詢） | String |  | `title=蔡英文` |
+| os | 作業系統 | String | √ | `'IOS'`, `'ANDROID'`, `'WEB'` |
+| sort | 排序 | String |  | `sort=-createdAt`, `sort=name` |
+| page | 第幾頁 | Number |  | `page=1` |
+| limit | 一次幾筆資料 | Number |  | `limit=10` |
+| skip | 跳過幾筆資料 | Number |  | `skip=10` |
