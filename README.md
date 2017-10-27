@@ -55,6 +55,10 @@ Start server by cluster mode:
 
 `$ NODE_ENV=staging pm2 start bin/api-admin.js -i max --name 'api-admin-staging'`
 
+or
+
+pm2 start pm2/api-admin.json --env staging
+
 *note: if you start server at first time. you should following these steps:*
 
 `$ NODE_ENV=staging pm2 start bin/api-admin.js -i 1 --name 'api-admin-staging'`

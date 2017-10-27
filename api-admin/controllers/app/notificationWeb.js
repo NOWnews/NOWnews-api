@@ -27,7 +27,7 @@ module.exports = async (req, res, next) => {
         console.log(`Web devices total = ${devices.length}`);
 
         const tokensCollection = _.chunk(devices, 1000);
-
+        const utmString = '?utm_source=web_notification&utm_medium=nownews&utm_campaign=post';
         let payload = {
             data: {
                 type: 'NORMAL',
@@ -35,13 +35,13 @@ module.exports = async (req, res, next) => {
                 title: req.body.title,
                 summary: req.body.summary,
                 image: req.body.image,
-                url: req.body.url
+                url: `${req.body.url}${utmString}`
             },
             notification: {
                 title: req.body.title,
                 body: req.body.summary,
                 icon: req.body.image,
-                clickAction: req.body.url
+                clickAction: `${req.body.url}${utmString}`
             }
         };
 
