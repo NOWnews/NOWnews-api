@@ -13,7 +13,6 @@ let schema = new Schema({
             setting: {
                 roleIds: [{
                     type: Schema.Types.String,
-                    // ref: 'Role',
                     default: []
                 }]
             }
