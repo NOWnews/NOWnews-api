@@ -1,0 +1,6 @@
+require('babel-core/register');
+require('babel-polyfill');
+
+const app = require('../tools/migrationToSearchDatabase');
+
+app();

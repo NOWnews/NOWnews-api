@@ -360,15 +360,15 @@ schema.index({
     isTrashed: 1
 });
 
-schema.index({
-    title: 'text',
-    content: 'text',
-    status: 1,
-    isTrashed: 1,
-    startedAt: -1
-}, {
-    default_language: 'hant'
-});
+// schema.index({
+//     title: 'text',
+//     content: 'text',
+//     status: 1,
+//     isTrashed: 1,
+//     startedAt: -1
+// }, {
+//     default_language: 'hant'
+// });
 
 schema.index({
     startedAt: -1,

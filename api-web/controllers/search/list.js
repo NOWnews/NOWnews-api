@@ -6,8 +6,10 @@ import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-web:controllers:search:list');
 
 import moment from 'moment-timezone';
+import _ from 'lodash';
 
 import { News } from '../../../models';
+import search from '../../../searchModels';
 import { pagination } from '../../../libs';
 
 module.exports = async (req, res, next) => {
@@ -23,19 +25,26 @@ module.exports = async (req, res, next) => {
         let { limit, skip, page, startedAt, endedAt, timeRange } = req.query;
         let momentUnit = DEFAULT_TIME_TYPE_TO_MOMENT[timeRange];
 
-        let cursor = News.find();
-        let totalCursor = News.find();
+        console.log(momentUnit);
+
+        debug('keyword = %s', keyword);
+
+        let cursor = search.News.find();
+        let totalCursor = search.News.find();
         let dateNow = Date.now();
+
         cursor.or([
             { title: new RegExp(keyword, 'i') },
-            // { content: new RegExp(keyword, 'i') }
+            { shortTitle: new RegExp(keyword, 'i') },
+            { content: new RegExp(keyword, 'i') }
         ])
         .where('status').equals('RELEASE')
         .where('isTrashed').equals(false);
 
         totalCursor.or([
             { title: new RegExp(keyword, 'i') },
-            // { content: new RegExp(keyword, 'i') }
+            { shortTitle: new RegExp(keyword, 'i') },
+            { content: new RegExp(keyword, 'i') }
         ])
         .where('status').equals('RELEASE')
         .where('isTrashed').equals(false);
@@ -69,25 +78,54 @@ module.exports = async (req, res, next) => {
             }
         }
 
-
-        // 找出相關列表與分頁資料
-        let [ newsList, total ] = await Promise.all([
+        let [ searchNewsList, searchTotal ] = await Promise.all([
             cursor
-                .populate('MainPhoto MainVideo MainMenu')
                 .limit(limit)
                 .skip(skip)
-                .select('sn title shortTitle MainVideo MainPhoto MainMenu type startedAt')
+                .select('newsId newsSn')
                 .sort('-startedAt')
                 .execAsync(),
             totalCursor
                 .limit(1000)
+                .sort('-startedAt')
+                .select('_id')
                 .countAsync()
         ]);
 
-        debug('news list = %j', newsList);
+        let searchNewsIds = _.map(searchNewsList, (news) => {
+            return news.newsId;
+        });
+
+        console.log(searchNewsIds);
+        console.log(searchTotal);
+
+        let newsList = await News.find()
+            .where('_id').in(searchNewsIds)
+            .populate('MainPhoto MainVideo MainMenu')
+            .select('sn title shortTitle MainVideo MainPhoto MainMenu type startedAt')
+            .sort('-startedAt')
+            .execAsync();
+
+        // // 找出相關列表與分頁資料
+        // let [ newsList, total ] = await Promise.all([
+        //     News.find()
+        //         .where('_id').in(searchNewsIds)
+        //         .populate('MainPhoto MainVideo MainMenu')
+        //         .limit(limit)
+        //         .skip(skip)
+        //         .select('sn title shortTitle MainVideo MainPhoto MainMenu type startedAt')
+        //         .sort('-startedAt')
+        //         .execAsync(),
+        //     News.find()
+        //         .limit(1000)
+        //         .execAsync()
+        //         .length
+        // ]);
+
+        // debug('news list = %j', newsList);
 
         // 處理分頁
-        let pageData = pagination(total, limit, page, skip);
+        let pageData = pagination(searchTotal, limit, page, skip);
 
         return res.json({
             newsList,

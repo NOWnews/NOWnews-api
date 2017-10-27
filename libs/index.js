@@ -27,6 +27,7 @@ import getChannelsByPlatform from './getChannelsByPlatform';
 import getFacebookPostInfo from './getFacebookPostInfo';
 import downloadFile from './downloadFile';
 import htmlToText from './htmlToText';
+import removePunctuations from './removePunctuations';
 import prepareImages from './prepareImages';
 
 module.exports = {
@@ -59,5 +60,6 @@ module.exports = {
     getFacebookPostInfo,
     downloadFile,
     htmlToText,
+    removePunctuations,
     prepareImages
 };
