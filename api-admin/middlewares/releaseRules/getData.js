@@ -1,3 +1,5 @@
+import Debug from 'debug';
+const debug = Debug('NOWnews-api:api-admin:middlewares:releaseRules:getData');
 import { News, User, ReleaseRule } from '../../../models';
 module.exports = async(req, res, next) => {
     try {
@@ -21,6 +23,8 @@ module.exports = async(req, res, next) => {
             .sort({ createdAt: -1 });
 
         req.releaseRules = releaseRules && releaseRules.rules || '';
+
+        debug('releaseRules... = %j',releaseRules);
 
         return next();
 

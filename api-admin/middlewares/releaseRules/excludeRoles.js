@@ -1,3 +1,5 @@
+import Debug from 'debug';
+const debug = Debug('NOWnews-api:api-admin:middlewares:releaseRules:excludeRoles');
 module.exports = async (req, res, next) => {
     try {
         let excludeRolesData = req.releaseRules && req.releaseRules.excludeRoles || {};

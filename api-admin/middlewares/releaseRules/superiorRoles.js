@@ -1,3 +1,5 @@
+import Debug from 'debug';
+const debug = Debug('NOWnews-api:api-admin:middlewares:releaseRules:superiorRoles');
 import { Role } from '../../../models';
 import { newsLog } from '../../../libs';
 import redis from '../../../redis';

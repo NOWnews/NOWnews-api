@@ -1,3 +1,5 @@
+import Debug from 'debug';
+const debug = Debug('NOWnews-api:api-admin:middlewares:releaseRules:sameCenter');
 import mongoose from 'mongoose';
 module.exports = async (req, res, next) => {
     try {

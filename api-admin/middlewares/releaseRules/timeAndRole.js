@@ -1,3 +1,5 @@
+import Debug from 'debug';
+const debug = Debug('NOWnews-api:api-admin:middlewares:releaseRules:timeAndRole');
 import moment from 'moment-timezone';
 import _ from 'lodash';
 module.exports = async(req, res, next) => {
