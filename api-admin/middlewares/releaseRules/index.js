@@ -10,8 +10,8 @@ let middlewaresArray = [
     getData,
     excludeRoles,
     timeAndRole,
-    sameCenter,
     sameUser,
+    sameCenter,
     superiorRoles
 ];
 module.exports = middlewaresArray;
