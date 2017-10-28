@@ -3019,3 +3019,35 @@ None
 | page | 第幾頁 | Number |  | `page=1` |
 | limit | 一次幾筆資料 | Number |  | `limit=10` |
 | skip | 跳過幾筆資料 | Number |  | `skip=10` |
+
+
+### [POST] `/notificationLog`
+
+建立推播紀錄
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'NOWnewsIsFeature' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| os | 作業系統 | String | √ | `'IOS'`, `'ANDROID'`, `'WEB'` |
+| title | 新聞標題 | String | √ | `我是標題` |
+| url | 新聞網址 | String | √ | `https://www.nownews...` |
+| image | 新聞圖片網址 | String | √ | `https://www.nownews...jpg` |
+| summary | 摘要 | String |  | `我是摘要` |
+| expectCount | 預期數量 | Number | √ | 100 |
+| successCount | 成功數量 | Number | √ | 99 |
+| NewsId | 新聞 ObjectId | ObjectId  |  | `540000000000000000000001` |
+| CreatedBy | 建立者 ObjectId | ObjectId  | √ | `530000000000000000000001` |
+
+#### Query Parameters
+
+None

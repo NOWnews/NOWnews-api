@@ -1,6 +1,5 @@
-import moment from 'moment-timezone';
 import Debug from 'debug';
-const debug = Debug('NOWnews-api:api-admin:controllers:news:list');
+const debug = Debug('NOWnews-api:api-admin:controllers:notificationLog:list');
 import _ from 'lodash';
 import Promise from 'bluebird';
 
