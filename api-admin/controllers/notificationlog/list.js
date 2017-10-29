@@ -8,8 +8,8 @@ import { pagination } from '../../../libs';
 
 module.exports = async (req, res, next) => {
 
-    let { limit, page, skip, title, os, status, createdAt } = req.query;
-    
+    let { limit, page, skip, sort, title, os, status, createdAt } = req.query;
+
     debug('req.query = %j', req.query);
 
     try {
@@ -45,6 +45,9 @@ module.exports = async (req, res, next) => {
                 .countAsync()
         ]);
         debug('notificationLogs = %j', notificationLogs);
+
+        const pageData = pagination(total, limit, page, skip);
+        debug('pageData = %j', pageData);
 
         return res.json({
             notificationLogs,
