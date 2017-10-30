@@ -10,6 +10,9 @@ NOWnews-api change logs
 ### Changed
 - 調整推播端點回傳推波結果 @esbb48
 
+### Fixed
+- `appView`, `appPlatform` 為沒有宣告的變數 @esbb48
+
 ## 1.0.42 - 2017-10-26
 ### Added
 - 網站推播時自帶 utm @esbb48
