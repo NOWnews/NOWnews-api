@@ -100,24 +100,6 @@ module.exports = async (req, res, next) => {
             .sort('-startedAt')
             .execAsync();
 
-        // // 找出相關列表與分頁資料
-        // let [ newsList, total ] = await Promise.all([
-        //     News.find()
-        //         .where('_id').in(searchNewsIds)
-        //         .populate('MainPhoto MainVideo MainMenu')
-        //         .limit(limit)
-        //         .skip(skip)
-        //         .select('sn title shortTitle MainVideo MainPhoto MainMenu type startedAt')
-        //         .sort('-startedAt')
-        //         .execAsync(),
-        //     News.find()
-        //         .limit(1000)
-        //         .execAsync()
-        //         .length
-        // ]);
-
-        // debug('news list = %j', newsList);
-
         // 處理分頁
         let pageData = pagination(searchTotal, limit, page, skip);
 

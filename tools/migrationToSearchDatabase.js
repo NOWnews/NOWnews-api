@@ -48,25 +48,5 @@ module.exports = async () => {
     }
     while (lastLength === limit);
 
-    // let test = await models.News.find()
-    //     .limit(100)
-    //     .lean()
-    //     .execAsync();
-    // console.log(test);
-
-
-    // let foo = await models.News.findOne()
-    //     .lean()
-    //     .execAsync();
-
-    // foo = pickData(foo);
-
-    // console.log(foo);
-
-    // // console.log(searchModels.News);
-    // let searchNews = await searchModels.News.createAsync(foo);
-
-    // console.log(searchNews);
-
     return process.exit();
 };
