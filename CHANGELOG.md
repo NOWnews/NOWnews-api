@@ -2,14 +2,17 @@
 
 NOWnews-api change logs
 
-## 1.0.42 - 2017-10-26
 ## [Unreleased]
-
 ### Added
-- 網站推播時自帶 utm @esbb48
 - 推播紀錄列表端點 [GET] `/notificationLog` @esbb48
 - 增加推播紀錄端點 [POST] `/notificationLog` @esbb48
 
+### Changed
+- 調整推播端點回傳推波結果 @esbb48
+
+## 1.0.42 - 2017-10-26
+### Added
+- 網站推播時自帶 utm @esbb48
 
 ### Changed
 - 使用 pm2 config 控管 @esbb48
