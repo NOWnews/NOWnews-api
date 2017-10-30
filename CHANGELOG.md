@@ -10,6 +10,9 @@ NOWnews-api change logs
 - search 功能改從 search database 找到相對應的新聞資料 @SimonSun
 
 ## 1.0.42 - 2017-10-26
+### Fixed
+- 執行審稿者與指定審稿者不同時 文章的指定審稿者更新為執行審稿者 @appleoxxo
+
 ### Added
 - 網站推播時自帶 utm @esbb48
 
