@@ -47,6 +47,9 @@ module.exports = async (req, res, next) => {
         removedNews = await removedNews.populate('MainMenu Menus MainPhoto MainVideo Photos Videos Author Tags LastReviewer CreatedBy UpdatedBy').execPopulate();
         await newsLog(removedNews, 'DELETE');
 
+        // 刪除搜尋用的新聞
+        await libs.removeSearchNews(updatedNews);
+
         return res.json(removedNews);
     }catch(err) {
         return next(err);

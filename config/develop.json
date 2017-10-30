@@ -71,8 +71,8 @@
         "mode": "develop",
         "showError": true,
         "mongodb": {
-            "host": "mongodb://35.194.248.139:27017",
-            "db": "NOWnews_Staging"
+            "host": "mongodb://localhost:27017",
+            "db": "NOWnews_Develop"
         },
         "pvMongodb": {
             "host": "mongodb://localhost:27017",
@@ -134,8 +134,8 @@
         "adServ": "http://ad1.nownews.com/ads.php",
         "showError": true,
         "mongodb": {
-            "host": "mongodb://35.194.248.139:27017",
-            "db": "NOWnews_Staging"
+            "host": "mongodb://localhost:27017",
+            "db": "NOWnews_Develop"
         },
         "pvMongodb": {
             "host": "mongodb://localhost:27017",

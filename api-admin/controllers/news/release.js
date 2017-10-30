@@ -178,6 +178,9 @@ module.exports = async (req, res, next) => {
         // 新聞發佈時，先做一次圖片的 cache
         await libs.prepareImages(updatedNews);
 
+        // 把新聞加入到搜尋用的 database
+        await libs.addSearchNews(updatedNews);
+
         return res.json(updatedNews);
     }catch(err) {
         return next(err);

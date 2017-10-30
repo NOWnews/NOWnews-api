@@ -28,6 +28,8 @@ import getFacebookPostInfo from './getFacebookPostInfo';
 import downloadFile from './downloadFile';
 import htmlToText from './htmlToText';
 import removePunctuations from './removePunctuations';
+import addSearchNews from './addSearchNews';
+import removeSearchNews from './removeSearchNews';
 import prepareImages from './prepareImages';
 
 module.exports = {
@@ -61,5 +63,7 @@ module.exports = {
     downloadFile,
     htmlToText,
     removePunctuations,
+    addSearchNews,
+    removeSearchNews,
     prepareImages
 };

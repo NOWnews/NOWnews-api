@@ -78,14 +78,6 @@ schema.index({
     startedAt: -1
 }, { sparse: true });
 
-// schema.index({
-//     startedAt: -1,
-//     isTrashed: 1,
-//     status: 1,
-//     title: 'text',
-//     shortTitle: 'text',
-//     content: 'text'
-// }, { sparse: true });
 
 schema.virtual('formatCreatedAt').get(function () {
     return moment.tz(this.createdAt, 'Asia/Taipei').format('YYYY-MM-DD HH:mm:ss');

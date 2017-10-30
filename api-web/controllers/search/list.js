@@ -25,8 +25,6 @@ module.exports = async (req, res, next) => {
         let { limit, skip, page, startedAt, endedAt, timeRange } = req.query;
         let momentUnit = DEFAULT_TIME_TYPE_TO_MOMENT[timeRange];
 
-        console.log(momentUnit);
-
         debug('keyword = %s', keyword);
 
         let cursor = search.News.find();
@@ -87,7 +85,6 @@ module.exports = async (req, res, next) => {
                 .execAsync(),
             totalCursor
                 .limit(1000)
-                .sort('-startedAt')
                 .select('_id')
                 .countAsync()
         ]);
@@ -95,9 +92,6 @@ module.exports = async (req, res, next) => {
         let searchNewsIds = _.map(searchNewsList, (news) => {
             return news.newsId;
         });
-
-        console.log(searchNewsIds);
-        console.log(searchTotal);
 
         let newsList = await News.find()
             .where('_id').in(searchNewsIds)
