@@ -11,6 +11,7 @@ NOWnews-api change logs
 - 調整推播端點回傳推波結果 @esbb48
 
 ### Fixed
+- 執行審稿者與指定審稿者不同時 文章的指定審稿者更新為執行審稿者 @appleoxxo
 - `appView`, `appPlatform` 為沒有宣告的變數 @esbb48
 
 ## 1.0.42 - 2017-10-26
