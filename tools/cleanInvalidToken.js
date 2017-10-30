@@ -9,10 +9,10 @@ var cleanInvalidToken = require('../libs/cleanInvalidToken');
 
 cleanInvalidToken()
 .then(()=>{
-	console.log('清理完畢');
-	process.exit();
+    console.log('清理完畢');
+    process.exit();
 })
 .catch((e)=>{
-	console.error('error', e);
-	process.exit();
+    console.error('error', e);
+    process.exit();
 });

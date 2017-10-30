@@ -58,9 +58,6 @@ let schema = new Schema({
     },
 }, {
     versionKey: false,
-    timestamps: {
-        createdAt: 'createdAt'
-    },
     toJSON:{
         virtuals: true,
     }

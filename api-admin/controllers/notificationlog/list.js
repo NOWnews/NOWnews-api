@@ -1,6 +1,5 @@
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:notificationLog:list');
-import _ from 'lodash';
 import Promise from 'bluebird';
 
 import { NotificationLog } from '../../../models';
