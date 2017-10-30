@@ -1,11 +1,11 @@
 import Debug from 'debug';
-const debug = Debug('NOWnews-api:api-admin:middlewares:releaseRules:sameUser');
+const debug = Debug('NOWnews-api:api-admin:middlewares:releaseRules:canSameUserReview');
 import moment from 'moment-timezone';
 
 module.exports = async (req, res, next) => {
     try {
-        let sameUserData = req.releaseRules && req.releaseRules.sameUser || {};
-        if(req.authedRelease || !sameUserData.isOn){
+        let canSameUserReviewData = req.releaseRules && req.releaseRules.canSameUserReview || {};
+        if(req.authedRelease || canSameUserReviewData.isOn){
             return next();
         }
         // 發布的人不應該是自己，應該會是其他人

@@ -30,12 +30,12 @@ module.exports = async(req, res, next) => {
             return res.json(updatedReleaseRule);
         }
 
-        let rr = await ReleaseRule.createAsync({
+        releaseRule = await ReleaseRule.createAsync({
             CreatedBy: CreatedBy,
             UpdatedBy: UpdatedBy
         });
-        rr = await rr.saveAsync();
-        rr.rules.timeAndRole.setting.push({
+        releaseRule = await releaseRule.saveAsync();
+        releaseRule.rules.timeAndRole.setting.push({
             centerId,
             startHour,
             startMinute,
@@ -43,7 +43,7 @@ module.exports = async(req, res, next) => {
             endMinute,
             roleIds
         });
-        let updatedReleaseRule = await rr.saveAsync();
+        let updatedReleaseRule = await releaseRule.saveAsync();
         return res.json(updatedReleaseRule);
 
     } catch (err) {

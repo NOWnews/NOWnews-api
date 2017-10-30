@@ -20,11 +20,11 @@ module.exports = async(req, res, next) => {
                 isOn: data.timeAndRoleSwitch,
                 setting: data.timeAndRole.setting || []
             },
-            'sameCenter': {
-                isOn: data.sameCenterSwitch
+            'canSameCenterReview': {
+                isOn: data.canSameCenterReviewSwitch
             },
-            'sameUser': {
-                isOn: data.sameUserSwitch
+            'canSameUserReview': {
+                isOn: data.canSameUserReviewSwitch
             }
         };
         let updatedRule = await ReleaseRule.findOneAndUpdateAsync({}, upsertData, {

@@ -29,13 +29,13 @@ module.exports = async(req, res, next) => {
             if (rules.excludeRoles.isOn) {
                 cursor.where('Role').nin(rules.excludeRoles.setting.roleIds);
             }
-            if (rules.sameCenter.isOn) {
+            if (rules.canSameCenterReview.isOn) {
                 cursor.or({
                     'Center': user.Center.toString()
                 });
             }
-            rules.sameUser.isOn ?
-                cursor.where('_id').ne(user.id) : cursor.or({ '_id': user.id });
+            rules.canSameCenterReview.isOn ?
+                cursor.or({ '_id': user.id }) : cursor.where('_id').ne(user.id);
 
             if (rules.timeAndRole.isOn) {
                 let setting = rules.timeAndRole.setting;

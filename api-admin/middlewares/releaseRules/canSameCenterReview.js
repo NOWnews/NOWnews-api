@@ -1,10 +1,10 @@
 import Debug from 'debug';
-const debug = Debug('NOWnews-api:api-admin:middlewares:releaseRules:sameCenter');
+const debug = Debug('NOWnews-api:api-admin:middlewares:releaseRules:canSameCenterReview');
 import mongoose from 'mongoose';
 module.exports = async (req, res, next) => {
     try {
-        let sameCenterData = req.releaseRules && req.releaseRules.sameCenter || {};
-        if(req.authedRelease || !sameCenterData.isOn){
+        let canSameCenterReviewData = req.releaseRules && req.releaseRules.canSameCenterReview || {};
+        if(req.authedRelease || !canSameCenterReviewData.isOn){
             return next();
         }
         if(req.news.CreatedBy.Center.toString() === req.updater.Center.toString()){

@@ -112,7 +112,7 @@ module.exports = async () => {
     await Promise.each(releaseRule, (data) => {
         return ReleaseRule.findById(data._id).execAsync()
             .then((doc) => {
-                // console.log('do menu data');
+                // console.log('do releaseRule data');
                 if(doc) {
                     return Promise.resolve({});
                 }

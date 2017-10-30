@@ -4,10 +4,10 @@ module.exports = [
     "_id": '570000000000000000000001',
     "UpdatedBy": '530000000000000000000001',
 	"rules" : {
-		"sameUser" : {
-			"isOn" : true
+		"canSameUserReview" : {
+			"isOn" : false
 		},
-		"sameCenter" : {
+		"canSameCenterReview" : {
 			"isOn" : false
 		},
 		"timeAndRole" : {

@@ -1,6 +1,6 @@
 import getData from './getData';
-import sameCenter from './sameCenter';
-import sameUser from './sameUser';
+import canSameCenterReview from './canSameCenterReview';
+import canSameUserReview from './canSameUserReview';
 import superiorRoles from './superiorRoles';
 import timeAndRole from './timeAndRole';
 import excludeRoles from './excludeRoles'
@@ -10,8 +10,8 @@ let middlewaresArray = [
     getData,
     excludeRoles,
     timeAndRole,
-    sameUser,
-    sameCenter,
+    canSameUserReview,
+    canSameCenterReview,
     superiorRoles
 ];
 module.exports = middlewaresArray;

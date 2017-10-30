@@ -45,18 +45,18 @@ let schema = new Schema({
                 }
             }]
         },
-        'sameCenter': {
+        'canSameCenterReview': {
             isOn: {
                 type: Schema.Types.Boolean,
                 require: true,
                 default: false
             }
         },
-        'sameUser': {
+        'canSameUserReview': {
             isOn: {
                 type: Schema.Types.Boolean,
                 require: true,
-                default: true
+                default: false
             }
         }
 
