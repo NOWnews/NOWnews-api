@@ -34,7 +34,7 @@ module.exports = async(req, res, next) => {
                     'Center': user.Center.toString()
                 });
             }
-            rules.canSameCenterReview.isOn ?
+            rules.canSameUserReview.isOn ?
                 cursor.or({ '_id': user.id }) : cursor.where('_id').ne(user.id);
 
             if (rules.timeAndRole.isOn) {
