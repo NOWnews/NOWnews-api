@@ -2,9 +2,14 @@
 
 NOWnews-api change logs
 
-## 1.0.42 - 2017-10-26
 ## [Unreleased]
+### Added
+- `bin/migrationToSearchDatabase.js` 將原本新聞資料轉移到 search databese @SimonSun
 
+### Changed
+- search 功能改從 search database 找到相對應的新聞資料 @SimonSun
+
+## 1.0.42 - 2017-10-26
 ### Added
 - 網站推播時自帶 utm @esbb48
 
