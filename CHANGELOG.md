@@ -4,20 +4,27 @@ NOWnews-api change logs
 
 ## [Unreleased]
 ### Added
+- 推播紀錄列表端點 [GET] `/notificationLog` @esbb48
+- 增加推播紀錄端點 [POST] `/notificationLog` @esbb48
+- 判斷此新聞是否增加文中廣告，並提供應插入廣告的位置 @esbb48
 - `bin/migrationToSearchDatabase.js` 將原本新聞資料轉移到 search databese @SimonSun
 
 ### Changed
+- 調整推播端點回傳推波結果 @esbb48
 - search 功能改從 search database 找到相對應的新聞資料 @SimonSun
 
 ## 1.0.42 - 2017-10-26
 ### Fixed
 - 執行審稿者與指定審稿者不同時 文章的指定審稿者更新為執行審稿者 @appleoxxo
+- `appView`, `appPlatform` 為沒有宣告的變數 @esbb48
 
+## 1.0.42 - 2017-10-26
 ### Added
 - 網站推播時自帶 utm @esbb48
 
 ### Changed
 - 使用 pm2 config 控管 @esbb48
+- 移除世大運活動 code @esbb48
 
 ### Fixed
 - 避免下一篇新聞選到預發稿 @esbb48
