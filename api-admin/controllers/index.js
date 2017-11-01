@@ -26,12 +26,8 @@ import searchEngine from './searchEngine';
 import ott from './ott';
 import column from './column';
 import recommend from './recommend';
-<<<<<<< HEAD
 import releaseRule from './releaseRule';
-
-=======
 import notificationLog from './notificationLog';
->>>>>>> develop
 
 module.exports = (app) => {
 
