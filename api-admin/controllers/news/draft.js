@@ -144,6 +144,9 @@ module.exports = async (req, res, next) => {
         updatedNews = await updatedNews.populate('MainMenu Menus MainPhoto MainVideo Photos Videos Author Tags LastReviewer CreatedBy UpdatedBy').execPopulate();
         await newsLog(updatedNews, 'UPDATE');
 
+        // 刪除搜尋用的新聞
+        await libs.removeSearchNews(updatedNews);
+
         return res.json(updatedNews);
     }catch(err) {
         return next(err);

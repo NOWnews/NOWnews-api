@@ -24,7 +24,20 @@ const pickData = (news) => {
 module.exports = async (news) => {
     try {
         news = pickData(news);
-        let searchNews = await News.createAsync(news);
+
+        let searchNews = await News.findOneAndUpdateAsync(
+            {
+                newsId: news._id
+            },
+            {
+                $set: news
+            },
+            {
+                upsert: true,
+                new: true
+            }
+        );
+
         return Promise.resolve(searchNews);
     } catch (err) {
         return Promise.reject(err);
