@@ -90,6 +90,6 @@ module.exports = {
     AppSplash,
     AppInfo,
     ColumnSpecialChannel,
-    ReleaseRule
+    ReleaseRule,
     NotificationLog
 };
