@@ -48,8 +48,8 @@ module.exports = async (req, res, next) => {
                 userId: options.userId,
                 title: options.title,
                 userAgent: userAgent.getUA(),
-                browser: browser || appView,
-                platform: platformInfo || appPlatform
+                browser: browser || options.appView,
+                platform: platformInfo || options.appPlatform
             })
         ]);
 

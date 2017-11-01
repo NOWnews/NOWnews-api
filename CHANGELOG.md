@@ -4,7 +4,16 @@ NOWnews-api change logs
 
 ## [Unreleased]
 ### Added
+- 推播紀錄列表端點 [GET] `/notificationLog` @esbb48
+- 增加推播紀錄端點 [POST] `/notificationLog` @esbb48
 - 判斷此新聞是否增加文中廣告，並提供應插入廣告的位置 @esbb48
+
+### Changed
+- 調整推播端點回傳推波結果 @esbb48
+
+### Fixed
+- 執行審稿者與指定審稿者不同時 文章的指定審稿者更新為執行審稿者 @appleoxxo
+- `appView`, `appPlatform` 為沒有宣告的變數 @esbb48
 
 ## 1.0.42 - 2017-10-26
 ### Added
