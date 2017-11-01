@@ -6,6 +6,7 @@ NOWnews-api change logs
 ### Added
 - 推播紀錄列表端點 [GET] `/notificationLog` @esbb48
 - 增加推播紀錄端點 [POST] `/notificationLog` @esbb48
+- 判斷此新聞是否增加文中廣告，並提供應插入廣告的位置 @esbb48
 
 ### Changed
 - 調整推播端點回傳推波結果 @esbb48
@@ -20,6 +21,7 @@ NOWnews-api change logs
 
 ### Changed
 - 使用 pm2 config 控管 @esbb48
+- 移除世大運活動 code @esbb48
 
 ### Fixed
 - 避免下一篇新聞選到預發稿 @esbb48
