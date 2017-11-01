@@ -82,6 +82,10 @@
             "host": "mongodb://10.140.0.2,10.140.0.8:27017",
             "db": "NOWnewsOTT_Staging"
         },
+        "searchMongodb": {
+            "host": "mongodb://10.128.0.2:27017",
+            "db": "NOWnewsSearch_Staging"
+        },
         "redis": {
             "host": "10.140.0.9", // (61.67.121.141 / 192.168.40.141)
             "port": 16379,
@@ -140,6 +144,10 @@
         "ottMongodb": {
             "host": "mongodb://10.140.0.2,10.140.0.8:27017",
             "db": "NOWnewsOTT_Staging"
+        },
+        "searchMongodb": {
+            "host": "mongodb://10.128.0.2:27017",
+            "db": "NOWnewsSearch_Staging"
         },
         "redis": {
             "host": "10.140.0.9", // (61.67.121.141 / 192.168.40.141)
