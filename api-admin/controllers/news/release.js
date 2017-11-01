@@ -1,15 +1,15 @@
 
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:news:release');
-
 import _ from 'lodash';
 import moment from 'moment-timezone';
 
-import { News, Role } from '../../../models';
+import { News } from '../../../models';
 import { newsLog } from '../../../libs';
 import { Pageview } from '../../../pvModels';
 import redis from '../../../redis';
 import libs from '../../../libs';
+import mongoose from 'mongoose';
 
 module.exports = async (req, res, next) => {
     try {
@@ -29,19 +29,9 @@ module.exports = async (req, res, next) => {
             throw new Error('16003');
         }
 
-        // 發布的人不應該是自己，應該會是其他人
-        if (UpdatedBy === news.CreatedBy._id + '') {
-            throw new Error('16010');
-        }
-
-        const role = await Role.findOne()
-            .where('_id').equals(news.CreatedBy.Role)
-            .where('isTrashed').equals(false)
-            .where('SuperiorRoles').equals(UpdateUserRole)
-            .execAsync();
-
-        if(!role) {
-            throw new Error('16014');
+        //執行審稿者與指定審稿者不同時 文章的指定審稿者更新為執行審稿者
+        if(UpdatedBy !== news.LastReviewer.toString()){
+           news.set('LastReviewer', mongoose.Types.ObjectId(UpdatedBy));
         }
 
         news.set('MainMenu', MainMenu);

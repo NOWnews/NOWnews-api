@@ -9,14 +9,10 @@ import list from './list';
 import one from './one';
 import remove from './remove';
 import update from './update';
-import reviewers from './reviewers';
 
 router.route('/roles')
     .get(list)
     .post(validators.role.create, create);
-
-router.route('/roles/:id/reviewers')
-    .get(reviewers);
 
 router.route('/roles/:id')
     .get(one)
