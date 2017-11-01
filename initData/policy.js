@@ -124,6 +124,13 @@ module.exports = [{
     "type": "ADMIN_MENU",
     "path": "/auth/user",
     "method": "get"
+},{
+    "_id": "510007000000000000000004",
+    "group": "權限控管",
+    "desc": "審核權限管理",
+    "type": "ADMIN_MENU",
+    "path": "/auth/release",
+    "method": "get"
 }, {
     "_id": "510008000000000000000001",
     "group": "專題",

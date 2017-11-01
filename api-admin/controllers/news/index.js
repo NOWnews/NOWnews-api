@@ -16,6 +16,7 @@ import review from './review';
 import release from './release';
 import close from './close';
 import wasReleased from './wasReleased';
+import releaseRules from '../../middlewares/releaseRules'
 
 router.route('/news')
     .get(baseQuery, list)
@@ -36,7 +37,7 @@ router.route('/news/:id/review')
     .put(validators.news.review, review);
 
 router.route('/news/:id/release')
-    .put(validators.news.release, release);
+    .put(validators.news.release, releaseRules, release);
 
 router.route('/news/:id/close')
     .put(validators.news.close, close);

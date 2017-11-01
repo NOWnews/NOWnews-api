@@ -2,7 +2,7 @@
 import Promise from 'bluebird';
 import chalk from 'chalk';
 
-import { User, Policy, Role, Center, Department, Menu, Image } from '../models';
+import { User, Policy, Role, Center, Department, Menu, Image, ReleaseRule } from '../models';
 import { hashPwd } from '../libs';
 
 import policyData from './policy';
@@ -13,6 +13,7 @@ import superuserData from './superuser';
 import usersData from './users';
 import menusData from './menus';
 import imagesData from './images';
+import releaseRule from './releaseRule';
 
 module.exports = async () => {
 
@@ -106,6 +107,19 @@ module.exports = async () => {
                 return Menu.createAsync(data);
             });
     });
+
+    // 處理 releaseRule 資料
+    await Promise.each(releaseRule, (data) => {
+        return ReleaseRule.findById(data._id).execAsync()
+            .then((doc) => {
+                // console.log('do releaseRule data');
+                if(doc) {
+                    return Promise.resolve({});
+                }
+                return ReleaseRule.createAsync(data);
+            });
+    });
+    releaseRule
 
     console.log(chalk.green(`初始化資料完成`));
 };
