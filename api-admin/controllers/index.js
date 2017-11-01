@@ -26,8 +26,12 @@ import searchEngine from './searchEngine';
 import ott from './ott';
 import column from './column';
 import recommend from './recommend';
+<<<<<<< HEAD
 import releaseRule from './releaseRule';
 
+=======
+import notificationLog from './notificationLog';
+>>>>>>> develop
 
 module.exports = (app) => {
 
@@ -60,6 +64,7 @@ module.exports = (app) => {
     app.use('/', column);
     app.use('/', recommend);
     app.use('/', releaseRule);
+    app.use('/', notificationLog);
 
     return (req, res, next) => {
         return next();

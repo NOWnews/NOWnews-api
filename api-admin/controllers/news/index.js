@@ -8,6 +8,7 @@ import baseQuery from '../../middlewares/baseQuery';
 import create from './create';
 import list from './list';
 import one from './one';
+import oneBySn from './oneBySn';
 import remove from './remove';
 import update from './update';
 import draft from './draft';
@@ -25,6 +26,9 @@ router.route('/news/:id')
     .get(one)
     .delete(remove)
     .put(update);
+
+router.route('/news/oneBySn/:sn')
+    .get(oneBySn);
 
 router.route('/news/:id/draft')
     .put(validators.news.draft, draft);
