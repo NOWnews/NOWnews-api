@@ -3,6 +3,8 @@
 NOWnews-api change logs
 
 ## [Unreleased]
+
+## 1.0.43 - 2017-11-02
 ### Added
 - 推播紀錄列表端點 [GET] `/notificationLog` @esbb48
 - 增加推播紀錄端點 [POST] `/notificationLog` @esbb48
