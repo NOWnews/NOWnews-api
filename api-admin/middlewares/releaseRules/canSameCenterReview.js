@@ -7,6 +7,9 @@ module.exports = async (req, res, next) => {
         if(req.authedRelease || !canSameCenterReviewData.isOn){
             return next();
         }
+        if(!req.news.CreatedBy.Center || !req.updater.Center){
+            return next();
+        }
         if(req.news.CreatedBy.Center.toString() === req.updater.Center.toString()){
             req.authedRelease = true;
         }

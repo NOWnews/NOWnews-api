@@ -13,8 +13,8 @@ module.exports = async(req, res, next) => {
         if (_.isEmpty(setting)) {
             return next();
         }
-        let centerId = req.updater.Center.toString();
-        let roleId = req.updater.Role.toString();
+        let centerId = req.updater.Center && req.updater.Center.toString();
+        let roleId = req.updater.Role && req.updater.Role.toString();
         _.forEach(setting, (s) => {
             let now = moment.tz('Asia/Taipei');
             var startTime = moment.tz(`${s.startHour}:${s.startMinute}:00`, 'HH:mm:ss', 'Asia/Taipei');

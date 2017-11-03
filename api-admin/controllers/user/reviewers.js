@@ -31,7 +31,7 @@ module.exports = async(req, res, next) => {
             }
             if (rules.canSameCenterReview.isOn) {
                 cursor.or({
-                    'Center': user.Center.toString()
+                    'Center': user.Center && user.Center.toString()
                 });
             }
             rules.canSameUserReview.isOn ?

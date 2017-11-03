@@ -3,7 +3,8 @@
 NOWnews-api change logs
 
 ## [Unreleased]
-
+### Fixed
+- 外部廠商上稿時出現503錯誤，因為該名User沒有選擇中心，補上User沒中心時的防呆 @appleoxxo
 ## 1.0.43 - 2017-11-02
 ### Added
 - 推播紀錄列表端點 [GET] `/notificationLog` @esbb48
