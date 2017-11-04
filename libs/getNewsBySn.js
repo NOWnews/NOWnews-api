@@ -9,7 +9,7 @@ module.exports = async (sn) => {
 
         // 找出主要新聞
         let news = await News.findBySn(sn)
-            .where('status').equals('RELEASE')
+            // .where('status').equals('RELEASE')
             .where('isTrashed').equals(false)
             .where('startedAt').lte(Date.now())
             .populate([
@@ -43,9 +43,14 @@ module.exports = async (sn) => {
                     select: 'Avatar'
                 }
             ])
-            .select('_id sn title templateAD template Tags newsBy isSponsored isAdult traceCode type startedAt freeContent Photos content MainVideo MainPhoto Menus MainMenu summary shortTitle Author')
+            .select('_id sn title templateAD template Tags newsBy isSponsored isAdult traceCode type startedAt freeContent Photos content MainVideo MainPhoto Menus MainMenu summary shortTitle Author status')
             .execAsync();
         debug('news = %j', news);
+
+        // 要讓發布過的新聞再次審稿時還能被看到，因此加了審稿狀態
+        if (news.status !== 'RELEASE' || news.status !== 'REVIEW') {
+            news = null;
+        }
 
         return Promise.resolve(news);
     } catch (err) {

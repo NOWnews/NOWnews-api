@@ -4,6 +4,9 @@ NOWnews-api change logs
 
 ## [Unreleased]
 
+### Added
+- 新聞發布後，有錯字拉回去修改時狀態為送審，原先使用者會到 404 頁面，現在用戶可以看到之前版本，不會導到 404 頁面 @wb
+
 ## 1.0.43 - 2017-11-02
 ### Added
 - 推播紀錄列表端點 [GET] `/notificationLog` @esbb48

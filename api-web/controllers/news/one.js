@@ -50,6 +50,12 @@ module.exports = async (req, res, next) => {
         for(let pv of pageviewList){
             news.pageView.totalScore += pv.totalScore;
         }
+
+        // 新聞發布後，有錯字拉回去修改時狀態為送審，因此一定會有 pageView，藉此判斷
+        if (news.status === 'REVIEW' && !news.pageView.totalScore) {
+            throw new Error('16003');
+        }
+
         // 文中廣告
         news.hasContentAd = news.template === 'DEFAULT';
         if (news.hasContentAd) {
