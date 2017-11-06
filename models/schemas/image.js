@@ -179,7 +179,6 @@ schema.virtual('thumbnail').get(function () {
         let fileName = this.url.replace(replaceString, '');
         let cdnurl = config.get('general.googleCloud.image-cdn-url');
         let folder = config.get('general.googleCloud.image-gcs-folder');
-        console.log(srcUrl,"L181")
         
         return `${url}/?w=300&q=70&src=${cdnurl}/${folder}/${fileName}`;
     }
