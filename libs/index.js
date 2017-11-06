@@ -5,6 +5,7 @@ import pagination from './pagination';
 import newsLog from './newsLog';
 import getIndexPage from './getIndexPage';
 import getNewsBySn from './getNewsBySn';
+import getNewsById from './getNewsById';
 import getRelationNewsBySn from './getRelationNewsBySn';
 import getNextNewsByNews from './getNextNewsByNews';
 import getPrevNewsByNews from './getPrevNewsByNews';
@@ -37,6 +38,7 @@ module.exports = {
     newsLog,
     getIndexPage,
     getNewsBySn,
+    getNewsById,
     getRelationNewsBySn,
     getNextNewsByNews,
     getPrevNewsByNews,
