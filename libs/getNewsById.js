@@ -41,7 +41,7 @@ module.exports = async (id) => {
                     select: 'Avatar'
                 }
             ])
-            .select('_id sn title templateAD template Tags newsBy isSponsored isAdult traceCode type startedAt freeContent Photos content MainVideo MainPhoto Menus MainMenu summary shortTitle Author CreatedBy')
+            .select('_id sn title templateAD template Tags newsBy isSponsored isAdult traceCode type startedAt freeContent Photos content MainVideo MainPhoto Menus MainMenu summary shortTitle Author')
             .execAsync();
         debug('news = %j', news);
 
