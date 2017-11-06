@@ -26,7 +26,11 @@ module.exports = async (req, res, next) => {
 
         // 已經release過的news改為review狀態時 為了防止存取單筆新聞 發生404 延長此新聞cache時間為一週
         if(news.status === "RELEASE" ){
-            await redis.setValue(`news${news.sn}`, news, 3600 * 24 * 7);
+            await  Promise.all([
+                redis.setValue(`news${news.sn}`, news, 3600 * 24 * 7),
+                redis.setValue(`relationNewsByNews${news.sn}`, news, 3600 * 24 * 7),
+                redis.setValue(`news${news.sn}NextAndPrev`, news, 3600 * 24 * 7),
+            ]);
         }
 
         news.set('MainMenu', MainMenu);
