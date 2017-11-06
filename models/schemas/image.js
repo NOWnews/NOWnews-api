@@ -158,11 +158,11 @@ schema.index({
 });
 
 schema.virtual('thumbnail').get(function () {
-
+    let imgRegexString = /^(http|https):\/\/img.nownews.com\/nownews_[A-Za-z1-9]+\/[A-Za-z]+\//;
     // let imgRegexString = /^(http|https):\/\/img.nownews.com\//;
     let otherRegexString = /^(http|https):\/\/[A-Za-z]+.nownews.com\//;
 
-    // let imgMatchArray = this.url.match(imgRegexString);
+    let imgMatchArray = this.url.match(imgRegexString);
     let otherMatchArray = this.url.match(otherRegexString);
 
     // 如果不屬於 http://xxx.nownews.com 的圖片網址
@@ -171,12 +171,18 @@ schema.virtual('thumbnail').get(function () {
     }
 
     // 如果是 http://img.nownews.com 的圖片網址
-    // if(imgMatchArray) {
-    //     let url = config.get('general.imagelab.url');
-    //     let replaceString = imgMatchArray[0];
-    //     let srcUrl = this.url.replace(replaceString, '/');
-    //     return `${url}/?w=300&q=70&src=${encodeURIComponent(srcUrl)}`;
-    // }
+    if(imgMatchArray) {
+        let url = config.get('general.imagelab.url');
+        let replaceString = imgMatchArray[0];
+        let srcUrl = this.url.replace(replaceString, '/');
+        // let fileName = 
+        let fileName = this.url.replace(replaceString, '');
+        let cdnurl = config.get('general.googleCloud.image-cdn-url');
+        let folder = config.get('general.googleCloud.image-gcs-folder');
+        console.log(srcUrl,"L181")
+        
+        return `${url}/?w=300&q=70&src=${cdnurl}/${folder}/${fileName}`;
+    }
 
     // 如果是 http://[A-Za-z].nownews.com 的圖片網址
     if(otherMatchArray) {
