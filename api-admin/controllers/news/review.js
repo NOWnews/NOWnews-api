@@ -2,7 +2,6 @@
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:news:review');
 
-import { News } from '../../../models';
 import { newsLog } from '../../../libs';
 import redis from '../../../redis';
 import moment from 'moment-timezone';
@@ -28,8 +27,8 @@ module.exports = async (req, res, next) => {
         if(news.status === "RELEASE" ){
             await  Promise.all([
                 redis.setValue(`news${news.sn}`, news, 3600 * 24 * 7),
-                redis.setValue(`relationNewsByNews${news.sn}`, news, 3600 * 24 * 7),
-                redis.setValue(`news${news.sn}NextAndPrev`, news, 3600 * 24 * 7),
+                redis.expire(`relationNewsByNews${news.sn}`, 3600 * 24 * 7),
+                redis.expire(`news${news.sn}NextAndPrev`, 3600 * 24 * 7),
             ]);
         }
 
