@@ -27,8 +27,8 @@ module.exports = async (req, res, next) => {
         if(news.status === "RELEASE" ){
             await  Promise.all([
                 redis.setValue(`news${news.sn}`, news, 3600 * 24 * 7),
-                redis.expire(`relationNewsByNews${news.sn}`, 3600 * 24 * 7),
-                redis.expire(`news${news.sn}NextAndPrev`, 3600 * 24 * 7),
+                redis.setExpire(`relationNewsByNews${news.sn}`, 3600 * 24 * 7),
+                redis.setExpire(`news${news.sn}NextAndPrev`, 3600 * 24 * 7),
             ]);
         }
 
