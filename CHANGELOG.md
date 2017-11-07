@@ -4,6 +4,9 @@ NOWnews-api change logs
 
 ## [Unreleased]
 
+### Fixed
+- 防止已release的新聞改為review後發生404 @appleoxxo
+
 ## 1.0.43 - 2017-11-02
 ### Added
 - 推播紀錄列表端點 [GET] `/notificationLog` @esbb48

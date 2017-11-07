@@ -2,10 +2,10 @@
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:news:review');
 
-import { News } from '../../../models';
 import { newsLog } from '../../../libs';
 import redis from '../../../redis';
 import moment from 'moment-timezone';
+import libs from '../../../libs';
 
 module.exports = async (req, res, next) => {
     try {
@@ -15,37 +15,22 @@ module.exports = async (req, res, next) => {
         debug('req.body = %j', req.body);
         debug('req.params = %j', req.params);
 
-        let news = await News.findById(id)
-            .where('isTrashed').equals(false)
-            .execAsync();
-        debug('news = %j', news);
+        let news = await libs.getNewsById(id);
 
-        // 審稿的人不應該是自己，應該會是其他人
-        if (LastReviewer === news.CreatedBy + '') {
-            throw new Error('16013');
-        }
+        debug('news = %j', news);
 
         if(!news) {
             throw new Error('16003');
         }
 
-        // 取得原本上一則下一則新聞的資料，並移除 cache
-        let nextAndPrev = await redis.getValue(`news${news.sn}NextAndPrev`);
-
-        if(nextAndPrev && nextAndPrev.next) {
-            redis.removeValue(`news${nextAndPrev.next.sn}NextAndPrev`);
+        // 已經release過的news改為review狀態時 為了防止存取單筆新聞 發生404 延長此新聞cache時間為一週
+        if(news.status === "RELEASE" ){
+            await  Promise.all([
+                redis.setValue(`news${news.sn}`, news, 3600 * 24 * 7),
+                redis.setExpire(`relationNewsByNews${news.sn}`, 3600 * 24 * 7),
+                redis.setExpire(`news${news.sn}NextAndPrev`, 3600 * 24 * 7),
+            ]);
         }
-
-        if(nextAndPrev && nextAndPrev.prev) {
-            redis.removeValue(`news${nextAndPrev.prev.sn}NextAndPrev`);
-        }
-
-        // 檢查 redis 是否有資料，將之下架
-        await Promise.all([
-            redis.removeValue(`news${news.sn}`),
-            redis.removeValue(`relationNewsByNews${news.sn}`),
-            redis.removeValue(`news${news.sn}NextAndPrev`)
-        ]);
 
         news.set('MainMenu', MainMenu);
         news.set('title', title);
