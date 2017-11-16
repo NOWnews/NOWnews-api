@@ -4,6 +4,7 @@ NOWnews-api change logs
 
 ## [Unreleased]
 
+## 1.0.44 - 2017-11-02
 ### Fixed
 - 防止已release的新聞改為review後發生404 @appleoxxo
 
