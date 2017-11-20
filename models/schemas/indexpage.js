@@ -21,6 +21,22 @@ let schema = new Schema({
         }]
     },
 
+    // 隱藏的大5小5
+    hideCarousels: {
+        type: [{
+            type: Schema.Types.ObjectId,
+            ref: 'News'
+        }]
+    },
+
+    // 加入的大5小5
+    addCarousels: {
+        type: [{
+            type: Schema.Types.ObjectId,
+            ref: 'News'
+        }]
+    },
+
     // 首頁專題
     specialTopics: {
         type: [{
@@ -47,6 +63,20 @@ let schema = new Schema({
 
     // 更新者
     UpdatedBy: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        default: null
+    },
+
+    // 刪除大5小5更新者
+    UpdatedHideBy: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        default: null
+    },
+
+    // 加入大5小5更新者
+    UpdatedAddBy: {
         type: Schema.Types.ObjectId,
         ref: 'User',
         default: null

@@ -6,6 +6,8 @@ import validators from '../../validators';
 
 import list from './list';
 import carousels from './carousels';
+import hideCarousels from './hideCarousels';
+import addCarousels from './addCarousels';
 import specialTopics from './specialTopics';
 import specialChannels from './specialChannels';
 import videos from './videos';
@@ -15,6 +17,15 @@ router.route('/indexpage')
 
 router.route('/indexpage/carousels')
     .put(validators.indexpage.carousels, carousels);
+
+// router.route('/indexpage/hideCarousels')
+//     .put(validators.indexpage.carousels, hideCarousels);
+
+router.route('/indexpage/hideCarousels')
+    .put(validators.indexpage.hideCarousels, hideCarousels);
+
+// router.route('/indexpage/addCarousels')
+//     .put(validators.indexpage.addCarousels, addCarousels);
 
 router.route('/indexpage/specialtopics')
     .put(validators.indexpage.specialTopics, specialTopics);
