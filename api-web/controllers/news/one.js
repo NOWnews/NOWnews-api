@@ -30,7 +30,7 @@ module.exports = async (req, res, next) => {
 
         // 要給 api web 使用的 news 資料
         let news = await libs.getNewsBySn(sn);
-        // debug('news data = %j', news);
+        debug('news data = %j', news);
 
         if(!news) {
             throw new Error('16003');
@@ -70,7 +70,7 @@ module.exports = async (req, res, next) => {
 
         // 將這篇新聞存入 redis
         let cacheData = await redis.setValue(`news${sn}`, news, 3600 * 6);
-        // debug('cacheData = %j', cacheData);
+        debug('cacheData = %j', cacheData);
 
         return res.json(news);
     }catch(err) {
