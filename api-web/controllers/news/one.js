@@ -1,6 +1,7 @@
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-web:controllers:news:one');
 
+import cheerio from 'cheerio';
 import redis from '../../../redis';
 import libs from '../../../libs';
 import { News } from '../../../models';
@@ -50,6 +51,7 @@ module.exports = async (req, res, next) => {
         for(let pv of pageviewList){
             news.pageView.totalScore += pv.totalScore;
         }
+
         // 文中廣告
         news.hasContentAd = news.template === 'DEFAULT';
         if (news.hasContentAd) {
@@ -58,6 +60,19 @@ module.exports = async (req, res, next) => {
             const insertIndex = news.content.indexOf ('</p>', 250) + 4;
             news.contentAdIndex = insertIndex;
         }
+
+        // 預設加入圖片跟圖說的 class，方便跟內文做區別
+        news.content = news.content.replace('<p><img', '<p class="imgdesc"><img');
+
+        // 預設加入圖片跟圖說的 class，方便跟內文做區別
+        const $ = cheerio.load(news.content, { decodeEntities: false });
+        $('img').parent('p').addClass('imgdesc');
+        news.content = $.html();
+
+        // 為了符合 App 格式，修改圖說的結構
+        news.content = news.content.replace(/(<img.*?><\/p>)/mg, (item) => {
+            return item.replace('</p>', '');
+        }).replace('<p>\u25b2', '\u25b2');
 
         // 將這篇新聞存入 redis
         let cacheData = await redis.setValue(`news${sn}`, news, 3600 * 6);
