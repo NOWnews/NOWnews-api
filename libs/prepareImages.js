@@ -43,7 +43,7 @@ module.exports = async (news) => {
 
         return Promise.resolve({});
     } catch (err) {
-        console.log(err);
+        console.error(err);
         return Promise.resolve({});
     }
 };
