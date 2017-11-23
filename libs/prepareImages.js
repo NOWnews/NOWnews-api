@@ -40,7 +40,7 @@ module.exports = async (news) => {
             axios.get(`http://35.201.178.13:8877/?w=300&q=70&src=${news.MainPhoto.url}`),
             axios.get(`http://35.201.178.13:8877/?w=200&q=70&src=${news.MainPhoto.url}`)
         ]);
-
+        console.log('圖片確認完成');
         return Promise.resolve({});
     } catch (err) {
         console.log(err);

@@ -168,6 +168,8 @@ module.exports = async (req, res, next) => {
         // 新聞發佈時，先做一次圖片的 cache
         libs.prepareImages(updatedNews);
 
+        console.log('文章傳送完畢')
+
         return res.json(updatedNews);
     }catch(err) {
         return next(err);
