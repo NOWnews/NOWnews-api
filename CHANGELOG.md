@@ -6,7 +6,7 @@ NOWnews-api change logs
 
 ## 1.0.45 - 2017-11-23
 ### Fixed
-- 發布新聞會去 check 圖片，造成頁面 504
+- 發布新聞會去 check 圖片，造成頁面 504 @wb
 
 ### Changed
 - 修改內文圖片圖說by 兩種模式 @wb
