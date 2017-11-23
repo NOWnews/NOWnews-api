@@ -6,6 +6,9 @@ import axios from 'axios';
 
 module.exports = async (news) => {
     try {
+        function sleep(sleepTime) {
+            for(var start = +new Date; +new Date - start <= sleepTime;) {};
+        }
 
         // 先讓 img.nownews.com 有 cache
         await axios.get(news.MainPhoto.url);
@@ -40,10 +43,12 @@ module.exports = async (news) => {
             axios.get(`http://35.201.178.13:8877/?w=300&q=70&src=${news.MainPhoto.url}`),
             axios.get(`http://35.201.178.13:8877/?w=200&q=70&src=${news.MainPhoto.url}`)
         ]);
+        sleep(9000);
         console.log('圖片確認完成');
         return Promise.resolve({});
     } catch (err) {
         console.error(err);
+        console.log('圖片確認完成');
         return Promise.resolve({});
     }
 };
