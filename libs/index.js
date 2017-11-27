@@ -19,6 +19,7 @@ import updateHotKeywords from './updateHotKeywords';
 import updateInstantNews from './updateInstantNews';
 import updateNewestNews from './updateNewestNews';
 import updateNewestImages from './updateNewestImages';
+import updateBig5Small5 from './updateBig5Small5';
 import refreshFbDebugger from './refreshFbDebugger';
 import refreshIndexPage from './refreshIndexPage';
 import parseRssFeed from './parseRssFeed';
@@ -52,6 +53,7 @@ module.exports = {
     updateInstantNews,
     updateNewestNews,
     updateNewestImages,
+    updateBig5Small5,
     refreshFbDebugger,
     refreshIndexPage,
     parseRssFeed,
