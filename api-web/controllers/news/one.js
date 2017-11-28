@@ -52,15 +52,6 @@ module.exports = async (req, res, next) => {
             news.pageView.totalScore += pv.totalScore;
         }
 
-        // 文中廣告
-        news.hasContentAd = news.template === 'DEFAULT';
-        if (news.hasContentAd) {
-            // 預計是兩百字，可是避免有其他 img、style css 等等，因此以 250 保險。
-            // 4 = '</p>'.length
-            const insertIndex = news.content.indexOf ('</p>', 250) + 4;
-            news.contentAdIndex = insertIndex;
-        }
-
         // 預設加入圖片跟圖說的 class，方便跟內文做區別
         news.content = news.content.replace('<p><img', '<p class="imgdesc"><img');
 
@@ -73,6 +64,15 @@ module.exports = async (req, res, next) => {
         news.content = news.content.replace(/(<img.*?><\/p>)/mg, (item) => {
             return item.replace('</p>', '');
         }).replace('<p>\u25b2', '\u25b2');
+
+        // 文中廣告，務必在最終版內文才做計算
+        news.hasContentAd = news.template === 'DEFAULT';
+        if (news.hasContentAd) {
+            // 預計是兩百字，可是避免有其他 img、style css 等等，因此以 250 保險。
+            // 4 = '</p>'.length
+            const insertIndex = news.content.indexOf ('</p>', 250) + 4;
+            news.contentAdIndex = insertIndex;
+        }
 
         // 將這篇新聞存入 redis
         let cacheData = await redis.setValue(`news${sn}`, news, 3600 * 6);
