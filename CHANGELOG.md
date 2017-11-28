@@ -4,6 +4,9 @@ NOWnews-api change logs
 
 ## [Unreleased]
 
+### Fixed
+調整計算文中廣告的文字長度順序 @esbb48
+
 ## 1.0.45 - 2017-11-23
 ### Fixed
 - 發布新聞會去 check 圖片，造成頁面 504 @wb
