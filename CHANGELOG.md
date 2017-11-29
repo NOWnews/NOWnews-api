@@ -4,6 +4,7 @@ NOWnews-api change logs
 
 ## [Unreleased]
 
+## 1.0.46 - 2017-11-29
 ### Fixed
 調整計算文中廣告的文字長度順序 @esbb48
 
