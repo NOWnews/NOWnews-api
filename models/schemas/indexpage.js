@@ -25,7 +25,8 @@ let schema = new Schema({
     hideCarousels: {
         type: [{
             type: Schema.Types.ObjectId,
-            ref: 'News'
+            ref: 'News',
+            default: null
         }]
     },
 
@@ -33,7 +34,8 @@ let schema = new Schema({
     addCarousels: {
         type: [{
             type: Schema.Types.ObjectId,
-            ref: 'News'
+            ref: 'News',
+            default: null
         }]
     },
 
