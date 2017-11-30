@@ -4,11 +4,21 @@ const debug = Debug('NOWnews-api:api-admin:controllers:indexpage:addCarousels');
 import redis from '../../../redis';
 import libs from '../../../libs';
 import { IndexPage } from '../../../models';
+import _ from 'lodash';
 
 module.exports = async (req, res, next) => {
     try {
+        console.log('L10', req.body.addCarousels);
 
         let { addCarousels, UpdatedAddBy } = req.body;
+
+        // 陣列裡面不能有空值
+        addCarousels = _.map(addCarousels, (carousel) => {
+            if(!carousel) {
+                return null;
+            }
+            return carousel;
+        });
 
         let indexPage = await IndexPage.findIndexPageAsync();
         debug('indexPage = %j', indexPage);

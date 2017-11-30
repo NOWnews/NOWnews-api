@@ -24,8 +24,8 @@ router.route('/indexpage/carousels')
 router.route('/indexpage/hideCarousels')
     .put(validators.indexpage.hideCarousels, hideCarousels);
 
-// router.route('/indexpage/addCarousels')
-//     .put(validators.indexpage.addCarousels, addCarousels);
+router.route('/indexpage/addCarousels')
+    .put(validators.indexpage.addCarousels, addCarousels);
 
 router.route('/indexpage/specialtopics')
     .put(validators.indexpage.specialTopics, specialTopics);

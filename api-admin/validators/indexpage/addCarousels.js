@@ -18,10 +18,6 @@ module.exports = (req, res, next) => {
         throw new Error('22001');
     }
 
-    if (addCarousels.length > config.get('admin.indexpage.addCarousels')) {
-        throw new Error('22006');
-    }
-
     if(!mongoose.Types.ObjectId.isValid(UpdatedAddBy)) {
         throw new Error('22005');
     }
