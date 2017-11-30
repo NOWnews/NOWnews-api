@@ -18,7 +18,7 @@ module.exports = async () => {
                 'videos.MainPhoto',
                 'videos.MainVideo'
             ])
-            .select('carousels specialTopics specialChannels videos')
+            .select('carousels specialTopics specialChannels videos MainMenu')
             .execAsync();
 
         return Promise.resolve(indexPage);
