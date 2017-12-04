@@ -36,8 +36,10 @@ module.exports = async (req, res, next) => {
             request(`${adServ}?ownerid=3025`, opts)
         ]);
 
+        const recommandNos = [3014, 3015, 3016, 3017, 3018, 3019, 3032, 3038, 3039];
+
         const recommand = _.map([0, 1, 2, 3, 4, 5, 6, 7, 8], (key) => {
-            return transformBig5(result[key], 3014 + key);
+            return transformBig5(result[key], recommandNos[key]);
         });
 
         const ads = {
