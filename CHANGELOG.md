@@ -3,6 +3,11 @@
 NOWnews-api change logs
 
 ## [Unreleased]
+### Added
+- 增加推播的 log 資訊 @esbb48
+
+### Fixed
+- 調整 `/promote/news` 指向正確對應的 `ownerid` @esbb48
 
 ## 1.0.46 - 2017-11-29
 ### Fixed
