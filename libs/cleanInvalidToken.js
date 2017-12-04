@@ -72,7 +72,7 @@ module.exports = () => {
                         removeTokens.push(tokensCollection[resIndex][resultIndex]);
                         break
                     default:
-                        console.error('result.error.errorInfo', errorInfo);
+                        console.error('result.error.errorInfo', errorInfo.code);
                 }
             });  
         });

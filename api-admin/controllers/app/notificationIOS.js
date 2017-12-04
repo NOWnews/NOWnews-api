@@ -46,17 +46,35 @@ module.exports = async (req, res, next) => {
             }
         };
 
-        let results = await Promise.map(tokensCollection, (tokenArray) => {
+        let responses = await Promise.map(tokensCollection, (tokenArray) => {
             return firebaseAdmin.messaging().sendToDevice(tokenArray, payload, { priority: "high", timeToLive: 60 * 60 * 24 });
         }, { concurrency: 10 });
 
 
         // show result
         let successd = 0, faild = 0;
-        _.forEach(results, (result) => {
-            faild += result.failureCount;
-            successd += result.successCount;
+        _.forEach(responses, (response) => {
+
+            faild += response.failureCount;
+            
+            successd += response.successCount;
+
+            if (response.failureCount === 0 ) {
+                return;
+            }
+            _.forEach(response.results, (result) => {
+
+                // 正確傳送時會有 messageId
+                if (result.messageId || !result.error) {
+                    return;
+                }
+
+                const errorInfo = result.error.errorInfo;
+                console.error('Push iOS Notification Fail =>', errorInfo.code);
+            });  
+
         });
+
         console.log(`推播結果：successed: ${successd}, faild: ${faild}`);
         return res.json({
             faild, successd
