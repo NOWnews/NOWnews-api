@@ -94,8 +94,6 @@ module.exports = async () => {
             // .concat(localData);
         carousels = _.map(carousels, (news) => news._id);
 
-        console.log(carousels);
-
         let indexpages = await IndexPage.findOne().execAsync();
 
         indexpages.set('carousels', carousels);

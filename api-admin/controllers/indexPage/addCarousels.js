@@ -8,7 +8,6 @@ import _ from 'lodash';
 
 module.exports = async (req, res, next) => {
     try {
-        console.log('L10', req.body.addCarousels);
 
         let { addCarousels, UpdatedAddBy } = req.body;
 
@@ -30,8 +29,8 @@ module.exports = async (req, res, next) => {
         debug('update indexPage = %j', updatedIndexPage);
 
         // 將首頁資訊存入 redis
-        // let cacheData = await libs.getIndexPage();
-        // let cacheIndexPage = await redis.setValue('indexPage', cacheData);
+        let cacheData = await libs.getIndexPage();
+        let cacheIndexPage = await redis.setValue('indexPage', cacheData);
 
         return res.json(updatedIndexPage);
     } catch (err) {

@@ -18,9 +18,6 @@ router.route('/indexpage')
 router.route('/indexpage/carousels')
     .put(validators.indexpage.carousels, carousels);
 
-// router.route('/indexpage/hideCarousels')
-//     .put(validators.indexpage.carousels, hideCarousels);
-
 router.route('/indexpage/hideCarousels')
     .put(validators.indexpage.hideCarousels, hideCarousels);
 

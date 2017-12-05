@@ -18,7 +18,7 @@ module.exports = (req, res, next) => {
         throw new Error('22001');
     }
 
-    if (hideCarousels.length > config.get('admin.indexpage.hideCarousels')) {
+    if (hideCarousels.length > config.get('admin.indexpage.carousels')) {
         throw new Error('22006');
     }
 
