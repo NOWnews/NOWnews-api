@@ -30,7 +30,7 @@ module.exports = async () => {
                         select: '_id url'
                     }
                 ])
-                .limit(30)
+                .limit(35)
                 .sort('-startedAt')
                 .select('_id sn title shortTitle MainMenu MainPhoto MainVideo startedAt type')
                 .execAsync(),
@@ -60,11 +60,17 @@ module.exports = async () => {
         });
 
         // 處理避免重複
-        _.forEach(_.clone(newsList), (news, index) => {
-            if (indexPage.carousels.indexOf(news.id) > -1) {
-                newsList.splice(index, 1);
+        let carouselsIds = _.map(indexPage.carousels, (newsId) => {
+            newsId = _.toString(newsId);
+            return newsId;
+        });
+        const newsListLength = newsList.length;
+        _.forEach(_.reverse(_.clone(newsList)), (news, index) => {
+            if (carouselsIds.indexOf(_.toString(news._id)) > -1) {
+                newsList.splice(newsListLength - 1 - index, 1);
             }
         });
+
 
         // 處理 carousels
         const limit = indexPage.carousels.length;
