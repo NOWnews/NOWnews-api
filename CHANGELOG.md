@@ -3,8 +3,31 @@
 NOWnews-api change logs
 
 ## [Unreleased]
+
+### Added
+- 增加推播的 log 資訊 @esbb48
+
 ### Fixed
+- 調整 `/promote/news` 指向正確對應的 `ownerid` @esbb48
+- 處理 newsSitemap 的特殊字元 @wb
 - 外部廠商上稿時出現503錯誤，因為該名User沒有選擇中心，補上User沒中心時的防呆 @appleoxxo
+
+
+## 1.0.46 - 2017-11-29
+### Fixed
+調整計算文中廣告的文字長度順序 @esbb48
+
+## 1.0.45 - 2017-11-23
+### Fixed
+- 發布新聞會去 check 圖片，造成頁面 504 @wb
+
+### Changed
+- 修改內文圖片圖說by 兩種模式 @wb
+
+## 1.0.44 - 2017-11-02
+### Fixed
+- 防止已release的新聞改為review後發生404 @appleoxxo
+
 ## 1.0.43 - 2017-11-02
 ### Added
 - 推播紀錄列表端點 [GET] `/notificationLog` @esbb48

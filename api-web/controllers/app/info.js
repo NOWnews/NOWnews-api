@@ -15,6 +15,8 @@ module.exports = async (req, res, next) => {
             return next();
         }
 
+        console.log(`AppInfo => ${os}, ${deviceId}`);
+
         // 如果有 token 一樣，就更新 deviceId
         const matchResult = await AppInfo.findOneAndUpdateAsync({
                 token,
