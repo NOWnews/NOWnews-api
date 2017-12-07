@@ -4,6 +4,7 @@ NOWnews-api change logs
 
 ## [Unreleased]
 
+## 1.0.47 - 2017-12-07
 ### Added
 - 增加推播的 log 資訊 @esbb48
 - 新聞上一篇下一篇增加 `parseUrl` @esbb48
