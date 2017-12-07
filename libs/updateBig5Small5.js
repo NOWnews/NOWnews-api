@@ -3,7 +3,7 @@ const debug = Debug('NOWnews-api:libs:updateBig5Small5');
 
 import _ from 'lodash';
 
-import { News, IndexPage } from '../models';
+import { News, IndexPage, Menu } from '../models';
 import redis from '../redis';
 
 module.exports = async () => {
@@ -16,7 +16,12 @@ module.exports = async () => {
         let local = 0;
         let carousels = [];
 
-        let menu = await redis.getValue(`menu`);
+        let menu = await redis.getValue('menu');
+
+        if (!menu) {
+            menu = await Menu.findWebStructionAsync();
+            await redis.setValue('menu', menu);
+        }
 
         _.forEach(menu, (m) => {
             switch (m.name) {

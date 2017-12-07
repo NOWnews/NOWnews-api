@@ -10,12 +10,14 @@ module.exports = new cron.CronJob({
 
     // 主要邏輯區
     onTick: async () => {
+        console.log(`------------- Auto 即時新聞 Start -------------`);
         try {
             await updateBig5Small5();
             return;
         } catch (err) {
             return console.log(err);
         }
+        console.log(`------------- Auto 即時新聞 End -------------`);
     },
 
     start: false,
