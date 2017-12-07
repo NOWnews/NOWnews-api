@@ -6,12 +6,12 @@ NOWnews-api change logs
 
 ### Added
 - 增加推播的 log 資訊 @esbb48
+- 新聞上一篇下一篇增加 `parseUrl` @esbb48
 
 ### Fixed
 - 調整 `/promote/news` 指向正確對應的 `ownerid` @esbb48
 - 處理 newsSitemap 的特殊字元 @wb
 - 外部廠商上稿時出現503錯誤，因為該名User沒有選擇中心，補上User沒中心時的防呆 @appleoxxo
-
 
 ## 1.0.46 - 2017-11-29
 ### Fixed
