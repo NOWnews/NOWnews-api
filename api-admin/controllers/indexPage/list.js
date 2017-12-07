@@ -14,8 +14,8 @@ module.exports = async (req, res, next) => {
                 "carousels.MainMenu",
             ])
             .populate([
-                { path:'videos', select: 'title sn startedAt'},
-                { path:'carousels', select: 'title sn startedAt feedFrom MainMenu'},
+                { path:'videos', select: 'shortTitle title sn startedAt'},
+                { path:'carousels', select: 'shortTitle title sn startedAt feedFrom MainMenu'},
                 { path:'specialTopics', select: 'title createdAt url'},
                 { path:'specialChannels', select: 'title sn createdAt'}
             ])
@@ -31,7 +31,7 @@ module.exports = async (req, res, next) => {
             if (id) {
                 let NewsModel = await News.findById(id)
                     .populate({ path:'MainMenu', select: 'name'})
-                    .select('title sn startedAt feedFrom MainMenu')
+                    .select('shortTitle title sn startedAt feedFrom MainMenu')
                     .lean()
                     .execAsync();
                 indexPage.addCarousels[index] = NewsModel;
