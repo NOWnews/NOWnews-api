@@ -27,7 +27,7 @@ module.exports = async (req, res, next) => {
             let name = device === 'desktop' ? `NOWnews` : `NOWnews今日新聞`;
 
             // 濾掉 word 裡面奇怪的東西
-            news.title = news.title.replace(/[\u200B-\u200D\uFEFF]/g,'');
+            news.title = news.title.replace(/[\b\u200B-\u200D\uFEFF]/g,'').replace(/[\b]/g, '');
 
             return {
                 url: `https://${url}`,
