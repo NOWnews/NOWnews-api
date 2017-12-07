@@ -8,6 +8,7 @@ NOWnews-api change logs
 
 ### Fixed
 - 調整 `/promote/news` 指向正確對應的 `ownerid` @esbb48
+- 處理 newsSitemap 的特殊字元 @wb
 
 ## 1.0.46 - 2017-11-29
 ### Fixed
