@@ -7,9 +7,12 @@ module.exports = async (req, res, next) => {
         if(req.authedRelease || !canSameCenterReviewData.isOn){
             return next();
         }
+
+        // 沒有選好 Center 的 User 就略過這個規則
         if(!req.news.CreatedBy.Center || !req.updater.Center){
             return next();
         }
+
         if(req.news.CreatedBy.Center.toString() === req.updater.Center.toString()){
             req.authedRelease = true;
         }
