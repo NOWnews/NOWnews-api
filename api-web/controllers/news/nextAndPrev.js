@@ -39,8 +39,8 @@ module.exports = async (req, res, next) => {
 
         // 將這篇新聞存入 redis
         let newCache = await redis.setValue(`news${sn}NextAndPrev`, {
-            next: _.pick(nextNews, 'sn', 'title', 'shortTitle'),
-            prev: _.pick(prevNews, 'sn', 'title', 'shortTitle')
+            next: _.pick(nextNews, 'sn', 'title', 'shortTitle', 'parseUrl'),
+            prev: _.pick(prevNews, 'sn', 'title', 'shortTitle', 'parseUrl')
         }, expire);
         debug('newCache = %j', newCache);
 
