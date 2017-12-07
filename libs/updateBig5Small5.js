@@ -91,13 +91,17 @@ module.exports = async () => {
                 .execAsync(),
         ])
 
-        carousels = carousels
-            .concat(politicData)
-            .concat(financeData)
-            .concat(entertainmentData)
-            .concat(sportData);
-            // .concat(localData);
-        carousels = _.map(carousels, (news) => news._id);
+        // 排序規則
+        carousels[0] = politicData[0]._id
+        carousels[1] = financeData[0]._id
+        carousels[2] = sportData[0]._id
+        carousels[3] = entertainmentData[0]._id
+        carousels[4] = entertainmentData[1]._id
+        carousels[5] = politicData[1]._id
+        carousels[6] = politicData[2]._id
+        carousels[7] = financeData[0]._id
+        carousels[8] = sportData[1]._id
+        carousels[9] = entertainmentData[2]._id
 
         let indexpages = await IndexPage.findOne().execAsync();
 

@@ -64,10 +64,9 @@ module.exports = async () => {
             newsId = _.toString(newsId);
             return newsId;
         });
-        const newsListLength = newsList.length;
-        _.forEach(_.reverse(_.clone(newsList)), (news, index) => {
-            if (carouselsIds.indexOf(_.toString(news._id)) > -1) {
-                newsList.splice(newsListLength - 1 - index, 1);
+        newsList = _.filter(_.clone(newsList), (news) => {
+            if (carouselsIds.indexOf(_.toString(news._id)) === -1) {
+                return news;
             }
         });
 
