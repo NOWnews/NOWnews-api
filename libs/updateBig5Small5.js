@@ -14,6 +14,7 @@ module.exports = async () => {
         let entertainment = 0;
         let sport = 0;
         let local = 0;
+        let celebritycomment = 0;
         let carousels = [];
 
         let menu = await redis.getValue('menu');
@@ -22,6 +23,14 @@ module.exports = async () => {
             menu = await Menu.findWebStructionAsync();
             await redis.setValue('menu', menu);
         }
+
+        let celebritycommentMenu = await Menu.findOne()
+            .where('name').equals('名家論壇')
+            .where('isTrashed').equals(false)
+            .select('_id');
+
+
+        celebritycomment = celebritycommentMenu._id;
 
         _.forEach(menu, (m) => {
             switch (m.name) {
@@ -43,7 +52,7 @@ module.exports = async () => {
             }
         });
 
-        let [politicData, financeData, entertainmentData, sportData, localData] = await Promise.all([
+        let [politicData, financeData, entertainmentData, sportData, localData, celebritycommentData] = await Promise.all([
             News.find()
                 .where('MainMenu').equals(politic)
                 .where('status').equals('RELEASE')
@@ -69,7 +78,7 @@ module.exports = async () => {
                 .where('isFeed').equals(false)
                 .where('isSponsored').equals(false)
                 .select('_id')
-                .limit(3)
+                .limit(2)
                 .execAsync(),
             News.find()
                 .where('MainMenu').equals(sport)
@@ -89,7 +98,16 @@ module.exports = async () => {
                 .select('_id')
                 .limit(2)
                 .execAsync(),
-        ])
+            News.find()
+                .where('Menus').equals(celebritycomment)
+                .where('status').equals('RELEASE')
+                .where('startedAt').lte(Date.now())
+                .where('isFeed').equals(false)
+                .where('isSponsored').equals(false)
+                .select('_id')
+                .limit(1)
+                .execAsync()
+        ]);
 
         // 排序規則
         carousels[0] = politicData[0]._id
@@ -99,9 +117,9 @@ module.exports = async () => {
         carousels[4] = entertainmentData[1]._id
         carousels[5] = politicData[1]._id
         carousels[6] = politicData[2]._id
-        carousels[7] = financeData[0]._id
+        carousels[7] = financeData[1]._id
         carousels[8] = sportData[1]._id
-        carousels[9] = entertainmentData[2]._id
+        carousels[9] = celebritycommentData[0]._id
 
         let indexpages = await IndexPage.findOne().execAsync();
 
