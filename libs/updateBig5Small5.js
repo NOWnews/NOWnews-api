@@ -28,8 +28,6 @@ module.exports = async () => {
             .where('name').equals('名家論壇')
             .where('isTrashed').equals(false)
             .select('_id');
-
-
         celebritycomment = celebritycommentMenu._id;
 
         _.forEach(menu, (m) => {
