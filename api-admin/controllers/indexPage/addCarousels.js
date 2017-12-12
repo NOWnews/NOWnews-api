@@ -8,6 +8,7 @@ import _ from 'lodash';
 
 module.exports = async (req, res, next) => {
     try {
+        await libs.updateBig5Small5();
 
         let { addCarousels, UpdatedAddBy } = req.body;
 
