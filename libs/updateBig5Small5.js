@@ -50,6 +50,9 @@ module.exports = async () => {
             }
         });
 
+        //避免自動選取的新聞與手動調整的新聞重複
+        let indexPage = await IndexPage.findOne();
+        let manualPutNewsIds = indexPage.addCarousels;
         let [politicData, financeData, entertainmentData, sportData, localData, celebritycommentData] = await Promise.all([
             News.find()
                 .where('MainMenu').equals(politic)
@@ -58,6 +61,7 @@ module.exports = async () => {
                 .where('isFeed').equals(false)
                 .where('isSponsored').equals(false)
                 .select('_id')
+                .where('_id').nin(manualPutNewsIds)
                 .limit(3)
                 .execAsync(),
             News.find()
@@ -67,6 +71,7 @@ module.exports = async () => {
                 .where('isFeed').equals(false)
                 .where('isSponsored').equals(false)
                 .select('_id')
+                .where('_id').nin(manualPutNewsIds)
                 .limit(2)
                 .execAsync(),
             News.find()
@@ -76,6 +81,7 @@ module.exports = async () => {
                 .where('isFeed').equals(false)
                 .where('isSponsored').equals(false)
                 .select('_id')
+                .where('_id').nin(manualPutNewsIds)
                 .limit(2)
                 .execAsync(),
             News.find()
@@ -85,6 +91,7 @@ module.exports = async () => {
                 .where('isFeed').equals(false)
                 .where('isSponsored').equals(false)
                 .select('_id')
+                .where('_id').nin(manualPutNewsIds)
                 .limit(2)
                 .execAsync(),
             News.find()
@@ -94,6 +101,7 @@ module.exports = async () => {
                 .where('isFeed').equals(false)
                 .where('isSponsored').equals(false)
                 .select('_id')
+                .where('_id').nin(manualPutNewsIds)
                 .limit(2)
                 .execAsync(),
             News.find()
@@ -103,6 +111,7 @@ module.exports = async () => {
                 .where('isFeed').equals(false)
                 .where('isSponsored').equals(false)
                 .select('_id')
+                .where('_id').nin(manualPutNewsIds)
                 .limit(1)
                 .execAsync()
         ]);
