@@ -62,6 +62,7 @@ module.exports = async () => {
                 .where('isSponsored').equals(false)
                 .select('_id')
                 .where('_id').nin(manualPutNewsIds)
+                .sort('-startedAt')
                 .limit(3)
                 .execAsync(),
             News.find()
@@ -72,6 +73,7 @@ module.exports = async () => {
                 .where('isSponsored').equals(false)
                 .select('_id')
                 .where('_id').nin(manualPutNewsIds)
+                .sort('-startedAt')
                 .limit(2)
                 .execAsync(),
             News.find()
@@ -82,6 +84,7 @@ module.exports = async () => {
                 .where('isSponsored').equals(false)
                 .select('_id')
                 .where('_id').nin(manualPutNewsIds)
+                .sort('-startedAt')
                 .limit(2)
                 .execAsync(),
             News.find()
@@ -92,6 +95,7 @@ module.exports = async () => {
                 .where('isSponsored').equals(false)
                 .select('_id')
                 .where('_id').nin(manualPutNewsIds)
+                .sort('-startedAt')
                 .limit(2)
                 .execAsync(),
             News.find()
@@ -102,6 +106,7 @@ module.exports = async () => {
                 .where('isSponsored').equals(false)
                 .select('_id')
                 .where('_id').nin(manualPutNewsIds)
+                .sort('-startedAt')
                 .limit(2)
                 .execAsync(),
             News.find()
@@ -112,6 +117,7 @@ module.exports = async () => {
                 .where('isSponsored').equals(false)
                 .select('_id')
                 .where('_id').nin(manualPutNewsIds)
+                .sort('-startedAt')
                 .limit(1)
                 .execAsync()
         ]);

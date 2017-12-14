@@ -4,6 +4,9 @@ NOWnews-api change logs
 
 ## [Unreleased]
 
+### Fixed
+- 大5小5 mongoose query 補上 .sort('-statedAt') @appleoxxo
+- 補上 /indexpage 端點中 .carousels 的 type @wb
 ## 1.0.48 - 2017-12-14
 ### Fixed
 - 大五小五 自動新聞 調整第2筆和第8筆重複的錯誤 和 變更第10篇新聞為 `名家論壇` 選單下的一篇 @appleoxxo
