@@ -59,7 +59,7 @@ module.exports = async (req, res, next) => {
             instant
         };
 
-        await redis.setValue('adWebCommon', ads, 3600);
+        await redis.setValue('adWebCommon', ads, 3600 * 24);
 
         return res.json(ads);
     } catch (err) {
