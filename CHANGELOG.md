@@ -4,6 +4,7 @@ NOWnews-api change logs
 
 ## [Unreleased]
 
+## 1.0.48 - 2017-12-14
 ### Fixed
 - 大五小五 自動新聞 調整第2筆和第8筆重複的錯誤 和 變更第10篇新聞為 `名家論壇` 選單下的一篇 @appleoxxo
 - 大五小五 避免自動新聞 和 手動新聞 重複 @appleoxxo
