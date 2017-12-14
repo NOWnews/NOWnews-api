@@ -4,6 +4,10 @@ NOWnews-api change logs
 
 ## [Unreleased]
 
+
+### Changed
+-  http://ad1.nownews.com/ads.php 恢復正常 所以恢復 redis cache 時間 @appleoxxo
+
 ### Fixed
 - 大5小5 mongoose query 補上 .sort('-statedAt') @appleoxxo
 - 補上 /indexpage 端點中 .carousels 的 type @wb
