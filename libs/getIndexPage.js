@@ -79,7 +79,7 @@ module.exports = async () => {
             if (id) {
                 let NewsModel = await News.findById(id)
                     .populate({ path:'MainMenu MainPhoto', select: 'name url'})
-                    .select('title shortTitle sn startedAt feedFrom MainMenu MainPhoto')
+                    .select('title shortTitle sn startedAt feedFrom MainMenu MainPhoto type')
                     .execAsync();
                 indexPage.carousels[index] = NewsModel;
             }
