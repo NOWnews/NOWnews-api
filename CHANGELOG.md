@@ -4,6 +4,9 @@ NOWnews-api change logs
 
 ## [Unreleased]
 
+### Fixed
+- 廣告伺服器的端點偶爾會壞掉 前端防呆來不及做 先延長 redis cache 時間 http://ad1.nownews.com/ads.php @appleoxxo
+
 ## 1.0.47 - 2017-12-07
 ### Added
 - 增加推播的 log 資訊 @esbb48
