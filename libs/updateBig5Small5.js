@@ -62,6 +62,7 @@ module.exports = async () => {
                 .where('isSponsored').equals(false)
                 .select('_id')
                 .where('_id').nin(manualPutNewsIds)
+                .where('Menus').ne(celebritycommentMenu) //去除 政治 -> 名家論壇 的文章 避免重複
                 .sort('-startedAt')
                 .limit(3)
                 .execAsync(),
