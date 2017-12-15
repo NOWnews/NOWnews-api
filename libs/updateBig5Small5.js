@@ -53,7 +53,7 @@ module.exports = async () => {
         //避免自動選取的新聞與手動調整的新聞重複
         let indexPage = await IndexPage.findOne();
         let manualPutNewsIds = indexPage.addCarousels;
-        let [politicData, financeData, entertainmentData, sportData, localData, celebritycommentData] = await Promise.all([
+        let [politicData, financeData, entertainmentData, sportData, localData] = await Promise.all([
             News.find()
                 .where('MainMenu').equals(politic)
                 .where('status').equals('RELEASE')
@@ -62,7 +62,6 @@ module.exports = async () => {
                 .where('isSponsored').equals(false)
                 .select('_id')
                 .where('_id').nin(manualPutNewsIds)
-                .where('Menus').ne(celebritycommentMenu) //去除 政治 -> 名家論壇 的文章 避免重複
                 .sort('-startedAt')
                 .limit(3)
                 .execAsync(),
@@ -109,19 +108,24 @@ module.exports = async () => {
                 .where('_id').nin(manualPutNewsIds)
                 .sort('-startedAt')
                 .limit(2)
-                .execAsync(),
-            News.find()
-                .where('Menus').equals(celebritycomment)
-                .where('status').equals('RELEASE')
-                .where('startedAt').lte(Date.now())
-                .where('isFeed').equals(false)
-                .where('isSponsored').equals(false)
-                .select('_id')
-                .where('_id').nin(manualPutNewsIds)
-                .sort('-startedAt')
-                .limit(1)
                 .execAsync()
         ]);
+        let allMainMenuNews = [...politicData, ...financeData, ...entertainmentData, ...sportData, ...localData] ;
+        let allMainMenuNewsIds = [];
+        _.forEach(allMainMenuNews, (news) => {
+            allMainMenuNewsIds.push( news._id );
+        });
+        let celebritycommentData = await News.find()
+            .where('Menus').equals(celebritycomment)
+            .where('status').equals('RELEASE')
+            .where('startedAt').lte(Date.now())
+            .where('isFeed').equals(false)
+            .where('isSponsored').equals(false)
+            .select('_id')
+            .where('_id').nin([...manualPutNewsIds, ...allMainMenuNews])
+            .sort('-startedAt')
+            .limit(1)
+            .execAsync();
 
         // 排序規則
         carousels[0] = politicData[0]._id
