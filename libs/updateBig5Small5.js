@@ -140,6 +140,9 @@ module.exports = async () => {
 
         await indexpages.saveAsync();
 
+        // 更新後把舊的 cache 刪除
+        redis.removeValue('indexPage');
+
         return Promise.resolve({});
     } catch (err) {
         return Promise.reject(err);
