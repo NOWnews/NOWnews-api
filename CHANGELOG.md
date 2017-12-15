@@ -6,7 +6,8 @@ NOWnews-api change logs
 
 
 ### Changed
--  http://ad1.nownews.com/ads.php 恢復正常 所以恢復 redis cache 時間 @appleoxxo
+- http://ad1.nownews.com/ads.php 恢復正常 所以恢復 redis cache 時間 @appleoxxo
+- api-web 的 news/:sn 端點加上 news.resizeApiHost 欄位 給 app 使用的縮圖服務 @appleoxxo
 
 ### Fixed
 - 大5小5 mongoose query 補上 .sort('-statedAt') @appleoxxo

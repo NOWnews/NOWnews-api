@@ -7,6 +7,8 @@ import libs from '../../../libs';
 import { News } from '../../../models';
 import { Pageview } from '../../../pvModels'
 import _ from 'lodash';
+import config from 'config';
+
 
 module.exports = async (req, res, next) => {
 
@@ -73,6 +75,9 @@ module.exports = async (req, res, next) => {
             const insertIndex = news.content.indexOf ('</p>', 250) + 4;
             news.contentAdIndex = insertIndex;
         }
+
+        //給 app 使用的欄位 放入縮圖 api 的 url ， 因為中國要吃 imgapiv2 ， 台灣吃 imagelab
+        news.resizeApiHost = config.get('general.imagelab.url');
 
         // 將這篇新聞存入 redis
         let cacheData = await redis.setValue(`news${sn}`, news, 3600 * 6);
