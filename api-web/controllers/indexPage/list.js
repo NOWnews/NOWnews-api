@@ -17,7 +17,7 @@ module.exports = async (req, res, next) => {
 
         // 如果 redis 沒有資料，去資料庫抓，再存回 redis 裡面
         let indexPage = await libs.getIndexPage();
-        let cacheData = await redis.setValue(`indexPage`, indexPage);
+        let cacheData = await redis.setValue('indexPage', indexPage);
         debug('cacheData = %j', cacheData);
 
         return res.json(indexPage);
