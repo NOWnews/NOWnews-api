@@ -122,7 +122,7 @@ module.exports = async () => {
             .where('isFeed').equals(false)
             .where('isSponsored').equals(false)
             .select('_id')
-            .where('_id').nin([...manualPutNewsIds, ...allMainMenuNews])
+            .where('_id').nin([...manualPutNewsIds, ...allMainMenuNewsIds])
             .sort('-startedAt')
             .limit(1)
             .execAsync();
