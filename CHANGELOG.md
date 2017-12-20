@@ -4,6 +4,9 @@ NOWnews-api change logs
 
 ## [Unreleased]
 
+### Changed
+- 修改大五小五的規則 @appleoxxo
+
 ## 1.0.49 - 2017-12-15
 ### Fixed
 - 修正大五小五更新失敗的問題 @wb
