@@ -1,3 +1,10 @@
+/**
+ * 2017.12.20 頭十 大五小五機制 簡述
+ * 十筆新聞取各分類最新的新聞
+ * 一政 二經 三體 四娛 五娛 六政 七政 八經 九體 十名家論壇
+ * 名家論壇(次選單）只會放在第十個，上面九個不會出現名家論壇
+ * 今日廣場(次選單）不會出現在頭十
+ */
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:libs:updateBig5Small5');
 
@@ -15,6 +22,7 @@ module.exports = async () => {
         let sport = 0;
         let local = 0;
         let celebritycomment = 0;
+        let usertalk = 0;
         let carousels = [];
 
         let menu = await redis.getValue('menu');
@@ -23,12 +31,18 @@ module.exports = async () => {
             menu = await Menu.findWebStructionAsync();
             await redis.setValue('menu', menu);
         }
-
-        let celebritycommentMenu = await Menu.findOne()
+        let [ celebritycommentMenu, usertalkMenu ] = await Promise.all([
+            Menu.findOne()
             .where('name').equals('名家論壇')
             .where('isTrashed').equals(false)
-            .select('_id');
+            .select('_id'),
+            Menu.findOne()
+            .where('name').equals('今日廣場')
+            .where('isTrashed').equals(false)
+            .select('_id')
+        ]);
         celebritycomment = celebritycommentMenu._id;
+        usertalk = usertalkMenu._id;
 
         _.forEach(menu, (m) => {
             switch (m.name) {
@@ -62,6 +76,7 @@ module.exports = async () => {
                 .where('isSponsored').equals(false)
                 .select('_id')
                 .where('_id').nin(manualPutNewsIds)
+                .where('Menus').nin([celebritycomment, usertalk])
                 .sort('-startedAt')
                 .limit(3)
                 .execAsync(),
@@ -73,6 +88,7 @@ module.exports = async () => {
                 .where('isSponsored').equals(false)
                 .select('_id')
                 .where('_id').nin(manualPutNewsIds)
+                .where('Menus').nin([celebritycomment, usertalk])
                 .sort('-startedAt')
                 .limit(2)
                 .execAsync(),
@@ -84,6 +100,7 @@ module.exports = async () => {
                 .where('isSponsored').equals(false)
                 .select('_id')
                 .where('_id').nin(manualPutNewsIds)
+                .where('Menus').nin([celebritycomment, usertalk])
                 .sort('-startedAt')
                 .limit(2)
                 .execAsync(),
@@ -95,6 +112,7 @@ module.exports = async () => {
                 .where('isSponsored').equals(false)
                 .select('_id')
                 .where('_id').nin(manualPutNewsIds)
+                .where('Menus').nin([celebritycomment, usertalk])
                 .sort('-startedAt')
                 .limit(2)
                 .execAsync(),
@@ -106,6 +124,7 @@ module.exports = async () => {
                 .where('isSponsored').equals(false)
                 .select('_id')
                 .where('_id').nin(manualPutNewsIds)
+                .where('Menus').nin([celebritycomment, usertalk])
                 .sort('-startedAt')
                 .limit(2)
                 .execAsync()
