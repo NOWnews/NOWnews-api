@@ -30,6 +30,7 @@ import getFacebookPostInfo from './getFacebookPostInfo';
 import downloadFile from './downloadFile';
 import htmlToText from './htmlToText';
 import prepareImages from './prepareImages';
+import formatImage from './formatImage';
 
 module.exports = {
     cleanInvalidToken,
@@ -63,5 +64,6 @@ module.exports = {
     getFacebookPostInfo,
     downloadFile,
     htmlToText,
-    prepareImages
+    prepareImages,
+    formatImage
 };
