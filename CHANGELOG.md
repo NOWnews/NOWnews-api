@@ -6,6 +6,8 @@ NOWnews-api change logs
 
 ### Added
 - 新聞狀態改變時同步到 elasticsearch @esbb48
+- 新聞匯入時同步到 elasticsearch @esbb48
+
 
 ### Changed
 - 修改大五小五的規則 @appleoxxo
