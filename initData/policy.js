@@ -173,6 +173,13 @@ module.exports = [{
     "type": "ADMIN_MENU",
     "path": "/statistics/centers",
     "method": "get"
+},{
+    "_id": "510020000000000000000001",
+    "group": "統計",
+    "desc": "統計主分類則數",
+    "type": "ADMIN_MENU",
+    "path": "/statistics/categories",
+    "method": "get"
 }, {
     "_id": "510012000000000000000001",
     "group": "新聞順序",

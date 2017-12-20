@@ -4,6 +4,9 @@ NOWnews-api change logs
 
 ## [Unreleased]
 
+### Added
+- 後台新增 "統計" -> "統計主分類則數" @appleoxxo
+
 ### Changed
 - 修改大五小五的規則 @appleoxxo
 
