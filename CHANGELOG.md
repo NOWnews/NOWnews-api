@@ -6,7 +6,7 @@ NOWnews-api change logs
 
 ### Changed
 - 修改大五小五的規則 @appleoxxo
-- 重構 imageFormat @esbb48
+- 提出 imageFormat 當作 lib 共用 @esbb48
 - 搜尋改使用 elasticsearch @esbb48
 
 ## 1.0.49 - 2017-12-15
