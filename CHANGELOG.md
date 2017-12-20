@@ -8,12 +8,6 @@ NOWnews-api change logs
 - 修改大五小五的規則 @appleoxxo
 
 ## 1.0.49 - 2017-12-15
-### Fixed
-- 修正大五小五更新失敗的問題 @wb
-- 修正大五小五政治主分類和名家論壇子分類 文章出現重複的問題 （不限定於政治類）v2 @appleoxxo
-
-
-## 1.0.49 - 2017-12-15
 ### Changed
 - http://ad1.nownews.com/ads.php 恢復正常 所以恢復 redis cache 時間 @appleoxxo
 - api-web 的 news/:sn 端點加上 news.resizeApiHost 欄位 給 app 使用的縮圖服務 @appleoxxo
@@ -21,6 +15,8 @@ NOWnews-api change logs
 ### Fixed
 - 大5小5 mongoose query 補上 .sort('-statedAt') @appleoxxo
 - 補上 /indexpage 端點中 .carousels 的 type @wb
+- 修正大五小五更新失敗的問題 @wb
+- 修正大五小五政治主分類和名家論壇子分類 文章出現重複的問題 （不限定於政治類）v2 @appleoxxo
 
 ## 1.0.48 - 2017-12-14
 ### Fixed
