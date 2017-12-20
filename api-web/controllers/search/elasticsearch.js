@@ -1,12 +1,8 @@
-import elasticsearch from 'elasticsearch';
 import _ from 'lodash';
 import Debug from 'debug';
+import elasticsearch from '../../../elasticsearch';
 import formatImage from '../../../libs/formatImage';
 const debug = Debug('NOWnews-api:api-web:controllers:search:elasticsearch');
-const client = new elasticsearch.Client({
-  host: '35.194.213.72:9200',
-  log: 'trace'
-});
 
 module.exports = async (req, res, next) => {
     try {
@@ -14,7 +10,7 @@ module.exports = async (req, res, next) => {
         let { limit, skip, page, startedAt, endedAt, timeRange } = req.query;
         
         const sortKey = { _score: 'desc' };
-        const result = await client.search({
+        const result = await elasticsearch.search({
            index: 'nownews',
            type: 'news',
            body: {

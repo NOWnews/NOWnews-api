@@ -4,6 +4,9 @@ NOWnews-api change logs
 
 ## [Unreleased]
 
+### Added
+- 新聞狀態改變時同步到 elasticsearch @esbb48
+
 ### Changed
 - 修改大五小五的規則 @appleoxxo
 - 提出 imageFormat 當作 lib 共用 @esbb48
