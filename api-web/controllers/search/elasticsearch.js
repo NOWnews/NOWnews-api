@@ -42,8 +42,13 @@ module.exports = async (req, res, next) => {
         // Format newsList
         const newsList = _.map(result.hits.hits, (data) => {
           const {
-            sn, title, shortTitle, MainPhoto, MainMenu,
-            url, startedAt
+            sn,
+            title,
+            shortTitle,
+            startedAt,
+            MainPhoto: photoUrl,
+            MainMenu: menus,
+            url, 
           } = data._source;
 
           return {
@@ -55,14 +60,14 @@ module.exports = async (req, res, next) => {
             title,
             type: 'NEWS',
             MainMenu: {
-              name: MainMenu && MainMenu[0]
+              name: menus && menus[0]
             },
             MainPhoto: {
-              url: MainPhoto,
+              url: photoUrl,
               desc: '',
-              thumbnail: formatImage.thumbnail(MainPhoto),
-              googleCDN: formatImage.googleCDN(MainPhoto),
-              sizeFormat: formatImage.sizeFormat(MainPhoto)
+              thumbnail: formatImage.thumbnail(photoUrl),
+              googleCDN: formatImage.googleCDN(photoUrl),
+              sizeFormat: formatImage.sizeFormat(photoUrl)
             },
             MainVideo: null,
             url
