@@ -57,6 +57,7 @@ module.exports = async (req, res, next) => {
             shortTitle,
             sn,
             startedAt,
+            formatStartedAt: startedAt,
             title,
             type: 'NEWS',
             MainMenu: {
