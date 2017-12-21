@@ -1,3 +1,6 @@
+// 前面的 6 碼是有意義的，ex: 510001
+// 510 = 權限資料表
+// 001 = group 分類，同個 group 數字會一樣，最後面會印順序和序號而不同
 module.exports = [{
     "_id": "510001000000000000000001",
     "group": "每日稿單",
@@ -172,6 +175,13 @@ module.exports = [{
     "desc": "統計部門則數",
     "type": "ADMIN_MENU",
     "path": "/statistics/centers",
+    "method": "get"
+},{
+    "_id": "510011000000000000000002",
+    "group": "統計",
+    "desc": "統計主分類則數",
+    "type": "ADMIN_MENU",
+    "path": "/statistics/categories",
     "method": "get"
 }, {
     "_id": "510012000000000000000001",

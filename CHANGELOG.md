@@ -3,6 +3,8 @@
 NOWnews-api change logs
 
 ## [Unreleased]
+### Added
+- 後台新增 "統計" -> "統計主分類則數" @appleoxxo
 
 ## 1.0.50 - 2017-12-21
 ### Changed
