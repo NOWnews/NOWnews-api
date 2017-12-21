@@ -41,7 +41,7 @@ module.exports = async (req, res, next) => {
 
         // Format newsList
         const newsList = _.map(result.hits.hits, (data) => {
-          const {
+          let {
             sn,
             title,
             shortTitle,
@@ -50,6 +50,8 @@ module.exports = async (req, res, next) => {
             MainMenu: menus,
             url, 
           } = data._source;
+
+          photoUrl = photoUrl ? photoUrl : 'https://legacy.nownews.com/NOWnews_default/default.png';
 
           return {
             completeUrl: url,
@@ -66,9 +68,9 @@ module.exports = async (req, res, next) => {
             MainPhoto: {
               url: photoUrl,
               desc: '',
-              thumbnail: photoUrl && formatImage.thumbnail(photoUrl),
-              googleCDN: photoUrl && formatImage.googleCDN(photoUrl),
-              sizeFormat: photoUrl && formatImage.sizeFormat(photoUrl)
+              thumbnail: formatImage.thumbnail(photoUrl),
+              googleCDN: formatImage.googleCDN(photoUrl),
+              sizeFormat: formatImage.sizeFormat(photoUrl)
             },
             MainVideo: null,
             url
