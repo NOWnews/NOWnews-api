@@ -9,7 +9,7 @@ module.exports = async (req, res, next) => {
         let { keyword } = req.params;
         let { limit, skip, page, startedAt, endedAt, timeRange } = req.query;
         
-        const sortKey = { _score: 'desc' };
+        const sortKey = { createdAt: 'desc' };
         const result = await elasticsearch.search({
            index: 'nownews',
            type: 'news',
