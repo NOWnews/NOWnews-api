@@ -66,9 +66,9 @@ module.exports = async (req, res, next) => {
             MainPhoto: {
               url: photoUrl,
               desc: '',
-              thumbnail: formatImage.thumbnail(photoUrl),
-              googleCDN: formatImage.googleCDN(photoUrl),
-              sizeFormat: formatImage.sizeFormat(photoUrl)
+              thumbnail: photoUrl && formatImage.thumbnail(photoUrl),
+              googleCDN: photoUrl && formatImage.googleCDN(photoUrl),
+              sizeFormat: photoUrl && formatImage.sizeFormat(photoUrl)
             },
             MainVideo: null,
             url
