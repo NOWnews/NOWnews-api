@@ -17,7 +17,7 @@ module.exports = async (news) => {
                 type: news.type,
                 shortTitle: news.shortTitle,
                 CreatedBy: news.CreatedBy.name,
-                MainMenu: news.MainMenu && news.MainMenu.name,
+                MainMenu: news.MainMenu && [news.MainMenu.name],
                 MainVideo: news.MainVideo && news.MainVideo.url,
                 MainPhoto: news.MainPhoto && news.MainPhoto.url,
                 Tags: _.map(news.Tags, 'name'),
