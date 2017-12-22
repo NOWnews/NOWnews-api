@@ -8,6 +8,7 @@ import { News } from '../../../models';
 import { Pageview } from '../../../pvModels'
 import _ from 'lodash';
 import config from 'config';
+import is from 'is_js';
 
 
 module.exports = async (req, res, next) => {
@@ -15,6 +16,10 @@ module.exports = async (req, res, next) => {
     try {
 
         let { sn } = req.params;
+
+        if (is.not.number(sn)) {
+            throw new Error('16003');
+        }
 
         let cacheNews = await redis.getValue(`news${sn}`);
         if(cacheNews) {
