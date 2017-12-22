@@ -8,8 +8,6 @@ import { News } from '../../../models';
 import { Pageview } from '../../../pvModels'
 import _ from 'lodash';
 import config from 'config';
-import is from 'is_js';
-
 
 module.exports = async (req, res, next) => {
 
@@ -17,7 +15,7 @@ module.exports = async (req, res, next) => {
 
         let { sn } = req.params;
 
-        if (is.not.number(sn)) {
+        if (!Number.isInteger(parseInt(sn, 10))) {
             throw new Error('16003');
         }
 
