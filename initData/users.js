@@ -68,5 +68,22 @@ module.exports = [
         CreatedBy: '530000000000000000000001',
         UpdatedBy: '530000000000000000000001',
         isInitUser: true
+    },
+    {
+        _id: '530000000000000000000006',
+        name: '子網域',
+        nickname: '子網域',
+        staffId: 'SUBDOMAIN',
+        status: 'REGULAR',
+        Role: '520000000000000000000014',
+        email: 'superuser_subdomain@nownews.com',
+        password: 'subdomain28331543',
+        Center: '550000000000000000000001',
+        Department: '540000000000000000000001',
+        jobTitle: 'rss 內送單位',
+        profileLink: '',
+        CreatedBy: '530000000000000000000001',
+        UpdatedBy: '530000000000000000000001',
+        isInitUser: true
     }
 ];
