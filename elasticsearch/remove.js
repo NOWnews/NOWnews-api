@@ -14,7 +14,7 @@ module.exports = async (news) => {
         return Promise.resolve(result);
     } catch (err) {
         // 不影響原本程式執行
-        if (err.body.result !== 'not_found') {
+        if (err.body && err.body.result !== 'not_found') {
             console.error('elasticsearch remove error =>', err.body);
         }
         return Promise.resolve();
