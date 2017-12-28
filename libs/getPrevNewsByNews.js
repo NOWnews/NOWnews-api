@@ -11,6 +11,7 @@ module.exports = async (news) => {
             .where('isTrashed').equals(false)
             .where('startedAt').lt(news.startedAt)
             .where('MainMenu').equals(news.MainMenu)
+            .select('shortTitle title sn parseUrl startedAt')
             .sort('-startedAt')
             .limit(1)
             .execAsync();
