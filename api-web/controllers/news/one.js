@@ -9,12 +9,15 @@ import { Pageview } from '../../../pvModels'
 import _ from 'lodash';
 import config from 'config';
 
-
 module.exports = async (req, res, next) => {
 
     try {
 
         let { sn } = req.params;
+
+        if (!Number.isInteger(parseInt(sn, 10))) {
+            throw new Error('16003');
+        }
 
         let cacheNews = await redis.getValue(`news${sn}`);
         if(cacheNews) {
