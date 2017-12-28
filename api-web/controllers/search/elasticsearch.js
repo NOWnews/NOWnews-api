@@ -2,6 +2,7 @@ import _ from 'lodash';
 import Debug from 'debug';
 import elasticsearch from '../../../elasticsearch';
 import formatImage from '../../../libs/formatImage';
+import moment from 'moment-timezone';
 const debug = Debug('NOWnews-api:api-web:controllers:search:elasticsearch');
 
 module.exports = async (req, res, next) => {
@@ -10,33 +11,48 @@ module.exports = async (req, res, next) => {
         let { limit, skip, page, startedAt, endedAt, timeRange } = req.query;
         
         const sortKey = { startedAt: 'desc' };
+        const now = moment.tz('Asia/Taipei').format("YYYY-MM-DD hh:mm:ss");
         const result = await elasticsearch.search({
-           index: 'nownews',
-           type: 'news',
-           body: {
-               sort: sortKey,
-               from: skip,
-               size: limit,
-               query: {
-                 multi_match: {
-                   query: keyword,
-                   type: 'best_fields',
-                   fields: [
-                     'title',
-                     'summary',
-                     'Tags'
-                   ],
-                   tie_breaker: 0.3,
-                   minimum_should_match: '100%'
-                 }
-               },
-               highlight: {
-                 fields: {
-                   title: {},
-                   summary: {}
-                 }
-               }
-           }
+          index: 'nownews',
+          type: 'news',
+          body: {
+              sort: sortKey,
+              from: skip,
+              size: limit,
+              query: {
+                  bool: {
+                      should: [
+                          {   
+                              multi_match: {
+                                  query: keyword,
+                                  type: 'best_fields',
+                                  fields: [
+                                    'title',
+                                    'summary',
+                                    'Tags'
+                                  ],
+                                  tie_breaker: 0.3,
+                                  minimum_should_match: '100%'
+                              }
+                          }, 
+                          {
+                              range : {
+                                  startAted : {
+                                      lte: now, 
+                                      time_zone: '+08:00'
+                                  }
+                              }
+                          }
+                      ]
+                  }
+              },
+              highlight: {
+                  fields: {
+                      title: {},
+                      summary: {}
+                  }
+              }
+          }
         });
 
         // Format newsList
