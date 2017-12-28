@@ -8,6 +8,7 @@ NOWnews-api change logs
 
 ### Changed
 - 優化取得上下頁的程式碼 @esbb48
+- 優化首頁 api 吐出的資訊量 @esbb48
 
 ## 1.0.51 - 2017-12-22
 ### Added

@@ -4,7 +4,18 @@ const debug = Debug('NOWnews-api:libs:getIndexPage');
 import _ from 'lodash';
 import { IndexPage, News } from '../models';
 import Promise from 'bluebird';
-
+const processMainPhotoFormat = (photo) => {
+    return {
+        url: photo.url,
+        height: photo.height,
+        width: photo.width,
+        title: photo.title,
+        desc: photo.desc,
+        thumbnail: photo.thumbnail,
+        googleCDN: photo.googleCDN,
+        sizeFormat: photo.sizeFormat,
+    }
+}
 module.exports = async () => {
     try {
 
@@ -86,9 +97,36 @@ module.exports = async () => {
             index++;
         }
 
-        indexPage.carousels = _.concat(indexPage.carousels, newsList);
-
-        return Promise.resolve(indexPage);
+        const result = {
+            carousels: _.concat(indexPage.carousels, newsList),
+            specialChannels: _.map(indexPage.specialChannels, (channel) => {
+                return {
+                    sn: channel.sn,
+                    title: channel.title,
+                    MainPhoto: processMainPhotoFormat(channel.MainPhoto)
+                }
+            }),
+            specialTopics: [],
+            // specialTopics: _.map(indexPage.specialTopics, (topic) => {
+            //     return {
+            //         sn: topic.sn,
+            //         title: topic.title,
+            //         MainPhoto: processMainPhotoFormat(topic.MainPhoto),
+            //         createdAt: topic.createdAt,
+            //         url: topic.url
+            //     }
+            // }),
+            videos: _.map(indexPage.videos, (video) => {
+                return {
+                    sn: video.sn,
+                    title: video.title,
+                    shortTitle: video.shortTitle,
+                    MainPhoto: processMainPhotoFormat(video.MainPhoto),
+                    MainVideo: video.MainVideo,
+                }
+            }),
+        }
+        return Promise.resolve(result);
     } catch (err) {
         return Promise.reject(err);
     }
