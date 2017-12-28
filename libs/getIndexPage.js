@@ -122,7 +122,7 @@ module.exports = async () => {
                     title: video.title,
                     shortTitle: video.shortTitle,
                     MainPhoto: processMainPhotoFormat(video.MainPhoto),
-                    MainVideo: video.MainVideo,
+                    MainVideo: { url: video.MainVideo.url },
                 }
             }),
         }
