@@ -12,6 +12,10 @@ NOWnews-api change logs
 - 提出 imageFormat 當作 lib 共用 @esbb48
 - 搜尋改使用 elasticsearch @esbb48
 
+### Changed
+- 優化取得上下頁的程式碼 @esbb48
+- 優化首頁 api 吐出的資訊量 @esbb48
+
 ## 1.0.51 - 2017-12-22
 ### Added
 - 增加 /news/{sn} 端點對 sn 型態的判斷 @esbb48
