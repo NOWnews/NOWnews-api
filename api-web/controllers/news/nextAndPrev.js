@@ -37,20 +37,25 @@ module.exports = async (req, res, next) => {
             expire = 3600 * 5;
         }
 
+        const next = nextNews && {
+            sn: nextNews.sn,
+            title: nextNews.title,
+            shortTitle: nextNews.shortTitle,
+            parseUrl: nextNews.parseUrl
+        } || {};
+
+        const prev = prevNews && {
+            sn: prevNews.sn,
+            title: prevNews.title,
+            shortTitle: prevNews.shortTitle,
+            parseUrl: prevNews.parseUrl
+        } || {};
+        
+
         // 將這篇新聞存入 redis
         let newCache = await redis.setValue(`news${sn}NextAndPrev`, {
-            next: {
-                sn: nextNews.sn,
-                title: nextNews.title,
-                shortTitle: nextNews.shortTitle,
-                parseUrl: nextNews.parseUrl
-            },
-            prev: {
-                sn: prevNews.sn,
-                title: prevNews.title,
-                shortTitle: prevNews.shortTitle,
-                parseUrl: prevNews.parseUrl
-            }
+            next,
+            prev
         }, expire);
         debug('newCache = %j', newCache);
 
