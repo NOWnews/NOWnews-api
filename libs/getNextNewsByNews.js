@@ -12,6 +12,7 @@ module.exports = async (news) => {
             .where('startedAt').gt(news.startedAt)
             .where('startedAt').lte(Date.now())
             .where('MainMenu').equals(news.MainMenu)
+            .select('shortTitle title sn parseUrl startedAt')
             .sort('startedAt')
             .limit(1)
             .execAsync();
