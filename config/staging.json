@@ -1,5 +1,6 @@
 {
     "general": {
+        "elasticsearch": "104.199.130.90:9200",
         "apiKeys": {
             "geocode": "AIzaSyBMndk_T5tmXq8GE_dbvZjINOPS0zHbEgs"
         },

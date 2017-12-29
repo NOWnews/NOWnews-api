@@ -12,6 +12,8 @@ import moment from 'moment-timezone';
 import { parseRssFeed, newsLog, changeInternalLink } from '../libs';
 import { News, Image, Tag, Menu } from '../models';
 import { Pageview } from '../pvModels';
+import elasticsearch from '../elasticsearch';
+
 module.exports = new cron.CronJob({
     //設定每5分鐘收錄一次
     cronTime: '0 */5 * * * *',
@@ -183,6 +185,7 @@ module.exports = new cron.CronJob({
                         // 處理 log
                         let newsForLog = await news.populate('MainMenu Menus MainPhoto MainVideo Photos Videos Author Tags LastReviewer CreatedBy UpdatedBy').execPopulate();
                         await newsLog(newsForLog, 'CREATE');
+                        await elasticsearch.create(newsForLog);
 
                         // 初始化 pageview 資訊
                         await Pageview.findOneAndUpdateAsync({

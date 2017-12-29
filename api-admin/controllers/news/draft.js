@@ -7,6 +7,7 @@ import moment from 'moment-timezone';
 import { News } from '../../../models';
 import { newsLog } from '../../../libs';
 import redis from '../../../redis';
+import elasticsearch from '../../../elasticsearch';
 
 module.exports = async (req, res, next) => {
     try {
@@ -143,6 +144,7 @@ module.exports = async (req, res, next) => {
         // 處理 log
         updatedNews = await updatedNews.populate('MainMenu Menus MainPhoto MainVideo Photos Videos Author Tags LastReviewer CreatedBy UpdatedBy').execPopulate();
         await newsLog(updatedNews, 'UPDATE');
+        await elasticsearch.remove(updatedNews);
 
         return res.json(updatedNews);
     }catch(err) {

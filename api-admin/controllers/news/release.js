@@ -10,6 +10,7 @@ import { Pageview } from '../../../pvModels';
 import redis from '../../../redis';
 import libs from '../../../libs';
 import mongoose from 'mongoose';
+import elasticsearch from '../../../elasticsearch';
 
 module.exports = async (req, res, next) => {
     try {
@@ -118,7 +119,8 @@ module.exports = async (req, res, next) => {
         // 處理 log
         updatedNews = await updatedNews.populate('MainMenu Menus MainPhoto MainVideo Photos Videos Author Tags LastReviewer CreatedBy UpdatedBy').execPopulate();
         await newsLog(updatedNews, 'UPDATE');
-
+        await elasticsearch.remove(updatedNews);
+        await elasticsearch.create(updatedNews);
         /*
          * 暫時先拿掉這個機制，
          */
@@ -160,10 +162,12 @@ module.exports = async (req, res, next) => {
                 setDefaultsOnInsert: true
             });
 
+
         // 不是預發稿就更新 fb share cache
         if (!isSchedule) {
             await libs.refreshFbDebugger(updatedNews.completeUrl);
         }
+
 
         // 新聞發佈時，先做一次圖片的 cache
         libs.prepareImages(updatedNews);

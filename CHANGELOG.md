@@ -5,6 +5,12 @@ NOWnews-api change logs
 ## [Unreleased]
 ### Added
 - 後台新增 "統計" -> "統計主分類則數" @appleoxxo
+- 新聞狀態改變時同步到 elasticsearch @esbb48
+- 新聞匯入時同步到 elasticsearch @esbb48
+
+### Changed
+- 提出 imageFormat 當作 lib 共用 @esbb48
+- 搜尋改使用 elasticsearch @esbb48
 
 ### Changed
 - 優化取得上下頁的程式碼 @esbb48
