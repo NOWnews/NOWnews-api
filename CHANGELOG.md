@@ -3,6 +3,9 @@
 NOWnews-api change logs
 
 ## [Unreleased]
+### Added
+- 增加 POST `/app/eventLog` 端點 @esbb48
+
 ## 1.0.52 - 2017-12-29
 ### Added
 - 後台新增 "統計" -> "統計主分類則數" @appleoxxo
