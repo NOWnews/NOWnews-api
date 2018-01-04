@@ -3,6 +3,7 @@
 NOWnews-api change logs
 
 ## [Unreleased]
+## 1.0.53 - 2018-01-04
 ### Added
 - `getNewsDataBySn` 回傳 `Author.name` @esbb48
 
