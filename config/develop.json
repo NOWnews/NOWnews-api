@@ -34,7 +34,14 @@
                 ],
                 "stars": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_stars.xml"],
                 "tech": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_tech.xml"]
-
+            },
+            "subdomain": {
+                "pinknow": ["https://pinknow.nownews.com/nownews"],
+                "iFunNOW": ["https://ifunnow.nownews.com/nownews"],
+                "SportNOW": ["https://sport.nownews.com/nownews"],
+                "petsmao": ["https://petsmao.nownews.com/nownews"],
+                "BobeeNOW": ["https://bobee.nownews.com/nownews"],
+                "sight": ["https://sight.nownews.com/nownews"]
             }
         },
         "googleCloud": {
