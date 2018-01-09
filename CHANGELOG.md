@@ -6,6 +6,10 @@ NOWnews-api change logs
 ### Added
 - 增加 POST `/app/eventLog` 端點 @esbb48
 
+## 1.0.53 - 2018-01-04
+### Added
+- `getNewsDataBySn` 回傳 `Author.name` @esbb48
+
 ## 1.0.52 - 2017-12-29
 ### Added
 - 後台新增 "統計" -> "統計主分類則數" @appleoxxo
