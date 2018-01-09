@@ -10,9 +10,10 @@ import cron from 'cron';
 import cheerio from 'cheerio';
 import _ from 'lodash';
 import moment from 'moment-timezone';
-import { parseRssFeed, newsLog, changeInternalLink } from '../libs';
+import { parseRssFeed, newsLog } from '../libs';
 import { News, Image, Tag } from '../models';
 import { Pageview } from '../pvModels';
+import elasticsearch from '../elasticsearch';
 
 module.exports = new cron.CronJob({
     // 設定多久跑一次
@@ -37,13 +38,12 @@ module.exports = new cron.CronJob({
             let nowTime = moment.tz('Asia/Taipei');
             let prevTime = moment.tz('Asia/Taipei').add(-10, 'm');
             for(let item of  rssJSON.rss.channel.item){
-                // console.log('L39', item)
 
                 // 如果不是在設定的時間區間內的新聞，就不需要收錄 #######
                 let newsPubDate = moment.tz(new Date(item.pubDate), 'Asia/Taipei');
-                // if( newsPubDate.isBefore(prevTime) ) {
-                //     continue;
-                // }
+                if( newsPubDate.isBefore(prevTime) ) {
+                    continue;
+                }
 
                 // 確認對方給的新聞 url 是否符合規範，不符合規範就不收錄
                 let regexString = /^(http|https):\/\/pinknow.nownews.com\//;
@@ -66,9 +66,8 @@ module.exports = new cron.CronJob({
                 if(aliveNews) {
                     continue;
                 }
-                //把內文的內連都改連回首頁
-                item['content:encoded'] = changeInternalLink(item['content:encoded']);
-                //鉅亨網要求加上在新聞內文 文末加上連結
+
+                //在新聞內文 文末加上連結
                 const link = "https://pinknow.nownews.com/?utm_medium=news&utm_source=nownews";
                 item['content:encoded'] +=`\n更多精彩內容請至 《粉熱NOW》 <a target="_blank" href="${link}">連結>></a>`
 
@@ -178,12 +177,15 @@ module.exports = new cron.CronJob({
                     createdAt: newsPubDate,
                     updatedAt: newsPubDate
                 };
-
                 let news = await News.createAsync(newsOptions);
 
                 // 處理 log
                 let newsForLog = await news.populate('MainMenu Menus MainPhoto MainVideo Photos Videos Author Tags LastReviewer CreatedBy UpdatedBy').execPopulate();
                 await newsLog(newsForLog, 'CREATE');
+
+                // 測試會出錯，因此用非同步了略過他
+                elasticsearch.create(newsForLog);
+
 
                 // 初始化 pageview 資訊
                 await Pageview.findOneAndUpdateAsync({
