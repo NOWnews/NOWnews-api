@@ -164,8 +164,8 @@ let schema = new Schema({
     feedFrom: {
         type: String,
         default: 'OWN',
-        enum: ['OWN', 'CNYES', 'MNA', 'CNA', 'PINKNOW', 'IFUNNOW', 'SPORTNOW', 'PETSMAO', 'BOBEENOW', 'SIGHT']
-        // 內部, 鉅亨網, 軍聞社, 中央社, 粉熱鬧, 愛趣味, 運動, 寵毛網, 保庇, 今日觀點
+        enum: ['OWN', 'CNYES', 'MNA', 'CNA', 'PINKNOW', 'PLAYNOW', 'IFUNNOW', 'SPORTNOW', 'PETSMAO', 'BOBEENOW', 'SIGHT']
+        // 內部, 鉅亨網, 軍聞社, 中央社, 粉樂鬧, 玩樂, 愛趣味, 運動, 寵毛網, 保庇, 今日觀點
     },
 
     // RSS 內送新聞的唯一值
