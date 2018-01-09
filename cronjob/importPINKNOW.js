@@ -7,6 +7,7 @@ const debug = Debug('NOWnews-api:cron:cronjob:importPINKNOW');
 import Promise from 'bluebird';
 import config from 'config';
 import cron from 'cron';
+import cheerio from 'cheerio';
 import _ from 'lodash';
 import moment from 'moment-timezone';
 import { parseRssFeed, newsLog, changeInternalLink } from '../libs';
@@ -27,7 +28,7 @@ module.exports = new cron.CronJob({
                 console.log('cnyes 粉熱NOW沒有設定');
                 return;
             }
-
+            let image = null;
             let rssJSON = await parseRssFeed(feedUrl[0]);
 
             // debug('json = %j', rssJSON.rss.channel.item[0]);
@@ -100,34 +101,34 @@ module.exports = new cron.CronJob({
                  * 粉熱NOW沒有圖片，所以不用處理
                  * 這些處理圖片的 code 留下來當參考
                  */
-                // let image = null;
-                // if(item['media:content']) {
-                //     let imageOptions = {
-                //         title: '（圖／粉熱NOW）',
-                //         desc: '（圖／粉熱NOW）',
-                //         keyword: '粉熱NOW',
-                //         imageFrom: 'CNYES',
-                //         originalname: null,
-                //         format: null,
-                //         type: 'NEWS',
-                //         mode: 'NORMAl',
-                //         mimetype: null,
-                //         width: item['media:content'].width,
-                //         height: item['media:content'].height,
-                //         isDeliver: false,
-                //         Tag: null,
-                //         url: item['media:content'] && item['media:content'].url,
-                //         isTrashed: false,
-                //         CreatedBy: '530000000000000000000002',
-                //         UpdatedBy: '530000000000000000000002',
-                //     };
+                if(item['enclosure']) {
+                    let imageOptions = {
+                        title: '（圖／粉熱NOW）',
+                        desc: `${item.title}（圖／粉熱NOW）`,
+                        keyword: '粉熱NOW',
+                        imageFrom: 'PINKNOW',
+                        originalname: null,
+                        format: null,
+                        type: 'NEWS',
+                        mode: 'NORMAl',
+                        mimetype: item['enclosure'].type,
+                        width: null,
+                        height: null,
+                        isDeliver: false,
+                        Tag: null,
+                        url: item['enclosure'].url,
+                        isTrashed: false,
+                        CreatedBy: '530000000000000000000006',
+                        UpdatedBy: '530000000000000000000006',
+                    };
 
-                //     image = await Image.createAsync(imageOptions);
-                // }
+                    image = await Image.createAsync(imageOptions);
+                }
 
                 console.log(`新聞標題: ${item.title}`);
                 console.log(`新聞短標題: ${shortTitle}`);
                 console.log(`新聞關鍵字:${keywords}`);
+                console.log(`新聞圖片:${image.url}`);
                 console.log(`新聞連結: ${item.link}`);
                 console.log(`新聞識別唯一值: ${uniqKey}`);
                 console.log(`新聞發布時間: ${newsPubDate.format('YYYY-MM-DD HH:ss:mm')}`);
@@ -148,9 +149,9 @@ module.exports = new cron.CronJob({
                     location: [121.5914087,25.0693482], //台北市內湖區的座標
                     shortTitle: shortTitle,
                     summary: title, //粉熱NOW沒有提供summary這個欄位 但前台og tag要用到summary 所以放title
-                    MainMenu: '560000000000000000000013',
-                    Menus: ['560000000000000000000013'],
-                    MainPhoto: randomDefaultImageId,
+                    MainMenu: '560000000000000000000003',
+                    Menus: ['560000000000000000000003'],
+                    MainPhoto: image.id,
                     MainVideo: null,
                     content: item['content:encoded'],
                     Photos: [],
@@ -163,37 +164,37 @@ module.exports = new cron.CronJob({
                     isAdult: false,
                     isDeliver: false,
                     isSponsored: false,
-                    Author: '530000000000000000000002',
+                    Author: '530000000000000000000006',
                     newsBy: '粉熱NOW',
                     Tags: tagList || [],
                     isFeed: true,
-                    feedFrom: 'CNYES',
+                    feedFrom: 'PINKNOW',
                     feedUniqKey: uniqKey,
                     feedUrl: item.link,
-                    LastReviewer: '530000000000000000000002',
+                    LastReviewer: '530000000000000000000006',
                     isTrashed: false,
-                    CreatedBy: '530000000000000000000002',
-                    UpdatedBy: '530000000000000000000002',
+                    CreatedBy: '530000000000000000000006',
+                    UpdatedBy: '530000000000000000000006',
                     createdAt: newsPubDate,
                     updatedAt: newsPubDate
                 };
 
-                // let news = await News.createAsync(newsOptions);
+                let news = await News.createAsync(newsOptions);
 
                 // 處理 log
-                // let newsForLog = await news.populate('MainMenu Menus MainPhoto MainVideo Photos Videos Author Tags LastReviewer CreatedBy UpdatedBy').execPopulate();
-                // await newsLog(newsForLog, 'CREATE');
+                let newsForLog = await news.populate('MainMenu Menus MainPhoto MainVideo Photos Videos Author Tags LastReviewer CreatedBy UpdatedBy').execPopulate();
+                await newsLog(newsForLog, 'CREATE');
 
                 // 初始化 pageview 資訊
-                // await Pageview.findOneAndUpdateAsync({
-                //         url: `/news/${moment.tz(news.startedAt, 'Asia/Taipei').format('YYYYMMDD')}/${news.sn}`
-                //     }, {
-                //         $set: { newsId: news._id, menuId: news.MainMenu._id }
-                //     }, {
-                //         upsert: true,
-                //         new: true,
-                //         setDefaultsOnInsert: true
-                //     });
+                await Pageview.findOneAndUpdateAsync({
+                        url: `/news/${moment.tz(news.startedAt, 'Asia/Taipei').format('YYYYMMDD')}/${news.sn}`
+                    }, {
+                        $set: { newsId: news._id, menuId: news.MainMenu._id }
+                    }, {
+                        upsert: true,
+                        new: true,
+                        setDefaultsOnInsert: true
+                    });
             };
 
             console.log(`------------- Finish Import 粉熱NOW RSS Feed -------------`);
