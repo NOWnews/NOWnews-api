@@ -220,7 +220,8 @@ schema.virtual('sizeFormat').get(function () {
 
     let imagelab = config.get('general.imagelab.url');
     let imagelabRegexString = /^(http|https):\/\/img.nownews.com\/nownews_[A-Za-z1-9]+\/[A-Za-z]+\//;
-    let regexString = /^(http|https):\/\/[A-Za-z]+.nownews.com\//;
+    let regexString = /^(http|https):\/\/(img|s|rssimg|e|legacy).nownews.com\//;
+    // 目前 imagelab 的白名單有 img.nownews.com, s.nownews.com, rssimg.nownews.com, e.nownews.com, legacy.nownews.com
 
     let imagelabMatch = this.url.match(imagelabRegexString);
     let imgMatch = this.url.match(regexString);
