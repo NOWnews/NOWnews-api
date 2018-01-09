@@ -827,11 +827,13 @@ None
 
 | 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
 |---|---|---|---|---|
+| action | 動作 | String | √ | `RECEIVE`, `OPEN`|
 | deviceId | 裝置的識別 id | String | √ | |
-| token | 裝置的推播 token | String |  | |
 | os | 裝置的作業系統 | String | √ | `ANDROID`, `IOS` |
-| action | 動作 | id | String | √ | `RECEVIE`, `OPEN`|
-| type | 分類 | id | String | √ | `NOTIFICATION`|
+| sn | 新聞sn | Number |  | |
+| type | 分類 | String | √ | `NOTIFICATION`|
+| token | 裝置的推播 token | String |  | |
+
 
 #### Query Parameters
 

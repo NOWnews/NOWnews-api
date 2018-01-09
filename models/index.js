@@ -88,6 +88,7 @@ module.exports = {
     SpecialTopic,
     SpecialChannel,
     DailyPlan,
+    AppEventLog,
     AppVersion,
     AppSplash,
     AppInfo,

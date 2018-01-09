@@ -6,7 +6,7 @@ let schema = new Schema({
     action: {
         type: String,
         required: true,
-        enum: ['RECEVIE', 'OPEN']
+        enum: ['RECEIVE', 'OPEN']
     },
     
     deviceId: {
@@ -20,7 +20,9 @@ let schema = new Schema({
         enum: ['IOS', 'ANDROID'],
         default: 'ANDROID'
     },
-
+    sn: {
+        type: Number,
+    },
     token: {
         type: String
     },

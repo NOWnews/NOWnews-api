@@ -9,7 +9,7 @@ module.exports = async (req, res, next) => {
         // 都先回應正確，射後不理
         res.status(200).send();
 
-        let { action, deviceId, os, token, type } = req.body;
+        let { action, deviceId, os, token, type, sn } = req.body;
 
         if (!os || !deviceId) {
             return next();
@@ -21,6 +21,7 @@ module.exports = async (req, res, next) => {
             action,
             deviceId,
             os,
+            sn,
             token,
             type,
         });
