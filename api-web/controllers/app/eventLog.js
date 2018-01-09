@@ -9,20 +9,21 @@ module.exports = async (req, res, next) => {
         // 都先回應正確，射後不理
         res.status(200).send();
 
-        let { token, deviceId, os, event } = req.body;
+        let { action, deviceId, os, token, type } = req.body;
 
-        if (!token || !os || !deviceId || token === '' || token === 'null') {
+        if (!os || !deviceId) {
             return next();
         }
 
-        console.log(`AppEventLog => ${os}, ${deviceId}`);
+        console.log(`AppEventLog => ${os}, ${deviceId}, ${type}, ${action}`);
 
         const result = await AppEventLog.create({
-                token,
-                os,
-                event,
-                deviceId
-            });
+            action,
+            deviceId,
+            os,
+            token,
+            type,
+        });
 
         return next();
 

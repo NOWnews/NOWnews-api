@@ -3,17 +3,17 @@ import mongoose from 'mongoose';
 let Schema = mongoose.Schema;
 
 let schema = new Schema({
-
+    action: {
+        type: String,
+        required: true,
+        enum: ['RECEVIE', 'OPEN']
+    },
+    
     deviceId: {
         type: String,
         required: true
     },
-
-    token: {
-        type: String,
-        required: true
-    },
-
+    
     os: {
         type: String,
         required: true,
@@ -21,10 +21,14 @@ let schema = new Schema({
         default: 'ANDROID'
     },
 
-    event: {
+    token: {
+        type: String
+    },
+
+    type: {
         type: String,
-        enum: ['RECEVIE_NOTIFICATION', 'OPEN_NOTIFICATION'],
-        default: null
+        required: true,
+        enum: ['NOTIFICATION']
     },
 
     // 建立時間

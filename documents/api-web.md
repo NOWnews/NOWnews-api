@@ -830,7 +830,8 @@ None
 | deviceId | 裝置的識別 id | String | √ | |
 | token | 裝置的推播 token | String |  | |
 | os | 裝置的作業系統 | String | √ | `ANDROID`, `IOS` |
-| event | 事件 | id | String | √ | `RECEVIE_NOTIFICATION`, `OPEN_NOTIFICATION`|
+| action | 動作 | id | String | √ | `RECEVIE`, `OPEN`|
+| type | 分類 | id | String | √ | `NOTIFICATION`|
 
 #### Query Parameters
 
