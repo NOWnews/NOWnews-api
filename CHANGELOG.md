@@ -4,7 +4,23 @@ NOWnews-api change logs
 
 ## [Unreleased]
 ### Added
+- 增加 POST `/app/eventLog` 端點 @esbb48
+
+## 1.0.53 - 2018-01-04
+### Added
+- `getNewsDataBySn` 回傳 `Author.name` @esbb48
+
+## 1.0.52 - 2017-12-29
+### Added
 - 後台新增 "統計" -> "統計主分類則數" @appleoxxo
+- 新聞狀態改變時同步到 elasticsearch @esbb48
+- 新聞匯入時同步到 elasticsearch @esbb48
+
+### Changed
+- 提出 imageFormat 當作 lib 共用 @esbb48
+- 搜尋改使用 elasticsearch @esbb48
+- 優化取得上下頁的程式碼 @esbb48
+- 優化首頁 api 吐出的資訊量 @esbb48
 
 ## 1.0.51 - 2017-12-22
 ### Added

@@ -20,6 +20,8 @@ import readChunk from 'read-chunk';
 import fileType from 'file-type';
 import imageServer from 'scp2';
 import googleCloud from 'google-cloud';
+import elasticsearch from '../elasticsearch';
+
 const gcloud = googleCloud({
     projectId: config.get('general.googleCloud.projectId'),
     keyFilename: config.get('general.googleCloud.keyFilename'),
@@ -244,6 +246,7 @@ module.exports = new cron.CronJob({
                 // 處理 log
                 let newsForLog = await news.populate('MainMenu Menus MainPhoto MainVideo Photos Videos Author Tags LastReviewer CreatedBy UpdatedBy').execPopulate();
                 await newsLog(newsForLog, 'CREATE');
+                await elasticsearch.create(newsForLog);
 
                 // 初始化 pageview 資訊
                 await Pageview.findOneAndUpdateAsync({

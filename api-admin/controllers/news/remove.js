@@ -4,6 +4,7 @@ const debug = Debug('NOWnews-api:api-admin:controllers:news:remove');
 import { News } from '../../../models';
 import { newsLog } from '../../../libs';
 import redis from '../../../redis';
+import elasticsearch from '../../../elasticsearch';
 
 module.exports = async (req, res, next) => {
     try {
@@ -46,7 +47,7 @@ module.exports = async (req, res, next) => {
         // 處理 log
         removedNews = await removedNews.populate('MainMenu Menus MainPhoto MainVideo Photos Videos Author Tags LastReviewer CreatedBy UpdatedBy').execPopulate();
         await newsLog(removedNews, 'DELETE');
-
+        await elasticsearch.remove(updatedNews);
         return res.json(removedNews);
     }catch(err) {
         return next(err);

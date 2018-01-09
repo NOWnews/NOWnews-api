@@ -5,6 +5,7 @@ import moment from 'moment-timezone';
 let Schema = mongoose.Schema;
 
 import config from 'config';
+import formatImage from '../../libs/formatImage';
 
 let schema = new Schema({
 
@@ -159,147 +160,15 @@ schema.index({
 });
 
 schema.virtual('thumbnail').get(function () {
-
-    // let imgRegexString = /^(http|https):\/\/img.nownews.com\//;
-    let otherRegexString = /^(http|https):\/\/[A-Za-z]+.nownews.com\//;
-
-    // let imgMatchArray = this.url.match(imgRegexString);
-    let otherMatchArray = this.url.match(otherRegexString);
-
-    // 如果不屬於 http://xxx.nownews.com 的圖片網址
-    if(otherMatchArray === null) {
-        return this.url;
-    }
-
-    // 如果是 http://img.nownews.com 的圖片網址
-    // if(imgMatchArray) {
-    //     let url = config.get('general.imagelab.url');
-    //     let replaceString = imgMatchArray[0];
-    //     let srcUrl = this.url.replace(replaceString, '/');
-    //     return `${url}/?w=300&q=70&src=${encodeURIComponent(srcUrl)}`;
-    // }
-
-    // 如果是 http://[A-Za-z].nownews.com 的圖片網址
-    if(otherMatchArray) {
-        let url = config.get('general.imagelab.url');
-        return `${url}/?w=300&q=70&src=${encodeURIComponent(this.url)}`;
-    }
+    return formatImage.thumbnail(this.url);
 });
 
 schema.virtual('googleCDN').get(function () {
-
-    let imgRegexString = /^(http|https):\/\/img.nownews.com\/nownews_[A-Za-z1-9]+\/[A-Za-z]+\//;
-    let otherRegexString = /^(http|https):\/\/[A-Za-z]+.nownews.com\//;
-
-    let imgMatchArray = this.url.match(imgRegexString);
-    let otherMatchArray = this.url.match(otherRegexString);
-
-    // 如果不屬於 http://xxx.nownews.com 的圖片網址
-    if(imgMatchArray === null && otherMatchArray === null) {
-        return this.url;
-    }
-
-    // 如果是 http://img.nownews.com 的圖片網址
-    if(imgMatchArray) {
-        let replaceString = imgMatchArray[0];
-        let fileName = this.url.replace(replaceString, '');
-        let url = config.get('general.googleCloud.image-cdn-url');
-        let folder = config.get('general.googleCloud.image-gcs-folder');
-        return `${url}/${folder}/${fileName}`;
-    }
-
-    // 如果是 http://[A-Za-z].nownews.com 的圖片網址
-    if(otherMatchArray) {
-        let url = config.get('general.imagelab.url');
-        return `${url}/?w=1080&q=100&src=${encodeURIComponent(this.url)}`;
-    }
+    return formatImage.googleCDN(this.url);
 });
 
 schema.virtual('sizeFormat').get(function () {
-
-
-    let imagelab = config.get('general.imagelab.url');
-    let imagelabRegexString = /^(http|https):\/\/img.nownews.com\/nownews_[A-Za-z1-9]+\/[A-Za-z]+\//;
-    let regexString = /^(http|https):\/\/(img|s|rssimg|e|legacy).nownews.com\//;
-    // 目前 imagelab 的白名單有 img.nownews.com, s.nownews.com, rssimg.nownews.com, e.nownews.com, legacy.nownews.com
-
-    let imagelabMatch = this.url.match(imagelabRegexString);
-    let imgMatch = this.url.match(regexString);
-
-    // 如果圖片都不為 xxx.nownews.com
-    if(imgMatch === null && imagelabMatch === null) {
-        return {
-            w300q70: this.url,
-            w360q70: this.url,
-            w540q70: this.url,
-            w640q70: this.url,
-            w720q70: this.url,
-            w750q70: this.url,
-            w1080q85: this.url,
-            w1440q85: this.url
-        };
-    }
-
-    // 如果圖片是 img.nownews.com
-    if(imgMatch && imagelabMatch) {
-
-        let replaceString = imagelabMatch[0];
-        let fileName = this.url.replace(replaceString, '');
-        let url = config.get('general.googleCloud.image-cdn-url');
-        let folder = config.get('general.googleCloud.image-gcs-folder');
-        return {
-            w300q70: `${imagelab}/?w=300&q=70&src=${url}/${folder}/${fileName}`,
-            w360q70: `${imagelab}/?w=360&q=70&src=${url}/${folder}/${fileName}`,
-            w540q70: `${imagelab}/?w=540&q=70&src=${url}/${folder}/${fileName}`,
-            w640q70: `${imagelab}/?w=640&q=70&src=${url}/${folder}/${fileName}`,
-            w720q70: `${imagelab}/?w=720&q=70&src=${url}/${folder}/${fileName}`,
-            w750q70: `${imagelab}/?w=750&q=70&src=${url}/${folder}/${fileName}`,
-            w1080q85: `${imagelab}/?w=1080&q=85&src=${url}/${folder}/${fileName}`,
-            w1440q85: `${imagelab}/?w=1440&q=85&src=${url}/${folder}/${fileName}`
-        };
-    }
-
-    // 如果圖片是不是 img.nownews.com 但符合 xxx.nownews.com 的規範
-    if(imgMatch && imagelabMatch === null) {
-        return {
-            w300q70: `${imagelab}/?w=300&q=70&src=${this.url}`,
-            w360q70: `${imagelab}/?w=360&q=70&src=${this.url}`,
-            w540q70: `${imagelab}/?w=540&q=70&src=${this.url}`,
-            w640q70: `${imagelab}/?w=640&q=70&src=${this.url}`,
-            w720q70: `${imagelab}/?w=720&q=70&src=${this.url}`,
-            w750q70: `${imagelab}/?w=750&q=70&src=${this.url}`,
-            w1080q85: `${imagelab}/?w=1080&q=85&src=${this.url}`,
-            w1440q85: `${imagelab}/?w=1440&q=85&src=${this.url}`
-        };
-    }
-
-    // let imagelab = config.get('general.imagelab.url');
-    // let regexString = /^(http|https):\/\/[A-Za-z]+.nownews.com\//;
-    // let imgMatch = this.url.match(regexString);
-
-    // if(imgMatch === null) {
-    //     return {
-    //         w300q70: this.url,
-    //         w360q70: this.url,
-    //         w540q70: this.url,
-    //         w640q70: this.url,
-    //         w720q70: this.url,
-    //         w750q70: this.url,
-    //         w1080q85: this.url,
-    //         w1440q85: this.url
-    //     };
-    // }
-
-    // return {
-    //     w300q70: `${imagelab}/?w=300&q=70&src=${this.url}`,
-    //     w360q70: `${imagelab}/?w=360&q=70&src=${this.url}`,
-    //     w540q70: `${imagelab}/?w=540&q=70&src=${this.url}`,
-    //     w640q70: `${imagelab}/?w=640&q=70&src=${this.url}`,
-    //     w720q70: `${imagelab}/?w=720&q=70&src=${this.url}`,
-    //     w750q70: `${imagelab}/?w=750&q=70&src=${this.url}`,
-    //     w1080q85: `${imagelab}/?w=1080&q=85&src=${this.url}`,
-    //     w1440q85: `${imagelab}/?w=1440&q=85&src=${this.url}`
-    // };
+    return formatImage.sizeFormat(this.url);
 });
 
 schema.virtual('formatCreatedAt').get(function () {

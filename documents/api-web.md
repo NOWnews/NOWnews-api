@@ -809,6 +809,35 @@ None
 
 None
 
+### [POST] `/app/eventLog`
+
+儲存 app Log 事件
+
+#### Header Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 是否需要 | 範例 |
+|---|---|---|---|---|
+| X-NOWnews-API | 驗證是否有存取 api 權限的 token，目前為固定的值 | String | √ | request.header['X-NOWnews-API'] = 'YouCanSeeMeJohnCena' |
+
+#### Url Parameters
+
+None
+
+#### Body Parameters
+
+| 參數名稱 | 解釋 | 型態(或列舉) | 必填 | 範例 |
+|---|---|---|---|---|
+| action | 動作 | String | √ | `RECEIVE`, `OPEN`|
+| deviceId | 裝置的識別 id | String | √ | |
+| os | 裝置的作業系統 | String | √ | `ANDROID`, `IOS` |
+| sn | 新聞sn | Number |  | |
+| type | 分類 | String | √ | `NOTIFICATION`|
+| token | 裝置的推播 token | String |  | |
+
+
+#### Query Parameters
+
+None
 
 ### [GET] `/app/nativead`
 

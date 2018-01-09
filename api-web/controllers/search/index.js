@@ -5,8 +5,12 @@ let router = express.Router();
 import baseQuery from '../../middlewares/baseQuery';
 
 import list from './list';
+import elasticsearch from './elasticsearch';
+
+// router.route('/search/:keyword')
+//     .get(baseQuery, list);
 
 router.route('/search/:keyword')
-    .get(baseQuery, list);
+    .get(baseQuery, elasticsearch);
 
 module.exports = router;

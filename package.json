@@ -1,6 +1,6 @@
 {
   "name": "nownews-api",
-  "version": "1.0.51",
+  "version": "1.0.53",
   "description": "nownews api service",
   "main": "index.js",
   "scripts": {
@@ -43,6 +43,7 @@
     "crypto-random-string": "^1.0.0",
     "debug": "^2.6.1",
     "device": "^0.3.8",
+    "elasticsearch": "^14.0.0",
     "express": "^4.14.1",
     "file-type": "^4.1.0",
     "firebase-admin": "^5.1.0",
