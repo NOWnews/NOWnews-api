@@ -36,14 +36,13 @@
                 "stars": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_stars.xml"],
                 "tech": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_tech.xml"]
             },
-            "subdomain": {
-                "pinknow": ["https://pinknow.nownews.com/nownews"],
-                "iFunNOW": ["https://ifunnow.nownews.com/nownews"],
-                "SportNOW": ["https://sport.nownews.com/nownews"],
-                "petsmao": ["https://petsmao.nownews.com/nownews"],
-                "BobeeNOW": ["https://bobee.nownews.com/nownews"],
-                "sight": ["https://sight.nownews.com/nownews"]
-            }
+            "pinkNow": "https://pinknow.nownews.com/nownews",
+            "playNow": "https://playnow.nownews.com/nownews",
+            "ifunNow": "https://ifunnow.nownews.com/nownews",
+            "sportNow": "https://sport.nownews.com/nownews",
+            "petsmao": "https://petsmao.nownews.com/nownews",
+            "bobeeNow": "https://bobee.nownews.com/nownews",
+            "sight": "https://sight.nownews.com/nownews"
         },
         "googleCloud": {
             "projectId": "nownews-website-167108",

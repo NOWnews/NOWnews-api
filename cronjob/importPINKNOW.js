@@ -15,6 +15,12 @@ import { News, Image, Tag } from '../models';
 import { Pageview } from '../pvModels';
 import elasticsearch from '../elasticsearch';
 
+// feed info
+const feedName = '粉樂NOW';
+const createUser = '530000000000000000000006';
+const feedUrl = config.get('general.rssFeed.pinkNow');
+const MenuId = '560000000000000000000003';
+
 module.exports = new cron.CronJob({
     // 設定多久跑一次
     cronTime: '0 */3 * * * *',
@@ -22,15 +28,14 @@ module.exports = new cron.CronJob({
     // 主要邏輯區
     onTick: async () => {
         try {
-            console.log(`------------- Start Import 粉熱NOW RSS Feed -------------`);
-            let feedUrl = config.get('general.rssFeed.subdomain.pinknow');
+            console.log(`------------- Start Import ${feedName} RSS Feed -------------`);
 
             if(!feedUrl || feedUrl === '') {
-                console.log('cnyes 粉熱NOW沒有設定');
+                console.log(`${feedName}沒有設定`);
                 return;
             }
             let image = null;
-            let rssJSON = await parseRssFeed(feedUrl[0]);
+            let rssJSON = await parseRssFeed(feedUrl);
 
             // debug('json = %j', rssJSON.rss.channel.item[0]);
 
@@ -68,8 +73,8 @@ module.exports = new cron.CronJob({
                 }
 
                 //在新聞內文 文末加上連結
-                const link = "https://pinknow.nownews.com/?utm_medium=news&utm_source=nownews";
-                item['content:encoded'] +=`\n更多精彩內容請至 《粉熱NOW》 <a target="_blank" href="${link}">連結>></a>`
+                const link = item['link'];
+                item['content:encoded'] +=`\n更多精彩內容請至 《${feedName}》 <a target="_blank" href="${link}">連結>></a>`
 
                 //新聞關鍵字
                 var keywords = item['category'] ? item['category'] : [];
@@ -90,21 +95,20 @@ module.exports = new cron.CronJob({
                             // 沒有這個 tag 就幫他建立
                             return Tag.createAsync({
                                 name: tag,
-                                CreatedBy: '530000000000000000000002',
-                                UpdatedBy: '530000000000000000000002'
+                                CreatedBy: createUser,
+                                UpdatedBy: createUser
                             });
                         });
                 });
 
                 /*
-                 * 粉熱NOW沒有圖片，所以不用處理
-                 * 這些處理圖片的 code 留下來當參考
+                 * 處理圖片部分
                  */
                 if(item['enclosure']) {
                     let imageOptions = {
-                        title: '（圖／粉熱NOW）',
-                        desc: `${item.title}（圖／粉熱NOW）`,
-                        keyword: '粉熱NOW',
+                        title: `（圖／${feedName}）`,
+                        desc: `${item.title}（圖／${feedName}）`,
+                        keyword: `${feedName}`,
                         imageFrom: 'PINKNOW',
                         originalname: null,
                         format: null,
@@ -117,8 +121,8 @@ module.exports = new cron.CronJob({
                         Tag: null,
                         url: item['enclosure'].url,
                         isTrashed: false,
-                        CreatedBy: '530000000000000000000006',
-                        UpdatedBy: '530000000000000000000006',
+                        CreatedBy: createUser,
+                        UpdatedBy: createUser,
                     };
 
                     image = await Image.createAsync(imageOptions);
@@ -134,22 +138,13 @@ module.exports = new cron.CronJob({
                 console.log(`收錄時間區間: ${prevTime.format('YYYY-MM-DD HH:ss:mm')} ~ ${nowTime.format('YYYY-MM-DD HH:ss:mm')}`);
                 console.log(`-------------------------------------------`);
 
-                // 鉅亨網完全沒有圖片 全部主圖都隨機從這4個墊檔圖指定
-                const cnyesImagesObjectIds = [
-                  '511000000000000000000005',
-                  '511000000000000000000006',
-                  '511000000000000000000007',
-                  '511000000000000000000008',
-                ];
-                let randomDefaultImageId = cnyesImagesObjectIds[Math.floor(Math.random() * cnyesImagesObjectIds.length)];
-
                 let newsOptions = {
                     title: title,
                     location: [121.5914087,25.0693482], //台北市內湖區的座標
                     shortTitle: shortTitle,
-                    summary: title, //粉熱NOW沒有提供summary這個欄位 但前台og tag要用到summary 所以放title
-                    MainMenu: '560000000000000000000003',
-                    Menus: ['560000000000000000000003'],
+                    summary: title, //分眾頻道沒有提供summary這個欄位 但前台og tag要用到summary 所以放title
+                    MainMenu: MenuId,
+                    Menus: [MenuId],
                     MainPhoto: image.id,
                     MainVideo: null,
                     content: item['content:encoded'],
@@ -163,19 +158,19 @@ module.exports = new cron.CronJob({
                     isAdult: false,
                     isDeliver: false,
                     isSponsored: false,
-                    Author: '530000000000000000000006',
-                    newsBy: '粉熱NOW',
+                    Author: createUser,
+                    newsBy: `${feedName}`,
                     Tags: tagList || [],
                     isFeed: true,
                     feedFrom: 'PINKNOW',
                     feedUniqKey: uniqKey,
                     feedUrl: item.link,
-                    LastReviewer: '530000000000000000000006',
+                    LastReviewer: createUser,
                     isTrashed: false,
-                    CreatedBy: '530000000000000000000006',
-                    UpdatedBy: '530000000000000000000006',
-                    createdAt: newsPubDate,
-                    updatedAt: newsPubDate
+                    CreatedBy: createUser,
+                    UpdatedBy: createUser,
+                    createdAt: nowTime,
+                    updatedAt: nowTime
                 };
                 let news = await News.createAsync(newsOptions);
 
@@ -199,7 +194,7 @@ module.exports = new cron.CronJob({
                     });
             };
 
-            console.log(`------------- Finish Import 粉熱NOW RSS Feed -------------`);
+            console.log(`------------- Finish Import ${feedName} RSS Feed -------------`);
         } catch (err) {
             return console.log(err);
         }
