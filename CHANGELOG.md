@@ -3,6 +3,9 @@
 NOWnews-api change logs
 
 ## [Unreleased]
+### Added
+- 增加 POST `/app/eventLog` 端點 @esbb48
+
 ## 1.0.53 - 2018-01-04
 ### Added
 - `getNewsDataBySn` 回傳 `Author.name` @esbb48
