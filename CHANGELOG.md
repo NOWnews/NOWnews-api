@@ -4,6 +4,9 @@ NOWnews-api change logs
 
 ## [Unreleased]
 ### Added
+- 分眾頻道匯進主站(PINKNOW, IFUNNOW, PETSMAO, PLAYNOW ,SIGHT, SPORTNOW, BOBEE) @wb
+
+### Added
 - 增加 POST `/app/eventLog` 端點 @esbb48
 
 ## 1.0.53 - 2018-01-04
