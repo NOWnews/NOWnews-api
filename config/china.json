@@ -86,7 +86,7 @@
         "redis": {
             "host": "104.199.132.216",
             "port": 16379,
-            "db": 0,
+            "db": 4,
             "password": "wu0w;62",
             "expireSeconds": 3600
         },
@@ -145,7 +145,7 @@
         "redis": {
             "host": "104.199.132.216",
             "port": 16379,
-            "db": 0,
+            "db": 4,
             "password": "wu0w;62",
             "expireSeconds": 3600
         },
