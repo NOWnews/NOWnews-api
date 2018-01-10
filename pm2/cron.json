@@ -9,11 +9,13 @@
     "env_staging" : {
       "NODE_ENV": "staging"
     },
+    "env_china" : {
+      "NODE_ENV": "china-gcp-cron"
+    },
     "env_production" : {
       "NODE_ENV": "production"
     },
-    "instances"  : 0,
-    "exec_mode"  : "cluster",
+    "instances"  : 1,
     "log_date_format" : "YYYY-MM-DD HH:mm Z",
     "out_file": "/dev/null"
   }]
