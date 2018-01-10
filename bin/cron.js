@@ -7,9 +7,9 @@ const env = process.env.NODE_ENV || 'dev'; //若環境為 china 時 不執行匯
 
 let cronjobs;
 if( env === 'china-gcp-cron'){
-    require('../cronjob/index-china.js');
+    cronjobs = require('../cronjob/index-china.js');
 }else{
-    require('../cronjob/index.js');
+    cronjobs = require('../cronjob/index.js');
 }
 
 // 初始化資料
