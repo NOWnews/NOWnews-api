@@ -6,7 +6,7 @@ NOWnews-api change logs
 
 ## 1.0.54 - 2018-01-10
 ### Changed
-
+- 恢復 鉅亨網 中央社 中央社圖片 軍聞社 匯入 @appleoxxo
 - 停掉鉅亨網 中央社 中央社圖片 軍聞社 匯入 因為重複 @appleoxxo
 ## 1.0.53 - 2018-01-04
 ### Added
