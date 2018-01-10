@@ -6,6 +6,7 @@ NOWnews-api change logs
 
 ## 1.0.54 - 2018-01-10
 ### Changed
+- 修改 cronjob 啟動時 若  --env === china 的話 要吃 /config/china-gcp-cron.json @appleoxxo
 - 恢復 鉅亨網 中央社 中央社圖片 軍聞社 匯入 @appleoxxo
 - 停掉鉅亨網 中央社 中央社圖片 軍聞社 匯入 因為重複 @appleoxxo
 ## 1.0.53 - 2018-01-04
