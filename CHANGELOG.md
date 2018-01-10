@@ -3,6 +3,10 @@
 NOWnews-api change logs
 
 ## [Unreleased]
+
+### Changed
+- 停掉鉅亨網 中央社 中央社圖片 軍聞社 匯入 因為重複 @appleoxxo
+
 ### Added
 - 增加 POST `/app/eventLog` 端點 @esbb48
 
