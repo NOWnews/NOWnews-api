@@ -3,6 +3,11 @@
 NOWnews-api change logs
 
 ## [Unreleased]
+
+## 1.0.54 - 2018-01-10
+### Changed
+
+- 停掉鉅亨網 中央社 中央社圖片 軍聞社 匯入 因為重複 @appleoxxo
 ## 1.0.53 - 2018-01-04
 ### Added
 - `getNewsDataBySn` 回傳 `Author.name` @esbb48
