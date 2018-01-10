@@ -1,0 +1,166 @@
+{
+    "general": {
+        "elasticsearch": "search.nownews.com:9200",
+        "apiKeys": {
+            "geocode": "AIzaSyBMndk_T5tmXq8GE_dbvZjINOPS0zHbEgs"
+        },
+        "apiUrls": {
+            "geocode": "https://maps.googleapis.com/maps/api/geocode/json"
+        },
+        "imagelab": {
+            "url": "https://imagelab.nownews.com"
+        },
+        "officialUrl": "https://www.nownews.com",
+        "rssFeed": {
+            "cnyes": "https://service.cnyes.com/rss/v2/news?vendor=nownews",
+            "mna": "http://mna.gpwb.gov.tw/service/RSS.php?type=news",
+            "cnaImage": "http://rss.cna.com.tw/client/nownews/pho/gallery_feed_cnaphoto.xml",
+            "cnaNews": {
+                "business": [
+                    "http://rss.cna.com.tw/client/nownews/cfp/article_feed_business_cn.xml",
+                    "http://rss.cna.com.tw/client/nownews/cfp/article_feed_business_int.xml",
+                    "http://rss.cna.com.tw/client/nownews/cfp/article_feed_business_tw.xml"
+                ],
+                "china": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_china.xml"],
+                "health": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_health.xml"],
+                "int": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_int.xml"],
+                "life": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_life.xml"],
+                "local": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_local.xml"],
+                "politics": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_politics.xml"],
+                "society": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_society.xml"],
+                "sports": [
+                    "http://rss.cna.com.tw/client/nownews/cfp/article_feed_sports_cn.xml",
+                    "http://rss.cna.com.tw/client/nownews/cfp/article_feed_sports_int.xml",
+                    "http://rss.cna.com.tw/client/nownews/cfp/article_feed_sports_tw.xml"
+                ],
+                "stars": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_stars.xml"],
+                "tech": ["http://rss.cna.com.tw/client/nownews/cfp/article_feed_tech.xml"]
+
+            }
+        },
+        "googleCloud": {
+            "projectId": "nownews-official-website",
+            "keyFilename": "pems/NOWnews-Official-Website-3fe6935a938c.json",
+            "storageBucket": "nownews-web",
+            "image-cdn-url": "https://rssimg.nownews.com",
+            "image-gcs-folder": "images"
+        },
+        "apn": {
+            "cert": "pems/NOWnewsPushCert.pem",
+            "key": "pems/NOWnewsPushKey.pem",
+            "passphrase": "Cvso8733",
+            "production": true,
+            "maxConnections": 100000
+        },
+        "gcm": {
+            "key": "AIzaSyAZNW71ymawhi6WXqI9L7nqyGNkOVy-ksY"
+        },
+        "queryOptions": {
+            "desktop": {
+                "limit": 15,
+                "skip": 0,
+                "page": 1
+            },
+            "mobile": {
+                "limit": 30,
+                "skip": 0,
+                "page": 1
+            }
+        }
+    },
+    "admin": {
+        "mode": "production",
+        "showError": true,
+        "mongodb": {
+            "host": "mongodb://10.140.0.5,10.140.0.13:27017",
+            "db": "NOWnews_Production"
+        },
+        "pvMongodb": {
+            "host": "mongodb://10.140.0.5,10.140.0.13:27017",
+            "db": "NOWnewsAnalytics_Production"
+        },
+        "ottMongodb": {
+            "host": "mongodb://10.140.0.5,10.140.0.13:27017",
+            "db": "NOWnewsOTT_Production"
+        },
+        "redis": {
+            "host": "10.140.0.3",
+            "port": 16379,
+            "db": 4,
+            "password": "wu0w;62",
+            "expireSeconds": 3600
+        },
+        "header": {
+            "X-NOWnews-API": ["NOWnewsIsFeature"]
+        },
+        "baseQuery": {
+            "limit": 20,
+            "skip": 0,
+            "page": 1
+        },
+        "imageServer": {
+            "username": "imgscp",
+            "password": "zAQ!@#EDCXSW",
+            "host": "img.nownews.com", //59.124.93.47
+            "port": 50022,
+            "url": "https://img.nownews.com/nownews_production/images",
+            "folder": "/var/www/img.nownews.com/nownews_production/images"
+        },
+        "videoServer": {
+            "username": "imgscp",
+            "password": "zAQ!@#EDCXSW",
+            "host": "img.nownews.com", //59.124.93.47
+            "port": 50022,
+            "url": "https://img.nownews.com/nownews_production/videos",
+            "folder": "/var/www/img.nownews.com/nownews_production/videos"
+        },
+        "indexpage": {
+            "carousels": 30,
+            "specialTopics": 8,
+            "specialChannels": 8,
+            "videos": 20
+        },
+        "firebase": {
+            "key": "pems/NOWnews-project-firebase-prod.json",
+            "databaseURL": "https://spry-smithy-96510.firebaseio.com"
+        }
+    },
+
+    "web": {
+        "mode": "production",
+        "adServ": "http://ad1.nownews.com/ads.php",
+        "showError": false,
+        "mongodb": {
+            "host": "mongodb://10.140.0.5,10.140.0.13:27017",
+            "db": "NOWnews_Production"
+        },
+        "pvMongodb": {
+            "host": "mongodb://10.140.0.5,10.140.0.13:27017",
+            "db": "NOWnewsAnalytics_Production"
+        },
+        "ottMongodb": {
+            "host": "mongodb://10.140.0.5,10.140.0.13:27017",
+            "db": "NOWnewsOTT_Production"
+        },
+        "redis": {
+            "host": "10.140.0.3",
+            "port": 16379,
+            "db": 4,
+            "password": "wu0w;62",
+            "expireSeconds": 3600
+        },
+        "header": {
+            "X-NOWnews-API": ["YouCanSeeMeJohnCena","JHK","VSOONTECH","1KXUN"]
+        },
+        "baseQuery": {
+            "limit": 15,
+            "skip": 0,
+            "page": 1
+        }
+    },
+    "pageviewWeight": {
+        "pageviews": 1,
+        "temperatures": 3,
+        "weightedScore": 0.1
+    }
+}

@@ -10,7 +10,7 @@
       "NODE_ENV": "staging"
     },
     "env_china" : {
-      "NODE_ENV": "china"
+      "NODE_ENV": "china-gcp-cron"
     },
     "env_production" : {
       "NODE_ENV": "production"
