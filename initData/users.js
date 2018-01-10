@@ -105,9 +105,9 @@ module.exports = [
     },
     {
         _id: '530000000000000000000008',
-        name: 'IFUNNOW',
-        nickname: 'IFUNNOW',
-        staffId: 'IFUNNOW',
+        name: '愛趣味',
+        nickname: '愛趣味',
+        staffId: '愛趣味',
         status: 'REGULAR',
         Role: '520000000000000000000014',
         email: 'superuser_ifunnow@nownews.com',

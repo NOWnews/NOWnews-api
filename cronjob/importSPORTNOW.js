@@ -3,7 +3,7 @@
  */
 
 import Debug from 'debug';
-const debug = Debug('NOWnews-api:cron:cronjob:importPLAYNOW');
+const debug = Debug('NOWnews-api:cron:cronjob:importSPORTNOW');
 import Promise from 'bluebird';
 import config from 'config';
 import cron from 'cron';
@@ -16,12 +16,12 @@ import { Pageview } from '../pvModels';
 import elasticsearch from '../elasticsearch';
 
 // feed info
-const feedName = 'PLAYNOW';
-const feedFrom = 'PLAYNOW';
-const CreateUser = '530000000000000000000007';
-const feedUrl = config.get('general.rssFeed.playNow');
-const MainMenu = '560000000000000000000003';
-const MenuIds = ['5952d5d19c2d7166cb9511df'];
+const feedName = 'SportNOW';
+const feedFrom = 'SPORTNOW';
+const CreateUser = '530000000000000000000009';
+const feedUrl = config.get('general.rssFeed.sportNow');
+const MainMenu = '560000000000000000000005';
+const MenuIds = [];
 
 module.exports = new cron.CronJob({
     // 設定多久跑一次
@@ -48,12 +48,12 @@ module.exports = new cron.CronJob({
 
                 // 如果不是在設定的時間區間內的新聞，就不需要收錄 #######
                 let newsPubDate = moment.tz(new Date(item.pubDate), 'Asia/Taipei');
-                // if( newsPubDate.isBefore(prevTime) ) {
-                //     continue;
-                // }
+                if( newsPubDate.isBefore(prevTime) ) {
+                    continue;
+                }
 
                 // 確認對方給的新聞 url 是否符合規範，不符合規範就不收錄
-                let regexString = /^(http|https):\/\/playnow.nownews.com\//;
+                let regexString = /^(http|https):\/\/sport.nownews.com\//;
                 if(item.link.match(regexString) === null) {
                     continue;
                 }

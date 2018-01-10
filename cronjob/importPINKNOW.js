@@ -17,10 +17,11 @@ import elasticsearch from '../elasticsearch';
 
 // feed info
 const feedName = '粉樂NOW';
-const createUser = '530000000000000000000006';
+const feedFrom = 'PINKNOW';
+const CreateUser = '530000000000000000000006';
 const feedUrl = config.get('general.rssFeed.pinkNow');
 const MainMenu = '560000000000000000000003';
-const MenuId = '5952d5d19c2d7166cb9511df';
+const MenuIds = ['5952d5d19c2d7166cb9511df'];
 
 module.exports = new cron.CronJob({
     // 設定多久跑一次
@@ -96,8 +97,8 @@ module.exports = new cron.CronJob({
                             // 沒有這個 tag 就幫他建立
                             return Tag.createAsync({
                                 name: tag,
-                                CreatedBy: createUser,
-                                UpdatedBy: createUser
+                                CreatedBy: CreateUser,
+                                UpdatedBy: CreateUser
                             });
                         });
                 });
@@ -110,7 +111,7 @@ module.exports = new cron.CronJob({
                         title: `（圖／${feedName}）`,
                         desc: `${item.title}（圖／${feedName}）`,
                         keyword: `${feedName}`,
-                        imageFrom: 'PINKNOW',
+                        imageFrom: feedFrom,
                         originalname: null,
                         format: null,
                         type: 'NEWS',
@@ -122,8 +123,8 @@ module.exports = new cron.CronJob({
                         Tag: null,
                         url: item['enclosure'].url,
                         isTrashed: false,
-                        CreatedBy: createUser,
-                        UpdatedBy: createUser,
+                        CreatedBy: CreateUser,
+                        UpdatedBy: CreateUser,
                     };
 
                     image = await Image.createAsync(imageOptions);
@@ -145,7 +146,7 @@ module.exports = new cron.CronJob({
                     shortTitle: shortTitle,
                     summary: title, //分眾頻道沒有提供summary這個欄位 但前台og tag要用到summary 所以放title
                     MainMenu: MainMenu,
-                    Menus: [MenuId],
+                    Menus: MenuIds,
                     MainPhoto: image.id,
                     MainVideo: null,
                     content: item['content:encoded'],
@@ -159,17 +160,17 @@ module.exports = new cron.CronJob({
                     isAdult: false,
                     isDeliver: false,
                     isSponsored: false,
-                    Author: createUser,
+                    Author: CreateUser,
                     newsBy: `${feedName}`,
                     Tags: tagList || [],
                     isFeed: true,
-                    feedFrom: 'PINKNOW',
+                    feedFrom: feedFrom,
                     feedUniqKey: uniqKey,
                     feedUrl: item.link,
-                    LastReviewer: createUser,
+                    LastReviewer: CreateUser,
                     isTrashed: false,
-                    CreatedBy: createUser,
-                    UpdatedBy: createUser,
+                    CreatedBy: CreateUser,
+                    UpdatedBy: CreateUser,
                     createdAt: nowTime,
                     updatedAt: nowTime
                 };

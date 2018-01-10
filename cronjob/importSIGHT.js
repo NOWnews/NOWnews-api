@@ -3,7 +3,7 @@
  */
 
 import Debug from 'debug';
-const debug = Debug('NOWnews-api:cron:cronjob:importPLAYNOW');
+const debug = Debug('NOWnews-api:cron:cronjob:importSIGHT');
 import Promise from 'bluebird';
 import config from 'config';
 import cron from 'cron';
@@ -16,12 +16,12 @@ import { Pageview } from '../pvModels';
 import elasticsearch from '../elasticsearch';
 
 // feed info
-const feedName = 'PLAYNOW';
-const feedFrom = 'PLAYNOW';
-const CreateUser = '530000000000000000000007';
-const feedUrl = config.get('general.rssFeed.playNow');
-const MainMenu = '560000000000000000000003';
-const MenuIds = ['5952d5d19c2d7166cb9511df'];
+const feedName = '今日觀點';
+const feedFrom = 'SIGHT';
+const CreateUser = '530000000000000000000012';
+const feedUrl = config.get('general.rssFeed.sight');
+const MainMenu = '560000000000000000000018';
+const MenuIds = [];
 
 module.exports = new cron.CronJob({
     // 設定多久跑一次
@@ -53,7 +53,7 @@ module.exports = new cron.CronJob({
                 // }
 
                 // 確認對方給的新聞 url 是否符合規範，不符合規範就不收錄
-                let regexString = /^(http|https):\/\/playnow.nownews.com\//;
+                let regexString = /^(http|https):\/\/sight.nownews.com\//;
                 if(item.link.match(regexString) === null) {
                     continue;
                 }

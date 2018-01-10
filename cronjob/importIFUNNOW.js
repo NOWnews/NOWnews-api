@@ -3,7 +3,7 @@
  */
 
 import Debug from 'debug';
-const debug = Debug('NOWnews-api:cron:cronjob:importPINKNOW');
+const debug = Debug('NOWnews-api:cron:cronjob:importIFUNNOW');
 import Promise from 'bluebird';
 import config from 'config';
 import cron from 'cron';
@@ -17,6 +17,7 @@ import elasticsearch from '../elasticsearch';
 
 // feed info
 const feedName = '愛趣味';
+const feedFrom = 'IFUNNOW';
 const CreateUser = '530000000000000000000008';
 const feedUrl = config.get('general.rssFeed.ifunNow');
 const MainMenu = '560000000000000000000003';
@@ -52,7 +53,7 @@ module.exports = new cron.CronJob({
                 // }
 
                 // 確認對方給的新聞 url 是否符合規範，不符合規範就不收錄
-                let regexString = /^(http|https):\/\/pinknow.nownews.com\//;
+                let regexString = /^(http|https):\/\/ifunnow.nownews.com\//;
                 if(item.link.match(regexString) === null) {
                     continue;
                 }
@@ -110,7 +111,7 @@ module.exports = new cron.CronJob({
                         title: `（圖／${feedName}）`,
                         desc: `${item.title}（圖／${feedName}）`,
                         keyword: `${feedName}`,
-                        imageFrom: 'PINKNOW',
+                        imageFrom: feedFrom,
                         originalname: null,
                         format: null,
                         type: 'NEWS',
@@ -163,7 +164,7 @@ module.exports = new cron.CronJob({
                     newsBy: `${feedName}`,
                     Tags: tagList || [],
                     isFeed: true,
-                    feedFrom: 'PINKNOW',
+                    feedFrom: feedFrom,
                     feedUniqKey: uniqKey,
                     feedUrl: item.link,
                     LastReviewer: CreateUser,
