@@ -44,7 +44,7 @@ module.exports = new cron.CronJob({
             let newsList = [];
             let nowTime = moment.tz('Asia/Taipei');
             let prevTime = moment.tz('Asia/Taipei').add(-10, 'm');
-            for(let item of  rssJSON.rss.channel.item){
+            for(let item of rssJSON.rss.channel.item){
 
                 // 如果不是在設定的時間區間內的新聞，就不需要收錄 #######
                 let newsPubDate = moment.tz(new Date(item.pubDate), 'Asia/Taipei');
@@ -53,14 +53,13 @@ module.exports = new cron.CronJob({
                 // }
 
                 // 確認對方給的新聞 url 是否符合規範，不符合規範就不收錄
-                let regexString = /^(http|https):\/\/pinknow.nownews.com\//;
+                let regexString = /^(http|https):\/\/petsmao.nownews.com\//;
                 if(item.link.match(regexString) === null) {
                     continue;
                 }
 
                 // 取出對方新聞 uniq key
-                let splitLink = item.link.split('/');
-                let uniqKey = splitLink[splitLink.length - 2];
+                let uniqKey = item.guid['$t'];
 
                 // 處理標題或是短標題多於限制的字數，就把它截掉
                 let title = item.title.slice(0, 25);
@@ -71,6 +70,7 @@ module.exports = new cron.CronJob({
                     .where('feedUniqKey').equals(uniqKey)
                     .execAsync();
                 if(aliveNews) {
+                    debug('不收錄原因: 已存過');
                     continue;
                 }
 
@@ -79,7 +79,7 @@ module.exports = new cron.CronJob({
                 item['content:encoded'] +=`\n更多精彩內容請至 《${feedName}》 <a target="_blank" href="${link}">連結>></a>`
 
                 //新聞關鍵字
-                var keywords = item['category'] ? item['category'] : [];
+                var keywords = item['tags'] ? item['tags'] : [];
                 let tagList = await Promise.mapSeries(keywords, (tag) => {
                     // 變成小寫與去除頭尾空白
                     tag = tag.trim().toLowerCase();
@@ -132,6 +132,9 @@ module.exports = new cron.CronJob({
 
                 console.log(`新聞標題: ${item.title}`);
                 console.log(`新聞短標題: ${shortTitle}`);
+                console.log(`新聞主分類:${MainMenu}`);
+                console.log(`新聞次分類:${MenuIds}`);
+                console.log(`新聞簡介:${item.description}`);
                 console.log(`新聞關鍵字:${keywords}`);
                 console.log(`新聞圖片:${image.url}`);
                 console.log(`新聞連結: ${item.link}`);
@@ -144,7 +147,7 @@ module.exports = new cron.CronJob({
                     title: title,
                     location: [121.5914087,25.0693482], //台北市內湖區的座標
                     shortTitle: shortTitle,
-                    summary: title, //分眾頻道沒有提供summary這個欄位 但前台og tag要用到summary 所以放title
+                    summary: item.description || title, //分眾頻道可能沒有提供summary這個欄位 但前台og tag要用到summary 所以放title
                     MainMenu: MainMenu,
                     Menus: MenuIds,
                     MainPhoto: image.id,

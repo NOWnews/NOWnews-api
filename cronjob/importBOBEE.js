@@ -22,6 +22,15 @@ const CreateUser = '530000000000000000000011';
 const feedUrl = config.get('general.rssFeed.bobeeNow');
 const MainMenu = '560000000000000000000017';
 const MenuIds = [];
+const bobeeSubCategory = [
+    {'560000000000000000000019': '寺廟列表'},
+    {'560000000000000000000020': '精選好文'},
+    {'560000000000000000000021': '神明故事'},
+    {'560000000000000000000022': '宗教用品'},
+    {'560000000000000000000023': '時事專題'},
+    {'560000000000000000000024': '宗教儀式'},
+    {'560000000000000000000025': '宗教藝術'}
+]
 
 module.exports = new cron.CronJob({
     // 設定多久跑一次
@@ -44,7 +53,7 @@ module.exports = new cron.CronJob({
             let newsList = [];
             let nowTime = moment.tz('Asia/Taipei');
             let prevTime = moment.tz('Asia/Taipei').add(-10, 'm');
-            for(let item of  rssJSON.rss.channel.item){
+            for(let item of rssJSON.rss.channel.item){
 
                 // 如果不是在設定的時間區間內的新聞，就不需要收錄 #######
                 let newsPubDate = moment.tz(new Date(item.pubDate), 'Asia/Taipei');
@@ -59,8 +68,18 @@ module.exports = new cron.CronJob({
                 }
 
                 // 取出對方新聞 uniq key
-                let splitLink = item.link.split('/');
-                let uniqKey = splitLink[splitLink.length - 2];
+                let uniqKey = item.guid['$t'];
+
+                // 取出對方新聞 category
+                let category = item.category ? item.category : [];
+                let categoryList = [];
+                if (!_.isArray(category)) { category = [category]; }
+
+                _.forEach(category, (value, key) => {
+                    var checkValue = _.find(bobeeSubCategory, (obj) => _.values(obj)[0] == value);
+                    categoryList.push(_.keys(checkValue)[0]);
+                });
+                categoryList = _.compact(categoryList);
 
                 // 處理標題或是短標題多於限制的字數，就把它截掉
                 let title = item.title.slice(0, 25);
@@ -71,6 +90,7 @@ module.exports = new cron.CronJob({
                     .where('feedUniqKey').equals(uniqKey)
                     .execAsync();
                 if(aliveNews) {
+                    debug('不收錄原因: 已存過');
                     continue;
                 }
 
@@ -79,7 +99,7 @@ module.exports = new cron.CronJob({
                 item['content:encoded'] +=`\n更多精彩內容請至 《${feedName}》 <a target="_blank" href="${link}">連結>></a>`
 
                 //新聞關鍵字
-                var keywords = item['category'] ? item['category'] : [];
+                var keywords = item['tags'] ? item['tags'] : [];
                 let tagList = await Promise.mapSeries(keywords, (tag) => {
                     // 變成小寫與去除頭尾空白
                     tag = tag.trim().toLowerCase();
@@ -132,6 +152,9 @@ module.exports = new cron.CronJob({
 
                 console.log(`新聞標題: ${item.title}`);
                 console.log(`新聞短標題: ${shortTitle}`);
+                console.log(`新聞主分類:${MainMenu}`);
+                console.log(`新聞次分類:${categoryList}`);
+                console.log(`新聞簡介:${item.description}`);
                 console.log(`新聞關鍵字:${keywords}`);
                 console.log(`新聞圖片:${image.url}`);
                 console.log(`新聞連結: ${item.link}`);
@@ -144,9 +167,9 @@ module.exports = new cron.CronJob({
                     title: title,
                     location: [121.5914087,25.0693482], //台北市內湖區的座標
                     shortTitle: shortTitle,
-                    summary: title, //分眾頻道沒有提供summary這個欄位 但前台og tag要用到summary 所以放title
+                    summary: item.description || title, //分眾頻道可能沒有提供summary這個欄位 但前台og tag要用到summary 所以放title
                     MainMenu: MainMenu,
-                    Menus: MenuIds,
+                    Menus: categoryList,
                     MainPhoto: image.id,
                     MainVideo: null,
                     content: item['content:encoded'],
