@@ -1,6 +1,5 @@
 {
   "apps" : [{
-    "name"        : "cron",
     "script"      : "./bin/cron.js",
     "watch"       : false,
     "env": {
@@ -9,11 +8,15 @@
     "env_staging" : {
       "NODE_ENV": "staging"
     },
-    "env_production" : {
-      "NODE_ENV": "production"
+    "env_china" : {
+      "NODE_ENV": "china-gcp-cron",
+      "name": "CN-cron"
     },
-    "instances"  : 0,
-    "exec_mode"  : "cluster",
+    "env_production" : {
+      "NODE_ENV": "production",
+      "name": "cron"
+    },
+    "instances"  : 1,
     "log_date_format" : "YYYY-MM-DD HH:mm Z",
     "out_file": "/dev/null"
   }]
