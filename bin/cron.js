@@ -2,7 +2,15 @@ require('babel-core/register');
 require('babel-polyfill');
 
 let initDataStart = require('../initData/start');
-const cronjobs = require('../cronjob');
+
+const env = process.env.NODE_ENV || 'dev'; //若環境為 china 時 不執行匯入新聞 防止重複 https://github.com/NOWnews/NOWnews-api/issues/867
+
+let cronjobs;
+if( env === 'china-gcp-cron'){
+    cronjobs = require('../cronjob/index-china.js');
+}else{
+    cronjobs = require('../cronjob/index.js');
+}
 
 // 初始化資料
 initDataStart()
