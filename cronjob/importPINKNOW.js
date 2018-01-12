@@ -43,14 +43,15 @@ module.exports = new cron.CronJob({
 
             let newsList = [];
             let nowTime = moment.tz('Asia/Taipei');
-            let prevTime = moment.tz('Asia/Taipei').add(-10, 'm');
+            let prevTime = moment.tz('Asia/Taipei').add(-10, 'd');
             for(let item of rssJSON.rss.channel.item){
 
                 // 如果不是在設定的時間區間內的新聞，就不需要收錄 #######
                 let newsPubDate = moment.tz(new Date(item.pubDate), 'Asia/Taipei');
-                // if( newsPubDate.isBefore(prevTime) ) {
-                //     continue;
-                // }
+                if( newsPubDate.isBefore(prevTime) ) {
+                    debug('不收錄原因: 新聞資料過期');
+                    continue;
+                }
 
                 // 確認對方給的新聞 url 是否符合規範，不符合規範就不收錄
                 let regexString = /^(http|https):\/\/pinknow.nownews.com\//;
