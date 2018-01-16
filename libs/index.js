@@ -31,6 +31,7 @@ import downloadFile from './downloadFile';
 import htmlToText from './htmlToText';
 import prepareImages from './prepareImages';
 import formatImage from './formatImage';
+import removeHtmlTagAttrs from './removeHtmlTagAttrs';
 
 module.exports = {
     cleanInvalidToken,
@@ -65,5 +66,6 @@ module.exports = {
     downloadFile,
     htmlToText,
     prepareImages,
-    formatImage
+    formatImage,
+    removeHtmlTagAttrs
 };
