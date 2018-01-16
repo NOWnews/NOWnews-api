@@ -75,7 +75,11 @@ module.exports = async (req, res, next) => {
         if (news.hasContentAd) {
             // 預計是兩百字，可是避免有其他 img、style css 等等，因此以 250 保險。
             // 4 = '</p>'.length
-            const insertIndex = news.content.indexOf ('</p>', 250) + 4;
+            let startIndex = 250;
+            if (news.content.match(/^\<figure/)){
+                startIndex = news.content.indexOf('</figure>') + '</figure>'.length;
+            }
+            const insertIndex = news.content.indexOf ('</p>', startIndex) + 4;
             news.contentAdIndex = insertIndex;
         }
 

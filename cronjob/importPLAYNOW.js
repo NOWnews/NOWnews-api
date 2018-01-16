@@ -3,16 +3,25 @@
  */
 
 import Debug from 'debug';
-const debug = Debug('NOWnews-api:cron:cronjob:importCNYES');
+const debug = Debug('NOWnews-api:cron:cronjob:importPLAYNOW');
 import Promise from 'bluebird';
 import config from 'config';
 import cron from 'cron';
+import cheerio from 'cheerio';
 import _ from 'lodash';
 import moment from 'moment-timezone';
-import { parseRssFeed, newsLog, changeInternalLink } from '../libs';
+import { parseRssFeed, newsLog, removeHtmlTagAttrs } from '../libs';
 import { News, Image, Tag } from '../models';
 import { Pageview } from '../pvModels';
 import elasticsearch from '../elasticsearch';
+
+// feed info
+const feedName = 'PLAYNOW';
+const feedFrom = 'PLAYNOW';
+const CreateUser = '530000000000000000000007';
+const feedUrl = config.get('general.rssFeed.playNow');
+const MainMenu = '560000000000000000000003';
+const MenuIds = ['5952d5d19c2d7166cb9511df'];
 
 module.exports = new cron.CronJob({
     // 每 3 分鐘跑一次
@@ -21,38 +30,37 @@ module.exports = new cron.CronJob({
     // 主要邏輯區
     onTick: async () => {
         try {
-            console.log(`------------- Start Import 鉅亨網 RSS Feed -------------`);
-            let feedUrl = config.get('general.rssFeed.cnyes');
+            console.log(`------------- Start Import ${feedName} RSS Feed -------------`);
 
             if(!feedUrl || feedUrl === '') {
-                console.log('cnyes 鉅亨網沒有設定');
+                console.log(`${feedName}沒有設定`);
                 return;
             }
-
+            let image = null;
             let rssJSON = await parseRssFeed(feedUrl);
 
             // debug('json = %j', rssJSON.rss.channel.item[0]);
 
             let newsList = [];
             let nowTime = moment.tz('Asia/Taipei');
-            let prevTime = moment.tz('Asia/Taipei').add(-10, 'm');
-            for(let item of  rssJSON.rss.channel.item){
+            let prevTime = moment.tz('Asia/Taipei').add(-3, 'month');
+            for(let item of rssJSON.rss.channel.item){
 
-                // 如果不是在設定的時間區間內的新聞，就不需要收錄
+                // 如果不是在設定的時間區間內的新聞，就不需要收錄 #######
                 let newsPubDate = moment.tz(new Date(item.pubDate), 'Asia/Taipei');
                 if( newsPubDate.isBefore(prevTime) ) {
+                    debug('不收錄原因: 新聞資料過期');
                     continue;
                 }
 
                 // 確認對方給的新聞 url 是否符合規範，不符合規範就不收錄
-                let regexString = /^(http|https):\/\/news.cnyes.com\/news\/id\/[0-9]+/;
+                let regexString = /^(http|https):\/\/playnow.nownews.com\//;
                 if(item.link.match(regexString) === null) {
                     continue;
                 }
 
                 // 取出對方新聞 uniq key
-                let splitLink = item.link.split('/');
-                let uniqKey = splitLink[splitLink.length - 1];
+                let uniqKey = item.guid['$t'];
 
                 // 處理標題或是短標題多於限制的字數，就把它截掉
                 let title = item.title.slice(0, 25);
@@ -63,16 +71,16 @@ module.exports = new cron.CronJob({
                     .where('feedUniqKey').equals(uniqKey)
                     .execAsync();
                 if(aliveNews) {
+                    debug('不收錄原因: 已存過');
                     continue;
                 }
-                //把內文的內連都改連回首頁
-                item['content:encoded'] = changeInternalLink(item['content:encoded']);
-                //鉅亨網要求加上在新聞內文 文末加上連結
-                const link = "http://news.cnyes.com/?utm_medium=news&utm_source=nownews";
-                item['content:encoded'] +=`\n更多精彩內容請至 《鉅亨網》 <a target="_blank" href="${link}">連結>></a>`
+
+                //在新聞內文 文末加上連結
+                const link = item['link'];
+                item['content:encoded'] = removeHtmlTagAttrs(item['content:encoded']);
 
                 //新聞關鍵字
-                var keywords = item['media:keywords'] ? item['media:keywords'].split(',') : [];
+                var keywords = item['tags'] ? item['tags'] : [];
                 let tagList = await Promise.mapSeries(keywords, (tag) => {
                     // 變成小寫與去除頭尾空白
                     tag = tag.trim().toLowerCase();
@@ -90,67 +98,60 @@ module.exports = new cron.CronJob({
                             // 沒有這個 tag 就幫他建立
                             return Tag.createAsync({
                                 name: tag,
-                                CreatedBy: '530000000000000000000002',
-                                UpdatedBy: '530000000000000000000002'
+                                CreatedBy: CreateUser,
+                                UpdatedBy: CreateUser
                             });
                         });
                 });
 
                 /*
-                 * 鉅亨網沒有圖片，所以不用處理
-                 * 這些處理圖片的 code 留下來當參考
+                 * 處理圖片部分
                  */
-                // let image = null;
-                // if(item['media:content']) {
-                //     let imageOptions = {
-                //         title: '（圖／鉅亨網）',
-                //         desc: '（圖／鉅亨網）',
-                //         keyword: '鉅亨網',
-                //         imageFrom: 'CNYES',
-                //         originalname: null,
-                //         format: null,
-                //         type: 'NEWS',
-                //         mode: 'NORMAl',
-                //         mimetype: null,
-                //         width: item['media:content'].width,
-                //         height: item['media:content'].height,
-                //         isDeliver: false,
-                //         Tag: null,
-                //         url: item['media:content'] && item['media:content'].url,
-                //         isTrashed: false,
-                //         CreatedBy: '530000000000000000000002',
-                //         UpdatedBy: '530000000000000000000002',
-                //     };
+                if(item['enclosure']) {
+                    let imageOptions = {
+                        title: `（圖／${feedName}）`,
+                        desc: `${item.title}（圖／${feedName}）`,
+                        keyword: `${feedName}`,
+                        imageFrom: feedFrom,
+                        originalname: null,
+                        format: null,
+                        type: 'NEWS',
+                        mode: 'NORMAl',
+                        mimetype: item['enclosure'].type,
+                        width: null,
+                        height: null,
+                        isDeliver: false,
+                        Tag: null,
+                        url: item['enclosure'].url,
+                        isTrashed: false,
+                        CreatedBy: CreateUser,
+                        UpdatedBy: CreateUser,
+                    };
 
-                //     image = await Image.createAsync(imageOptions);
-                // }
+                    image = await Image.createAsync(imageOptions);
+                }
 
                 console.log(`新聞標題: ${item.title}`);
                 console.log(`新聞短標題: ${shortTitle}`);
+                console.log(`新聞主分類:${MainMenu}`);
+                console.log(`新聞次分類:${MenuIds}`);
+                console.log(`新聞簡介:${item.description}`);
                 console.log(`新聞關鍵字:${keywords}`);
+                console.log(`新聞圖片:${image.url}`);
                 console.log(`新聞連結: ${item.link}`);
                 console.log(`新聞識別唯一值: ${uniqKey}`);
                 console.log(`新聞發布時間: ${newsPubDate.format('YYYY-MM-DD HH:ss:mm')}`);
                 console.log(`收錄時間區間: ${prevTime.format('YYYY-MM-DD HH:ss:mm')} ~ ${nowTime.format('YYYY-MM-DD HH:ss:mm')}`);
                 console.log(`-------------------------------------------`);
 
-                // 鉅亨網完全沒有圖片 全部主圖都隨機從這4個墊檔圖指定
-                const cnyesImagesObjectIds = [
-                  '511000000000000000000005',
-                  '511000000000000000000006',
-                  '511000000000000000000007',
-                  '511000000000000000000008',
-                ];
-                let randomDefaultImageId = cnyesImagesObjectIds[Math.floor(Math.random() * cnyesImagesObjectIds.length)];
-
                 let newsOptions = {
                     title: title,
                     location: [121.5914087,25.0693482], //台北市內湖區的座標
                     shortTitle: shortTitle,
-                    summary: title, //鉅亨網沒有提供summary這個欄位 但前台og tag要用到summary 所以放title
-                    MainMenu: '560000000000000000000013',
-                    Menus: ['560000000000000000000013'],
-                    MainPhoto: randomDefaultImageId,
+                    summary: _.isString(item.description) ? item.description : false || title, //分眾頻道可能沒有提供summary這個欄位 但前台og tag要用到summary 所以放title
+                    MainMenu: MainMenu,
+                    Menus: MenuIds,
+                    MainPhoto: image.id,
                     MainVideo: null,
                     content: item['content:encoded'],
                     Photos: [],
@@ -163,27 +164,29 @@ module.exports = new cron.CronJob({
                     isAdult: false,
                     isDeliver: false,
                     isSponsored: false,
-                    Author: '530000000000000000000002',
-                    newsBy: '鉅亨網',
+                    Author: CreateUser,
+                    newsBy: `${feedName}`,
                     Tags: tagList || [],
                     isFeed: true,
-                    feedFrom: 'CNYES',
+                    feedFrom: feedFrom,
                     feedUniqKey: uniqKey,
                     feedUrl: item.link,
-                    LastReviewer: '530000000000000000000002',
+                    LastReviewer: CreateUser,
                     isTrashed: false,
-                    CreatedBy: '530000000000000000000002',
-                    UpdatedBy: '530000000000000000000002',
-                    createdAt: newsPubDate,
-                    updatedAt: newsPubDate
+                    CreatedBy: CreateUser,
+                    UpdatedBy: CreateUser,
+                    createdAt: nowTime,
+                    updatedAt: nowTime
                 };
-
                 let news = await News.createAsync(newsOptions);
 
                 // 處理 log
                 let newsForLog = await news.populate('MainMenu Menus MainPhoto MainVideo Photos Videos Author Tags LastReviewer CreatedBy UpdatedBy').execPopulate();
                 await newsLog(newsForLog, 'CREATE');
-                await elasticsearch.create(newsForLog);
+
+                // 測試會出錯，因此用非同步了略過他
+                elasticsearch.create(newsForLog);
+
 
                 // 初始化 pageview 資訊
                 await Pageview.findOneAndUpdateAsync({
@@ -197,7 +200,7 @@ module.exports = new cron.CronJob({
                     });
             };
 
-            console.log(`------------- Finish Import 鉅亨網 RSS Feed -------------`);
+            console.log(`------------- Finish Import ${feedName} RSS Feed -------------`);
         } catch (err) {
             return console.log(err);
         }

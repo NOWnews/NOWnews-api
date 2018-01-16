@@ -41,8 +41,8 @@ module.exports = async () => {
             .where('isTrashed').equals(false)
             .select('_id')
         ]);
-        celebritycomment = celebritycommentMenu._id;
-        usertalk = usertalkMenu._id;
+        celebritycomment = celebritycommentMenu? celebritycommentMenu._id: null;
+        usertalk = usertalkMenu? usertalkMenu._id: null;
 
         _.forEach(menu, (m) => {
             switch (m.name) {

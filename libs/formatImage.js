@@ -2,7 +2,8 @@ import config from 'config';
 import Debug from 'debug';
 const debug = Debug('NOWnews-api:libs:formatImage');
 const imgRegexString = /^(http|https):\/\/img.nownews.com\/nownews_[A-Za-z1-9]+\/[A-Za-z]+\//;
-const otherRegexString = /^(http|https):\/\/[A-Za-z]+.nownews.com\//;
+const otherRegexString = /^(http|https):\/\/(img|s|rssimg|e|legacy).nownews.com\//;
+// 目前 imagelab 的白名單有 img.nownews.com, s.nownews.com, rssimg.nownews.com, e.nownews.com, legacy.nownews.com
 const imgLabUrl = config.get('general.imagelab.url');
 const googleUrl = config.get('general.googleCloud.image-cdn-url');
 const googleFolder = config.get('general.googleCloud.image-gcs-folder');
@@ -47,7 +48,7 @@ module.exports.sizeFormat = (url) => {
             w1440q85: url
         };
     }
- 
+
     // 如果圖片是img.nownews.com
     if(otherMatchArray && imgMatchArray) {
 
