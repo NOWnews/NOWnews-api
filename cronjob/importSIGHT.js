@@ -78,7 +78,7 @@ module.exports = new cron.CronJob({
 
                 _.forEach(category, (value, key) => {
                     var menuId = sightSubCategoryMenuIdMap[value];
-                    if(categoryList.indexOf(menuId) === -1){
+                    if(categoryList.indexOf(menuId) === -1 && menuId !== undefined ){
                         categoryList.push(sightSubCategoryMenuIdMap[value]);
                     }
                 });

@@ -91,7 +91,7 @@ module.exports = new cron.CronJob({
 
                 _.forEach(category, (value, key) => {
                     var menuId = bobeeSubCategoryMenuIdMap[value];
-                    if(categoryList.indexOf(menuId) === -1){
+                    if(categoryList.indexOf(menuId) === -1 && menuId !== undefined ){
                         categoryList.push(bobeeSubCategoryMenuIdMap[value]);
                     }
                 });
