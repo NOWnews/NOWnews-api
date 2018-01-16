@@ -15,7 +15,11 @@ import { Pageview } from '../pvModels';
 import elasticsearch from '../elasticsearch';
 
 module.exports = new cron.CronJob({
-    //設定每5分鐘收錄一次
+    /* 設定多久跑一次
+    * 中央社 新聞更新頻率一天只有數次
+    * 為了新聞夠即時 每 5 分鐘 檢查有沒有更新並收錄
+    * 因為他們的 RSS 新聞有按照時間順序排 檢查到第一筆已匯入就會結束匯入 故檢查 2 天以內的新聞
+    */
     cronTime: '0 */5 * * * *',
 
     // 主要邏輯區

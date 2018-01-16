@@ -10,7 +10,7 @@ import cron from 'cron';
 import cheerio from 'cheerio';
 import _ from 'lodash';
 import moment from 'moment-timezone';
-import { parseRssFeed, newsLog } from '../libs';
+import { parseRssFeed, newsLog, removeHtmlTagAttrs } from '../libs';
 import { News, Image, Tag } from '../models';
 import { Pageview } from '../pvModels';
 import elasticsearch from '../elasticsearch';
@@ -24,7 +24,7 @@ const MainMenu = '560000000000000000000005';
 const MenuIds = [];
 
 module.exports = new cron.CronJob({
-    // 設定多久跑一次
+    // 每 3 分鐘跑一次
     cronTime: '0 */3 * * * *',
 
     // 主要邏輯區
@@ -43,7 +43,7 @@ module.exports = new cron.CronJob({
 
             let newsList = [];
             let nowTime = moment.tz('Asia/Taipei');
-            let prevTime = moment.tz('Asia/Taipei').add(-10, 'd');
+            let prevTime = moment.tz('Asia/Taipei').add(-3, 'month');
             for(let item of rssJSON.rss.channel.item){
 
                 // 如果不是在設定的時間區間內的新聞，就不需要收錄 #######
@@ -77,7 +77,7 @@ module.exports = new cron.CronJob({
 
                 //在新聞內文 文末加上連結
                 const link = item['link'];
-                item['content:encoded'] +=`\n更多精彩內容請至 《${feedName}》 <a target="_blank" href="${link}">連結>></a>`
+                item['content:encoded'] = removeHtmlTagAttrs(item['content:encoded']);
 
                 //新聞關鍵字
                 var keywords = item['tags'] ? item['tags'] : [];
@@ -148,7 +148,7 @@ module.exports = new cron.CronJob({
                     title: title,
                     location: [121.5914087,25.0693482], //台北市內湖區的座標
                     shortTitle: shortTitle,
-                    summary: item.description || title, //分眾頻道可能沒有提供summary這個欄位 但前台og tag要用到summary 所以放title
+                    summary: _.isString(item.description) ? item.description : false || title, //分眾頻道可能沒有提供summary這個欄位 但前台og tag要用到summary 所以放title
                     MainMenu: MainMenu,
                     Menus: MenuIds,
                     MainPhoto: image.id,

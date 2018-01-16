@@ -26,7 +26,7 @@ const gcs = gcloud.storage();
 const bucket = gcs.bucket(config.get('general.googleCloud.storageBucket'));
 
 module.exports = new cron.CronJob({
-    // 設定多久跑一次
+    // 每 3 分鐘跑一次
     cronTime: '0 */3 * * * *',
 
     // 主要邏輯區
