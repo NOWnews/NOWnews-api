@@ -246,6 +246,10 @@ let schema = new Schema({
 });
 
 schema.index({
+    feedFrom: -1
+});
+
+schema.index({
     isTrashed: 1
 });
 

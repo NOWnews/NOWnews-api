@@ -324,7 +324,7 @@ module.exports = [
     },
     {
         _id: '560000000000000000000018',
-        name: '今日觀點',
+        name: '觀點',
         categoryName: 'sight',
         url: '/cat/sight',
         isExternal: false,
