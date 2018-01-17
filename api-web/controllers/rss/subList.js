@@ -17,8 +17,8 @@ module.exports = async(req, res, next) => {
 
     // 驗證 query 的值
     if (_.isNaN(parseInt(limit, 10))) limit = 10;
-    if (!_.isDate(start)) start = null;
-    if (!_.isDate(end)) end = null;
+    if (!moment(start).isValid()) start = null;
+    if (!moment(end).isValid()) end = null;
 
     try {
             if (feedFromList.indexOf(feedFrom) === -1) {
