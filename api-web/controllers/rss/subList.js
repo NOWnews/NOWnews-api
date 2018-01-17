@@ -11,9 +11,14 @@ import { News,Menu } from '../../../models';
 
 module.exports = async(req, res, next) => {
 
-    let { limit, start, end, sort } = req.query;
+    let { limit, start, end } = req.query;
     let { feedFrom } = req.params;
     const feedFromList = ['BOBEENOW', 'IFUNNOW', 'PETSMAO', 'PINKNOW', 'PLAYNOW', 'SIGHT', 'SPORTNOW'];
+
+    // 驗證 query 的值
+    if (_.isNaN(parseInt(limit, 10))) limit = 10;
+    if (!_.isDate(start)) start = null;
+    if (!_.isDate(end)) end = null;
 
     try {
             if (feedFromList.indexOf(feedFrom) === -1) {
