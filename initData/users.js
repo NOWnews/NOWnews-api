@@ -173,7 +173,7 @@ module.exports = [
     },
     {
         _id: '530000000000000000000012',
-        name: '觀點',
+        name: '今日觀點',
         nickname: '今日觀點',
         staffId: '今日觀點',
         status: 'REGULAR',
