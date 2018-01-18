@@ -4,10 +4,9 @@ NOWnews-api change logs
 
 ## [Unreleased]
 
+## 1.0.55 - 2018-01-18
 ### Added
 - 分眾頻道匯出 RSS(PINKNOW, IFUNNOW, PETSMAO, PLAYNOW ,SIGHT, SPORTNOW, BOBEE) @wb
-
-### Added
 - 分眾頻道匯進主站(PINKNOW, IFUNNOW, PETSMAO, PLAYNOW ,SIGHT, SPORTNOW, BOBEE) @wb
 
 ### Added
