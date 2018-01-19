@@ -16,8 +16,6 @@ module.exports = async (feed) => {
             });
         // debug('rss data = %s', rssData);
 
-        rssData = rssData.replace(/[\b]/g, '');
-
         let jsonString = xml2json.toJson(rssData);
         // debug('rss data = %s', jsonString);
 

@@ -7,7 +7,7 @@ NOWnews-api change logs
 ## 1.0.55 - 2018-01-18
 ### Fixed
 - 修正抓子網的新聞只抓3小時內建立的新聞, 每三分鐘確認一次不變 @wb
-- 加入子網的新聞特殊字元的防護 @wb
+- news 建立 feedUniqKey index @wb
 
 ### Added
 - 分眾頻道匯出 RSS(PINKNOW, IFUNNOW, PETSMAO, PLAYNOW ,SIGHT, SPORTNOW, BOBEE) @wb
