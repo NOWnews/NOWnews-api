@@ -52,7 +52,7 @@ module.exports = new cron.CronJob({
 
             let newsList = [];
             let nowTime = moment.tz('Asia/Taipei');
-            let prevTime = moment.tz('Asia/Taipei').add(-3, 'month');
+            let prevTime = moment.tz('Asia/Taipei').add(-3, 'hours');
             for(let item of rssJSON.rss.channel.item){
 
                 // 如果不是在設定的時間區間內的新聞，就不需要收錄 #######

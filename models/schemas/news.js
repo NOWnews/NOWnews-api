@@ -246,6 +246,10 @@ let schema = new Schema({
 });
 
 schema.index({
+    feedUniqKey: -1
+});
+
+schema.index({
     feedFrom: -1
 });
 
