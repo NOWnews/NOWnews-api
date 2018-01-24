@@ -23,8 +23,8 @@ module.exports = async (req, res, next) => {
             redirect: '',
             isOnAir: false,
             campainStatus: false,
-            isOnAirforFungshui: true,
-            campainStatusforFungshui: true
+            isOnAirforFungshui: false,
+            campainStatusforFungshui: false
         });
     } catch(err) {
         return next(err);
