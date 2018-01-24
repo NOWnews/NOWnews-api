@@ -3,6 +3,10 @@
 NOWnews-api change logs
 
 ## [Unreleased]
+### Added
+- 修改live/info.js @wn
+- 1/28直播使用 @wn
+
 
 ## 1.0.55 - 2018-01-18
 ### Fixed
