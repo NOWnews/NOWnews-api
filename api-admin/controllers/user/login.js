@@ -35,14 +35,13 @@ module.exports = async (req, res, next) => {
 
         let now = Date.now();
 
-        await Promise.all([
-            LoginTrack.createAsync({
-                User: user._id,
-                action: 'LOGIN',
-                createdAt: now,
-                ip
-            })
-        ]);
+        await LoginTrack.createAsync({
+            User: user._id,
+            action: 'LOGIN',
+            createdAt: now,
+            ip
+        });
+        
         return res.json(user);
     } catch (err) {
         return next(err);
