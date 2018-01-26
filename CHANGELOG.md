@@ -3,12 +3,13 @@
 NOWnews-api change logs
 
 ## [Unreleased]
+### Changed
+- 停用 User 資料表內的 lastLogin ，並移除登入時的欄位更新 @esbb48
 
 ## 1.0.56 - 2018-01-25
 ### Added
 - 修改live/info.js @wn
 - 1/28直播使用 @wn
-
 
 ## 1.0.55 - 2018-01-18
 ### Fixed
