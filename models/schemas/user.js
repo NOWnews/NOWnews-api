@@ -141,7 +141,9 @@ let schema = new Schema({
 
     },
 
-    // 最後登入時間
+    // 最後登入時間：已停用
+    // 因已有 loginTrack，為了避免登入時，
+    // 造成 User 資料表 UpdateAt 連帶更新造成追蹤上的混肴。
     lastLogin: {
         type: Date,
         default: Date.now
