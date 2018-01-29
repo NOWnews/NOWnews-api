@@ -6,6 +6,10 @@ NOWnews-api change logs
 ### Changed
 - 停用 User 資料表內的 lastLogin ，並移除登入時的欄位更新 @esbb48
 
+## 1.0.57 - 2018-01-29
+### Fixed
+- 匯入新聞的 keyword 調整 @wb
+
 ## 1.0.56 - 2018-01-25
 ### Added
 - 修改live/info.js @wn
