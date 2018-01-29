@@ -80,7 +80,6 @@ module.exports = new cron.CronJob({
                 item['content:encoded'] = removeHtmlTagAttrs(item['content:encoded']);
 
                 //新聞關鍵字
-                console.log(item['tags'])
                 var keywords = item['tags'] ? item['tags'] : [];
                 // 如果只有一個關鍵字
                 if (_.isString(keywords)) { keywords = [keywords]; }
