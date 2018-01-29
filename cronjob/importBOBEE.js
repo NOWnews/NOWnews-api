@@ -115,6 +115,8 @@ module.exports = new cron.CronJob({
 
                 //新聞關鍵字
                 var keywords = item['tags'] ? item['tags'] : [];
+                // 如果只有一個關鍵字
+                if (_.isString(keywords)) { keywords = [keywords]; }
                 let tagList = await Promise.mapSeries(keywords, (tag) => {
                     // 變成小寫與去除頭尾空白
                     tag = tag.trim().toLowerCase();

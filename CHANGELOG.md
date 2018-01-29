@@ -4,11 +4,14 @@ NOWnews-api change logs
 
 ## [Unreleased]
 
+## 1.0.57 - 2018-01-29
+### Fixed
+- 匯入新聞的 keyword 調整 @wb
+
 ## 1.0.56 - 2018-01-25
 ### Added
 - 修改live/info.js @wn
 - 1/28直播使用 @wn
-
 
 ## 1.0.55 - 2018-01-18
 ### Fixed
