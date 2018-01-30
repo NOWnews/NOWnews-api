@@ -3,6 +3,10 @@
 NOWnews-api change logs
 
 ## [Unreleased]
+
+### Added
+- 新增 NOWnews-api 專案說明文件 @appleoxxo
+
 ### Changed
 - 停用 User 資料表內的 lastLogin ，並移除登入時的欄位更新 @esbb48
 
