@@ -3,7 +3,7 @@
 NOWnews-api change logs
 
 ## [Unreleased]
-
+## 1.0.58 - 2018-01-30
 ### Added
 - 新增 NOWnews-api 專案說明文件 @appleoxxo
 
