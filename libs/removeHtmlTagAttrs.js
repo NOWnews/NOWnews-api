@@ -6,7 +6,7 @@ const debug = Debug('NOWnews-api:libs:removeHtmlTagAttrs');
 
 module.exports = (htmlContent) => {
     try {
-        const regex = /(style|width|height|srcset|id|class|sizes|data-permalink|data-orig-file|data-orig-size|data-comments-opened|data-image-meta|data-image-description|data-medium-file|data-recalc-dims|data-orig-file|data-image-meta|data-image-title)=["']([^"']*)["']/gi;
+        const regex = /(style|width|height|srcset|id|sizes|data-permalink|data-orig-file|data-orig-size|data-comments-opened|data-image-meta|data-image-description|data-medium-file|data-recalc-dims|data-orig-file|data-image-meta|data-image-title)=["']([^"']*)["']/gi;
         return htmlContent.replace(regex,'');
     } catch (err) {
         return console.error(err);

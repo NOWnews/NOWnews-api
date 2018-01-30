@@ -8,6 +8,7 @@ NOWnews-api change logs
 - 新增 NOWnews-api 專案說明文件 @appleoxxo
 
 ### Changed
+- 調整 RSS 過濾的條件，不濾 class @wb
 - 停用 User 資料表內的 lastLogin ，並移除登入時的欄位更新 @esbb48
 
 ## 1.0.57 - 2018-01-29
