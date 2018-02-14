@@ -7,7 +7,6 @@ module.exports = async (req, res, next) => {
     try {
         let now = moment.tz('Asia/Taipei');
         //NOW直播
-        
         return res.json({
             title: '#NOW直播 2018央視春晚現場直播',
             teaserTitle: '#NOW直播 2018央視春晚現場直播',
@@ -18,7 +17,7 @@ module.exports = async (req, res, next) => {
             youtubeId: '',
             liveUrl: 'Livefestival',
             livePage: 'https://m.nownews.com/live/Livefestival',
-            background: 'https://legacy.nownews.com/NOWnews_static/live-background.jpg?' +  now,
+            background: 'https://img.nownews.com/photo/live-background.jpg?' +  now,
             //backgroundColor: '#403534',
             backgroundColor: '#b40001',
             redirect: '',
