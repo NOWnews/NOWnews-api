@@ -10,7 +10,7 @@ module.exports = async (req, res, next) => {
         return res.json({
             title: '#NOW直播 2018央視春晚現場直播',
             teaserTitle: '#NOW直播 2018央視春晚現場直播',
-            banner: 'https://img.nownews.com/photo/festival_970x250.jpg?' + now,
+            banner: 'https://img.nownews.com/photo/festival_2250x1008.jpg?' + now,
             alt: '#NOW直播 2018央視春晚現場直播',
             url: '',
             wowza: 'https://5a5ab4e1760b0.streamlock.net/live/c000.stream/playlist.m3u8?pf=mm',
