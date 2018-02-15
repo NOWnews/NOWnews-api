@@ -21,10 +21,10 @@ module.exports = async (req, res, next) => {
             //backgroundColor: '#403534',
             backgroundColor: '#b40001',
             redirect: '',
-            isOnAir: true,
-            campainStatus: true,
-            isOnAirforFungshui: true,
-            campainStatusforFungshui: true
+            isOnAir: false,
+            campainStatus: false,
+            isOnAirforFungshui: false,
+            campainStatusforFungshui: false
         });
     } catch(err) {
         return next(err);
