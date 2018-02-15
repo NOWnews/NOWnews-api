@@ -22,9 +22,9 @@ module.exports = async (req, res, next) => {
             backgroundColor: '#b40001',
             redirect: '',
             isOnAir: true,
-            campainStatus: false,
-            isOnAirforFungshui: false,
-            campainStatusforFungshui: false
+            campainStatus: true,
+            isOnAirforFungshui: true,
+            campainStatusforFungshui: true
         });
     } catch(err) {
         return next(err);
