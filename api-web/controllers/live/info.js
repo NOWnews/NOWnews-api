@@ -21,7 +21,7 @@ module.exports = async (req, res, next) => {
             //backgroundColor: '#403534',
             backgroundColor: '#b40001',
             redirect: '',
-            isOnAir: false,
+            isOnAir: true,
             campainStatus: false,
             isOnAirforFungshui: false,
             campainStatusforFungshui: false
