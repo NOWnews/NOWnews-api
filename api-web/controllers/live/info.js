@@ -7,19 +7,19 @@ module.exports = async (req, res, next) => {
     try {
         let now = moment.tz('Asia/Taipei');
         //NOW直播
-        
         return res.json({
-            title: '#NOW直播　常豐居士－夏唯綱教授 命理風水學現場直播',
-            teaserTitle: '#NOW直播　常豐居士－夏唯綱教授 命理風水學現場直播',
-            banner: 'http://legacy.nownews.com/NOWnews_static/live-banner.jpg?' + now,
-            alt: '#NOW直播　常豐居士－夏唯綱教授 命理風水學現場直播',
+            title: '#NOW直播 2018央視春晚現場直播 20:00-00:30',
+            teaserTitle: '#NOW直播 2018央視春晚現場直播 20:00-00:30',
+            banner: 'https://img.nownews.com/photo/festival_640.jpg?' + now,
+            alt: '#NOW直播 2018央視春晚現場直播 20:00-00:30',
             url: '',
             wowza: 'https://5a5ab4e1760b0.streamlock.net/live/c000.stream/playlist.m3u8?pf=mm',
             youtubeId: '',
-            liveUrl: 'Livefungshui',
-            livePage: 'https://m.nownews.com/live/Livefungshui',
-            background: 'https://legacy.nownews.com/NOWnews_static/live-background.jpg?' +  now,
-            backgroundColor: '#403534',
+            liveUrl: 'Livefestival',
+            livePage: 'https://m.nownews.com/live/Livefestival',
+            background: 'https://img.nownews.com/photo/live-background.jpg?' +  now,
+            //backgroundColor: '#403534',
+            backgroundColor: '#b40001',
             redirect: '',
             isOnAir: false,
             campainStatus: false,

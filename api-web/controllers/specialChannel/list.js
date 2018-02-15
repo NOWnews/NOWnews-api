@@ -20,7 +20,7 @@ module.exports = async (req, res, next) => {
                 .limit(limit)
                 .skip(skip)
                 .populate('MainPhoto Tag')
-                .sort('-createdAt')
+                .sort('-startedAt')
                 .execAsync(),
             totalCursor
                 .where('isTrashed').equals(false)
