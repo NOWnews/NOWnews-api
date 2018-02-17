@@ -38,7 +38,7 @@ module.exports = async (req, res, next) => {
                           {
                               range : {
                                 startedAt : {
-                                      lte: now, 
+                                      lte: "now", 
                                       time_zone: '+08:00'
                                   }
                               }
