@@ -30,10 +30,7 @@ module.exports = async (req, res, next) => {
         let query_range_time = {
             'range' : {
                 'startedAt' : {
-                    'gte': '2000-01-01 00:00:00', 
-                    'lte': now, 
-                    'format': 'yyyy-MM-dd hh:mm:ss',
-                    'time_zone': '+08:00'
+                    'lte': 'now'
                 }
             }
         };
