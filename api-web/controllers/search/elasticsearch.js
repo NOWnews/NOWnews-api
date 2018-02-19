@@ -12,6 +12,33 @@ module.exports = async (req, res, next) => {
         
         const sortKey = { startedAt: 'desc' };
         const now = moment.tz('Asia/Taipei').format("YYYY-MM-DD hh:mm:ss");
+
+        let query_match_words = {   
+            'multi_match': {
+                'query': keyword,
+                'type': 'best_fields',
+                'fields': [
+                    'title',
+                    'summary',
+                    'Tags'
+                ],
+                'tie_breaker': 0.3,
+                'minimum_should_match': '100%'
+            }
+        };
+        
+        let query_range_time = {
+            'range' : {
+                'startedAt' : {
+                    'gte': '2000-01-01 00:00:00', 
+                    'lte': now, 
+                    'format': 'yyyy-MM-dd hh:mm:ss',
+                    'time_zone': '+08:00'
+                }
+            }
+        };
+
+
         const result = await elasticsearch.search({
           index: 'nownews',
           type: 'news',
@@ -21,29 +48,10 @@ module.exports = async (req, res, next) => {
               size: limit,
               query: {
                   bool: {
-                      should: [
-                          {   
-                              multi_match: {
-                                  query: keyword,
-                                  type: 'best_fields',
-                                  fields: [
-                                    'title',
-                                    'summary',
-                                    'Tags'
-                                  ],
-                                  tie_breaker: 0.3,
-                                  minimum_should_match: '100%'
-                              }
-                          }, 
-                          {
-                              range : {
-                                startedAt : {
-                                      lte: "now", 
-                                      time_zone: '+08:00'
-                                  }
-                              }
-                          }
-                      ]
+                    should: [query_match_words, query_range_time],
+                    minimum_should_match: 2,
+                    boost: 1.0
+
                   }
               },
               highlight: {
