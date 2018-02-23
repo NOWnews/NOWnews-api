@@ -3,6 +3,7 @@ import Debug from 'debug';
 const debug = Debug('NOWnews-api:api-admin:controllers:specialChannel:update');
 
 import { SpecialChannel } from '../../../models';
+import { News }           from '../../../models';
 
 module.exports = async (req, res, next) => {
     try{
@@ -29,7 +30,16 @@ module.exports = async (req, res, next) => {
         }
 
         if(newsList) {
-            specialChannel.set('newsList', newsList);
+            //照時間排序
+            let orderedNews = await News.find().where('_id').in(newsList)
+                                               .sort({ startedAt: -1 })
+                                               .select('_id')
+                                               .execAsync();
+            var orderedList = [];
+            for(var i in orderedNews){
+                orderedList.push(orderedNews[i]['_id']);
+            }
+            specialChannel.set('newsList', orderedList);
         }
 
         specialChannel.set('UpdatedBy', UpdatedBy);
